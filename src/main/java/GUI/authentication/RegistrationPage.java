@@ -17,12 +17,14 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 
 
-public class RegistrationPage extends JFrame {
+public class RegistrationPage extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -73,7 +75,7 @@ public class RegistrationPage extends JFrame {
 
 		//Header label
 		JLabel HeaderLabel = new JLabel("Sign Up and Start Reading Comics!");
-		HeaderLabel.setBounds(297, 56, 259, 16);
+		HeaderLabel.setBounds(275, 56, 259, 16);
 		HeaderLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
 		contentPane.add(HeaderLabel);
 
@@ -157,7 +159,7 @@ public class RegistrationPage extends JFrame {
 		comboBox.setBounds(445, 176, 260, 27);
 		contentPane.add(comboBox);
 
-		//signup button
+		//sign up button
 		JButton signUpButton = new JButton("Sign Up for LongBox");
 		signUpButton.setBounds(107, 449, 598, 29);
 		signUpButton.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
@@ -190,6 +192,12 @@ public class RegistrationPage extends JFrame {
 			countries[i] = obj.getDisplayCountry();
 		}
 		return countries;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
