@@ -5,9 +5,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.xml.crypto.dsig.SignedInfo;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
@@ -40,20 +43,25 @@ public class LoginPage extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginPage() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 809, 554);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
+		setLocationRelativeTo(null);
 		setContentPane(contentPane);
+		contentPane.setAlignmentX(Component.CENTER_ALIGNMENT);
 		contentPane.setLayout(null);
 		
+		//Welcome label
 		JLabel welcomeLabel = new JLabel("Welcome Back to LongBox!");
 		welcomeLabel.setForeground(new Color(0, 0, 0));
 		welcomeLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
 		welcomeLabel.setBounds(300, 52, 208, 16);
 		contentPane.add(welcomeLabel);
 		
+		//username entry
 		JLabel usernameLabel = new JLabel("Please enter your username:");
 		usernameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
 		usernameLabel.setBounds(205, 147, 215, 16);
@@ -64,6 +72,7 @@ public class LoginPage extends JFrame {
 		contentPane.add(usernameText);
 		usernameText.setColumns(10);
 		
+		//password entry
 		JLabel passwordLabel = new JLabel("Please enter your password:");
 		passwordLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
 		passwordLabel.setVerticalAlignment(SwingConstants.TOP);
@@ -74,6 +83,7 @@ public class LoginPage extends JFrame {
 		passwordField.setBounds(205, 240, 398, 26);
 		contentPane.add(passwordField);
 		
+		//Sign in button
 		JButton signInButton = new JButton("Sign in");
 		signInButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
 		signInButton.setBounds(354, 304, 117, 29);
