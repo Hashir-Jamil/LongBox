@@ -1,0 +1,33 @@
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.url">jdbc:postgresql://localhost:5432/longbox_db</property> <!-- JDBC URL -->
+        <property name="connection.driver_class">org.postgresql.Driver</property> <!-- DB Driver for PostgreSQL -->
+        <property name="connection.username">postgres</property> <!-- DB User -->
+        <property name="connection.password">postgres</property> <!-- DB Password -->
+
+        <!-- SQL Dialect -->
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property> <!-- DB Dialect for Postgres specific SQL statements-->
+
+        <!-- ORM Behaviour -->
+        <property name="hbm2ddl.auto">update</property> <!-- create / create-drop / update -->
+        <property name="show_sql">true</property> <!-- Log SQL in console directly -->
+        <property name="format_sql">true</property> <!-- Log SQL with multiline and indented format -->
+        <property name="highlight_sql">true</property> <!-- Log SQL with highlighting via ANSI escape codes -->
+
+        <!-- Mapping Classes -->
+        <mapping class="org.longbox.authentication.User"/>
+
+    </session-factory>
+</hibernate-configuration>
