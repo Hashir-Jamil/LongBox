@@ -1,11 +1,10 @@
-package GUI.authentication;
+package org.longbox.authentication;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.xml.crypto.dsig.SignedInfo;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
