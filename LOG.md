@@ -4,6 +4,11 @@
 
     Group (Dexter absent due to illness): Meeting with professor on how to organize with project and divide work.
     Hashir: Created GitHub Repository, JIRA workspace for project & starter gradle project.
+    Ahan: Added working GUI of Registration page.
+
+## Thursday, February 1st, 2024
+	
+	Ahan: Added working GUI of Login Page.
 
 ## Friday, February 2nd, 2024
 
