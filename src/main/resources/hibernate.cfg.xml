@@ -28,6 +28,9 @@
 
         <!-- Mapping Classes -->
         <mapping class="org.longbox.authentication.User"/>
+        <mapping class="org.longbox.comiccollection.ComicBookList"/>
+        <mapping class="org.longbox.comics.ComicBook"/>
+        <mapping class="org.longbox.comments.Comment"/>
 
     </session-factory>
 </hibernate-configuration>
