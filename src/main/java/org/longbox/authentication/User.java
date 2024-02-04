@@ -8,37 +8,37 @@ import java.util.Date;
 @Table(name = "user")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
-    @Column(name = "user_name")
-    private String userName;
+	@Column(name = "user_name")
+	private String userName;
 
 	@Column(name = "first_name")
-    private String firstName;
+	private String firstName;
 
-    @Column(name = "last_name")
-    private String lastName;
+	@Column(name = "last_name")
+	private String lastName;
 
-    @Column(name = "dob")
-    private Date dob;
-    
-    @Column(name = "email")
-    private String email;
-    
-    @Column(name = "passowrd")
-    private String password;
+	@Column(name = "dob")
+	private Date dob;
 
-    @Column(name = "country")
-    private String country;
+	@Column(name = "email")
+	private String email;
 
-    @Column(name = "join_date")
-    private Date joinDate;
-    
-    public User() {
-    	
-    }
+	@Column(name = "passowrd")
+	private String password;
+
+	@Column(name = "country")
+	private String country;
+
+	@Column(name = "join_date")
+	private Date joinDate;
+
+	public User() {
+
+	}
 
 	public User(String userName, String firstName, String lastName, Date dob, String email, String password,
 			String country, Date joinDate) {
@@ -84,7 +84,5 @@ public class User {
 	public Date getJoinDate() {
 		return joinDate;
 	}
-    
-   
 
 }
