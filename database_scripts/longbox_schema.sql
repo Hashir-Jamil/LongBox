@@ -1,6 +1,7 @@
 CREATE TABLE "user" (
   "id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   "user_name" text UNIQUE,
+  "password" text,
   "first_name" text,
   "last_name" text,
   "dob" date,
