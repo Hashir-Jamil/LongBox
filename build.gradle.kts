@@ -16,6 +16,7 @@ dependencies {
     implementation("com.jgoodies:jgoodies-forms:1.8.0")
     implementation("org.hibernate:hibernate-core:6.4.2.Final")
     implementation("org.postgresql:postgresql:42.7.1")
+    implementation("javax.mail:mail:1.4.7")
 }
 
 tasks.test {
