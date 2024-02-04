@@ -1,5 +1,6 @@
 package org.longbox.authentication.GUI;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
 
@@ -15,6 +16,8 @@ import java.util.Locale;
 
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.swing.JButton;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JCheckBox;
@@ -29,6 +32,9 @@ import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.ComponentOrientation;
 
 
 
@@ -45,6 +51,7 @@ public class RegistrationPage extends JFrame implements ActionListener{
 	private JDateChooser dateChooser;
 	private JComboBox countryField;
 	private JCheckBox TnCCheckbox;
+	private JLabel messageLabel;
 
 	/**
 	 * Launch the application.
@@ -81,101 +88,83 @@ public class RegistrationPage extends JFrame implements ActionListener{
 
 		setContentPane(contentPane);
 
-		contentPane.setAlignmentX(Component.CENTER_ALIGNMENT);
-		contentPane.setLayout(null);
+		//contentPane.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
 		//Header label
 		JLabel HeaderLabel = new JLabel("Sign Up and Start Reading Comics!");
 		HeaderLabel.setBounds(275, 56, 259, 16);
 		HeaderLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
-		contentPane.add(HeaderLabel);
 
 		//first name label
 		JLabel FirstNameLabel = new JLabel("Your first name:");
 		FirstNameLabel.setBounds(117, 107, 94, 16);
 		FirstNameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		contentPane.add(FirstNameLabel);
 
 		firstNameField = new JTextField();
 		firstNameField.setBounds(107, 121, 267, 26);
-		contentPane.add(firstNameField);
 		firstNameField.setColumns(10);
 		
 		//last name label
 		JLabel LastNameLabel = new JLabel("Your last name:");
 		LastNameLabel.setBounds(452, 107, 83, 16);
 		LastNameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		contentPane.add(LastNameLabel);
 
 		lastNameField = new JTextField();
 		lastNameField.setBounds(445, 121, 260, 26);
-		contentPane.add(lastNameField);
 		lastNameField.setColumns(10);
 
 		//username label
 		JLabel UsernameLabel = new JLabel("Your username:");
 		UsernameLabel.setBounds(117, 214, 83, 16);
 		UsernameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		contentPane.add(UsernameLabel);
 
 		usernameField = new JTextField();
 		usernameField.setBounds(107, 231, 598, 26);
-		contentPane.add(usernameField);
 		usernameField.setColumns(10);
 
 		//email label
 		JLabel EmailLabel = new JLabel("Your email:");
 		EmailLabel.setBounds(117, 269, 61, 16);
 		EmailLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		contentPane.add(EmailLabel);
 
 		emailAddress = new JTextField();
 		emailAddress.setBounds(107, 288, 598, 26);
-		contentPane.add(emailAddress);
 		emailAddress.setColumns(10);
 
 		//password label
 		JLabel PasswordLabel = new JLabel("Pick a password:");
 		PasswordLabel.setBounds(116, 326, 86, 16);
 		PasswordLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		contentPane.add(PasswordLabel);
 
 		passwordField = new JPasswordField();
 		passwordField.setBounds(107, 345, 598, 26);
-		contentPane.add(passwordField);
 		
 		//password specification label
 		JLabel PwdSpecLabel = new JLabel("Use at least one letter, one numeral and seven characters.");
 		PwdSpecLabel.setBounds(117, 376, 257, 13);
 		PwdSpecLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 10));
-		contentPane.add(PwdSpecLabel);
 
 		//date entering
 		JLabel DateLabel = new JLabel("Your date of birth:");
 		DateLabel.setBounds(117, 160, 94, 16);
 		DateLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		contentPane.add(DateLabel);
 
 		dateChooser = new JDateChooser();
 		dateChooser.setBounds(107, 176, 267, 26);
-		contentPane.add(dateChooser);
 
 		// choose country
 		JLabel CountryLabel = new JLabel("Choose your country:");
 		CountryLabel.setBounds(455, 159, 110, 16);
 		CountryLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		contentPane.add(CountryLabel);
 
 		countryField = new JComboBox(getAllCountries());
 		countryField.setBounds(445, 176, 260, 27);
-		contentPane.add(countryField);
 		
 		//sign up button
 		signUpButton = new JButton("Sign Up for LongBox");
 		signUpButton.setBounds(107, 449, 598, 29);
 		signUpButton.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
-		contentPane.add(signUpButton);
 		signUpButton.setEnabled(false);
 		signUpButton.setFocusable(false);
 
@@ -183,7 +172,34 @@ public class RegistrationPage extends JFrame implements ActionListener{
 		TnCCheckbox = new JCheckBox("I agree to the terms and conditions of these app.");
 		TnCCheckbox.setBounds(107, 411, 598, 23);
 		TnCCheckbox.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		
+		messageLabel = new JLabel("");
+		messageLabel.setBounds(107, 393, 598, 16);
+		messageLabel.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		messageLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		messageLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		
+		// adding elements to the pane
+		contentPane.setLayout(null);
+		contentPane.add(HeaderLabel);
+		contentPane.add(FirstNameLabel);
+		contentPane.add(firstNameField);
+		contentPane.add(LastNameLabel);
+		contentPane.add(lastNameField);
+		contentPane.add(UsernameLabel);
+		contentPane.add(usernameField);
+		contentPane.add(EmailLabel);
+		contentPane.add(emailAddress);
+		contentPane.add(PasswordLabel);
+		contentPane.add(passwordField);
+		contentPane.add(PwdSpecLabel);
+		contentPane.add(DateLabel);
+		contentPane.add(dateChooser);
+		contentPane.add(CountryLabel);
+		contentPane.add(countryField);
+		contentPane.add(signUpButton);
 		contentPane.add(TnCCheckbox);
+		contentPane.add(messageLabel);
 		
 		// action listener
 		firstNameField.addActionListener(fieldsListener);
@@ -242,7 +258,7 @@ public class RegistrationPage extends JFrame implements ActionListener{
 	
 	DocumentListener documentListener = new DocumentListener() {
         @Override
-        public void insertUpdate(DocumentEvent e) {
+        public void insertUpdate(DocumentEvent e) { 	
             updateButtonState();
         }
 
@@ -266,22 +282,32 @@ public class RegistrationPage extends JFrame implements ActionListener{
 	                passwordField.getPassword().length > 0 &&
 	                countryField.getSelectedItem() != null &&
 	                dateChooser.getDate() != null &&
+	                isValidEmailAddress(emailAddress.getText()) &&
 	                TnCCheckbox.isSelected();
+	                
+	           	 if(!isValidEmailAddress(emailAddress.getText())) {
+	     			messageLabel.setForeground(Color.red);
+	     			messageLabel.setText("Please enter a valid email");
+	     		}else {
+	     			messageLabel.setText("");
+	     		}
 
 	        signUpButton.setEnabled(enableButton);
 	    }
 	 
 	 // validate email (to be used later)
-//	 public static boolean isValidEmailAddress(String email) {
-//		   boolean result = true;
-//		   try {
-//		      InternetAddress emailAddr = new InternetAddress(email);
-//		      emailAddr.validate();
-//		   } catch (AddressException ex) {
-//		      result = false;
-//		   }
-//		   return result;
-//		}
+	 public static boolean isValidEmailAddress(String email) {
+		 boolean result = true;
+		 try {
+			 InternetAddress emailAddr = new InternetAddress(email);
+			 emailAddr.validate();
+		 } catch (AddressException ex) {
+			 result = false;
+		 }
+		 return result;
+	 }
+	 
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -298,6 +324,11 @@ public class RegistrationPage extends JFrame implements ActionListener{
 			SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd");
 			String dob = dcn.format(date);
 			
+			if(!isValidEmailAddress(email)) {
+				messageLabel.setForeground(Color.red);
+				messageLabel.setText("Please enter a valid email");
+			}
+			
 //			System.out.println(firstName);
 //			System.out.println(lastName);
 //			System.out.println(dob);
@@ -308,6 +339,4 @@ public class RegistrationPage extends JFrame implements ActionListener{
 		}
 		
 	}
-	
-	
 }
