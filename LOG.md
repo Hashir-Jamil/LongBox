@@ -17,3 +17,7 @@
 ## Saturday, February 3rd, 2024
 
     Group (all members present): team meeting with division of user stories & timelines for finishing ITR1
+ 
+## Sunday, February 4th, 2024
+	
+	Ahan: Added functionality to registration page, making it work only if all fields are not null and entered 
