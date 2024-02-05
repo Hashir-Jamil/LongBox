@@ -20,4 +20,4 @@
  
 ## Sunday, February 4th, 2024
 	
-	Ahan: Added functionality to registration page, making it work only if all fields are not null and entered 
+	Ahan: Added functionality to registration page, making it work only if all fields are not null and entered, also added the email and password validation feature.
