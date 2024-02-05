@@ -13,8 +13,11 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -104,7 +107,7 @@ public class RegistrationPage extends JFrame implements ActionListener{
 		firstNameField = new JTextField();
 		firstNameField.setBounds(107, 121, 267, 26);
 		firstNameField.setColumns(10);
-		
+
 		//last name label
 		JLabel LastNameLabel = new JLabel("Your last name:");
 		LastNameLabel.setBounds(452, 107, 83, 16);
@@ -139,10 +142,10 @@ public class RegistrationPage extends JFrame implements ActionListener{
 
 		passwordField = new JPasswordField();
 		passwordField.setBounds(107, 345, 598, 26);
-		
+
 		//password specification label
-		JLabel PwdSpecLabel = new JLabel("Use at least one letter, one numeral and seven characters.");
-		PwdSpecLabel.setBounds(117, 376, 257, 13);
+		JLabel PwdSpecLabel = new JLabel("Use at least one lowercase letter, one capital letter, one numeral, one special charachter and 8 - 20 characters.");
+		PwdSpecLabel.setBounds(117, 376, 588, 13);
 		PwdSpecLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 10));
 
 		//date entering
@@ -160,7 +163,7 @@ public class RegistrationPage extends JFrame implements ActionListener{
 
 		countryField = new JComboBox(getAllCountries());
 		countryField.setBounds(445, 176, 260, 27);
-		
+
 		//sign up button
 		signUpButton = new JButton("Sign Up for LongBox");
 		signUpButton.setBounds(107, 449, 598, 29);
@@ -172,13 +175,13 @@ public class RegistrationPage extends JFrame implements ActionListener{
 		TnCCheckbox = new JCheckBox("I agree to the terms and conditions of these app.");
 		TnCCheckbox.setBounds(107, 411, 598, 23);
 		TnCCheckbox.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		
+
 		messageLabel = new JLabel("");
-		messageLabel.setBounds(107, 393, 598, 16);
+		messageLabel.setVerticalTextPosition(SwingConstants.TOP);
+		messageLabel.setBounds(117, 393, 588, 16);
 		messageLabel.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-		messageLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		messageLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		
+
 		// adding elements to the pane
 		contentPane.setLayout(null);
 		contentPane.add(HeaderLabel);
@@ -200,7 +203,7 @@ public class RegistrationPage extends JFrame implements ActionListener{
 		contentPane.add(signUpButton);
 		contentPane.add(TnCCheckbox);
 		contentPane.add(messageLabel);
-		
+
 		// action listener
 		firstNameField.addActionListener(fieldsListener);
 		lastNameField.addActionListener(fieldsListener);
@@ -210,7 +213,7 @@ public class RegistrationPage extends JFrame implements ActionListener{
 		countryField.addActionListener(fieldsListener);
 		signUpButton.addActionListener(this);
 		TnCCheckbox.addActionListener(fieldsListener);
-		
+
 		// focus adapter
 		firstNameField.addFocusListener(focusAdapter);
 		emailAddress.addFocusListener(focusAdapter);
@@ -218,15 +221,15 @@ public class RegistrationPage extends JFrame implements ActionListener{
 		dateChooser.addFocusListener(focusAdapter);
 		usernameField.addFocusListener(focusAdapter);
 		lastNameField.addFocusListener(focusAdapter);
-		
-		
+
+
 		//Document listener for fields
 		firstNameField.getDocument().addDocumentListener(documentListener);
-        lastNameField.getDocument().addDocumentListener(documentListener);
-        usernameField.getDocument().addDocumentListener(documentListener);
-        emailAddress.getDocument().addDocumentListener(documentListener);
-        passwordField.getDocument().addDocumentListener(documentListener);
-        
+		lastNameField.getDocument().addDocumentListener(documentListener);
+		usernameField.getDocument().addDocumentListener(documentListener);
+		emailAddress.getDocument().addDocumentListener(documentListener);
+		passwordField.getDocument().addDocumentListener(documentListener);
+
 		updateButtonState();
 	}
 
@@ -241,72 +244,96 @@ public class RegistrationPage extends JFrame implements ActionListener{
 		}
 		return countries;
 	}
-	
+
 	ActionListener fieldsListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			updateButtonState();
 		}
 	};
-	
+
 	FocusAdapter focusAdapter = new FocusAdapter() {
 		@Override
 		public void focusLost(FocusEvent e) {
 			updateButtonState();
 		}
 	};
-	
+
 	DocumentListener documentListener = new DocumentListener() {
-        @Override
-        public void insertUpdate(DocumentEvent e) { 	
-            updateButtonState();
-        }
+		@Override
+		public void insertUpdate(DocumentEvent e) { 	
+			updateButtonState();
+		}
 
-        @Override
-        public void removeUpdate(DocumentEvent e) {
-            updateButtonState();
-        }
+		@Override
+		public void removeUpdate(DocumentEvent e) {
+			updateButtonState();
+		}
 
-        @Override
-        public void changedUpdate(DocumentEvent e) {
-            updateButtonState();
-        }
-    };
-	
-	 private void updateButtonState() {
-	        // Enable the button only if all fields are non-empty
-	        boolean enableButton = !firstNameField.getText().isEmpty() &&
-	                !lastNameField.getText().isEmpty() &&
-	                !usernameField.getText().isEmpty() && 
-	                !emailAddress.getText().isEmpty() &&
-	                passwordField.getPassword().length > 0 &&
-	                countryField.getSelectedItem() != null &&
-	                dateChooser.getDate() != null &&
-	                isValidEmailAddress(emailAddress.getText()) &&
-	                TnCCheckbox.isSelected();
-	                
-	           	 if(!isValidEmailAddress(emailAddress.getText())) {
-	     			messageLabel.setForeground(Color.red);
-	     			messageLabel.setText("Please enter a valid email");
-	     		}else {
-	     			messageLabel.setText("");
-	     		}
+		@Override
+		public void changedUpdate(DocumentEvent e) {
+			updateButtonState();
+		}
+	};
 
-	        signUpButton.setEnabled(enableButton);
-	    }
-	 
-	 // validate email (to be used later)
-	 public static boolean isValidEmailAddress(String email) {
-		 boolean result = true;
-		 try {
-			 InternetAddress emailAddr = new InternetAddress(email);
-			 emailAddr.validate();
-		 } catch (AddressException ex) {
-			 result = false;
-		 }
-		 return result;
-	 }
-	 
+	private void updateButtonState() {
+		// Enable the button only if all fields are non-empty
+		boolean enableButton = !firstNameField.getText().isEmpty() &&
+				!lastNameField.getText().isEmpty() &&
+				!usernameField.getText().isEmpty() && 
+				!emailAddress.getText().isEmpty() &&
+				passwordField.getPassword().length > 0 &&
+				countryField.getSelectedItem() != null &&
+				dateChooser.getDate() != null &&
+				isValidEmailAddress(emailAddress.getText()) &&
+				isValidPassword(String.valueOf(passwordField.getPassword())) &&
+				TnCCheckbox.isSelected();
+
+				// prints the invalid mail and email message
+				if(!isValidEmailAddress(emailAddress.getText()) && !isValidPassword(String.valueOf(passwordField.getPassword()))) {
+					messageLabel.setForeground(Color.red);
+					messageLabel.setText("Please enter a valid email and a valid password!");
+				}else if(isValidEmailAddress(emailAddress.getText()) && !isValidPassword(String.valueOf(passwordField.getPassword()))){
+					messageLabel.setText("Please enter a valid password!");
+				}else if(!isValidEmailAddress(emailAddress.getText()) && isValidPassword(String.valueOf(passwordField.getPassword()))) {
+					messageLabel.setText("Please enter a valid email!");
+				}else {
+					messageLabel.setText("");
+				}
+
+
+				//if all the conditions are matched enable the button
+				signUpButton.setEnabled(enableButton);
+	}
+
+	// validate email stack overflow
+	public static boolean isValidEmailAddress(String email) {
+		boolean result = true;
+		try {
+			InternetAddress emailAddr = new InternetAddress(email);
+			emailAddr.validate();
+		} catch (AddressException ex) {
+			result = false;
+		}
+		return result;
+	}
+
+	// validate password https://www.geeksforgeeks.org/how-to-validate-a-password-using-regular-expressions-in-java/
+	public static boolean isValidPassword(String password){
+		String regex = "^(?=.*[0-9])"
+				+ "(?=.*[a-z])(?=.*[A-Z])"
+				+ "(?=.*[@#$%^&+=!])"
+				+ "(?=\\S+$).{8,20}$";
+		Pattern p = Pattern.compile(regex);
+
+		if (password == null) {
+			return false;
+		}
+
+		Matcher m = p.matcher(password);
+
+		return m.matches();
+	}
 
 
 	@Override
@@ -318,17 +345,12 @@ public class RegistrationPage extends JFrame implements ActionListener{
 			String username = usernameField.getText();
 			String email = emailAddress.getText();
 			String password = String.valueOf(passwordField.getPassword());
-			String country = countryField.getSelectedItem().toString(); //does not work as expected
-			
+			String country = countryField.getSelectedItem().toString(); 
+
 			//formats the date
 			SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd");
 			String dob = dcn.format(date);
-			
-			if(!isValidEmailAddress(email)) {
-				messageLabel.setForeground(Color.red);
-				messageLabel.setText("Please enter a valid email");
-			}
-			
+
 //			System.out.println(firstName);
 //			System.out.println(lastName);
 //			System.out.println(dob);
@@ -337,6 +359,6 @@ public class RegistrationPage extends JFrame implements ActionListener{
 //			System.out.println(password);
 //			System.out.println(country);
 		}
-		
+
 	}
 }
