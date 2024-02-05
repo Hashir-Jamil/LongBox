@@ -75,18 +75,28 @@ public class LoginPage extends JFrame {
 		JLabel passwordLabel = new JLabel("Please enter your password:");
 		passwordLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
 		passwordLabel.setVerticalAlignment(SwingConstants.TOP);
-		passwordLabel.setBounds(205, 229, 153, 16);
+		passwordLabel.setBounds(205, 216, 153, 16);
 		contentPane.add(passwordLabel);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(205, 240, 398, 26);
+		passwordField.setBounds(205, 233, 398, 26);
 		contentPane.add(passwordField);
 		
 		//Sign in button
-		JButton signInButton = new JButton("Sign in");
+		JButton signInButton = new JButton("Sign in!");
 		signInButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		signInButton.setBounds(354, 304, 117, 29);
+		signInButton.setBounds(345, 271, 117, 29);
 		contentPane.add(signInButton);
+		
+		JLabel lblNewLabel = new JLabel("New user? Sign up now!");
+		lblNewLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
+		lblNewLabel.setBounds(334, 312, 141, 16);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Sign Up!");
+		btnNewButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		btnNewButton.setBounds(345, 340, 117, 29);
+		contentPane.add(btnNewButton);
 		
 	}
 }
