@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.Component;
 
@@ -15,13 +17,16 @@ import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
-public class LoginPage extends JFrame {
+public class LoginPage extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField usernameText;
 	private JPasswordField passwordField;
-
+	private JButton signInButton;
+	private JButton signUpButton;
+	private static JFrame frame;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -29,7 +34,7 @@ public class LoginPage extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginPage frame = new LoginPage();
+					frame = new LoginPage();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +47,10 @@ public class LoginPage extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginPage() {
-		
+		initLoginPage();
+	}
+	
+	public void initLoginPage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 809, 554);
 		contentPane = new JPanel();
@@ -75,18 +83,42 @@ public class LoginPage extends JFrame {
 		JLabel passwordLabel = new JLabel("Please enter your password:");
 		passwordLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
 		passwordLabel.setVerticalAlignment(SwingConstants.TOP);
-		passwordLabel.setBounds(205, 229, 153, 16);
+		passwordLabel.setBounds(205, 216, 153, 16);
 		contentPane.add(passwordLabel);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(205, 240, 398, 26);
+		passwordField.setBounds(205, 233, 398, 26);
 		contentPane.add(passwordField);
 		
 		//Sign in button
-		JButton signInButton = new JButton("Sign in");
+		signInButton = new JButton("Sign in!");
 		signInButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		signInButton.setBounds(354, 304, 117, 29);
+		signInButton.setBounds(345, 271, 117, 29);
 		contentPane.add(signInButton);
 		
+		//sign up label
+		JLabel signUpLabel = new JLabel("New user? Sign up now!");
+		signUpLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
+		signUpLabel.setBounds(334, 312, 141, 16);
+		contentPane.add(signUpLabel);
+		signInButton.setFocusable(false);
+		signInButton.addActionListener(this);
+		
+		//sign up button
+		signUpButton = new JButton("Sign Up!");
+		signUpButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		signUpButton.setBounds(345, 340, 117, 29);
+		contentPane.add(signUpButton);
+		signUpButton.setFocusable(false);
+		signUpButton.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == signUpButton) {
+			frame.dispose();
+			RegistrationPage registrationPage = new RegistrationPage();
+			registrationPage.setVisible(true);
+		}
 	}
 }
