@@ -24,7 +24,7 @@ CREATE TABLE "comic_book" (
 CREATE TABLE "comic_book_list" (
   "user_id" integer NOT NULL,
   "comic_book_id" integer NOT NULL,
-  "date_added_user_list" date
+  "date_added_user_list" date,
   PRIMARY KEY ("user_id","comic_book_id")
 );
 
