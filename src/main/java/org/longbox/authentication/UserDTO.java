@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class UserDTO {
 
-	private long id;
 	private String userName;
 	private String firstName;
 	private String lastName;
@@ -86,11 +85,6 @@ public class UserDTO {
 
 	public void setCountry(String country) {
 		this.country = country;
-	}
-
-
-	public long getId() {
-		return id;
 	}
 
 
