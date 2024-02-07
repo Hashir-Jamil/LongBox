@@ -21,7 +21,7 @@ public class ComicBook {
     private String author;
 
     @Column(name = "volume_number")
-    private int volumenNumber;
+    private int volumeNumber;
 
     @Column(name = "issue_number")
     private int issueNumber;
@@ -35,11 +35,4 @@ public class ComicBook {
     @Column(name = "date_added")
     private Date dateAdded;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }
