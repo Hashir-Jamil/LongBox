@@ -8,6 +8,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -106,6 +107,14 @@ public class HomePage extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == logOutButton) {
+            int confirmLogOut = JOptionPane.showConfirmDialog(frame, "Are you sure you want to log out?", "Log Out Confirmation", JOptionPane.YES_NO_OPTION);
+            if (confirmLogOut == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(null, "HELLO");
+                LoginPage loginPage = new LoginPage();
+                loginPage.setVisible(true);
+            }
+        }
 
     }
 }
