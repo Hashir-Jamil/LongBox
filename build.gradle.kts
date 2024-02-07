@@ -18,6 +18,7 @@ dependencies {
     implementation("org.postgresql:postgresql:42.7.1")
     implementation("javax.mail:mail:1.4.7")
     compileOnly("org.projectlombok:lombok:1.18.30")
+    implementation("com.google.code.gson:gson:2.10.1")
 }
 
 tasks.test {
