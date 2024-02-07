@@ -24,8 +24,6 @@ import java.util.regex.Pattern;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
 import javax.swing.JButton;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JCheckBox;
