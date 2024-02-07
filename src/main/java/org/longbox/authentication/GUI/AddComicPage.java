@@ -181,6 +181,9 @@ public class AddComicPage extends JFrame implements ActionListener {
             String series = seriesField.getText();
             String writer = writerField.getText();
             String artist = artistField.getText();
+
+            // Will implement the database piece of it in the next commit
+
         } else if(e.getSource() == backButton) {
             // This section is logic to navigate back to the previous page which will be filled later
         }
