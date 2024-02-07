@@ -24,3 +24,6 @@
 
 ## Monday, February 5th, 2024
 	Ahan: Added sign up button to login page, added sign in button to registration page to switch between the two pages and made it working.
+
+## Tuesday, February 6th, 2024
+    Dexter: Added empty home page, with logout button in top left, logout button creates pop up which, if confirmed, leads back to login page.
