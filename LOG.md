@@ -29,4 +29,4 @@
     Dexter: Added empty home page, with logout button in top left, logout button creates pop up which, if confirmed, leads back to login page.
 
 ## Wednesday, February 7th, 2024
-    Group (all members present): Spoke with professor about refactoring packages, and making sure everyone implements tests in each package.
+    Group (all members present): Spoke with professor about refactoring packages, and making sure everyone implements tests in each of the packages.
