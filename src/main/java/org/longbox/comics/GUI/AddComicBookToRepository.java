@@ -7,13 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import javax.swing.JTextField;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
-public class AddComic extends JFrame implements ActionListener {
-	public AddComic() {
+public class AddComicBookToRepository extends JFrame implements ActionListener {
+	public AddComicBookToRepository() {
 		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
