@@ -1,16 +1,24 @@
 package org.longbox.presentation;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class AuthenticationPage extends JFrame {
+import net.bytebuddy.utility.privilege.GetMethodAction;
+
+public class AuthenticationPage extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	private JPanel cardPanel;
+	private CardLayout cardLayout;
+    LoginPage loginPage = new LoginPage();
+    RegistrationPage registrationPage = new RegistrationPage();
 
 	/**
 	 * Launch the application.
@@ -33,21 +41,35 @@ public class AuthenticationPage extends JFrame {
 	 */
 	public AuthenticationPage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 550);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout());
-		setContentPane(contentPane);
-		
-		RegisterationPage registerationPage = new RegisterationPage();
-		add(registerationPage, BorderLayout.CENTER);
-		
-//		RegisterationPage registerationPage = new RegisterationPage();
-//		contentPane.add(registerationPage, BorderLayout.CENTER);
-		
+        setBounds(100, 100, 800, 550);
+
+        cardPanel = new JPanel();
+        cardLayout = new CardLayout();
+        cardPanel.setLayout(cardLayout);
+
+        cardPanel.add(loginPage, "login");
+        cardPanel.add(registrationPage, "registration");
+
+        // Set the default panel to login page
+        cardLayout.show(cardPanel, "login");
+
+        add(cardPanel);
+        setVisible(true);
+
+        loginPage.getSignUpButton().addActionListener(this);
+        registrationPage.getSignInButton().addActionListener(this);
 		
 		
 	}
+	
+	@Override
+    public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == loginPage.getSignUpButton()) {
+            cardLayout.show(cardPanel, "registration");
+        }else if(e.getSource() ==  registrationPage.getSignInButton()) {
+        	cardLayout.show(cardPanel, "login");
+        }
+    }
 
 
 

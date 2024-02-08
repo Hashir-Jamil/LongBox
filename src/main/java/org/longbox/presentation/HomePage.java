@@ -81,7 +81,7 @@ public class HomePage extends JFrame implements ActionListener {
             int confirmLogOut = JOptionPane.showConfirmDialog(frame, "Are you sure you want to log out?", "Log Out Confirmation", JOptionPane.YES_NO_OPTION);
             if (confirmLogOut == JOptionPane.YES_OPTION) {
                 JOptionPane.showMessageDialog(null, "HELLO");
-                LoginPage loginPage = new LoginPage();
+                AuthenticationPage loginPage = new AuthenticationPage();
                 loginPage.setVisible(true);
             }
         }

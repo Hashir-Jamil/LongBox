@@ -37,7 +37,7 @@ import java.awt.event.FocusEvent;
 import java.text.SimpleDateFormat;
 
 
-public class RegisterationPage extends JPanel {
+public class RegistrationPage extends JPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -55,7 +55,7 @@ public class RegisterationPage extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public RegisterationPage() {
+	public RegistrationPage() {
 		initiateRegUI();
 	}
 	
@@ -349,35 +349,39 @@ public class RegisterationPage extends JPanel {
 
 		return m.matches();
 	}
+	
+	public JButton getSignInButton() {
+		return signInButton;
+	}
 
 
-//	@Override
-//	public void actionPerformed(ActionEvent e) {
-//		if(e.getSource() == signUpButton) {
-//			String firstName = firstNameField.getText();
-//			String lastName = lastNameField.getText();
-//			Date date = dateChooser.getDate();
-//			String username = usernameField.getText();
-//			String email = emailAddress.getText();
-//			String password = String.valueOf(passwordField.getPassword());
-//			String country = countryField.getSelectedItem().toString(); 
-//
-//			//formats the date
-//			SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd");
-//			String dob = dcn.format(date);
-//
-////			System.out.println(firstName);
-////			System.out.println(lastName);
-////			System.out.println(dob);
-////			System.out.println(username);
-////			System.out.println(email);
-////			System.out.println(password);
-////			System.out.println(country);
-//			
-//		}else if(e.getSource() == signInButton) {
-//		
-//		}
-//
-//	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == signUpButton) {
+			String firstName = firstNameField.getText();
+			String lastName = lastNameField.getText();
+			Date date = dateChooser.getDate();
+			String username = usernameField.getText();
+			String email = emailAddress.getText();
+			String password = String.valueOf(passwordField.getPassword());
+			String country = countryField.getSelectedItem().toString(); 
+
+			//formats the date
+			SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd");
+			String dob = dcn.format(date);
+
+//			System.out.println(firstName);
+//			System.out.println(lastName);
+//			System.out.println(dob);
+//			System.out.println(username);
+//			System.out.println(email);
+//			System.out.println(password);
+//			System.out.println(country);
+			
+		}else if(e.getSource() == signInButton) {
+		
+		}
+
+	}
 
 }
