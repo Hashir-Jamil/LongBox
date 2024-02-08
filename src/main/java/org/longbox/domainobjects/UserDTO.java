@@ -15,7 +15,7 @@ public class UserDTO {
 
 
 	public UserDTO(String userName, String firstName, String lastName, Date dob, String email, String password,
-			String country, Date joinDate) {
+			String country) {
 		super();
 		this.userName = userName;
 		this.firstName = firstName;
