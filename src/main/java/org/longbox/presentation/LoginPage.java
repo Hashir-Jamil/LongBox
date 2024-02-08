@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LoginPage extends JPanel{
 
@@ -18,6 +20,7 @@ public class LoginPage extends JPanel{
 	private JPasswordField passwordField;
 	private JButton signInButton;
 	private JButton signUpButton;
+	private JLabel errorLabel;
 	/**
 	 * Create the panel.
 	 */
@@ -65,27 +68,35 @@ public class LoginPage extends JPanel{
 		
 		//Sign in button
 		signInButton = new JButton("Sign in!");
+		signInButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		signInButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		signInButton.setBounds(345, 271, 117, 29);
+		signInButton.setBounds(345, 300, 117, 29);
 		panel.add(signInButton);
 		
 		//sign up label
 		JLabel signUpLabel = new JLabel("New user? Sign up now!");
 		signUpLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
-		signUpLabel.setBounds(334, 312, 141, 16);
+		signUpLabel.setBounds(335, 337, 141, 16);
 		panel.add(signUpLabel);
 		signInButton.setFocusable(false);
-	//	signInButton.addActionListener(this);
 		
 		//sign up button
 		signUpButton = new JButton("Sign Up!");
 		signUpButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		signUpButton.setBounds(345, 340, 117, 29);
+		signUpButton.setBounds(345, 361, 117, 29);
 		panel.add(signUpButton);
 		signUpButton.setFocusable(false);
-	//	signUpButton.addActionListener(this);
 		
 		add(panel, BorderLayout.CENTER);
+		
+		// error label
+		errorLabel = new JLabel("");
+		errorLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		errorLabel.setBounds(205, 272, 398, 16);
+		panel.add(errorLabel);
 	}
 	
 	public JButton getSignUpButton() {
@@ -95,5 +106,17 @@ public class LoginPage extends JPanel{
 	public JButton getSignInButton() {
 		return signInButton;
 	}
-
+	
+	public JLabel getErrorLabel() {
+		return errorLabel;
+	}
+	
+	public String getUsername() {
+		return usernameText.getText();
+	}
+	
+	public String getDecryptedPassword() {
+		return String.valueOf(passwordField.getPassword());
+	}
+	
 }

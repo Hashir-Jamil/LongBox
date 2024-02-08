@@ -27,7 +27,6 @@ public class UserDTO {
 		this.joinDate = new Date();
 	}
 
-
 	public String getUserName() {
 		return userName;
 	}
@@ -75,6 +74,10 @@ public class UserDTO {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 
 

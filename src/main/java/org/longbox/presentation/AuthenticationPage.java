@@ -4,9 +4,13 @@ import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import org.longbox.domainobjects.UserDTO;
+import org.longbox.persistence.UserStubDB;
 
 public class AuthenticationPage extends JFrame implements ActionListener {
 
@@ -69,6 +73,24 @@ public class AuthenticationPage extends JFrame implements ActionListener {
             cardLayout.show(cardPanel, "registration");
         }else if(e.getSource() ==  registrationPage.getSignInButton()) {
         	cardLayout.show(cardPanel, "login");
+        }else if(e.getSource() == loginPage.getSignInButton()) {
+        	UserStubDB user = new UserStubDB();
+        	user.loadUsers();
+        	List<UserDTO> users = user.getUsers();
+        	for(UserDTO u: users) {
+        		if(loginPage.getUsername().equals(u.getUserName())) {
+        			if(loginPage.getDecryptedPassword().equals(u.getPassword())) {
+        				loginPage.getErrorLabel().setText("Login Successful!");
+        				dispose();
+        				HomePage homePage = new HomePage();
+        				homePage.setVisible(true);
+        			}else {
+        				loginPage.getErrorLabel().setText("Passowrd Incorrect");
+        			}
+        		}else {
+        			loginPage.getErrorLabel().setText("User does not exist");
+        		}
+        	}
         }
     }
 

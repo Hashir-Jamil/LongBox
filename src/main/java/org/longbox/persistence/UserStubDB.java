@@ -51,6 +51,10 @@ public class UserStubDB {
                 "United Kingdom");
         userStubData.add(u3);
     }
+    
+    public List<UserDTO> getUsers(){
+    	return this.userStubData;
+    }
 
     public void serializeComicBookStubDB() {
         String json = new Gson().toJson(userStubData);
