@@ -116,9 +116,9 @@ public class LoginPage extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == signUpButton) {
-			frame.dispose();
-			RegistrationPage registrationPage = new RegistrationPage();
-			registrationPage.setVisible(true);
+//			frame.dispose();
+//			RegistrationPage registrationPage = new RegistrationPage();
+//			registrationPage.setVisible(true);
 		}
 	}
 }

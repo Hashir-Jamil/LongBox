@@ -1,5 +1,8 @@
 package org.longbox.presentation;
 
+import javax.swing.JPanel;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
@@ -33,7 +36,8 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.text.SimpleDateFormat;
 
-public class RegistrationPage extends JFrame implements ActionListener{
+
+public class RegisterationPage extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -48,45 +52,23 @@ public class RegistrationPage extends JFrame implements ActionListener{
 	private JCheckBox TnCCheckbox;
 	private JLabel messageLabel;
 	private JButton signInButton;
-	private static JFrame frame;
-
 	/**
-	 * Launch the application.
+	 * Create the panel.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					frame = new RegistrationPage();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public RegistrationPage() {
+	public RegisterationPage() {
 		initiateRegUI();
 	}
-
+	
 	public void initiateRegUI() {
 		//initializing the main frame
-		setTitle("LongBox - Registration");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 809, 554);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+//		setBounds(100, 100, 800, 550);
+//		contentPane = new JPanel();
+//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
+		setLayout(new BorderLayout());
 		
-		
-		setLocationRelativeTo(null);
-		setContentPane(contentPane);
-		
-		
+		JPanel panel = new JPanel();
+	    panel.setLayout(null);
 
 		//Header label
 		JLabel HeaderLabel = new JLabel("Sign Up and Start Reading Comics!");
@@ -187,31 +169,55 @@ public class RegistrationPage extends JFrame implements ActionListener{
 		signInButton = new JButton("Sign In!");
 		signInButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
 		signInButton.setBounds(451, 458, 264, 29);
-		signInButton.addActionListener(this);
+	//	signInButton.addActionListener(this);
 		
 		// adding elements to the pane
-		contentPane.setLayout(null);
-		contentPane.add(HeaderLabel);
-		contentPane.add(FirstNameLabel);
-		contentPane.add(firstNameField);
-		contentPane.add(LastNameLabel);
-		contentPane.add(lastNameField);
-		contentPane.add(UsernameLabel);
-		contentPane.add(usernameField);
-		contentPane.add(EmailLabel);
-		contentPane.add(emailAddress);
-		contentPane.add(PasswordLabel);
-		contentPane.add(passwordField);
-		contentPane.add(PwdSpecLabel);
-		contentPane.add(DateLabel);
-		contentPane.add(dateChooser);
-		contentPane.add(CountryLabel);
-		contentPane.add(countryField);
-		contentPane.add(signUpButton);
-		contentPane.add(TnCCheckbox);
-		contentPane.add(messageLabel);
-		contentPane.add(signInLabel);
-		contentPane.add(signInButton);
+		
+//		add(HeaderLabel);
+//		add(FirstNameLabel);
+//		add(firstNameField);
+//		add(LastNameLabel);
+//		add(lastNameField);
+//		add(UsernameLabel);
+//		add(usernameField);
+//		add(EmailLabel);
+//		add(emailAddress);
+//		add(PasswordLabel);
+//		add(passwordField);
+//		add(PwdSpecLabel);
+//		add(DateLabel);
+//		add(dateChooser);
+//		add(CountryLabel);
+//		add(countryField);
+//		add(signUpButton);
+//		add(TnCCheckbox);
+//		add(messageLabel);
+//		add(signInLabel);
+//		add(signInButton);
+		
+		panel.add(HeaderLabel);
+	    panel.add(FirstNameLabel);
+	    panel.add(firstNameField);
+	    panel.add(LastNameLabel);
+	    panel.add(lastNameField);
+	    panel.add(UsernameLabel);
+	    panel.add(usernameField);
+	    panel.add(EmailLabel);
+	    panel.add(emailAddress);
+	    panel.add(PasswordLabel);
+	    panel.add(passwordField);
+	    panel.add(PwdSpecLabel);
+		panel.add(DateLabel);
+		panel.add(dateChooser);
+	    panel.add(CountryLabel);
+	    panel.add(countryField);
+	    panel.add(signUpButton);
+	    panel.add(TnCCheckbox);
+	    panel.add(messageLabel);
+	    panel.add(signInLabel);
+	    panel.add(signInButton);
+
+	    add(panel, BorderLayout.CENTER);
 
 		// action listener
 		firstNameField.addActionListener(fieldsListener);
@@ -220,7 +226,7 @@ public class RegistrationPage extends JFrame implements ActionListener{
 		emailAddress.addActionListener(fieldsListener);
 		passwordField.addActionListener(fieldsListener);
 		countryField.addActionListener(fieldsListener);
-		signUpButton.addActionListener(this);
+		//signUpButton.addActionListener(this);
 		TnCCheckbox.addActionListener(fieldsListener);
 
 		// focus adapter
@@ -345,34 +351,33 @@ public class RegistrationPage extends JFrame implements ActionListener{
 	}
 
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == signUpButton) {
-			String firstName = firstNameField.getText();
-			String lastName = lastNameField.getText();
-			Date date = dateChooser.getDate();
-			String username = usernameField.getText();
-			String email = emailAddress.getText();
-			String password = String.valueOf(passwordField.getPassword());
-			String country = countryField.getSelectedItem().toString(); 
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//		if(e.getSource() == signUpButton) {
+//			String firstName = firstNameField.getText();
+//			String lastName = lastNameField.getText();
+//			Date date = dateChooser.getDate();
+//			String username = usernameField.getText();
+//			String email = emailAddress.getText();
+//			String password = String.valueOf(passwordField.getPassword());
+//			String country = countryField.getSelectedItem().toString(); 
+//
+//			//formats the date
+//			SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd");
+//			String dob = dcn.format(date);
+//
+////			System.out.println(firstName);
+////			System.out.println(lastName);
+////			System.out.println(dob);
+////			System.out.println(username);
+////			System.out.println(email);
+////			System.out.println(password);
+////			System.out.println(country);
+//			
+//		}else if(e.getSource() == signInButton) {
+//		
+//		}
+//
+//	}
 
-			//formats the date
-			SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd");
-			String dob = dcn.format(date);
-
-//			System.out.println(firstName);
-//			System.out.println(lastName);
-//			System.out.println(dob);
-//			System.out.println(username);
-//			System.out.println(email);
-//			System.out.println(password);
-//			System.out.println(country);
-			
-		}else if(e.getSource() == signInButton) {
-			frame.dispose();
-			LoginPage loginPage = new LoginPage();
-			loginPage.setVisible(true);
-		}
-
-	}
 }
