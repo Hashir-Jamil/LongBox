@@ -19,6 +19,9 @@ public class AuthenticationPage extends JFrame implements ActionListener {
 	private CardLayout cardLayout;
     LoginPage loginPage = new LoginPage();
     RegistrationPage registrationPage = new RegistrationPage();
+    
+    UserStubDB user = new UserStubDB();
+	
 
 	/**
 	 * Launch the application.
@@ -43,6 +46,11 @@ public class AuthenticationPage extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 550);
         setTitle("LongBox");
+        
+        //loads the users
+        user.loadUsers();
+        
+        setLocationRelativeTo(null);
         
         cardPanel = new JPanel();
         cardLayout = new CardLayout();
@@ -74,8 +82,6 @@ public class AuthenticationPage extends JFrame implements ActionListener {
         }else if(e.getSource() ==  registrationPage.getSignInButton()) {
         	cardLayout.show(cardPanel, "login");
         }else if(e.getSource() == loginPage.getSignInButton()) {
-        	UserStubDB user = new UserStubDB();
-        	user.loadUsers();
         	List<UserDTO> users = user.getUsers();
         	for(UserDTO u: users) {
         		if(loginPage.getUsername().equals(u.getUserName())) {
@@ -91,6 +97,10 @@ public class AuthenticationPage extends JFrame implements ActionListener {
         			loginPage.getErrorLabel().setText("User does not exist");
         		}
         	}
+        }else if(e.getSource() == registrationPage.getSignUpButton()) {
+        	user.addUser(registrationPage.getRegisterationDetails());
+        	registrationPage.getMessageLabel().setText("Registeration Successful");
+        	cardLayout.show(cardPanel, "login");
         }
     }
 

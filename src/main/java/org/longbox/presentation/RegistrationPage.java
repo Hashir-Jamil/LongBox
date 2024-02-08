@@ -8,8 +8,11 @@ import java.awt.Component;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import org.longbox.domainobjects.UserDTO;
+
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.Date;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,6 +22,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.ParseException;
+
 import javax.swing.JButton;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JCheckBox;
@@ -28,6 +33,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.text.SimpleDateFormat;
 
 
 public class RegistrationPage extends JPanel {
@@ -322,6 +328,34 @@ public class RegistrationPage extends JPanel {
 	
 	public JButton getSignUpButton() {
 		return signUpButton;
+	}
+	
+	public JLabel getMessageLabel() {
+		return messageLabel;
+	}
+	
+	public UserDTO getRegisterationDetails() {
+		String firstName = firstNameField.getText();
+		String lastName = lastNameField.getText();
+		Date date = dateChooser.getDate();
+		String username = usernameField.getText();
+		String email = emailAddress.getText();
+		String password = String.valueOf(passwordField.getPassword());
+		String country = countryField.getSelectedItem().toString(); 
+
+		//formats the date
+		SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd");
+		String dob = dcn.format(date);
+		
+		Date formattedDate = null;
+        try {
+			formattedDate = dcn.parse(dob);
+		} catch (java.text.ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return new UserDTO(username, firstName, lastName, formattedDate, email, password, country);
 	}
 
 }

@@ -55,6 +55,10 @@ public class UserStubDB {
     public List<UserDTO> getUsers(){
     	return this.userStubData;
     }
+    
+    public void addUser(UserDTO user) {
+    	this.userStubData.add(user);
+    }
 
     public void serializeComicBookStubDB() {
         String json = new Gson().toJson(userStubData);
