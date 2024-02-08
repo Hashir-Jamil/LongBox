@@ -1,30 +1,25 @@
 package org.longbox.presentation;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
-public class LoginPage extends JPanel implements ActionListener{
+public class LoginPage extends JPanel{
 
 	private static final long serialVersionUID = 1L;
-//	private JPanel contentPane;
 	private JTextField usernameText;
 	private JPasswordField passwordField;
 	private JButton signInButton;
 	private JButton signUpButton;
-	private static JFrame frame;
 	/**
 	 * Create the panel.
 	 */
@@ -35,8 +30,6 @@ public class LoginPage extends JPanel implements ActionListener{
 	public void initLoginPage() {
 		
 		setBounds(100, 100, 809, 554);
-//		contentPane = new JPanel();
-//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setLayout(new BorderLayout());
 		
@@ -84,7 +77,7 @@ public class LoginPage extends JPanel implements ActionListener{
 		signUpLabel.setBounds(334, 312, 141, 16);
 		panel.add(signUpLabel);
 		signInButton.setFocusable(false);
-		signInButton.addActionListener(this);
+	//	signInButton.addActionListener(this);
 		
 		//sign up button
 		signUpButton = new JButton("Sign Up!");
@@ -92,23 +85,13 @@ public class LoginPage extends JPanel implements ActionListener{
 		signUpButton.setBounds(345, 340, 117, 29);
 		panel.add(signUpButton);
 		signUpButton.setFocusable(false);
-		signUpButton.addActionListener(this);
+	//	signUpButton.addActionListener(this);
 		
 		add(panel, BorderLayout.CENTER);
 	}
 	
 	public JButton getSignUpButton() {
 	    return signUpButton;
-	}
-
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == signUpButton) {
-//			frame.dispose();
-//			RegistrationPage registrationPage = new RegistrationPage();
-//			registrationPage.setVisible(true);
-		}
 	}
 
 }

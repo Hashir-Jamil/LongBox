@@ -8,7 +8,7 @@ import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -37,10 +37,9 @@ import java.awt.event.FocusEvent;
 import java.text.SimpleDateFormat;
 
 
-public class RegistrationPage extends JPanel implements ActionListener{
+public class RegistrationPage extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 	private JTextField firstNameField;
 	private JTextField lastNameField;
 	private JTextField usernameField;
@@ -60,10 +59,7 @@ public class RegistrationPage extends JPanel implements ActionListener{
 	}
 	
 	public void initiateRegUI() {
-		//initializing the main frame
-//		setBounds(100, 100, 800, 550);
-//		contentPane = new JPanel();
-//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
 		
 		setLayout(new BorderLayout());
 		
@@ -172,29 +168,7 @@ public class RegistrationPage extends JPanel implements ActionListener{
 	//	signInButton.addActionListener(this);
 		
 		// adding elements to the pane
-		
-//		add(HeaderLabel);
-//		add(FirstNameLabel);
-//		add(firstNameField);
-//		add(LastNameLabel);
-//		add(lastNameField);
-//		add(UsernameLabel);
-//		add(usernameField);
-//		add(EmailLabel);
-//		add(emailAddress);
-//		add(PasswordLabel);
-//		add(passwordField);
-//		add(PwdSpecLabel);
-//		add(DateLabel);
-//		add(dateChooser);
-//		add(CountryLabel);
-//		add(countryField);
-//		add(signUpButton);
-//		add(TnCCheckbox);
-//		add(messageLabel);
-//		add(signInLabel);
-//		add(signInButton);
-		
+
 		panel.add(HeaderLabel);
 	    panel.add(FirstNameLabel);
 	    panel.add(firstNameField);
@@ -226,7 +200,6 @@ public class RegistrationPage extends JPanel implements ActionListener{
 		emailAddress.addActionListener(fieldsListener);
 		passwordField.addActionListener(fieldsListener);
 		countryField.addActionListener(fieldsListener);
-		//signUpButton.addActionListener(this);
 		TnCCheckbox.addActionListener(fieldsListener);
 
 		// focus adapter
@@ -352,36 +325,6 @@ public class RegistrationPage extends JPanel implements ActionListener{
 	
 	public JButton getSignInButton() {
 		return signInButton;
-	}
-
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == signUpButton) {
-			String firstName = firstNameField.getText();
-			String lastName = lastNameField.getText();
-			Date date = dateChooser.getDate();
-			String username = usernameField.getText();
-			String email = emailAddress.getText();
-			String password = String.valueOf(passwordField.getPassword());
-			String country = countryField.getSelectedItem().toString(); 
-
-			//formats the date
-			SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd");
-			String dob = dcn.format(date);
-
-//			System.out.println(firstName);
-//			System.out.println(lastName);
-//			System.out.println(dob);
-//			System.out.println(username);
-//			System.out.println(email);
-//			System.out.println(password);
-//			System.out.println(country);
-			
-		}else if(e.getSource() == signInButton) {
-		
-		}
-
 	}
 
 }
