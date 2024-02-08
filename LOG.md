@@ -23,10 +23,14 @@
 	Ahan: Added functionality to registration page, making it work only if all fields are not null and entered, also added the email and password validation feature.
 
 ## Monday, February 5th, 2024
+
 	Ahan: Added sign up button to login page, added sign in button to registration page to switch between the two pages and made it working.
 
 ## Tuesday, February 6th, 2024
+
     Dexter: Added empty home page, with logout button in top left, logout button creates pop up which, if confirmed, leads back to login page.
 
 ## Wednesday, February 7th, 2024
+
     Group (all members present): Spoke with professor about refactoring packages, and making sure everyone implements tests in each of the packages.
+    Ahan: Refactored LoginPage and Registration page as JPanels and added a new JFrame AuthenticationPage that houses these two JPanels. Added functionality to switch between LoginPage and RegistrationPage. Cleaned up the code.

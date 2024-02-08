@@ -38,7 +38,8 @@ public class AuthenticationPage extends JFrame implements ActionListener {
 	public AuthenticationPage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 550);
-
+        setTitle("LongBox");
+        
         cardPanel = new JPanel();
         cardLayout = new CardLayout();
         cardPanel.setLayout(cardLayout);
