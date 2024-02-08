@@ -1,6 +1,7 @@
 package org.longbox.presentation;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -87,14 +88,17 @@ public class AuthenticationPage extends JFrame implements ActionListener {
         		if(loginPage.getUsername().equals(u.getUserName())) {
         			if(loginPage.getDecryptedPassword().equals(u.getPassword())) {
         				loginPage.getErrorLabel().setText("Login Successful!");
+        				loginPage.getErrorLabel().setForeground(Color.GREEN);
         				dispose();
         				HomePage homePage = new HomePage();
         				homePage.setVisible(true);
         			}else {
         				loginPage.getErrorLabel().setText("Passowrd Incorrect");
+        				loginPage.getErrorLabel().setForeground(Color.red);
         			}
         		}else {
         			loginPage.getErrorLabel().setText("User does not exist");
+        			loginPage.getErrorLabel().setForeground(Color.red);
         		}
         	}
         }else if(e.getSource() == registrationPage.getSignUpButton()) {
