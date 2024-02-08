@@ -1,4 +1,4 @@
-package org.longbox.comments;
+package org.longbox.persistence;
 
 import jakarta.persistence.*;
 
