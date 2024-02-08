@@ -1,4 +1,4 @@
-package org.longbox.comiccollection;
+package org.longbox.persistence;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

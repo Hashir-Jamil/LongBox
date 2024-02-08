@@ -1,4 +1,4 @@
-package org.longbox.authentication.GUI;
+package org.longbox.presentation;
 
 import java.awt.Component;
 import java.awt.EventQueue;

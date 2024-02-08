@@ -1,4 +1,6 @@
-package org.longbox.authentication;
+package org.longbox.businesslogic;
+
+import org.longbox.domainobjects.UserDTO;
 
 public class UserSession {
 

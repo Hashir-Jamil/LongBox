@@ -1,4 +1,4 @@
-package org.longbox.authentication;
+package org.longbox.domainobjects;
 
 import java.util.Date;
 

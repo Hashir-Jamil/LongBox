@@ -1,4 +1,4 @@
-package org.longbox.comics;
+package org.longbox.domainobjects;
 
 
 import lombok.AllArgsConstructor;

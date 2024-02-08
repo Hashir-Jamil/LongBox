@@ -1,4 +1,4 @@
-package org.longbox.authentication;
+package org.longbox.persistence;
 
 import jakarta.persistence.*;
 
