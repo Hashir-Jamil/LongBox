@@ -36,3 +36,7 @@
     Ahan: Refactored LoginPage and Registration page as JPanels and added a new JFrame AuthenticationPage that houses these two JPanels. Added functionality to switch between LoginPage and RegistrationPage. Cleaned up the code.
     Hashir: refactored the packages to match architecture shown in class slides + created stub database entries as JSON files with gson serialization/deserialization classes.
     
+## Thursday, February 8th, 2024
+
+	Ahan: Added user login and registration functionality to the authentication page using the StubDB.
+    
