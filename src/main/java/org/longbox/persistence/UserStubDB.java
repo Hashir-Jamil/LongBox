@@ -1,8 +1,9 @@
-package org.longbox.authentication;
+package org.longbox.persistence;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.longbox.domainobjects.UserDTO;
 
 public class UserStubDB {
 
