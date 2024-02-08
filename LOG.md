@@ -34,3 +34,5 @@
 
     Group (all members present): Spoke with professor about refactoring packages, and making sure everyone implements tests in each of the packages.
     Ahan: Refactored LoginPage and Registration page as JPanels and added a new JFrame AuthenticationPage that houses these two JPanels. Added functionality to switch between LoginPage and RegistrationPage. Cleaned up the code.
+    Hashir: refactored the packages to match architecture shown in class slides + created stub database entries as JSON files with gson serialization/deserialization classes.
+    

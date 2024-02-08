@@ -1,16 +1,14 @@
 package org.longbox.domainobjects;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class ComicBookDTO {
 
     private String issueTitle;
@@ -29,4 +27,24 @@ public class ComicBookDTO {
 
     private Date dateAdded;
 
+    public ComicBookDTO(
+      String issueTitle,
+      String seriesTitle,
+      String author,
+      int volumeNumber,
+      int issueNumber,
+      String publisher,
+      int year
+    ) {
+        this.issueTitle = issueTitle;
+        this.seriesTitle = seriesTitle;
+        this.author = author;
+        this.volumeNumber = volumeNumber;
+        this.issueNumber = issueNumber;
+        this.year = year;
+        this.dateAdded = new Date();
+    };
+
 }
+
+

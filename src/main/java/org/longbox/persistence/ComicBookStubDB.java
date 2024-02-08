@@ -30,8 +30,7 @@ public class ComicBookStubDB {
                 43,
                 233,
                 "Marvel Comics",
-                1994,
-                new Date()
+                1994
         );
         comicBookStubData.add(comicBook1);
 
@@ -42,8 +41,7 @@ public class ComicBookStubDB {
                 1,
                 1,
                 "DC",
-                2005,
-                new Date()
+                2005
         );
         comicBookStubData.add(comicBook2);
 
@@ -54,8 +52,7 @@ public class ComicBookStubDB {
                 2,
                 1,
                 "DC",
-                2005,
-                new Date()
+                2005
         );
         comicBookStubData.add(comicBook3);
 
@@ -66,8 +63,7 @@ public class ComicBookStubDB {
                 1,
                 1,
                 "DC",
-                2001,
-                new Date()
+                2001
         );
         comicBookStubData.add(comicBook4);
 
@@ -83,7 +79,7 @@ public class ComicBookStubDB {
         }
     }
 
-    public List<UserDTO> deserializeUserStubDB(String filepath) {
+    public List<ComicBookDTO> deserializeComicBookStubDB(String filepath) {
         Type listType = new TypeToken<ArrayList<ComicBookDTO>>(){}.getType();
         JsonReader reader = null;
 
@@ -94,8 +90,8 @@ public class ComicBookStubDB {
             throw new RuntimeException(e);
         }
 
-        List<UserDTO> dummyUsers = new Gson().fromJson(reader, listType);
-        return dummyUsers;
+        List<ComicBookDTO> stubComicBooks = new Gson().fromJson(reader, listType);
+        return stubComicBooks;
     }
 
 }

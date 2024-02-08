@@ -1,13 +1,23 @@
 package org.longbox;
 
+import org.longbox.domainobjects.ComicBookDTO;
+import org.longbox.persistence.ComicBookStubDB;
 import org.longbox.persistence.UserStubDB;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         // This entry point is used to test methods informally and
         // build stub database entries for the JSON files used with GSON
-        UserStubDB userStubDB = new UserStubDB();
+        // sample code is shown below in the two comment blocks.
+
+        /*UserStubDB userStubDB = new UserStubDB();
         userStubDB.loadUsers();
-        userStubDB.serializeUserStubDB();
+        userStubDB.serializeComicBookStubDB();*/
+
+        /*ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
+        comicBookStubDB.loadComicBooks();
+        comicBookStubDB.serializeComicBookStubDB();*/
     }
 }

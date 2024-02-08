@@ -55,7 +55,7 @@ public class UserStubDB {
         userStubData.add(u3);
     }
 
-    public void serializeUserStubDB() {
+    public void serializeComicBookStubDB() {
         String json = new Gson().toJson(userStubData);
         String file = "src/main/resources/UserStubDB.json";
         try (PrintStream out = new PrintStream(new FileOutputStream(file))) {
