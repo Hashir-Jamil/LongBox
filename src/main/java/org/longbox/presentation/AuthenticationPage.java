@@ -52,10 +52,14 @@ public class AuthenticationPage extends JFrame implements ActionListener {
 
         add(cardPanel);
         setVisible(true);
-
+        
+        // login page buttons action listener
         loginPage.getSignUpButton().addActionListener(this);
+        loginPage.getSignInButton().addActionListener(this);
+        
+        //registration page buttons action listener
         registrationPage.getSignInButton().addActionListener(this);
-		
+		registrationPage.getSignUpButton().addActionListener(this);
 		
 	}
 	

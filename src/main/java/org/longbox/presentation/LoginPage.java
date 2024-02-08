@@ -91,5 +91,9 @@ public class LoginPage extends JPanel{
 	public JButton getSignUpButton() {
 	    return signUpButton;
 	}
+	
+	public JButton getSignInButton() {
+		return signInButton;
+	}
 
 }

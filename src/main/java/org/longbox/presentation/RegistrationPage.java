@@ -319,5 +319,9 @@ public class RegistrationPage extends JPanel {
 	public JButton getSignInButton() {
 		return signInButton;
 	}
+	
+	public JButton getSignUpButton() {
+		return signUpButton;
+	}
 
 }
