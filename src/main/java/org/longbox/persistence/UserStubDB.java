@@ -7,18 +7,22 @@ import java.util.Date;
 import java.util.List;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.longbox.domainobjects.UserDTO;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 @NoArgsConstructor
+@Getter
+@Setter
 public class UserStubDB {
 
     private List<UserDTO> userStubData = new ArrayList<>();
 
     public void loadUsers() {
-        UserDTO u1 = new UserDTO("Always_Scheming",
+        UserDTO u1 = new UserDTO(
+                "Always_Scheming",
                 "John",
                 "Smith",
                 new Date(1990, 12, 1),
@@ -28,7 +32,8 @@ public class UserStubDB {
                 new Date());
         userStubData.add(u1);
 
-        UserDTO u2 = new UserDTO("Always_Throwing",
+        UserDTO u2 = new UserDTO(
+                "Always_Throwing",
                 "Neo",
                 "Anderson",
                 new Date(1929,1,1),
@@ -38,7 +43,8 @@ public class UserStubDB {
                 new Date());
         userStubData.add(u2);
 
-        UserDTO u3 = new UserDTO("Phoenix",
+        UserDTO u3 = new UserDTO(
+                "Phoenix",
                 "Stan",
                 "Lee",
                 new Date(2000,4,31),
