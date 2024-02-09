@@ -39,4 +39,5 @@
 ## Thursday, February 8th, 2024
 
 	Ahan: Added user login and registration functionality to the authentication page using the StubDB.
+    Ahan + Eric + Hashir: worked together to create proper card layout with panels for proper scene transitions without bugs.
     
