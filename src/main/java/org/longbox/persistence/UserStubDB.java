@@ -27,7 +27,7 @@ public class UserStubDB {
                 "Smith",
                 new Date(1990, 12, 1),
                 "email@domain.com",
-                "asdifp483qradv",
+                "Always_Scheming",
                 "Canada");
         userStubData.add(u1);
 
@@ -37,7 +37,7 @@ public class UserStubDB {
                 "Anderson",
                 new Date(1929,1,1),
                 "address@provider.ca",
-                "asdf4308asdf=as03",
+                "Always_Throwing",
                 "Indonesia");
         userStubData.add(u2);
 
@@ -47,7 +47,7 @@ public class UserStubDB {
                 "Lee",
                 new Date(2000,4,31),
                 "123fake@nowhere.org",
-                "xlk;uu500834",
+                "Phoenix",
                 "United Kingdom");
         userStubData.add(u3);
     }

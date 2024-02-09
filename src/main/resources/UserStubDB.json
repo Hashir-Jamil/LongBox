@@ -5,7 +5,7 @@
     "lastName": "Smith",
     "dob": "Jan 1, 3891, 12:00:00 AM",
     "email": "email@domain.com",
-    "password": "asdifp483qradv",
+    "password": "Always_Scheming",
     "country": "Canada",
     "joinDate": "Feb 7, 2024, 11:40:52 PM"
   },
@@ -15,7 +15,7 @@
     "lastName": "Anderson",
     "dob": "Feb 1, 3829, 12:00:00 AM",
     "email": "address@provider.ca",
-    "password": "asdf4308asdf\u003das03",
+    "password": "Always_Throwing",
     "country": "Indonesia",
     "joinDate": "Feb 7, 2024, 11:40:52 PM"
   },
@@ -25,7 +25,7 @@
     "lastName": "Lee",
     "dob": "May 31, 3900, 12:00:00 AM",
     "email": "123fake@nowhere.org",
-    "password": "xlk;uu500834",
+    "password": "Phoenix",
     "country": "United Kingdom",
     "joinDate": "Feb 7, 2024, 11:40:52 PM"
   }
