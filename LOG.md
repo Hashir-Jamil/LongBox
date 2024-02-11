@@ -41,3 +41,6 @@
 	Ahan: Added user login and registration functionality to the authentication page using the StubDB.
     Ahan + Eric + Hashir: worked together to create proper card layout with panels for proper scene transitions without bugs.
     
+## Saturday, February 10th, 2024
+	
+	Ahan: Completed the user logout functionality started by Dexter. Also integrated the active user session into the design, which helps in validating the user session once logged in. Added the functionality to view the user name on the home page once logged in.
