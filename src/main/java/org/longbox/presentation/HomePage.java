@@ -1,6 +1,7 @@
 package org.longbox.presentation;
 
 import org.longbox.businesslogic.*;
+import org.longbox.domainobjects.UserDTO;
 
 import java.awt.EventQueue;
 
@@ -17,6 +18,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.CardLayout;
+import java.awt.ComponentOrientation;
 
 public class HomePage extends JFrame implements ActionListener {
 
@@ -35,6 +37,8 @@ public class HomePage extends JFrame implements ActionListener {
     private JButton addComicButton;
     private JButton comicCollectionButton;
     private JButton profileButton;
+    private JLabel userNameLabel;
+//    private UserSession user;
     private final String SEARCH_COMIC_BOOK = "Search Comics Panel";
     private final String COMIC_COLLECTAION_PANEL = "Comic Collection Panel";
     private final String PROFILE_PANEL = "Profile Panel";
@@ -61,6 +65,16 @@ public class HomePage extends JFrame implements ActionListener {
      */
     public HomePage() {
         initiateRegUI();
+    }
+    
+    public HomePage(UserSession user) {
+    	initiateRegUI();
+    	this.userSession = user;
+        userNameLabel = new JLabel(user.getUser().getUserName());
+        userNameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
+        userNameLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        userNameLabel.setBounds(811, 19, 181, 16);
+        nexusPanel.add(userNameLabel);
     }
 
     public void initiateRegUI() {
@@ -114,6 +128,9 @@ public class HomePage extends JFrame implements ActionListener {
         profileButton = new JButton("Profile");
         profileButton.setBounds(567, 12, 170, 25);
         nexusPanel.add(profileButton);
+        
+       
+        
         profileButton.addActionListener(this);
         
         logOutButton.addActionListener(this);
@@ -124,7 +141,8 @@ public class HomePage extends JFrame implements ActionListener {
         if(e.getSource() == logOutButton) {
             int confirmLogOut = JOptionPane.showConfirmDialog(frame, "Are you sure you want to log out?", "Log Out Confirmation", JOptionPane.YES_NO_OPTION);
             if (confirmLogOut == JOptionPane.YES_OPTION) {
-                JOptionPane.showMessageDialog(null, "HELLO");
+                
+            	this.userSession.clearUserSession();
                 AuthenticationPage loginPage = new AuthenticationPage();
                 loginPage.setVisible(true);
                 dispose();

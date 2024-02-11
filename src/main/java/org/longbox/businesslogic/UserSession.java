@@ -5,17 +5,25 @@ import org.longbox.domainobjects.UserDTO;
 public class UserSession {
 
     private static UserSession activeUser = null;
-    private String userName;
+    private UserDTO user;
 
-    private UserSession(String name) {
-        this.userName = name;
+    private UserSession(UserDTO user) {
+        this.user = user;
     }
 
-    private static UserSession getInstance(UserDTO user) {
+    public static UserSession getInstance(UserDTO user) {
         if (activeUser == null) {
-            activeUser = new UserSession(user.getUserName());
+            activeUser = new UserSession(user);
         }
         return activeUser;
     }
-
+    
+    public void clearUserSession() {
+    	this.user = null;
+    }
+    
+    public UserDTO getUser() {
+    	return this.user;
+    }
+    
 }

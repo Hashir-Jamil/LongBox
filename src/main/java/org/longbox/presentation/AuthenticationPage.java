@@ -10,6 +10,7 @@ import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import org.longbox.businesslogic.UserSession;
 import org.longbox.domainobjects.UserDTO;
 import org.longbox.persistence.UserStubDB;
 
@@ -18,11 +19,11 @@ public class AuthenticationPage extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JPanel cardPanel;
 	private CardLayout cardLayout;
-    LoginPage loginPage = new LoginPage();
-    RegistrationPage registrationPage = new RegistrationPage();
-    
-    UserStubDB user = new UserStubDB();
-	
+    private LoginPage loginPage = new LoginPage();
+    private RegistrationPage registrationPage = new RegistrationPage();
+    private UserStubDB user = new UserStubDB();
+    private UserSession userSession;
+    private UserSession userLoggedIn;
 
 	/**
 	 * Launch the application.
@@ -87,11 +88,13 @@ public class AuthenticationPage extends JFrame implements ActionListener {
         	for(UserDTO u: users) {
         		if(loginPage.getUsername().equals(u.getUserName())) {
         			if(loginPage.getDecryptedPassword().equals(u.getPassword())) {
+        				userLoggedIn = userSession.getInstance(u);
         				loginPage.getErrorLabel().setText("Login Successful!");
         				loginPage.getErrorLabel().setForeground(Color.GREEN);
         				dispose();
-        				HomePage homePage = new HomePage();
+        				HomePage homePage = new HomePage(userLoggedIn);
         				homePage.setVisible(true);
+      
         			}else {
         				loginPage.getErrorLabel().setText("Passowrd Incorrect");
         				loginPage.getErrorLabel().setForeground(Color.red);
