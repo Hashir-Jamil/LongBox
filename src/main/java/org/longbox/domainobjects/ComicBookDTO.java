@@ -2,49 +2,55 @@ package org.longbox.domainobjects;
 
 
 import lombok.*;
+import org.longbox.businesslogic.comparators.CommentDateComparator;
 
-import java.util.Date;
+import java.util.*;
+
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode
 @ToString
 public class ComicBookDTO {
 
-    private String issueTitle;
-
     private String seriesTitle;
-
     private String author;
-
-    private int volumeNumber;
-
-    private int issueNumber;
-
     private String publisher;
-
     private int year;
-
     private Date dateAdded;
+    private List<CommentDTO> commentsList = new ArrayList<>();
 
     public ComicBookDTO(
-      String issueTitle,
       String seriesTitle,
       String author,
-      int volumeNumber,
-      int issueNumber,
       String publisher,
       int year
     ) {
-        this.issueTitle = issueTitle;
         this.seriesTitle = seriesTitle;
         this.author = author;
-        this.volumeNumber = volumeNumber;
-        this.issueNumber = issueNumber;
         this.year = year;
         this.dateAdded = new Date();
     };
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ComicBookDTO that)) return false;
+        return getYear() == that.getYear() && Objects.equals(getSeriesTitle(), that.getSeriesTitle()) && Objects.equals(getAuthor(), that.getAuthor()) && Objects.equals(getPublisher(), that.getPublisher()) && Objects.equals(getDateAdded(), that.getDateAdded());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSeriesTitle(), getAuthor(), getPublisher(), getYear(), getDateAdded());
+    }
+
+    public void sortCommentsByDateAscending() {
+        Collections.sort(this.commentsList, new CommentDateComparator());
+    }
+
+    public void sortCommentsByDateDescending() {
+        sortCommentsByDateAscending();
+        Collections.reverse(this.commentsList);
+    }
 }
 
 

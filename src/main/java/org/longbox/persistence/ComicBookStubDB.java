@@ -24,33 +24,24 @@ public class ComicBookStubDB {
     public void loadComicBooks() {
 
         ComicBookDTO comicBook1 = new ComicBookDTO(
-                "Spider Wars",
                 "Spider Man",
                 "Stan Lee",
-                43,
-                233,
                 "Marvel Comics",
                 1994
         );
         comicBookStubData.add(comicBook1);
 
         ComicBookDTO comicBook2 = new ComicBookDTO(
-                "Arkhamn Asylym",
                 "Batman",
                 "Frank Miller",
-                1,
-                1,
                 "DC",
                 2005
         );
         comicBookStubData.add(comicBook2);
 
         ComicBookDTO comicBook3 = new ComicBookDTO(
-                "Superman vs. Batman",
                 "Batman",
                 "Mark Twain",
-                2,
-                1,
                 "DC",
                 2005
         );
@@ -58,10 +49,7 @@ public class ComicBookStubDB {
 
         ComicBookDTO comicBook4 = new ComicBookDTO(
                 "Sin City",
-                "Sin City",
                 "Frank Miller",
-                1,
-                1,
                 "DC",
                 2001
         );
