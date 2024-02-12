@@ -44,3 +44,8 @@
 ## Saturday, February 10th, 2024
 	
 	Ahan: Completed the user logout functionality started by Dexter. Also integrated the active user session into the design, which helps in validating the user session once logged in. Added the functionality to view the user name on the home page once logged in.
+    Hashir: created comparators and sorting methods for comic book lists to be sorted by intended business rules/user story features.
+
+## Sunday, February 11th, 2024
+
+    Hashir: Refactoring & Reorganizing packages & business logic classes. Making DAO and Repository Interfaces for clean data access.
