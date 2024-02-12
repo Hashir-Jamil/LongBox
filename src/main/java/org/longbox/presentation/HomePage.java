@@ -1,7 +1,7 @@
 package org.longbox.presentation;
 
 import org.longbox.businesslogic.*;
-import org.longbox.domainobjects.UserDTO;
+import org.longbox.domainobjects.dto.UserDTO;
 
 import java.awt.EventQueue;
 
