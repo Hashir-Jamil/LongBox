@@ -1,4 +1,4 @@
-package org.longbox.domainobjects;
+package org.longbox.domainobjects.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +8,8 @@ import java.util.Date;
 @Setter
 public class CommentDTO {
 
+    private long userId;
+    private long comicBookId;
     private String message;
     private UserDTO user;
     private ComicBookDTO comicBook;
@@ -18,6 +20,12 @@ public class CommentDTO {
         this.user = user;
         this.comicBook = comicBook;
         dateAdded = new Date();
+    }
+
+    public CommentDTO(String message, String userName, String comicBook) {
+        this.message = message;
+        this.user = new UserDTO();
+        this.comicBook = new ComicBookDTO();
     }
 
 }
