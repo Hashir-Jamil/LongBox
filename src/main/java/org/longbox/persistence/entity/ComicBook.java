@@ -1,4 +1,4 @@
-package org.longbox.persistence;
+package org.longbox.persistence.entity;
 
 import jakarta.persistence.*;
 

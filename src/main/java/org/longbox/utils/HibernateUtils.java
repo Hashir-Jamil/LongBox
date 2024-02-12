@@ -2,10 +2,10 @@ package org.longbox.utils;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.longbox.persistence.User;
-import org.longbox.persistence.ComicBookList;
-import org.longbox.persistence.ComicBook;
-import org.longbox.persistence.Comment;
+import org.longbox.persistence.entity.User;
+import org.longbox.persistence.entity.ComicBookList;
+import org.longbox.persistence.entity.ComicBook;
+import org.longbox.persistence.entity.Comment;
 
 public class HibernateUtils {
     private static SessionFactory sessionFactory;

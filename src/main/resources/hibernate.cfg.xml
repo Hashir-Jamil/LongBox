@@ -27,10 +27,10 @@
         <property name="highlight_sql">true</property> <!-- Log SQL with highlighting via ANSI escape codes -->
 
         <!-- Mapping Classes -->
-        <mapping class="org.longbox.persistence.User"/>
-        <mapping class="org.longbox.persistence.ComicBookList"/>
-        <mapping class="org.longbox.persistence.ComicBook"/>
-        <mapping class="org.longbox.persistence.Comment"/>
+        <mapping class="org.longbox.persistence.entity.User"/>
+        <mapping class="org.longbox.persistence.entity.ComicBookList"/>
+        <mapping class="org.longbox.persistence.entity.ComicBook"/>
+        <mapping class="org.longbox.persistence.entity.Comment"/>
 
     </session-factory>
 </hibernate-configuration>
