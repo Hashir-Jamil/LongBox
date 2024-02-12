@@ -1,4 +1,4 @@
-package org.longbox.domainobjects;
+package org.longbox.domainobjects.dto;
 
 
 import lombok.*;
@@ -12,6 +12,7 @@ import java.util.*;
 @ToString
 public class ComicBookDTO {
 
+    private long id;
     private String seriesTitle;
     private String author;
     private String publisher;
