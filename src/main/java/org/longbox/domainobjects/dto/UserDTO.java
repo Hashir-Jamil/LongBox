@@ -1,11 +1,8 @@
-package org.longbox.domainobjects;
+package org.longbox.domainobjects.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.longbox.businesslogic.comparators.ComicBookDateAddeddComparator;
-import org.longbox.businesslogic.comparators.ComicBookNameComparator;
-import org.longbox.businesslogic.comparators.ComicBookYearPublishedComparator;
 
 import java.util.*;
 
@@ -14,6 +11,7 @@ import java.util.*;
 @Setter
 public class UserDTO {
 
+	private long id;
 	private String userName;
 	private String firstName;
 	private String lastName;

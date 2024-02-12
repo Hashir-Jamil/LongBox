@@ -11,8 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.longbox.businesslogic.UserSession;
-import org.longbox.domainobjects.UserDTO;
-import org.longbox.persistence.UserStubDB;
+import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.persistence.stubdatabase.UserStubDB;
 
 public class AuthenticationPage extends JFrame implements ActionListener {
 

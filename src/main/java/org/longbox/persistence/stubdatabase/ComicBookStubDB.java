@@ -1,27 +1,25 @@
-package org.longbox.persistence;
+package org.longbox.persistence.stubdatabase;
 
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.longbox.domainobjects.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDTO;
 import com.google.gson.Gson;
-import org.longbox.domainobjects.UserDTO;
 
 @NoArgsConstructor
 @Getter
 @Setter
 public class ComicBookStubDB {
 
-    private List<ComicBookDTO> comicBookStubData = new ArrayList<>();
+    private static List<ComicBookDTO> comicBookStubData = new ArrayList<>();
 
-    public void loadComicBooks() {
+    public static void loadComicBooks() {
 
         ComicBookDTO comicBook1 = new ComicBookDTO(
                 "Spider Man",
@@ -57,7 +55,7 @@ public class ComicBookStubDB {
 
     }
 
-    public void serializeComicBookStubDB() {
+    public static void serializeComicBookStubDB() {
         String json = new Gson().toJson(comicBookStubData);
         String file = "src/main/resources/ComicBookStubDB.json";
         try (PrintStream out = new PrintStream(new FileOutputStream(file))) {
@@ -67,7 +65,7 @@ public class ComicBookStubDB {
         }
     }
 
-    public List<ComicBookDTO> deserializeComicBookStubDB(String filepath) {
+    public static List<ComicBookDTO> deserializeComicBookStubDB(String filepath) {
         Type listType = new TypeToken<ArrayList<ComicBookDTO>>(){}.getType();
         JsonReader reader = null;
 

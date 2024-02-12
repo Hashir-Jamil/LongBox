@@ -8,7 +8,7 @@ import java.awt.Component;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import org.longbox.domainobjects.UserDTO;
+import org.longbox.domainobjects.dto.UserDTO;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -22,7 +22,6 @@ import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
-import jakarta.mail.internet.ParseException;
 
 import javax.swing.JButton;
 import com.toedter.calendar.JDateChooser;

@@ -1,4 +1,4 @@
-package org.longbox.persistence;
+package org.longbox.persistence.stubdatabase;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -10,7 +10,7 @@ import com.google.gson.stream.JsonReader;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.longbox.domainobjects.UserDTO;
+import org.longbox.domainobjects.dto.UserDTO;
 import com.google.gson.Gson;
 
 @NoArgsConstructor

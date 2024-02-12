@@ -1,6 +1,6 @@
 package org.longbox.businesslogic;
 
-import org.longbox.domainobjects.UserDTO;
+import org.longbox.domainobjects.dto.UserDTO;
 
 public class UserSession {
 
