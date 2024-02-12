@@ -1,8 +1,8 @@
 package org.longbox;
 
-import org.longbox.domainobjects.ComicBookDTO;
-import org.longbox.persistence.ComicBookStubDB;
-import org.longbox.persistence.UserStubDB;
+import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.persistence.stubdatabase.ComicBookStubDB;
+import org.longbox.persistence.stubdatabase.UserStubDB;
 
 import java.util.List;
 
