@@ -1,4 +1,4 @@
-package org.longbox.presentation;
+package org.longbox.presentation.authentication;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;

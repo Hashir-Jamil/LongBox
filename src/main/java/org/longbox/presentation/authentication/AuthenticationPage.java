@@ -1,4 +1,4 @@
-package org.longbox.presentation;
+package org.longbox.presentation.authentication;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.domainobjects.dto.UserDTO;
 import org.longbox.persistence.stubdatabase.UserStubDB;
+import org.longbox.presentation.profile.HomePage;
 
 public class AuthenticationPage extends JFrame implements ActionListener {
 

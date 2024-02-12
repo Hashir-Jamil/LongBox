@@ -1,28 +1,30 @@
-package org.longbox.presentation;
+package org.longbox.presentation.profile;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JSeparator;
+import java.awt.Color;
+import javax.swing.JList;
 
-public class ProfilePage extends JPanel {
+public class SearchPage extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private final String PANEL_LABEL = "Profile View";
+	private JTextField txtSearch;
+	private final String PANEL_LABEL = "Search Repository For Comic Books";
 
 	/**
 	 * Create the panel.
 	 */
-	public ProfilePage() {
-		initProfilePage();
+	public SearchPage() {
+		initSearchPage();
 	}
 
-	private void initProfilePage() {
+	private void initSearchPage() {
 		
 		setBounds(10, 47, 1164, 803);
 		setLayout(new BorderLayout());
@@ -36,7 +38,16 @@ public class ProfilePage extends JPanel {
 		comicCollectionTitle.setBounds(182, 11, 800, 43);
 		panel.add(comicCollectionTitle);
 		
+		
+		
 		add(panel, BorderLayout.CENTER);
+		
+		txtSearch = new JTextField();
+		txtSearch.setToolTipText("");
+		txtSearch.setText("Search");
+		txtSearch.setBounds(956, 75, 201, 20);
+		panel.add(txtSearch);
+		txtSearch.setColumns(10);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBackground(new Color(0, 0, 0));
@@ -49,5 +60,4 @@ public class ProfilePage extends JPanel {
 		panel.add(list);
 		
 	}
-
 }

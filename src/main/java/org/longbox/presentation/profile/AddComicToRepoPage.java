@@ -1,4 +1,4 @@
-package org.longbox.presentation;
+package org.longbox.presentation.profile;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

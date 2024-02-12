@@ -1,7 +1,7 @@
-package org.longbox.presentation;
+package org.longbox.presentation.profile;
 
 import org.longbox.businesslogic.*;
-import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.presentation.authentication.AuthenticationPage;
 
 import java.awt.EventQueue;
 
