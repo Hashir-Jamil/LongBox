@@ -18,6 +18,7 @@ dependencies {
     implementation("org.postgresql:postgresql:42.7.1")
     implementation("jakarta.mail:jakarta.mail-api:2.1.2")
     compileOnly("org.projectlombok:lombok:1.18.30")
+    annotationProcessor("org.projectlombok:lombok:1.18.30")
     implementation("com.google.code.gson:gson:2.10.1")
 }
 
