@@ -1,6 +1,8 @@
 package org.longbox.domainobjects;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.longbox.businesslogic.comparators.ComicBookDateAddeddComparator;
 import org.longbox.businesslogic.comparators.ComicBookNameComparator;
 import org.longbox.businesslogic.comparators.ComicBookYearPublishedComparator;
@@ -8,6 +10,8 @@ import org.longbox.businesslogic.comparators.ComicBookYearPublishedComparator;
 import java.util.*;
 
 @NoArgsConstructor
+@Getter
+@Setter
 public class UserDTO {
 
 	private String userName;
@@ -40,62 +44,6 @@ public class UserDTO {
 		this.joinDate = new Date();
 	}
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public Date getDob() {
-		return dob;
-	}
-
-	public void setDob(Date dob) {
-		this.dob = dob;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public Date getJoinDate() {
-		return joinDate;
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -117,17 +65,4 @@ public class UserDTO {
 			return true;
 		}
 	}
-
-	public void sortComicsAToZ() {
-		Collections.sort(comicBookList, new ComicBookNameComparator());
-	}
-
-	public void sortComicsDateAdded() {
-		Collections.sort(comicBookList, new ComicBookDateAddeddComparator());
-	}
-
-	public void sortComicsYearPublished() {
-		Collections.sort(comicBookList, new ComicBookYearPublishedComparator());
-	}
-
 }
