@@ -7,9 +7,9 @@ import java.util.List;
 
 public class CommentStub {
 
-    private static List<CommentDTO> commentsStubData = new ArrayList<>();
+    private List<CommentDTO> commentsStubData = new ArrayList<>();
 
-    public static void loadComments() {
+    public void loadComments() {
 
         CommentDTO comment1 = new CommentDTO(
                 "This comic was really good",
