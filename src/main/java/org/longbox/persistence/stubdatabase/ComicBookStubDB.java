@@ -56,7 +56,7 @@ public class ComicBookStubDB {
 
     }
 
-    public static void serializeComicBookStubDB() {
+    public void serializeComicBookStubDB() {
         String json = new Gson().toJson(comicBookStubData);
         String file = "src/main/resources/ComicBookStubDB.json";
         try (PrintStream out = new PrintStream(new FileOutputStream(file))) {
@@ -66,7 +66,7 @@ public class ComicBookStubDB {
         }
     }
 
-    public static List<ComicBookDTO> deserializeComicBookStubDB(String filepath) {
+    public List<ComicBookDTO> deserializeComicBookStubDB(String filepath) {
         Type listType = new TypeToken<ArrayList<ComicBookDTO>>(){}.getType();
         JsonReader reader = null;
 
