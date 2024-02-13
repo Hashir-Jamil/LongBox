@@ -49,3 +49,9 @@
 ## Sunday, February 11th, 2024
 
     Hashir: Refactoring & Reorganizing packages & business logic classes. Making DAO and Repository Interfaces for clean data access.
+
+## Monday, February 12th, 2024
+    
+    Group meeting: ended/concluded ITR01-associated sprint on JIRA and assigned new user stories to move forward to next sprint for ITR2/Deliverable1
+    Hashir: finished story for user to add a comic book to the stub database.
+    
