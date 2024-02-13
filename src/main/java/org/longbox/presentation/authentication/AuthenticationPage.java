@@ -25,6 +25,7 @@ public class AuthenticationPage extends JFrame implements ActionListener {
     private UserStubDB user = new UserStubDB();
     private UserSession userSession;
     private UserSession userLoggedIn;
+    private List<UserDTO> users;
 
 	/**
 	 * Launch the application.
@@ -85,7 +86,7 @@ public class AuthenticationPage extends JFrame implements ActionListener {
         }else if(e.getSource() ==  registrationPage.getSignInButton()) {
         	cardLayout.show(cardPanel, "login");
         }else if(e.getSource() == loginPage.getSignInButton()) {
-        	List<UserDTO> users = user.getUsers();
+        	users = user.getUsers();
         	for(UserDTO u: users) {
         		if(loginPage.getUsername().equals(u.getUserName())) {
         			if(loginPage.getDecryptedPassword().equals(u.getPassword())) {
