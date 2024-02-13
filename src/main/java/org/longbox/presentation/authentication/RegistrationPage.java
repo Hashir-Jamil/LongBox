@@ -9,6 +9,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.businesslogic.utils.RegisterationUtils;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -55,14 +56,14 @@ public class RegistrationPage extends JPanel {
 	public RegistrationPage() {
 		initiateRegUI();
 	}
-	
+
 	public void initiateRegUI() {
 
-		
+
 		setLayout(new BorderLayout());
-		
+
 		JPanel panel = new JPanel();
-	    panel.setLayout(null);
+		panel.setLayout(null);
 
 		//Header label
 		JLabel HeaderLabel = new JLabel("Sign Up and Start Reading Comics!");
@@ -145,51 +146,51 @@ public class RegistrationPage extends JPanel {
 		TnCCheckbox = new JCheckBox("I agree to the terms and conditions of these app.");
 		TnCCheckbox.setBounds(107, 387, 598, 23);
 		TnCCheckbox.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		
+
 		// message label to print invalid email and password
 		messageLabel = new JLabel("");
 		messageLabel.setVerticalTextPosition(SwingConstants.TOP);
 		messageLabel.setBounds(117, 370, 588, 16);
 		messageLabel.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		messageLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
-		
+
 		//sign in label
 		JLabel signInLabel = new JLabel("Already a member? Sign In!");
 		signInLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
 		signInLabel.setBounds(117, 463, 287, 16);
-		
-		
+
+
 		//sign up label
 		signInButton = new JButton("Sign In!");
 		signInButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
 		signInButton.setBounds(451, 458, 264, 29);
-	//	signInButton.addActionListener(this);
-		
+		//	signInButton.addActionListener(this);
+
 		// adding elements to the pane
 
 		panel.add(HeaderLabel);
-	    panel.add(FirstNameLabel);
-	    panel.add(firstNameField);
-	    panel.add(LastNameLabel);
-	    panel.add(lastNameField);
-	    panel.add(UsernameLabel);
-	    panel.add(usernameField);
-	    panel.add(EmailLabel);
-	    panel.add(emailAddress);
-	    panel.add(PasswordLabel);
-	    panel.add(passwordField);
-	    panel.add(PwdSpecLabel);
+		panel.add(FirstNameLabel);
+		panel.add(firstNameField);
+		panel.add(LastNameLabel);
+		panel.add(lastNameField);
+		panel.add(UsernameLabel);
+		panel.add(usernameField);
+		panel.add(EmailLabel);
+		panel.add(emailAddress);
+		panel.add(PasswordLabel);
+		panel.add(passwordField);
+		panel.add(PwdSpecLabel);
 		panel.add(DateLabel);
 		panel.add(dateChooser);
-	    panel.add(CountryLabel);
-	    panel.add(countryField);
-	    panel.add(signUpButton);
-	    panel.add(TnCCheckbox);
-	    panel.add(messageLabel);
-	    panel.add(signInLabel);
-	    panel.add(signInButton);
+		panel.add(CountryLabel);
+		panel.add(countryField);
+		panel.add(signUpButton);
+		panel.add(TnCCheckbox);
+		panel.add(messageLabel);
+		panel.add(signInLabel);
+		panel.add(signInButton);
 
-	    add(panel, BorderLayout.CENTER);
+		add(panel, BorderLayout.CENTER);
 
 		// action listener
 		firstNameField.addActionListener(fieldsListener);
@@ -271,68 +272,41 @@ public class RegistrationPage extends JPanel {
 				passwordField.getPassword().length > 0 &&
 				countryField.getSelectedItem() != null &&
 				dateChooser.getDate() != null &&
-				isValidEmailAddress(emailAddress.getText()) &&
-				isValidPassword(String.valueOf(passwordField.getPassword())) &&
+				RegisterationUtils.isValidEmailAddress(emailAddress.getText()) &&
+				RegisterationUtils.isValidPassword(String.valueOf(passwordField.getPassword())) &&
 				TnCCheckbox.isSelected();
 
+				boolean validEmail = RegisterationUtils.isValidEmailAddress(emailAddress.getText());
+				boolean vaildPassword = RegisterationUtils.isValidPassword(String.valueOf(passwordField.getPassword()));
+
 				// prints the invalid mail and email message
-				if(!isValidEmailAddress(emailAddress.getText()) && !isValidPassword(String.valueOf(passwordField.getPassword()))) {
+				if(!validEmail && !vaildPassword) {
 					messageLabel.setForeground(Color.red);
 					messageLabel.setText("Please enter a valid email and a valid password!");
-				}else if(isValidEmailAddress(emailAddress.getText()) && !isValidPassword(String.valueOf(passwordField.getPassword()))){
+				}else if(validEmail && !vaildPassword){
 					messageLabel.setText("Please enter a valid password!");
-				}else if(!isValidEmailAddress(emailAddress.getText()) && isValidPassword(String.valueOf(passwordField.getPassword()))) {
+				}else if(!validEmail && vaildPassword) {
 					messageLabel.setText("Please enter a valid email!");
 				}else {
 					messageLabel.setText("");
 				}
-
-
+				
 				//if all the conditions are matched enable the button
 				signUpButton.setEnabled(enableButton);
 	}
 
-	// validate email stack overflow
-	public static boolean isValidEmailAddress(String email) {
-		boolean result = true;
-		try {
-			InternetAddress emailAddr = new InternetAddress(email);
-			emailAddr.validate();
-		} catch (AddressException ex) {
-			result = false;
-		}
-		return result;
-	}
-
-	// validate password https://www.geeksforgeeks.org/how-to-validate-a-password-using-regular-expressions-in-java/
-	public static boolean isValidPassword(String password){
-		String regex = "^(?=.*[0-9])"
-				+ "(?=.*[a-z])(?=.*[A-Z])"
-				+ "(?=.*[@#$%^&+=!])"
-				+ "(?=\\S+$).{8,20}$";
-		Pattern p = Pattern.compile(regex);
-
-		if (password == null) {
-			return false;
-		}
-
-		Matcher m = p.matcher(password);
-
-		return m.matches();
-	}
-	
 	public JButton getSignInButton() {
 		return signInButton;
 	}
-	
+
 	public JButton getSignUpButton() {
 		return signUpButton;
 	}
-	
+
 	public JLabel getMessageLabel() {
 		return messageLabel;
 	}
-	
+
 	public UserDTO getRegisterationDetails() {
 		String firstName = firstNameField.getText();
 		String lastName = lastNameField.getText();
@@ -345,15 +319,15 @@ public class RegistrationPage extends JPanel {
 		//formats the date
 		SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd");
 		String dob = dcn.format(date);
-		
+
 		Date formattedDate = null;
-        try {
+		try {
 			formattedDate = dcn.parse(dob);
 		} catch (java.text.ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return new UserDTO(username, firstName, lastName, formattedDate, email, password, country);
 	}
 
