@@ -29,6 +29,7 @@ public class ComicBookDTO {
         this.seriesTitle = seriesTitle;
         this.author = author;
         this.year = year;
+        this.publisher = publisher;
         this.dateAdded = new Date();
     };
 

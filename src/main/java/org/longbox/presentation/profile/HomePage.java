@@ -1,6 +1,8 @@
 package org.longbox.presentation.profile;
 
 import org.longbox.businesslogic.*;
+import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.persistence.stubdatabase.ComicBookStubDB;
 import org.longbox.presentation.authentication.AuthenticationPage;
 
 import java.awt.EventQueue;
@@ -32,7 +34,7 @@ public class HomePage extends JFrame implements ActionListener {
     private static JFrame frame;
     private JPanel comicCollectionPanel = new ComicCollectionPage();
     private JPanel profilePanel = new ProfilePage();
-    private JPanel addComicToRepoPanel = new AddComicToRepoPage();
+    private AddComicToRepoPage addComicToRepoPanel = new AddComicToRepoPage();
     private JButton searchButton;
     private JButton addComicButton;
     private JButton comicCollectionButton;
@@ -128,12 +130,10 @@ public class HomePage extends JFrame implements ActionListener {
         profileButton = new JButton("Profile");
         profileButton.setBounds(567, 12, 170, 25);
         nexusPanel.add(profileButton);
-        
-       
-        
+
         profileButton.addActionListener(this);
-        
         logOutButton.addActionListener(this);
+        addComicToRepoPanel.getEnterComicBookButton().addActionListener(this);
     }
 
     @Override
@@ -148,19 +148,49 @@ public class HomePage extends JFrame implements ActionListener {
                 dispose();
             }
         }
+        if (e.getSource() == addComicToRepoPanel.getEnterComicBookButton()) {
+            saveAddComicBookFormInput();
+
+        }
         if(e.getSource() == comicCollectionButton) {
+            System.out.println("entered collection");
         	cardLayout.show(activityPanel, COMIC_COLLECTAION_PANEL);
         }
         if(e.getSource() == searchButton) {
+            System.out.println("entered saearch");
         	cardLayout.show(activityPanel, SEARCH_COMIC_BOOK);
         }
         if(e.getSource() == profileButton) {
+            System.out.println("entered profile");
         	cardLayout.show(activityPanel, PROFILE_PANEL);
         }
         if(e.getSource() == addComicButton) {
+            System.out.println("entered add comic");
         	cardLayout.show(activityPanel, ADD_COMIC_TO_REPO);
         }
-        
     }
-}
 
+    private void saveAddComicBookFormInput() {
+        ComicBookDTO comicBook = new ComicBookDTO(
+                addComicToRepoPanel.getComicBookNameTextField().getText(),
+                addComicToRepoPanel.getComicBookAuthorTextField().getText(),
+                addComicToRepoPanel.getPublisherTextField().getText(),
+                Integer.parseInt(addComicToRepoPanel.getYearTextField().getText())
+        );
+
+        // Reset Text
+        addComicToRepoPanel.getComicBookNameTextField().setText("");
+        addComicToRepoPanel.getComicBookAuthorTextField().setText("");
+        addComicToRepoPanel.getPublisherTextField().setText("");
+        addComicToRepoPanel.getYearTextField().setText("");
+
+        //Stub DB initialization, deserialized read from JSON & rewrite back to JSON with new object
+        ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
+        comicBookStubDB.setComicBookStubData(
+                comicBookStubDB.deserializeComicBookStubDB(
+                        comicBookStubDB.getABSOLUTE_FILE_PATH()));
+        comicBookStubDB.getComicBookStubData().add(comicBook);
+        comicBookStubDB.serializeComicBookStubDB();
+    }
+
+}

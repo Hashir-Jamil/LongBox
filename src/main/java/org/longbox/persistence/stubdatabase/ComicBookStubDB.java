@@ -17,9 +17,10 @@ import com.google.gson.Gson;
 @Setter
 public class ComicBookStubDB {
 
-    private static List<ComicBookDTO> comicBookStubData = new ArrayList<>();
+    private List<ComicBookDTO> comicBookStubData = new ArrayList<>();
+    private final String ABSOLUTE_FILE_PATH = "src/main/resources/ComicBookStubDB.json";
 
-    public static void loadComicBooks() {
+    public void loadComicBooks() {
 
         ComicBookDTO comicBook1 = new ComicBookDTO(
                 "Spider Man",

@@ -1,38 +1,47 @@
 [
   {
-    "issueTitle": "Spider Wars",
+    "id": 0,
     "seriesTitle": "Spider Man",
     "author": "Stan Lee",
-    "volumeNumber": 43,
-    "issueNumber": 233,
+    "publisher": "Marvel Comics",
     "year": 1994,
-    "dateAdded": "Feb 8, 2024, 1:25:39 PM"
+    "dateAdded": "Feb 12, 2024, 11:13:02 PM",
+    "commentsList": []
   },
   {
-    "issueTitle": "Arkhamn Asylym",
+    "id": 0,
     "seriesTitle": "Batman",
     "author": "Frank Miller",
-    "volumeNumber": 1,
-    "issueNumber": 1,
+    "publisher": "DC",
     "year": 2005,
-    "dateAdded": "Feb 8, 2024, 1:25:39 PM"
+    "dateAdded": "Feb 12, 2024, 11:13:02 PM",
+    "commentsList": []
   },
   {
-    "issueTitle": "Superman vs. Batman",
+    "id": 0,
     "seriesTitle": "Batman",
     "author": "Mark Twain",
-    "volumeNumber": 2,
-    "issueNumber": 1,
+    "publisher": "DC",
     "year": 2005,
-    "dateAdded": "Feb 8, 2024, 1:25:39 PM"
+    "dateAdded": "Feb 12, 2024, 11:13:02 PM",
+    "commentsList": []
   },
   {
-    "issueTitle": "Sin City",
+    "id": 0,
     "seriesTitle": "Sin City",
     "author": "Frank Miller",
-    "volumeNumber": 1,
-    "issueNumber": 1,
+    "publisher": "DC",
     "year": 2001,
-    "dateAdded": "Feb 8, 2024, 1:25:39 PM"
+    "dateAdded": "Feb 12, 2024, 11:13:02 PM",
+    "commentsList": []
+  },
+  {
+    "id": 0,
+    "seriesTitle": "Superman",
+    "author": "Jerry West",
+    "publisher": "DC Comics",
+    "year": 1933,
+    "dateAdded": "Feb 12, 2024, 11:18:02 PM",
+    "commentsList": []
   }
 ]
