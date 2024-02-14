@@ -23,34 +23,50 @@ public class ComicBookStubDB {
     public void loadComicBooks() {
 
         ComicBookDTO comicBook1 = new ComicBookDTO(
-                "Spider Man",
-                "Stan Lee",
-                "Marvel Comics",
-                1994
+                "Zot!",
+                "Scott McCloud",
+                "Scott McCloud",
+                new String[] {"Superhero", "Superpower", "Adventure", "Science Fiction", "Futuristic", "Romance", "Drama"},
+                "Description",
+                36,
+                "Eclipse",
+                1984
         );
         comicBookStubData.add(comicBook1);
 
         ComicBookDTO comicBook2 = new ComicBookDTO(
-                "Batman",
-                "Frank Miller",
-                "DC",
-                2005
+                "Sanctuary",
+                "Sho Fumimura",
+                "Ryoichi Ikegami",
+                new String[] {"Polital", "Crime", "Thriller", "Manga"},
+                "Description",
+                108,
+                "Viz",
+                1990
         );
         comicBookStubData.add(comicBook2);
 
         ComicBookDTO comicBook3 = new ComicBookDTO(
-                "Batman",
-                "Mark Twain",
-                "DC",
-                2005
+                "Nexus (1981)",
+                "Mike Baron",
+                "Steve Rude",
+                new String[] {"Superhero", "Planetary Romance", "Superpower", "Science Fiction", "Adventure", "Fantasy"},
+                "Description",
+                3,
+                "Capital",
+                1981
         );
         comicBookStubData.add(comicBook3);
 
         ComicBookDTO comicBook4 = new ComicBookDTO(
-                "Sin City",
-                "Frank Miller",
-                "DC",
-                2001
+                "The Maxx",
+                "Sam Keith",
+                "Sam Keith",
+                new String[] {"Fantasy", "Drama", "Comedy", "Superhero"},
+                "Description",
+                35,
+                "Image",
+                1993
         );
         comicBookStubData.add(comicBook4);
 

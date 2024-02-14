@@ -174,6 +174,7 @@ public class HomePage extends JFrame implements ActionListener {
         ComicBookDTO comicBook = new ComicBookDTO(
                 addComicToRepoPanel.getComicBookNameTextField().getText(),
                 addComicToRepoPanel.getComicBookAuthorTextField().getText(),
+                //addComicToRepoPanel.getComicBookA
                 addComicToRepoPanel.getPublisherTextField().getText(),
                 Integer.parseInt(addComicToRepoPanel.getYearTextField().getText())
         );

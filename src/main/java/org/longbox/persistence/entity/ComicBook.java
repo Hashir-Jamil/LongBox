@@ -11,26 +11,30 @@ public class ComicBook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "issue_title")
-    private String issueTitle;
 
     @Column(name = "series_title")
     private String seriesTitle;
 
-    @Column(name = "author")
+    @Column(name = "authors")
     private String author;
+    
+    @Column(name = "artists")
+    private String artist;
 
-    @Column(name = "volume_number")
-    private int volumeNumber;
-
-    @Column(name = "issue_number")
-    private int issueNumber;
+    @Column(name = "genres")
+    private String[] genres;
+    
+    @Column(name = "description")
+    private String description;
+    
+    @Column(name = "number_of_issues")
+    private int numberOfIssues;
 
     @Column(name = "publisher")
     private String publisher;
 
-    @Column(name = "year")
-    private int year;
+    @Column(name = "yearPublished")
+    private int yearPublished;
 
     @Column(name = "date_added")
     private Date dateAdded;
