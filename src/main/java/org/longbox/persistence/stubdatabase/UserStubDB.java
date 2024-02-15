@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 public class UserStubDB {
 
     private List<UserDTO> userStubData = new ArrayList<>();
+    private final String ABSOLUTE_FILE_PATH = "src/main/resources/UserStubDB.json";
 
     public void loadUsers() {
         UserDTO u1 = new UserDTO(
@@ -60,7 +61,7 @@ public class UserStubDB {
     	this.userStubData.add(user);
     }
 
-    public void serializeComicBookStubDB() {
+    public void serializeUserStubDB() {
         String json = new Gson().toJson(userStubData);
         String file = "src/main/resources/UserStubDB.json";
         try (PrintStream out = new PrintStream(new FileOutputStream(file))) {

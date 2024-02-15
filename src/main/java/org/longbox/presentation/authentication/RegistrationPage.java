@@ -310,25 +310,13 @@ public class RegistrationPage extends JPanel {
 	public UserDTO getRegisterationDetails() {
 		String firstName = firstNameField.getText();
 		String lastName = lastNameField.getText();
-		Date date = dateChooser.getDate();
+		Date dob = dateChooser.getDate();
 		String username = usernameField.getText();
 		String email = emailAddress.getText();
 		String password = String.valueOf(passwordField.getPassword());
-		String country = countryField.getSelectedItem().toString(); 
+		String country = countryField.getSelectedItem().toString();
 
-		//formats the date
-		SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd");
-		String dob = dcn.format(date);
-
-		Date formattedDate = null;
-		try {
-			formattedDate = dcn.parse(dob);
-		} catch (java.text.ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return new UserDTO(username, firstName, lastName, formattedDate, email, password, country);
+		return new UserDTO(username, firstName, lastName, dob, email, password, country);
 	}
 
 }

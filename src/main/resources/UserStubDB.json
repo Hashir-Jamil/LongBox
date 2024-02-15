@@ -34,5 +34,17 @@
     "country": "United Kingdom",
     "joinDate": "Feb 14, 2024, 12:28:42 PM",
     "comicBookList": []
+  },
+  {
+    "id": 0,
+    "userName": "ahan",
+    "firstName": "Ahan",
+    "lastName": "Bhargava",
+    "dob": "Feb 10, 2003, 3:08:25 PM",
+    "email": "ahan@email.com",
+    "password": "Password!1",
+    "country": "India",
+    "joinDate": "Feb 15, 2024, 3:09:10 PM",
+    "comicBookList": []
   }
 ]

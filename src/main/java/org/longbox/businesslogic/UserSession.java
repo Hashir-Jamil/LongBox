@@ -1,7 +1,12 @@
 package org.longbox.businesslogic;
 
 import org.longbox.domainobjects.dto.UserDTO;
-
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@NoArgsConstructor
+@Getter
+@Setter
 public class UserSession {
 
     private static UserSession activeUser = null;
@@ -17,11 +22,15 @@ public class UserSession {
         }
         return activeUser;
     }
+
+    public static void setActiveUser(UserSession userSession) {
+        activeUser = userSession;
+    }
     
     public void clearUserSession() {
     	this.user = null;
     }
-    
+
     public UserDTO getUser() {
     	return this.user;
     }

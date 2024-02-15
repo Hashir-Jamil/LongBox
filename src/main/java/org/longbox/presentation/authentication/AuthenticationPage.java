@@ -22,9 +22,8 @@ public class AuthenticationPage extends JFrame implements ActionListener {
 	private CardLayout cardLayout;
     private LoginPage loginPage = new LoginPage();
     private RegistrationPage registrationPage = new RegistrationPage();
-    private UserStubDB user = new UserStubDB();
+    private UserStubDB userStubDB = new UserStubDB();
     private UserSession userSession;
-    private UserSession userLoggedIn;
     private List<UserDTO> users;
 
 	/**
@@ -50,9 +49,6 @@ public class AuthenticationPage extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 550);
         setTitle("LongBox");
-        
-        //loads the users
-        user.loadUsers();
         
         setLocationRelativeTo(null);
         
@@ -86,30 +82,42 @@ public class AuthenticationPage extends JFrame implements ActionListener {
         }else if(e.getSource() ==  registrationPage.getSignInButton()) {
         	cardLayout.show(cardPanel, "login");
         }else if(e.getSource() == loginPage.getSignInButton()) {
-        	users = user.getUsers();
-        	for(UserDTO u: users) {
-        		if(loginPage.getUsername().equals(u.getUserName())) {
-        			if(loginPage.getDecryptedPassword().equals(u.getPassword())) {
-        				userLoggedIn = userSession.getInstance(u);
-        				loginPage.getErrorLabel().setText("Login Successful!");
-        				loginPage.getErrorLabel().setForeground(Color.GREEN);
-        				dispose();
-        				HomePage homePage = new HomePage(userLoggedIn);
-        				homePage.setVisible(true);
-      
-        			}else {
-        				loginPage.getErrorLabel().setText("Passowrd Incorrect");
-        				loginPage.getErrorLabel().setForeground(Color.red);
-        			}
-        		}else {
-        			loginPage.getErrorLabel().setText("User does not exist");
-        			loginPage.getErrorLabel().setForeground(Color.red);
-        		}
-        	}
+			validateLogin();
         }else if(e.getSource() == registrationPage.getSignUpButton()) {
-        	user.addUser(registrationPage.getRegisterationDetails());
-        	registrationPage.getMessageLabel().setText("Registeration Successful");
-        	cardLayout.show(cardPanel, "login");
+			registerUser();
         }
     }
+
+	private void validateLogin(){
+		users = userStubDB.deserializeUserStubDB(userStubDB.getABSOLUTE_FILE_PATH());
+		for(UserDTO u: users) {
+			if (loginPage.getUsername().equals(u.getUserName())) {
+				if (loginPage.getDecryptedPassword().equals(u.getPassword())) {
+					loginPage.getErrorLabel().setText("Login Successful!");
+					loginPage.getErrorLabel().setForeground(Color.GREEN);
+					dispose();
+					HomePage homePage = new HomePage(userSession.getInstance(u));
+					homePage.setVisible(true);
+
+				} else {
+					loginPage.getErrorLabel().setText("Password Incorrect");
+					loginPage.getErrorLabel().setForeground(Color.red);
+				}
+			} else {
+				loginPage.getErrorLabel().setText("User does not exist");
+				loginPage.getErrorLabel().setForeground(Color.red);
+			}
+		}
+	}
+
+	private void registerUser(){
+		userStubDB.setUserStubData(
+				userStubDB.deserializeUserStubDB(
+						userStubDB.getABSOLUTE_FILE_PATH()));
+		userStubDB.getUserStubData().add(registrationPage.getRegisterationDetails());
+		userStubDB.serializeUserStubDB();
+		registrationPage.getMessageLabel().setText("Registeration Successful");
+		cardLayout.show(cardPanel, "login");
+	}
+
 }

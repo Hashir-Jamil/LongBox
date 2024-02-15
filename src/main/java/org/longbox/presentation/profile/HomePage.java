@@ -141,14 +141,7 @@ public class HomePage extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == logOutButton) {
-            int confirmLogOut = JOptionPane.showConfirmDialog(frame, "Are you sure you want to log out?", "Log Out Confirmation", JOptionPane.YES_NO_OPTION);
-            if (confirmLogOut == JOptionPane.YES_OPTION) {
-                
-            	this.userSession.clearUserSession();
-                AuthenticationPage loginPage = new AuthenticationPage();
-                loginPage.setVisible(true);
-                dispose();
-            }
+            logoutUser();
         }
 
         if (e.getSource() == addComicToRepoPanel.getEnterComicBookButton()) {
@@ -206,5 +199,16 @@ public class HomePage extends JFrame implements ActionListener {
                         comicBookStubDB.getABSOLUTE_FILE_PATH()));
         comicBookStubDB.getComicBookStubData().add(comicBook);
         comicBookStubDB.serializeComicBookStubDB();
+    }
+
+    private void logoutUser(){
+        int confirmLogOut = JOptionPane.showConfirmDialog(frame, "Are you sure you want to log out?", "Log Out Confirmation", JOptionPane.YES_NO_OPTION);
+        if (confirmLogOut == JOptionPane.YES_OPTION) {
+            userSession.clearUserSession();
+            UserSession.setActiveUser(null);
+            AuthenticationPage loginPage = new AuthenticationPage();
+            loginPage.setVisible(true);
+            dispose();
+        }
     }
 }
