@@ -17,6 +17,10 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.border.BevelBorder;
+import java.awt.Color;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EtchedBorder;
 
 public class ComicCollectionPage extends JPanel implements ActionListener{
 
@@ -92,7 +96,8 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 		comicBookTable = new JTable(comicBookTableModel);
 
 		scrollPane = new JScrollPane(comicBookTable);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setViewportBorder(null);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(10, 110, 1144, 683);
 		panel.add(scrollPane);
