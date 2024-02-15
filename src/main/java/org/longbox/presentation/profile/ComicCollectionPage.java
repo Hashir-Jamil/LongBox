@@ -1,6 +1,7 @@
 package org.longbox.presentation.profile;
 
 import org.longbox.persistence.stubdatabase.ComicBookStubDB;
+import org.longbox.presentation.authentication.AuthenticationPage;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -10,6 +11,7 @@ import java.util.*;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -21,12 +23,13 @@ import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EtchedBorder;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class ComicCollectionPage extends JPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	
-	private String[] comics = {"Sanctuary", "Zot!", "Elementals", "RobotTech", "Mars", "American Flagg!", "Nexus", "Appleseed", "Battle Pope"};
 	private JPanel panel;
 	private JLabel comicCollectionTitle;
 	private JLabel lblNewLabel_1;
@@ -37,6 +40,7 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 	private JTable comicBookTable;
 	private JTextField textField;
 	private ComicBookTableModel comicBookTableModel;
+	TableRowSorter<TableModel> sorter;
 	
 	
 	ComicCollectionPage() {
@@ -77,23 +81,19 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 		comboBox.addItem("Date Added (Oldest)");
 		comboBox.addItem("Publication Date (Recent)");
 		comboBox.addItem("Publication Date (Oldest)");
-		comboBox.addItemListener(e -> {
-			currentItem = (String)comboBox.getSelectedItem();
-			if(currentItem == "A-Z") {
-				comics = sortAZ(comics);
-				this.invalidate();
-				this.repaint();
-			}
-		});
+		
+		comboBox.addActionListener(this);
 		
 		add(panel, BorderLayout.CENTER);
 
 		ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
 		comicBookStubDB.loadComicBooks();
-
-		comicBookTableModel = new ComicBookTableModel(comicBookStubDB.getComicBookStubData());
 		
-		comicBookTable = new JTable(comicBookTableModel);
+		comicBookTableModel = new ComicBookTableModel(comicBookStubDB.getComicBookStubData());
+				
+		comicBookTable = new JTable(comicBookTableModel);		
+		sorter = new TableRowSorter<TableModel>(comicBookTable.getModel());
+		comicBookTable.setRowSorter(sorter);
 
 		scrollPane = new JScrollPane(comicBookTable);
 		scrollPane.setViewportBorder(null);
@@ -117,19 +117,35 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		String currentItem = (String)comboBox.getSelectedItem();
-		if (e.getSource() == comboBox) {
-			System.out.println("Clicked!");
+    public void actionPerformed(ActionEvent e) {
+		
+		String option = (String)comboBox.getSelectedItem();
+
+        if(e.getSource() == comboBox) {
+        	option = (String)comboBox.getSelectedItem();
+        	switch (option) {
+			case "A-Z":
+				System.out.println("A-Z");
+				break;
+			case "Z-A":
+				System.out.println("Z-A");
+				break;
+			case "Date Added (Recent)":
+				System.out.println("Date Added (Recent)");
+				break;
+			case "Date Added (Oldest)":
+				System.out.println("Date Added (Oldest)");
+				break;
+			case "Publication Date (Recent)":
+				System.out.println("Publication Date (Recent)");
+				break;
+			case "Publication Date (Oldest)":
+				System.out.println("Publication Date (Oldest)");
+				break;
+			default:
+				System.out.println("A-Z");
+				break;
 		}
-	}
-	
-	public String[] sortAZ(String[] ls) {
-		String[] listAZ = new String[ls.length];
-		for (int i = 0; i < ls.length; i++) {
-			listAZ[i] = ls[i];
-		}
-		Arrays.sort(listAZ);
-		return listAZ;
-	}
+        }
+    }
 }
