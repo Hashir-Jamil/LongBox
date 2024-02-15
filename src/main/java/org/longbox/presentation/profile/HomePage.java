@@ -77,7 +77,9 @@ public class HomePage extends JFrame implements ActionListener {
         userNameLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         userNameLabel.setBounds(811, 19, 181, 16);
         nexusPanel.add(userNameLabel);
-        this.profilePanel.setUserSession(user);
+        HTMLEditorKit kit = new HTMLEditorKit();
+        profilePanel.getUserProfileInformationTextPane().setEditorKit(kit);
+        profilePanel.getUserProfileInformationTextPane().setText(UserSession.generateUserProfileHTML(user));
     }
 
     public void initiateRegUI() {
