@@ -22,11 +22,9 @@ import java.awt.Color;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EtchedBorder;
 
-public class ComicCollectionPage extends JPanel implements ActionListener{
+public class ComicCollectionPage extends JPanel /*implements ActionListener*/ {
 
 	private static final long serialVersionUID = 1L;
-	
-	private String[] comics = {"Sanctuary", "Zot!", "Elementals", "RobotTech", "Mars", "American Flagg!", "Nexus", "Appleseed", "Battle Pope"};
 	private JPanel panel;
 	private JLabel comicCollectionTitle;
 	private JLabel lblNewLabel_1;
@@ -37,14 +35,11 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 	private JTable comicBookTable;
 	private JTextField textField;
 	private ComicBookTableModel comicBookTableModel;
-	
-	
+
 	ComicCollectionPage() {
 		initComicCollectionPage();
 	}
 
-	
-	
 	private void initComicCollectionPage() {
 
 		setBounds(10, 47, 1164, 803);
@@ -77,14 +72,11 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 		comboBox.addItem("Date Added (Oldest)");
 		comboBox.addItem("Publication Date (Recent)");
 		comboBox.addItem("Publication Date (Oldest)");
-		comboBox.addItemListener(e -> {
-			currentItem = (String)comboBox.getSelectedItem();
-			if(currentItem == "A-Z") {
-				comics = sortAZ(comics);
-				this.invalidate();
-				this.repaint();
-			}
-		});
+		/*
+		 * comboBox.addItemListener(e -> { currentItem =
+		 * (String)comboBox.getSelectedItem(); if(currentItem == "A-Z") { comics =
+		 * sortAZ(comics); this.invalidate(); this.repaint(); } });
+		 */
 		
 		add(panel, BorderLayout.CENTER);
 
@@ -101,10 +93,6 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(10, 110, 1144, 683);
 		panel.add(scrollPane);
-
-		System.out.println(comicBookStubDB.getComicBookStubData());
-
-		//scrollPane.setViewportView(comicBookTable);
 		
 		textField = new JTextField();
 		textField.setBounds(116, 62, 213, 22);
@@ -116,20 +104,15 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 		panel.add(lblNewLabel);
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		String currentItem = (String)comboBox.getSelectedItem();
-		if (e.getSource() == comboBox) {
-			System.out.println("Clicked!");
-		}
-	}
+	/*
+	 * @Override public void actionPerformed(ActionEvent e) { String currentItem =
+	 * (String)comboBox.getSelectedItem(); if (e.getSource() == comboBox) {
+	 * System.out.println("Clicked!"); } }
+	 */
 	
-	public String[] sortAZ(String[] ls) {
-		String[] listAZ = new String[ls.length];
-		for (int i = 0; i < ls.length; i++) {
-			listAZ[i] = ls[i];
-		}
-		Arrays.sort(listAZ);
-		return listAZ;
-	}
+	/*
+	 * public String[] sortAZ(String[] ls) { String[] listAZ = new
+	 * String[ls.length]; for (int i = 0; i < ls.length; i++) { listAZ[i] = ls[i]; }
+	 * Arrays.sort(listAZ); return listAZ; }
+	 */
 }
