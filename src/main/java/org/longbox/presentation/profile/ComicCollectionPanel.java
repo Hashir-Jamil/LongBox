@@ -1,17 +1,14 @@
 package org.longbox.presentation.profile;
 
 import org.longbox.persistence.stubdatabase.ComicBookStubDB;
-import org.longbox.presentation.authentication.AuthenticationPage;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -19,14 +16,10 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.border.BevelBorder;
-import java.awt.Color;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EtchedBorder;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-public class ComicCollectionPage extends JPanel implements ActionListener{
+public class ComicCollectionPanel extends JPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel panel;
@@ -41,7 +34,7 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 	private ComicBookTableModel comicBookTableModel;
 	TableRowSorter<TableModel> sorter;
 
-	ComicCollectionPage() {
+	ComicCollectionPanel() {
 		initComicCollectionPage();
 	}
 

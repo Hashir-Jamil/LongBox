@@ -2,23 +2,20 @@ package org.longbox.presentation.profile;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.longbox.businesslogic.UserSession;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
-import javax.swing.text.html.HTMLEditorKit;
 
 @Getter
 @Setter
-public class ProfilePage extends JPanel {
+public class ProfilePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private final String PANEL_LABEL = "Profile View";
@@ -27,7 +24,7 @@ public class ProfilePage extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public ProfilePage() {
+	public ProfilePanel() {
 		initProfilePage();
 	}
 

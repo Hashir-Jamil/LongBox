@@ -1,7 +1,6 @@
 package org.longbox.presentation.profile;
 
 import lombok.Getter;
-import org.longbox.domainobjects.dto.ComicBookDTO;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 @Getter
-public class AddComicToRepoPage extends JPanel {
+public class AddComicToRepoPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private final String ADD_COMIC_TO_REPO = "Add a Comic Book To The LongBox Repository";
@@ -43,7 +42,7 @@ public class AddComicToRepoPage extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public AddComicToRepoPage() {
+	public AddComicToRepoPanel() {
 		initAddComicToRepoPage();
 	}
 

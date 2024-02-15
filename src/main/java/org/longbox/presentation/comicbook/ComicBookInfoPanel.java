@@ -1,4 +1,4 @@
-package org.longbox.presentation.profile;
+package org.longbox.presentation.comicbook;
 
 import lombok.Getter;
 import lombok.Setter;

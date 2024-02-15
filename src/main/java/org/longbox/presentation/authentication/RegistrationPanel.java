@@ -33,7 +33,7 @@ import java.awt.event.FocusEvent;
 
 
 
-public class RegistrationPage extends JPanel {
+public class RegistrationPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField firstNameField;
@@ -50,7 +50,7 @@ public class RegistrationPage extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public RegistrationPage() {
+	public RegistrationPanel() {
 		initiateRegUI();
 	}
 

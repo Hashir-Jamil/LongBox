@@ -16,7 +16,7 @@ import javax.swing.JButton;
 
 @Getter
 @Setter
-public class SearchPage extends JPanel {
+public class SearchPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private final String PANEL_LABEL = "Search Repository For Comic Books";
@@ -29,7 +29,7 @@ public class SearchPage extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public SearchPage() {
+	public SearchPanel() {
 		initSearchPage();
 	}
 

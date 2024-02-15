@@ -4,7 +4,8 @@ import org.longbox.businesslogic.*;
 import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.stubdatabase.ComicBookStubDB;
-import org.longbox.presentation.authentication.AuthenticationPage;
+import org.longbox.presentation.authentication.AuthenticationFrame;
+import org.longbox.presentation.comicbook.ComicBookFrame;
 
 import java.awt.EventQueue;
 
@@ -24,19 +25,19 @@ import java.awt.event.ActionListener;
 import java.awt.CardLayout;
 import java.awt.ComponentOrientation;
 
-public class HomePage extends JFrame implements ActionListener {
+public class HomeFrame extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
     private UserSession userSession;
     private JButton logOutButton;
     private JPanel nexusPanel;
     private JPanel activityPanel;
-    private SearchPage searchPanel = new SearchPage();
+    private SearchPanel searchPanel = new SearchPanel();
 	private CardLayout cardLayout;
     private static JFrame frame;
-    private JPanel comicCollectionPanel = new ComicCollectionPage();
-    private ProfilePage profilePanel = new ProfilePage();
-    private AddComicToRepoPage addComicToRepoPanel = new AddComicToRepoPage();
+    private JPanel comicCollectionPanel = new ComicCollectionPanel();
+    private ProfilePanel profilePanel = new ProfilePanel();
+    private AddComicToRepoPanel addComicToRepoPanel = new AddComicToRepoPanel();
     private JButton searchButtonNexus;
     private JButton addComicButton;
     private JButton comicCollectionButton;
@@ -56,7 +57,7 @@ public class HomePage extends JFrame implements ActionListener {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    frame = new HomePage();
+                    frame = new HomeFrame();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -68,11 +69,11 @@ public class HomePage extends JFrame implements ActionListener {
     /**
      * Create the frame.
      */
-    public HomePage() {
+    public HomeFrame() {
         initiateRegUI();
     }
     
-    public HomePage(UserSession user) {
+    public HomeFrame(UserSession user) {
     	initiateRegUI();
     	this.userSession = user;
         userNameLabel = new JLabel(user.getUser().getUserName());
@@ -229,7 +230,7 @@ public class HomePage extends JFrame implements ActionListener {
         if (confirmLogOut == JOptionPane.YES_OPTION) {
             userSession.clearUserSession();
             UserSession.setActiveUser(null);
-            AuthenticationPage loginPage = new AuthenticationPage();
+            AuthenticationFrame loginPage = new AuthenticationFrame();
             loginPage.setVisible(true);
             dispose();
         }

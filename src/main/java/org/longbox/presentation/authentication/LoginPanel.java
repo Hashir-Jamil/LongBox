@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class LoginPage extends JPanel{
+public class LoginPanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	private JTextField usernameText;
@@ -24,7 +24,7 @@ public class LoginPage extends JPanel{
 	/**
 	 * Create the panel.
 	 */
-	public LoginPage() {
+	public LoginPanel() {
 		initLoginPage();
 	}
 	
