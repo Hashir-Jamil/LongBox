@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
 
-public class RegisterationUtils {
+public class RegistrationUtils {
 	// validate email stack overflow
 	public static boolean isValidEmailAddress(String email) {
 		boolean result = true;

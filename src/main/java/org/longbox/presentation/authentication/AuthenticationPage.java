@@ -114,7 +114,7 @@ public class AuthenticationPage extends JFrame implements ActionListener {
 		userStubDB.setUserStubData(
 				userStubDB.deserializeUserStubDB(
 						userStubDB.getABSOLUTE_FILE_PATH()));
-		userStubDB.getUserStubData().add(registrationPage.getRegisterationDetails());
+		userStubDB.getUserStubData().add(registrationPage.getRegistrationDetails());
 		userStubDB.serializeUserStubDB();
 		registrationPage.getMessageLabel().setText("Registeration Successful");
 		cardLayout.show(cardPanel, "login");

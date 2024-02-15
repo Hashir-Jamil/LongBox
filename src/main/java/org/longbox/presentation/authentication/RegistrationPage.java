@@ -9,7 +9,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import org.longbox.domainobjects.dto.UserDTO;
-import org.longbox.businesslogic.utils.RegisterationUtils;
+import org.longbox.businesslogic.utils.RegistrationUtils;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -272,20 +272,20 @@ public class RegistrationPage extends JPanel {
 				passwordField.getPassword().length > 0 &&
 				countryField.getSelectedItem() != null &&
 				dateChooser.getDate() != null &&
-				RegisterationUtils.isValidEmailAddress(emailAddress.getText()) &&
-				RegisterationUtils.isValidPassword(String.valueOf(passwordField.getPassword())) &&
+				RegistrationUtils.isValidEmailAddress(emailAddress.getText()) &&
+				RegistrationUtils.isValidPassword(String.valueOf(passwordField.getPassword())) &&
 				TnCCheckbox.isSelected();
 
-				boolean validEmail = RegisterationUtils.isValidEmailAddress(emailAddress.getText());
-				boolean vaildPassword = RegisterationUtils.isValidPassword(String.valueOf(passwordField.getPassword()));
+				boolean validEmail = RegistrationUtils.isValidEmailAddress(emailAddress.getText());
+				boolean validPassword = RegistrationUtils.isValidPassword(String.valueOf(passwordField.getPassword()));
 
 				// prints the invalid mail and email message
-				if(!validEmail && !vaildPassword) {
+				if(!validEmail && !validPassword) {
 					messageLabel.setForeground(Color.red);
 					messageLabel.setText("Please enter a valid email and a valid password!");
-				}else if(validEmail && !vaildPassword){
+				}else if(validEmail && !validPassword){
 					messageLabel.setText("Please enter a valid password!");
-				}else if(!validEmail && vaildPassword) {
+				}else if(!validEmail && validPassword) {
 					messageLabel.setText("Please enter a valid email!");
 				}else {
 					messageLabel.setText("");
@@ -307,7 +307,7 @@ public class RegistrationPage extends JPanel {
 		return messageLabel;
 	}
 
-	public UserDTO getRegisterationDetails() {
+	public UserDTO getRegistrationDetails() {
 		String firstName = firstNameField.getText();
 		String lastName = lastNameField.getText();
 		Date dob = dateChooser.getDate();
