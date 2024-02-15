@@ -32,9 +32,7 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 	
 	private JPanel panel;
 	private JLabel comicCollectionTitle;
-	private JLabel lblNewLabel_1;
 	private JSeparator separator;
-	private JComboBox<String> comboBox;
 	private JScrollPane scrollPane;
 	private String currentItem;
 	private JTable comicBookTable;
@@ -63,26 +61,9 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 		comicCollectionTitle.setBounds(396, 11, 372, 43);
 		panel.add(comicCollectionTitle);
 		
-		lblNewLabel_1 = new JLabel("Sort By:");
-		lblNewLabel_1.setBounds(935, 67, 60, 14);
-		panel.add(lblNewLabel_1);
-		
 		separator = new JSeparator();
 		separator.setBounds(10, 92, 1144, 14);
 		panel.add(separator);
-		
-		comboBox = new JComboBox<String>();
-		comboBox.setBounds(992, 62, 162, 22);
-		panel.add(comboBox);
-		
-		comboBox.addItem("A-Z");
-		comboBox.addItem("Z-A");
-		comboBox.addItem("Date Added (Recent)");
-		comboBox.addItem("Date Added (Oldest)");
-		comboBox.addItem("Publication Date (Recent)");
-		comboBox.addItem("Publication Date (Oldest)");
-		
-		comboBox.addActionListener(this);
 		
 		add(panel, BorderLayout.CENTER);
 
@@ -119,33 +100,5 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 	@Override
     public void actionPerformed(ActionEvent e) {
 		
-		String option = (String)comboBox.getSelectedItem();
-
-        if(e.getSource() == comboBox) {
-        	option = (String)comboBox.getSelectedItem();
-        	switch (option) {
-			case "A-Z":
-				System.out.println("A-Z");
-				break;
-			case "Z-A":
-				System.out.println("Z-A");
-				break;
-			case "Date Added (Recent)":
-				System.out.println("Date Added (Recent)");
-				break;
-			case "Date Added (Oldest)":
-				System.out.println("Date Added (Oldest)");
-				break;
-			case "Publication Date (Recent)":
-				System.out.println("Publication Date (Recent)");
-				break;
-			case "Publication Date (Oldest)":
-				System.out.println("Publication Date (Oldest)");
-				break;
-			default:
-				System.out.println("A-Z");
-				break;
-		}
-        }
     }
 }
