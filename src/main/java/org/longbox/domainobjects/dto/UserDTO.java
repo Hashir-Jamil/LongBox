@@ -54,6 +54,17 @@ public class UserDTO {
 		return Objects.hash(getUserName(), getFirstName(), getLastName(), getDob(), getEmail(), getCountry(), getJoinDate());
 	}
 
+	@Override
+	public String toString() {
+		return "Username: " + userName + "\n" +
+				"First Name: " + firstName + "\n" +
+				"Lastname: " + lastName + "\n" +
+				"Date of Birth: " + dob + "\n" +
+				"Email Address: " + email + "\n" +
+				"Country: " + country + "\n" +
+				"Join Date: " + joinDate + "\n";
+	}
+
 	public boolean addComicBookToList(ComicBookDTO comicBook) {
 		if (comicBookList.contains(comicBook)) {
 			return false;

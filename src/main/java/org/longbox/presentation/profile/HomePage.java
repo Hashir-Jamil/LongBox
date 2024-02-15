@@ -33,7 +33,7 @@ public class HomePage extends JFrame implements ActionListener {
 	private CardLayout cardLayout;
     private static JFrame frame;
     private JPanel comicCollectionPanel = new ComicCollectionPage();
-    private JPanel profilePanel = new ProfilePage();
+    private ProfilePage profilePanel = new ProfilePage();
     private AddComicToRepoPage addComicToRepoPanel = new AddComicToRepoPage();
     private JButton searchButton;
     private JButton addComicButton;
@@ -77,6 +77,7 @@ public class HomePage extends JFrame implements ActionListener {
         userNameLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         userNameLabel.setBounds(811, 19, 181, 16);
         nexusPanel.add(userNameLabel);
+        this.profilePanel.setUserSession(user);
     }
 
     public void initiateRegUI() {
@@ -138,6 +139,7 @@ public class HomePage extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         if(e.getSource() == logOutButton) {
             int confirmLogOut = JOptionPane.showConfirmDialog(frame, "Are you sure you want to log out?", "Log Out Confirmation", JOptionPane.YES_NO_OPTION);
             if (confirmLogOut == JOptionPane.YES_OPTION) {
@@ -148,23 +150,26 @@ public class HomePage extends JFrame implements ActionListener {
                 dispose();
             }
         }
+
         if (e.getSource() == addComicToRepoPanel.getEnterComicBookButton()) {
             saveAddComicBookFormInput();
-
         }
-        if(e.getSource() == comicCollectionButton) {
+
+        if (e.getSource() == comicCollectionButton) {
             System.out.println("entered collection");
         	cardLayout.show(activityPanel, COMIC_COLLECTAION_PANEL);
         }
-        if(e.getSource() == searchButton) {
-            System.out.println("entered saearch");
+
+        if (e.getSource() == searchButton) {
+            System.out.println("entered search");
         	cardLayout.show(activityPanel, SEARCH_COMIC_BOOK);
         }
-        if(e.getSource() == profileButton) {
-            System.out.println("entered profile");
+
+        if (e.getSource() == profileButton) {
         	cardLayout.show(activityPanel, PROFILE_PANEL);
         }
-        if(e.getSource() == addComicButton) {
+
+        if (e.getSource() == addComicButton) {
             System.out.println("entered add comic");
         	cardLayout.show(activityPanel, ADD_COMIC_TO_REPO);
         }

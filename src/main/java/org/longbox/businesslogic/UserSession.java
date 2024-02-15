@@ -25,5 +25,9 @@ public class UserSession {
     public UserDTO getUser() {
     	return this.user;
     }
-    
+
+    @Override
+    public String toString() {
+        return user.toString();
+    }
 }
