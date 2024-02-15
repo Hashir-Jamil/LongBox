@@ -43,7 +43,7 @@
     
 ## Saturday, February 10th, 2024
 	
-	Ahan: Completed the user logout functionality started by Dexter. Also integrated the active user session into the design, which helps in validating the user session once logged in. Added the functionality to view the user name on the home page once logged in.
+	Ahan: Completed the user logout functionality started by Dexter. Also integrated the active user session into the design, which helps in validating the user session once logged in. Added the functionality to view the user name on the home page once logged in. Completed All the user stories for this sprint.
     Hashir: created comparators and sorting methods for comic book lists to be sorted by intended business rules/user story features.
 
 ## Sunday, February 11th, 2024
@@ -55,3 +55,6 @@
     Group meeting: ended/concluded ITR01-associated sprint on JIRA and assigned new user stories to move forward to next sprint for ITR2/Deliverable1
     Hashir: finished story for user to add a comic book to the stub database.
     
+## Thursday, February 15th, 2024
+
+    Ahan: Refactored Authentication page for better redability.
