@@ -176,19 +176,28 @@ public class HomePage extends JFrame implements ActionListener {
     }
 
     private void saveAddComicBookFormInput() {
+
+        //Create data transfer object for comic book
         ComicBookDTO comicBook = new ComicBookDTO(
-                addComicToRepoPanel.getComicBookNameTextField().getText(),
+                addComicToRepoPanel.getComicSeriesTitleTextField().getText(),
                 addComicToRepoPanel.getComicBookAuthorTextField().getText(),
-                //addComicToRepoPanel.getComicBookA
+                addComicToRepoPanel.getComicBookArtistTextField().getText(),
+                addComicToRepoPanel.getGenresTextField().getText(),
+                addComicToRepoPanel.getDescriptionTextField().getText(),
+                Integer.parseInt(addComicToRepoPanel.getNumberOfIssuesTextField().getText()),
                 addComicToRepoPanel.getPublisherTextField().getText(),
-                Integer.parseInt(addComicToRepoPanel.getYearTextField().getText())
+                Integer.parseInt(addComicToRepoPanel.getYearPublishedTextField().getText())
         );
 
         // Reset Text
-        addComicToRepoPanel.getComicBookNameTextField().setText("");
+        addComicToRepoPanel.getComicSeriesTitleTextField().setText("");
         addComicToRepoPanel.getComicBookAuthorTextField().setText("");
+        addComicToRepoPanel.getComicBookArtistTextField().setText("");
+        addComicToRepoPanel.getGenresTextField().setText("");
+        addComicToRepoPanel.getDescriptionTextField().setText("");
+        addComicToRepoPanel.getNumberOfIssuesTextField().setText("");
         addComicToRepoPanel.getPublisherTextField().setText("");
-        addComicToRepoPanel.getYearTextField().setText("");
+        addComicToRepoPanel.getYearPublishedTextField().setText("");
 
         //Stub DB initialization, deserialized read from JSON & rewrite back to JSON with new object
         ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
@@ -198,5 +207,4 @@ public class HomePage extends JFrame implements ActionListener {
         comicBookStubDB.getComicBookStubData().add(comicBook);
         comicBookStubDB.serializeComicBookStubDB();
     }
-
 }

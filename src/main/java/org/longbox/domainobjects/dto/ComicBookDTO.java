@@ -28,11 +28,32 @@ public class ComicBookDTO {
       String seriesTitle,
       String author,
       String artist,
-      String[] genres,
+      String genres,
       String description,
       int numberOfIssues,
       String publisher,
       int yearPublished
+    ) {
+        this.seriesTitle = seriesTitle;
+        this.author = author;
+        this.artist = artist;
+        this.genres = genreStringToList(genres);
+        this.description = description;
+        this.numberOfIssues = numberOfIssues;
+        this.yearPublished = yearPublished;
+        this.publisher = publisher;
+        this.dateAdded = new Date();
+    };
+
+    public ComicBookDTO(
+            String seriesTitle,
+            String author,
+            String artist,
+            String[] genres,
+            String description,
+            int numberOfIssues,
+            String publisher,
+            int yearPublished
     ) {
         this.seriesTitle = seriesTitle;
         this.author = author;
@@ -65,6 +86,11 @@ public class ComicBookDTO {
         sortCommentsByDateAscending();
         Collections.reverse(this.commentsList);
     }
+
+    public String[] genreStringToList(String genres) {
+        return genres.split("[,\\s]+");
+    }
+
 }
 
 
