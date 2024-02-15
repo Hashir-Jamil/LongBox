@@ -91,6 +91,14 @@ public class ComicBookDTO {
         return genres.split("[,\\s]+");
     }
 
+    public static String genreListToString(String[] genresList) {
+        String genres = "";
+        for (int i = 0; i < genresList.length; i++) {
+            genres = genres + genresList[i] + ", ";
+        }
+        return genres;
+    }
+
 }
 
 

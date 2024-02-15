@@ -1,6 +1,7 @@
 package org.longbox.presentation.profile;
 
 import org.longbox.businesslogic.*;
+import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.stubdatabase.ComicBookStubDB;
 import org.longbox.presentation.authentication.AuthenticationPage;
@@ -16,6 +17,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.text.html.HTMLEditorKit;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,18 +31,18 @@ public class HomePage extends JFrame implements ActionListener {
     private JButton logOutButton;
     private JPanel nexusPanel;
     private JPanel activityPanel;
-    private JPanel searchPanel = new SearchPage();
+    private SearchPage searchPanel = new SearchPage();
 	private CardLayout cardLayout;
     private static JFrame frame;
     private JPanel comicCollectionPanel = new ComicCollectionPage();
     private ProfilePage profilePanel = new ProfilePage();
     private AddComicToRepoPage addComicToRepoPanel = new AddComicToRepoPage();
-    private JButton searchButton;
+    private JButton searchButtonNexus;
     private JButton addComicButton;
     private JButton comicCollectionButton;
     private JButton profileButton;
+    private JButton searchButton;
     private JLabel userNameLabel;
-//    private UserSession user;
     private final String SEARCH_COMIC_BOOK = "Search Comics Panel";
     private final String COMIC_COLLECTAION_PANEL = "Comic Collection Panel";
     private final String PROFILE_PANEL = "Profile Panel";
@@ -112,11 +114,11 @@ public class HomePage extends JFrame implements ActionListener {
         nexusPanel.add(logOutButton);
         logOutButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
 
-        searchButton = new JButton("Search");
-        searchButton.addActionListener(this);
-        
-        searchButton.setBounds(376, 12, 170, 25);
-        nexusPanel.add(searchButton);
+        searchButtonNexus = new JButton("Search");
+        searchButtonNexus.addActionListener(this);
+
+        searchButtonNexus.setBounds(376, 12, 170, 25);
+        nexusPanel.add(searchButtonNexus);
 
         addComicButton = new JButton("Add Comic");
         addComicButton.addActionListener(this);
@@ -137,6 +139,7 @@ public class HomePage extends JFrame implements ActionListener {
         profileButton.addActionListener(this);
         logOutButton.addActionListener(this);
         addComicToRepoPanel.getEnterComicBookButton().addActionListener(this);
+        searchButton = searchPanel.getSearchButton();
     }
 
     @Override
@@ -158,13 +161,30 @@ public class HomePage extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == comicCollectionButton) {
-            System.out.println("entered collection");
         	cardLayout.show(activityPanel, COMIC_COLLECTAION_PANEL);
         }
 
-        if (e.getSource() == searchButton) {
+        if (e.getSource() == searchButtonNexus) {
             System.out.println("entered search");
         	cardLayout.show(activityPanel, SEARCH_COMIC_BOOK);
+            searchButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("Search Button Pressed");
+                    ComicBookDTO comicBook = searchComicBookResults(searchPanel.getSearchTextField().getText());
+                    searchPanel.getSearchTextField().setText(searchPanel.getSEARCH_BY_TITLE());
+                    if (comicBook.getSeriesTitle() != null) {
+                        ComicBookFrame comicBookFrame = new ComicBookFrame();
+                        comicBookFrame.setVisible(true);
+                        HTMLEditorKit kit = new HTMLEditorKit();
+                        comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(kit);
+                        comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(frame, "No search results found.", "Search Results Not Found", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            });
         }
 
         if (e.getSource() == profileButton) {
@@ -208,5 +228,11 @@ public class HomePage extends JFrame implements ActionListener {
                         comicBookStubDB.getABSOLUTE_FILE_PATH()));
         comicBookStubDB.getComicBookStubData().add(comicBook);
         comicBookStubDB.serializeComicBookStubDB();
+    }
+
+    private ComicBookDTO searchComicBookResults(String searchQuery) {
+        ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
+        comicBookStubDB.loadComicBooks();
+        return ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), searchQuery);
     }
 }
