@@ -1,47 +1,79 @@
 [
   {
     "id": 0,
-    "seriesTitle": "Spider Man",
-    "author": "Stan Lee",
-    "publisher": "Marvel Comics",
-    "year": 1994,
-    "dateAdded": "Feb 12, 2024, 11:13:02 PM",
+    "seriesTitle": "Zot!",
+    "author": "Scott McCloud",
+    "artist": "Scott McCloud",
+    "genres": [
+      "Superhero",
+      "Superpower",
+      "Adventure",
+      "Science Fiction",
+      "Futuristic",
+      "Romance",
+      "Drama"
+    ],
+    "description": "Description",
+    "numberOfIssues": 36,
+    "publisher": "Eclipse",
+    "yearPublished": 1984,
+    "dateAdded": "Feb 14, 2024, 12:28:43 PM",
     "commentsList": []
   },
   {
     "id": 0,
-    "seriesTitle": "Batman",
-    "author": "Frank Miller",
-    "publisher": "DC",
-    "year": 2005,
-    "dateAdded": "Feb 12, 2024, 11:13:02 PM",
+    "seriesTitle": "Sanctuary",
+    "author": "Sho Fumimura",
+    "artist": "Ryoichi Ikegami",
+    "genres": [
+      "Polital",
+      "Crime",
+      "Thriller",
+      "Manga"
+    ],
+    "description": "Description",
+    "numberOfIssues": 108,
+    "publisher": "Viz",
+    "yearPublished": 1990,
+    "dateAdded": "Feb 14, 2024, 12:28:43 PM",
     "commentsList": []
   },
   {
     "id": 0,
-    "seriesTitle": "Batman",
-    "author": "Mark Twain",
-    "publisher": "DC",
-    "year": 2005,
-    "dateAdded": "Feb 12, 2024, 11:13:02 PM",
+    "seriesTitle": "Nexus (1981)",
+    "author": "Mike Baron",
+    "artist": "Steve Rude",
+    "genres": [
+      "Superhero",
+      "Planetary Romance",
+      "Superpower",
+      "Science Fiction",
+      "Adventure",
+      "Fantasy"
+    ],
+    "description": "Description",
+    "numberOfIssues": 3,
+    "publisher": "Capital",
+    "yearPublished": 1981,
+    "dateAdded": "Feb 14, 2024, 12:28:43 PM",
     "commentsList": []
   },
   {
     "id": 0,
-    "seriesTitle": "Sin City",
-    "author": "Frank Miller",
-    "publisher": "DC",
-    "year": 2001,
-    "dateAdded": "Feb 12, 2024, 11:13:02 PM",
-    "commentsList": []
-  },
-  {
-    "id": 0,
-    "seriesTitle": "Superman",
-    "author": "Jerry West",
-    "publisher": "DC Comics",
-    "year": 1933,
-    "dateAdded": "Feb 12, 2024, 11:18:02 PM",
+    "seriesTitle": "The Maxx",
+    "author": "Sam Keith",
+    "artist": "Sam Keith",
+    "genres": [
+      "Fantasy",
+      "Drama",
+      "Comedy",
+      "Superhero"
+    ],
+    "description": "Description",
+    "numberOfIssues": 35,
+    "publisher": "Image",
+    "yearPublished": 1993,
+    "dateAdded": "Feb 14, 2024, 12:28:43 PM",
     "commentsList": []
   }
 ]
