@@ -1,5 +1,7 @@
 package org.longbox.presentation.profile;
 
+import org.longbox.persistence.stubdatabase.ComicBookStubDB;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -8,7 +10,6 @@ import java.util.*;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -29,8 +30,9 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 	private JComboBox<String> comboBox;
 	private JScrollPane scrollPane;
 	private String currentItem;
-	private JTable table;
+	private JTable comicBookTable;
 	private JTextField textField;
+	private ComicBookTableModel comicBookTableModel;
 	
 	
 	ComicCollectionPage() {
@@ -81,15 +83,23 @@ public class ComicCollectionPage extends JPanel implements ActionListener{
 		});
 		
 		add(panel, BorderLayout.CENTER);
+
+		ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
+		comicBookStubDB.loadComicBooks();
+
+		comicBookTableModel = new ComicBookTableModel(comicBookStubDB.getComicBookStubData());
 		
-		scrollPane = new JScrollPane();
+		comicBookTable = new JTable(comicBookTableModel);
+
+		scrollPane = new JScrollPane(comicBookTable);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(10, 110, 1144, 683);
 		panel.add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+
+		System.out.println(comicBookStubDB.getComicBookStubData());
+
+		//scrollPane.setViewportView(comicBookTable);
 		
 		textField = new JTextField();
 		textField.setBounds(116, 62, 213, 22);

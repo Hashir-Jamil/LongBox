@@ -83,18 +83,15 @@ public class ComicBookStubDB {
     }
 
     public List<ComicBookDTO> deserializeComicBookStubDB(String filepath) {
-        Type listType = new TypeToken<ArrayList<ComicBookDTO>>(){}.getType();
+        Type listType = new TypeToken<List<ComicBookDTO>>(){}.getType();
         JsonReader reader = null;
 
         try {
             reader = new JsonReader(new FileReader(filepath));
+            return new Gson().fromJson(reader, listType);
         }
         catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-
-        List<ComicBookDTO> stubComicBooks = new Gson().fromJson(reader, listType);
-        return stubComicBooks;
     }
-
 }
