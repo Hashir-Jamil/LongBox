@@ -43,6 +43,7 @@ public class HomePage extends JFrame implements ActionListener {
     private JButton profileButton;
     private JButton searchButton;
     private JLabel userNameLabel;
+//    private UserSession user;
     private final String SEARCH_COMIC_BOOK = "Search Comics Panel";
     private final String COMIC_COLLECTAION_PANEL = "Comic Collection Panel";
     private final String PROFILE_PANEL = "Profile Panel";
@@ -146,14 +147,7 @@ public class HomePage extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == logOutButton) {
-            int confirmLogOut = JOptionPane.showConfirmDialog(frame, "Are you sure you want to log out?", "Log Out Confirmation", JOptionPane.YES_NO_OPTION);
-            if (confirmLogOut == JOptionPane.YES_OPTION) {
-                
-            	this.userSession.clearUserSession();
-                AuthenticationPage loginPage = new AuthenticationPage();
-                loginPage.setVisible(true);
-                dispose();
-            }
+            logoutUser();
         }
 
         if (e.getSource() == addComicToRepoPanel.getEnterComicBookButton()) {
@@ -228,6 +222,17 @@ public class HomePage extends JFrame implements ActionListener {
                         comicBookStubDB.getABSOLUTE_FILE_PATH()));
         comicBookStubDB.getComicBookStubData().add(comicBook);
         comicBookStubDB.serializeComicBookStubDB();
+    }
+
+    private void logoutUser(){
+        int confirmLogOut = JOptionPane.showConfirmDialog(frame, "Are you sure you want to log out?", "Log Out Confirmation", JOptionPane.YES_NO_OPTION);
+        if (confirmLogOut == JOptionPane.YES_OPTION) {
+            userSession.clearUserSession();
+            UserSession.setActiveUser(null);
+            AuthenticationPage loginPage = new AuthenticationPage();
+            loginPage.setVisible(true);
+            dispose();
+        }
     }
 
     private ComicBookDTO searchComicBookResults(String searchQuery) {

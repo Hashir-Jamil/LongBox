@@ -3,20 +3,16 @@ package org.longbox.businesslogic.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jakarta.mail.internet.AddressException;
-import jakarta.mail.internet.InternetAddress;
+import org.apache.commons.validator.routines.EmailValidator;
 
-public class RegisterationUtils {
+
+//import jakarta.mail.internet.AddressException;
+//import jakarta.mail.internet.InternetAddress;
+
+public class RegistrationUtils {
 	// validate email stack overflow
 	public static boolean isValidEmailAddress(String email) {
-		boolean result = true;
-		try {
-			InternetAddress emailAddr = new InternetAddress(email);
-			emailAddr.validate();
-		} catch (AddressException ex) {
-			result = false;
-		}
-		return result;
+		return EmailValidator.getInstance().isValid(email);
 	}
 
 	// validate password https://www.geeksforgeeks.org/how-to-validate-a-password-using-regular-expressions-in-java/

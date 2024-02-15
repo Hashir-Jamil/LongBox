@@ -20,6 +20,7 @@ dependencies {
     compileOnly("org.projectlombok:lombok:1.18.30")
     annotationProcessor("org.projectlombok:lombok:1.18.30")
     implementation("com.google.code.gson:gson:2.10.1")
+    implementation("commons-validator:commons-validator:1.8.0")
 }
 
 tasks.test {

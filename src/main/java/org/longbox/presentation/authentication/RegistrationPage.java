@@ -9,20 +9,17 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import org.longbox.domainobjects.dto.UserDTO;
-import org.longbox.businesslogic.utils.RegisterationUtils;
+import org.longbox.businesslogic.utils.RegistrationUtils;
 
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.util.Date;
 import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
-import jakarta.mail.internet.AddressException;
-import jakarta.mail.internet.InternetAddress;
 
 import javax.swing.JButton;
 import com.toedter.calendar.JDateChooser;
@@ -33,7 +30,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.text.SimpleDateFormat;
+
 
 
 public class RegistrationPage extends JPanel {
@@ -272,20 +269,20 @@ public class RegistrationPage extends JPanel {
 				passwordField.getPassword().length > 0 &&
 				countryField.getSelectedItem() != null &&
 				dateChooser.getDate() != null &&
-				RegisterationUtils.isValidEmailAddress(emailAddress.getText()) &&
-				RegisterationUtils.isValidPassword(String.valueOf(passwordField.getPassword())) &&
+				RegistrationUtils.isValidEmailAddress(emailAddress.getText()) &&
+				RegistrationUtils.isValidPassword(String.valueOf(passwordField.getPassword())) &&
 				TnCCheckbox.isSelected();
 
-				boolean validEmail = RegisterationUtils.isValidEmailAddress(emailAddress.getText());
-				boolean vaildPassword = RegisterationUtils.isValidPassword(String.valueOf(passwordField.getPassword()));
+				boolean validEmail = RegistrationUtils.isValidEmailAddress(emailAddress.getText());
+				boolean validPassword = RegistrationUtils.isValidPassword(String.valueOf(passwordField.getPassword()));
 
 				// prints the invalid mail and email message
-				if(!validEmail && !vaildPassword) {
+				if(!validEmail && !validPassword) {
 					messageLabel.setForeground(Color.red);
 					messageLabel.setText("Please enter a valid email and a valid password!");
-				}else if(validEmail && !vaildPassword){
+				}else if(validEmail && !validPassword){
 					messageLabel.setText("Please enter a valid password!");
-				}else if(!validEmail && vaildPassword) {
+				}else if(!validEmail && validPassword) {
 					messageLabel.setText("Please enter a valid email!");
 				}else {
 					messageLabel.setText("");
@@ -307,28 +304,16 @@ public class RegistrationPage extends JPanel {
 		return messageLabel;
 	}
 
-	public UserDTO getRegisterationDetails() {
+	public UserDTO getRegistrationDetails() {
 		String firstName = firstNameField.getText();
 		String lastName = lastNameField.getText();
-		Date date = dateChooser.getDate();
+		Date dob = dateChooser.getDate();
 		String username = usernameField.getText();
 		String email = emailAddress.getText();
 		String password = String.valueOf(passwordField.getPassword());
-		String country = countryField.getSelectedItem().toString(); 
+		String country = countryField.getSelectedItem().toString();
 
-		//formats the date
-		SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd");
-		String dob = dcn.format(date);
-
-		Date formattedDate = null;
-		try {
-			formattedDate = dcn.parse(dob);
-		} catch (java.text.ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return new UserDTO(username, firstName, lastName, formattedDate, email, password, country);
+		return new UserDTO(username, firstName, lastName, dob, email, password, country);
 	}
 
 }
