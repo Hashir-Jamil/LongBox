@@ -1,6 +1,6 @@
 [
   {
-    "id": 0,
+    "id": 1,
     "seriesTitle": "Zot!",
     "author": "Scott McCloud",
     "artist": "Scott McCloud",
@@ -21,7 +21,7 @@
     "commentsList": []
   },
   {
-    "id": 0,
+    "id": 2,
     "seriesTitle": "Sanctuary",
     "author": "Sho Fumimura",
     "artist": "Ryoichi Ikegami",
@@ -39,7 +39,7 @@
     "commentsList": []
   },
   {
-    "id": 0,
+    "id": 3,
     "seriesTitle": "Nexus (1981)",
     "author": "Mike Baron",
     "artist": "Steve Rude",
@@ -59,7 +59,7 @@
     "commentsList": []
   },
   {
-    "id": 0,
+    "id": 4,
     "seriesTitle": "The Maxx",
     "author": "Sam Keith",
     "artist": "Sam Keith",

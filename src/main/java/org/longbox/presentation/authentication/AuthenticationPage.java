@@ -112,7 +112,4 @@ public class AuthenticationPage extends JFrame implements ActionListener {
         	cardLayout.show(cardPanel, "login");
         }
     }
-
-
-
 }
