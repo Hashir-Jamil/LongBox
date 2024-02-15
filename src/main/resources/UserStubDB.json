@@ -1,5 +1,6 @@
 [
   {
+    "id": 0,
     "userName": "Always_Scheming",
     "firstName": "John",
     "lastName": "Smith",
@@ -7,9 +8,11 @@
     "email": "email@domain.com",
     "password": "Always_Scheming",
     "country": "Canada",
-    "joinDate": "Feb 7, 2024, 11:40:52 PM"
+    "joinDate": "Feb 14, 2024, 12:28:42 PM",
+    "comicBookList": []
   },
   {
+    "id": 0,
     "userName": "Always_Throwing",
     "firstName": "Neo",
     "lastName": "Anderson",
@@ -17,9 +20,11 @@
     "email": "address@provider.ca",
     "password": "Always_Throwing",
     "country": "Indonesia",
-    "joinDate": "Feb 7, 2024, 11:40:52 PM"
+    "joinDate": "Feb 14, 2024, 12:28:42 PM",
+    "comicBookList": []
   },
   {
+    "id": 0,
     "userName": "Phoenix",
     "firstName": "Stan",
     "lastName": "Lee",
@@ -27,6 +32,7 @@
     "email": "123fake@nowhere.org",
     "password": "Phoenix",
     "country": "United Kingdom",
-    "joinDate": "Feb 7, 2024, 11:40:52 PM"
+    "joinDate": "Feb 14, 2024, 12:28:42 PM",
+    "comicBookList": []
   }
 ]

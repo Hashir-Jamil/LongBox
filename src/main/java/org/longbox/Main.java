@@ -12,12 +12,12 @@ public class Main {
         // build stub database entries for the JSON files used with GSON
         // sample code is shown below in the two comment blocks.
 
-        /*UserStubDB userStubDB = new UserStubDB();
+        /* UserStubDB userStubDB = new UserStubDB();
         userStubDB.loadUsers();
-        userStubDB.serializeComicBookStubDB();*/
+        userStubDB.serializeComicBookStubDB();
 
-        /*ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
+        ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
         comicBookStubDB.loadComicBooks();
-        comicBookStubDB.serializeComicBookStubDB();*/
+        comicBookStubDB.serializeComicBookStubDB(); */
     }
 }
