@@ -84,13 +84,8 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 				int col = comicBookTable.columnAtPoint(e.getPoint());
 				if (col == 0) {
 					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), comicBookTable.getValueAt(row, col).toString());
-					System.out.println("Selected '" + comicBookTable.getValueAt(row, col).toString() + "' from table");
-					
-					ComicBookFrame comicBookFrame = new ComicBookFrame();
-					comicBookFrame.setVisible(true);
-					HTMLEditorKit htmlEditorKit = new HTMLEditorKit();
-					comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(htmlEditorKit);
-					comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
+					System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
+					loadComicBookPage(comicBook);
 				}
 			}
 		});
@@ -122,14 +117,18 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 			System.out.println("Search for: " + textField.getText());
 			ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), textField.getText());
 			if (comicBook.getSeriesTitle() != null) {
-				ComicBookFrame comicBookFrame = new ComicBookFrame();
-				comicBookFrame.setVisible(true);
-				HTMLEditorKit htmlEditorKit = new HTMLEditorKit();
-				comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(htmlEditorKit);
-				comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
+				loadComicBookPage(comicBook);
 			} else {
                 JOptionPane.showMessageDialog(panel, "No search results found.", "Search Results Not Found", JOptionPane.INFORMATION_MESSAGE);
             }
 		}
     }
+	
+	private void loadComicBookPage(ComicBookDTO comicBook) {
+		ComicBookFrame comicBookFrame = new ComicBookFrame();
+		comicBookFrame.setVisible(true);
+		HTMLEditorKit htmlEditorKit = new HTMLEditorKit();
+		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(htmlEditorKit);
+		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
+	}
 }
