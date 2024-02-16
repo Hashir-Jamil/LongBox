@@ -46,7 +46,14 @@ public class UserDTO {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (!(o instanceof UserDTO userDTO)) return false;
-		return Objects.equals(getUserName(), userDTO.getUserName()) && Objects.equals(getFirstName(), userDTO.getFirstName()) && Objects.equals(getLastName(), userDTO.getLastName()) && Objects.equals(getDob(), userDTO.getDob()) && Objects.equals(getEmail(), userDTO.getEmail()) && Objects.equals(getCountry(), userDTO.getCountry()) && Objects.equals(getJoinDate(), userDTO.getJoinDate());
+		return Objects.equals(getUserName(),
+				userDTO.getUserName()) && Objects.equals(getFirstName(),
+				userDTO.getFirstName()) && Objects.equals(getLastName(),
+				userDTO.getLastName()) && Objects.equals(getDob(),
+				userDTO.getDob()) && Objects.equals(getEmail(), userDTO.getEmail()) && Objects.equals(getCountry(),
+				userDTO.getCountry()) && Objects.equals(getJoinDate(),
+				userDTO.getJoinDate()
+		);
 	}
 
 	@Override
