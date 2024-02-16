@@ -26,7 +26,7 @@ public class ComicBookTableModel extends DefaultTableModel {
         }
 
         for (ComicBookDTO comicBook : comicBookList) {
-            String genres = comicBook.getGenres()[0] + " ," + comicBook.getGenres()[1];
+            String genres = comicBook.getGenres()[0] + ", " + comicBook.getGenres()[1];
             addRow(new Object[]{
                     comicBook.getSeriesTitle(),
                     comicBook.getAuthor(),
