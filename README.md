@@ -24,8 +24,7 @@ This project uses a 3-layer software architechture. A sketch of it is:
 The project also consists of a number of test cases, they can be run in Eclipse as follows: 
 > right click on src/test/java > RunAs > JUnit Test.
 
-> These tests make sure that the business logic that drives our system is working correctly and as expected.
-> We have done a thorough testing such that all the possible edge cases are covered in the test.
+These tests make sure that the business logic that drives our system is working correctly and as expected.We have done a thorough testing such that all the possible edge cases are covered in the test.
 
 ## Deployment
 
