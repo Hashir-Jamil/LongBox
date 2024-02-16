@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 
-import java.util.Date;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ComicBookDateAddedComparatorTest {
