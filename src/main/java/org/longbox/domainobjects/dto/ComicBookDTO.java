@@ -69,33 +69,40 @@ public class ComicBookDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ComicBookDTO that)) return false;
-        return getYearPublished() == that.getYearPublished() && Objects.equals(getSeriesTitle(), that.getSeriesTitle()) && Objects.equals(getAuthor(), that.getAuthor()) && Objects.equals(getPublisher(), that.getPublisher()) && Objects.equals(getDateAdded(), that.getDateAdded());
+        if (o == null || getClass() != o.getClass()) return false;
+        ComicBookDTO that = (ComicBookDTO) o;
+        return getId() == that.getId() && getNumberOfIssues() == that.getNumberOfIssues() && getYearPublished() == that.getYearPublished() && Objects.equals(getSeriesTitle(),
+                that.getSeriesTitle()) && Objects.equals(getAuthor(),
+                that.getAuthor()) && Objects.equals(getArtist(),
+                that.getArtist()) && Objects.equals(getDescription(),
+                that.getDescription()) && Objects.equals(getPublisher(),
+                that.getPublisher());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getSeriesTitle(), getAuthor(), getPublisher(), getYearPublished(), getDateAdded());
+        return Objects.hash(getId(), getSeriesTitle(), getAuthor(), getArtist(), getDescription(), getNumberOfIssues(), getPublisher(), getYearPublished());
     }
 
-    public void sortCommentsByDateAscending() {
-        Collections.sort(this.commentsList, new CommentDateComparator());
-    }
-
-    public void sortCommentsByDateDescending() {
-        sortCommentsByDateAscending();
-        Collections.reverse(this.commentsList);
-    }
-
-    public String[] genreStringToList(String genres) {
-        return genres.split("[,\\s]+");
+    public static String[] genreStringToList(String genres) {
+        return genres.split(",\\s*");
     }
 
     public static String genreListToString(String[] genresList) {
         String genres = "";
-        for (int i = 0; i < genresList.length; i++) {
+
+        if (genresList.length == 0) {
+            return genres;
+        }
+
+        if (genresList.length == 1) {
+            return genresList[0];
+        }
+
+        for (int i = 0; i < genresList.length - 1; i++) {
             genres = genres + genresList[i] + ", ";
         }
+        genres = genres + genresList[genresList.length - 1];
         return genres;
     }
 
