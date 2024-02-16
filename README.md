@@ -4,9 +4,9 @@ Your digital solution for archiving and preserving comic books. Developed by pas
 
 ## System 
 
-This project uses a 3-layer software architechture. A sketch of it is:
+This project uses a 3-layer software architecture. The system is built around the Java Swing framework and behaves as a model view controller application in conformance to the oracle documentation for Swing applications. A sketch of it is:
 
-![architectural-diagram.png](architectural-diagram.png)
+
 
 ## Getting Started
 
@@ -17,8 +17,8 @@ This project uses a 3-layer software architechture. A sketch of it is:
 
 ### Installing
 
-1. The project needs to be cloned into Eclipse.
-2. Once the project has been cloned, gradle nature needs to be added to the project. [How to configure grade in eclipse](https://www.vogella.com/tutorials/EclipseGradle/article.html#add-gradle-support-to-existing-eclipse-project).
+1. The project needs to be cloned into Eclipse from the [GitHub Repository](https://github.com/Hashir-Jamil/LongBox). In terms of ITR01 release, the branch is named iteration_one and in terms of deliverable 1, the branch is main.
+2. Once the project has been cloned, gradle nature needs to be added to the project. [How to configure gradle in eclipse](https://www.vogella.com/tutorials/EclipseGradle/article.html#add-gradle-support-to-existing-eclipse-project).
 3. This project also uses [Project Lombok](https://www.baeldung.com/intro-to-project-lombok). [Configure Project Lombok in Eclipse](https://stackoverflow.com/a/65949629).
 
 ### Testing
@@ -31,15 +31,15 @@ These tests make sure that the business logic that drives our system is working 
 ## Deployment
 
 To launch the project:
-1. Go the the presentation package in source.
+1. Go the presentation package in source.
 > LongBox / src / main / java / org / longbox / presntation
-2. Go the the authentication package inside presentaion.
+2. Go the authentication package inside presentaion.
 > LongBox / src / main / java / org / longbox / presntation / authentication
-3. Run the _AuthenticationPage.java_ file
+3. Run the AuthenticationPage.java_ file. This is the primary entry point into the project.
 
 Note:
-* This is the first frame of our project, rest features can be accessed through this page.
-* Inside the persistence pacakge, there is UserStubDB, which can be used to login into the system.
+* This is the first frame of our project, rest of the features can be accessed through this page.
+* Inside the persistence package, there is UserStubDB, which can be used to login into the system.
 
 ### Build System
 
@@ -49,15 +49,16 @@ Note:
 
 ### Login Page
 
-This is the first page that the user of the app sees. 
+This is the first page that the user of the app sees.
+You can take a lot at UserStubDB stubbed users that have been added to the system.
 
 ![LoginPage](https://github.com/Hashir-Jamil/LongBox/assets/90640849/94401b5a-5f2c-4d81-9f5d-d589ad11110d)
 
-### Registeration Page
+### Registration Page
 
 New users can sign up and use our app.
 
-![RegisterationPage](https://github.com/Hashir-Jamil/LongBox/assets/90640849/11a86db2-66d6-4859-886a-b7606b660fec)
+![RegistrationPage](https://github.com/Hashir-Jamil/LongBox/assets/90640849/11a86db2-66d6-4859-886a-b7606b660fec)
 
 ### Home Page
 
@@ -74,7 +75,9 @@ Using this page, a user can add a comic book to the system.
 
 ### Search Comics
 
-Users can search a comic book and if the comic is in the reposisotry, results can be viewed.
+Users can search a comic book and if the comic is in the repository, results can be viewed.
+If there are no matches then the user is prompted that no results are found via a dialogue box.
+Results are shown in a new window that displays data for a specific comic book object.
 
 ![Search](https://github.com/Hashir-Jamil/LongBox/assets/90640849/e789b6c6-2fc4-49c0-b3bc-f68449c71919)
 
@@ -83,11 +86,20 @@ Users can search a comic book and if the comic is in the reposisotry, results ca
 ### View Profile
 
 Users can view their details on the profile page.
+This page will show all user profile information except for the password.
 
 ![ViewProfile](https://github.com/Hashir-Jamil/LongBox/assets/90640849/fad928eb-62cc-4983-9fed-c6845c5c25f0)
 
 ### Logout
 
-After usign the system, the user can logout and will be redirected to the login page.
+After using the system, the user can logout and will be redirected to the login page.
 
 ![Logout](https://github.com/Hashir-Jamil/LongBox/assets/90640849/524cf536-87cb-45e4-baa7-42e1e5f3523b)
+
+## Authors
+    Hashir Jamil
+    Ahan Bhargava
+    Mher Eric Gyuluman
+    Ali Sina
+    Dexter Sargent
+    Oscar Ye

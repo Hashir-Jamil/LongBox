@@ -34,16 +34,18 @@
 
     Group (all members present): Spoke with professor about refactoring packages, and making sure everyone implements tests in each of the packages.
     Ahan: Refactored LoginPage and Registration page as JPanels and added a new JFrame AuthenticationPage that houses these two JPanels. Added functionality to switch between LoginPage and RegistrationPage. Cleaned up the code.
-    Hashir: refactored the packages to match architecture shown in class slides + created stub database entries as JSON files with gson serialization/deserialization classes.
+    Hashir: Started working on the add comic book to repository user story and refactored the packages to match architecture shown in class slides + created stub database entries as JSON files with gson serialization/deserialization classes.
     Eric: Added basic ComicCollectionPage with lite features
     
 ## Thursday, February 8th, 2024
 
 	Ahan: Added user login and registration functionality to the authentication page using the StubDB.
     Ahan + Eric + Hashir: worked together to create proper card layout with panels for proper scene transitions without bugs.
+    Hashir: Started working on user stories for adding comic book, searching comic book, viewing tabular view of comic books, viewing profile (these are anticipated to take 2 story points each but this may change)
     
 ## Friday, February 9th, 2024
-	Eric: Fully refactored ComicCollectionPage to now include a search box and ScrollPane with an empty JTable. Old version of ComicCollectionPage was deleted
+	
+    Eric: Fully refactored ComicCollectionPage to now include a search box and ScrollPane with an empty JTable. Old version of ComicCollectionPage was deleted
     
 ## Saturday, February 10th, 2024
 	
@@ -52,23 +54,25 @@
 
 ## Sunday, February 11th, 2024
 
-    Hashir: Refactoring & Reorganizing packages & business logic classes. Making DAO and Repository Interfaces for clean data access.
+    Hashir: Refactoring & Reorganizing packages & business logic classes to correct the architecture in accordance to that presented by the professor in the latest lecture. Making DAO and Repository Interfaces for clean data access.
 
 ## Monday, February 12th, 2024
     
     Group meeting: ended/concluded ITR01-associated sprint on JIRA and assigned new user stories to move forward to next sprint for ITR2/Deliverable1
-    Hashir: finished story for user to add a comic book to the stub database.
+    Hashir: finished story for user to add a comic book to the stub database (this took 3 user story points due to the other tasks needed to be done to correct the architecture and to build up the project's other pieces anticipated for deliverable 2 (e.g. database api, gradle build system, hibernate ORM framework, postgresql connection).
 
 ## Wednesday, February 14th, 2024
 
-    Hashir: Implemented user story for personal profile view and tabular view of all repository items.
+    Hashir: Implemented user story for personal profile view and tabular view of all repository items (both stories took 2 points each).
     Eric: Fully refactored comic book contents. Includes not genres, artists, and issue number. Refactored other files dependent on this change.
     
 ## Thursday, February 15th, 2024
 
     Ahan: Refactored Authentication page for better redability. My initial estimate to complete each of my user stories was off a bit as I decided it would be better to focus on login and registration page simultaneously. I was also learning about concepts on the go, and that made the estimate time to go from 3 days to approximately 5 days. After the coding was done, I started with white box testing and then went ahead and refactored the code, changed a library and changed how the system was interacting with the stubDB, that were earlier not working as inteded.
-    Hashir: Implemented search for individual comic book story.
+    Hashir: Implemented search for individual comic book story (this took 2 points). In addition many refactors of the code were performed and reviewed to ensure everything works smoothly.
     Eric: Added basic test cases for ComicCollectionPanel and uploaded more comics to the repository. Also fully finished implementing sorting for JTable in ComicCollection
     
 ## Firday, February 16th, 2024
-	Eric: Added searchability to ComicCollectionPanel, user can now navigate to a comic page either through the search bar or clicking on a series' title name from the JTable
+	
+    Eric: Added searchability to ComicCollectionPanel, user can now navigate to a comic page either through the search bar or clicking on a series' title name from the JTable.
+    Hashir: Reviewed and editted documentation to be submitted for ITR01 and branched the main trunk into an ITRO1 trunk.
