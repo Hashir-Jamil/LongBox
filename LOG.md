@@ -54,7 +54,12 @@
     
     Group meeting: ended/concluded ITR01-associated sprint on JIRA and assigned new user stories to move forward to next sprint for ITR2/Deliverable1
     Hashir: finished story for user to add a comic book to the stub database.
+
+## Wednesday, February 14th, 2024
+
+    Hashir: Implemented user story for personal profile view and tabular view of all repository items.
     
 ## Thursday, February 15th, 2024
 
     Ahan: Refactored Authentication page for better redability.
+    Hashir: Implemented search for individual comic book story.
