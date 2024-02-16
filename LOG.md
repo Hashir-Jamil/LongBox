@@ -35,11 +35,15 @@
     Group (all members present): Spoke with professor about refactoring packages, and making sure everyone implements tests in each of the packages.
     Ahan: Refactored LoginPage and Registration page as JPanels and added a new JFrame AuthenticationPage that houses these two JPanels. Added functionality to switch between LoginPage and RegistrationPage. Cleaned up the code.
     Hashir: refactored the packages to match architecture shown in class slides + created stub database entries as JSON files with gson serialization/deserialization classes.
+    Eric: Added basic ComicCollectionPage with lite features
     
 ## Thursday, February 8th, 2024
 
 	Ahan: Added user login and registration functionality to the authentication page using the StubDB.
     Ahan + Eric + Hashir: worked together to create proper card layout with panels for proper scene transitions without bugs.
+    
+## Friday, February 9th, 2024
+	Eric: Fully refactored ComicCollectionPage to now include a search box and ScrollPane with an empty JTable. Old version of ComicCollectionPage was deleted
     
 ## Saturday, February 10th, 2024
 	
@@ -58,8 +62,13 @@
 ## Wednesday, February 14th, 2024
 
     Hashir: Implemented user story for personal profile view and tabular view of all repository items.
+    Eric: Fully refactored comic book contents. Includes not genres, artists, and issue number. Refactored other files dependent on this change.
     
 ## Thursday, February 15th, 2024
 
     Ahan: Refactored Authentication page for better redability. My initial estimate to complete each of my user stories was off a bit as I decided it would be better to focus on login and registration page simultaneously. I was also learning about concepts on the go, and that made the estimate time to go from 3 days to approximately 5 days. After the coding was done, I started with white box testing and then went ahead and refactored the code, changed a library and changed how the system was interacting with the stubDB, that were earlier not working as inteded.
     Hashir: Implemented search for individual comic book story.
+    Eric: Added basic test cases for ComicCollectionPanel and uploaded more comics to the repository. Also fully finished implementing sorting for JTable in ComicCollection
+    
+## Firday, February 16th, 2024
+	Eric: Added searchability to ComicCollectionPanel, user can now navigate to a comic page either through the search bar or clicking on a series' title name from the JTable
