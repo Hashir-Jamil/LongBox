@@ -2,7 +2,7 @@ package org.longbox.businesslogic.utils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 //Tests to determine that methods implemented are working correctly for checking password and valid email
