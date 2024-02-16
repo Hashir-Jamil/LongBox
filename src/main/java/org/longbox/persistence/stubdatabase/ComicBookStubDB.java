@@ -69,7 +69,6 @@ public class ComicBookStubDB {
                 1993
         );
         comicBookStubData.add(comicBook4);
-
     }
 
     public void serializeComicBookStubDB() {
