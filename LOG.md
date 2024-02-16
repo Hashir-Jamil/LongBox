@@ -66,9 +66,11 @@
     
 ## Thursday, February 15th, 2024
 
-    Ahan: Refactored Authentication page for better redability. My initial estimate to complete each of my user stories was off a bit as I decided it would be better to focus on login and registration page simultaneously. I was also learning about concepts on the go, and that made the estimate time to go from 3 days to approximately 5 days. After the coding was done, I started with white box testing and then went ahead and refactored the code, changed a library and changed how the system was interacting with the stubDB, that were earlier not working as inteded.
+    Ahan: Refactored Authentication page for better redability. My initial estimate to complete each of my user stories was off a bit as I decided it would be better to focus on login and registration page simultaneously. I was also learning about concepts on the go, and that made the estimate time to go from 3 days to approximately 5 days. After the coding was done, I started with white box testing and then went ahead and refactored the code, changed a library and changed how the system was interacting with the stubDB, did minor bug fixes too.
     Hashir: Implemented search for individual comic book story.
     Eric: Added basic test cases for ComicCollectionPanel and uploaded more comics to the repository. Also fully finished implementing sorting for JTable in ComicCollection
     
-## Firday, February 16th, 2024
+## Friday, February 16th, 2024
+
 	Eric: Added searchability to ComicCollectionPanel, user can now navigate to a comic page either through the search bar or clicking on a series' title name from the JTable
+    Ahan: Wrote the README.md.
