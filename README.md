@@ -19,7 +19,7 @@ This project uses a 3-layer software architechture. A sketch of it is:
 
 1. The project needs to be cloned into Eclipse.
 2. Once the project has been cloned, gradle nature needs to be added to the project. [How to configure grade in eclipse](https://www.vogella.com/tutorials/EclipseGradle/article.html#add-gradle-support-to-existing-eclipse-project).
-3. This project also uses [Project Lombok](https://www.baeldung.com/intro-to-project-lombok). Project Lombok can be configured in Eclipse by following [this](https://stackoverflow.com/a/65949629).
+3. This project also uses [Project Lombok](https://www.baeldung.com/intro-to-project-lombok). [Configure Project Lombok in Eclipse](https://stackoverflow.com/a/65949629).
 
 ### Testing
 
