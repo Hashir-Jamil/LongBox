@@ -21,6 +21,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.30")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("commons-validator:commons-validator:1.8.0")
+    testImplementation("org.mockito:mockito-core:2.1.0")
 }
 
 tasks.test {
