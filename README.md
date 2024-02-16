@@ -78,10 +78,17 @@ Using this page, a user can add a comic book to the system.
 Users can search a comic book and if the comic is in the repository, results can be viewed.
 If there are no matches then the user is prompted that no results are found via a dialogue box.
 Results are shown in a new window that displays data for a specific comic book object.
+Users can search a comic book in the repository.
 
 ![Search](https://github.com/Hashir-Jamil/LongBox/assets/90640849/e789b6c6-2fc4-49c0-b3bc-f68449c71919)
 
+If the Comic is found:
+
 ![SearchResult](https://github.com/Hashir-Jamil/LongBox/assets/90640849/3862fcc3-c012-4bb8-8344-8738d351bbd1)
+
+If the comic is not found:
+
+![SearchNotFound](https://github.com/Hashir-Jamil/LongBox/assets/90640849/9cfec22c-23ad-457d-ad12-ce97aa329deb)
 
 ### View Profile
 

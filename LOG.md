@@ -70,9 +70,15 @@
 
     Ahan: Refactored Authentication page for better redability. My initial estimate to complete each of my user stories was off a bit as I decided it would be better to focus on login and registration page simultaneously. I was also learning about concepts on the go, and that made the estimate time to go from 3 days to approximately 5 days. After the coding was done, I started with white box testing and then went ahead and refactored the code, changed a library and changed how the system was interacting with the stubDB, that were earlier not working as inteded.
     Hashir: Implemented search for individual comic book story (this took 2 points). In addition many refactors of the code were performed and reviewed to ensure everything works smoothly.
+    Ahan: Refactored Authentication page for better redability. My initial estimate to complete each of my user stories was off a bit as I decided it would be better to focus on login and registration page simultaneously. I was also learning about concepts on the go, and that made the estimate time to go from 3 days to approximately 5 days. After the coding was done, I started with white box testing and then went ahead and refactored the code, changed a library and changed how the system was interacting with the stubDB, did minor bug fixes too.
+    Hashir: Implemented search for individual comic book story.
     Eric: Added basic test cases for ComicCollectionPanel and uploaded more comics to the repository. Also fully finished implementing sorting for JTable in ComicCollection
     
 ## Firday, February 16th, 2024
 	
     Eric: Added searchability to ComicCollectionPanel, user can now navigate to a comic page either through the search bar or clicking on a series' title name from the JTable.
     Hashir: Reviewed and editted documentation to be submitted for ITR01 and branched the main trunk into an ITRO1 trunk.
+## Friday, February 16th, 2024
+
+	Eric: Added searchability to ComicCollectionPanel, user can now navigate to a comic page either through the search bar or clicking on a series' title name from the JTable
+    Ahan: Wrote the README.md.

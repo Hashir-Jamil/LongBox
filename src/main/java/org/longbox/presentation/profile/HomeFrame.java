@@ -77,7 +77,7 @@ public class HomeFrame extends JFrame implements ActionListener {
     	initiateRegUI();
     	this.userSession = user;
         userNameLabel = new JLabel(user.getUser().getUserName());
-        userNameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
+       // userNameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
         userNameLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         userNameLabel.setBounds(811, 19, 181, 16);
         nexusPanel.add(userNameLabel);
@@ -114,7 +114,7 @@ public class HomeFrame extends JFrame implements ActionListener {
         logOutButton = new JButton("Log Out");
         logOutButton.setBounds(1004, 11, 170, 25);
         nexusPanel.add(logOutButton);
-        logOutButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+        //logOutButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
 
         searchButtonNexus = new JButton("Search");
         searchButtonNexus.addActionListener(this);
