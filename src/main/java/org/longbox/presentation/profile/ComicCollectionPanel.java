@@ -2,6 +2,9 @@ package org.longbox.presentation.profile;
 
 import org.longbox.persistence.stubdatabase.ComicBookStubDB;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -19,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+@Getter
+@Setter
 public class ComicCollectionPanel extends JPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
@@ -34,7 +39,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 	private ComicBookTableModel comicBookTableModel;
 	TableRowSorter<TableModel> sorter;
 
-	ComicCollectionPanel() {
+	public ComicCollectionPanel() {
 		initComicCollectionPage();
 	}
 
