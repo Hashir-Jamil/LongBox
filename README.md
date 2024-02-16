@@ -6,6 +6,8 @@ Your digital solution for archiving and preserving comic books. Developed by pas
 
 This project uses a 3-layer software architechture. A sketch of it is:
 
+![architectural-diagram.png](architectural-diagram.png)
+
 ## Getting Started
 
 ### Prerequisites
