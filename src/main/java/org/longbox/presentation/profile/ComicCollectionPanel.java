@@ -82,9 +82,15 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 			public void mouseClicked(MouseEvent e) {
 				int row = comicBookTable.rowAtPoint(e.getPoint());
 				int col = comicBookTable.columnAtPoint(e.getPoint());
-				if (col == 0 ) {
-					String comicBook = comicBookTable.getValueAt(row, col).toString();
-					System.out.println("Selected: " + comicBook + " from table");
+				if (col == 0) {
+					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), comicBookTable.getValueAt(row, col).toString());
+					System.out.println("Selected '" + comicBookTable.getValueAt(row, col).toString() + "' from table");
+					
+					ComicBookFrame comicBookFrame = new ComicBookFrame();
+					comicBookFrame.setVisible(true);
+					HTMLEditorKit htmlEditorKit = new HTMLEditorKit();
+					comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(htmlEditorKit);
+					comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
 				}
 			}
 		});
@@ -124,9 +130,6 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 			} else {
                 JOptionPane.showMessageDialog(panel, "No search results found.", "Search Results Not Found", JOptionPane.INFORMATION_MESSAGE);
             }
-		}
-		if (e.getSource() == comicBookTable) {
-			System.out.println(comicBookTable.getSelectedRow() + " and " + comicBookTable.getSelectedRow());
 		}
     }
 }
