@@ -8,9 +8,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @Getter
+@NoArgsConstructor
 @Setter
+
 public class UserSession {
 
     private static UserSession activeUser = null;
@@ -31,18 +32,21 @@ public class UserSession {
         activeUser = userSession;
     }
 
+
     public void clearUserSession() {
     	this.user = null;
     }
-
-    public UserDTO getUser() {
-    	return this.user;
-    }
+    
+    public static UserSession getActiveUser() {
+		return activeUser;
+	}
 
     @Override
     public String toString() {
         return user.toString();
     }
+    
+    
 
     public static String generateUserProfileHTML (UserSession userSession) {
         String htmlContent = String.format(
@@ -64,5 +68,7 @@ public class UserSession {
         );
         return htmlContent;
     }
+
+	
 
 }
