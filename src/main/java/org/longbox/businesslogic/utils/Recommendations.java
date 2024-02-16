@@ -1,6 +1,6 @@
 package org.longbox.businesslogic.utils;
 
-import org.longbox.businesslogic.comparators.ComicBookDateAddeddComparator;
+import org.longbox.businesslogic.comparators.ComicBookDateAddedComparator;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class Recommendations {
             int trendingComicsListSize
     ) {
         List<ComicBookDTO> trendingComics = new ArrayList<>();
-        Collections.sort(comicBookList, new ComicBookDateAddeddComparator());
+        Collections.sort(comicBookList, new ComicBookDateAddedComparator());
         trendingComics = comicBookList.subList(0, trendingComicsListSize-1);
         return trendingComics;
     }

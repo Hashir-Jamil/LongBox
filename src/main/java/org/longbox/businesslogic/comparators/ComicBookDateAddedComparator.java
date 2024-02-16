@@ -4,7 +4,7 @@ import org.longbox.domainobjects.dto.ComicBookDTO;
 
 import java.util.Comparator;
 
-public class ComicBookDateAddeddComparator implements Comparator<ComicBookDTO> {
+public class ComicBookDateAddedComparator implements Comparator<ComicBookDTO> {
     @Override
     public int compare(ComicBookDTO comicBook1, ComicBookDTO comicBook2) {
 
