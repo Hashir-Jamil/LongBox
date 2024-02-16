@@ -11,7 +11,7 @@ repositories {
 
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
     implementation("com.toedter:jcalendar:1.4")
     implementation("com.jgoodies:jgoodies-forms:1.8.0")
     implementation("org.hibernate:hibernate-core:6.4.2.Final")
