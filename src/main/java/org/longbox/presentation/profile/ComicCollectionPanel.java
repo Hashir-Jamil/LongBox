@@ -26,6 +26,8 @@ import javax.swing.JTextField;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.text.html.HTMLEditorKit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 @Getter
 @Setter
@@ -75,12 +77,23 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 		comicBookTableModel = new ComicBookTableModel(comicBookStubDB.getComicBookStubData());
 
 		comicBookTable = new JTable(comicBookTableModel);
+		comicBookTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row = comicBookTable.rowAtPoint(e.getPoint());
+				int col = comicBookTable.columnAtPoint(e.getPoint());
+				if (col == 0 ) {
+					String comicBook = comicBookTable.getValueAt(row, col).toString();
+					System.out.println("Selected: " + comicBook + " from table");
+				}
+			}
+		});
 		sorter = new TableRowSorter<TableModel>(comicBookTable.getModel());
 		comicBookTable.setRowSorter(sorter);
-
+		
 		scrollPane = new JScrollPane(comicBookTable);
 		scrollPane.setViewportBorder(null);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(10, 110, 1144, 683);
 		panel.add(scrollPane);
@@ -99,7 +112,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 	
 	@Override
     public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == textField) {
+		if (e.getSource() == textField && !textField.getText().isEmpty()) {
 			System.out.println("Search for: " + textField.getText());
 			ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), textField.getText());
 			if (comicBook.getSeriesTitle() != null) {
@@ -111,6 +124,9 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 			} else {
                 JOptionPane.showMessageDialog(panel, "No search results found.", "Search Results Not Found", JOptionPane.INFORMATION_MESSAGE);
             }
+		}
+		if (e.getSource() == comicBookTable) {
+			System.out.println(comicBookTable.getSelectedRow() + " and " + comicBookTable.getSelectedRow());
 		}
     }
 }
