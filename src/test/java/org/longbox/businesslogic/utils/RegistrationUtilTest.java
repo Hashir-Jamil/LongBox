@@ -1,12 +1,12 @@
-package org.longbox.businesslogic;
+package org.longbox.businesslogic.utils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 //import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.longbox.businesslogic.utils.RegistrationUtils;
+
 //Tests to determine that methods implemented are working correctly for checking password and valid email
-class RegistrationUtilTests {
+class RegistrationUtilTest {
 	@Test
 	void test_invalid_password_1() {
 		String password = "passwor";
