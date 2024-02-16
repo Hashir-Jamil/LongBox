@@ -44,7 +44,7 @@ public class ComicCollectionTest {
     public void testStubDataTable() {
     	setUp();
     	assertTrue(comicCollectionPanel.getComicBookTableModel().getColumnCount() == 7);
-    	assertTrue(comicCollectionPanel.getComicBookTableModel().getRowCount() == 4);
+    	assertTrue(comicCollectionPanel.getComicBookTableModel().getRowCount() == 11);
     }
 	
 }
