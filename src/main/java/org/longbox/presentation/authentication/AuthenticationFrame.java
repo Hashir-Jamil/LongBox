@@ -24,8 +24,7 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
     private RegistrationPanel registrationPanel = new RegistrationPanel();
     private UserStubDB userStubDB = new UserStubDB();
     private UserSession userSession;
-    private List<UserDTO> users;
-
+	private List<UserDTO> users;
 	/**
 	 * Launch the application.
 	 */
