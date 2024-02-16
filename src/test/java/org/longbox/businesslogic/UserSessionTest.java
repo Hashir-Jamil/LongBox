@@ -92,7 +92,7 @@ public class UserSessionTest {
     public void testClearUserSessionMultipleTimes() {
         UserSession userSession = UserSession.getInstance(userDTO1);
         userSession.clearUserSession();
-        userSession.setActiveUser(null);
+        UserSession.setActiveUser(null);
 
         assertNull(userSession.getUser());
         assertNull(UserSession.getActiveUser());
