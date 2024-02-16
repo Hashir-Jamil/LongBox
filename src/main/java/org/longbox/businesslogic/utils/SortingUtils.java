@@ -1,6 +1,6 @@
 package org.longbox.businesslogic.utils;
 
-import org.longbox.businesslogic.comparators.ComicBookDateAddeddComparator;
+import org.longbox.businesslogic.comparators.ComicBookDateAddedComparator;
 import org.longbox.businesslogic.comparators.ComicBookNameComparator;
 import org.longbox.businesslogic.comparators.ComicBookYearPublishedComparator;
 import org.longbox.domainobjects.dto.ComicBookDTO;
@@ -15,7 +15,7 @@ public class SortingUtils {
     }
 
     public static void sortComicsDateAdded(List<ComicBookDTO> comicBookList) {
-        Collections.sort(comicBookList, new ComicBookDateAddeddComparator());
+        Collections.sort(comicBookList, new ComicBookDateAddedComparator());
     }
 
     public static void sortComicsYearPublished(List<ComicBookDTO> comicBookList) {
