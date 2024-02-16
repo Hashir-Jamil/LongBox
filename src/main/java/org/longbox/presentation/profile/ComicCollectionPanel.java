@@ -1,6 +1,9 @@
 package org.longbox.presentation.profile;
 
+import org.longbox.businesslogic.utils.ComicBookSearch;
+import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.stubdatabase.ComicBookStubDB;
+import org.longbox.presentation.comicbook.ComicBookFrame;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +15,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -21,6 +25,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.text.html.HTMLEditorKit;
 
 @Getter
 @Setter
@@ -38,6 +43,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 	private JTextField textField;
 	private ComicBookTableModel comicBookTableModel;
 	TableRowSorter<TableModel> sorter;
+	ComicBookStubDB comicBookStubDB;
 
 	public ComicCollectionPanel() {
 		initComicCollectionPage();
@@ -63,7 +69,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 
 		add(panel, BorderLayout.CENTER);
 
-		ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
+		comicBookStubDB = new ComicBookStubDB();
 		comicBookStubDB.loadComicBooks();
 
 		comicBookTableModel = new ComicBookTableModel(comicBookStubDB.getComicBookStubData());
@@ -84,6 +90,8 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 		panel.add(textField);
 		textField.setColumns(10);
 		
+		textField.addActionListener(this);
+		
 		JLabel lblNewLabel = new JLabel("Search Collection:");
 		lblNewLabel.setBounds(10, 66, 120, 13);
 		panel.add(lblNewLabel);
@@ -91,6 +99,18 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 	
 	@Override
     public void actionPerformed(ActionEvent e) {
-
+		if (e.getSource() == textField) {
+			System.out.println("Search for: " + textField.getText());
+			ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), textField.getText());
+			if (comicBook.getSeriesTitle() != null) {
+				ComicBookFrame comicBookFrame = new ComicBookFrame();
+				comicBookFrame.setVisible(true);
+				HTMLEditorKit htmlEditorKit = new HTMLEditorKit();
+				comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(htmlEditorKit);
+				comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
+			} else {
+                JOptionPane.showMessageDialog(panel, "No search results found.", "Search Results Not Found", JOptionPane.INFORMATION_MESSAGE);
+            }
+		}
     }
 }
