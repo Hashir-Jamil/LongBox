@@ -35,7 +35,7 @@ To launch the project:
 > LongBox / src / main / java / org / longbox / presntation
 2. Go the authentication package inside presentaion.
 > LongBox / src / main / java / org / longbox / presntation / authentication
-3. Run the AuthenticationPage.java_ file. This is the primary entry point into the project.
+3. Run the _AuthenticationPage.java_ file. This is the primary entry point into the project.
 
 Note:
 * This is the first frame of our project, rest of the features can be accessed through this page.
