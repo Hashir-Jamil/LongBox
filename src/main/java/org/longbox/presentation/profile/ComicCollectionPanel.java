@@ -4,6 +4,7 @@ import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.stubdatabase.ComicBookStubDB;
 import org.longbox.presentation.comicbook.ComicBookFrame;
+import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +29,7 @@ import javax.swing.table.TableRowSorter;
 import javax.swing.text.html.HTMLEditorKit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 @Getter
 @Setter
@@ -136,6 +138,11 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
             }
 		}
     }
+	
+	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults) {
+		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame();
+		resultsPage.setVisible(true);
+	}
 	
 	private void loadComicBookPage(ComicBookDTO comicBook) {
 		ComicBookFrame comicBookFrame = new ComicBookFrame();
