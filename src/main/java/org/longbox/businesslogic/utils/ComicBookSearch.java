@@ -2,6 +2,7 @@ package org.longbox.businesslogic.utils;
 
 import org.longbox.domainobjects.dto.ComicBookDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ComicBookSearch {
@@ -17,6 +18,21 @@ public class ComicBookSearch {
             }
         }
         return comicBook;
+    }
+    
+    public static List<ComicBookDTO> searchComicBookByPublisher(List<ComicBookDTO> comicBookList, String publisher) {
+    	
+    	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
+    	System.out.println(publisher);
+    	for (ComicBookDTO comic : comicBookList) {
+            if (comic.getPublisher().contains(publisher)) {
+            	resultList.add(comic);
+            }
+        }
+    	for (ComicBookDTO comic : resultList) {
+    		System.out.println(comic.getPublisher());
+    	}
+    	return resultList;
     }
 
     public static String generateComicBookHTML(ComicBookDTO comicBook) {
