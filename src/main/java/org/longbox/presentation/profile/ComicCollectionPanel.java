@@ -43,6 +43,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 	private String currentItem;
 	private JTable comicBookTable;
 	private JTextField textField;
+	private JComboBox<String> typeSelection;
 	private ComicBookTableModel comicBookTableModel;
 	TableRowSorter<TableModel> sorter;
 	ComicBookStubDB comicBookStubDB;
@@ -98,6 +99,18 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(10, 110, 1144, 683);
 		panel.add(scrollPane);
+		
+		typeSelection = new JComboBox<String>();
+		typeSelection.setBounds(333, 62, 160, 22);
+		
+		typeSelection.addItem("Title");
+		typeSelection.addItem("Author");
+		typeSelection.addItem("Artist");
+		typeSelection.addItem("Genre");
+		typeSelection.addItem("Publisher");
+		typeSelection.addItem("Year");
+		
+		panel.add(typeSelection);
 		
 		textField = new JTextField();
 		textField.setBounds(116, 62, 213, 22);
