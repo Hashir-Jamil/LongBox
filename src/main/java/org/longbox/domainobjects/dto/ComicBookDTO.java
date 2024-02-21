@@ -22,6 +22,7 @@ public class ComicBookDTO {
     private String publisher;
     private int yearPublished;
     private Date dateAdded;
+    private boolean favorite;
     private List<CommentDTO> commentsList = new ArrayList<>();
 
     public ComicBookDTO(
@@ -32,7 +33,8 @@ public class ComicBookDTO {
       String description,
       int numberOfIssues,
       String publisher,
-      int yearPublished
+      int yearPublished,
+      boolean favorite
     ) {
         this.seriesTitle = seriesTitle;
         this.author = author;
@@ -43,6 +45,7 @@ public class ComicBookDTO {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
+        this.favorite = favorite;
     };
 
     public ComicBookDTO(
@@ -53,7 +56,8 @@ public class ComicBookDTO {
             String description,
             int numberOfIssues,
             String publisher,
-            int yearPublished
+            int yearPublished,
+            boolean favorite
     ) {
         this.seriesTitle = seriesTitle;
         this.author = author;
@@ -64,6 +68,7 @@ public class ComicBookDTO {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
+        this.favorite = favorite;
     };
 
     @Override

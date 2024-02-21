@@ -34,7 +34,8 @@ public class ComicBookSearchTest {
                 "Description",
                 36,
                 "Eclipse",
-                1984
+                1984,
+                false
         );
         comicBookDTOList.add(comicBook1);
 
@@ -46,7 +47,8 @@ public class ComicBookSearchTest {
                 "Description",
                 108,
                 "Viz",
-                1990
+                1990,
+                false
         );
         comicBookDTOList.add(comicBook2);
 
@@ -58,7 +60,8 @@ public class ComicBookSearchTest {
                 "Description",
                 3,
                 "Capital",
-                1981
+                1981,
+                false
         );
         comicBookDTOList.add(comicBook3);
 
@@ -70,7 +73,8 @@ public class ComicBookSearchTest {
                 "Description",
                 35,
                 "Image",
-                1993
+                1993,
+                false
         );
         comicBookDTOList.add(comicBook4);
 
@@ -82,7 +86,8 @@ public class ComicBookSearchTest {
                 "Description",
                 36,
                 "Eclipse",
-                1984
+                1984,
+                false
         );
         comicBookDTOList.add(comicBook5);
 
@@ -93,7 +98,8 @@ public class ComicBookSearchTest {
                 new String[]{"Political",
                         "Crime", "Thriller", "Manga"},
                 "Description", 108,
-                "Viz", 1990
+                "Viz", 1990,
+                false
         );
         comicBookDTOList.add(comicBook6);
 
@@ -105,7 +111,8 @@ public class ComicBookSearchTest {
                 "Description",
                 3,
                 "Capital",
-                1981
+                1981,
+                false
         );
         comicBookDTOList.add(comicBook7);
 
@@ -117,7 +124,8 @@ public class ComicBookSearchTest {
                 "Description",
                 35,
                 "Image",
-                1993
+                1993,
+                false
         );
         comicBookDTOList.add(comicBook8);
     }
@@ -132,7 +140,8 @@ public class ComicBookSearchTest {
                 "Description",
                 35,
                 "Image",
-                1993
+                1993,
+                false
         );
         assertEquals(expected, ComicBookSearch.searchComicBook(comicBookDTOList, "The Maxx"));
     }
@@ -147,7 +156,8 @@ public class ComicBookSearchTest {
                 "Description",
                 3,
                 "Capital",
-                1981
+                1981,
+                false
         );
         assertEquals(expected, ComicBookSearch.searchComicBook(comicBookDTOList,"Nexus"));
     }
@@ -162,7 +172,8 @@ public class ComicBookSearchTest {
                 "Description",
                 36,
                 "Eclipse",
-                1984
+                1984,
+                false
         );
         assertNotEquals(expected, ComicBookSearch.searchComicBook(comicBookDTOList,"Nexus"));
     }

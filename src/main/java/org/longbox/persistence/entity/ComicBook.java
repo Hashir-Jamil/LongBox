@@ -39,4 +39,7 @@ public class ComicBook {
     @Column(name = "date_added")
     private Date dateAdded;
 
+    @Column(name = "favorite")
+    private boolean favorite;
+
 }

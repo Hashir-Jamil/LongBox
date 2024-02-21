@@ -34,7 +34,8 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 36,
                 "Eclipse",
-                1984
+                1984,
+                false
         );
 
         comicBook2 = new ComicBookDTO(
@@ -45,7 +46,8 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 108,
                 "Viz",
-                1990
+                1990,
+                false
         );
 
         comicBook3 = new ComicBookDTO(
@@ -56,7 +58,8 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 3,
                 "Capital",
-                1981
+                1981,
+                false
         );
 
         comicBook4 = new ComicBookDTO(
@@ -67,7 +70,8 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 35,
                 "Image",
-                1993
+                1993,
+                false
         );
 
         comicBook5 = new ComicBookDTO(
@@ -78,7 +82,8 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 36,
                 "Eclipse",
-                1984
+                1984,
+                false
         );
 
         comicBook6 = new ComicBookDTO(
@@ -88,7 +93,8 @@ public class ComicBookNameComparatorTest {
                 new String[]{"Political",
                         "Crime", "Thriller", "Manga"},
                 "Description", 108,
-                "Viz", 1990
+                "Viz", 1990,
+                false
         );
 
         comicBook7 = new ComicBookDTO(
@@ -99,7 +105,8 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 3,
                 "Capital",
-                1981
+                1981,
+                false
         );
 
         comicBook8 = new ComicBookDTO(
@@ -110,7 +117,8 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 35,
                 "Image",
-                1993
+                1993,
+                false
         );
     }
 

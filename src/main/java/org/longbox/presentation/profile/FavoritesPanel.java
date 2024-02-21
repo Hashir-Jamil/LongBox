@@ -9,6 +9,8 @@ import java.awt.*;
 @Setter
 public class FavoritesPanel extends JPanel {
 
+	private final String PANEL_LABEL = "User Favorites";
+
 	/**
 	 * Create the panel.
 	 */
@@ -21,6 +23,14 @@ public class FavoritesPanel extends JPanel {
 		setLayout(new BorderLayout());
 
 		JPanel panel = new JPanel();
+		panel.setLayout(null);
+
+		JLabel comicCollectionTitle = new JLabel(PANEL_LABEL);
+		comicCollectionTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		comicCollectionTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		comicCollectionTitle.setBounds(182, 11, 800, 43);
+		panel.add(comicCollectionTitle);
+
 		add(panel, BorderLayout.CENTER);
 	}
 }

@@ -15,7 +15,8 @@ public class ComicBookDTOTest {
             "Description",
             36,
             "Eclipse",
-            1984
+            1984,
+            false
     );
 
     ComicBookDTO comicBook2 = new ComicBookDTO(
@@ -26,7 +27,8 @@ public class ComicBookDTOTest {
             "Description",
             36,
             "Eclipse",
-            1984
+            1984,
+            false
     );
 
     ComicBookDTO comicBook3 = new ComicBookDTO(
@@ -37,7 +39,8 @@ public class ComicBookDTOTest {
             "Description",
             36,
             "Eclipse",
-            1984
+            1984,
+            false
     );
 
     @Test

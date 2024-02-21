@@ -32,7 +32,8 @@ public class ComicBookYearPublishedComparatorTest {
                 "A classic Batman story",
                 4,
                 "DC Comics",
-                1987
+                1987,
+                false
         );
 
         comicBook2 = new ComicBookDTO(
@@ -43,7 +44,8 @@ public class ComicBookYearPublishedComparatorTest {
                 "The first appearance of Spider-Man",
                 1,
                 "Marvel Comics",
-                1962
+                1962,
+                false
         );
 
         comicBook3 = new ComicBookDTO(
@@ -54,7 +56,8 @@ public class ComicBookYearPublishedComparatorTest {
                 "The iconic '90s X-Men series",
                 30,
                 "Marvel Comics",
-                1991
+                1991,
+                false
         );
 
         comicBook4 = new ComicBookDTO(
@@ -65,7 +68,8 @@ public class ComicBookYearPublishedComparatorTest {
                 "Revitalizing Wonder Woman in the '80s",
                 6,
                 "DC Comics",
-                1991
+                1991,
+                false
         );
 
         comicBook5 = new ComicBookDTO(
@@ -76,7 +80,8 @@ public class ComicBookYearPublishedComparatorTest {
                 "Description",
                 36,
                 "Eclipse",
-                1984
+                1984,
+                false
         );
 
         comicBook6 = new ComicBookDTO(
@@ -86,7 +91,8 @@ public class ComicBookYearPublishedComparatorTest {
                 new String[]{"Political",
                         "Crime", "Thriller", "Manga"},
                 "Description", 108,
-                "Viz", 1990
+                "Viz", 1990,
+                false
         );
 
         comicBook7 = new ComicBookDTO(
@@ -97,7 +103,8 @@ public class ComicBookYearPublishedComparatorTest {
                 "Description",
                 3,
                 "Capital",
-                1981
+                1981,
+                false
         );
 
         comicBook8 = new ComicBookDTO(
@@ -108,7 +115,8 @@ public class ComicBookYearPublishedComparatorTest {
                 "Description",
                 35,
                 "Image",
-                1993
+                1993,
+                false
         );
     }
 
@@ -142,7 +150,7 @@ public class ComicBookYearPublishedComparatorTest {
     @Test
     public void test_CompareDifferentObjects_SameYear() {
         int expected = 0;
-        ComicBookDTO otherComicBook1 = new ComicBookDTO("Batman", "Frank Miller", "David Mazzucchelli", new String[]{"Action", "Crime"}, "A classic Batman story", 4, "DC Comics", 1987);
+        ComicBookDTO otherComicBook1 = new ComicBookDTO("Batman", "Frank Miller", "David Mazzucchelli", new String[]{"Action", "Crime"}, "A classic Batman story", 4, "DC Comics", 1987, false);
         int actual = comparator.compare(comicBook1, otherComicBook1);
         assertEquals(expected, actual);
     }
@@ -150,7 +158,7 @@ public class ComicBookYearPublishedComparatorTest {
     @Test
     public void test_CompareDifferentObjects_DifferentYear() {
         int expected = 1;
-        ComicBookDTO otherComicBook1 = new ComicBookDTO("Batman", "Frank Miller", "David Mazzucchelli", new String[]{"Action", "Crime"}, "A classic Batman story", 4, "DC Comics", 1986);
+        ComicBookDTO otherComicBook1 = new ComicBookDTO("Batman", "Frank Miller", "David Mazzucchelli", new String[]{"Action", "Crime"}, "A classic Batman story", 4, "DC Comics", 1986, false);
         int actual = comparator.compare(comicBook1, otherComicBook1);
         assertEquals(expected, actual);
     }
