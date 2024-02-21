@@ -1,5 +1,10 @@
 # EECS 2311Z Winter 2024 Team 3 Log of Activities  
 
+## Wednesday, January 24th, 2024
+
+	Eric: Interviewed Rocco and recorded the meeting. Uploaded mp3 to Google Drive.
+	Oscar: Interviewed Rocco with Eric.
+
 ## Wednesday, January 31st, 2024
 
     Group (Dexter absent due to illness): Meeting with professor on how to organize with project and divide work.
