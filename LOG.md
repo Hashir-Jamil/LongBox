@@ -70,12 +70,14 @@
 
     Hashir: Implemented user story for personal profile view and tabular view of all repository items (both stories took 2 points each).
     Eric: Fully refactored comic book contents. Includes not genres, artists, and issue number. Refactored other files dependent on this change.
+    Oscar: Edited mp4 of interview with rocco (cut it down to 5 minutes, fixed eric's volume, fixed overall audio).
     
 ## Thursday, February 15th, 2024
 
     Hashir: Implemented search for individual comic book story (this took 2 points). In addition many refactors of the code were performed and reviewed to ensure everything works smoothly.
     Ahan: Refactored Authentication page for better redability. My initial estimate to complete each of my user stories was off a bit as I decided it would be better to focus on login and registration page simultaneously. I was also learning about concepts on the go, and that made the estimate time to go from 3 days to approximately 5 days. After the coding was done, I started with white box testing and then went ahead and refactored the code, changed a library and changed how the system was interacting with the stubDB, did minor bug fixes too.
     Eric: Added basic test cases for ComicCollectionPanel and uploaded more comics to the repository. Also fully finished implementing sorting for JTable in ComicCollection
+    Oscar: Edited and created everyone's user stories cards on Google Slides.
 
 ## Friday, February 16th, 2024
 
