@@ -33,6 +33,7 @@ public class HomeFrame extends JFrame implements ActionListener {
     private JPanel nexusPanel;
     private JPanel activityPanel;
     private SearchPanel searchPanel = new SearchPanel();
+    private FavoritesPanel favoritesPanel = new FavoritesPanel();
 	private CardLayout cardLayout;
     private static JFrame frame;
     private JPanel comicCollectionPanel = new ComicCollectionPanel();
@@ -42,11 +43,13 @@ public class HomeFrame extends JFrame implements ActionListener {
     private JButton addComicButton;
     private JButton comicCollectionButton;
     private JButton profileButton;
+    private JButton favoritesButton;
     private JButton searchButton;
     private JLabel userNameLabel;
 //    private UserSession user;
     private final String SEARCH_COMIC_BOOK = "Search Comics Panel";
     private final String COMIC_COLLECTAION_PANEL = "Comic Collection Panel";
+    private final String FAVORITES_PANEL = "User Favorites Panel";
     private final String PROFILE_PANEL = "Profile Panel";
     private final String ADD_COMIC_TO_REPO = "Add Comic To Repo";
 
@@ -107,6 +110,7 @@ public class HomeFrame extends JFrame implements ActionListener {
         activityPanel.setLayout(cardLayout);
         activityPanel.add(comicCollectionPanel, COMIC_COLLECTAION_PANEL);
         activityPanel.add(searchPanel, SEARCH_COMIC_BOOK);
+        activityPanel.add(favoritesPanel, FAVORITES_PANEL);
         activityPanel.add(profilePanel, PROFILE_PANEL);
         activityPanel.add(addComicToRepoPanel, ADD_COMIC_TO_REPO);
                 
@@ -138,6 +142,11 @@ public class HomeFrame extends JFrame implements ActionListener {
         profileButton.setBounds(567, 12, 170, 25);
         nexusPanel.add(profileButton);
 
+        favoritesButton = new JButton("Favorites");
+        favoritesButton.addActionListener(this);
+        favoritesButton.setBounds(744, 12, 170, 25);
+        nexusPanel.add(favoritesButton);
+
         profileButton.addActionListener(this);
         logOutButton.addActionListener(this);
         addComicToRepoPanel.getEnterComicBookButton().addActionListener(this);
@@ -157,6 +166,10 @@ public class HomeFrame extends JFrame implements ActionListener {
 
         if (e.getSource() == comicCollectionButton) {
         	cardLayout.show(activityPanel, COMIC_COLLECTAION_PANEL);
+        }
+
+        if (e.getSource() == favoritesButton) {
+            cardLayout.show(activityPanel, FAVORITES_PANEL);
         }
 
         if (e.getSource() == searchButtonNexus) {
