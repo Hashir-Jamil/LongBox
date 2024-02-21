@@ -1,6 +1,8 @@
 package org.longbox.presentation.profile;
 
 import lombok.Getter;
+import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.persistence.stubdatabase.ComicBookStubDB;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -24,6 +26,7 @@ public class AddComicToRepoPanel extends JPanel {
 	private final String PUBLISHER = "Publisher";
 	private final String YEAR_PUBLISHED = "Year Published";
 	private final String ENTER_COMIC_BOOK_BUTTON = "Enter Comic Book";
+	private final String SUCCESS_MESSAGE = "Comic Book Successfully Added!";
 	private JTextField comicSeriesTitleTextField;
 	private JTextField comicBookAuthorTextField;
 	private JTextField comicBookArtistTextField;
@@ -32,22 +35,22 @@ public class AddComicToRepoPanel extends JPanel {
 	private JTextField numberOfIssuesTextField;
 	private JTextField publisherTextField;
 	private JTextField yearPublishedTextField;
+	private JTextField successMessage;
 	private JButton enterComicBookButton;
 	private JCheckBox favoriteCheckbox;
-
+	private JPanel panel;
 	/**
 	 * Create the panel.
 	 */
 	public AddComicToRepoPanel() {
 		initAddComicToRepoPage();
 	}
-
 	private void initAddComicToRepoPage() {
 		
 		setBounds(10, 47, 1164, 803);
 		setLayout(new BorderLayout());
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 	    panel.setLayout(null);
 	    
 	    //Panel Label
@@ -185,5 +188,31 @@ public class AddComicToRepoPanel extends JPanel {
 		});
 		panel.add(enterComicBookButton);
 		enterComicBookButton.setFocusable(false);
+	}
+
+	private void saveAddComicBookFormInput() {
+		// Retrieve values from text fields
+		String seriesTitle = comicSeriesTitleTextField.getText();
+		String author = comicBookAuthorTextField.getText();
+		String artist = comicBookArtistTextField.getText();
+		String genres = genresTextField.getText();
+		String description = descriptionTextField.getText();
+		int numberOfIssues = Integer.parseInt(numberOfIssuesTextField.getText());
+		String publisher = publisherTextField.getText();
+		int yearPublished = Integer.parseInt(yearPublishedTextField.getText());
+		boolean isFavorite = favoriteCheckbox.isSelected();
+
+		// Create ComicBookDTO object with retrieved values
+		ComicBookDTO comicBook = new ComicBookDTO(seriesTitle, author, artist, genres, description, numberOfIssues, publisher, yearPublished, isFavorite);
+
+		// Stub DB initialization, deserialized read from JSON & rewrite back to JSON with new object
+		ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
+		comicBookStubDB.setComicBookStubData(comicBookStubDB.deserializeComicBookStubDB(comicBookStubDB.getABSOLUTE_FILE_PATH()));
+		comicBookStubDB.getComicBookStubData().add(comicBook);
+		comicBookStubDB.serializeComicBookStubDB();
+		successMessage = new JTextField(SUCCESS_MESSAGE);
+		successMessage.setColumns(50);
+		successMessage.setBounds(287, 680, 590, 20);
+		panel.add(successMessage);
 	}
 }
