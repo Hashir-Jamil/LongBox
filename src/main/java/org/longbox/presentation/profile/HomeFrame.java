@@ -216,7 +216,8 @@ public class HomeFrame extends JFrame implements ActionListener {
                 addComicToRepoPanel.getDescriptionTextField().getText(),
                 Integer.parseInt(addComicToRepoPanel.getNumberOfIssuesTextField().getText()),
                 addComicToRepoPanel.getPublisherTextField().getText(),
-                Integer.parseInt(addComicToRepoPanel.getYearPublishedTextField().getText())
+                Integer.parseInt(addComicToRepoPanel.getYearPublishedTextField().getText()),
+                addComicToRepoPanel.getFavoriteCheckbox().isSelected()
         );
 
         // Reset Text
@@ -236,6 +237,7 @@ public class HomeFrame extends JFrame implements ActionListener {
                         comicBookStubDB.getABSOLUTE_FILE_PATH()));
         comicBookStubDB.getComicBookStubData().add(comicBook);
         comicBookStubDB.serializeComicBookStubDB();
+        JOptionPane.showMessageDialog(this, "Comic book added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void logoutUser(){
