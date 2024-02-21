@@ -35,13 +35,19 @@ public class User {
 
 	@Column(name = "join_date")
 	private Date joinDate;
+	
+	@Column(name = "comics_reading")
+	private int comicsReading;
 
+	@Column(name = "comics_finished")
+	private int comicsFinished;
+	
 	public User() {
 
 	}
 
 	public User(String userName, String firstName, String lastName, Date dob, String email, String password,
-			String country, Date joinDate) {
+			String country, Date joinDate, int comicsReading, int comicsFinished) {
 		super();
 		this.userName = userName;
 		this.firstName = firstName;
@@ -51,6 +57,8 @@ public class User {
 		this.password = password;
 		this.country = country;
 		this.joinDate = new Date();
+		this.comicsReading = comicsReading;
+		this.comicsFinished = comicsFinished;
 	}
 
 	public long getId() {
@@ -85,4 +93,12 @@ public class User {
 		return joinDate;
 	}
 
+	public int getcomicsReading() {
+		return comicsReading;
+	}
+	
+	public int getcomicsFinished() {
+		return comicsFinished;
+	}
+		
 }
