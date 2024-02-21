@@ -138,10 +138,33 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 //            }
 //		}
 		if (e.getSource() == textField && !textField.getText().isEmpty()) {
-			System.out.println("Search for: " + textField.getText() + " in "  + typeSelection.getSelectedItem());
-			List<ComicBookDTO> searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookStubDB.getComicBookStubData(), textField.getText());
+			String searchBy = typeSelection.getSelectedItem().toString();
+			List<ComicBookDTO> searchResults = null;
+			System.out.println("Search for: " + textField.getText() + " in "  + searchBy);
+			switch(searchBy) {
+				case "Title":
+					// Implement logic
+					break;
+				case "Author":
+					// Implement logic
+					break;
+				case "Artist":
+					// Implement logic
+					break;
+				case "Genre":
+					// Implement logic
+					break;
+				case "Publisher":
+					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookStubDB.getComicBookStubData(), textField.getText());
+					break;
+				case "Year":
+					// Implement logic
+					break;
+				default:
+					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookStubDB.getComicBookStubData(), "");
+					break;
+			}
 			loadComicBookResultsPage(searchResults);
-			
 		}
     }
 	
