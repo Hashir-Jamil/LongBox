@@ -21,6 +21,8 @@ public class UserDTO {
 	private String country;
 	private Date joinDate;
 	private List<ComicBookDTO> comicBookList = new ArrayList<>();
+	private int comicsReading;
+	private int comicsFinished;
 
 	public UserDTO(
 		String userName,
@@ -40,6 +42,8 @@ public class UserDTO {
 		this.password = password;
 		this.country = country;
 		this.joinDate = new Date();
+		this.comicsReading = 0;
+		this.comicsFinished = 0;
 	}
 
 	@Override
@@ -58,7 +62,7 @@ public class UserDTO {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getUserName(), getFirstName(), getLastName(), getDob(), getEmail(), getCountry(), getJoinDate());
+		return Objects.hash(getUserName(), getFirstName(), getLastName(), getDob(), getEmail(), getCountry(), getJoinDate(), getComicsReading(), getComicsFinished());
 	}
 
 	@Override
@@ -69,7 +73,9 @@ public class UserDTO {
 				"Date of Birth: " + dob + "\n" +
 				"Email Address: " + email + "\n" +
 				"Country: " + country + "\n" +
-				"Join Date: " + joinDate + "\n";
+				"Join Date: " + joinDate + "\n" +
+				"Comics Reading: " + comicsReading + "\n" +
+				"Comics Finished: " + comicsFinished + "\n";
 	}
 
 	public boolean addComicBookToList(ComicBookDTO comicBook) {
