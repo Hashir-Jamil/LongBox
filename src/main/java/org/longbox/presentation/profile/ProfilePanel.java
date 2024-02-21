@@ -6,6 +6,7 @@ import lombok.Setter;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Rectangle;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,6 +21,7 @@ public class ProfilePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private final String PANEL_LABEL = "Profile View";
 	private JTextPane userProfileInformationTextPane = new JTextPane();
+	private JTextPane userStatsTextPane = new JTextPane();
 
 	/**
 	 * Create the panel.
@@ -44,16 +46,32 @@ public class ProfilePanel extends JPanel {
 		
 		add(panel, BorderLayout.CENTER);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBackground(new Color(0, 0, 0));
-		separator.setForeground(new Color(0, 0, 0));
-		separator.setBounds(7, 100, 1150, 1);
-		panel.add(separator);
+		//Top horizontal topSeparator
+		JSeparator topSeparator = new JSeparator();
+		topSeparator.setBackground(new Color(0, 0, 0));
+		topSeparator.setForeground(new Color(0, 0, 0));
+		topSeparator.setBounds(7, 100, 1150, 1);
+		panel.add(topSeparator);
+		
+		//Middle vertical topSeparator
+		JSeparator midSeparator = new JSeparator();
+		midSeparator.setOrientation(SwingConstants.VERTICAL);
+		midSeparator.setBackground(new Color(0, 0, 0));
+		midSeparator.setForeground(new Color(0, 0, 0));
+		midSeparator.setBounds(500, 100, 30, 700);
+		panel.add(midSeparator);
 		
 		//User profile information text pane
 		userProfileInformationTextPane.setEditable(false);
 		userProfileInformationTextPane.setBackground(Color.WHITE);
-		userProfileInformationTextPane.setBounds(74, 153, 1016, 594);
+		userProfileInformationTextPane.setBounds(41, 138, 420, 620);
 		panel.add(userProfileInformationTextPane);
+		
+		//User stats information text pane
+		userStatsTextPane.setEditable(false);
+		userStatsTextPane.setBackground(Color.WHITE);
+		userStatsTextPane.setBounds(new Rectangle(540, 138, 583, 620));
+		panel.add(userStatsTextPane);
+		
 	}
 }
