@@ -8,12 +8,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import javax.swing.*;
 
 @Getter
 public class AddComicToRepoPanel extends JPanel {
@@ -38,6 +33,7 @@ public class AddComicToRepoPanel extends JPanel {
 	private JTextField publisherTextField;
 	private JTextField yearPublishedTextField;
 	private JButton enterComicBookButton;
+	private JCheckBox favoriteCheckbox;
 
 	/**
 	 * Create the panel.
@@ -177,6 +173,12 @@ public class AddComicToRepoPanel extends JPanel {
 		enterComicBookButton = new JButton(ENTER_COMIC_BOOK_BUTTON);
 		enterComicBookButton.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
 		enterComicBookButton.setBounds(482, 650, 200, 40);
+
+		favoriteCheckbox = new JCheckBox("Is Favorite");
+		favoriteCheckbox.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
+		favoriteCheckbox.setBounds(287, 600, 590, 20);
+		panel.add(favoriteCheckbox);
+
 		enterComicBookButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
