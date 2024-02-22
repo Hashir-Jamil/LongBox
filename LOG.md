@@ -84,7 +84,18 @@
 	Eric: Added searchability to ComicCollectionPanel, user can now navigate to a comic page either through the search bar or clicking on a series' title name from the JTable
     Hashir: Reviewed and editted documentation to be submitted for ITR01 and branched the main trunk into an ITRO1 trunk.
     Ahan: Wrote the README.md.
+
+## Monday, February 19th, 2024
+
+    Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Spoke with Prof. Hemmati about imbalanced github contribution problem and followed up with group meeting to reorganize teamwork.
+    
     
 ## Wednesday, February 21st, 2024
-	
+
+    Hashir & Ahan: setup hibernate to postgresql connection & created database connection + basic queries to test if it works
+    Group Meeting (Ahan, Ali, Oscar, Eric): TO-DO by members who attended
 	Oscar: Reorganized layout of profile page with future features in mind and added comics reading and comics finished stat.
+
+## Thursday, February
+
+    Hashir: refined database attributes & worked on creating user and comic book data to load into postgresql database
