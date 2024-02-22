@@ -21,8 +21,8 @@ public class ComicBook {
     @Column(name = "artist")
     private String artist;
 
-    @Column(name = "genres")
-    private String genres;
+    @Column(name = "genres", columnDefinition = "text[]")
+    private String[] genres;
     
     @Column(name = "description")
     private String description;
