@@ -30,7 +30,7 @@ public class ComicBookSearchResultsFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ComicBookSearchResultsFrame(List<ComicBookDTO> displayResults) {
+	public ComicBookSearchResultsFrame(List<ComicBookDTO> displayResults, String target, String searchBy) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 850, 455);
 		contentPane = new JPanel();
@@ -39,10 +39,10 @@ public class ComicBookSearchResultsFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Results");
+		JLabel lblNewLabel = new JLabel("Results for " + target + " in " + searchBy);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(329, 11, 166, 46);
+		lblNewLabel.setBounds(10, 11, 814, 46);
 		contentPane.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();

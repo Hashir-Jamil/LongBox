@@ -130,6 +130,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == textField && !textField.getText().isEmpty()) {
 			String searchBy = typeSelection.getSelectedItem().toString();
+			String target = textField.getText();
 			List<ComicBookDTO> searchResults = null;
 			System.out.println("Search for: " + textField.getText() + " in "  + searchBy);
 			switch(searchBy) {
@@ -155,12 +156,12 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookStubDB.getComicBookStubData(), "");
 					break;
 			}
-			loadComicBookResultsPage(searchResults);
+			loadComicBookResultsPage(searchResults, target, searchBy);
 		}
     }
 	
-	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults) {
-		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults);
+	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy) {
+		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy);
 		resultsPage.setVisible(true);
 	}
 }
