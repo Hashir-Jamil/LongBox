@@ -1,9 +1,13 @@
 package org.longbox.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
+import java.util.Objects;
 
+@Getter
+@NoArgsConstructor
 @Entity
 @Table(name = "user")
 public class User {
@@ -41,5 +45,42 @@ public class User {
 
 	@Column(name = "comics_finished")
 	private int comicsFinished;
-		
+
+	public User(String userName, String firstName, String lastName, Date dob, String email, String password,
+			String country) {
+		super();
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dob = dob;
+		this.email = email;
+		this.password = password;
+		this.country = country;
+		this.joinDate = new Date();
+		this.comicsFinished = 0;
+		this.comicsReading = 0;
+	}
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(comicsFinished, comicsReading, country, dob, email, firstName, id, joinDate, lastName,
+				password, userName);
+	}
+	
+	//two users are equal if they have the same name, user name and emails
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return  Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName) && id == other.id
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(userName, other.userName);
+	}
+
 }

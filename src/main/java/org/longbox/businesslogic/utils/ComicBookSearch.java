@@ -1,9 +1,12 @@
 package org.longbox.businesslogic.utils;
 
 import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.presentation.comicbook.ComicBookFrame;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.text.html.HTMLEditorKit;
 
 public class ComicBookSearch {
 
@@ -50,7 +53,7 @@ public class ComicBookSearch {
     	return resultList;
     }
     
-public static List<ComicBookDTO> searchComicBookByYear(List<ComicBookDTO> comicBookList, String year) {
+    public static List<ComicBookDTO> searchComicBookByYear(List<ComicBookDTO> comicBookList, String year) {
     	
     	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
     	System.out.println(year);
@@ -64,6 +67,14 @@ public static List<ComicBookDTO> searchComicBookByYear(List<ComicBookDTO> comicB
     	}
     	return resultList;
     }
+    
+    public static void loadComicBookPage(ComicBookDTO comicBook) {
+		ComicBookFrame comicBookFrame = new ComicBookFrame();
+		comicBookFrame.setVisible(true);
+		HTMLEditorKit htmlEditorKit = new HTMLEditorKit();
+		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(htmlEditorKit);
+		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
+	}
 
     public static String generateComicBookHTML(ComicBookDTO comicBook) {
         String htmlContent = String.format(

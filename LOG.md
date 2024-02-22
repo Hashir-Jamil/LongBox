@@ -86,15 +86,16 @@
     Ahan: Wrote the README.md.
 
 ## Monday, February 19th, 2024
-    
-    Group Meeting (Ahan, Ali, Oscar, Eric): TO-DO by members who attended
-
-## Wednesday, February 21st, 2024
 
     Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Spoke with Prof. Hemmati about imbalanced github contribution problem and followed up with group meeting to reorganize teamwork.
-    Hashir & Ahan: setup hibernate to postgresql connection & created database connection + basic queries to test if it works
-
-## Thursday, February 
     
-    Hashir: refined database attributes & worked on creating user and comic book data to load into postgresql database
+    
+## Wednesday, February 21st, 2024
 
+    Hashir & Ahan: setup hibernate to postgresql connection & created database connection + basic queries to test if it works
+    Group Meeting (Ahan, Ali, Oscar, Eric): TO-DO by members who attended
+	Oscar: Reorganized layout of profile page with future features in mind and added comics reading and comics finished stat.
+
+## Thursday, February
+
+    Hashir: refined database attributes & worked on creating user and comic book data to load into postgresql database
