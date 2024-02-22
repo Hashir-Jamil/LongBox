@@ -1,5 +1,6 @@
 package org.longbox.utils;
 
+import lombok.Getter;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.longbox.persistence.entity.User;
@@ -8,8 +9,9 @@ import org.longbox.persistence.entity.ComicBook;
 import org.longbox.persistence.entity.Comment;
 
 public class HibernateUtils {
+
     private static SessionFactory sessionFactory;
-    private static SessionFactory getSessionFactory() {
+    public static SessionFactory getSessionFactory() {
         //Singleton
         if (sessionFactory == null) {
             Configuration configuration = new Configuration()
@@ -22,4 +24,5 @@ public class HibernateUtils {
         }
         return sessionFactory;
     }
+
 }
