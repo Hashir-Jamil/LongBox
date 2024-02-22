@@ -1,11 +1,15 @@
+CREATE SCHEMA IF NOT EXISTS longbox_schema;
+SET SEARCH_PATH = longbox_schema;
+
 CREATE TABLE "user" (
     "id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     "user_name" text UNIQUE,
     "first_name" text,
     "last_name" text,
     "dob" date,
-    "address" text,
     "email" text,
+    "password" text,
+    "country" text,
     "join_date" date,
     "comics_reading" integer,
     "comics_finished" integer
@@ -13,14 +17,15 @@ CREATE TABLE "user" (
 
 CREATE TABLE "comic_book" (
     "id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    "issue_title" text,
     "series_title" text,
     "author" text,
-    "volume_number" integer,
-    "issues_number" integer,
+    "artist" text,
+    "genres" text,
+    "description" text,
+    "number_of_issues" integer,
     "publisher" text,
-    "year" date,
-    "date_added_db" date
+    "year_published" integer,
+    "date_added" date
 );
 
 CREATE TABLE "comic_book_list" (
