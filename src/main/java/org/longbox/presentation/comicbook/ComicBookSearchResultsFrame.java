@@ -28,22 +28,6 @@ public class ComicBookSearchResultsFrame extends JFrame {
 	private ComicBookTableModel comicBookTableModel;
 
 	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					ComicBookSearchResultsFrame frame = new ComicBookSearchResultsFrame();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
 	 * Create the frame.
 	 */
 	public ComicBookSearchResultsFrame(List<ComicBookDTO> displayResults) {

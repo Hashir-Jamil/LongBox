@@ -128,15 +128,6 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 	
 	@Override
     public void actionPerformed(ActionEvent e) {
-//		if (e.getSource() == textField && !textField.getText().isEmpty()) {
-//			System.out.println("Search for: " + textField.getText());
-//			ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), textField.getText());
-//			if (comicBook.getSeriesTitle() != null) {
-//				loadComicBookPage(comicBook);
-//			} else {
-//                JOptionPane.showMessageDialog(panel, "No search results found.", "Search Results Not Found", JOptionPane.INFORMATION_MESSAGE);
-//            }
-//		}
 		if (e.getSource() == textField && !textField.getText().isEmpty()) {
 			String searchBy = typeSelection.getSelectedItem().toString();
 			List<ComicBookDTO> searchResults = null;
