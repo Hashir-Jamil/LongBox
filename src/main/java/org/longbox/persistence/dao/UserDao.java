@@ -8,7 +8,7 @@ public interface UserDao {
 
     User getUserByUserName(String userName);
 
-    User saveUser(User user);
+    void saveUser(User user);
 
     boolean deleteUser(User user);
 

@@ -15,14 +15,14 @@ public class ComicBook {
     @Column(name = "series_title")
     private String seriesTitle;
 
-    @Column(name = "authors")
+    @Column(name = "author")
     private String author;
     
-    @Column(name = "artists")
+    @Column(name = "artist")
     private String artist;
 
     @Column(name = "genres")
-    private String[] genres;
+    private String genres;
     
     @Column(name = "description")
     private String description;
@@ -33,13 +33,10 @@ public class ComicBook {
     @Column(name = "publisher")
     private String publisher;
 
-    @Column(name = "yearPublished")
+    @Column(name = "year_published")
     private int yearPublished;
 
     @Column(name = "date_added")
     private Date dateAdded;
-
-    @Column(name = "favorite")
-    private boolean favorite;
 
 }

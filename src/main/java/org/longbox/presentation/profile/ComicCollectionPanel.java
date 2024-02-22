@@ -88,7 +88,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 				if (col == 0) {
 					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), comicBookTable.getValueAt(row, col).toString());
 					System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
-					loadComicBookPage(comicBook);
+					ComicBookSearch.loadComicBookPage(comicBook);
 				}
 			}
 		});
@@ -128,22 +128,14 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 	
 	@Override
     public void actionPerformed(ActionEvent e) {
-//		if (e.getSource() == textField && !textField.getText().isEmpty()) {
-//			System.out.println("Search for: " + textField.getText());
-//			ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), textField.getText());
-//			if (comicBook.getSeriesTitle() != null) {
-//				loadComicBookPage(comicBook);
-//			} else {
-//                JOptionPane.showMessageDialog(panel, "No search results found.", "Search Results Not Found", JOptionPane.INFORMATION_MESSAGE);
-//            }
-//		}
 		if (e.getSource() == textField && !textField.getText().isEmpty()) {
 			String searchBy = typeSelection.getSelectedItem().toString();
+			String target = textField.getText();
 			List<ComicBookDTO> searchResults = null;
 			System.out.println("Search for: " + textField.getText() + " in "  + searchBy);
 			switch(searchBy) {
 				case "Title":
-					// Implement logic
+					searchResults = ComicBookSearch.searchComicBookByTitle(comicBookStubDB.getComicBookStubData(), textField.getText());
 					break;
 				case "Author":
 					// Implement logic
@@ -158,26 +150,18 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookStubDB.getComicBookStubData(), textField.getText());
 					break;
 				case "Year":
-					// Implement logic
+					searchResults = ComicBookSearch.searchComicBookByYear(comicBookStubDB.getComicBookStubData(), textField.getText());
 					break;
 				default:
 					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookStubDB.getComicBookStubData(), "");
 					break;
 			}
-			loadComicBookResultsPage(searchResults);
+			loadComicBookResultsPage(searchResults, target, searchBy);
 		}
     }
 	
-	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults) {
-		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults);
+	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy) {
+		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy);
 		resultsPage.setVisible(true);
-	}
-	
-	private void loadComicBookPage(ComicBookDTO comicBook) {
-		ComicBookFrame comicBookFrame = new ComicBookFrame();
-		comicBookFrame.setVisible(true);
-		HTMLEditorKit htmlEditorKit = new HTMLEditorKit();
-		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(htmlEditorKit);
-		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
 	}
 }

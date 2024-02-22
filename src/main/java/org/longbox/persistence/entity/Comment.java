@@ -3,7 +3,7 @@ package org.longbox.persistence.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "comment")
+@Table(name = "comments")
 public class Comment {
 
     @Id
@@ -13,7 +13,7 @@ public class Comment {
     @Column(name = "message")
     private String message;
 
-    @Column(name = "commend_date")
+    @Column(name = "comment_date")
     private String commentDate;
 
     @Column(name = "comic_book_id")
