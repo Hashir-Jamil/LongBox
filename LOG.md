@@ -84,3 +84,7 @@
 	Eric: Added searchability to ComicCollectionPanel, user can now navigate to a comic page either through the search bar or clicking on a series' title name from the JTable
     Hashir: Reviewed and editted documentation to be submitted for ITR01 and branched the main trunk into an ITRO1 trunk.
     Ahan: Wrote the README.md.
+    
+## Wednesday, February 21st, 2024
+	
+	Oscar:Reorganized layout of profile page with future features in mind and added comics reading and comics finished stat.
