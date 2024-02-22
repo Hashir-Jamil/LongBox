@@ -143,7 +143,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 			System.out.println("Search for: " + textField.getText() + " in "  + searchBy);
 			switch(searchBy) {
 				case "Title":
-					// Implement logic
+					searchResults = ComicBookSearch.searchComicBookByTitle(comicBookStubDB.getComicBookStubData(), textField.getText());
 					break;
 				case "Author":
 					// Implement logic
@@ -158,7 +158,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookStubDB.getComicBookStubData(), textField.getText());
 					break;
 				case "Year":
-					// Implement logic
+					searchResults = ComicBookSearch.searchComicBookByYear(comicBookStubDB.getComicBookStubData(), textField.getText());
 					break;
 				default:
 					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookStubDB.getComicBookStubData(), "");

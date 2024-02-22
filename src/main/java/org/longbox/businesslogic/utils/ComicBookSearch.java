@@ -34,6 +34,36 @@ public class ComicBookSearch {
     	}
     	return resultList;
     }
+    
+    public static List<ComicBookDTO> searchComicBookByTitle(List<ComicBookDTO> comicBookList, String title) {
+    	
+    	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
+    	System.out.println(title);
+    	for (ComicBookDTO comic : comicBookList) {
+            if (comic.getSeriesTitle().contains(title)) {
+            	resultList.add(comic);
+            }
+        }
+    	for (ComicBookDTO comic : resultList) {
+    		System.out.println(comic.getSeriesTitle());
+    	}
+    	return resultList;
+    }
+    
+public static List<ComicBookDTO> searchComicBookByYear(List<ComicBookDTO> comicBookList, String year) {
+    	
+    	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
+    	System.out.println(year);
+    	for (ComicBookDTO comic : comicBookList) {
+            if (String.valueOf(comic.getYearPublished()).equals(year)) {
+            	resultList.add(comic);
+            }
+        }
+    	for (ComicBookDTO comic : resultList) {
+    		System.out.println(comic.getYearPublished());
+    	}
+    	return resultList;
+    }
 
     public static String generateComicBookHTML(ComicBookDTO comicBook) {
         String htmlContent = String.format(
