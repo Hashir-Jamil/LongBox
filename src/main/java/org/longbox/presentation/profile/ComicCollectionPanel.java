@@ -88,7 +88,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 				if (col == 0) {
 					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), comicBookTable.getValueAt(row, col).toString());
 					System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
-					loadComicBookPage(comicBook);
+					ComicBookSearch.loadComicBookPage(comicBook);
 				}
 			}
 		});
@@ -171,13 +171,5 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults) {
 		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults);
 		resultsPage.setVisible(true);
-	}
-	
-	private void loadComicBookPage(ComicBookDTO comicBook) {
-		ComicBookFrame comicBookFrame = new ComicBookFrame();
-		comicBookFrame.setVisible(true);
-		HTMLEditorKit htmlEditorKit = new HTMLEditorKit();
-		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(htmlEditorKit);
-		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
 	}
 }
