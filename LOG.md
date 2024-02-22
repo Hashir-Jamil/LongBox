@@ -87,4 +87,4 @@
     
 ## Wednesday, February 21st, 2024
 	
-	Oscar:Reorganized layout of profile page with future features in mind and added comics reading and comics finished stat.
+	Oscar: Reorganized layout of profile page with future features in mind and added comics reading and comics finished stat.
