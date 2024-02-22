@@ -1,9 +1,11 @@
 package org.longbox.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
 
+@Getter
 @Entity
 @Table(name = "user")
 public class User {
@@ -27,7 +29,7 @@ public class User {
 	@Column(name = "email")
 	private String email;
 
-	@Column(name = "passowrd")
+	@Column(name = "password")
 	private String password;
 
 	@Column(name = "country")
@@ -41,5 +43,22 @@ public class User {
 
 	@Column(name = "comics_finished")
 	private int comicsFinished;
-		
+
+	public User(String userName, String firstName, String lastName, Date dob, String email, String password,
+			String country) {
+		super();
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dob = dob;
+		this.email = email;
+		this.password = password;
+		this.country = country;
+		this.joinDate = new Date();
+		this.comicsFinished = 0;
+		this.comicsReading = 0;
+	}
+
+	
+
 }
