@@ -5,8 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
 import org.hibernate.Transaction;
-import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
-import org.longbox.businesslogic.exception.UsernameExistsException;
+import org.longbox.businesslogic.exception.*;
 import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
 
@@ -14,7 +13,7 @@ public class UserDaoImpl implements UserDao{
     SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
     @Override
-    public User getUserById(long id) {
+    public User getUserById(long id) throws UserIDDoesNotExistException {
         Session session = null;
         Transaction transaction = null;
         User user = null;
@@ -34,6 +33,9 @@ public class UserDaoImpl implements UserDao{
             if (session != null) {
                 session.close();
             }
+        }
+        if(user == null) {
+            throw new UserIDDoesNotExistException();
         }
         return user;
     }
