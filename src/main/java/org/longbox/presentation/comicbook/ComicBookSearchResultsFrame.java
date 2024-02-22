@@ -2,6 +2,8 @@ package org.longbox.presentation.comicbook;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -12,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.stubdatabase.ComicBookStubDB;
 import org.longbox.presentation.profile.ComicBookTableModel;
@@ -70,6 +73,20 @@ public class ComicBookSearchResultsFrame extends JFrame {
 		comicBookTableModel = new ComicBookTableModel(displayResults);
 
 		comicBookTable = new JTable(comicBookTableModel);
+		
+		comicBookTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row = comicBookTable.rowAtPoint(e.getPoint());
+				int col = comicBookTable.columnAtPoint(e.getPoint());
+				if (col == 0) {
+					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), comicBookTable.getValueAt(row, col).toString());
+					System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
+					ComicBookSearch.loadComicBookPage(comicBook);
+					dispose();
+				}
+			}
+		});
 		
 		scrollPane.setViewportView(comicBookTable);
 	}
