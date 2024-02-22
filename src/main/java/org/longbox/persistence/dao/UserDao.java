@@ -1,5 +1,6 @@
 package org.longbox.persistence.dao;
 
+import org.longbox.businesslogic.exception.UsernameExistsException;
 import org.longbox.persistence.entity.User;
 
 public interface UserDao {
@@ -8,7 +9,7 @@ public interface UserDao {
 
     User getUserByUserName(String userName);
 
-    void saveUser(User user);
+    void saveUser(User user) throws UsernameExistsException;
 
     boolean deleteUser(User user);
 

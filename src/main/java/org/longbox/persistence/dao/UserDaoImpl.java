@@ -2,8 +2,10 @@ package org.longbox.persistence.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
 import org.hibernate.Transaction;
+import org.longbox.businesslogic.exception.UsernameExistsException;
 import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
 
@@ -62,7 +64,7 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public void saveUser(User user) {
+    public void saveUser(User user) throws UsernameExistsException {
         Session session = null;
         Transaction transaction = null;
 
@@ -71,6 +73,9 @@ public class UserDaoImpl implements UserDao{
             transaction = session.beginTransaction();
             session.save(user);
             transaction.commit();
+        }
+        catch(ConstraintViolationException cve){
+            throw new UsernameExistsException();
         }
         catch (Exception e) {
             if (transaction != null) {
