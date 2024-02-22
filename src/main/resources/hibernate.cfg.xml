@@ -16,9 +16,10 @@
         <property name="connection.driver_class">org.postgresql.Driver</property> <!-- DB Driver for PostgreSQL -->
         <property name="connection.username">postgres</property> <!-- DB User -->
         <property name="connection.password">postgres</property> <!-- DB Password -->
+        <property name="hibernate.default_schema">longbox_schema</property>
 
         <!-- SQL Dialect -->
-        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property> <!-- DB Dialect for Postgres specific SQL statements-->
+        <!-- <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property> DB Dialect for Postgres specific SQL statements-->
 
         <!-- ORM Behaviour -->
         <property name="hbm2ddl.auto">update</property> <!-- create / create-drop / update -->

@@ -19,7 +19,7 @@ public class ComicBookList {
     @Column(name = "comic_book_id")
     private long comicBookId;
 
-    @Column(name = "date_added")
+    @Column(name = "date_added_user_list")
     private Date dateAdded;
 
 
