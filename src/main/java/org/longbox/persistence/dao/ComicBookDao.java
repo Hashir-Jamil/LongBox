@@ -5,11 +5,11 @@ import org.longbox.persistence.entity.User;
 
 public interface ComicBookDao {
 
-    User getComicBookById(long id);
+    ComicBook getComicBookById(long id);
 
-    User getComicBookBySeriesName(String seriesName);
+    ComicBook getComicBookBySeriesName(String seriesName);
 
-    User saveComicBook(ComicBook comicBook);
+    void saveComicBook(ComicBook comicBook);
 
     boolean deleteComicBook(ComicBook comicBook);
 
