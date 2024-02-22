@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameExistsException;
 import org.longbox.domainobjects.dto.UserDTO;
 import org.longbox.persistence.entity.User;
@@ -38,12 +39,12 @@ class UserDaoImplTest {
 	}
 
 	@Test
-	void test_add_1() {
+	void test_add_1_Fail() {
 		assertThrows(UsernameExistsException.class, () -> userDaoImpl.saveUser(user));
 	}
 
 	@Test
-	void test_add_2(){
+	void test_add_2_Fail(){
 		UserDTO u3 = new UserDTO(
 				"Phoenix",
 				"Stan",
@@ -60,11 +61,38 @@ class UserDaoImplTest {
 				u3.getEmail(),
 				u3.getPassword(),
 				u3.getCountry());
-		try{
-			userDaoImpl.saveUser(user1);
-		} catch (UsernameExistsException e) {
-           	fail();
-        }
+
+		assertThrows(UsernameExistsException.class, () -> userDaoImpl.saveUser(user1));
     }
+
+	@Test
+	void test_getUserByUserName(){
+		User expected = new User(
+				"Always_Scheming",
+				"John",
+				"Smith",
+				new Date(1990, 12, 1),
+				"email@domain.com",
+				"Always_Scheming",
+				"Canada");
+		
+		User actual;
+		try {
+			actual = userDaoImpl.getUserByUserName(expected.getUserName());
+			assertEquals(expected.getUserName(), actual.getUserName());
+			assertEquals(expected.getFirstName(), actual.getFirstName());
+			assertEquals(expected.getLastName(), actual.getLastName());
+			assertEquals(expected.getEmail(), actual.getEmail());
+		} catch (UserNameDoesNotExistException e) {
+			// TODO Auto-generated catch block
+			fail();
+		}
+	}
+	
+	@Test
+	void test_getUserByUserName_Fail(){
+		assertThrows(UserNameDoesNotExistException.class, () -> userDaoImpl.getUserByUserName("Jimmy"));
+		
+	}
 
 }
