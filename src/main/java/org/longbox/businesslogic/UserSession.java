@@ -50,7 +50,7 @@ public class UserSession {
 
     public static String generateUserProfileHTML (UserSession userSession) {
         String htmlContent = String.format(
-                "<html><body><div align='center'><h1>Username: %s</h1><br" +
+                "<html><body><div><h1>Username: %s</h1><br" +
                         "<h2>First Name: %s</h2><br" +
                         "<h2>Last Name: %s</h2><br" +
                         "<h2>Email Address: %s</h2><br" +
@@ -69,6 +69,17 @@ public class UserSession {
         return htmlContent;
     }
 
+    public static String generateUserStatsHTML (UserSession userSession) {
+        String htmlContent = String.format(
+                "<html><body><div><h1>Comic Stats</h1><br" +
+                        "<h2>Comics Reading: %s</h2><br" +
+                        "<h2>Comics Finished: %s</h2><br" +
+                        "</div></body></html><br",
+                userSession.getUser().getComicsReading(),
+                userSession.getUser().getComicsFinished()
+                );
+        		return htmlContent;
+    }
 	
 
 }

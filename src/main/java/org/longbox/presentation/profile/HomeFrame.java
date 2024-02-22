@@ -87,6 +87,9 @@ public class HomeFrame extends JFrame implements ActionListener {
         HTMLEditorKit kit = new HTMLEditorKit();
         profilePanel.getUserProfileInformationTextPane().setEditorKit(kit);
         profilePanel.getUserProfileInformationTextPane().setText(UserSession.generateUserProfileHTML(user));
+        HTMLEditorKit kit1 = new HTMLEditorKit();
+        profilePanel.getUserStatsTextPane().setEditorKit(kit1);
+        profilePanel.getUserStatsTextPane().setText(UserSession.generateUserStatsHTML(user));
     }
 
     public void initiateRegUI() {
