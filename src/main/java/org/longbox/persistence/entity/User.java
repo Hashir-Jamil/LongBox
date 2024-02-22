@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.Objects;
 
 @Getter
+@NoArgsConstructor
 @Entity
 @Table(name = "user")
 public class User {
@@ -58,7 +60,27 @@ public class User {
 		this.comicsFinished = 0;
 		this.comicsReading = 0;
 	}
-
 	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(comicsFinished, comicsReading, country, dob, email, firstName, id, joinDate, lastName,
+				password, userName);
+	}
+	
+	//two users are equal if they have the same name, user name and emails
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return  Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName) && id == other.id
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(userName, other.userName);
+	}
 
 }
