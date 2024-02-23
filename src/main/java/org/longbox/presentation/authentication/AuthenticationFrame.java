@@ -118,28 +118,6 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
         }
     }
 
-//	private void validateLogin(){
-//		users = userStubDB.deserializeUserStubDB(userStubDB.getABSOLUTE_FILE_PATH());
-//		for(UserDTO u: users) {
-//			if (loginPanel.getUsername().equals(u.getUserName())) {
-//				if (loginPanel.getDecryptedPassword().equals(u.getPassword())) {
-//					loginPanel.getErrorLabel().setText("Login Successful!");
-//					loginPanel.getErrorLabel().setForeground(Color.GREEN);
-//					dispose();
-//					HomeFrame homeFrame = new HomeFrame(userSession.getInstance(u));
-//					homeFrame.setVisible(true);
-//
-//				} else {
-//					loginPanel.getErrorLabel().setText("Password Incorrect");
-//					loginPanel.getErrorLabel().setForeground(Color.red);
-//				}
-//			} else {
-//				loginPanel.getErrorLabel().setText("User does not exist");
-//				loginPanel.getErrorLabel().setForeground(Color.red);
-//			}
-//		}
-//	}
-
 	private void registerUser(){
 		userStubDB.setUserStubData(
 				userStubDB.deserializeUserStubDB(
