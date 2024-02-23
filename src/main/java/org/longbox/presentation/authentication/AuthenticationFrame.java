@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
+import org.longbox.businesslogic.exception.UsernameExistsException;
 import org.longbox.domainobjects.dto.UserDTO;
 import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.User;
@@ -119,13 +120,25 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
     }
 
 	private void registerUser(){
-		userStubDB.setUserStubData(
-				userStubDB.deserializeUserStubDB(
-						userStubDB.getABSOLUTE_FILE_PATH()));
-		userStubDB.getUserStubData().add(registrationPanel.getRegistrationDetails());
-		userStubDB.serializeUserStubDB();
-		registrationPanel.getMessageLabel().setText("Registeration Successful");
-		cardLayout.show(cardPanel, "login");
-	}
+		UserDaoImpl userDaoImpl = new UserDaoImpl();
+		try{
+			userDaoImpl.saveUser(new User(registrationPanel.getRegistrationDetails()));
+			registrationPanel.getMessageLabel().setText("Registeration Successful");
+			cardLayout.show(cardPanel, "login");
+		} catch (UsernameExistsException e) {
+			registrationPanel.getMessageLabel().setText("Username Exists! Please choose a unique username.");
+			registrationPanel.getMessageLabel().setForeground(Color.red);
+        }
+    }
+
+//	private void registerUser(){
+//		userStubDB.setUserStubData(
+//				userStubDB.deserializeUserStubDB(
+//						userStubDB.getABSOLUTE_FILE_PATH()));
+//		userStubDB.getUserStubData().add(registrationPanel.getRegistrationDetails());
+//		userStubDB.serializeUserStubDB();
+//		registrationPanel.getMessageLabel().setText("Registeration Successful");
+//		cardLayout.show(cardPanel, "login");
+//	}
 
 }

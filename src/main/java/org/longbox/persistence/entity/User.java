@@ -2,6 +2,7 @@ package org.longbox.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.longbox.domainobjects.dto.UserDTO;
 
 import java.util.Date;
 import java.util.Objects;
@@ -60,7 +61,16 @@ public class User {
 		this.comicsFinished = 0;
 		this.comicsReading = 0;
 	}
-	
+
+	public User(UserDTO user){
+		this(user.getUserName(),
+				user.getFirstName(),
+				user.getLastName(),
+				user.getDob(),
+				user.getEmail(),
+				user.getPassword(),
+				user.getCountry());
+	}
 
 	@Override
 	public int hashCode() {
