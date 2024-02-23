@@ -21,77 +21,49 @@ INSERT INTO longbox_schema.comic_book(
 
 VALUES
     ('Zot!', 'Scott McCloud', 'Scott McCloud',
-     Array['Superhero','Superpower','Adventure','Science Fiction','Futuristic','Romance','Drama'],
+     'Superhero, Superpower, Adventure, Science Fiction, Futuristic, Romance, Drama',
      'Empty', 36, 'Eclipse', 1984, '2024-02-15'),
 
     ('Sanctuary', 'Sho Fumimura', 'Ryoichi Ikegami',
-     Array['Polital','Crime','Thriller','Manga'],
+     'Polital, Crime, Thriller, Manga',
      'Empty', 108, 'Viz', 1990, '2024-02-15'),
 
     ('Nexus (1981)', 'Mike Baron', 'Steve Rude',
-     Array['Superhero','Planetary Romance','Superpower','Science Fiction','Adventure','Fantasy'],
+     'Superhero, Planetary Romance, Superpower, Science Fiction, Adventure, Fantasy',
      'Empty', 3, 'Capital', 1981, '2024-02-15'),
 
     ('The Maxx', 'Sam Keith', 'Sam Keith',
-     Array['Fantasy','Drama','Comedy','Superhero'],
+     'Fantasy, Drama, Comedy, Superhero',
      'Empty', 35, 'Image', 1993, '2024-02-15'),
 
     ('Winter Wolrd', 'Chuck Dixon', 'Jorge Zaffino',
-     Array['Adventure','Post-Apocalyptic','Gunslinger'],
+     'Adventure, Post-Apocalyptic, Gunslinger',
      'Empty', 3, 'Eclipse', 1987, '2024-02-15'),
 
     ('Hellhounds Panzer Cops', 'Mamoru Oshii', 'Kamui Fujiwara',
-     Array['Military','Police','Adventure','Dystopian','Manga'],
+     'Military, Police, Adventure, Dystopian,Manga',
      'Empty', 6, 'Dark Horse', 1994, '2024-02-15'),
 
     ('Jon Sable Freelance (1983)', 'Mike Grell', 'Mike Grell',
-     Array['Action','Adventure','Crime','Vigilantes'],
+     'Action, Adventure, Crime, Vigilantes',
      'Empty', 56, 'First Comics', 1983, '2024-02-15'),
 
     ('Chronicles of Corum', 'Mike Baron', 'Mike Mignola',
-     Array['Action','Adventure','Sword and Socery'],
+     'Action, Adventure, Sword and Socery',
      'Empty', 12, 'First Comics', 1987, '2024-02-15'),
 
     ('Drakuun', 'Johji Manabe', 'Johnji Manabe',
-     Array['Adventure','Sword and Socery','Comedy','Manga'],
+     'Adventure, Sword and Socery, Comedy, Manga',
      'Empty', 24, 'Dark Horse', 1997, '2024-02-15'),
 
     ('Sojourn', 'Ron Marz', 'Greg Land',
-     Array['Action','Adventure','Sword and Sorcery'],
+     'Action, Adventure, Sword and Sorcery',
      'Empty', 34, 'Crossgen', 2001, '2024-02-15');
 
 --Template to batchload more comic book objects
 
 /*  ('', '', '',
-    Array['','','','','','',''],
-    'Empty', , '', , '2024-02-15'),
-
-    ('', '', '',
-    Array['','','','','','',''],
-    'Empty', , '', , '2024-02-15')
-
-    ('', '', '',
-    Array['','','','','','',''],
-    'Empty', , '', , '2024-02-15')
-
-    ('', '', '',
-    Array['','','','','','',''],
-    'Empty', , '', , '2024-02-15')
-
-    ('', '', '',
-    Array['','','','','','',''],
-    'Empty', , '', , '2024-02-15')
-
-    ('', '', '',
-    Array['','','','','','',''],
-    'Empty', , '', , '2024-02-15')
-
-    ('', '', '',
-    Array['','','','','','',''],
-    'Empty', , '', , '2024-02-15')
-
-    ('', '', '',
-    Array['','','','','','',''],
-    'Empty', , '', , '2024-02-15');		*/
+    ',,,,,,'
+    'Empty', , '', , '2024-02-15')	*/
 
 
