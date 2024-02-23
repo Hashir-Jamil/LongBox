@@ -33,7 +33,7 @@ public class HomeFrame extends JFrame implements ActionListener {
     private JButton logOutButton;
     private JPanel nexusPanel;
     private JPanel activityPanel;
-    private SearchPanel searchPanel = new SearchPanel();
+    //private SearchPanel searchPanel = new SearchPanel();
     private FavoritesPanel favoritesPanel = new FavoritesPanel();
 	private CardLayout cardLayout;
     private static JFrame frame;
@@ -113,7 +113,7 @@ public class HomeFrame extends JFrame implements ActionListener {
         cardLayout = new CardLayout();
         activityPanel.setLayout(cardLayout);
         activityPanel.add(comicCollectionPanel, COMIC_COLLECTAION_PANEL);
-        activityPanel.add(searchPanel, SEARCH_COMIC_BOOK);
+        //activityPanel.add(searchPanel, SEARCH_COMIC_BOOK);
         activityPanel.add(favoritesPanel, FAVORITES_PANEL);
         activityPanel.add(profilePanel, PROFILE_PANEL);
         activityPanel.add(addComicToRepoPanel, ADD_COMIC_TO_REPO);
@@ -124,16 +124,16 @@ public class HomeFrame extends JFrame implements ActionListener {
         nexusPanel.add(logOutButton);
         //logOutButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
 
-        searchButtonNexus = new JButton("Search");
+/*        searchButtonNexus = new JButton("Search");
         searchButtonNexus.addActionListener(this);
 
         searchButtonNexus.setBounds(376, 12, 170, 25);
-        nexusPanel.add(searchButtonNexus);
+        nexusPanel.add(searchButtonNexus);*/
 
         addComicButton = new JButton("Add Comic");
         addComicButton.addActionListener(this);
         
-        addComicButton.setBounds(194, 11, 170, 25);
+        addComicButton.setBounds(190, 11, 170, 25);
         nexusPanel.add(addComicButton);
         
         comicCollectionButton = new JButton("Comic Collection");
@@ -143,18 +143,18 @@ public class HomeFrame extends JFrame implements ActionListener {
         nexusPanel.add(comicCollectionButton);
         
         profileButton = new JButton("Profile");
-        profileButton.setBounds(567, 12, 170, 25);
+        profileButton.setBounds(370, 11, 170, 25);
         nexusPanel.add(profileButton);
 
         favoritesButton = new JButton("Favorites");
         favoritesButton.addActionListener(this);
-        favoritesButton.setBounds(744, 12, 170, 25);
+        favoritesButton.setBounds(550, 11, 170, 25);
         nexusPanel.add(favoritesButton);
 
         profileButton.addActionListener(this);
         logOutButton.addActionListener(this);
         addComicToRepoPanel.getEnterComicBookButton().addActionListener(this);
-        searchButton = searchPanel.getSearchButton();
+        //searchButton = searchPanel.getSearchButton();
     }
 
     @Override
@@ -176,7 +176,7 @@ public class HomeFrame extends JFrame implements ActionListener {
             cardLayout.show(activityPanel, FAVORITES_PANEL);
         }
 
-        if (e.getSource() == searchButtonNexus) {
+/*        if (e.getSource() == searchButtonNexus) {
             System.out.println("entered search");
         	cardLayout.show(activityPanel, SEARCH_COMIC_BOOK);
             searchButton.addActionListener(new ActionListener() {
@@ -197,7 +197,7 @@ public class HomeFrame extends JFrame implements ActionListener {
                     }
                 }
             });
-        }
+        }*/
 
         if (e.getSource() == profileButton) {
         	cardLayout.show(activityPanel, PROFILE_PANEL);
