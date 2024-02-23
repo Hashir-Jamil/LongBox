@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.stubdatabase.ComicBookStubDB;
 import org.longbox.presentation.profile.ComicBookTableModel;
 
@@ -24,7 +25,7 @@ public class ComicBookSearchResultsFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable comicBookTable;
-	ComicBookStubDB comicBookStubDB;
+	ComicBookDaoImpl comicBookDaoImpl;
 	private ComicBookTableModel comicBookTableModel;
 
 	/**
@@ -51,8 +52,7 @@ public class ComicBookSearchResultsFrame extends JFrame {
 		
 		comicBookTable = new JTable();
 		
-		comicBookStubDB = new ComicBookStubDB();
-		comicBookStubDB.loadComicBooks();
+		comicBookDaoImpl = new ComicBookDaoImpl();
 
 		comicBookTableModel = new ComicBookTableModel(displayResults);
 
@@ -64,7 +64,7 @@ public class ComicBookSearchResultsFrame extends JFrame {
 				int row = comicBookTable.rowAtPoint(e.getPoint());
 				int col = comicBookTable.columnAtPoint(e.getPoint());
 				if (col == 0) {
-					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), comicBookTable.getValueAt(row, col).toString());
+					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
 					System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
 					ComicBookSearch.loadComicBookPage(comicBook);
 					dispose();
