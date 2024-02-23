@@ -25,8 +25,7 @@ public class ComicBookDateAddedComparatorTest {
                 "A classic Batman story",
                 4,
                 "DC Comics",
-                1987,
-                false
+                1987
         );
 
         comicBook2 = new ComicBookDTO(
@@ -37,8 +36,7 @@ public class ComicBookDateAddedComparatorTest {
                 "The first appearance of Spider-Man",
                 1,
                 "Marvel Comics",
-                1962,
-                false
+                1962
         );
 
         comicBook3 = new ComicBookDTO(
@@ -49,8 +47,7 @@ public class ComicBookDateAddedComparatorTest {
                 "The iconic '90s X-Men series",
                 30,
                 "Marvel Comics",
-                1991,
-                false
+                1991
         );
 
         comicBook4 = new ComicBookDTO(
@@ -61,8 +58,7 @@ public class ComicBookDateAddedComparatorTest {
                 "Revitalizing Wonder Woman in the '80s",
                 6,
                 "DC Comics",
-                1987,
-                false
+                1987
         );
     }
 

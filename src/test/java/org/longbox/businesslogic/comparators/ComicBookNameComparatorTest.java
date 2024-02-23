@@ -34,8 +34,7 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 36,
                 "Eclipse",
-                1984,
-                false
+                1984
         );
 
         comicBook2 = new ComicBookDTO(
@@ -46,8 +45,7 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 108,
                 "Viz",
-                1990,
-                false
+                1990
         );
 
         comicBook3 = new ComicBookDTO(
@@ -58,8 +56,7 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 3,
                 "Capital",
-                1981,
-                false
+                1981
         );
 
         comicBook4 = new ComicBookDTO(
@@ -70,8 +67,7 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 35,
                 "Image",
-                1993,
-                false
+                1993
         );
 
         comicBook5 = new ComicBookDTO(
@@ -82,8 +78,7 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 36,
                 "Eclipse",
-                1984,
-                false
+                1984
         );
 
         comicBook6 = new ComicBookDTO(
@@ -92,9 +87,10 @@ public class ComicBookNameComparatorTest {
                 "Ryoichi Ikegami",
                 new String[]{"Political",
                         "Crime", "Thriller", "Manga"},
-                "Description", 108,
-                "Viz", 1990,
-                false
+                "Description",
+                108,
+                "Viz",
+                1990
         );
 
         comicBook7 = new ComicBookDTO(
@@ -105,8 +101,7 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 3,
                 "Capital",
-                1981,
-                false
+                1981
         );
 
         comicBook8 = new ComicBookDTO(
@@ -117,8 +112,7 @@ public class ComicBookNameComparatorTest {
                 "Description",
                 35,
                 "Image",
-                1993,
-                false
+                1993
         );
     }
 

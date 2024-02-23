@@ -3,6 +3,7 @@ package org.longbox.domainobjects.dto;
 
 import lombok.*;
 import org.longbox.businesslogic.comparators.CommentDateComparator;
+import org.longbox.persistence.entity.ComicBook;
 
 import java.util.*;
 
@@ -22,19 +23,16 @@ public class ComicBookDTO {
     private String publisher;
     private int yearPublished;
     private Date dateAdded;
-    private boolean favorite;
-    private List<CommentDTO> commentsList = new ArrayList<>();
 
     public ComicBookDTO(
-      String seriesTitle,
-      String author,
-      String artist,
-      String genres,
-      String description,
-      int numberOfIssues,
-      String publisher,
-      int yearPublished,
-      boolean favorite
+        String seriesTitle,
+        String author,
+        String artist,
+        String genres,
+        String description,
+        int numberOfIssues,
+        String publisher,
+        int yearPublished
     ) {
         this.seriesTitle = seriesTitle;
         this.author = author;
@@ -45,7 +43,49 @@ public class ComicBookDTO {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
-        this.favorite = favorite;
+    };
+
+    public ComicBookDTO(
+        String seriesTitle,
+        String author,
+        String artist,
+        String genres,
+        String description,
+        int numberOfIssues,
+        String publisher,
+        int yearPublished,
+        Date date
+    ) {
+        this.seriesTitle = seriesTitle;
+        this.author = author;
+        this.artist = artist;
+        this.genres = genreStringToList(genres);
+        this.description = description;
+        this.numberOfIssues = numberOfIssues;
+        this.yearPublished = yearPublished;
+        this.publisher = publisher;
+        this.dateAdded = new Date(date.getTime());
+    };
+
+    public ComicBookDTO(
+        String seriesTitle,
+        String author,
+        String artist,
+        String[] genres,
+        String description,
+        int numberOfIssues,
+        String publisher,
+        int yearPublished
+    ) {
+        this.seriesTitle = seriesTitle;
+        this.author = author;
+        this.artist = artist;
+        this.genres = genres;
+        this.description = description;
+        this.numberOfIssues = numberOfIssues;
+        this.yearPublished = yearPublished;
+        this.publisher = publisher;
+        this.dateAdded = new Date();
     };
 
     public ComicBookDTO(
@@ -57,7 +97,7 @@ public class ComicBookDTO {
             int numberOfIssues,
             String publisher,
             int yearPublished,
-            boolean favorite
+            Date date
     ) {
         this.seriesTitle = seriesTitle;
         this.author = author;
@@ -67,9 +107,22 @@ public class ComicBookDTO {
         this.numberOfIssues = numberOfIssues;
         this.yearPublished = yearPublished;
         this.publisher = publisher;
-        this.dateAdded = new Date();
-        this.favorite = favorite;
+        this.dateAdded = date;
     };
+
+    public ComicBookDTO(ComicBook comicBookRecord) {
+        this(
+            comicBookRecord.getSeriesTitle(),
+            comicBookRecord.getAuthor(),
+            comicBookRecord.getArtist(),
+            comicBookRecord.getGenres(),
+            comicBookRecord.getDescription(),
+            comicBookRecord.getNumberOfIssues(),
+            comicBookRecord.getPublisher(),
+            comicBookRecord.getYearPublished(),
+            comicBookRecord.getDateAdded()
+        );
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -110,6 +163,8 @@ public class ComicBookDTO {
         genres = genres + genresList[genresList.length - 1];
         return genres;
     }
+
+
 
 }
 

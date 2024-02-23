@@ -203,7 +203,7 @@ public class AddComicToRepoPanel extends JPanel {
 		boolean isFavorite = favoriteCheckbox.isSelected();
 
 		// Create ComicBookDTO object with retrieved values
-		ComicBookDTO comicBook = new ComicBookDTO(seriesTitle, author, artist, genres, description, numberOfIssues, publisher, yearPublished, isFavorite);
+		ComicBookDTO comicBook = new ComicBookDTO(seriesTitle, author, artist, genres, description, numberOfIssues, publisher, yearPublished);
 
 		// Stub DB initialization, deserialized read from JSON & rewrite back to JSON with new object
 		ComicBookStubDB comicBookStubDB = new ComicBookStubDB();

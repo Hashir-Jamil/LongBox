@@ -30,8 +30,7 @@ public class ComicBookStubDB {
                 "Description",
                 36,
                 "Eclipse",
-                1984,
-                false
+                1984
         );
         comicBookStubData.add(comicBook1);
 
@@ -43,8 +42,7 @@ public class ComicBookStubDB {
                 "Description",
                 108,
                 "Viz",
-                1990,
-                true
+                1990
         );
         comicBookStubData.add(comicBook2);
 
@@ -56,8 +54,7 @@ public class ComicBookStubDB {
                 "Description",
                 3,
                 "Capital",
-                1981,
-                true
+                1981
         );
         comicBookStubData.add(comicBook3);
 
@@ -69,8 +66,7 @@ public class ComicBookStubDB {
                 "Description",
                 35,
                 "Image",
-                1993,
-                false
+                1993
         );
         comicBookStubData.add(comicBook4);
         
@@ -82,8 +78,7 @@ public class ComicBookStubDB {
                 "Description",
                 3,
                 "Eclipse",
-                1987,
-                false
+                1987
         );
         comicBookStubData.add(comicBook5);
         
@@ -95,8 +90,7 @@ public class ComicBookStubDB {
                 "Description",
                 6,
                 "Dark Horse",
-                1994,
-                false
+                1994
         );
         comicBookStubData.add(comicBook6);
         
@@ -108,8 +102,7 @@ public class ComicBookStubDB {
                 "Description",
                 56,
                 "First Comics",
-                1983,
-                false
+                1983
         );
         comicBookStubData.add(comicBook7);
         
@@ -121,8 +114,7 @@ public class ComicBookStubDB {
                 "Description",
                 12,
                 "First Comics",
-                1987,
-                false
+                1987
         );
         comicBookStubData.add(comicBook8);
         
@@ -134,8 +126,7 @@ public class ComicBookStubDB {
                 "Description",
                 24,
                 "Dark Horse",
-                1997,
-                false
+                1997
         );
         comicBookStubData.add(comicBook9);
         
@@ -147,8 +138,7 @@ public class ComicBookStubDB {
                 "Description",
                 34,
                 "Crossgen",
-                2001,
-                false
+                2001
         );
         comicBookStubData.add(comicBook10);
         
@@ -160,8 +150,7 @@ public class ComicBookStubDB {
                 "Description",
                 6,
                 "Dark Horse",
-                1988,
-                false
+                1988
         );
         comicBookStubData.add(comicBook11);
     }

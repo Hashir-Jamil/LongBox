@@ -219,8 +219,7 @@ public class HomeFrame extends JFrame implements ActionListener {
                 addComicToRepoPanel.getDescriptionTextField().getText(),
                 Integer.parseInt(addComicToRepoPanel.getNumberOfIssuesTextField().getText()),
                 addComicToRepoPanel.getPublisherTextField().getText(),
-                Integer.parseInt(addComicToRepoPanel.getYearPublishedTextField().getText()),
-                addComicToRepoPanel.getFavoriteCheckbox().isSelected()
+                Integer.parseInt(addComicToRepoPanel.getYearPublishedTextField().getText())
         );
 
         // Reset Text

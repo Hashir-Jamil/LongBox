@@ -35,8 +35,7 @@ public class ComicBookTableModel extends DefaultTableModel {
                     comicBook.getNumberOfIssues(),
                     comicBook.getPublisher(),
                     comicBook.getYearPublished(),
-                    comicBook.getDateAdded(),
-                    comicBook.isFavorite()
+                    comicBook.getDateAdded()
             });
         }
     }
