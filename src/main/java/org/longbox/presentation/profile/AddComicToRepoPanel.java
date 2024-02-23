@@ -190,7 +190,7 @@ public class AddComicToRepoPanel extends JPanel {
 		enterComicBookButton.setFocusable(false);
 	}
 
-	private void saveAddComicBookFormInput() {
+/*	private void saveAddComicBookFormInput() {
 		// Retrieve values from text fields
 		String seriesTitle = comicSeriesTitleTextField.getText();
 		String author = comicBookAuthorTextField.getText();
@@ -214,5 +214,5 @@ public class AddComicToRepoPanel extends JPanel {
 		successMessage.setColumns(50);
 		successMessage.setBounds(287, 680, 590, 20);
 		panel.add(successMessage);
-	}
+	}*/
 }

@@ -3,6 +3,7 @@ package org.longbox.persistence.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.longbox.domainobjects.dto.ComicBookDTO;
 
 import java.util.Date;
 
@@ -68,4 +69,17 @@ public class ComicBook {
 
     public ComicBook() {
     }
+
+    public ComicBook(ComicBookDTO comicBookDTO) {
+        this.seriesTitle = comicBookDTO.getSeriesTitle();
+        this.author = comicBookDTO.getAuthor();
+        this.artist = comicBookDTO.getArtist();
+        this.genres = ComicBookDTO.genreListToString(comicBookDTO.getGenres());
+        this.description = description;
+        this.numberOfIssues = numberOfIssues;
+        this.publisher = publisher;
+        this.yearPublished = yearPublished;
+        this.dateAdded = new Date(dateAdded.getTime());
+    }
+
 }

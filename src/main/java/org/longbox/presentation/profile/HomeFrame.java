@@ -3,6 +3,7 @@ package org.longbox.presentation.profile;
 import org.longbox.businesslogic.*;
 import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.stubdatabase.ComicBookStubDB;
 import org.longbox.presentation.authentication.AuthenticationFrame;
 import org.longbox.presentation.comicbook.ComicBookFrame;
@@ -232,13 +233,16 @@ public class HomeFrame extends JFrame implements ActionListener {
         addComicToRepoPanel.getPublisherTextField().setText("");
         addComicToRepoPanel.getYearPublishedTextField().setText("");
 
-        //Stub DB initialization, deserialized read from JSON & rewrite back to JSON with new object
+        ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl();
+        comicBookDao.saveComicBook(comicBook);
+
+/*        //Stub DB initialization, deserialized read from JSON & rewrite back to JSON with new object
         ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
         comicBookStubDB.setComicBookStubData(
                 comicBookStubDB.deserializeComicBookStubDB(
                         comicBookStubDB.getABSOLUTE_FILE_PATH()));
         comicBookStubDB.getComicBookStubData().add(comicBook);
-        comicBookStubDB.serializeComicBookStubDB();
+        comicBookStubDB.serializeComicBookStubDB();*/
         JOptionPane.showMessageDialog(this, "Comic book added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
 

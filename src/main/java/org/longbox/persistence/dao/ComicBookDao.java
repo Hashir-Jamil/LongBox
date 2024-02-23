@@ -12,7 +12,7 @@ public interface ComicBookDao {
 
     ComicBook getComicBookBySeriesName(String seriesName);
 
-    void saveComicBook(ComicBook comicBook);
+    void saveComicBook(ComicBookDTO comicBook);
 
     boolean deleteComicBook(ComicBook comicBook);
 

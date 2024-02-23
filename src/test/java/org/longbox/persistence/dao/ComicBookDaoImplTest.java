@@ -80,8 +80,6 @@ public class ComicBookDaoImplTest {
 
     @Test
     void saveComicBook() {
-        comicBookDaoImpl.saveComicBook(comicBook2);
+        comicBookDaoImpl.saveComicBook(comicBookDTO2);
     }
-
-
 }

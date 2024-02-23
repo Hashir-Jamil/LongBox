@@ -71,9 +71,10 @@ public class ComicBookDaoImpl implements ComicBookDao {
     }
 
     @Override
-    public void saveComicBook(ComicBook comicBook) {
+    public void saveComicBook(ComicBookDTO comicBookDTO) {
         Session session = null;
         Transaction transaction = null;
+        ComicBook comicBook = new ComicBook(comicBookDTO);
 
         try {
             session = sessionFactory.openSession();
