@@ -11,9 +11,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.longbox.businesslogic.UserSession;
+import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.persistence.dao.UserDaoImpl;
+import org.longbox.persistence.entity.User;
 import org.longbox.persistence.stubdatabase.UserStubDB;
 import org.longbox.presentation.profile.HomeFrame;
+import org.w3c.dom.UserDataHandler;
 
 public class AuthenticationFrame extends JFrame implements ActionListener {
 
@@ -25,6 +29,7 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
     private UserStubDB userStubDB = new UserStubDB();
     private UserSession userSession;
 	private List<UserDTO> users;
+
 	/**
 	 * Launch the application.
 	 */
@@ -88,26 +93,52 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
     }
 
 	private void validateLogin(){
-		users = userStubDB.deserializeUserStubDB(userStubDB.getABSOLUTE_FILE_PATH());
-		for(UserDTO u: users) {
-			if (loginPanel.getUsername().equals(u.getUserName())) {
-				if (loginPanel.getDecryptedPassword().equals(u.getPassword())) {
+		UserDaoImpl userDaoImpl = new UserDaoImpl();
+		String UserName = loginPanel.getUsername();
+		String DecryptPassword = loginPanel.getDecryptedPassword();
+
+		User user;
+		try{
+			user = userDaoImpl.getUserByUserName(UserName);
+			if(UserName.equals(user.getUserName())){
+				if(DecryptPassword.equals(user.getPassword())){
 					loginPanel.getErrorLabel().setText("Login Successful!");
 					loginPanel.getErrorLabel().setForeground(Color.GREEN);
 					dispose();
-					HomeFrame homeFrame = new HomeFrame(userSession.getInstance(u));
+					HomeFrame homeFrame = new HomeFrame(userSession.getInstance(new UserDTO(user)));
 					homeFrame.setVisible(true);
-
 				} else {
 					loginPanel.getErrorLabel().setText("Password Incorrect");
 					loginPanel.getErrorLabel().setForeground(Color.red);
 				}
-			} else {
-				loginPanel.getErrorLabel().setText("User does not exist");
-				loginPanel.getErrorLabel().setForeground(Color.red);
 			}
-		}
-	}
+		} catch (UserNameDoesNotExistException e) {
+			loginPanel.getErrorLabel().setText("User does not exist");
+			loginPanel.getErrorLabel().setForeground(Color.red);
+        }
+    }
+
+//	private void validateLogin(){
+//		users = userStubDB.deserializeUserStubDB(userStubDB.getABSOLUTE_FILE_PATH());
+//		for(UserDTO u: users) {
+//			if (loginPanel.getUsername().equals(u.getUserName())) {
+//				if (loginPanel.getDecryptedPassword().equals(u.getPassword())) {
+//					loginPanel.getErrorLabel().setText("Login Successful!");
+//					loginPanel.getErrorLabel().setForeground(Color.GREEN);
+//					dispose();
+//					HomeFrame homeFrame = new HomeFrame(userSession.getInstance(u));
+//					homeFrame.setVisible(true);
+//
+//				} else {
+//					loginPanel.getErrorLabel().setText("Password Incorrect");
+//					loginPanel.getErrorLabel().setForeground(Color.red);
+//				}
+//			} else {
+//				loginPanel.getErrorLabel().setText("User does not exist");
+//				loginPanel.getErrorLabel().setForeground(Color.red);
+//			}
+//		}
+//	}
 
 	private void registerUser(){
 		userStubDB.setUserStubData(
