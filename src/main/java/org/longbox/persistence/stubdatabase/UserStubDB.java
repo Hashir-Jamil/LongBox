@@ -23,6 +23,7 @@ public class UserStubDB {
 
     public void loadUsers() {
         UserDTO u1 = new UserDTO(
+                1,
                 "Always_Scheming",
                 "John",
                 "Smith",
@@ -33,6 +34,7 @@ public class UserStubDB {
         userStubData.add(u1);
 
         UserDTO u2 = new UserDTO(
+                2,
                 "Always_Throwing",
                 "Neo",
                 "Anderson",
@@ -43,6 +45,7 @@ public class UserStubDB {
         userStubData.add(u2);
 
         UserDTO u3 = new UserDTO(
+                3,
                 "Phoenix",
                 "Stan",
                 "Lee",

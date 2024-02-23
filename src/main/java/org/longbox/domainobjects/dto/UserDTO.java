@@ -26,6 +26,29 @@ public class UserDTO {
 	private int comicsFinished;
 
 	public UserDTO(
+			String userName,
+			String firstName,
+			String lastName,
+			Date dob,
+			String email,
+			String password,
+			String country
+	) {
+		super();
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dob = dob;
+		this.email = email;
+		this.password = password;
+		this.country = country;
+		this.joinDate = new Date();
+		this.comicsReading = 0;
+		this.comicsFinished = 0;
+	}
+
+	public UserDTO(
+		long id,
 		String userName,
 		String firstName,
 		String lastName,
@@ -35,6 +58,7 @@ public class UserDTO {
 		String country
 	) {
 		super();
+		this.id = id;
 		this.userName = userName;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -90,13 +114,16 @@ public class UserDTO {
 	}
 
 	public UserDTO(User user){
-		this(user.getUserName(),
-		user.getFirstName(),
-		user.getLastName(),
-		user.getDob(),
-		user.getEmail(),
-		user.getPassword(),
-		user.getCountry());
+		this(
+			user.getId(),
+			user.getUserName(),
+			user.getFirstName(),
+			user.getLastName(),
+			user.getDob(),
+			user.getEmail(),
+			user.getPassword(),
+			user.getCountry()
+		);
 	}
 
 }
