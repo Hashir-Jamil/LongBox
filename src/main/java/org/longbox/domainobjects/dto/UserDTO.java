@@ -47,6 +47,32 @@ public class UserDTO {
 		this.comicsFinished = 0;
 	}
 
+	public UserDTO(
+			long id,
+			String userName,
+			String firstName,
+			String lastName,
+			Date dob,
+			String email,
+			String password,
+			String country,
+			int comicsReading,
+			int comicsFinished
+	) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dob = dob;
+		this.email = email;
+		this.password = password;
+		this.country = country;
+		this.joinDate = new Date();
+		this.comicsReading = comicsReading;
+		this.comicsFinished = comicsFinished;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -90,13 +116,17 @@ public class UserDTO {
 	}
 
 	public UserDTO(User user){
-		this(user.getUserName(),
-		user.getFirstName(),
-		user.getLastName(),
-		user.getDob(),
-		user.getEmail(),
-		user.getPassword(),
-		user.getCountry());
+		this(
+			user.getId(),
+			user.getUserName(),
+			user.getFirstName(),
+			user.getLastName(),
+			user.getDob(),
+			user.getEmail(),
+			user.getPassword(),
+			user.getCountry(),
+			user.getComicsReading(),
+			user.getComicsFinished()
+		);
 	}
-
 }
