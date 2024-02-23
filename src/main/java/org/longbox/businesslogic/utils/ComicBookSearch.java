@@ -15,7 +15,7 @@ public class ComicBookSearch {
         ComicBookDTO comicBook = new ComicBookDTO();
 
         for (ComicBookDTO comic : comicBookList) {
-            if (comic.getSeriesTitle().contains(searchQuery)) {
+            if (comic.getSeriesTitle().toUpperCase().contains(searchQuery.toUpperCase())) {
                 System.out.println(comic);
                 return comic;
             }
@@ -28,7 +28,7 @@ public class ComicBookSearch {
     	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
     	System.out.println(publisher);
     	for (ComicBookDTO comic : comicBookList) {
-            if (comic.getPublisher().contains(publisher)) {
+            if (comic.getPublisher().toUpperCase().contains(publisher.toUpperCase())) {
             	resultList.add(comic);
             }
         }
@@ -43,7 +43,7 @@ public class ComicBookSearch {
     	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
     	System.out.println(title);
     	for (ComicBookDTO comic : comicBookList) {
-            if (comic.getSeriesTitle().contains(title)) {
+            if (comic.getSeriesTitle().toUpperCase().contains(title.toUpperCase())) {
             	resultList.add(comic);
             }
         }
