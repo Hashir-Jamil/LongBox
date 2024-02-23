@@ -85,7 +85,6 @@ class UserDaoImplTest {
 			assertEquals(expected.getLastName(), actual.getLastName());
 			assertEquals(expected.getEmail(), actual.getEmail());
 		} catch (UserNameDoesNotExistException e) {
-			// TODO Auto-generated catch block
 			fail();
 		}
 	}
@@ -114,7 +113,6 @@ class UserDaoImplTest {
 			assertEquals(expected.getLastName(), actual.getLastName());
 			assertEquals(expected.getEmail(), actual.getEmail());
 		} catch (UserIDDoesNotExistException e) {
-			// TODO Auto-generated catch block
 			fail();
 		}
 	}
