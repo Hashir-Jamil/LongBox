@@ -3,8 +3,6 @@ package org.longbox.presentation.profile;
 import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
-import org.longbox.persistence.stubdatabase.ComicBookStubDB;
-import org.longbox.presentation.comicbook.ComicBookFrame;
 import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
 
 import lombok.Getter;
@@ -17,7 +15,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -27,7 +24,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.text.html.HTMLEditorKit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
