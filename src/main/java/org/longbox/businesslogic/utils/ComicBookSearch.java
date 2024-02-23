@@ -53,6 +53,21 @@ public class ComicBookSearch {
     	return resultList;
     }
     
+    public static List<ComicBookDTO> searchComicBookByAuthor(List<ComicBookDTO> comicBookList, String author) {
+    	
+    	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
+    	System.out.println(author);
+    	for (ComicBookDTO comic : comicBookList) {
+            if (comic.getAuthor().toUpperCase().contains(author.toUpperCase())) {
+            	resultList.add(comic);
+            }
+        }
+    	for (ComicBookDTO comic : resultList) {
+    		System.out.println(comic.getSeriesTitle());
+    	}
+    	return resultList;
+    }
+    
     public static List<ComicBookDTO> searchComicBookByYear(List<ComicBookDTO> comicBookList, String year) {
     	
     	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
