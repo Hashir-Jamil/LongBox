@@ -12,8 +12,8 @@ This project uses a 3-layer software architecture. The system is built around th
 
 ### Prerequisites
 
-- The project is built on Java 19
-- The project uses Gradle (Kotlin) as the build system
+- The project is built on Java 19.
+- The project uses Gradle (Kotlin) as the build system.
 - The project used [PostgreSQL](https://www.postgresql.org/) as the database.
 
 ### Installing
