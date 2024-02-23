@@ -75,11 +75,10 @@ public class ComicBook {
         this.author = comicBookDTO.getAuthor();
         this.artist = comicBookDTO.getArtist();
         this.genres = ComicBookDTO.genreListToString(comicBookDTO.getGenres());
-        this.description = description;
-        this.numberOfIssues = numberOfIssues;
-        this.publisher = publisher;
-        this.yearPublished = yearPublished;
-        this.dateAdded = new Date(dateAdded.getTime());
+        this.description = comicBookDTO.getDescription();
+        this.numberOfIssues = comicBookDTO.getNumberOfIssues();
+        this.publisher = comicBookDTO.getPublisher();
+        this.yearPublished = comicBookDTO.getYearPublished();
+        this.dateAdded = new Date();
     }
-
 }

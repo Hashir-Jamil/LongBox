@@ -30,7 +30,10 @@ public class UserStubDB {
                 new Date(1990, 12, 1),
                 "email@domain.com",
                 "Always_Scheming",
-                "Canada");
+                "Canada",
+                0,
+                0
+        );
         userStubData.add(u1);
 
         UserDTO u2 = new UserDTO(
@@ -41,7 +44,10 @@ public class UserStubDB {
                 new Date(1929,1,1),
                 "address@provider.ca",
                 "Always_Throwing",
-                "Indonesia");
+                "Indonesia",
+                0,
+                0
+        );
         userStubData.add(u2);
 
         UserDTO u3 = new UserDTO(
@@ -52,7 +58,10 @@ public class UserStubDB {
                 new Date(2000,4,31),
                 "123fake@nowhere.org",
                 "Phoenix",
-                "United Kingdom");
+                "United Kingdom",
+                0,
+                0
+        );
         userStubData.add(u3);
     }
     
