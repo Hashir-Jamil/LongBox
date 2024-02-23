@@ -3,6 +3,7 @@ package org.longbox.domainobjects.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.longbox.persistence.entity.User;
 
 import java.util.*;
 
@@ -87,4 +88,15 @@ public class UserDTO {
 			return true;
 		}
 	}
+
+	public UserDTO(User user){
+		this(user.getUserName(),
+		user.getFirstName(),
+		user.getLastName(),
+		user.getDob(),
+		user.getEmail(),
+		user.getPassword(),
+		user.getCountry());
+	}
+
 }

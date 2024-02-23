@@ -86,8 +86,8 @@ public class RegistrationPanel extends JPanel {
 		lastNameField.setColumns(10);
 
 		//username label
-		JLabel UsernameLabel = new JLabel("Your username:");
-		UsernameLabel.setBounds(117, 187, 83, 16);
+		JLabel UsernameLabel = new JLabel("Your username(must be unique):");
+		UsernameLabel.setBounds(117, 187, 181, 16);
 		UsernameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
 
 		usernameField = new JTextField();
