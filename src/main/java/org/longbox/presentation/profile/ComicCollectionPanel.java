@@ -2,8 +2,7 @@ package org.longbox.presentation.profile;
 
 import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
-import org.longbox.persistence.stubdatabase.ComicBookStubDB;
-import org.longbox.presentation.comicbook.ComicBookFrame;
+import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
 
 import lombok.Getter;
@@ -16,7 +15,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -26,7 +24,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.text.html.HTMLEditorKit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -47,8 +44,8 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 	private JTextField textField;
 	private JComboBox<String> typeSelection;
 	private ComicBookTableModel comicBookTableModel;
-	TableRowSorter<TableModel> sorter;
-	ComicBookStubDB comicBookStubDB;
+	TableRowSorter<TableModel> sorter;	
+	ComicBookDaoImpl comicBookDaoImpl;
 
 	public ComicCollectionPanel() {
 		initComicCollectionPage();
@@ -73,11 +70,10 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 		panel.add(separator);
 
 		add(panel, BorderLayout.CENTER);
-
-		comicBookStubDB = new ComicBookStubDB();
-		comicBookStubDB.loadComicBooks();
-
-		comicBookTableModel = new ComicBookTableModel(comicBookStubDB.getComicBookStubData());
+		
+		comicBookDaoImpl = new ComicBookDaoImpl();
+		
+		comicBookTableModel = new ComicBookTableModel(comicBookDaoImpl.getAllComicBooks());
 
 		comicBookTable = new JTable(comicBookTableModel);
 		comicBookTable.addMouseListener(new MouseAdapter() {
@@ -86,7 +82,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 				int row = comicBookTable.rowAtPoint(e.getPoint());
 				int col = comicBookTable.columnAtPoint(e.getPoint());
 				if (col == 0) {
-					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), comicBookTable.getValueAt(row, col).toString());
+					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
 					System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
 					ComicBookSearch.loadComicBookPage(comicBook);
 				}
@@ -135,7 +131,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 			System.out.println("Search for: " + textField.getText() + " in "  + searchBy);
 			switch(searchBy) {
 				case "Title":
-					searchResults = ComicBookSearch.searchComicBookByTitle(comicBookStubDB.getComicBookStubData(), textField.getText());
+					searchResults = ComicBookSearch.searchComicBookByTitle(comicBookDaoImpl.getAllComicBooks(), textField.getText());
 					break;
 				case "Author":
 					// Implement logic
@@ -147,13 +143,13 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 					// Implement logic
 					break;
 				case "Publisher":
-					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookStubDB.getComicBookStubData(), textField.getText());
+					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookDaoImpl.getAllComicBooks(), textField.getText());
 					break;
 				case "Year":
-					searchResults = ComicBookSearch.searchComicBookByYear(comicBookStubDB.getComicBookStubData(), textField.getText());
+					searchResults = ComicBookSearch.searchComicBookByYear(comicBookDaoImpl.getAllComicBooks(), textField.getText());
 					break;
 				default:
-					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookStubDB.getComicBookStubData(), "");
+					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookDaoImpl.getAllComicBooks(), "");
 					break;
 			}
 			loadComicBookResultsPage(searchResults, target, searchBy);

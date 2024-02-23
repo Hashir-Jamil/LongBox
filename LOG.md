@@ -96,6 +96,7 @@
     Group Meeting (Ahan, Ali, Oscar, Eric): TO-DO by members who attended
 	Oscar: Reorganized layout of profile page with future features in mind and added comics reading and comics finished stat.
 
-## Thursday, February
+## Thursday, February 22nd, 2024
 
     Hashir: refined database attributes & worked on creating user and comic book data to load into postgresql database
+    Ahan: Changed Login page and Registeration page from Stub DB to PostgreSQL DB. Also updated the README.md file. Wrote some tests to determine if the UserDaoImpl is working as expected.

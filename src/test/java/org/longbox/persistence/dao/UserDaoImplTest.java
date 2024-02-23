@@ -2,7 +2,6 @@ package org.longbox.persistence.dao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
@@ -85,7 +84,6 @@ class UserDaoImplTest {
 			assertEquals(expected.getLastName(), actual.getLastName());
 			assertEquals(expected.getEmail(), actual.getEmail());
 		} catch (UserNameDoesNotExistException e) {
-			// TODO Auto-generated catch block
 			fail();
 		}
 	}
@@ -114,7 +112,6 @@ class UserDaoImplTest {
 			assertEquals(expected.getLastName(), actual.getLastName());
 			assertEquals(expected.getEmail(), actual.getEmail());
 		} catch (UserIDDoesNotExistException e) {
-			// TODO Auto-generated catch block
 			fail();
 		}
 	}
