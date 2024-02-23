@@ -1,12 +1,19 @@
 package org.longbox.persistence.dao;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
+import org.longbox.businesslogic.exception.UsernameExistsException;
+import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.entity.ComicBook;
 import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ComicBookDaoImpl implements ComicBookDao {
     SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
@@ -46,6 +53,7 @@ public class ComicBookDaoImpl implements ComicBookDao {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             Query query = session.createQuery("FROM ComicBook WHERE seriesTitle = :seriesTitle");
+            query.setParameter("seriesTitle", seriesTitle);
             comicBook = (ComicBook) query.uniqueResult();
         }
         catch (Exception e) {
@@ -64,7 +72,26 @@ public class ComicBookDaoImpl implements ComicBookDao {
 
     @Override
     public void saveComicBook(ComicBook comicBook) {
+        Session session = null;
+        Transaction transaction = null;
 
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            session.save(comicBook);
+            transaction.commit();
+        }
+        catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        finally {
+            if (session != null) {
+                session.close();
+            }
+        }
     }
 
     @Override
@@ -75,5 +102,34 @@ public class ComicBookDaoImpl implements ComicBookDao {
     @Override
     public boolean modifyComicBook(ComicBook comicBook) {
         return false;
+    }
+
+    @Override
+    public List<ComicBookDTO> getAllComicBooks() {
+        Session session = null;
+        Transaction transaction = null;
+        List<ComicBook> comicBookList = null;
+
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            comicBookList = session.createQuery(
+                    "SELECT cb FROM ComicBook cb",
+                    ComicBook.class).list();
+        }
+        catch (HibernateException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        List<ComicBookDTO> comicBookDTOList = new ArrayList<>();
+        for (ComicBook c : comicBookList) {
+            ComicBookDTO comicBookDTO = new ComicBookDTO(c);
+            comicBookDTOList.add(comicBookDTO);
+        }
+        return comicBookDTOList;
     }
 }

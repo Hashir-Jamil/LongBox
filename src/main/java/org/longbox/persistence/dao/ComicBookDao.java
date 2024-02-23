@@ -1,7 +1,10 @@
 package org.longbox.persistence.dao;
 
+import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.entity.ComicBook;
 import org.longbox.persistence.entity.User;
+
+import java.util.List;
 
 public interface ComicBookDao {
 
@@ -14,5 +17,7 @@ public interface ComicBookDao {
     boolean deleteComicBook(ComicBook comicBook);
 
     boolean modifyComicBook(ComicBook comicBook);
+
+    List<ComicBookDTO> getAllComicBooks();
 
 }
