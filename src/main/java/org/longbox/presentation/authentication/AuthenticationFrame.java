@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,7 +15,6 @@ import org.longbox.businesslogic.exception.UsernameExistsException;
 import org.longbox.domainobjects.dto.UserDTO;
 import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.User;
-import org.longbox.persistence.stubdatabase.UserStubDB;
 import org.longbox.presentation.profile.HomeFrame;
 
 public class AuthenticationFrame extends JFrame implements ActionListener {
@@ -26,7 +24,6 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
 	private CardLayout cardLayout;
     private LoginPanel loginPanel = new LoginPanel();
     private RegistrationPanel registrationPanel = new RegistrationPanel();
-    private UserSession userSession;
 
 	/**
 	 * Launch the application.
@@ -103,7 +100,7 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
 					loginPanel.getErrorLabel().setText("Login Successful!");
 					loginPanel.getErrorLabel().setForeground(Color.GREEN);
 					dispose();
-					HomeFrame homeFrame = new HomeFrame(userSession.getInstance(new UserDTO(user)));
+					HomeFrame homeFrame = new HomeFrame(UserSession.getInstance(new UserDTO(user)));
 					homeFrame.setVisible(true);
 				} else {
 					loginPanel.getErrorLabel().setText("Password Incorrect");
