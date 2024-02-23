@@ -18,7 +18,6 @@ import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.User;
 import org.longbox.persistence.stubdatabase.UserStubDB;
 import org.longbox.presentation.profile.HomeFrame;
-import org.w3c.dom.UserDataHandler;
 
 public class AuthenticationFrame extends JFrame implements ActionListener {
 
@@ -130,15 +129,5 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
 			registrationPanel.getMessageLabel().setForeground(Color.red);
         }
     }
-
-//	private void registerUser(){
-//		userStubDB.setUserStubData(
-//				userStubDB.deserializeUserStubDB(
-//						userStubDB.getABSOLUTE_FILE_PATH()));
-//		userStubDB.getUserStubData().add(registrationPanel.getRegistrationDetails());
-//		userStubDB.serializeUserStubDB();
-//		registrationPanel.getMessageLabel().setText("Registeration Successful");
-//		cardLayout.show(cardPanel, "login");
-//	}
 
 }
