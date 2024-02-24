@@ -28,7 +28,8 @@ public class ComicBookTableModel extends DefaultTableModel {
         for (ComicBookDTO comicBook : comicBookList) {
             String genres = "";
             for (int i = 0; i < comicBook.getGenres().length - 1; i++) {
-                genres += comicBook.getGenres()[0] + ", ";
+                System.out.println(genres);
+                genres += comicBook.getGenres()[i] + ", ";
             }
             genres += comicBook.getGenres()[comicBook.getGenres().length - 1];
             addRow(new Object[]{
