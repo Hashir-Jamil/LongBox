@@ -223,6 +223,11 @@ public class HomeFrame extends JFrame implements ActionListener {
                 Integer.parseInt(addComicToRepoPanel.getYearPublishedTextField().getText())
         );
 
+        boolean isFavorite = addComicToRepoPanel.getFavoriteCheckbox().isSelected();
+        if (isFavorite) {
+            favoritesPanel.update(comicBook);
+        }
+
         // Reset Text
         addComicToRepoPanel.getComicSeriesTitleTextField().setText("");
         addComicToRepoPanel.getComicBookAuthorTextField().setText("");
