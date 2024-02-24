@@ -105,4 +105,5 @@
 
     Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Discussed integration and final documents for D1 + Presentation, discussed bugs to be corrected and talked about future user stories and features
     Hashir: finished database integration for ITR01 stories + fixed errors discovered after previous days integration efforts
+    Oscar: Changed searches by publisher and series title to be case insensitive. Created method for searching comic book by artist and author.
      
