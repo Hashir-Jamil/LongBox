@@ -97,6 +97,24 @@ public class ComicBookSearch {
     	return resultList;
     }
     
+    public static List<ComicBookDTO> searchComicBookByGenre(List<ComicBookDTO> comicBookList, String genre) {
+    	
+    	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
+    	String comicGenre;
+   	
+    	for (ComicBookDTO comic : comicBookList) {
+    		for(int j = 0; j < comic.getGenres().length; j++) {
+    			comicGenre = comic.getGenres()[j].toUpperCase().replaceAll("[^a-zA-Z ]+", "");
+    			System.out.println(comicGenre);
+    			if ((comicGenre.toUpperCase()).contains(genre.toUpperCase())) {
+            		resultList.add(comic);
+            		break;
+            	}
+    		}
+        }
+    	return resultList;
+    }
+    
     public static void loadComicBookPage(ComicBookDTO comicBook) {
 		ComicBookFrame comicBookFrame = new ComicBookFrame();
 		comicBookFrame.setVisible(true);

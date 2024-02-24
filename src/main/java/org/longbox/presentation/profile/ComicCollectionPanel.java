@@ -140,7 +140,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 					searchResults = ComicBookSearch.searchComicBookByArtist(comicBookDaoImpl.getAllComicBooks(), textField.getText());
 					break;
 				case "Genre":
-					// Implement logic
+					searchResults = ComicBookSearch.searchComicBookByGenre(comicBookDaoImpl.getAllComicBooks(), textField.getText());
 					break;
 				case "Publisher":
 					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookDaoImpl.getAllComicBooks(), textField.getText());
