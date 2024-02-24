@@ -87,16 +87,22 @@
 
 ## Monday, February 19th, 2024
 
-    Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Spoke with Prof. Hemmati about imbalanced github contribution problem and followed up with group meeting to reorganize teamwork.
+    Group Meeting (Ahan, Ali, Oscar, Eric): TO-DO by members who attended
     
     
 ## Wednesday, February 21st, 2024
 
     Hashir & Ahan: setup hibernate to postgresql connection & created database connection + basic queries to test if it works
-    Group Meeting (Ahan, Ali, Oscar, Eric): TO-DO by members who attended
+    Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Spoke with Prof. Hemmati about imbalanced github contribution problem and followed up with group meeting to reorganize teamwork.
 	Oscar: Reorganized layout of profile page with future features in mind and added comics reading and comics finished stat.
 
 ## Thursday, February 22nd, 2024
 
-    Hashir: refined database attributes & worked on creating user and comic book data to load into postgresql database
+    Hashir: refined database attributes & worked on creating user and comic book data to load into postgresql database. Created queries for database integration and tests.
     Ahan: Changed Login page and Registeration page from Stub DB to PostgreSQL DB. Also updated the README.md file. Wrote some tests to determine if the UserDaoImpl is working as expected.
+
+## Friday, February 23rd, 2024
+
+    Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Discussed integration and final documents for D1 + Presentation, discussed bugs to be corrected and talked about future user stories and features
+    Hashir: finished database integration for ITR01 stories + fixed errors discovered after previous days integration efforts
+     
