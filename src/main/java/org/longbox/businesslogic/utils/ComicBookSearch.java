@@ -26,74 +26,59 @@ public class ComicBookSearch {
     public static List<ComicBookDTO> searchComicBookByPublisher(List<ComicBookDTO> comicBookList, String publisher) {
     	
     	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
-    	System.out.println(publisher);
+
     	for (ComicBookDTO comic : comicBookList) {
             if (comic.getPublisher().toUpperCase().contains(publisher.toUpperCase())) {
             	resultList.add(comic);
             }
         }
-    	for (ComicBookDTO comic : resultList) {
-    		System.out.println(comic.getPublisher());
-    	}
     	return resultList;
     }
     
     public static List<ComicBookDTO> searchComicBookByTitle(List<ComicBookDTO> comicBookList, String title) {
     	
     	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
-    	System.out.println(title);
+
     	for (ComicBookDTO comic : comicBookList) {
             if (comic.getSeriesTitle().toUpperCase().contains(title.toUpperCase())) {
             	resultList.add(comic);
             }
         }
-    	for (ComicBookDTO comic : resultList) {
-    		System.out.println(comic.getSeriesTitle());
-    	}
     	return resultList;
     }
     
     public static List<ComicBookDTO> searchComicBookByAuthor(List<ComicBookDTO> comicBookList, String author) {
     	
     	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
-    	System.out.println(author);
+
     	for (ComicBookDTO comic : comicBookList) {
             if (comic.getAuthor().toUpperCase().contains(author.toUpperCase())) {
             	resultList.add(comic);
             }
         }
-    	for (ComicBookDTO comic : resultList) {
-    		System.out.println(comic.getSeriesTitle());
-    	}
     	return resultList;
     }
     
     public static List<ComicBookDTO> searchComicBookByArtist(List<ComicBookDTO> comicBookList, String artist) {
     	
     	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
-    	System.out.println(artist);
+
     	for (ComicBookDTO comic : comicBookList) {
             if (comic.getArtist().toUpperCase().contains(artist.toUpperCase())) {
             	resultList.add(comic);
             }
         }
-    	for (ComicBookDTO comic : resultList) {
-    		System.out.println(comic.getSeriesTitle());
-    	}
     	return resultList;
     }
     public static List<ComicBookDTO> searchComicBookByYear(List<ComicBookDTO> comicBookList, String year) {
     	
     	List<ComicBookDTO> resultList = new ArrayList<ComicBookDTO>();
-    	System.out.println(year);
+
     	for (ComicBookDTO comic : comicBookList) {
             if (String.valueOf(comic.getYearPublished()).equals(year)) {
             	resultList.add(comic);
             }
         }
-    	for (ComicBookDTO comic : resultList) {
-    		System.out.println(comic.getYearPublished());
-    	}
     	return resultList;
     }
     
@@ -105,7 +90,6 @@ public class ComicBookSearch {
     	for (ComicBookDTO comic : comicBookList) {
     		for(int j = 0; j < comic.getGenres().length; j++) {
     			comicGenre = comic.getGenres()[j].toUpperCase().replaceAll("[^a-zA-Z ]+", "");
-    			System.out.println(comicGenre);
     			if ((comicGenre.toUpperCase()).contains(genre.toUpperCase())) {
             		resultList.add(comic);
             		break;

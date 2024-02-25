@@ -36,7 +36,7 @@ public class HomeFrame extends JFrame implements ActionListener {
     private FavoritesPanel favoritesPanel = new FavoritesPanel();
 	private CardLayout cardLayout;
     private static JFrame frame;
-    private JPanel comicCollectionPanel = new ComicCollectionPanel();
+    private JPanel comicCollectionPanel = new ComicRepositoryPanel();
     private ProfilePanel profilePanel = new ProfilePanel();
     private AddComicToRepoPanel addComicToRepoPanel = new AddComicToRepoPanel();
     private JButton searchButtonNexus;
@@ -127,7 +127,7 @@ public class HomeFrame extends JFrame implements ActionListener {
         addComicButton.setBounds(190, 11, 170, 25);
         nexusPanel.add(addComicButton);
         
-        comicCollectionButton = new JButton("Comic Collection");
+        comicCollectionButton = new JButton("Comic Repository");
         comicCollectionButton.addActionListener(this);
         
         comicCollectionButton.setBounds(10, 11, 170, 25);
