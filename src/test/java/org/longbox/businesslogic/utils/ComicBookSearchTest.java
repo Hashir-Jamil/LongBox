@@ -182,7 +182,16 @@ public class ComicBookSearchTest {
     	ComicBookDTO actual = ComicBookSearch.searchComicBook(comicBookDTOList, "nexus");
     	assertNotEquals(expected, actual, "case insensitive comic book search no match");
     }
-    
+
+    @Test
+    public void comicBookSearchByAuthorCaseInsensitive() {
+    	List<ComicBookDTO> expected = new ArrayList<ComicBookDTO>();
+    	expected.add(comicBook1);
+    	expected.add(comicBook5);
+    	List<ComicBookDTO> actual = ComicBookSearch.searchComicBookByAuthor(comicBookDTOList, "scott mccloud");
+    	assertEquals(expected, actual, "case insensitive search by author");	
+    }
+
     @Test
     public void nullException() {
         List<ComicBookDTO> nullList = null;
