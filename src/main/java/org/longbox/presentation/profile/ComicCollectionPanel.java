@@ -59,7 +59,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 		panel = new JPanel();
 	    panel.setLayout(null);
 		
-		comicCollectionTitle = new JLabel("Comic Collection");
+		comicCollectionTitle = new JLabel("Comic Repo");
 		comicCollectionTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		comicCollectionTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		comicCollectionTitle.setBounds(396, 11, 372, 43);
@@ -117,7 +117,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 		
 		textField.addActionListener(this);
 		
-		JLabel lblNewLabel = new JLabel("Search Collection:");
+		JLabel lblNewLabel = new JLabel("Search Repo:");
 		lblNewLabel.setBounds(10, 66, 120, 13);
 		panel.add(lblNewLabel);
 	}
