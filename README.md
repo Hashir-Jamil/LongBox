@@ -6,7 +6,7 @@ Your digital solution for archiving and preserving comic books. Developed by pas
 
 This project uses a 3-layer software architecture. The system is built around the Java Swing framework and behaves as a model view controller application in conformance to the oracle documentation for Swing applications. A sketch of it is:
 
-![SystemDiagram](architecture_diagram_dark_mode.png)
+![SystemDiagram](design_documents/diagrams/architecture_diagram_dark_mode.png)
 
 ## Getting Started
 
@@ -14,7 +14,7 @@ This project uses a 3-layer software architecture. The system is built around th
 
 - The project is built on Java 19.
 - The project uses Gradle (Kotlin) as the build system.
-- The project used [PostgreSQL](https://www.postgresql.org/) as the database.
+- The project used [PostgreSQL 16](https://www.postgresql.org/) as the database.
 
 ### Installing
 

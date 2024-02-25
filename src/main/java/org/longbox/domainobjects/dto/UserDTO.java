@@ -73,6 +73,21 @@ public class UserDTO {
 		this.comicsFinished = comicsFinished;
 	}
 
+	public UserDTO(User user){
+		this(
+				user.getId(),
+				user.getUserName(),
+				user.getFirstName(),
+				user.getLastName(),
+				user.getDob(),
+				user.getEmail(),
+				user.getPassword(),
+				user.getCountry(),
+				user.getComicsReading(),
+				user.getComicsFinished()
+		);
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -104,30 +119,4 @@ public class UserDTO {
 				"Comics Reading: " + comicsReading + "\n" +
 				"Comics Finished: " + comicsFinished + "\n";
 	}
-
-	public boolean addComicBookToList(ComicBookDTO comicBook) {
-		if (comicBookList.contains(comicBook)) {
-			return false;
-		}
-		else {
-			comicBookList.add(comicBook);
-			return true;
-		}
-	}
-
-	public UserDTO(User user){
-		this(
-			user.getId(),
-			user.getUserName(),
-			user.getFirstName(),
-			user.getLastName(),
-			user.getDob(),
-			user.getEmail(),
-			user.getPassword(),
-			user.getCountry(),
-			user.getComicsReading(),
-			user.getComicsFinished()
-		);
-	}
-
 }

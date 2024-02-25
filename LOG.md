@@ -106,4 +106,12 @@
     Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Discussed integration and final documents for D1 + Presentation, discussed bugs to be corrected and talked about future user stories and features
     Hashir: finished database integration for ITR01 stories + fixed errors discovered after previous days integration efforts
     Oscar: Changed searches by publisher and series title to be case insensitive. Created method for searching comic book by artist and author.
-     
+
+## Saturday, February 24th, 2024
+
+    Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Discussed documentation & presentation for D1 coming up. Divided slides for presentation and sections for planning document
+        '-> Ahan: write big user stories on ppt., write personal user stories for itr1,2 on itr2 planning document and ppt.
+        '-> Ali: wire frame sketches on ppt., high level architectural diagram on ppt (that he made).
+        '-> Hashir: write personal user stories for itr1,2 on planning doc and ppt., code review slide, other architecture diagrams
+        '-> Oscar: edit interview video & talk about user stories on itr1,2 on plann ing document and ppt.
+        '-> Eric: problem statement, customer video highlights, talk about user stories on itr1,2 on plann ing document and ppt., vision & future of project

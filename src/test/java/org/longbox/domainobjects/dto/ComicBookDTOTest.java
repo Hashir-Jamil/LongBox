@@ -1,4 +1,4 @@
-package org.longbox.domainobjects;
+package org.longbox.domainobjects.dto;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
