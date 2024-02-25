@@ -33,7 +33,6 @@ public class HomeFrame extends JFrame implements ActionListener {
     private JButton logOutButton;
     private JPanel nexusPanel;
     private JPanel activityPanel;
-    //private SearchPanel searchPanel = new SearchPanel();
     private FavoritesPanel favoritesPanel = new FavoritesPanel();
 	private CardLayout cardLayout;
     private static JFrame frame;
@@ -45,9 +44,7 @@ public class HomeFrame extends JFrame implements ActionListener {
     private JButton comicCollectionButton;
     private JButton profileButton;
     private JButton favoritesButton;
-    private JButton searchButton;
     private JLabel userNameLabel;
-//    private UserSession user;
     private final String SEARCH_COMIC_BOOK = "Search Comics Panel";
     private final String COMIC_COLLECTAION_PANEL = "Comic Collection Panel";
     private final String FAVORITES_PANEL = "User Favorites Panel";
@@ -124,12 +121,6 @@ public class HomeFrame extends JFrame implements ActionListener {
         nexusPanel.add(logOutButton);
         //logOutButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
 
-/*        searchButtonNexus = new JButton("Search");
-        searchButtonNexus.addActionListener(this);
-
-        searchButtonNexus.setBounds(376, 12, 170, 25);
-        nexusPanel.add(searchButtonNexus);*/
-
         addComicButton = new JButton("Add Comic");
         addComicButton.addActionListener(this);
         
@@ -176,29 +167,6 @@ public class HomeFrame extends JFrame implements ActionListener {
             cardLayout.show(activityPanel, FAVORITES_PANEL);
         }
 
-/*        if (e.getSource() == searchButtonNexus) {
-            System.out.println("entered search");
-        	cardLayout.show(activityPanel, SEARCH_COMIC_BOOK);
-            searchButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    System.out.println("Search Button Pressed");
-                    ComicBookDTO comicBook = searchComicBookResults(searchPanel.getSearchTextField().getText());
-                    searchPanel.getSearchTextField().setText(searchPanel.getSEARCH_BY_TITLE());
-                    if (comicBook.getSeriesTitle() != null) {
-                        ComicBookFrame comicBookFrame = new ComicBookFrame();
-                        comicBookFrame.setVisible(true);
-                        HTMLEditorKit kit = new HTMLEditorKit();
-                        comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(kit);
-                        comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(frame, "No search results found.", "Search Results Not Found", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                }
-            });
-        }*/
-
         if (e.getSource() == profileButton) {
         	cardLayout.show(activityPanel, PROFILE_PANEL);
         }
@@ -241,13 +209,6 @@ public class HomeFrame extends JFrame implements ActionListener {
         ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl();
         comicBookDao.saveComicBook(comicBook);
 
-/*        //Stub DB initialization, deserialized read from JSON & rewrite back to JSON with new object
-        ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
-        comicBookStubDB.setComicBookStubData(
-                comicBookStubDB.deserializeComicBookStubDB(
-                        comicBookStubDB.getABSOLUTE_FILE_PATH()));
-        comicBookStubDB.getComicBookStubData().add(comicBook);
-        comicBookStubDB.serializeComicBookStubDB();*/
         JOptionPane.showMessageDialog(this, "Comic book added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
 
