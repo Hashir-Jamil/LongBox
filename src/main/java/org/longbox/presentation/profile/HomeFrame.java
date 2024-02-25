@@ -36,7 +36,7 @@ public class HomeFrame extends JFrame implements ActionListener {
     private FavoritesPanel favoritesPanel = new FavoritesPanel();
 	private CardLayout cardLayout;
     private static JFrame frame;
-    private JPanel comicCollectionPanel = new ComicCollectionPanel();
+    private JPanel comicCollectionPanel = new ComicRepositoryPanel();
     private ProfilePanel profilePanel = new ProfilePanel();
     private AddComicToRepoPanel addComicToRepoPanel = new AddComicToRepoPanel();
     private JButton searchButtonNexus;

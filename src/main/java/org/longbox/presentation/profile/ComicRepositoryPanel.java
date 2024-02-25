@@ -30,7 +30,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ComicCollectionPanel extends JPanel implements ActionListener{
+public class ComicRepositoryPanel extends JPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel panel;
@@ -47,7 +47,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 	TableRowSorter<TableModel> sorter;	
 	ComicBookDaoImpl comicBookDaoImpl;
 
-	public ComicCollectionPanel() {
+	public ComicRepositoryPanel() {
 		initComicCollectionPage();
 	}
 

@@ -1,6 +1,6 @@
 package org.longbox.comiccollection;
 
-import org.longbox.presentation.profile.ComicCollectionPanel;
+import org.longbox.presentation.profile.ComicRepositoryPanel;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 
 public class ComicCollectionTest {
 	
-	private ComicCollectionPanel comicCollectionPanel;
+	private ComicRepositoryPanel comicCollectionPanel;
 
     public void setUp() {
-        comicCollectionPanel = new ComicCollectionPanel();
+        comicCollectionPanel = new ComicRepositoryPanel();
     }
 
     @Test
