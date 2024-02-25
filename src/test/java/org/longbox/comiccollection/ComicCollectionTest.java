@@ -24,7 +24,7 @@ public class ComicCollectionTest {
     @Test
     public void testComicCollectionTitle() {
     	setUp();
-        assertEquals("Comic Collection", comicCollectionPanel.getComicCollectionTitle().getText());
+        assertEquals("Comic Repo", comicCollectionPanel.getComicCollectionTitle().getText());
     }
 
     @Test
@@ -38,6 +38,17 @@ public class ComicCollectionTest {
     	setUp();
         assertNotNull(comicCollectionPanel.getComicBookTable());
         assertNotNull(comicCollectionPanel.getComicBookTableModel());
+    }
+    
+    @Test
+    public void testComicBookAdvancedSearchOptions() {
+    	setUp();
+    	assertTrue(comicCollectionPanel.getTypeSelection().getItemAt(0) == "Title");
+    	assertTrue(comicCollectionPanel.getTypeSelection().getItemAt(1) == "Author");
+    	assertTrue(comicCollectionPanel.getTypeSelection().getItemAt(2) == "Artist");
+    	assertTrue(comicCollectionPanel.getTypeSelection().getItemAt(3) == "Genre");
+    	assertTrue(comicCollectionPanel.getTypeSelection().getItemAt(4) == "Publisher"); 
+    	assertTrue(comicCollectionPanel.getTypeSelection().getItemAt(5) == "Year");
     }
  
 	
