@@ -168,7 +168,14 @@ public class ComicBookSearchTest {
         );
         assertNotEquals(expected, ComicBookSearch.searchComicBook(comicBookDTOList,"Nexus"));
     }
-
+    
+    @Test
+    public void comicBookSearchCaseInsensitive() {
+    	ComicBookDTO expected = comicBook1;
+    	ComicBookDTO actual = ComicBookSearch.searchComicBook(comicBookDTOList, "zot");
+    	assertEquals(expected, actual, "case insensitive comic book search");
+    }	
+    
     @Test
     public void nullException() {
         List<ComicBookDTO> nullList = null;
