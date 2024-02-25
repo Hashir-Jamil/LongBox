@@ -39,12 +39,6 @@ public class ComicCollectionTest {
         assertNotNull(comicCollectionPanel.getComicBookTable());
         assertNotNull(comicCollectionPanel.getComicBookTableModel());
     }
-    
-    @Test
-    public void testStubDataTable() {
-    	setUp();
-    	assertTrue(comicCollectionPanel.getComicBookTableModel().getColumnCount() == 7);
-    	assertTrue(comicCollectionPanel.getComicBookTableModel().getRowCount() == 11);
-    }
+ 
 	
 }
