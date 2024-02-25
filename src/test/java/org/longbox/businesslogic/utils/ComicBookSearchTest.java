@@ -209,6 +209,13 @@ public class ComicBookSearchTest {
     }
 
     @Test
+    public void comicBookSearchByArtistCaseInsensitiveNoMatch() {
+    	List<ComicBookDTO> expected = new ArrayList<ComicBookDTO>();
+    	List<ComicBookDTO> actual = ComicBookSearch.searchComicBookByArtist(comicBookDTOList, "ryooichi ikegami");
+    	assertEquals(expected, actual, "case insensitive search by artist no match");
+    }
+    
+    @Test
     public void nullException() {
         List<ComicBookDTO> nullList = null;
         assertThrows(NullPointerException.class, () -> ComicBookSearch.searchComicBook(nullList, "Zot!"));
