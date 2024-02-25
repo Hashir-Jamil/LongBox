@@ -59,7 +59,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 		panel = new JPanel();
 	    panel.setLayout(null);
 		
-		comicCollectionTitle = new JLabel("Comic Repo");
+		comicCollectionTitle = new JLabel("Comic Repository");
 		comicCollectionTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		comicCollectionTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		comicCollectionTitle.setBounds(396, 11, 372, 43);
@@ -99,7 +99,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 		panel.add(scrollPane);
 		
 		typeSelection = new JComboBox<String>();
-		typeSelection.setBounds(333, 62, 160, 22);
+		typeSelection.setBounds(307, 62, 160, 22);
 		
 		typeSelection.addItem("Title");
 		typeSelection.addItem("Author");
@@ -111,7 +111,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 		panel.add(typeSelection);
 		
 		textField = new JTextField();
-		textField.setBounds(116, 62, 213, 22);
+		textField.setBounds(90, 62, 213, 22);
 		panel.add(textField);
 		textField.setColumns(10);
 		

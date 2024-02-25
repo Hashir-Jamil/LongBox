@@ -127,7 +127,7 @@ public class HomeFrame extends JFrame implements ActionListener {
         addComicButton.setBounds(190, 11, 170, 25);
         nexusPanel.add(addComicButton);
         
-        comicCollectionButton = new JButton("Comic Collection");
+        comicCollectionButton = new JButton("Comic Repository");
         comicCollectionButton.addActionListener(this);
         
         comicCollectionButton.setBounds(10, 11, 170, 25);
