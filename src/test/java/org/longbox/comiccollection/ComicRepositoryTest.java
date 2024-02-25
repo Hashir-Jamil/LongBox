@@ -23,7 +23,7 @@ public class ComicRepositoryTest {
     @Test
     public void testComicCollectionTitle() {
     	setUp();
-        assertEquals("Comic Repository", comicRepositoryPanel.getComicCollectionTitle().getText());
+        assertEquals("Comic Repository", comicRepositoryPanel.getComicRepositoryTitle().getText());
     }
 
     @Test
