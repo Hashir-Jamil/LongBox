@@ -1,6 +1,5 @@
 package org.longbox.comiccollection;
 
-import org.longbox.persistence.stubdatabase.ComicBookStubDB;
 import org.longbox.presentation.profile.ComicCollectionPanel;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,7 +29,7 @@ public class ComicCollectionTest {
     @Test
     public void testSearchTextField() {
     	setUp();
-        assertNotNull(comicCollectionPanel.getTextField().getText());
+        assertTrue(comicCollectionPanel.getTextField().getText().isBlank());
     }
 
     @Test
@@ -43,13 +42,16 @@ public class ComicCollectionTest {
     @Test
     public void testComicBookAdvancedSearchOptions() {
     	setUp();
+    	assertTrue(comicCollectionPanel.getTypeSelection().getItemCount() == 6);
     	assertTrue(comicCollectionPanel.getTypeSelection().getItemAt(0) == "Title");
     	assertTrue(comicCollectionPanel.getTypeSelection().getItemAt(1) == "Author");
     	assertTrue(comicCollectionPanel.getTypeSelection().getItemAt(2) == "Artist");
     	assertTrue(comicCollectionPanel.getTypeSelection().getItemAt(3) == "Genre");
     	assertTrue(comicCollectionPanel.getTypeSelection().getItemAt(4) == "Publisher"); 
     	assertTrue(comicCollectionPanel.getTypeSelection().getItemAt(5) == "Year");
+    	assertTrue(comicCollectionPanel.getTypeSelection().getItemAt(6) == null);
     }
+    
  
 	
 }
