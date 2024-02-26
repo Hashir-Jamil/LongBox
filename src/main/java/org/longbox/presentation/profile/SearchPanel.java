@@ -1,8 +1,5 @@
 package org.longbox.presentation.profile;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.awt.BorderLayout;
 import java.awt.Font;
 
@@ -14,8 +11,6 @@ import javax.swing.JSeparator;
 import java.awt.Color;
 import javax.swing.JButton;
 
-@Getter
-@Setter
 public class SearchPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -67,5 +62,33 @@ public class SearchPanel extends JPanel {
 		//Search Button
 		searchButton.setBounds(518, 390, 117, 48);
 		panel.add(searchButton);
+	}
+
+	public String getPANEL_LABEL() {
+		return PANEL_LABEL;
+	}
+
+	public String getSEARCH_BY_TITLE() {
+		return SEARCH_BY_TITLE;
+	}
+
+	public String getSEARCH_BUTTON() {
+		return SEARCH_BUTTON;
+	}
+
+	public JTextField getSearchTextField() {
+		return searchTextField;
+	}
+
+	public void setSearchTextField(JTextField searchTextField) {
+		this.searchTextField = searchTextField;
+	}
+
+	public JButton getSearchButton() {
+		return searchButton;
+	}
+
+	public void setSearchButton(JButton searchButton) {
+		this.searchButton = searchButton;
 	}
 }

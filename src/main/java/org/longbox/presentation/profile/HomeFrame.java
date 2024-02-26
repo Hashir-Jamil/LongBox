@@ -172,7 +172,6 @@ public class HomeFrame extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == addComicButton) {
-            System.out.println("entered add comic");
         	cardLayout.show(activityPanel, ADD_COMIC_TO_REPO);
         }
     }

@@ -31,8 +31,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-
-
 public class RegistrationPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;

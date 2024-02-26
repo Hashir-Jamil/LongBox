@@ -6,17 +6,12 @@ import java.awt.Font;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
-import lombok.*;
-
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-@Getter
-@Setter
 
 public class LoginPanel extends JPanel{
 
@@ -103,7 +98,35 @@ public class LoginPanel extends JPanel{
 		errorLabel.setBounds(205, 272, 398, 16);
 		panel.add(errorLabel);
 	}
-	
+
+	public JTextField getUsernameText() {
+		return usernameText;
+	}
+
+	public void setUsernameText(JTextField usernameText) {
+		this.usernameText = usernameText;
+	}
+
+	public JPasswordField getPasswordField() {
+		return passwordField;
+	}
+
+	public void setPasswordField(JPasswordField passwordField) {
+		this.passwordField = passwordField;
+	}
+
+	public void setSignInButton(JButton signInButton) {
+		this.signInButton = signInButton;
+	}
+
+	public void setSignUpButton(JButton signUpButton) {
+		this.signUpButton = signUpButton;
+	}
+
+	public void setErrorLabel(JLabel errorLabel) {
+		this.errorLabel = errorLabel;
+	}
+
 	public JButton getSignUpButton() {
 	    return signUpButton;
 	}

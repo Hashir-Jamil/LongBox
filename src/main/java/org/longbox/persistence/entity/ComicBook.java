@@ -9,8 +9,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "comic_book")
-@Getter
-@Setter
 public class ComicBook {
 
     @Id
@@ -80,5 +78,85 @@ public class ComicBook {
         this.publisher = comicBookDTO.getPublisher();
         this.yearPublished = comicBookDTO.getYearPublished();
         this.dateAdded = new Date();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSeriesTitle() {
+        return seriesTitle;
+    }
+
+    public void setSeriesTitle(String seriesTitle) {
+        this.seriesTitle = seriesTitle;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public String getGenres() {
+        return genres;
+    }
+
+    public void setGenres(String genres) {
+        this.genres = genres;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getNumberOfIssues() {
+        return numberOfIssues;
+    }
+
+    public void setNumberOfIssues(int numberOfIssues) {
+        this.numberOfIssues = numberOfIssues;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public int getYearPublished() {
+        return yearPublished;
+    }
+
+    public void setYearPublished(int yearPublished) {
+        this.yearPublished = yearPublished;
+    }
+
+    public Date getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(Date dateAdded) {
+        this.dateAdded = dateAdded;
     }
 }

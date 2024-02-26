@@ -6,13 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 
 import java.awt.CardLayout;
-@Getter
-@Setter
+
 public class ComicBookFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -69,6 +66,61 @@ public class ComicBookFrame extends JFrame {
 	    comicBookPane.setLayout(cardLayout);	
 	    comicBookPane.add(comicBookInfoPane, COMIC_BOOK_INFO);
 	    comicBookPane.add(comicBookCommentsPane, COMIC_BOOK_COMMENTS);
-	    		
+	}
+
+	public String getFRAME_TITLE() {
+		return FRAME_TITLE;
+	}
+
+	public String getCOMIC_BOOK_COMMENTS() {
+		return COMIC_BOOK_COMMENTS;
+	}
+
+	public String getCOMIC_BOOK_INFO() {
+		return COMIC_BOOK_INFO;
+	}
+
+	public String getVIEW_COMMENTS() {
+		return VIEW_COMMENTS;
+	}
+
+	public JPanel getComicBookPane() {
+		return comicBookPane;
+	}
+
+	public void setComicBookPane(JPanel comicBookPane) {
+		this.comicBookPane = comicBookPane;
+	}
+
+	public ComicBookInfoPanel getComicBookInfoPane() {
+		return comicBookInfoPane;
+	}
+
+	public void setComicBookInfoPane(ComicBookInfoPanel comicBookInfoPane) {
+		this.comicBookInfoPane = comicBookInfoPane;
+	}
+
+	public ComicBookCommentsPanel getComicBookCommentsPane() {
+		return comicBookCommentsPane;
+	}
+
+	public void setComicBookCommentsPane(ComicBookCommentsPanel comicBookCommentsPane) {
+		this.comicBookCommentsPane = comicBookCommentsPane;
+	}
+
+	public CardLayout getCardLayout() {
+		return cardLayout;
+	}
+
+	public void setCardLayout(CardLayout cardLayout) {
+		this.cardLayout = cardLayout;
+	}
+
+	public ComicBookDTO getComicBookResult() {
+		return comicBookResult;
+	}
+
+	public void setComicBookResult(ComicBookDTO comicBookResult) {
+		this.comicBookResult = comicBookResult;
 	}
 }

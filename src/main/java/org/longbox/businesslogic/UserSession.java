@@ -8,10 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@NoArgsConstructor
-@Setter
-
 public class UserSession {
 
     private static UserSession activeUser = null;
@@ -40,6 +36,14 @@ public class UserSession {
     public static UserSession getActiveUser() {
 		return activeUser;
 	}
+
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
+    }
 
     @Override
     public String toString() {

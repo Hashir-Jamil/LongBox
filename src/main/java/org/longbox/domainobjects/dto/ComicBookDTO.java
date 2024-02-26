@@ -1,16 +1,10 @@
 package org.longbox.domainobjects.dto;
 
-
-import lombok.*;
 import org.longbox.businesslogic.comparators.CommentDateComparator;
 import org.longbox.persistence.entity.ComicBook;
 
 import java.util.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
 public class ComicBookDTO {
 
     private long id;
@@ -23,6 +17,9 @@ public class ComicBookDTO {
     private String publisher;
     private int yearPublished;
     private Date dateAdded;
+
+    public ComicBookDTO() {
+    }
 
     public ComicBookDTO(
         String seriesTitle,
@@ -164,8 +161,101 @@ public class ComicBookDTO {
         return genres;
     }
 
+    @Override
+    public String toString() {
+        return "ComicBookDTO{" +
+                "id=" + id +
+                ", seriesTitle='" + seriesTitle + '\'' +
+                ", author='" + author + '\'' +
+                ", artist='" + artist + '\'' +
+                ", genres=" + Arrays.toString(genres) +
+                ", description='" + description + '\'' +
+                ", numberOfIssues=" + numberOfIssues +
+                ", publisher='" + publisher + '\'' +
+                ", yearPublished=" + yearPublished +
+                ", dateAdded=" + dateAdded +
+                '}';
+    }
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getSeriesTitle() {
+        return seriesTitle;
+    }
+
+    public void setSeriesTitle(String seriesTitle) {
+        this.seriesTitle = seriesTitle;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public String[] getGenres() {
+        return genres;
+    }
+
+    public void setGenres(String[] genres) {
+        this.genres = genres;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getNumberOfIssues() {
+        return numberOfIssues;
+    }
+
+    public void setNumberOfIssues(int numberOfIssues) {
+        this.numberOfIssues = numberOfIssues;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public int getYearPublished() {
+        return yearPublished;
+    }
+
+    public void setYearPublished(int yearPublished) {
+        this.yearPublished = yearPublished;
+    }
+
+    public Date getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(Date dateAdded) {
+        this.dateAdded = dateAdded;
+    }
 }
 
 
