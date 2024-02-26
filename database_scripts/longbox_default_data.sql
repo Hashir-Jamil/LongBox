@@ -146,7 +146,32 @@ VALUES
 
     ('Sojourn', 'Ron Marz', 'Greg Land',
      'Action, Adventure, Sword and Sorcery',
-     'Empty', 34, 'Crossgen', 2001, '2024-02-15');
+     'Empty', 34, 'Crossgen', 2001, '2024-02-15')
+    
+    ('Absolute Zero', 'David Hahn', 'David Hahn', 
+    'Action, Superhero, Adventure', 
+    'Empty', 6, 'Antarctic Press', 1995, '2024-02-25'),
+
+    ('Addam Omega', 'Bill Hughes', 'Bill Hughes',
+    'Horror, Science Fiction, Superhero',
+    'Empty', 4, 'Antarctic Press', 1997, '2024-02-25'),
+
+    ('Actionopolis', 'Shannon Denton', 'Shannon Denton',
+    'Action, Adventure',
+    'Empty', 1, 'Antarctic Press', 2001, '2024-02-25'),
+
+    ('Alien Worlds', 'Bruce Jones', 'Al Williamson',
+    'Anthology, Science Fiction, Adventure',
+    'Empty', 9, 'Pacific Comics', 1982, '2024-02-25'),
+
+    ('Captain Victory and the Galactic Rangers', 'Jack Kirby', 'Jack Kirby',
+    'Science Fiction, Superhero',
+    'Empty', 13, 'Pacific Comics', 1981, '2024-02-25'),
+
+    ('Groo the Wanderer', 'Sergio Aragones', 'Sergio Aragones',
+    'Fantasy, Comedy',
+    'Empty', 8, 'Pacific Comics', 1982, '2024-02-25);
+    
 
 --Template to batchload more comic book objects
 
