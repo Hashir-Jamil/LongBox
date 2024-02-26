@@ -91,6 +91,10 @@
 ## Monday, February 19th, 2024
 
     Group Meeting (Ahan, Ali, Oscar, Eric): TO-DO by members who attended
+
+## Tuesday, Februrary 20th, 2024
+
+    Eric: Advanced searching via publisher, results display in a seperate frame/window
     
     
 ## Wednesday, February 21st, 2024
@@ -99,17 +103,20 @@
     Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Spoke with Prof. Hemmati about imbalanced github contribution problem and followed up with group meeting to reorganize teamwork.
 	Oscar: Reorganized layout of profile page with future features in mind and added comics reading and comics finished stat.
     Ali: Initiated development on the Favorite Collection Comic Book feature, laying the groundwork for its implementation. 
+    Eric: Added advanced search for title and year, advanced search logic in switch satement
 
 ## Thursday, February 22nd, 2024
 
     Hashir: refined database attributes & worked on creating user and comic book data to load into postgresql database. Created queries for database integration and tests.
     Ahan: Changed Login page and Registeration page from Stub DB to PostgreSQL DB. Also updated the README.md file. Wrote some tests to determine if the UserDaoImpl is working as expected.
+    Eric: Results from advanced search now open in a new results fram, can click on them to open the comic page. Made test box for the results window title dynamic to the search input
 
 ## Friday, February 23rd, 2024
 
     Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Discussed integration and final documents for D1 + Presentation, discussed bugs to be corrected and talked about future user stories and features
     Hashir: finished database integration for ITR01 stories + fixed errors discovered after previous days integration efforts
     Oscar: Changed searches by publisher and series title to be case insensitive. Created method for searching comic book by artist and author.
+    Eric: Comic Repository now uses postgres data rather than stub data
 
 ## Saturday, February 24th, 2024
 
@@ -120,9 +127,12 @@
         '-> Oscar: edit interview video & talk about user stories on itr1,2 on plann ing document and ppt.
         '-> Eric: problem statement, customer video highlights, talk about user stories on itr1,2 on plann ing document and ppt., vision & future of project
     Ali: Finalized the Favorite Panel functionality without reliance on a database, utilizing a list-based approach for storage and management.
+    Eric: Added advanced search for genres
 
 ## Sunday, February 25th, 2024
 
     Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Polished submission and reviewed it to ensure it has all required components, discussed presentation.
     Hashir: Refactored project to not use lombok and just use regular generated boiler plate code, added extra tests to check if anything was wrong.
+    Eric: Added more comic entries to the repo, added test cases for ComicRepositoryPanel, and refactored ComicCollectionPanel to ComicRepositoryPanel
+    Oscar: Added test cases for case insensitive searches in ComicBookSearchTest.java. Also added more comic books into the database.
     
