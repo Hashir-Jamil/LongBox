@@ -119,6 +119,30 @@ VALUES
     ('Mr Monster', 'Michael T Gilbert', 'Michael T Gilbert',
      'Action, Supernatural, Superhero, Comedy',
      'Empty', 10, 'Eclipse', 1985, '2024-02-25'),
+    
+    ('Meridian', 'Barbara Kesel', 'Joshua Middleton',
+     'Action, Supernatural, Superpower, Fantasy',
+     'Empty', 44, 'Crossgen', 2000, '2024-02-25'),
+
+    ('Mystic', 'Ron Marz', 'Brandon Peterson',
+     'Action, Supernatural, Superpower, Fantasy',
+     'Empty', 43, 'Crossgen', 2000, '2024-02-25'),
+
+    ('Scion', 'Ron Marz', 'Jim Cheung',
+     'Action, Supernatural, Superpower, Fantasy',
+     'Empty', 43, 'Crossgen', 2000, '2024-02-25'),
+
+    ('Sigil', 'Barbara Kesel', 'Wil Quintana',
+     'Action, Supernatural, Superpower, Fantasy',
+     'Empty', 42, 'Crossgen', 2000, '2024-02-25'),
+    
+    ('The Uncensored Mouse', 'Disney', 'Disney',
+     'Bootleg',
+     'Empty', 2, 'Eternity', 1989, '2024-02-25'),
+
+    ('Maelstorm', 'Jim Somerville', 'Jim Somerville',
+     'Dark Fantasy, Supernatural, Superpower, Action',
+     'Empty', 11, 'Aircel', 1987, '2024-02-25'),
 
     ('Sojourn', 'Ron Marz', 'Greg Land',
      'Action, Adventure, Sword and Sorcery',
