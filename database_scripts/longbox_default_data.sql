@@ -146,7 +146,7 @@ VALUES
 
     ('Sojourn', 'Ron Marz', 'Greg Land',
      'Action, Adventure, Sword and Sorcery',
-     'Empty', 34, 'Crossgen', 2001, '2024-02-15')
+     'Empty', 34, 'Crossgen', 2001, '2024-02-15'),
     
     ('Absolute Zero', 'David Hahn', 'David Hahn', 
     'Action, Superhero, Adventure', 
@@ -170,13 +170,4 @@ VALUES
 
     ('Groo the Wanderer', 'Sergio Aragones', 'Sergio Aragones',
     'Fantasy, Comedy',
-    'Empty', 8, 'Pacific Comics', 1982, '2024-02-25);
-    
-
---Template to batchload more comic book objects
-
-/*  ('', '', '',
-    ',,,,,,'
-    'Empty', , '', , '2024-02-15')	*/
-
-
+    'Empty', 8, 'Pacific Comics', 1982, '2024-02-25');
