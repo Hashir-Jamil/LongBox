@@ -134,4 +134,5 @@
     Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Polished submission and reviewed it to ensure it has all required components, discussed presentation.
     Hashir: Refactored project to not use lombok and just use regular generated boiler plate code, added extra tests to check if anything was wrong.
     Eric: Added more comic entries to the repo, added test cases for ComicRepositoryPanel, and refactored ComicCollectionPanel to ComicRepositoryPanel
+    Oscar: Added test cases for case insensitive searches in ComicBookSearchTest.java. Also added more comic books into the database.
     
