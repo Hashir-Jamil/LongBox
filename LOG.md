@@ -34,6 +34,7 @@
 ## Tuesday, February 6th, 2024
 
     Dexter: Added empty home page, with logout button in top left, logout button creates pop up which, if confirmed, leads back to login page.
+    Ali: Added empty GUI class for the Add Comic Page. 
 
 ## Wednesday, February 7th, 2024
 
@@ -41,6 +42,7 @@
     Ahan: Refactored LoginPage and Registration page as JPanels and added a new JFrame AuthenticationPage that houses these two JPanels. Added functionality to switch between LoginPage and RegistrationPage. Cleaned up the code.
     Hashir: Started working on the add comic book to repository user story and refactored the packages to match architecture shown in class slides + created stub database entries as JSON files with gson serialization/deserialization classes.
     Eric: Added basic ComicCollectionPage with lite features
+    Ali: Started working on graphical user interface (GUI) for the Add Comic Page. This implementation focuses solely on the presentation layer without incorporating any business logic functionalities.
     
 ## Thursday, February 8th, 2024
 
@@ -84,6 +86,7 @@
 	Eric: Added searchability to ComicCollectionPanel, user can now navigate to a comic page either through the search bar or clicking on a series' title name from the JTable
     Hashir: Reviewed and editted documentation to be submitted for ITR01 and branched the main trunk into an ITRO1 trunk.
     Ahan: Wrote the README.md.
+    Ali: Created and added architectural-diagram.png to README.md
 
 ## Monday, February 19th, 2024
 
@@ -95,6 +98,7 @@
     Hashir & Ahan: setup hibernate to postgresql connection & created database connection + basic queries to test if it works
     Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Spoke with Prof. Hemmati about imbalanced github contribution problem and followed up with group meeting to reorganize teamwork.
 	Oscar: Reorganized layout of profile page with future features in mind and added comics reading and comics finished stat.
+    Ali: Initiated development on the Favorite Collection Comic Book feature, laying the groundwork for its implementation. 
 
 ## Thursday, February 22nd, 2024
 
@@ -115,3 +119,4 @@
         '-> Hashir: write personal user stories for itr1,2 on planning doc and ppt., code review slide, other architecture diagrams
         '-> Oscar: edit interview video & talk about user stories on itr1,2 on plann ing document and ppt.
         '-> Eric: problem statement, customer video highlights, talk about user stories on itr1,2 on plann ing document and ppt., vision & future of project
+    Ali: Finalized the Favorite Panel functionality without reliance on a database, utilizing a list-based approach for storage and management.
