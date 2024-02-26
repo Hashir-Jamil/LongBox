@@ -19,7 +19,7 @@ import java.awt.Font;
 
 import javax.swing.*;
 
-public class FavoritesPanel extends JPanel implements ActionListener {
+public class FavoritesPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private static FavoritesPanel instance;
 	private JPanel panel;
@@ -121,14 +121,11 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 			panel.add(textField);
 			textField.setColumns(10);
 
-			textField.addActionListener(this);
-
 			JLabel lblNewLabel = new JLabel("Search Collection:");
 			lblNewLabel.setBounds(10, 66, 120, 13);
 			panel.add(lblNewLabel);
 
 			unfavoriteButton = new JButton("Unfavorite");
-			unfavoriteButton.addActionListener(this);
 			unfavoriteButton.setEnabled(false); // Initially disabled
 			unfavoriteButton.setBounds(1000, 60, 150, 25); // Adjust the position as needed
 			panel.add(unfavoriteButton);
@@ -140,59 +137,6 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 			});
 		}
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == unfavoriteButton) {
-			int selectedRow = comicBookTable.getSelectedRow();
-			if (selectedRow == -1) {
-				JOptionPane.showMessageDialog(this, "Please select a comic to unfavorite.", "No Comic Selected", JOptionPane.WARNING_MESSAGE);
-			} else {
-				int confirmUnfavorite = JOptionPane.showConfirmDialog(this, "Are you sure you want to unfavorite this comic?", "Unfavorite Confirmation", JOptionPane.YES_NO_OPTION);
-				if (confirmUnfavorite == JOptionPane.YES_OPTION) {
-					ComicBookDTO removedComic = favoriteComicBooks.remove(selectedRow);
-					comicBookTableModel.removeRow(selectedRow);
-					JOptionPane.showMessageDialog(this, "Comic '" + removedComic.getSeriesTitle() + "' has been unfavorited.", "Unfavorited", JOptionPane.INFORMATION_MESSAGE);
-				}
-			}
-		}
-		if (e.getSource() == textField && !textField.getText().isEmpty()) {
-			String searchBy = typeSelection.getSelectedItem().toString();
-			String target = textField.getText();
-			List<ComicBookDTO> searchResults = null;
-			System.out.println("Search for: " + textField.getText() + " in " + searchBy);
-			switch (searchBy) {
-				case "Title":
-					searchResults = ComicBookSearch.searchComicBookByTitle(comicBookDaoImpl.getAllComicBooks(), textField.getText());
-					break;
-				case "Author":
-					searchResults = ComicBookSearch.searchComicBookByAuthor(comicBookDaoImpl.getAllComicBooks(), textField.getText());
-					break;
-				case "Artist":
-					searchResults = ComicBookSearch.searchComicBookByArtist(comicBookDaoImpl.getAllComicBooks(), textField.getText());
-					break;
-				case "Genre":
-					// Implement logic
-					break;
-				case "Publisher":
-					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookDaoImpl.getAllComicBooks(), textField.getText());
-					break;
-				case "Year":
-					searchResults = ComicBookSearch.searchComicBookByYear(comicBookDaoImpl.getAllComicBooks(), textField.getText());
-					break;
-				default:
-					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookDaoImpl.getAllComicBooks(), "");
-					break;
-			}
-			loadComicBookResultsPage(searchResults, target, searchBy);
-		}
-	}
-
-	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy) {
-		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy);
-		resultsPage.setVisible(true);
-	}
-
 	public static FavoritesPanel getInstance() {
 		return instance;
 	}
