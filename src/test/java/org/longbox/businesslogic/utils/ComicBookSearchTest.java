@@ -168,7 +168,53 @@ public class ComicBookSearchTest {
         );
         assertNotEquals(expected, ComicBookSearch.searchComicBook(comicBookDTOList,"Nexus"));
     }
+    
+    @Test
+    public void comicBookSearchCaseInsensitive() {
+    	ComicBookDTO expected = comicBook1;
+    	ComicBookDTO actual = ComicBookSearch.searchComicBook(comicBookDTOList, "zot");
+    	assertEquals(expected, actual, "case insensitive comic book search");
+    }
+    
+    @Test
+    public void comicBookSearchCaseInsensitiveNoMatch() {
+    	ComicBookDTO expected = comicBook1;
+    	ComicBookDTO actual = ComicBookSearch.searchComicBook(comicBookDTOList, "nexus");
+    	assertNotEquals(expected, actual, "case insensitive comic book search no match");
+    }
 
+    @Test
+    public void comicBookSearchByAuthorCaseInsensitive() {
+    	List<ComicBookDTO> expected = new ArrayList<ComicBookDTO>();
+    	expected.add(comicBook1);
+    	expected.add(comicBook5);
+    	List<ComicBookDTO> actual = ComicBookSearch.searchComicBookByAuthor(comicBookDTOList, "scott mccloud");
+    	assertEquals(expected, actual, "case insensitive search by author");	
+    }
+    
+    @Test
+    public void comicBookSearchByAuthorCaseInsensitiveNoMatch() {
+    	List<ComicBookDTO> expected = new ArrayList<ComicBookDTO>();
+    	List<ComicBookDTO> actual = ComicBookSearch.searchComicBookByAuthor(comicBookDTOList, "scoot mccloud");
+    	assertEquals(expected, actual, "case insensitive search by author no match");	
+    }
+    
+    @Test
+    public void comicBookSearchByArtistCaseInsensitive() {
+    	List<ComicBookDTO> expected = new ArrayList<ComicBookDTO>();
+    	expected.add(comicBook2);
+    	expected.add(comicBook6);
+    	List<ComicBookDTO> actual = ComicBookSearch.searchComicBookByArtist(comicBookDTOList, "ryoichi ikegami");
+    	assertEquals(expected, actual, "case insensitive search by artist");
+    }
+
+    @Test
+    public void comicBookSearchByArtistCaseInsensitiveNoMatch() {
+    	List<ComicBookDTO> expected = new ArrayList<ComicBookDTO>();
+    	List<ComicBookDTO> actual = ComicBookSearch.searchComicBookByArtist(comicBookDTOList, "ryooichi ikegami");
+    	assertEquals(expected, actual, "case insensitive search by artist no match");
+    }
+    
     @Test
     public void nullException() {
         List<ComicBookDTO> nullList = null;

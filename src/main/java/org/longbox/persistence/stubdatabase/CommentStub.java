@@ -31,7 +31,5 @@ public class CommentStub {
                 "Arkham Asylum"
         );
         commentsStubData.add(comment3);
-
     }
-
 }

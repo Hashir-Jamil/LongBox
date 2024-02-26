@@ -1,15 +1,9 @@
 package org.longbox.domainobjects.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.longbox.persistence.entity.User;
 
 import java.util.*;
 
-@NoArgsConstructor
-@Getter
-@Setter
 public class UserDTO {
 
 	private long id;
@@ -24,6 +18,9 @@ public class UserDTO {
 	private List<ComicBookDTO> comicBookList = new ArrayList<>();
 	private int comicsReading;
 	private int comicsFinished;
+
+	public UserDTO() {
+	}
 
 	public UserDTO(
 		String userName,
@@ -73,6 +70,21 @@ public class UserDTO {
 		this.comicsFinished = comicsFinished;
 	}
 
+	public UserDTO(User user){
+		this(
+				user.getId(),
+				user.getUserName(),
+				user.getFirstName(),
+				user.getLastName(),
+				user.getDob(),
+				user.getEmail(),
+				user.getPassword(),
+				user.getCountry(),
+				user.getComicsReading(),
+				user.getComicsFinished()
+		);
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -105,29 +117,99 @@ public class UserDTO {
 				"Comics Finished: " + comicsFinished + "\n";
 	}
 
-	public boolean addComicBookToList(ComicBookDTO comicBook) {
-		if (comicBookList.contains(comicBook)) {
-			return false;
-		}
-		else {
-			comicBookList.add(comicBook);
-			return true;
-		}
+	public long getId() {
+		return id;
 	}
 
-	public UserDTO(User user){
-		this(
-			user.getId(),
-			user.getUserName(),
-			user.getFirstName(),
-			user.getLastName(),
-			user.getDob(),
-			user.getEmail(),
-			user.getPassword(),
-			user.getCountry(),
-			user.getComicsReading(),
-			user.getComicsFinished()
-		);
+	public void setId(long id) {
+		this.id = id;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public Date getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(Date joinDate) {
+		this.joinDate = joinDate;
+	}
+
+	public List<ComicBookDTO> getComicBookList() {
+		return comicBookList;
+	}
+
+	public void setComicBookList(List<ComicBookDTO> comicBookList) {
+		this.comicBookList = comicBookList;
+	}
+
+	public int getComicsReading() {
+		return comicsReading;
+	}
+
+	public void setComicsReading(int comicsReading) {
+		this.comicsReading = comicsReading;
+	}
+
+	public int getComicsFinished() {
+		return comicsFinished;
+	}
+
+	public void setComicsFinished(int comicsFinished) {
+		this.comicsFinished = comicsFinished;
+	}
 }

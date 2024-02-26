@@ -1,7 +1,5 @@
 package org.longbox.presentation.profile;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
@@ -21,8 +19,6 @@ import java.awt.Font;
 
 import javax.swing.*;
 
-@Getter
-@Setter
 public class FavoritesPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private static FavoritesPanel instance;
@@ -195,5 +191,133 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy) {
 		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy);
 		resultsPage.setVisible(true);
+	}
+
+	public static FavoritesPanel getInstance() {
+		return instance;
+	}
+
+	public static void setInstance(FavoritesPanel instance) {
+		FavoritesPanel.instance = instance;
+	}
+
+	public JPanel getPanel() {
+		return panel;
+	}
+
+	public void setPanel(JPanel panel) {
+		this.panel = panel;
+	}
+
+	public JLabel getComicCollectionTitle() {
+		return comicCollectionTitle;
+	}
+
+	public void setComicCollectionTitle(JLabel comicCollectionTitle) {
+		this.comicCollectionTitle = comicCollectionTitle;
+	}
+
+	public JLabel getLblNewLabel_1() {
+		return lblNewLabel_1;
+	}
+
+	public void setLblNewLabel_1(JLabel lblNewLabel_1) {
+		this.lblNewLabel_1 = lblNewLabel_1;
+	}
+
+	public JSeparator getSeparator() {
+		return separator;
+	}
+
+	public void setSeparator(JSeparator separator) {
+		this.separator = separator;
+	}
+
+	public JComboBox<String> getComboBox() {
+		return comboBox;
+	}
+
+	public void setComboBox(JComboBox<String> comboBox) {
+		this.comboBox = comboBox;
+	}
+
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
+	}
+
+	public String getCurrentItem() {
+		return currentItem;
+	}
+
+	public void setCurrentItem(String currentItem) {
+		this.currentItem = currentItem;
+	}
+
+	public JTable getComicBookTable() {
+		return comicBookTable;
+	}
+
+	public void setComicBookTable(JTable comicBookTable) {
+		this.comicBookTable = comicBookTable;
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JComboBox<String> getTypeSelection() {
+		return typeSelection;
+	}
+
+	public void setTypeSelection(JComboBox<String> typeSelection) {
+		this.typeSelection = typeSelection;
+	}
+
+	public List<ComicBookDTO> getFavoriteComicBooks() {
+		return favoriteComicBooks;
+	}
+
+	public void setFavoriteComicBooks(List<ComicBookDTO> favoriteComicBooks) {
+		this.favoriteComicBooks = favoriteComicBooks;
+	}
+
+	public ComicBookTableModel getComicBookTableModel() {
+		return comicBookTableModel;
+	}
+
+	public void setComicBookTableModel(ComicBookTableModel comicBookTableModel) {
+		this.comicBookTableModel = comicBookTableModel;
+	}
+
+	public JButton getUnfavoriteButton() {
+		return unfavoriteButton;
+	}
+
+	public void setUnfavoriteButton(JButton unfavoriteButton) {
+		this.unfavoriteButton = unfavoriteButton;
+	}
+
+	public TableRowSorter<TableModel> getSorter() {
+		return sorter;
+	}
+
+	public void setSorter(TableRowSorter<TableModel> sorter) {
+		this.sorter = sorter;
+	}
+
+	public ComicBookDaoImpl getComicBookDaoImpl() {
+		return comicBookDaoImpl;
+	}
+
+	public void setComicBookDaoImpl(ComicBookDaoImpl comicBookDaoImpl) {
+		this.comicBookDaoImpl = comicBookDaoImpl;
 	}
 }

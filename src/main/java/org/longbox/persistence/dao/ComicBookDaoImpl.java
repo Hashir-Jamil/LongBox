@@ -4,12 +4,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
-import org.longbox.businesslogic.exception.UsernameExistsException;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.entity.ComicBook;
-import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
 
 import java.util.ArrayList;

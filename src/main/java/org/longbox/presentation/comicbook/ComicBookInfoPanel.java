@@ -1,8 +1,5 @@
 package org.longbox.presentation.comicbook;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -13,8 +10,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
-@Getter
-@Setter
+
 public class ComicBookInfoPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -63,4 +59,19 @@ public class ComicBookInfoPanel extends JPanel {
 		
 	}
 
+	public JTextPane getComicBookInfoTextPane() {
+		return comicBookInfoTextPane;
+	}
+
+	public void setComicBookInfoTextPane(JTextPane comicBookInfoTextPane) {
+		this.comicBookInfoTextPane = comicBookInfoTextPane;
+	}
+
+	public JButton getCommentsButton() {
+		return commentsButton;
+	}
+
+	public void setCommentsButton(JButton commentsButton) {
+		this.commentsButton = commentsButton;
+	}
 }

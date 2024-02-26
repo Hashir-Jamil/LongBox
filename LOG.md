@@ -120,3 +120,9 @@
         '-> Oscar: edit interview video & talk about user stories on itr1,2 on plann ing document and ppt.
         '-> Eric: problem statement, customer video highlights, talk about user stories on itr1,2 on plann ing document and ppt., vision & future of project
     Ali: Finalized the Favorite Panel functionality without reliance on a database, utilizing a list-based approach for storage and management.
+
+## Sunday, February 25th, 2024
+
+    Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Polished submission and reviewed it to ensure it has all required components, discussed presentation.
+    Hashir: Refactored project to not use lombok and just use regular generated boiler plate code, added extra tests to check if anything was wrong.
+    

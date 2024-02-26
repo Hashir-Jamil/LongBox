@@ -6,19 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import com.google.gson.Gson;
 
-@NoArgsConstructor
-@Getter
-@Setter
 public class ComicBookStubDB {
 
     private List<ComicBookDTO> comicBookStubData = new ArrayList<>();
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/ComicBookStubDB.json";
+
+    public ComicBookStubDB() {
+    }
 
     public void loadComicBooks() {
 
@@ -153,6 +150,18 @@ public class ComicBookStubDB {
                 1988
         );
         comicBookStubData.add(comicBook11);
+    }
+
+    public List<ComicBookDTO> getComicBookStubData() {
+        return comicBookStubData;
+    }
+
+    public void setComicBookStubData(List<ComicBookDTO> comicBookStubData) {
+        this.comicBookStubData = comicBookStubData;
+    }
+
+    public String getABSOLUTE_FILE_PATH() {
+        return ABSOLUTE_FILE_PATH;
     }
 
     public void serializeComicBookStubDB() {

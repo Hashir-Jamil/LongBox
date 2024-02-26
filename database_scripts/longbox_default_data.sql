@@ -37,11 +37,11 @@ VALUES
      'Empty', 35, 'Image', 1993, '2024-02-15'),
 
     ('Winter Wolrd', 'Chuck Dixon', 'Jorge Zaffino',
-     'Adventure, Post-Apocalyptic, Gunslinger',
+     'Adventure, Post Apocalyptic, Gunslinger',
      'Empty', 3, 'Eclipse', 1987, '2024-02-15'),
 
     ('Hellhounds Panzer Cops', 'Mamoru Oshii', 'Kamui Fujiwara',
-     'Military, Police, Adventure, Dystopian,Manga',
+     'Military, Police, Adventure, Dystopian, Manga',
      'Empty', 6, 'Dark Horse', 1994, '2024-02-15'),
 
     ('Jon Sable Freelance (1983)', 'Mike Grell', 'Mike Grell',
@@ -52,9 +52,97 @@ VALUES
      'Action, Adventure, Sword and Socery',
      'Empty', 12, 'First Comics', 1987, '2024-02-15'),
 
-    ('Drakuun', 'Johji Manabe', 'Johnji Manabe',
+    ('Drakuun', 'Johji Manabe', 'Jonji Manabe',
      'Adventure, Sword and Socery, Comedy, Manga',
      'Empty', 24, 'Dark Horse', 1997, '2024-02-15'),
+
+    ('Elementals (1984)', 'Bill Willingham', 'Bill Willingham',
+     'Action, Superhero, Supernatural',
+     'Empty', 29, 'Comico', 1984, '2024-02-25'),
+
+    ('Airboy (1986)', 'Chuck Dixon', 'Timothy Truman',
+     'Adventure, War',
+     'Empty', 50, 'Eclipse', 1986, '2024-02-25'),
+
+    ('Scout (1985)', 'Timothy Truman', 'Timothy Truman',
+     'Adventure, War, Post Apocalyptic',
+     'Empty', 24, 'Eclipse', 1985, '2024-02-25'),
+
+    ('Warlock (1986)', 'Gordon Derry', 'Denis Beauvais',
+     'Adventure, Action, Post Apocalyptic, Fantasy, Futuristic, Cyber Punk',
+     'Empty', 22, 'Aircel', 1986, '2024-02-25'),
+
+    ('Dalgoda', 'Jan Strnad', 'Dennis Fujitake',
+     'Science Fiction',
+     'Empty', 8, 'Fantagraphics', 1984, '2024-02-25'),
+
+    ('Outlanders', 'Johji Manabe', 'Johji Manabe',
+     'Science Fiction, Adventure, Sword and Planet, Manga',
+     'Empty', 33, 'Dark Horse', 1988, '2024-02-25'),
+
+    ('Evangeline (1984)', 'Chuck Dixon', 'Judith Hunt',
+     'Adventure, Action, Science Fiction',
+     'Empty', 2, 'Comico', 1984, '2024-02-25'),
+
+    ('Evangeline (1987)', 'Chuck Dixon', 'Judith Hunt',
+     'Adventure, Action, Science Fiction',
+     'Empty', 12, 'First', 1987, '2024-02-25'),
+
+    ('Badger (1983)', 'Mike Baron', 'Jeffrey Butler',
+     'Adventure, Action, Superhero, Science Fiction',
+     'Empty', 70, 'First', 1983, '2024-02-25'),
+
+    ('Fightin Marines', 'Gene Colan', 'Gene Colan',
+     'Adventure, Action, War, Anthology',
+     'Empty', 151, 'Charlton', 1951, '2024-02-25'),
+
+    ('Grimjack (1984)', 'John Ostrander', 'Timothy Truman',
+     'Adventure, Action, Science Fiction, Vigilantes, Fantasy',
+     'Empty', 81, 'First', 1984, '2024-02-25'),
+
+    ('Caravan Kidd', 'Johji Manabe', 'Johji Manabe',
+     'Adventure, Action, Science Fiction, Fantasy, Comedy, Manga',
+     'Empty', 28, 'Dark Horse', 1992, '2024-02-25'),
+
+    ('Boris the Bear', 'Mike Richardson', 'James Dean Smith',
+     'Adventure, Action, Satire, Fantasy, Comedy',
+     'Empty', 34, 'Dark Horse', 1986, '2024-02-25'),
+
+    ('Destroyer Duck', 'Steve Gerber', 'Jack Kirby',
+     'Adventure, Action, Satire, Fantasy, Comedy',
+     'Empty', 7, 'Eclipse', 1982, '2024-02-25'),
+
+    ('Merchants of Death', 'Grassi', 'Enrique Breccia',
+     'Adventure, Action, Anthology',
+     'Empty', 4, 'Eclipse', 1988, '2024-02-25'),
+
+    ('Mr Monster', 'Michael T Gilbert', 'Michael T Gilbert',
+     'Action, Supernatural, Superhero, Comedy',
+     'Empty', 10, 'Eclipse', 1985, '2024-02-25'),
+    
+    ('Meridian', 'Barbara Kesel', 'Joshua Middleton',
+     'Action, Supernatural, Superpower, Fantasy',
+     'Empty', 44, 'Crossgen', 2000, '2024-02-25'),
+
+    ('Mystic', 'Ron Marz', 'Brandon Peterson',
+     'Action, Supernatural, Superpower, Fantasy',
+     'Empty', 43, 'Crossgen', 2000, '2024-02-25'),
+
+    ('Scion', 'Ron Marz', 'Jim Cheung',
+     'Action, Supernatural, Superpower, Fantasy',
+     'Empty', 43, 'Crossgen', 2000, '2024-02-25'),
+
+    ('Sigil', 'Barbara Kesel', 'Wil Quintana',
+     'Action, Supernatural, Superpower, Fantasy',
+     'Empty', 42, 'Crossgen', 2000, '2024-02-25'),
+    
+    ('The Uncensored Mouse', 'Disney', 'Disney',
+     'Bootleg',
+     'Empty', 2, 'Eternity', 1989, '2024-02-25'),
+
+    ('Maelstorm', 'Jim Somerville', 'Jim Somerville',
+     'Dark Fantasy, Supernatural, Superpower, Action',
+     'Empty', 11, 'Aircel', 1987, '2024-02-25'),
 
     ('Sojourn', 'Ron Marz', 'Greg Land',
      'Action, Adventure, Sword and Sorcery',

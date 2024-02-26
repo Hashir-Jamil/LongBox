@@ -5,10 +5,6 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
-
-//import jakarta.mail.internet.AddressException;
-//import jakarta.mail.internet.InternetAddress;
-
 public class RegistrationUtils {
 	// validate email stack overflow
 	public static boolean isValidEmailAddress(String email) {

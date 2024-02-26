@@ -5,9 +5,6 @@ import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -28,13 +25,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-@Getter
-@Setter
-public class ComicCollectionPanel extends JPanel implements ActionListener{
+public class ComicRepositoryPanel extends JPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel panel;
-	private JLabel comicCollectionTitle;
+	private JLabel comicRepositoryTitle;
 	private JLabel lblNewLabel_1;
 	private JSeparator separator;
 	private JComboBox<String> comboBox;
@@ -47,7 +42,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 	TableRowSorter<TableModel> sorter;	
 	ComicBookDaoImpl comicBookDaoImpl;
 
-	public ComicCollectionPanel() {
+	public ComicRepositoryPanel() {
 		initComicCollectionPage();
 	}
 
@@ -59,11 +54,11 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 		panel = new JPanel();
 	    panel.setLayout(null);
 		
-		comicCollectionTitle = new JLabel("Comic Repo");
-		comicCollectionTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		comicCollectionTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		comicCollectionTitle.setBounds(396, 11, 372, 43);
-		panel.add(comicCollectionTitle);
+		comicRepositoryTitle = new JLabel("Comic Repository");
+		comicRepositoryTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		comicRepositoryTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		comicRepositoryTitle.setBounds(396, 11, 372, 43);
+		panel.add(comicRepositoryTitle);
 
 		separator = new JSeparator();
 		separator.setBounds(10, 92, 1144, 14);
@@ -83,7 +78,6 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 				int col = comicBookTable.columnAtPoint(e.getPoint());
 				if (col == 0) {
 					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
-					System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
 					ComicBookSearch.loadComicBookPage(comicBook);
 				}
 			}
@@ -99,7 +93,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 		panel.add(scrollPane);
 		
 		typeSelection = new JComboBox<String>();
-		typeSelection.setBounds(333, 62, 160, 22);
+		typeSelection.setBounds(307, 62, 160, 22);
 		
 		typeSelection.addItem("Title");
 		typeSelection.addItem("Author");
@@ -111,7 +105,7 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 		panel.add(typeSelection);
 		
 		textField = new JTextField();
-		textField.setBounds(116, 62, 213, 22);
+		textField.setBounds(90, 62, 213, 22);
 		panel.add(textField);
 		textField.setColumns(10);
 		
@@ -159,5 +153,109 @@ public class ComicCollectionPanel extends JPanel implements ActionListener{
 	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy) {
 		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy);
 		resultsPage.setVisible(true);
+	}
+
+	public JPanel getPanel() {
+		return panel;
+	}
+
+	public void setPanel(JPanel panel) {
+		this.panel = panel;
+	}
+
+	public JLabel getComicRepositoryTitle() {
+		return comicRepositoryTitle;
+	}
+
+	public void setComicRepositoryTitle(JLabel comicRepositoryTitle) {
+		this.comicRepositoryTitle = comicRepositoryTitle;
+	}
+
+	public JLabel getLblNewLabel_1() {
+		return lblNewLabel_1;
+	}
+
+	public void setLblNewLabel_1(JLabel lblNewLabel_1) {
+		this.lblNewLabel_1 = lblNewLabel_1;
+	}
+
+	public JSeparator getSeparator() {
+		return separator;
+	}
+
+	public void setSeparator(JSeparator separator) {
+		this.separator = separator;
+	}
+
+	public JComboBox<String> getComboBox() {
+		return comboBox;
+	}
+
+	public void setComboBox(JComboBox<String> comboBox) {
+		this.comboBox = comboBox;
+	}
+
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
+	}
+
+	public String getCurrentItem() {
+		return currentItem;
+	}
+
+	public void setCurrentItem(String currentItem) {
+		this.currentItem = currentItem;
+	}
+
+	public JTable getComicBookTable() {
+		return comicBookTable;
+	}
+
+	public void setComicBookTable(JTable comicBookTable) {
+		this.comicBookTable = comicBookTable;
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JComboBox<String> getTypeSelection() {
+		return typeSelection;
+	}
+
+	public void setTypeSelection(JComboBox<String> typeSelection) {
+		this.typeSelection = typeSelection;
+	}
+
+	public ComicBookTableModel getComicBookTableModel() {
+		return comicBookTableModel;
+	}
+
+	public void setComicBookTableModel(ComicBookTableModel comicBookTableModel) {
+		this.comicBookTableModel = comicBookTableModel;
+	}
+
+	public TableRowSorter<TableModel> getSorter() {
+		return sorter;
+	}
+
+	public void setSorter(TableRowSorter<TableModel> sorter) {
+		this.sorter = sorter;
+	}
+
+	public ComicBookDaoImpl getComicBookDaoImpl() {
+		return comicBookDaoImpl;
+	}
+
+	public void setComicBookDaoImpl(ComicBookDaoImpl comicBookDaoImpl) {
+		this.comicBookDaoImpl = comicBookDaoImpl;
 	}
 }

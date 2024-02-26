@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ComicBookDaoImplTest {
@@ -81,5 +82,18 @@ public class ComicBookDaoImplTest {
     @Test
     void saveComicBook() {
         comicBookDaoImpl.saveComicBook(comicBookDTO2);
+    }
+
+    @Test
+    void getComicBookBySeriesNameTest() {
+        ComicBook spiderMan = comicBookDaoImpl.getComicBookBySeriesName("The Amazing Spider-Man");
+        assertEquals(comicBookDTO2.getSeriesTitle(), spiderMan.getSeriesTitle());
+        assertEquals(comicBookDTO2.getAuthor(), spiderMan.getAuthor());
+        assertEquals(comicBookDTO2.getArtist(), spiderMan.getArtist());
+        assertEquals(ComicBookDTO.genreListToString(comicBookDTO2.getGenres()), spiderMan.getGenres());
+        assertEquals(comicBookDTO2.getDescription(), spiderMan.getDescription());
+        assertEquals(comicBookDTO2.getNumberOfIssues(), spiderMan.getNumberOfIssues());
+        assertEquals(comicBookDTO2.getPublisher(), spiderMan.getPublisher());
+        assertEquals(comicBookDTO2.getYearPublished(), spiderMan.getYearPublished());
     }
 }

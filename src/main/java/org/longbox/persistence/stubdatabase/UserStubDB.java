@@ -7,19 +7,16 @@ import java.util.Date;
 import java.util.List;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.longbox.domainobjects.dto.UserDTO;
 import com.google.gson.Gson;
 
-@NoArgsConstructor
-@Getter
-@Setter
 public class UserStubDB {
 
     private List<UserDTO> userStubData = new ArrayList<>();
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/UserStubDB.json";
+
+    public UserStubDB() {
+    }
 
     public void loadUsers() {
         UserDTO u1 = new UserDTO(
@@ -68,7 +65,19 @@ public class UserStubDB {
     public List<UserDTO> getUsers(){
     	return this.userStubData;
     }
-    
+
+    public List<UserDTO> getUserStubData() {
+        return userStubData;
+    }
+
+    public void setUserStubData(List<UserDTO> userStubData) {
+        this.userStubData = userStubData;
+    }
+
+    public String getABSOLUTE_FILE_PATH() {
+        return ABSOLUTE_FILE_PATH;
+    }
+
     public void addUser(UserDTO user) {
     	this.userStubData.add(user);
     }

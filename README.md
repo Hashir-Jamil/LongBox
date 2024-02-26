@@ -6,7 +6,7 @@ Your digital solution for archiving and preserving comic books. Developed by pas
 
 This project uses a 3-layer software architecture. The system is built around the Java Swing framework and behaves as a model view controller application in conformance to the oracle documentation for Swing applications. A sketch of it is:
 
-![SystemDiagram](architecture_diagram_dark_mode.png)
+![SystemDiagram](design_documents/diagrams/architecture_diagram_dark_mode.png)
 
 ## Getting Started
 
@@ -14,16 +14,16 @@ This project uses a 3-layer software architecture. The system is built around th
 
 - The project is built on Java 19.
 - The project uses Gradle (Kotlin) as the build system.
-- The project used [PostgreSQL](https://www.postgresql.org/) as the database.
+- The project used [PostgreSQL 16](https://www.postgresql.org/) as the database.
 
 ### Installing
 
 1. The project needs to be cloned into Eclipse from the [GitHub Repository](https://github.com/Hashir-Jamil/LongBox). In terms of ITR01 release, the branch is named iteration_one and in terms of deliverable 1, the branch is main.
 2. Once the project has been cloned, gradle nature needs to be added to the project. [How to configure gradle in eclipse](https://www.vogella.com/tutorials/EclipseGradle/article.html#add-gradle-support-to-existing-eclipse-project).
-3. This project also uses [Project Lombok](https://www.baeldung.com/intro-to-project-lombok). [Configure Project Lombok in Eclipse](https://stackoverflow.com/a/65949629).
-4. To use the database, we need to install [pgAdmin4](https://www.pgadmin.org/download/). In pgAdmin, [create a new database](https://www.tutorialsteacher.com/postgresql/create-database#:~:text=Create%20Database%20using%20pgAdmin&text=Open%20pgAdmin%20and%20right%2Dclick,Database…%20%2C%20as%20shown%20below.&text=This%20will%20open%20Create%20–%20Database,be%20the%20owner%20by%20default). The name of databse should be ***longbox_db***.
-5. After creating the database, [run](https://support.spiresystems.com/support/solutions/articles/13000015301-executing-a-sql-query-using-pgadmin) the *longbox_schema.sql* in the database_scripts package. This will setup the tables required for this project.
-6. After the tables are made, run the *longbox_default_data.sql* in the same manner to load the data into the database.
+3. To use the database, we need to install [pgAdmin4](https://www.pgadmin.org/download/). In pgAdmin, [create a new database](https://www.tutorialsteacher.com/postgresql/create-database#:~:text=Create%20Database%20using%20pgAdmin&text=Open%20pgAdmin%20and%20right%2Dclick,Database…%20%2C%20as%20shown%20below.&text=This%20will%20open%20Create%20–%20Database,be%20the%20owner%20by%20default). The name of databse should be ***longbox_db***.
+4. After creating the database, [run](https://support.spiresystems.com/support/solutions/articles/13000015301-executing-a-sql-query-using-pgadmin) the *longbox_schema.sql* in the database_scripts package. This will setup the tables required for this project.
+5. After the tables are made, run the *longbox_default_data.sql* in the same manner to load the data into the database.
+6. To ensure the database server communicates with the project, go to the file [hibernate.cfg.xml](src/main/resources/hibernate.cfg.xml) and ensure the connection.url property matches the one for your personal machine's postresql installation.
 
 ### Testing
 
@@ -112,5 +112,4 @@ After using the system, the user can logout and will be redirected to the login 
     Ahan Bhargava
     Mher Eric Gyuluman
     Ali Sina
-    Dexter Sargent
     Oscar Ye
