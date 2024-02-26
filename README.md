@@ -112,5 +112,4 @@ After using the system, the user can logout and will be redirected to the login 
     Ahan Bhargava
     Mher Eric Gyuluman
     Ali Sina
-    Dexter Sargent
     Oscar Ye
