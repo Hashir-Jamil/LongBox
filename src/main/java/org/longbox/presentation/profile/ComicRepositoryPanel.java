@@ -30,13 +30,13 @@ import java.awt.Color;
 public class ComicRepositoryPanel extends JPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
-	private JPanel panel;
+	public JPanel panel;
 	private JLabel comicRepositoryTitle;
 	private JLabel lblNewLabel_1;
 	private JSeparator separator;
 	private JButton refreshButton;
 	private JComboBox<String> comboBox;
-	private JScrollPane scrollPane;
+	public JScrollPane scrollPane;
 	private String currentItem;
 	private JTable comicBookTable;
 	private JTextField textField;

@@ -160,6 +160,8 @@ public class HomeFrame extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == comicCollectionButton) {
+        	((ComicRepositoryPanel) comicCollectionPanel).panel.remove(((ComicRepositoryPanel) comicCollectionPanel).scrollPane);;
+        	((ComicRepositoryPanel) comicCollectionPanel).reloadTable();
         	cardLayout.show(activityPanel, COMIC_COLLECTAION_PANEL);
         }
 
