@@ -24,6 +24,8 @@ import javax.swing.table.TableRowSorter;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JButton;
+import java.awt.Color;
 
 public class ComicRepositoryPanel extends JPanel implements ActionListener{
 
@@ -32,6 +34,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 	private JLabel comicRepositoryTitle;
 	private JLabel lblNewLabel_1;
 	private JSeparator separator;
+	private JButton refreshButton;
 	private JComboBox<String> comboBox;
 	private JScrollPane scrollPane;
 	private String currentItem;
@@ -66,32 +69,8 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 
 		add(panel, BorderLayout.CENTER);
 		
-		comicBookDaoImpl = new ComicBookDaoImpl();
-		
-		comicBookTableModel = new ComicBookTableModel(comicBookDaoImpl.getAllComicBooks());
-
-		comicBookTable = new JTable(comicBookTableModel);
-		comicBookTable.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int row = comicBookTable.rowAtPoint(e.getPoint());
-				int col = comicBookTable.columnAtPoint(e.getPoint());
-				if (col == 0) {
-					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
-					ComicBookSearch.loadComicBookPage(comicBook);
-				}
-			}
-		});
-		sorter = new TableRowSorter<TableModel>(comicBookTable.getModel());
-		comicBookTable.setRowSorter(sorter);
-		
-		scrollPane = new JScrollPane(comicBookTable);
-		scrollPane.setViewportBorder(null);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(10, 110, 1144, 683);
-		panel.add(scrollPane);
-		
+		this.reloadTable();
+			
 		typeSelection = new JComboBox<String>();
 		typeSelection.setBounds(307, 62, 160, 22);
 		
@@ -114,6 +93,19 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 		JLabel lblNewLabel = new JLabel("Search Repo:");
 		lblNewLabel.setBounds(10, 66, 120, 13);
 		panel.add(lblNewLabel);
+		
+		refreshButton = new JButton("Refresh");
+		refreshButton.setForeground(Color.BLUE);
+		refreshButton.setBounds(1065, 62, 89, 23);
+		refreshButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panel.remove(scrollPane);
+				reloadTable();
+			}
+			
+		});
+		panel.add(refreshButton);
 	}
 	
 	@Override
@@ -153,6 +145,34 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy) {
 		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy);
 		resultsPage.setVisible(true);
+	}
+	
+	public void reloadTable() {
+		comicBookDaoImpl = new ComicBookDaoImpl();
+		
+		comicBookTableModel = new ComicBookTableModel(comicBookDaoImpl.getAllComicBooks());
+
+		comicBookTable = new JTable(comicBookTableModel);
+		comicBookTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row = comicBookTable.rowAtPoint(e.getPoint());
+				int col = comicBookTable.columnAtPoint(e.getPoint());
+				if (col == 0) {
+					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
+					ComicBookSearch.loadComicBookPage(comicBook);
+				}
+			}
+		});
+		sorter = new TableRowSorter<TableModel>(comicBookTable.getModel());
+		comicBookTable.setRowSorter(sorter);
+		
+		scrollPane = new JScrollPane(comicBookTable);
+		scrollPane.setViewportBorder(null);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setBounds(10, 110, 1144, 683);
+		panel.add(scrollPane);
 	}
 
 	public JPanel getPanel() {
