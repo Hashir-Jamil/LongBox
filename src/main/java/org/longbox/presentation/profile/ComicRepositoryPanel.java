@@ -95,7 +95,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 		panel.add(lblNewLabel);
 		
 		refreshButton = new JButton("Refresh");
-		refreshButton.setForeground(Color.BLUE);
+		refreshButton.setForeground(Color.BLACK);
 		refreshButton.setBounds(1065, 62, 89, 23);
 		refreshButton.addActionListener(new ActionListener() {
 			@Override
