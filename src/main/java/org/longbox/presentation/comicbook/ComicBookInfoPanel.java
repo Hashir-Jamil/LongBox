@@ -71,7 +71,7 @@ public class ComicBookInfoPanel extends JPanel {
 		midSeparator.setOrientation(SwingConstants.VERTICAL);
 		midSeparator.setBackground(new Color(0, 0, 0));
 		midSeparator.setForeground(new Color(0, 0, 0));
-		midSeparator.setBounds(567, 100, 30, 618);
+		midSeparator.setBounds(576, 100, 12, 618);
 		panel.add(midSeparator);
 		
 		commentsButton = new JButton(VIEW_COMMENTS);
@@ -127,6 +127,7 @@ public class ComicBookInfoPanel extends JPanel {
 		panel.add(artist);
 		
 		genre = new JLabel("");
+		genre.setVerticalAlignment(SwingConstants.TOP);
 		genre.setBounds(182, 324, 373, 36);
 		panel.add(genre);
 		
