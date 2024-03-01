@@ -100,11 +100,11 @@ public class ComicBookSearch {
     }
     
     public static void loadComicBookPage(ComicBookDTO comicBook) {
-		ComicBookFrame comicBookFrame = new ComicBookFrame();
+		ComicBookFrame comicBookFrame = new ComicBookFrame(comicBook);
 		comicBookFrame.setVisible(true);
-		HTMLEditorKit htmlEditorKit = new HTMLEditorKit();
-		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(htmlEditorKit);
-		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
+//		HTMLEditorKit htmlEditorKit = new HTMLEditorKit();
+//		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(htmlEditorKit);
+//		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
 	}
 
     public static String generateComicBookHTML(ComicBookDTO comicBook) {

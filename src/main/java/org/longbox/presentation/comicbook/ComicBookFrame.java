@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.CommentDTO;
 
 import java.awt.CardLayout;
 
@@ -17,8 +18,9 @@ public class ComicBookFrame extends JFrame {
 	private final String COMIC_BOOK_COMMENTS = "Comic Book Comments";
 	private final String COMIC_BOOK_INFO = "Comic Book Info";
 	private final String VIEW_COMMENTS = "View Comments";
+	
 	private JPanel comicBookPane;
-	private ComicBookInfoPanel comicBookInfoPane = new ComicBookInfoPanel();
+	private ComicBookInfoPanel comicBookInfoPane;
 	private ComicBookCommentsPanel comicBookCommentsPane = new ComicBookCommentsPanel();
 	private CardLayout cardLayout;
 	private ComicBookDTO comicBookResult;
@@ -26,32 +28,34 @@ public class ComicBookFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ComicBookFrame frame = new ComicBookFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					ComicBookFrame frame = new ComicBookFrame();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+//
+//	/**
+//	 * Create the frame.
+//	 */
+//	public ComicBookFrame() {
+//		initComicBookPage();        
+//	}
 
-	/**
-	 * Create the frame.
-	 */
-	public ComicBookFrame() {
-		initComicBookPage();        
-	}
-	
 	public ComicBookFrame(ComicBookDTO comicBook) {
-		initComicBookPage(); 
 		this.comicBookResult = comicBook;
+		initComicBookPage(); 
 	}
 	
 	private void initComicBookPage() {
+		comicBookInfoPane = new ComicBookInfoPanel(this.comicBookResult);
+		
 		setTitle(FRAME_TITLE);
 	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    setBounds(100, 100, 1200, 900);
