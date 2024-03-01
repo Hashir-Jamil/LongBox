@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS "user" (
     "first_name" text,
     "last_name" text,
     "dob" date,
-    "email" text,
+    "email" text UNIQUE,
     "password" text,
     "country" text,
     "join_date" date,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS "comic_book" (
     "date_added" date
 );
 
-CREATE TABLE IF NOT EXISTS "comic_book_list" (
+CREATE TABLE IF NOT EXISTS "comic_book_favorites_list" (
     "user_id" integer NOT NULL,
     "comic_book_id" integer NOT NULL,
     "date_added_user_list" date,
@@ -44,10 +44,10 @@ CREATE TABLE IF NOT EXISTS "comments" (
     "user_name" text
 );
 
-ALTER TABLE "comic_book_list" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
+ALTER TABLE "comic_book_favorites_list" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
 
-ALTER TABLE "comic_book_list" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
+ALTER TABLE "comic_book_favorites_list" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
 
-ALTER TABLE "comments" ADD FOREIGN KEY ("comic_book_id") REFERENCES "user" ("id");
+ALTER TABLE "comments" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
 
-ALTER TABLE "comments" ADD FOREIGN KEY ("user_id") REFERENCES "comic_book" ("id");
+ALTER TABLE "comments" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
