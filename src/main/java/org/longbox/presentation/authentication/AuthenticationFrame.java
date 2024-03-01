@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
-import org.longbox.businesslogic.exception.UsernameExistsException;
+import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.domainobjects.dto.UserDTO;
 import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.User;
@@ -119,8 +119,8 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
 			userDaoImpl.saveUser(new User(registrationPanel.getRegistrationDetails()));
 			registrationPanel.getMessageLabel().setText("Registeration Successful");
 			cardLayout.show(cardPanel, "login");
-		} catch (UsernameExistsException e) {
-			registrationPanel.getMessageLabel().setText("Username Exists! Please choose a unique username.");
+		} catch (UsernameOrEmailExistsException e) {
+			registrationPanel.getMessageLabel().setText("Username or Email Exists! Please choose a unique username or Email.");
 			registrationPanel.getMessageLabel().setForeground(Color.red);
         }
     }

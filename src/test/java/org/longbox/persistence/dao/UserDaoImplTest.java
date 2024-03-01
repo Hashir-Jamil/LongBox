@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
-import org.longbox.businesslogic.exception.UsernameExistsException;
+import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.domainobjects.dto.UserDTO;
 import org.longbox.persistence.entity.User;
 
@@ -40,7 +40,7 @@ class UserDaoImplTest {
 
 	@Test
 	void test_add_1_Fail() {
-		assertThrows(UsernameExistsException.class, () -> userDaoImpl.saveUser(user));
+		assertThrows(UsernameOrEmailExistsException.class, () -> userDaoImpl.saveUser(user));
 	}
 
 	@Test
@@ -62,7 +62,7 @@ class UserDaoImplTest {
 				u3.getPassword(),
 				u3.getCountry());
 
-		assertThrows(UsernameExistsException.class, () -> userDaoImpl.saveUser(user1));
+		assertThrows(UsernameOrEmailExistsException.class, () -> userDaoImpl.saveUser(user1));
     }
 
 	@Test
