@@ -153,3 +153,7 @@
         '-> Hashir: user can add a comic book to their current reading list and add comic books to their finished list
         '-> Oscar: fix fonts, about me box for profile view
     Ahan: Made emails unique while registration.
+
+## Friday, March 1st, 2024
+    
+    Ahan: Refactored the Search Results page. Added comments text field to the search result page.
