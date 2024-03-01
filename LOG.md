@@ -152,3 +152,4 @@
         '-> Eric: user can login with email or username (may need modification for username's valid characters upon registration)
         '-> Hashir: user can add a comic book to their current reading list and add comic books to their finished list
         '-> Oscar: fix fonts, about me box for profile view
+    Ahan: Made emails unique while registration.
