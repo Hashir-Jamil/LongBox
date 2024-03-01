@@ -42,13 +42,13 @@ public class LoginPanel extends JPanel{
 		JLabel welcomeLabel = new JLabel("Welcome Back to LongBox!");
 		welcomeLabel.setForeground(new Color(0, 0, 0));
 		welcomeLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
-		welcomeLabel.setBounds(300, 52, 208, 16);
+		welcomeLabel.setBounds(297, 52, 215, 26);
 		panel.add(welcomeLabel);
 		
 		//username entry
 		JLabel usernameLabel = new JLabel("Please enter your username:");
 		usernameLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
-		usernameLabel.setBounds(205, 147, 215, 16);
+		usernameLabel.setBounds(208, 144, 215, 16);
 		panel.add(usernameLabel);
 		
 		usernameText = new JTextField();
@@ -60,7 +60,7 @@ public class LoginPanel extends JPanel{
 		JLabel passwordLabel = new JLabel("Please enter your password:");
 		passwordLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 		passwordLabel.setVerticalAlignment(SwingConstants.TOP);
-		passwordLabel.setBounds(205, 216, 153, 16);
+		passwordLabel.setBounds(208, 216, 172, 16);
 		panel.add(passwordLabel);
 		
 		passwordField = new JPasswordField();
@@ -80,7 +80,7 @@ public class LoginPanel extends JPanel{
 		//sign up label
 		JLabel signUpLabel = new JLabel("New user? Sign up now!");
 		signUpLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 13));
-		signUpLabel.setBounds(335, 337, 141, 16);
+		signUpLabel.setBounds(330, 337, 148, 16);
 		panel.add(signUpLabel);
 		signInButton.setFocusable(false);
 		
