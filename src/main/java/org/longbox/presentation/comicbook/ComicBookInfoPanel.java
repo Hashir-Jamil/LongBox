@@ -19,7 +19,6 @@ public class ComicBookInfoPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private static final String PANEL_LABEL = "Search Result";
 	private static final String VIEW_COMMENTS = "View Comments";
-	private JButton commentsButton;
 	private ComicBookDTO comicBookDTO;
 	
 	//text labels
@@ -73,10 +72,6 @@ public class ComicBookInfoPanel extends JPanel {
 		midSeparator.setForeground(new Color(0, 0, 0));
 		midSeparator.setBounds(576, 100, 12, 618);
 		panel.add(midSeparator);
-		
-		commentsButton = new JButton(VIEW_COMMENTS);
-		commentsButton.setBounds(517, 758, 130, 34);
-		panel.add(commentsButton);
 		
 		JLabel ComicTitleLabel = new JLabel("Series Title:");
 		ComicTitleLabel.setBounds(53, 240, 80, 16);
@@ -158,10 +153,18 @@ public class ComicBookInfoPanel extends JPanel {
 		panel.add(CommentsTitle);
 		
 		JTextArea commentBox = new JTextArea();
-		commentBox.setBounds(618, 181, 517, 103);
+		commentBox.setBounds(618, 201, 517, 103);
 		commentBox.setLineWrap(true);
 		commentBox.setWrapStyleWord(true);
 		panel.add(commentBox);
+		
+		JButton addCommentButton = new JButton("Add Comment");
+		addCommentButton.setBounds(1018, 311, 117, 29);
+		panel.add(addCommentButton);
+		
+		JLabel addCommentLabel = new JLabel("Share your thoughts:");
+		addCommentLabel.setBounds(618, 173, 143, 16);
+		panel.add(addCommentLabel);
 		
 		
 		setFields();
@@ -178,13 +181,5 @@ public class ComicBookInfoPanel extends JPanel {
 		publisher.setText(comicBookDTO.getPublisher());
 		yearPublished.setText("" + comicBookDTO.getYearPublished());
 		dateAdded.setText("" + comicBookDTO.getDateAdded());
-	}
-
-	public JButton getCommentsButton() {
-		return commentsButton;
-	}
-
-	public void setCommentsButton(JButton commentsButton) {
-		this.commentsButton = commentsButton;
 	}
 }
