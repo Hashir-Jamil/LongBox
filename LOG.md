@@ -136,3 +136,19 @@
     Eric: Added more comic entries to the repo, added test cases for ComicRepositoryPanel, and refactored ComicCollectionPanel to ComicRepositoryPanel
     Oscar: Added test cases for case insensitive searches in ComicBookSearchTest.java. Also added more comic books into the database.
     
+## Tuesday, February 27th, 2024
+
+    Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Practiced presentation several times.
+
+## Wednesday, February 28th, 2024
+
+    Eric: added repository refresh button for the case of a user adding comic books and wanting to view them in the list without loggin out and back in
+
+## Thursday, February 29th, 2024
+
+    Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): discussed tasks/user stories needed for conclusion of iteration 2
+        '-> Ahan: add comment to comic book, view comment on comic book
+        '-> Ali: user can add a comic book to favorites and user can remove a comic book from favorites
+        '-> Eric: user can login with email or username (may need modification for username's valid characters upon registration)
+        '-> Hashir: user can add a comic book to their current reading list and add comic books to their finished list
+        '-> Oscar: fix fonts, about me box for profile view
