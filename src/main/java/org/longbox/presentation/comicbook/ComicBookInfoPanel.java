@@ -3,20 +3,15 @@ package org.longbox.presentation.comicbook;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
-import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
 import org.longbox.domainobjects.dto.ComicBookDTO;
 
 import javax.swing.JButton;
-import javax.swing.JTextField;
-import java.awt.ComponentOrientation;
 import javax.swing.JTextArea;
 
 public class ComicBookInfoPanel extends JPanel {
@@ -172,19 +167,12 @@ public class ComicBookInfoPanel extends JPanel {
 		setFields();
 	}
 
-//	public JTextPane getComicBookInfoTextPane() {
-//		return comicBookInfoTextPane;
-//	}
-//
-//	public void setComicBookInfoTextPane(JTextPane comicBookInfoTextPane) {
-//		this.comicBookInfoTextPane = comicBookInfoTextPane;
-//	}
 
 	public void setFields() {
 		comicSeries.setText(comicBookDTO.getSeriesTitle());
 		author.setText(comicBookDTO.getAuthor());
 		artist.setText(comicBookDTO.getArtist());
-		genre.setText("<html>" + comicBookDTO.genreListToString(comicBookDTO.getGenres()) + "</html>");
+		genre.setText("<html>" + ComicBookDTO.genreListToString(comicBookDTO.getGenres()) + "</html>");
 		description.setText("<html>" + comicBookDTO.getDescription() + "</html>");
 		numberOfIssues.setText("" + comicBookDTO.getNumberOfIssues());
 		publisher.setText(comicBookDTO.getPublisher());
