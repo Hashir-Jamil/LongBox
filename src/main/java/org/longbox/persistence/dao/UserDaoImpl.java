@@ -76,7 +76,7 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public void saveUser(User user) throws UsernameExistsException {
+    public void saveUser(User user) throws UsernameOrEmailExistsException {
         Session session = null;
         Transaction transaction = null;
 
@@ -87,7 +87,7 @@ public class UserDaoImpl implements UserDao{
             transaction.commit();
         }
         catch(ConstraintViolationException cve){
-            throw new UsernameExistsException();
+            throw new UsernameOrEmailExistsException();
         }
         catch (Exception e) {
             if (transaction != null) {
