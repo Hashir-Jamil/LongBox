@@ -3,6 +3,8 @@ package org.longbox.presentation.comicbook;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,6 +15,9 @@ import javax.swing.SwingConstants;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 
 import javax.swing.JButton;
+import javax.swing.JTextField;
+import java.awt.ComponentOrientation;
+import javax.swing.JTextArea;
 
 public class ComicBookInfoPanel extends JPanel {
 
@@ -151,6 +156,18 @@ public class ComicBookInfoPanel extends JPanel {
 		dateAdded = new JLabel("");
 		dateAdded.setBounds(182, 456, 373, 16);
 		panel.add(dateAdded);
+		
+		JLabel CommentsTitle = new JLabel("Comments");
+		CommentsTitle.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		CommentsTitle.setBounds(618, 135, 123, 34);
+		panel.add(CommentsTitle);
+		
+		JTextArea commentBox = new JTextArea();
+		commentBox.setBounds(618, 181, 517, 103);
+		commentBox.setLineWrap(true);
+		commentBox.setWrapStyleWord(true);
+		panel.add(commentBox);
+		
 		
 		setFields();
 	}
