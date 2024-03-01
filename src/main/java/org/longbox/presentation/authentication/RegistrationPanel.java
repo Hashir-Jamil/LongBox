@@ -65,7 +65,7 @@ public class RegistrationPanel extends JPanel {
 
 		//Header label
 		JLabel HeaderLabel = new JLabel("Sign Up and Start Reading Comics!");
-		HeaderLabel.setBounds(265, 34, 279, 16);
+		HeaderLabel.setBounds(265, 34, 279, 26);
 		HeaderLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 
 		//first name label
