@@ -95,23 +95,23 @@ public class ComicBookInfoPanel extends JPanel {
 		panel.add(GenreLabel);
 		
 		JLabel DescriptionLabel = new JLabel("Description: ");
-		DescriptionLabel.setBounds(53, 372, 94, 16);
+		DescriptionLabel.setBounds(53, 484, 94, 16);
 		panel.add(DescriptionLabel);
 		
 		JLabel IssuesLabel = new JLabel("Number of Issues:");
-		IssuesLabel.setBounds(53, 400, 115, 16);
+		IssuesLabel.setBounds(53, 372, 115, 16);
 		panel.add(IssuesLabel);
 		
 		JLabel PublisherLabel = new JLabel("Publisher:");
-		PublisherLabel.setBounds(53, 428, 80, 16);
+		PublisherLabel.setBounds(53, 400, 80, 16);
 		panel.add(PublisherLabel);
 		
 		JLabel YearPublishedLabel = new JLabel("Year Published: ");
-		YearPublishedLabel.setBounds(53, 456, 115, 16);
+		YearPublishedLabel.setBounds(53, 428, 115, 16);
 		panel.add(YearPublishedLabel);
 		
 		JLabel DateAddedLabel = new JLabel("Date Added:");
-		DateAddedLabel.setBounds(53, 484, 94, 16);
+		DateAddedLabel.setBounds(53, 456, 94, 16);
 		panel.add(DateAddedLabel);
 		
 		comicSeries = new JLabel("");
@@ -131,23 +131,24 @@ public class ComicBookInfoPanel extends JPanel {
 		panel.add(genre);
 		
 		description = new JLabel("");
-		description.setBounds(182, 372, 373, 16);
+		description.setVerticalAlignment(SwingConstants.TOP);
+		description.setBounds(182, 484, 373, 153);
 		panel.add(description);
 		
 		numberOfIssues = new JLabel("");
-		numberOfIssues.setBounds(182, 400, 373, 16);
+		numberOfIssues.setBounds(182, 372, 373, 16);
 		panel.add(numberOfIssues);
 		
 		publisher = new JLabel("");
-		publisher.setBounds(182, 428, 373, 16);
+		publisher.setBounds(182, 400, 373, 16);
 		panel.add(publisher);
 		
 		yearPublished = new JLabel("");
-		yearPublished.setBounds(182, 456, 373, 16);
+		yearPublished.setBounds(182, 428, 373, 16);
 		panel.add(yearPublished);
 		
 		dateAdded = new JLabel("");
-		dateAdded.setBounds(182, 484, 373, 16);
+		dateAdded.setBounds(182, 456, 373, 16);
 		panel.add(dateAdded);
 		
 		setFields();
@@ -166,7 +167,7 @@ public class ComicBookInfoPanel extends JPanel {
 		author.setText(comicBookDTO.getAuthor());
 		artist.setText(comicBookDTO.getArtist());
 		genre.setText("<html>" + comicBookDTO.genreListToString(comicBookDTO.getGenres()) + "</html>");
-		description.setText(comicBookDTO.getDescription());
+		description.setText("<html>" + comicBookDTO.getDescription() + "</html>");
 		numberOfIssues.setText("" + comicBookDTO.getNumberOfIssues());
 		publisher.setText(comicBookDTO.getPublisher());
 		yearPublished.setText("" + comicBookDTO.getYearPublished());
