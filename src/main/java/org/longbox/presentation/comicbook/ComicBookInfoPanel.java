@@ -13,6 +13,7 @@ import org.longbox.domainobjects.dto.ComicBookDTO;
 
 import javax.swing.JButton;
 import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 public class ComicBookInfoPanel extends JPanel {
 
@@ -70,7 +71,7 @@ public class ComicBookInfoPanel extends JPanel {
 		midSeparator.setOrientation(SwingConstants.VERTICAL);
 		midSeparator.setBackground(new Color(0, 0, 0));
 		midSeparator.setForeground(new Color(0, 0, 0));
-		midSeparator.setBounds(576, 100, 12, 618);
+		midSeparator.setBounds(576, 77, 12, 702);
 		panel.add(midSeparator);
 		
 		JLabel ComicTitleLabel = new JLabel("Series Title:");
@@ -166,6 +167,14 @@ public class ComicBookInfoPanel extends JPanel {
 		addCommentLabel.setBounds(618, 173, 143, 16);
 		panel.add(addCommentLabel);
 		
+		JScrollPane commentPane = new JScrollPane();
+		commentPane.setBounds(618, 388, 517, 376);
+		panel.add(commentPane);
+		
+		JLabel viewCommentsLabel = new JLabel("What other think about this comic:");
+		viewCommentsLabel.setBounds(618, 360, 241, 16);
+		panel.add(viewCommentsLabel);
+		
 		
 		setFields();
 	}
@@ -182,4 +191,13 @@ public class ComicBookInfoPanel extends JPanel {
 		yearPublished.setText("" + comicBookDTO.getYearPublished());
 		dateAdded.setText("" + comicBookDTO.getDateAdded());
 	}
+	
+	/*
+	 *  commentListModel = new DefaultListModel<>();
+        JList<String> commentList = new JList<>(commentListModel);
+	 * for (Comment comment : comments) {
+            commentListModel.addElement(comment.username + ": " + comment.message);
+        }
+        stub code to be used later
+	 */
 }
