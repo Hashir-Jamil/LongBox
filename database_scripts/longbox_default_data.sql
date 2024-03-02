@@ -171,3 +171,28 @@ VALUES
     ('Groo the Wanderer', 'Sergio Aragones', 'Sergio Aragones',
      'Fantasy, Comedy',
      'Empty', 8, 'Pacific Comics', 1982, '2024-02-25');
+
+-- Next we add some comments
+INSERT INTO longbox_schema."comments"(
+    message, comment_date, comic_book_id, user_id, user_name)
+VALUES
+    ('Wow, the art in this comic is absolutely breathtaking! The attention to detail and vibrant colors bring the characters to life in a way thats truly mesmerizing.',
+     '2024-03-02', 1, 1, 'Always_Scheming'),
+    ('This comics storyline is a rollercoaster of emotions. From intense action sequences to heartwarming moments, it keeps readers hooked with its perfect blend of drama and humor.',
+     '2024-03-01', 3, 2, 'Always_Throwing'),
+    ('Short and sweet, this comics humor is on point! The witty dialogue and clever punchlines had me chuckling from start to finish.',
+     '2024-02-29', 2, 3, 'Phoenix'),
+    ('I appreciate how this comic tackles relevant social issues without being preachy. The writers skillfully weave important themes into the narrative, making it both entertaining and thought-provoking.',
+     '2024-02-29', 3, 5, 'david'),
+    ('The character development in this comic is phenomenal. Each character has a unique personality and backstory, adding depth to the overall narrative.',
+     '2024-02-28', 10, 4, 'ahan'),
+    ('The world-building in this comic is exceptional. The creators have crafted a rich and immersive universe that sparks the imagination and leaves readers craving more.',
+     '2024-03-02', 34, 1, 'Always_Scheming'),
+    ('This comics artwork is a true work of art. The use of unconventional panel layouts and innovative visual storytelling techniques adds a dynamic layer to the overall reading experience.',
+     '2024-03-01', 21, 2, 'Always_Throwing'),
+    ('Simple yet powerful, this comics message resonates deeply. Its amazing how a few carefully chosen words and poignant illustrations can leave a lasting impact.',
+     '2024-02-29', 18, 3, 'Phoenix'),
+    ('The pacing in this comic is spot-on. It keeps the story moving at a brisk pace, ensuring that readers are always engaged and eager to see what happens next.',
+     '2024-02-29', 31, 5, 'david'),
+    ('This comic is a nostalgia trip! It expertly pays homage to classic comic book tropes while infusing a fresh and modern twist, making it a delightful read for both longtime fans and newcomers alike.',
+     '2024-03-01', 7, 1, 'Always_Scheming');
