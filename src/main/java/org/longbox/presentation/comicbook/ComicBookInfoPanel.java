@@ -3,17 +3,15 @@ package org.longbox.presentation.comicbook;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.List;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 
+import org.longbox.businesslogic.utils.MultiLineCellRenderer;
 import org.longbox.domainobjects.dto.ComicBookDTO;
-
-import javax.swing.JButton;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
+import org.longbox.domainobjects.dto.CommentDTO;
+import org.longbox.persistence.dao.CommentDaoImpl;
+import org.longbox.persistence.entity.Comment;
 
 public class ComicBookInfoPanel extends JPanel {
 
@@ -21,7 +19,7 @@ public class ComicBookInfoPanel extends JPanel {
 	private static final String PANEL_LABEL = "Search Result";
 	private static final String VIEW_COMMENTS = "View Comments";
 	private ComicBookDTO comicBookDTO;
-	
+
 	//text labels
 	private JLabel comicSeries;
 	private JLabel author;
@@ -32,8 +30,9 @@ public class ComicBookInfoPanel extends JPanel {
 	private JLabel publisher;
 	private JLabel yearPublished;
 	private JLabel dateAdded;
-	
-	
+	private DefaultListModel<Comment> commentListModel;
+	private CommentDaoImpl commentDaoImpl;
+	private List<CommentDTO> commentsOnCurrentComic;
 	/**
 	 * Create the panel.
 	 */
@@ -43,6 +42,12 @@ public class ComicBookInfoPanel extends JPanel {
 	
 	public ComicBookInfoPanel(ComicBookDTO comicBookDTO) {
 		this.comicBookDTO = comicBookDTO;
+		commentDaoImpl = new CommentDaoImpl();
+		this.commentsOnCurrentComic = commentDaoImpl.getCommentsByComic(this.comicBookDTO.getId());
+
+		System.out.print("this is the id: ");
+		System.out.println(this.comicBookDTO.getId());
+
 		initComicBookInfoPage();
 	}
 
@@ -167,15 +172,23 @@ public class ComicBookInfoPanel extends JPanel {
 		addCommentLabel.setBounds(618, 173, 143, 16);
 		panel.add(addCommentLabel);
 		
-		JScrollPane commentPane = new JScrollPane();
-		commentPane.setBounds(618, 388, 517, 376);
-		panel.add(commentPane);
-		
 		JLabel viewCommentsLabel = new JLabel("What other think about this comic:");
 		viewCommentsLabel.setBounds(618, 360, 241, 16);
 		panel.add(viewCommentsLabel);
-		
-		
+
+		commentListModel = new DefaultListModel<>();
+		JList<Comment> commentList = new JList<>(commentListModel);
+
+		commentList.setCellRenderer(new MultiLineCellRenderer());
+
+		for(CommentDTO c: commentsOnCurrentComic){
+			commentListModel.addElement(new Comment(c));
+		}
+
+		JScrollPane commentPane = new JScrollPane(commentList);
+		commentPane.setBounds(618, 388, 517, 376);
+		panel.add(commentPane);
+
 		setFields();
 	}
 
@@ -191,13 +204,5 @@ public class ComicBookInfoPanel extends JPanel {
 		yearPublished.setText("" + comicBookDTO.getYearPublished());
 		dateAdded.setText("" + comicBookDTO.getDateAdded());
 	}
-	
-	/*
-	 *  commentListModel = new DefaultListModel<>();
-        JList<String> commentList = new JList<>(commentListModel);
-	 * for (Comment comment : comments) {
-            commentListModel.addElement(comment.username + ": " + comment.message);
-        }
-        stub code to be used later
-	 */
+
 }
