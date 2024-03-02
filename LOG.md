@@ -156,4 +156,4 @@
 
 ## Friday, March 1st, 2024
     
-    Ahan: Refactored the Search Results page. Added comments text field to the search result page.
+    Ahan: Refactored the Search Results page. Added viewing comments besides viewing search result.
