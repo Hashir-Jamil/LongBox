@@ -160,4 +160,5 @@
 
 ## Saturday, March 2nd, 2024
 
-    Eric & Ahan: Passed user session into the search comic repo and the favoruties panel
+    Eric & Ahan: Passed user session into the search comic repo and the favoruties panel.
+    Ahan: Added user can comment on a comic functionality, and the add comment appears in the list of comments.
