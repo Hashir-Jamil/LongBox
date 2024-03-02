@@ -157,3 +157,7 @@
 ## Friday, March 1st, 2024
     
     Ahan: Refactored the Search Results page. Added viewing comments besides viewing search result.
+
+## Saturday, March 2nd, 2024
+
+    Eric & Ahan: Passed user session into the search comic repo and the favoruties panel
