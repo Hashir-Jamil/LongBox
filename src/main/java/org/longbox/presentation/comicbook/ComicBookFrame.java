@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import org.longbox.businesslogic.UserSession;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.domainobjects.dto.CommentDTO;
 
@@ -24,6 +25,7 @@ public class ComicBookFrame extends JFrame {
 	private ComicBookCommentsPanel comicBookCommentsPane = new ComicBookCommentsPanel();
 	private CardLayout cardLayout;
 	private ComicBookDTO comicBookResult;
+	private UserSession userSession;
 
 	/**
 	 * Launch the application.
@@ -48,7 +50,8 @@ public class ComicBookFrame extends JFrame {
 //		initComicBookPage();        
 //	}
 
-	public ComicBookFrame(ComicBookDTO comicBook) {
+	public ComicBookFrame(ComicBookDTO comicBook, UserSession user) {
+		this.userSession = user;
 		this.comicBookResult = comicBook;
 		initComicBookPage(); 
 	}

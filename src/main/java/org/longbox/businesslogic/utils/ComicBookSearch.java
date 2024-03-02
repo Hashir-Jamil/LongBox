@@ -1,5 +1,6 @@
 package org.longbox.businesslogic.utils;
 
+import org.longbox.businesslogic.UserSession;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.presentation.comicbook.ComicBookFrame;
 
@@ -99,8 +100,8 @@ public class ComicBookSearch {
     	return resultList;
     }
     
-    public static void loadComicBookPage(ComicBookDTO comicBook) {
-		ComicBookFrame comicBookFrame = new ComicBookFrame(comicBook);
+    public static void loadComicBookPage(ComicBookDTO comicBook, UserSession user) {
+		ComicBookFrame comicBookFrame = new ComicBookFrame(comicBook, user);
 		comicBookFrame.setVisible(true);
 //		HTMLEditorKit htmlEditorKit = new HTMLEditorKit();
 //		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(htmlEditorKit);

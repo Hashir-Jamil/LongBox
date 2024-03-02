@@ -1,8 +1,10 @@
 package org.longbox.presentation.profile;
 
+import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
+import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
 
 import java.awt.BorderLayout;
@@ -44,6 +46,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 	private ComicBookTableModel comicBookTableModel;
 	TableRowSorter<TableModel> sorter;	
 	ComicBookDaoImpl comicBookDaoImpl;
+	private UserSession userSession;
 
 	public ComicRepositoryPanel() {
 		initComicCollectionPage();
@@ -138,12 +141,12 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookDaoImpl.getAllComicBooks(), "");
 					break;
 			}
-			loadComicBookResultsPage(searchResults, target, searchBy);
+			loadComicBookResultsPage(searchResults, target, searchBy, this.userSession);
 		}
     }
 	
-	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy) {
-		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy);
+	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy, UserSession user) {
+		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy, user);
 		resultsPage.setVisible(true);
 	}
 	
@@ -160,7 +163,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 				int col = comicBookTable.columnAtPoint(e.getPoint());
 				if (col == 0) {
 					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
-					ComicBookSearch.loadComicBookPage(comicBook);
+					ComicBookSearch.loadComicBookPage(comicBook, userSession);
 				}
 			}
 		});
@@ -277,5 +280,13 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 
 	public void setComicBookDaoImpl(ComicBookDaoImpl comicBookDaoImpl) {
 		this.comicBookDaoImpl = comicBookDaoImpl;
+	}
+	
+	public UserSession getHomeUserSession() {
+		return this.userSession;
+	}
+	
+	public void setUserSession(UserSession user) {
+		this.userSession = user;
 	}
 }

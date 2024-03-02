@@ -36,7 +36,7 @@ public class HomeFrame extends JFrame implements ActionListener {
     private FavoritesPanel favoritesPanel = new FavoritesPanel();
 	private CardLayout cardLayout;
     private static JFrame frame;
-    private JPanel comicCollectionPanel = new ComicRepositoryPanel();
+    private JPanel comicCollectionPanel = new ComicRepositoryPanel();;
     private ProfilePanel profilePanel = new ProfilePanel();
     private AddComicToRepoPanel addComicToRepoPanel = new AddComicToRepoPanel();
     private JButton searchButtonNexus;
@@ -77,6 +77,9 @@ public class HomeFrame extends JFrame implements ActionListener {
     public HomeFrame(UserSession user) {
     	initiateRegUI();
     	this.userSession = user;
+    	((ComicRepositoryPanel) comicCollectionPanel).setUserSession(this.userSession);
+    	favoritesPanel.setUserSession(this.userSession);
+    	//comicCollectionPanel = new ComicRepositoryPanel(this.userSession);
         userNameLabel = new JLabel(user.getUser().getUserName());
        // userNameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
         userNameLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);

@@ -1,5 +1,6 @@
 package org.longbox.presentation.profile;
 
+import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
@@ -37,6 +38,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 	private JButton unfavoriteButton;
 	private TableRowSorter<TableModel> sorter;
 	private ComicBookDaoImpl comicBookDaoImpl;
+	private UserSession userSession;
 
 	public FavoritesPanel() {
 		initComicCollectionPage();
@@ -90,7 +92,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 					if (col == 0) {
 						ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
 						System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
-						ComicBookSearch.loadComicBookPage(comicBook);
+						ComicBookSearch.loadComicBookPage(comicBook, userSession);
 					}
 				}
 			});
@@ -189,8 +191,16 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 	}
 
 	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy) {
-		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy);
+		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy, this.userSession);
 		resultsPage.setVisible(true);
+	}
+	
+	public UserSession getHomeUserSession() {
+		return this.userSession;
+	}
+	
+	public void setUserSession(UserSession user) {
+		this.userSession = user;
 	}
 
 	public static FavoritesPanel getInstance() {
