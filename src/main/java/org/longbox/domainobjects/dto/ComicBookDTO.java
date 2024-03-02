@@ -119,6 +119,7 @@ public class ComicBookDTO {
             comicBookRecord.getYearPublished(),
             comicBookRecord.getDateAdded()
         );
+        this.setId(comicBookRecord.getId());
     }
 
     @Override
