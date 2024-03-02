@@ -15,4 +15,6 @@ public interface CommentDao {
 
     void saveComment(CommentDTO commentDTO);
 
+    public List<CommentDTO> getCommentsByUser(long userID);
+
 }

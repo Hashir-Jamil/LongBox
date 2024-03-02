@@ -75,4 +75,35 @@ public class CommentDaoImpl implements CommentDao {
         }
     }
 
+    @Override
+    public List<CommentDTO> getCommentsByUser(long userID) {
+        Session session = null;
+        Transaction transaction = null;
+        List<Comment> commentList = null;
+
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            commentList = session.createQuery(
+                            "SELECT c FROM Comment c WHERE c.userId = :userID",
+                            Comment.class)
+                    .setParameter("userID", userID)
+                    .list();
+        }
+        catch (HibernateException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        List<CommentDTO> commentDTOList = new ArrayList<>();
+        for (Comment c : commentList) {
+            CommentDTO commentDTO = new CommentDTO(c);
+            commentDTOList.add(commentDTO);
+        }
+        return commentDTOList;
+    }
+
 }
