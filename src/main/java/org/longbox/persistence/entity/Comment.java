@@ -69,4 +69,16 @@ public class Comment {
     public String getUserName() {
         return userName;
     }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", message='" + message + '\'' +
+                ", commentDate=" + commentDate +
+                ", comicBookId=" + comicBookId +
+                ", userId=" + userId +
+                ", userName='" + userName + '\'' +
+                '}';
+    }
 }
