@@ -3,23 +3,26 @@ package org.longbox.presentation.comicbook;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.*;
 
+import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.utils.MultiLineCellRenderer;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.domainobjects.dto.CommentDTO;
 import org.longbox.persistence.dao.CommentDaoImpl;
 import org.longbox.persistence.entity.Comment;
 
-public class ComicBookInfoPanel extends JPanel {
+public class ComicBookInfoPanel extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private static final String PANEL_LABEL = "Search Result";
 	private static final String VIEW_COMMENTS = "View Comments";
 	private ComicBookDTO comicBookDTO;
-
+	private JPanel panel;
 	//text labels
 	private JLabel comicSeries;
 	private JLabel author;
@@ -30,9 +33,13 @@ public class ComicBookInfoPanel extends JPanel {
 	private JLabel publisher;
 	private JLabel yearPublished;
 	private JLabel dateAdded;
+	private JButton addCommentButton;
+	private JTextArea commentBox;
 	private DefaultListModel<Comment> commentListModel;
 	private CommentDaoImpl commentDaoImpl;
 	private List<CommentDTO> commentsOnCurrentComic;
+	private UserSession userSession;
+	private   JList<Comment> commentList;
 	/**
 	 * Create the panel.
 	 */
@@ -40,13 +47,12 @@ public class ComicBookInfoPanel extends JPanel {
 //		initComicBookInfoPage();
 //	}
 	
-	public ComicBookInfoPanel(ComicBookDTO comicBookDTO) {
+	public ComicBookInfoPanel(ComicBookDTO comicBookDTO, UserSession userSession) {
 		this.comicBookDTO = comicBookDTO;
+		this.userSession = userSession;
+
 		commentDaoImpl = new CommentDaoImpl();
 		this.commentsOnCurrentComic = commentDaoImpl.getCommentsByComic(this.comicBookDTO.getId());
-
-		System.out.print("this is the id: ");
-		System.out.println(this.comicBookDTO.getId());
 
 		initComicBookInfoPage();
 	}
@@ -55,7 +61,7 @@ public class ComicBookInfoPanel extends JPanel {
 		setBounds(10, 47, 1164, 803);
 		setLayout(new BorderLayout());
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 	    panel.setLayout(null);
 	    
 	    JLabel comicCollectionTitle = new JLabel(PANEL_LABEL);
@@ -158,14 +164,15 @@ public class ComicBookInfoPanel extends JPanel {
 		CommentsTitle.setBounds(618, 135, 123, 34);
 		panel.add(CommentsTitle);
 		
-		JTextArea commentBox = new JTextArea();
+		commentBox = new JTextArea();
 		commentBox.setBounds(618, 201, 517, 103);
 		commentBox.setLineWrap(true);
 		commentBox.setWrapStyleWord(true);
 		panel.add(commentBox);
 		
-		JButton addCommentButton = new JButton("Add Comment");
+		addCommentButton = new JButton("Add Comment");
 		addCommentButton.setBounds(1018, 311, 117, 29);
+		addCommentButton.addActionListener(this);
 		panel.add(addCommentButton);
 		
 		JLabel addCommentLabel = new JLabel("Share your thoughts:");
@@ -177,23 +184,20 @@ public class ComicBookInfoPanel extends JPanel {
 		panel.add(viewCommentsLabel);
 
 		commentListModel = new DefaultListModel<>();
-		JList<Comment> commentList = new JList<>(commentListModel);
+		commentList = new JList<>(commentListModel);
 
 		commentList.setCellRenderer(new MultiLineCellRenderer());
-
-		for(CommentDTO c: commentsOnCurrentComic){
-			commentListModel.addElement(new Comment(c));
-		}
 
 		JScrollPane commentPane = new JScrollPane(commentList);
 		commentPane.setBounds(618, 388, 517, 376);
 		panel.add(commentPane);
 
 		setFields();
+		displayComments();
 	}
 
 
-	public void setFields() {
+	private void setFields() {
 		comicSeries.setText(comicBookDTO.getSeriesTitle());
 		author.setText(comicBookDTO.getAuthor());
 		artist.setText(comicBookDTO.getArtist());
@@ -203,6 +207,28 @@ public class ComicBookInfoPanel extends JPanel {
 		publisher.setText(comicBookDTO.getPublisher());
 		yearPublished.setText("" + comicBookDTO.getYearPublished());
 		dateAdded.setText("" + comicBookDTO.getDateAdded());
+	}
+
+	private void displayComments(){
+		commentsOnCurrentComic = commentDaoImpl.getCommentsByComic(comicBookDTO.getId());
+		commentListModel.removeAllElements();
+
+		for (CommentDTO c : commentsOnCurrentComic) {
+			commentListModel.addElement(new Comment(c));
+		}
+
+		commentList.setModel(commentListModel);
+		commentBox.setText("");
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == addCommentButton){
+			String message = commentBox.getText();
+			CommentDTO newComment = new CommentDTO(this.userSession.getUser().getId(), comicBookDTO.getId(), message, this.userSession.getUser().getUserName());
+			commentDaoImpl.saveComment(newComment);
+			displayComments();
+		}
 	}
 
 }

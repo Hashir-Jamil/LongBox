@@ -57,7 +57,7 @@ public class ComicBookFrame extends JFrame {
 	}
 	
 	private void initComicBookPage() {
-		comicBookInfoPane = new ComicBookInfoPanel(this.comicBookResult);
+		comicBookInfoPane = new ComicBookInfoPanel(this.comicBookResult, this.userSession);
 		
 		setTitle(FRAME_TITLE);
 	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
