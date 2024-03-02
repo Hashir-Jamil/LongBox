@@ -19,7 +19,7 @@ public class MultiLineCellRenderer extends JLabel implements ListCellRenderer<Co
 
         // Calculate the height based on the number of lines (word wrap)
         int numLines = calculateNumLines(value.getMessage());
-        int height = numLines * LINE_HEIGHT;
+        int height = (numLines + 1) * LINE_HEIGHT;
 
         // Set the text and preferred size
         setText("<html><b>" + value.getUserName() + "</b>: " + value.getMessage() + "</html>");
