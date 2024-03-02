@@ -29,7 +29,7 @@ public class CommentDaoImpl implements CommentDao {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             commentList = session.createQuery(
-                            "SELECT c FROM Comment c WHERE c.comicBookId = :comicID",
+                            "SELECT c FROM Comment c WHERE c.comicBookId = :comicID ORDER BY c.commentDate DESC",
                             Comment.class)
                     .setParameter("comicID", comicID)
                     .list();

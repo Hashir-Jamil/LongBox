@@ -4,6 +4,8 @@ import org.longbox.persistence.entity.Comment;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MultiLineCellRenderer extends JLabel implements ListCellRenderer<Comment> {
     private static final int LINE_HEIGHT = 18; // Adjust this value as needed
@@ -22,7 +24,9 @@ public class MultiLineCellRenderer extends JLabel implements ListCellRenderer<Co
         int height = (numLines + 1) * LINE_HEIGHT;
 
         // Set the text and preferred size
-        setText("<html><b>" + value.getUserName() + "</b>: " + value.getMessage() + "</html>");
+        setText("<html><b>" + value.getUserName() + "</b>: " + value.getMessage() +
+                " <font color='gray'><i>" + formatDate(value.getCommentDate()) + "</i></font></html>");
+
         setPreferredSize(new Dimension(495, height));
         setBackground(isSelected ? list.getSelectionBackground() : list.getBackground());
         setForeground(isSelected ? list.getSelectionForeground() : list.getForeground());
@@ -55,5 +59,10 @@ public class MultiLineCellRenderer extends JLabel implements ListCellRenderer<Co
         }
 
         return numLines;
+    }
+
+    private String formatDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // Adjust the format as needed
+        return sdf.format(date);
     }
 }

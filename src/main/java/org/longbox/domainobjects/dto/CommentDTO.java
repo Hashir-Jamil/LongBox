@@ -40,11 +40,12 @@ public class CommentDTO {
     }
 
     public CommentDTO(Comment c) {
+        this.id = c.getId();
         this.message = c.getMessage();
         this.userId = c.getUserId();
         this.username = c.getUserName();
-        this.id = c.getId();
         this.comicBookId = c.getComicBookId();
+        this.dateAdded = c.getCommentDate();
         this.dateAdded = c.getCommentDate();
     }
 

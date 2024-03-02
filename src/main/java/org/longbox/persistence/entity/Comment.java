@@ -39,11 +39,11 @@ public class Comment {
     }
 
     public Comment(CommentDTO c){
-        this(c.getMessage(),
-                c.getComicBookId(),
-                c.getUserId(),
-                c.getUsername()
-        );
+        this.userId = c.getUserId();
+        this.userName = c.getUsername();
+        this.comicBookId = c.getComicBookId();
+        this.message = c.getMessage();
+        this.commentDate = c.getDateAdded();
     }
 
     public long getId() {
