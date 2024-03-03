@@ -1,12 +1,16 @@
 package org.longbox.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.longbox.domainobjects.dto.CommentDTO;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "comments")
+@Getter
+@Setter
 public class Comment {
 
     @Id
@@ -19,21 +23,27 @@ public class Comment {
     @Column(name = "comment_date")
     private Date commentDate;
 
-    @Column(name = "comic_book_id")
-    private long comicBookId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "comic_book_id")
+    private ComicBook comicBook;
 
-    @Column(name = "user_id")
-    private long userId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "user_name")
     private String userName;
+
+    private long userId;
+
+    private long comicBookId;
     
     public Comment() {}
 
-    public Comment(String message, long comicBookId, long userId, String userName) {
+    public Comment(String message, ComicBook comicBook, User user, String userName) {
         this.message = message;
-        this.comicBookId = comicBookId;
-        this.userId = userId;
+        this.comicBook = comicBook;
+        this.user = user;
         this.userName = userName;
         this.commentDate = new Date();
     }
@@ -44,41 +54,5 @@ public class Comment {
         this.comicBookId = c.getComicBookId();
         this.message = c.getMessage();
         this.commentDate = c.getDateAdded();
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public Date getCommentDate() {
-        return commentDate;
-    }
-
-    public long getComicBookId() {
-        return comicBookId;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    @Override
-    public String toString() {
-        return "Comment{" +
-                "id=" + id +
-                ", message='" + message + '\'' +
-                ", commentDate=" + commentDate +
-                ", comicBookId=" + comicBookId +
-                ", userId=" + userId +
-                ", userName='" + userName + '\'' +
-                '}';
     }
 }

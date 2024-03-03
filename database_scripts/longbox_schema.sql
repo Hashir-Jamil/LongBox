@@ -44,6 +44,20 @@ CREATE TABLE IF NOT EXISTS "comments" (
     "user_name" text
 );
 
+CREATE TABLE IF NOT EXISTS "comic_book_finished_list" (
+    "user_id" integer NOT NULL,
+    "comic_book_id" integer NOT NULL,
+    "date_finished" date,
+    PRIMARY KEY ("user_id","comic_book_id")
+);
+
+CREATE TABLE IF NOT EXISTS "comic_book_reading_list" (
+   "user_id" integer NOT NULL,
+   "comic_book_id" integer NOT NULL,
+   "date_started" date,
+   PRIMARY KEY ("user_id","comic_book_id")
+);
+
 ALTER TABLE "comic_book_favorites_list" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
 
 ALTER TABLE "comic_book_favorites_list" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");

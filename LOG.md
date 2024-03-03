@@ -150,8 +150,8 @@
         '-> Ahan: add comment to comic book, view comment on comic book
         '-> Ali: user can add a comic book to favorites and user can remove a comic book from favorites
         '-> Eric: user can login with email or username (may need modification for username's valid characters upon registration)
-        '-> Hashir: user can add a comic book to their current reading list and add comic books to their finished list
-        '-> Oscar: fix fonts, about me box for profile view
+        '-> Hashir: user can add a comic book to their curre1101nt reading list and add comic books to their finished list
+        '-> Oscar: fix fonts, about me box for profile view1
     Ahan: Made emails unique while registration.
 
 ## Friday, March 1st, 2024
