@@ -16,13 +16,10 @@ public class ComicBookFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private final String FRAME_TITLE = "Search Result";
-	private final String COMIC_BOOK_COMMENTS = "Comic Book Comments";
 	private final String COMIC_BOOK_INFO = "Comic Book Info";
-	private final String VIEW_COMMENTS = "View Comments";
 	
 	private JPanel comicBookPane;
 	private ComicBookInfoPanel comicBookInfoPane;
-	private ComicBookCommentsPanel comicBookCommentsPane = new ComicBookCommentsPanel();
 	private CardLayout cardLayout;
 	private ComicBookDTO comicBookResult;
 	private UserSession userSession;
@@ -72,23 +69,14 @@ public class ComicBookFrame extends JFrame {
 	    cardLayout = new CardLayout();
 	    comicBookPane.setLayout(cardLayout);	
 	    comicBookPane.add(comicBookInfoPane, COMIC_BOOK_INFO);
-	    comicBookPane.add(comicBookCommentsPane, COMIC_BOOK_COMMENTS);
 	}
 
 	public String getFRAME_TITLE() {
 		return FRAME_TITLE;
 	}
 
-	public String getCOMIC_BOOK_COMMENTS() {
-		return COMIC_BOOK_COMMENTS;
-	}
-
 	public String getCOMIC_BOOK_INFO() {
 		return COMIC_BOOK_INFO;
-	}
-
-	public String getVIEW_COMMENTS() {
-		return VIEW_COMMENTS;
 	}
 
 	public JPanel getComicBookPane() {
@@ -105,14 +93,6 @@ public class ComicBookFrame extends JFrame {
 
 	public void setComicBookInfoPane(ComicBookInfoPanel comicBookInfoPane) {
 		this.comicBookInfoPane = comicBookInfoPane;
-	}
-
-	public ComicBookCommentsPanel getComicBookCommentsPane() {
-		return comicBookCommentsPane;
-	}
-
-	public void setComicBookCommentsPane(ComicBookCommentsPanel comicBookCommentsPane) {
-		this.comicBookCommentsPane = comicBookCommentsPane;
 	}
 
 	public CardLayout getCardLayout() {
