@@ -49,8 +49,8 @@ public class User {
 	@Column(name = "comics_finished")
 	private int comicsFinished;
 
-	@ManyToMany(mappedBy = "users")
-	private Set<ComicBook> favoriteComicBooks;
+/*	@ManyToMany(mappedBy = "users")
+	private Set<ComicBook> favoriteComicBooks;*/
 
 	@OneToMany(mappedBy = "user")
 	private Set<Comment> comments;
