@@ -103,4 +103,12 @@ public class LoginPanel extends JPanel{
 		errorLabel.setBounds(205, 272, 398, 16);
 		panel.add(errorLabel);
 	}
+
+	public String getUsername() {
+		return usernameText.getText();
+	}
+
+	public String getDecryptedPassword() {
+		return String.valueOf(passwordField.getPassword());
+	}
 }
