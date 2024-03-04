@@ -29,9 +29,11 @@
 
         <!-- Mapping Classes -->
         <mapping class="org.longbox.persistence.entity.User"/>
-        <mapping class="org.longbox.persistence.entity.ComicBookList"/>
+        <mapping class="org.longbox.persistence.entity.ComicBookFavoritesList"/>
         <mapping class="org.longbox.persistence.entity.ComicBook"/>
         <mapping class="org.longbox.persistence.entity.Comment"/>
+        <mapping class="org.longbox.persistence.entity.ComicBookFinishedList"/>
+        <mapping class="org.longbox.persistence.entity.ComicBookReadingList"/>
 
     </session-factory>
 </hibernate-configuration>

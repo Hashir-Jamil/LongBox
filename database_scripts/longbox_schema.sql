@@ -65,3 +65,11 @@ ALTER TABLE "comic_book_favorites_list" ADD FOREIGN KEY ("comic_book_id") REFERE
 ALTER TABLE "comments" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
 
 ALTER TABLE "comments" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
+
+ALTER TABLE "comic_book_finished_list" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
+
+ALTER TABLE "comic_book_finished_list" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
+
+ALTER TABLE "comic_book_reading_list" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
+
+ALTER TABLE "comic_book_reading_list" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");

@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.longbox.domainobjects.dto.UserDTO;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -44,16 +45,31 @@ public class User {
 	private Date joinDate;
 	
 	@Column(name = "comics_reading")
-	private int comicsReading;
+	private Integer comicsReading;
 
 	@Column(name = "comics_finished")
-	private int comicsFinished;
+	private Integer comicsFinished;
 
-/*	@ManyToMany(mappedBy = "users")
-	private Set<ComicBook> favoriteComicBooks;*/
+	@ManyToMany(mappedBy = "usersFavorited")
+	@JoinTable(name = "comic_book_favorites_list",
+		joinColumns = @JoinColumn(name = "user_id"),
+		inverseJoinColumns = @JoinColumn(name = "comic_book_id"))
+	private Set<ComicBook> favoriteComicBooks = new HashSet<>();
+
+	@ManyToMany(mappedBy = "usersFinished")
+	@JoinTable(name = "comic_book_finished_list",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "comic_book_id"))
+	private Set<ComicBook> finishedComicBooks = new HashSet<>();
+
+	@ManyToMany(mappedBy = "usersReading")
+	@JoinTable(name = "comic_book_reading_list",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "comic_book_id"))
+	private Set<ComicBook> readingComicBooks = new HashSet<>();
 
 	@OneToMany(mappedBy = "user")
-	private Set<Comment> comments;
+	private Set<Comment> comments = new HashSet<>();
 
 	public User() {
 	}

@@ -27,7 +27,7 @@ public class ComicBook {
     @Column(name = "artist")
     private String artist;
 
-    @Column(name = "genres", columnDefinition = "text[]")
+    @Column(name = "genres")
     private String genres;
     
     @Column(name = "description")
@@ -47,6 +47,15 @@ public class ComicBook {
 
     @OneToMany(mappedBy = "comicBook")
     private Set<Comment> comments;
+
+    @ManyToMany(mappedBy = "favoritesList")
+    private Set<User> usersFavorited;
+
+    @ManyToMany(mappedBy = "finishedList")
+    private Set<User> usersFinished;
+
+    @ManyToMany(mappedBy = "readingList")
+    private Set<User> usersReading;
 
     public ComicBook(
         String seriesTitle,
