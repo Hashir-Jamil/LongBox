@@ -1,7 +1,5 @@
 package org.longbox.presentation.comicbook;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,7 +8,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.domainobjects.dto.ComicBookDTO;
-import org.longbox.domainobjects.dto.CommentDTO;
 
 import java.awt.CardLayout;
 @Getter
@@ -26,29 +23,6 @@ public class ComicBookFrame extends JFrame {
 	private CardLayout cardLayout;
 	private ComicBookDTO comicBookResult;
 	private UserSession userSession;
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					ComicBookFrame frame = new ComicBookFrame();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-//
-//	/**
-//	 * Create the frame.
-//	 */
-//	public ComicBookFrame() {
-//		initComicBookPage();        
-//	}
 
 	public ComicBookFrame(ComicBookDTO comicBook, UserSession user) {
 		this.userSession = user;
