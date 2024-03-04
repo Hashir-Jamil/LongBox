@@ -1,5 +1,8 @@
 package org.longbox.presentation.profile;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -7,7 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
+@Getter
+@Setter
 public class AddComicToRepoPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -183,145 +187,5 @@ public class AddComicToRepoPanel extends JPanel {
 		});
 		panel.add(enterComicBookButton);
 		enterComicBookButton.setFocusable(false);
-	}
-
-	public String getADD_COMIC_TO_REPO() {
-		return ADD_COMIC_TO_REPO;
-	}
-
-	public String getSERIES_TITLE() {
-		return SERIES_TITLE;
-	}
-
-	public String getAUTHOR_NAME() {
-		return AUTHOR_NAME;
-	}
-
-	public String getARTIST_NAME() {
-		return ARTIST_NAME;
-	}
-
-	public String getGENRES() {
-		return GENRES;
-	}
-
-	public String getDESCRIPTION() {
-		return DESCRIPTION;
-	}
-
-	public String getNUMBER_OF_ISSUES() {
-		return NUMBER_OF_ISSUES;
-	}
-
-	public String getPUBLISHER() {
-		return PUBLISHER;
-	}
-
-	public String getYEAR_PUBLISHED() {
-		return YEAR_PUBLISHED;
-	}
-
-	public String getENTER_COMIC_BOOK_BUTTON() {
-		return ENTER_COMIC_BOOK_BUTTON;
-	}
-
-	public String getSUCCESS_MESSAGE() {
-		return SUCCESS_MESSAGE;
-	}
-
-	public JTextField getComicSeriesTitleTextField() {
-		return comicSeriesTitleTextField;
-	}
-
-	public void setComicSeriesTitleTextField(JTextField comicSeriesTitleTextField) {
-		this.comicSeriesTitleTextField = comicSeriesTitleTextField;
-	}
-
-	public JTextField getComicBookAuthorTextField() {
-		return comicBookAuthorTextField;
-	}
-
-	public void setComicBookAuthorTextField(JTextField comicBookAuthorTextField) {
-		this.comicBookAuthorTextField = comicBookAuthorTextField;
-	}
-
-	public JTextField getComicBookArtistTextField() {
-		return comicBookArtistTextField;
-	}
-
-	public void setComicBookArtistTextField(JTextField comicBookArtistTextField) {
-		this.comicBookArtistTextField = comicBookArtistTextField;
-	}
-
-	public JTextField getGenresTextField() {
-		return genresTextField;
-	}
-
-	public void setGenresTextField(JTextField genresTextField) {
-		this.genresTextField = genresTextField;
-	}
-
-	public JTextField getDescriptionTextField() {
-		return descriptionTextField;
-	}
-
-	public void setDescriptionTextField(JTextField descriptionTextField) {
-		this.descriptionTextField = descriptionTextField;
-	}
-
-	public JTextField getNumberOfIssuesTextField() {
-		return numberOfIssuesTextField;
-	}
-
-	public void setNumberOfIssuesTextField(JTextField numberOfIssuesTextField) {
-		this.numberOfIssuesTextField = numberOfIssuesTextField;
-	}
-
-	public JTextField getPublisherTextField() {
-		return publisherTextField;
-	}
-
-	public void setPublisherTextField(JTextField publisherTextField) {
-		this.publisherTextField = publisherTextField;
-	}
-
-	public JTextField getYearPublishedTextField() {
-		return yearPublishedTextField;
-	}
-
-	public void setYearPublishedTextField(JTextField yearPublishedTextField) {
-		this.yearPublishedTextField = yearPublishedTextField;
-	}
-
-	public JTextField getSuccessMessage() {
-		return successMessage;
-	}
-
-	public void setSuccessMessage(JTextField successMessage) {
-		this.successMessage = successMessage;
-	}
-
-	public JButton getEnterComicBookButton() {
-		return enterComicBookButton;
-	}
-
-	public void setEnterComicBookButton(JButton enterComicBookButton) {
-		this.enterComicBookButton = enterComicBookButton;
-	}
-
-	public JCheckBox getFavoriteCheckbox() {
-		return favoriteCheckbox;
-	}
-
-	public void setFavoriteCheckbox(JCheckBox favoriteCheckbox) {
-		this.favoriteCheckbox = favoriteCheckbox;
-	}
-
-	public JPanel getPanel() {
-		return panel;
-	}
-
-	public void setPanel(JPanel panel) {
-		this.panel = panel;
 	}
 }

@@ -1,9 +1,13 @@
 package org.longbox.domainobjects.dto;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.longbox.persistence.entity.User;
 
 import java.util.*;
 
+@Getter
+@Setter
 public class UserDTO {
 
 	private long id;
@@ -23,13 +27,13 @@ public class UserDTO {
 	}
 
 	public UserDTO(
-		String userName,
-		String firstName,
-		String lastName,
-		Date dob,
-		String email,
-		String password,
-		String country
+			String userName,
+			String firstName,
+			String lastName,
+			Date dob,
+			String email,
+			String password,
+			String country
 	) {
 		super();
 		this.userName = userName;
@@ -70,7 +74,7 @@ public class UserDTO {
 		this.comicsFinished = comicsFinished;
 	}
 
-	public UserDTO(User user){
+	public UserDTO(User user) {
 		this(
 				user.getId(),
 				user.getUserName(),
@@ -115,101 +119,5 @@ public class UserDTO {
 				"Join Date: " + joinDate + "\n" +
 				"Comics Reading: " + comicsReading + "\n" +
 				"Comics Finished: " + comicsFinished + "\n";
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public Date getDob() {
-		return dob;
-	}
-
-	public void setDob(Date dob) {
-		this.dob = dob;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public Date getJoinDate() {
-		return joinDate;
-	}
-
-	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
-	}
-
-	public List<ComicBookDTO> getComicBookList() {
-		return comicBookList;
-	}
-
-	public void setComicBookList(List<ComicBookDTO> comicBookList) {
-		this.comicBookList = comicBookList;
-	}
-
-	public int getComicsReading() {
-		return comicsReading;
-	}
-
-	public void setComicsReading(int comicsReading) {
-		this.comicsReading = comicsReading;
-	}
-
-	public int getComicsFinished() {
-		return comicsFinished;
-	}
-
-	public void setComicsFinished(int comicsFinished) {
-		this.comicsFinished = comicsFinished;
 	}
 }

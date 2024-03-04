@@ -8,6 +8,8 @@ import java.awt.Component;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.longbox.domainobjects.dto.UserDTO;
 import org.longbox.businesslogic.utils.RegistrationUtils;
 
@@ -30,7 +32,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-
+@Getter
+@Setter
 public class RegistrationPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -293,18 +296,6 @@ public class RegistrationPanel extends JPanel {
 				signUpButton.setEnabled(enableButton);
 	}
 
-	public JButton getSignInButton() {
-		return signInButton;
-	}
-
-	public JButton getSignUpButton() {
-		return signUpButton;
-	}
-
-	public JLabel getMessageLabel() {
-		return messageLabel;
-	}
-
 	public UserDTO getRegistrationDetails() {
 		String firstName = firstNameField.getText();
 		String lastName = lastNameField.getText();
@@ -316,5 +307,4 @@ public class RegistrationPanel extends JPanel {
 
 		return new UserDTO(username, firstName, lastName, dob, email, password, country);
 	}
-
 }

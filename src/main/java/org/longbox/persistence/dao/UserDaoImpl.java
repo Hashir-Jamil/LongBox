@@ -10,7 +10,7 @@ import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
 
 public class UserDaoImpl implements UserDao{
-    SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+    private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
     @Override
     public User getUserById(long id) throws UserIDDoesNotExistException {

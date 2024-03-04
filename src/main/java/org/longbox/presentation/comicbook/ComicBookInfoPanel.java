@@ -9,13 +9,16 @@ import java.util.List;
 
 import javax.swing.*;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.utils.MultiLineCellRenderer;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.domainobjects.dto.CommentDTO;
 import org.longbox.persistence.dao.CommentDaoImpl;
 import org.longbox.persistence.entity.Comment;
-
+@Getter
+@Setter
 public class ComicBookInfoPanel extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;

@@ -1,9 +1,13 @@
 package org.longbox.domainobjects.dto;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.longbox.persistence.entity.Comment;
 
 import java.util.Date;
 import java.util.Objects;
+@Getter
+@Setter
 public class CommentDTO {
 
 	private long id;
@@ -48,56 +52,6 @@ public class CommentDTO {
         this.dateAdded = c.getCommentDate();
         this.dateAdded = c.getCommentDate();
     }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public long getComicBookId() {
-        return comicBookId;
-    }
-
-    public void setComicBookId(long comicBookId) {
-        this.comicBookId = comicBookId;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public UserDTO getUser() {
-        return user;
-    }
-
-    public void setUser(UserDTO user) {
-        this.user = user;
-    }
-
-    public ComicBookDTO getComicBook() {
-        return comicBook;
-    }
-
-    public void setComicBook(ComicBookDTO comicBook) {
-        this.comicBook = comicBook;
-    }
-
-    public Date getDateAdded() {
-        return dateAdded;
-    }
-
-    public void setDateAdded(Date dateAdded) {
-        this.dateAdded = dateAdded;
-    }
-
-    public String getUsername(){ return this.username; }
     
     @Override
 	public int hashCode() {
@@ -124,6 +78,4 @@ public class CommentDTO {
 				+ ", username=" + username + ", user=" + user + ", comicBook=" + comicBook + ", dateAdded=" + dateAdded
 				+ "]";
 	}
-
-    
 }

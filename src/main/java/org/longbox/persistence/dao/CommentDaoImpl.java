@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommentDaoImpl implements CommentDao {
-    SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+    private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
     @Override
     public Comment getCommentById(long userId, long comicId) { return null; }
 

@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
@@ -16,7 +18,8 @@ import org.longbox.domainobjects.dto.UserDTO;
 import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.User;
 import org.longbox.presentation.profile.HomeFrame;
-
+@Getter
+@Setter
 public class AuthenticationFrame extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;

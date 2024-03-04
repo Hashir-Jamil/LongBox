@@ -1,5 +1,7 @@
 package org.longbox.presentation.profile;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.longbox.businesslogic.*;
 import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
@@ -25,7 +27,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.CardLayout;
 import java.awt.ComponentOrientation;
-
+@Getter
+@Setter
 public class HomeFrame extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;

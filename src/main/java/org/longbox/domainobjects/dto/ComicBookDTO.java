@@ -1,10 +1,13 @@
 package org.longbox.domainobjects.dto;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.longbox.businesslogic.comparators.CommentDateComparator;
 import org.longbox.persistence.entity.ComicBook;
 
 import java.util.*;
-
+@Getter
+@Setter
 public class ComicBookDTO {
 
     private long id;
@@ -22,14 +25,14 @@ public class ComicBookDTO {
     }
 
     public ComicBookDTO(
-        String seriesTitle,
-        String author,
-        String artist,
-        String genres,
-        String description,
-        int numberOfIssues,
-        String publisher,
-        int yearPublished
+            String seriesTitle,
+            String author,
+            String artist,
+            String genres,
+            String description,
+            int numberOfIssues,
+            String publisher,
+            int yearPublished
     ) {
         this.seriesTitle = seriesTitle;
         this.author = author;
@@ -40,18 +43,20 @@ public class ComicBookDTO {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
-    };
+    }
+
+    ;
 
     public ComicBookDTO(
-        String seriesTitle,
-        String author,
-        String artist,
-        String genres,
-        String description,
-        int numberOfIssues,
-        String publisher,
-        int yearPublished,
-        Date date
+            String seriesTitle,
+            String author,
+            String artist,
+            String genres,
+            String description,
+            int numberOfIssues,
+            String publisher,
+            int yearPublished,
+            Date date
     ) {
         this.seriesTitle = seriesTitle;
         this.author = author;
@@ -62,17 +67,19 @@ public class ComicBookDTO {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date(date.getTime());
-    };
+    }
+
+    ;
 
     public ComicBookDTO(
-        String seriesTitle,
-        String author,
-        String artist,
-        String[] genres,
-        String description,
-        int numberOfIssues,
-        String publisher,
-        int yearPublished
+            String seriesTitle,
+            String author,
+            String artist,
+            String[] genres,
+            String description,
+            int numberOfIssues,
+            String publisher,
+            int yearPublished
     ) {
         this.seriesTitle = seriesTitle;
         this.author = author;
@@ -83,7 +90,9 @@ public class ComicBookDTO {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
-    };
+    }
+
+    ;
 
     public ComicBookDTO(
             String seriesTitle,
@@ -105,19 +114,21 @@ public class ComicBookDTO {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = date;
-    };
+    }
+
+    ;
 
     public ComicBookDTO(ComicBook comicBookRecord) {
         this(
-            comicBookRecord.getSeriesTitle(),
-            comicBookRecord.getAuthor(),
-            comicBookRecord.getArtist(),
-            comicBookRecord.getGenres(),
-            comicBookRecord.getDescription(),
-            comicBookRecord.getNumberOfIssues(),
-            comicBookRecord.getPublisher(),
-            comicBookRecord.getYearPublished(),
-            comicBookRecord.getDateAdded()
+                comicBookRecord.getSeriesTitle(),
+                comicBookRecord.getAuthor(),
+                comicBookRecord.getArtist(),
+                comicBookRecord.getGenres(),
+                comicBookRecord.getDescription(),
+                comicBookRecord.getNumberOfIssues(),
+                comicBookRecord.getPublisher(),
+                comicBookRecord.getYearPublished(),
+                comicBookRecord.getDateAdded()
         );
         this.setId(comicBookRecord.getId());
     }
@@ -177,86 +188,4 @@ public class ComicBookDTO {
                 ", dateAdded=" + dateAdded +
                 '}';
     }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getSeriesTitle() {
-        return seriesTitle;
-    }
-
-    public void setSeriesTitle(String seriesTitle) {
-        this.seriesTitle = seriesTitle;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getArtist() {
-        return artist;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
-    public String[] getGenres() {
-        return genres;
-    }
-
-    public void setGenres(String[] genres) {
-        this.genres = genres;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getNumberOfIssues() {
-        return numberOfIssues;
-    }
-
-    public void setNumberOfIssues(int numberOfIssues) {
-        this.numberOfIssues = numberOfIssues;
-    }
-
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
-
-    public int getYearPublished() {
-        return yearPublished;
-    }
-
-    public void setYearPublished(int yearPublished) {
-        this.yearPublished = yearPublished;
-    }
-
-    public Date getDateAdded() {
-        return dateAdded;
-    }
-
-    public void setDateAdded(Date dateAdded) {
-        this.dateAdded = dateAdded;
-    }
 }
-
-

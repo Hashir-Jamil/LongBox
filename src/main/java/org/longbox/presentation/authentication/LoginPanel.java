@@ -1,5 +1,8 @@
 package org.longbox.presentation.authentication;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -12,7 +15,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+@Getter
+@Setter
 public class LoginPanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
@@ -99,53 +103,4 @@ public class LoginPanel extends JPanel{
 		errorLabel.setBounds(205, 272, 398, 16);
 		panel.add(errorLabel);
 	}
-
-	public JTextField getUsernameText() {
-		return usernameText;
-	}
-
-	public void setUsernameText(JTextField usernameText) {
-		this.usernameText = usernameText;
-	}
-
-	public JPasswordField getPasswordField() {
-		return passwordField;
-	}
-
-	public void setPasswordField(JPasswordField passwordField) {
-		this.passwordField = passwordField;
-	}
-
-	public void setSignInButton(JButton signInButton) {
-		this.signInButton = signInButton;
-	}
-
-	public void setSignUpButton(JButton signUpButton) {
-		this.signUpButton = signUpButton;
-	}
-
-	public void setErrorLabel(JLabel errorLabel) {
-		this.errorLabel = errorLabel;
-	}
-
-	public JButton getSignUpButton() {
-	    return signUpButton;
-	}
-	
-	public JButton getSignInButton() {
-		return signInButton;
-	}
-	
-	public JLabel getErrorLabel() {
-		return errorLabel;
-	}
-	
-	public String getUsername() {
-		return usernameText.getText();
-	}
-	
-	public String getDecryptedPassword() {
-		return String.valueOf(passwordField.getPassword());
-	}
-	
 }
