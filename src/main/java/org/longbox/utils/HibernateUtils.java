@@ -1,12 +1,8 @@
 package org.longbox.utils;
 
-import lombok.Getter;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.longbox.persistence.entity.User;
-import org.longbox.persistence.entity.ComicBookList;
-import org.longbox.persistence.entity.ComicBook;
-import org.longbox.persistence.entity.Comment;
+import org.longbox.persistence.entity.*;
 
 public class HibernateUtils {
 
@@ -18,7 +14,9 @@ public class HibernateUtils {
                     .configure("hibernate.cfg.xml")
                     .addAnnotatedClass(User.class)
                     .addAnnotatedClass(ComicBook.class)
-                    .addAnnotatedClass(ComicBookList.class)
+                    .addAnnotatedClass(ComicBookFavoritesList.class)
+                    .addAnnotatedClass(ComicBookReadingList.class)
+                    .addAnnotatedClass(ComicBookFinishedList.class)
                     .addAnnotatedClass(Comment.class);
             sessionFactory = configuration.buildSessionFactory();
         }

@@ -50,19 +50,19 @@ public class User {
 	@Column(name = "comics_finished")
 	private Integer comicsFinished;
 
-	@ManyToMany(mappedBy = "usersFavorited")
+	@ManyToMany
 	@JoinTable(name = "comic_book_favorites_list",
 		joinColumns = @JoinColumn(name = "user_id"),
 		inverseJoinColumns = @JoinColumn(name = "comic_book_id"))
 	private Set<ComicBook> favoriteComicBooks = new HashSet<>();
 
-	@ManyToMany(mappedBy = "usersFinished")
+	@ManyToMany
 	@JoinTable(name = "comic_book_finished_list",
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "comic_book_id"))
 	private Set<ComicBook> finishedComicBooks = new HashSet<>();
 
-	@ManyToMany(mappedBy = "usersReading")
+	@ManyToMany
 	@JoinTable(name = "comic_book_reading_list",
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "comic_book_id"))

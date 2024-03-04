@@ -150,7 +150,7 @@
         '-> Ahan: add comment to comic book, view comment on comic book
         '-> Ali: user can add a comic book to favorites and user can remove a comic book from favorites
         '-> Eric: user can login with email or username (may need modification for username's valid characters upon registration)
-        '-> Hashir: user can add a comic book to their curre1101nt reading list and add comic books to their finished list
+        '-> Hashir: user can add a comic book to their current reading list and add comic books to their finished list
         '-> Oscar: fix fonts, about me box for profile view1
     Ahan: Made emails unique while registration.
 
@@ -162,3 +162,7 @@
 
     Eric & Ahan: Passed user session into the search comic repo and the favoruties panel.
     Ahan: Added user can comment on a comic functionality, and the add comment appears in the list of comments.
+
+## Sunday, March 3rd, 2024
+
+    Hashir: Finished hibernate entity class relationship cardinalities

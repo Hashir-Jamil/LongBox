@@ -48,13 +48,13 @@ public class ComicBook {
     @OneToMany(mappedBy = "comicBook")
     private Set<Comment> comments;
 
-    @ManyToMany(mappedBy = "favoritesList")
+    @ManyToMany(mappedBy = "favoriteComicBooks")
     private Set<User> usersFavorited;
 
-    @ManyToMany(mappedBy = "finishedList")
+    @ManyToMany(mappedBy = "finishedComicBooks")
     private Set<User> usersFinished;
 
-    @ManyToMany(mappedBy = "readingList")
+    @ManyToMany(mappedBy = "readingComicBooks")
     private Set<User> usersReading;
 
     public ComicBook(
