@@ -13,7 +13,8 @@ VALUES
     ('Always_Throwing', 'Neo', 'Anderson', '3829-02-01', 'address@provider.ca', 'Always_Throwing', 'Indonesia', '2024-02-14 12:28:42', 0, 0),
     ('Phoenix', 'Stan', 'Lee', '3900-05-31', '123fake@nowhere.org', 'Phoenix', 'United Kingdom', '2024-02-14 12:42:43', 0, 0),
     ('ahan', 'Ahan', 'Bhargava', '2003-02-10', 'ahan@email.com', 'Password!1', 'India', '2024-02-15 15:09:10', 0, 0),
-    ('naha', 'Ahan', 'Bhargava', '2003-02-10', 'naha@email.com', 'naha', 'India', '2024-02-15 15:09:10', 0, 0);
+    ('naha', 'Ahan', 'Bhargava', '2003-02-10', 'naha@email.com', 'naha', 'India', '2024-02-15 15:09:10', 0, 0),
+    ('123', 'Ahan', 'Bhargava', '2003-02-10', 'naha@email.com', '123', 'India', '2024-02-15 15:09:10', 0, 0);
 
 -- Next we add comic book objects
 
@@ -184,7 +185,7 @@ VALUES
     ('Short and sweet, this comics humor is on point! The witty dialogue and clever punchlines had me chuckling from start to finish.',
      '2024-02-29', 2, 3, 'Phoenix'),
     ('I appreciate how this comic tackles relevant social issues without being preachy. The writers skillfully weave important themes into the narrative, making it both entertaining and thought-provoking.',
-     '2024-02-29', 3, 5, 'david'),
+     '2024-02-29', 3, 5, 'naha'),
     ('The character development in this comic is phenomenal. Each character has a unique personality and backstory, adding depth to the overall narrative.',
      '2024-02-28', 10, 4, 'ahan'),
     ('The world-building in this comic is exceptional. The creators have crafted a rich and immersive universe that sparks the imagination and leaves readers craving more.',
@@ -194,7 +195,7 @@ VALUES
     ('Simple yet powerful, this comics message resonates deeply. Its amazing how a few carefully chosen words and poignant illustrations can leave a lasting impact.',
      '2024-02-29', 18, 3, 'Phoenix'),
     ('The pacing in this comic is spot-on. It keeps the story moving at a brisk pace, ensuring that readers are always engaged and eager to see what happens next.',
-     '2024-02-29', 31, 5, 'david'),
+     '2024-02-29', 31, 5, 'naha'),
     ('This comic is a nostalgia trip! It expertly pays homage to classic comic book tropes while infusing a fresh and modern twist, making it a delightful read for both longtime fans and newcomers alike.',
      '2024-03-01', 7, 1, 'Always_Scheming'),
     ('I can''t get enough of the storyline in comic #5! It keeps me on the edge of my seat with every turn of the page.',
