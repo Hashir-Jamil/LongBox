@@ -8,7 +8,8 @@ import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.entity.ComicBook;
-import org.longbox.persistence.entity.ComicBookList;
+//import org.longbox.persistence.entity.ComicBookList;
+import org.longbox.persistence.entity.ComicBookFavoritesList;
 import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
 
@@ -27,10 +28,12 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     private final UserDao userDao = new UserDaoImpl();
 
     @Override
-    public void saveToFavorites(long userId, long comicBookId) {
+    public void saveToFavorites(long userId, long comicBookId) throws UserIDDoesNotExistException {
         LocalDateTime localDateTime = LocalDateTime.now();
         Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
-        ComicBookList userFavourite = new ComicBookList(userId, comicBookId, date);
+        ComicBookFavoritesList userFavourite = new ComicBookFavoritesList();
+        userFavourite.setComicBook(comicBookDao.getComicBookById(comicBookId));
+        userFavourite.setUser(userDao.getUserById(userId));
 
         try {
             session = sessionFactory.openSession();
@@ -79,10 +82,10 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
             session=sessionFactory.openSession();
             transaction = session.beginTransaction();
             favouritesLists = session.createQuery(
-                            "SELECT cb FROM ComicBook cb JOIN ComicBookList cbl ON cb.id = cbl.comicBookId WHERE cbl.userId = :userId",
+                            "SELECT cb FROM ComicBook cb JOIN ComicBookFavoritesList cbl ON cb.id = cbl.comicBook.id WHERE cbl.user.id = :userId",
                             ComicBook.class
-                ).setParameter("userId", userId)
-                .getResultList();
+                    ).setParameter("userId", userId)
+                    .getResultList();
         }
         catch (HibernateException e) {
             throw new RuntimeException(e);

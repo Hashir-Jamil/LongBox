@@ -50,8 +50,9 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 		initComicCollectionPage();
 	}
 
-	public void update(ComicBookDTO comicBook) {
-		favoriteComicBooks.add(comicBook);
+	public void update(ComicBookDTO comicBook, long userId, long comicBookId) throws UserIDDoesNotExistException {
+		ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl();
+		comicBookFavouritesListDaoImpl.saveToFavorites(userId, comicBookId);
 		comicBookTableModel.addRow(new Object[]{
 				comicBook.getSeriesTitle(),
 				comicBook.getAuthor(),
@@ -96,7 +97,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 					if (col == 0) {
 						ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), comicBookTable.getValueAt(row, col).toString());
 						System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
-						ComicBookSearch.loadComicBookPage(comicBook);
+						ComicBookSearch.loadComicBookPage(comicBook, userSession);
 					}
 				}
 			});
