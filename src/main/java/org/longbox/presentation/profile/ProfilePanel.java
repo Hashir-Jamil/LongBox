@@ -1,5 +1,8 @@
 package org.longbox.presentation.profile;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -10,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
+@Getter
+@Setter
 public class ProfilePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private final String PANEL_LABEL = "Profile View";
@@ -66,25 +71,5 @@ public class ProfilePanel extends JPanel {
 		userStatsTextPane.setBounds(new Rectangle(540, 138, 583, 620));
 		panel.add(userStatsTextPane);
 		
-	}
-
-	public String getPANEL_LABEL() {
-		return PANEL_LABEL;
-	}
-
-	public JTextPane getUserProfileInformationTextPane() {
-		return userProfileInformationTextPane;
-	}
-
-	public void setUserProfileInformationTextPane(JTextPane userProfileInformationTextPane) {
-		this.userProfileInformationTextPane = userProfileInformationTextPane;
-	}
-
-	public JTextPane getUserStatsTextPane() {
-		return userStatsTextPane;
-	}
-
-	public void setUserStatsTextPane(JTextPane userStatsTextPane) {
-		this.userStatsTextPane = userStatsTextPane;
 	}
 }

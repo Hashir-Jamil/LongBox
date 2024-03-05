@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComicBookDaoImpl implements ComicBookDao {
-    SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+    private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
     @Override
     public ComicBook getComicBookById(long comicId) {

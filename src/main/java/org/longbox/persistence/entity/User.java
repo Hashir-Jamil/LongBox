@@ -1,22 +1,26 @@
 package org.longbox.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.longbox.domainobjects.dto.UserDTO;
 
 import java.util.Date;
-import java.util.Objects;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "user")
+@Getter
+@Setter
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(name = "user_name")
+	@Column(name = "user_name", unique = true)
 	private String userName;
 
 	@Column(name = "first_name")
@@ -28,7 +32,7 @@ public class User {
 	@Column(name = "dob")
 	private Date dob;
 
-	@Column(name = "email")
+	@Column(name = "email", unique = true)
 	private String email;
 
 	@Column(name = "password")
@@ -41,21 +45,31 @@ public class User {
 	private Date joinDate;
 	
 	@Column(name = "comics_reading")
-	private int comicsReading;
+	private Integer comicsReading;
 
 	@Column(name = "comics_finished")
-	private int comicsFinished;
+	private Integer comicsFinished;
 
 	@ManyToMany
-	@JoinTable(
-			name = "comic_book_list",
-			joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-			inverseJoinColumns = {
-					@JoinColumn(name = "comic_book_id", referencedColumnName = "id"),
-			}
-	)
+	@JoinTable(name = "comic_book_favorites_list",
+		joinColumns = @JoinColumn(name = "user_id"),
+		inverseJoinColumns = @JoinColumn(name = "comic_book_id"))
+	private Set<ComicBook> favoriteComicBooks = new HashSet<>();
 
-	private Set<ComicBook> comicBooks = new HashSet<>();
+	@ManyToMany
+	@JoinTable(name = "comic_book_finished_list",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "comic_book_id"))
+	private Set<ComicBook> finishedComicBooks = new HashSet<>();
+
+	@ManyToMany
+	@JoinTable(name = "comic_book_reading_list",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "comic_book_id"))
+	private Set<ComicBook> readingComicBooks = new HashSet<>();
+
+	@OneToMany(mappedBy = "user")
+	private Set<Comment> comments = new HashSet<>();
 
 	public User() {
 	}
@@ -104,93 +118,5 @@ public class User {
 		User other = (User) obj;
 		return  Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName) && id == other.id
 				&& Objects.equals(lastName, other.lastName) && Objects.equals(userName, other.userName);
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public Date getDob() {
-		return dob;
-	}
-
-	public void setDob(Date dob) {
-		this.dob = dob;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public Date getJoinDate() {
-		return joinDate;
-	}
-
-	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
-	}
-
-	public int getComicsReading() {
-		return comicsReading;
-	}
-
-	public void setComicsReading(int comicsReading) {
-		this.comicsReading = comicsReading;
-	}
-
-	public int getComicsFinished() {
-		return comicsFinished;
-	}
-
-	public void setComicsFinished(int comicsFinished) {
-		this.comicsFinished = comicsFinished;
 	}
 }

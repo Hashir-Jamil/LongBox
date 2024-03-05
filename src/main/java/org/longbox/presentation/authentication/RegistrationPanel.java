@@ -8,6 +8,8 @@ import java.awt.Component;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.longbox.domainobjects.dto.UserDTO;
 import org.longbox.businesslogic.utils.RegistrationUtils;
 
@@ -30,14 +32,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-
+@Getter
+@Setter
 public class RegistrationPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private static final String DEFAULT_FONT = "Calibri";
+	
 	private JTextField firstNameField;
 	private JTextField lastNameField;
 	private JTextField usernameField;
 	private JTextField emailAddress;
+	
 	private JPasswordField passwordField;
 	private JButton signUpButton;
 	private JDateChooser dateChooser;
@@ -54,7 +60,7 @@ public class RegistrationPanel extends JPanel {
 
 	public void initiateRegUI() {
 
-
+		setBounds(100, 100, 809, 554);
 		setLayout(new BorderLayout());
 
 		JPanel panel = new JPanel();
@@ -62,13 +68,13 @@ public class RegistrationPanel extends JPanel {
 
 		//Header label
 		JLabel HeaderLabel = new JLabel("Sign Up and Start Reading Comics!");
-		HeaderLabel.setBounds(275, 34, 259, 16);
-		HeaderLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
+		HeaderLabel.setBounds(265, 34, 279, 26);
+		HeaderLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 
 		//first name label
 		JLabel FirstNameLabel = new JLabel("Your first name:");
 		FirstNameLabel.setBounds(117, 70, 94, 16);
-		FirstNameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		FirstNameLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 
 		firstNameField = new JTextField();
 		firstNameField.setBounds(107, 86, 267, 26);
@@ -76,26 +82,26 @@ public class RegistrationPanel extends JPanel {
 
 		//last name label
 		JLabel LastNameLabel = new JLabel("Your last name:");
-		LastNameLabel.setBounds(451, 70, 83, 16);
-		LastNameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		LastNameLabel.setBounds(451, 70, 94, 16);
+		LastNameLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 
 		lastNameField = new JTextField();
 		lastNameField.setBounds(445, 86, 260, 26);
 		lastNameField.setColumns(10);
 
 		//username label
-		JLabel UsernameLabel = new JLabel("Your username(must be unique):");
-		UsernameLabel.setBounds(117, 187, 181, 16);
-		UsernameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		JLabel UsernameLabel = new JLabel("Your username (must be unique):");
+		UsernameLabel.setBounds(117, 187, 197, 16);
+		UsernameLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 
 		usernameField = new JTextField();
 		usernameField.setBounds(107, 206, 598, 26);
 		usernameField.setColumns(10);
 
 		//email label
-		JLabel EmailLabel = new JLabel("Your email:");
-		EmailLabel.setBounds(117, 244, 61, 16);
-		EmailLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		JLabel EmailLabel = new JLabel("Your email (must be unique):");
+		EmailLabel.setBounds(117, 244, 176, 16);
+		EmailLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 
 		emailAddress = new JTextField();
 		emailAddress.setBounds(107, 260, 598, 26);
@@ -103,8 +109,8 @@ public class RegistrationPanel extends JPanel {
 
 		//password label
 		JLabel PasswordLabel = new JLabel("Pick a password:");
-		PasswordLabel.setBounds(117, 298, 86, 16);
-		PasswordLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		PasswordLabel.setBounds(117, 298, 176, 16);
+		PasswordLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 
 		passwordField = new JPasswordField();
 		passwordField.setBounds(107, 316, 598, 26);
@@ -112,20 +118,20 @@ public class RegistrationPanel extends JPanel {
 		//password specification label
 		JLabel PwdSpecLabel = new JLabel("Use at least one lowercase letter, one capital letter, one numeral, one special charachter and 8 - 20 characters.");
 		PwdSpecLabel.setBounds(117, 354, 588, 13);
-		PwdSpecLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 10));
+		PwdSpecLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 10));
 
 		//date entering
 		JLabel DateLabel = new JLabel("Your date of birth:");
-		DateLabel.setBounds(117, 124, 94, 16);
-		DateLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		DateLabel.setBounds(117, 124, 106, 16);
+		DateLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 
 		dateChooser = new JDateChooser();
 		dateChooser.setBounds(107, 141, 267, 26);
 
 		// choose country
 		JLabel CountryLabel = new JLabel("Choose your country:");
-		CountryLabel.setBounds(451, 124, 110, 16);
-		CountryLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		CountryLabel.setBounds(451, 124, 134, 16);
+		CountryLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 
 		countryField = new JComboBox(getAllCountries());
 		countryField.setBounds(445, 141, 260, 27);
@@ -133,31 +139,31 @@ public class RegistrationPanel extends JPanel {
 		//sign up button
 		signUpButton = new JButton("Sign Up for LongBox!");
 		signUpButton.setBounds(107, 422, 608, 29);
-		signUpButton.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
+		signUpButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 13));
 		signUpButton.setEnabled(false);
 		signUpButton.setFocusable(false);
 
 		//Terms and Conditions check box
 		TnCCheckbox = new JCheckBox("I agree to the terms and conditions of these app.");
 		TnCCheckbox.setBounds(107, 387, 598, 23);
-		TnCCheckbox.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		TnCCheckbox.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 
 		// message label to print invalid email and password
 		messageLabel = new JLabel("");
 		messageLabel.setVerticalTextPosition(SwingConstants.TOP);
 		messageLabel.setBounds(117, 370, 588, 16);
 		messageLabel.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-		messageLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		messageLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 
 		//sign in label
 		JLabel signInLabel = new JLabel("Already a member? Sign In!");
-		signInLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
+		signInLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 13));
 		signInLabel.setBounds(117, 463, 287, 16);
 
 
 		//sign up label
 		signInButton = new JButton("Sign In!");
-		signInButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+		signInButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 		signInButton.setBounds(451, 458, 264, 29);
 		//	signInButton.addActionListener(this);
 
@@ -290,18 +296,6 @@ public class RegistrationPanel extends JPanel {
 				signUpButton.setEnabled(enableButton);
 	}
 
-	public JButton getSignInButton() {
-		return signInButton;
-	}
-
-	public JButton getSignUpButton() {
-		return signUpButton;
-	}
-
-	public JLabel getMessageLabel() {
-		return messageLabel;
-	}
-
 	public UserDTO getRegistrationDetails() {
 		String firstName = firstNameField.getText();
 		String lastName = lastNameField.getText();
@@ -313,5 +307,4 @@ public class RegistrationPanel extends JPanel {
 
 		return new UserDTO(username, firstName, lastName, dob, email, password, country);
 	}
-
 }

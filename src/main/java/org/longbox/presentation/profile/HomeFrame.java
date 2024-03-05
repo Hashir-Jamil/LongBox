@@ -1,5 +1,7 @@
 package org.longbox.presentation.profile;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.longbox.businesslogic.*;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.ComicBookSearch;
@@ -26,7 +28,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.CardLayout;
 import java.awt.ComponentOrientation;
-
+@Getter
+@Setter
 public class HomeFrame extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
@@ -37,7 +40,7 @@ public class HomeFrame extends JFrame implements ActionListener {
     private FavoritesPanel favoritesPanel = new FavoritesPanel();
 	private CardLayout cardLayout;
     private static JFrame frame;
-    private JPanel comicCollectionPanel = new ComicRepositoryPanel();
+    private JPanel comicCollectionPanel = new ComicRepositoryPanel();;
     private ProfilePanel profilePanel = new ProfilePanel();
     private AddComicToRepoPanel addComicToRepoPanel = new AddComicToRepoPanel();
     private JButton searchButtonNexus;
@@ -78,6 +81,9 @@ public class HomeFrame extends JFrame implements ActionListener {
     public HomeFrame(UserSession user) {
     	initiateRegUI();
     	this.userSession = user;
+    	((ComicRepositoryPanel) comicCollectionPanel).setUserSession(this.userSession);
+    	favoritesPanel.setUserSession(this.userSession);
+    	//comicCollectionPanel = new ComicRepositoryPanel(this.userSession);
         userNameLabel = new JLabel(user.getUser().getUserName());
        // userNameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
         userNameLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);

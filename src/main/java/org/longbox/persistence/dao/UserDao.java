@@ -2,7 +2,7 @@ package org.longbox.persistence.dao;
 
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
-import org.longbox.businesslogic.exception.UsernameExistsException;
+import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.persistence.entity.User;
 
 public interface UserDao {
@@ -11,7 +11,7 @@ public interface UserDao {
 
     User getUserByUserName(String userName) throws UserNameDoesNotExistException;
 
-    void saveUser(User user) throws UsernameExistsException;
+    void saveUser(User user) throws UsernameOrEmailExistsException;
 
     boolean deleteUser(User user);
 

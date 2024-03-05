@@ -1,5 +1,8 @@
 package org.longbox.presentation.profile;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -7,10 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
+@Getter
+@Setter
 public class AddComicToRepoPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private static final String DEFAULT_FONT = "Calibri";
 	private final String ADD_COMIC_TO_REPO = "Add a Comic Book To The LongBox Repository";
 	private final String SERIES_TITLE = "Series Title";
 	private final String AUTHOR_NAME = "Author Name";
@@ -50,7 +55,7 @@ public class AddComicToRepoPanel extends JPanel {
 	    
 	    //Panel Label
 	    JLabel comicCollectionTitle = new JLabel(ADD_COMIC_TO_REPO);
-		comicCollectionTitle.setFont(new Font("Bradley Hand", Font.PLAIN, 30));
+		comicCollectionTitle.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 30));
 		comicCollectionTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		comicCollectionTitle.setBounds(182, 11, 800, 43);
 		panel.add(comicCollectionTitle);
@@ -68,7 +73,7 @@ public class AddComicToRepoPanel extends JPanel {
 		JLabel enterComicBookNameLabel = new JLabel(SERIES_TITLE);
 		panel.add(enterComicBookNameLabel);
 		enterComicBookNameLabel.setForeground(new Color(0, 0, 0));
-		enterComicBookNameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
+		enterComicBookNameLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 		enterComicBookNameLabel.setBounds(111, 150, 174, 20);
 		
 		//Field 1 Series Title Input Box
@@ -80,7 +85,7 @@ public class AddComicToRepoPanel extends JPanel {
 		//Field 2 Author Name Label
 		JLabel authorNameLabel = new JLabel(AUTHOR_NAME);
 		authorNameLabel.setForeground(Color.BLACK);
-		authorNameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
+		authorNameLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 		authorNameLabel.setBounds(111, 212, 174, 20);
 		panel.add(authorNameLabel);
 		
@@ -93,7 +98,7 @@ public class AddComicToRepoPanel extends JPanel {
 		//Field 3 Artist Name Label
 		JLabel artistLabel = new JLabel(ARTIST_NAME);
 		artistLabel.setForeground(Color.BLACK);
-		artistLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
+		artistLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 		artistLabel.setBounds(111, 274, 174, 20);
 		panel.add(artistLabel);
 
@@ -106,7 +111,7 @@ public class AddComicToRepoPanel extends JPanel {
 		//Field 4 Genres Label
 		JLabel genresLabel = new JLabel(GENRES);
 		genresLabel.setForeground(Color.BLACK);
-		genresLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
+		genresLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 		genresLabel.setBounds(111, 336, 174, 20);
 		panel.add(genresLabel);
 
@@ -119,7 +124,7 @@ public class AddComicToRepoPanel extends JPanel {
 		//Field 5 Description Label
 		JLabel descriptionLabel = new JLabel(DESCRIPTION);
 		descriptionLabel.setForeground(Color.BLACK);
-		descriptionLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
+		descriptionLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 		descriptionLabel.setBounds(111, 386, 174, 20);
 		panel.add(descriptionLabel);
 
@@ -132,7 +137,7 @@ public class AddComicToRepoPanel extends JPanel {
 		//Field 6 Number of Issues Label
 		JLabel numberOfIssuesLabel = new JLabel(NUMBER_OF_ISSUES);
 		numberOfIssuesLabel.setForeground(Color.BLACK);
-		numberOfIssuesLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
+		numberOfIssuesLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 		numberOfIssuesLabel.setBounds(111, 436, 174, 20);
 		panel.add(numberOfIssuesLabel);
 
@@ -145,7 +150,7 @@ public class AddComicToRepoPanel extends JPanel {
 		//Field 7 Publisher Label
 		JLabel publisherLabel = new JLabel(PUBLISHER);
 		publisherLabel.setForeground(Color.BLACK);
-		publisherLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
+		publisherLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 		publisherLabel.setBounds(111, 486, 174, 20);
 		panel.add(publisherLabel);
 
@@ -158,7 +163,7 @@ public class AddComicToRepoPanel extends JPanel {
 		//Field 8 Year Published Label
 		JLabel yearPublishedLabel = new JLabel(YEAR_PUBLISHED);
 		yearPublishedLabel.setForeground(Color.BLACK);
-		yearPublishedLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
+		yearPublishedLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 		yearPublishedLabel.setBounds(111, 536, 174, 20);
 		panel.add(yearPublishedLabel);
 
@@ -169,11 +174,11 @@ public class AddComicToRepoPanel extends JPanel {
 		panel.add(yearPublishedTextField);
 
 		enterComicBookButton = new JButton(ENTER_COMIC_BOOK_BUTTON);
-		enterComicBookButton.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
+		enterComicBookButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 		enterComicBookButton.setBounds(482, 650, 200, 40);
 
 		favoriteCheckbox = new JCheckBox("Is Favorite");
-		favoriteCheckbox.setFont(new Font("Bradley Hand", Font.PLAIN, 16));
+		favoriteCheckbox.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 		favoriteCheckbox.setBounds(287, 600, 590, 20);
 		panel.add(favoriteCheckbox);
 
@@ -183,145 +188,5 @@ public class AddComicToRepoPanel extends JPanel {
 		});
 		panel.add(enterComicBookButton);
 		enterComicBookButton.setFocusable(false);
-	}
-
-	public String getADD_COMIC_TO_REPO() {
-		return ADD_COMIC_TO_REPO;
-	}
-
-	public String getSERIES_TITLE() {
-		return SERIES_TITLE;
-	}
-
-	public String getAUTHOR_NAME() {
-		return AUTHOR_NAME;
-	}
-
-	public String getARTIST_NAME() {
-		return ARTIST_NAME;
-	}
-
-	public String getGENRES() {
-		return GENRES;
-	}
-
-	public String getDESCRIPTION() {
-		return DESCRIPTION;
-	}
-
-	public String getNUMBER_OF_ISSUES() {
-		return NUMBER_OF_ISSUES;
-	}
-
-	public String getPUBLISHER() {
-		return PUBLISHER;
-	}
-
-	public String getYEAR_PUBLISHED() {
-		return YEAR_PUBLISHED;
-	}
-
-	public String getENTER_COMIC_BOOK_BUTTON() {
-		return ENTER_COMIC_BOOK_BUTTON;
-	}
-
-	public String getSUCCESS_MESSAGE() {
-		return SUCCESS_MESSAGE;
-	}
-
-	public JTextField getComicSeriesTitleTextField() {
-		return comicSeriesTitleTextField;
-	}
-
-	public void setComicSeriesTitleTextField(JTextField comicSeriesTitleTextField) {
-		this.comicSeriesTitleTextField = comicSeriesTitleTextField;
-	}
-
-	public JTextField getComicBookAuthorTextField() {
-		return comicBookAuthorTextField;
-	}
-
-	public void setComicBookAuthorTextField(JTextField comicBookAuthorTextField) {
-		this.comicBookAuthorTextField = comicBookAuthorTextField;
-	}
-
-	public JTextField getComicBookArtistTextField() {
-		return comicBookArtistTextField;
-	}
-
-	public void setComicBookArtistTextField(JTextField comicBookArtistTextField) {
-		this.comicBookArtistTextField = comicBookArtistTextField;
-	}
-
-	public JTextField getGenresTextField() {
-		return genresTextField;
-	}
-
-	public void setGenresTextField(JTextField genresTextField) {
-		this.genresTextField = genresTextField;
-	}
-
-	public JTextField getDescriptionTextField() {
-		return descriptionTextField;
-	}
-
-	public void setDescriptionTextField(JTextField descriptionTextField) {
-		this.descriptionTextField = descriptionTextField;
-	}
-
-	public JTextField getNumberOfIssuesTextField() {
-		return numberOfIssuesTextField;
-	}
-
-	public void setNumberOfIssuesTextField(JTextField numberOfIssuesTextField) {
-		this.numberOfIssuesTextField = numberOfIssuesTextField;
-	}
-
-	public JTextField getPublisherTextField() {
-		return publisherTextField;
-	}
-
-	public void setPublisherTextField(JTextField publisherTextField) {
-		this.publisherTextField = publisherTextField;
-	}
-
-	public JTextField getYearPublishedTextField() {
-		return yearPublishedTextField;
-	}
-
-	public void setYearPublishedTextField(JTextField yearPublishedTextField) {
-		this.yearPublishedTextField = yearPublishedTextField;
-	}
-
-	public JTextField getSuccessMessage() {
-		return successMessage;
-	}
-
-	public void setSuccessMessage(JTextField successMessage) {
-		this.successMessage = successMessage;
-	}
-
-	public JButton getEnterComicBookButton() {
-		return enterComicBookButton;
-	}
-
-	public void setEnterComicBookButton(JButton enterComicBookButton) {
-		this.enterComicBookButton = enterComicBookButton;
-	}
-
-	public JCheckBox getFavoriteCheckbox() {
-		return favoriteCheckbox;
-	}
-
-	public void setFavoriteCheckbox(JCheckBox favoriteCheckbox) {
-		this.favoriteCheckbox = favoriteCheckbox;
-	}
-
-	public JPanel getPanel() {
-		return panel;
-	}
-
-	public void setPanel(JPanel panel) {
-		this.panel = panel;
 	}
 }

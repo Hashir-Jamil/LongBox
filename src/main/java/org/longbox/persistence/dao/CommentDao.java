@@ -1,18 +1,20 @@
 package org.longbox.persistence.dao;
 
+import org.longbox.domainobjects.dto.CommentDTO;
 import org.longbox.persistence.entity.ComicBook;
+import org.longbox.persistence.entity.Comment;
 import org.longbox.persistence.entity.User;
+
+import java.util.List;
 
 public interface CommentDao {
 
-    User getCommentById(long userId, long comicId);
+    Comment getCommentById(long userId, long comicId);
 
-    User getCommentsByComic(long comicID);
+    public List<CommentDTO> getCommentsByComic(long comicID);
 
-    User saveComicBook(ComicBook comicBook);
+    void saveComment(CommentDTO commentDTO);
 
-    boolean deleteComicBook(ComicBook comicBook);
-
-    boolean modifyComicBook(ComicBook comicBook);
+    public List<CommentDTO> getCommentsByUser(long userID);
 
 }
