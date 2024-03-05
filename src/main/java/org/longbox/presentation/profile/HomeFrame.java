@@ -1,6 +1,7 @@
 package org.longbox.presentation.profile;
 
 import org.longbox.businesslogic.*;
+import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
@@ -156,7 +157,11 @@ public class HomeFrame extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == addComicToRepoPanel.getEnterComicBookButton()) {
-            saveAddComicBookFormInput();
+            try {
+                saveAddComicBookFormInput();
+            } catch (UserIDDoesNotExistException ex) {
+                throw new RuntimeException(ex);
+            }
         }
 
         if (e.getSource() == comicCollectionButton) {
@@ -178,7 +183,7 @@ public class HomeFrame extends JFrame implements ActionListener {
         }
     }
 
-    private void saveAddComicBookFormInput() {
+    private void saveAddComicBookFormInput() throws UserIDDoesNotExistException {
 
         //Create data transfer object for comic book
         ComicBookDTO comicBook = new ComicBookDTO(
@@ -192,11 +197,6 @@ public class HomeFrame extends JFrame implements ActionListener {
                 Integer.parseInt(addComicToRepoPanel.getYearPublishedTextField().getText())
         );
 
-        boolean isFavorite = addComicToRepoPanel.getFavoriteCheckbox().isSelected();
-        if (isFavorite) {
-            favoritesPanel.update(comicBook);
-        }
-
         // Reset Text
         addComicToRepoPanel.getComicSeriesTitleTextField().setText("");
         addComicToRepoPanel.getComicBookAuthorTextField().setText("");
@@ -207,8 +207,10 @@ public class HomeFrame extends JFrame implements ActionListener {
         addComicToRepoPanel.getPublisherTextField().setText("");
         addComicToRepoPanel.getYearPublishedTextField().setText("");
 
-        ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl();
-        comicBookDao.saveComicBook(comicBook);
+        boolean isFavorite = addComicToRepoPanel.getFavoriteCheckbox().isSelected();
+        if (isFavorite) {
+            favoritesPanel.update(comicBook, UserSession.getActiveUser().getUser().getId(), comicBook.getId());
+        }
 
         JOptionPane.showMessageDialog(this, "Comic book added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }

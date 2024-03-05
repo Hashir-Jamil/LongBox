@@ -1,8 +1,12 @@
 package org.longbox.presentation.profile;
 
+import org.longbox.businesslogic.UserSession;
+import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
+import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
+import org.longbox.persistence.entity.ComicBook;
 import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
 
 import javax.swing.table.TableModel;
@@ -36,14 +40,15 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 	private ComicBookTableModel comicBookTableModel;
 	private JButton unfavoriteButton;
 	private TableRowSorter<TableModel> sorter;
-	private ComicBookDaoImpl comicBookDaoImpl;
+	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImp;
 
 	public FavoritesPanel() {
 		initComicCollectionPage();
 	}
 
-	public void update(ComicBookDTO comicBook) {
-		favoriteComicBooks.add(comicBook);
+	public void update(ComicBookDTO comicBook, long userId, long comicBookId) throws UserIDDoesNotExistException {
+		ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl();
+		comicBookFavouritesListDaoImpl.saveToFavorites(userId, comicBookId);
 		comicBookTableModel.addRow(new Object[]{
 				comicBook.getSeriesTitle(),
 				comicBook.getAuthor(),
@@ -53,6 +58,34 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 				comicBook.getPublisher(),
 				comicBook.getYearPublished()
 		});
+	}
+
+	public void reloadTable() {
+
+		comicBookFavouritesListDaoImp = new ComicBookFavouritesListDaoImpl();
+		comicBookTableModel = new ComicBookTableModel(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks());
+
+		comicBookTable = new JTable(comicBookTableModel);
+		comicBookTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row = comicBookTable.rowAtPoint(e.getPoint());
+				int col = comicBookTable.columnAtPoint(e.getPoint());
+				if (col == 0) {
+					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), comicBookTable.getValueAt(row, col).toString());
+					ComicBookSearch.loadComicBookPage(comicBook);
+				}
+			}
+		});
+		sorter = new TableRowSorter<TableModel>(comicBookTable.getModel());
+		comicBookTable.setRowSorter(sorter);
+
+		scrollPane = new JScrollPane(comicBookTable);
+		scrollPane.setViewportBorder(null);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setBounds(10, 110, 1144, 683);
+		panel.add(scrollPane);
 	}
 
 	private void initComicCollectionPage() {
@@ -75,11 +108,9 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 
 		add(panel, BorderLayout.CENTER);
 
-		comicBookDaoImpl = new ComicBookDaoImpl();
+		comicBookFavouritesListDaoImp = new ComicBookFavouritesListDaoImpl();
 
-		if (favoriteComicBooks != null) {
-
-			comicBookTableModel = new ComicBookTableModel(favoriteComicBooks);
+			comicBookTableModel = new ComicBookTableModel(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks());
 
 			comicBookTable = new JTable(comicBookTableModel);
 			comicBookTable.addMouseListener(new MouseAdapter() {
@@ -88,7 +119,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 					int row = comicBookTable.rowAtPoint(e.getPoint());
 					int col = comicBookTable.columnAtPoint(e.getPoint());
 					if (col == 0) {
-						ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
+						ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), comicBookTable.getValueAt(row, col).toString());
 						System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
 						ComicBookSearch.loadComicBookPage(comicBook);
 					}
@@ -138,7 +169,6 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 				boolean isRowSelected = comicBookTable.getSelectedRow() != -1;
 				unfavoriteButton.setEnabled(isRowSelected);
 			});
-		}
 	}
 
 	@Override
@@ -163,25 +193,25 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 			System.out.println("Search for: " + textField.getText() + " in " + searchBy);
 			switch (searchBy) {
 				case "Title":
-					searchResults = ComicBookSearch.searchComicBookByTitle(comicBookDaoImpl.getAllComicBooks(), textField.getText());
+					searchResults = ComicBookSearch.searchComicBookByTitle(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
 					break;
 				case "Author":
-					searchResults = ComicBookSearch.searchComicBookByAuthor(comicBookDaoImpl.getAllComicBooks(), textField.getText());
+					searchResults = ComicBookSearch.searchComicBookByAuthor(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
 					break;
 				case "Artist":
-					searchResults = ComicBookSearch.searchComicBookByArtist(comicBookDaoImpl.getAllComicBooks(), textField.getText());
+					searchResults = ComicBookSearch.searchComicBookByArtist(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
 					break;
 				case "Genre":
 					// Implement logic
 					break;
 				case "Publisher":
-					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookDaoImpl.getAllComicBooks(), textField.getText());
+					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
 					break;
 				case "Year":
-					searchResults = ComicBookSearch.searchComicBookByYear(comicBookDaoImpl.getAllComicBooks(), textField.getText());
+					searchResults = ComicBookSearch.searchComicBookByYear(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
 					break;
 				default:
-					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookDaoImpl.getAllComicBooks(), "");
+					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), "");
 					break;
 			}
 			loadComicBookResultsPage(searchResults, target, searchBy);
@@ -311,13 +341,5 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 
 	public void setSorter(TableRowSorter<TableModel> sorter) {
 		this.sorter = sorter;
-	}
-
-	public ComicBookDaoImpl getComicBookDaoImpl() {
-		return comicBookDaoImpl;
-	}
-
-	public void setComicBookDaoImpl(ComicBookDaoImpl comicBookDaoImpl) {
-		this.comicBookDaoImpl = comicBookDaoImpl;
 	}
 }
