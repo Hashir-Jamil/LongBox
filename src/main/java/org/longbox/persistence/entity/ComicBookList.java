@@ -22,5 +22,12 @@ public class ComicBookList {
     @Column(name = "date_added_user_list")
     private Date dateAdded;
 
+    public ComicBookList() {
+    }
+    public ComicBookList(long userId, long comicBookId, Date dateAdded) {
+        this.userId = userId;
+        this.comicBookId = comicBookId;
+        this.dateAdded = dateAdded;
+    }
 
 }
