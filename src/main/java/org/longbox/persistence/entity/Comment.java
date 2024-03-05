@@ -24,21 +24,19 @@ public class Comment {
     private Date commentDate;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "comic_book_id")
+    @JoinColumn(name = "comic_book_id", referencedColumnName = "id")
     private ComicBook comicBook;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @Column(name = "user_name")
     private String userName;
 
-    private long userId;
-
-    private long comicBookId;
-    
-    public Comment() {}
+    public Comment() {
+        System.out.println("comment class init");
+    }
 
     public Comment(String message, ComicBook comicBook, User user, String userName) {
         this.message = message;
@@ -49,10 +47,26 @@ public class Comment {
     }
 
     public Comment(CommentDTO c){
-        this.userId = c.getUserId();
-        this.userName = c.getUsername();
-        this.comicBookId = c.getComicBookId();
+        this.user = new User(c.getUser());
+        this.userName = c.getUser().getUserName();
+        this.comicBook = new ComicBook(c.getComicBook());
         this.message = c.getMessage();
         this.commentDate = c.getDateAdded();
+    }
+
+    public Comment(CommentDTO c, User u, ComicBook cb){
+        this.user = u;
+        this.userName = c.getUser().getUserName();
+        this.comicBook = cb;
+        this.message = c.getMessage();
+        this.commentDate = c.getDateAdded();
+    }
+
+    public long getComicBookId(){
+        return this.comicBook.getId();
+    }
+
+    public long getUserId(){
+        return this.user.getId();
     }
 }
