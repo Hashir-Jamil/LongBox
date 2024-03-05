@@ -1,5 +1,6 @@
 package org.longbox.businesslogic.utils;
 
+import org.longbox.domainobjects.dto.CommentDTO;
 import org.longbox.persistence.entity.Comment;
 
 import javax.swing.*;
@@ -7,7 +8,7 @@ import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MultiLineCellRenderer extends JLabel implements ListCellRenderer<Comment> {
+public class MultiLineCellRenderer extends JLabel implements ListCellRenderer<CommentDTO> {
     private static final int LINE_HEIGHT = 18; // Adjust this value as needed
 
     public MultiLineCellRenderer() {
@@ -16,7 +17,7 @@ public class MultiLineCellRenderer extends JLabel implements ListCellRenderer<Co
 
     @Override
     public Component getListCellRendererComponent(
-            JList<? extends Comment> list, Comment value, int index,
+            JList<? extends CommentDTO> list, CommentDTO value, int index,
             boolean isSelected, boolean cellHasFocus) {
 
         // Calculate the height based on the number of lines (word wrap)

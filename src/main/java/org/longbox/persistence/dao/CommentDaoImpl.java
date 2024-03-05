@@ -12,6 +12,7 @@ import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class CommentDaoImpl implements CommentDao {
@@ -27,12 +28,13 @@ public class CommentDaoImpl implements CommentDao {
 
         try {
             session = sessionFactory.openSession();
-            transaction = session.beginTransaction();
             commentList = session.createQuery(
-                            "SELECT c FROM Comment c WHERE c.comicBookId = :comicID ORDER BY c.commentDate DESC",
+                            "SELECT c FROM Comment c WHERE c.comicBook.id = :comicID ORDER BY c.commentDate DESC",
                             Comment.class)
                     .setParameter("comicID", comicID)
                     .list();
+
+
         }
         catch (HibernateException e) {
             throw new RuntimeException(e);
@@ -54,10 +56,16 @@ public class CommentDaoImpl implements CommentDao {
     public void saveComment(CommentDTO commentDTO) {
         Session session = null;
         Transaction transaction = null;
-        Comment comment = new Comment(commentDTO);
+
+        UserDaoImpl userDao = new UserDaoImpl();
+        ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl();
 
         try {
             session = sessionFactory.openSession();
+            User user = userDao.getUserById(commentDTO.getUserId());
+            ComicBook comicBook = comicBookDao.getComicBookById(commentDTO.getComicBookId());
+            Comment comment = new Comment(commentDTO, user, comicBook);
+
             transaction = session.beginTransaction();
             session.save(comment);
             transaction.commit();
@@ -75,6 +83,8 @@ public class CommentDaoImpl implements CommentDao {
         }
     }
 
+
+
     @Override
     public List<CommentDTO> getCommentsByUser(long userID) {
         Session session = null;
@@ -85,7 +95,7 @@ public class CommentDaoImpl implements CommentDao {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             commentList = session.createQuery(
-                            "SELECT c FROM Comment c WHERE c.userId = :userID",
+                            "SELECT c FROM Comment c WHERE c.user.id = :userID",
                             Comment.class)
                     .setParameter("userID", userID)
                     .list();
