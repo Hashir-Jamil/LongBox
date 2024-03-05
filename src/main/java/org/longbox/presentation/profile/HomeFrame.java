@@ -207,9 +207,12 @@ public class HomeFrame extends JFrame implements ActionListener {
         addComicToRepoPanel.getPublisherTextField().setText("");
         addComicToRepoPanel.getYearPublishedTextField().setText("");
 
+        ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl();
+        Long comicId = comicBookDao.saveComicBook(comicBook);
+
         boolean isFavorite = addComicToRepoPanel.getFavoriteCheckbox().isSelected();
         if (isFavorite) {
-            favoritesPanel.update(comicBook, UserSession.getActiveUser().getUser().getId(), comicBook.getId());
+            favoritesPanel.update(comicBook, UserSession.getActiveUser().getUser().getId(), comicId);
         }
 
         JOptionPane.showMessageDialog(this, "Comic book added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);

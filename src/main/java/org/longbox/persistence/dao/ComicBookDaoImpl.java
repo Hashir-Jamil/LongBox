@@ -68,7 +68,7 @@ public class ComicBookDaoImpl implements ComicBookDao {
     }
 
     @Override
-    public void saveComicBook(ComicBookDTO comicBookDTO) {
+    public Long saveComicBook(ComicBookDTO comicBookDTO) {
         Session session = null;
         Transaction transaction = null;
         ComicBook comicBook = new ComicBook(comicBookDTO);
@@ -90,6 +90,7 @@ public class ComicBookDaoImpl implements ComicBookDao {
                 session.close();
             }
         }
+        return comicBook.getId();
     }
 
     @Override

@@ -99,9 +99,4 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
         }
         return comicBookDTOList;
     }
-
-    public static void main(String[] args) throws UserIDDoesNotExistException {
-        ComicBookFavouritesListDaoImpl t = new ComicBookFavouritesListDaoImpl();
-        t.saveToFavorites(9, 10);
-    }
 }
