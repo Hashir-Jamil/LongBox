@@ -4,12 +4,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
-import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookDTO;
-import org.longbox.domainobjects.dto.UserDTO;
 import org.longbox.persistence.entity.ComicBook;
 import org.longbox.persistence.entity.ComicBookList;
 import org.longbox.persistence.entity.User;
@@ -30,7 +27,7 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     private final UserDao userDao = new UserDaoImpl();
 
     @Override
-    public void saveToFavorites(long userId, long comicBookId) throws UserIDDoesNotExistException {
+    public void saveToFavorites(long userId, long comicBookId) {
         LocalDateTime localDateTime = LocalDateTime.now();
         Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
         ComicBookList userFavourite = new ComicBookList(userId, comicBookId, date);
