@@ -16,7 +16,7 @@ import org.longbox.businesslogic.utils.MultiLineCellRenderer;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.domainobjects.dto.CommentDTO;
 import org.longbox.persistence.dao.CommentDaoImpl;
-import org.longbox.persistence.entity.Comment;
+
 @Getter
 @Setter
 public class ComicBookInfoPanel extends JPanel implements ActionListener {
@@ -38,11 +38,11 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	private JLabel dateAdded;
 	private JButton addCommentButton;
 	private JTextArea commentBox;
-	private DefaultListModel<Comment> commentListModel;
+	private DefaultListModel<CommentDTO> commentListModel;
 	private CommentDaoImpl commentDaoImpl;
 	private List<CommentDTO> commentsOnCurrentComic;
 	private UserSession userSession;
-	private   JList<Comment> commentList;
+	private JList<CommentDTO> commentList;
 	/**
 	 * Create the panel.
 	 */
@@ -186,8 +186,8 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		viewCommentsLabel.setBounds(618, 360, 241, 16);
 		panel.add(viewCommentsLabel);
 
-		commentListModel = new DefaultListModel<>();
-		commentList = new JList<>(commentListModel);
+		commentListModel = new DefaultListModel<CommentDTO>();
+		commentList = new JList<CommentDTO>(commentListModel);
 
 		commentList.setCellRenderer(new MultiLineCellRenderer());
 
@@ -217,7 +217,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		commentListModel.removeAllElements();
 
 		for (CommentDTO c : commentsOnCurrentComic) {
-			commentListModel.addElement(new Comment(c));
+			commentListModel.addElement(c);
 		}
 
 		commentList.setModel(commentListModel);
@@ -228,7 +228,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == addCommentButton){
 			String message = commentBox.getText();
-			CommentDTO newComment = new CommentDTO(this.userSession.getUser().getId(), comicBookDTO.getId(), message, this.userSession.getUser().getUserName());
+			CommentDTO newComment = new CommentDTO(message, this.userSession.getUser(), this.comicBookDTO);
 			commentDaoImpl.saveComment(newComment);
 			displayComments();
 		}
