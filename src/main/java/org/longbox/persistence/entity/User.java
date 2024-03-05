@@ -5,6 +5,8 @@ import org.longbox.domainobjects.dto.UserDTO;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -43,6 +45,17 @@ public class User {
 
 	@Column(name = "comics_finished")
 	private int comicsFinished;
+
+	@ManyToMany
+	@JoinTable(
+			name = "comic_book_list",
+			joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+			inverseJoinColumns = {
+					@JoinColumn(name = "comic_book_id", referencedColumnName = "id"),
+			}
+	)
+
+	private Set<ComicBook> comicBooks = new HashSet<>();
 
 	public User() {
 	}

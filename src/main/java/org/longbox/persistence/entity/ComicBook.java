@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.domainobjects.dto.ComicBookDTO;
-
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Date;
 
 @Entity
@@ -41,6 +42,14 @@ public class ComicBook {
 
     @Column(name = "date_added")
     private Date dateAdded;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_comic_book",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "comic_book_id")
+    )
+    private Set<ComicBook> comicBooks = new HashSet<>();
 
     public ComicBook(
         String seriesTitle,
