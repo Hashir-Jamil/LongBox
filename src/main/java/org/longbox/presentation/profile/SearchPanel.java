@@ -18,6 +18,7 @@ import javax.swing.JButton;
 public class SearchPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private static final String DEFAULT_FONT = "Calibri";
 	private final String PANEL_LABEL = "Search Repository For Comic Books";
 	private final String SEARCH_BY_TITLE = "Search for a comic book by title!";
 	private final String SEARCH_BUTTON = "Search";
@@ -41,7 +42,7 @@ public class SearchPanel extends JPanel {
 	    panel.setLayout(null);
 	    
 	    JLabel comicCollectionTitle = new JLabel(PANEL_LABEL);
-		comicCollectionTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		comicCollectionTitle.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 30));
 		comicCollectionTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		comicCollectionTitle.setBounds(182, 11, 800, 43);
 		panel.add(comicCollectionTitle);
