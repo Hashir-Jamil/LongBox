@@ -166,3 +166,7 @@
 ## Sunday, March 3rd, 2024
 
     Hashir: Finished hibernate entity class relationship cardinalities
+    
+## Tuesday, March 5th, 2024
+
+	Oscar: Changed default font to Calibri.
