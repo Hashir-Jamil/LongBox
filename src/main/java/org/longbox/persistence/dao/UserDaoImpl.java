@@ -74,6 +74,40 @@ public class UserDaoImpl implements UserDao{
         }
         return user;
     }
+    
+    @Override
+    public User getUserByEmail(String email) throws UserNameDoesNotExistException {
+    	Session session = null;
+        Transaction transaction = null;
+        User user = null;
+
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            
+            Query query = session.createQuery("FROM User WHERE email = :email");
+            query.setParameter("email", email);
+            
+            user = (User) query.uniqueResult();
+
+            transaction.commit();
+        } 
+        catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        if(user == null) {
+        	throw new UserNameDoesNotExistException();
+        }
+        return user;
+    }
 
     @Override
     public void saveUser(User user) throws UsernameOrEmailExistsException {

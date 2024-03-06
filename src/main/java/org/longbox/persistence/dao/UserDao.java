@@ -10,6 +10,8 @@ public interface UserDao {
     User getUserById(long id) throws UserIDDoesNotExistException;
 
     User getUserByUserName(String userName) throws UserNameDoesNotExistException;
+    
+    User getUserByEmail(String email) throws UserNameDoesNotExistException;
 
     void saveUser(User user) throws UsernameOrEmailExistsException;
 
