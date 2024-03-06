@@ -170,3 +170,4 @@
 ## Tuesday, March 5th, 2024
 
 	Oscar: Changed default font to Calibri.
+ 	Eric: Added ability to login using email and password rather than just username and password. New user registration no longer allows '@' or blank usernames
