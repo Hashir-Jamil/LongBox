@@ -24,6 +24,7 @@ import org.longbox.presentation.profile.ComicBookTableModel;
 public class ComicBookSearchResultsFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private static final String DEFAULT_FONT = "Calibri";
 	private JPanel contentPane;
 	private JTable comicBookTable;
 	ComicBookDaoImpl comicBookDaoImpl;
@@ -45,7 +46,7 @@ public class ComicBookSearchResultsFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Results for " + target + " in " + searchBy);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblNewLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 11, 814, 46);
 		contentPane.add(lblNewLabel);
