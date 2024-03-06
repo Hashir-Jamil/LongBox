@@ -20,6 +20,7 @@ import javax.swing.event.DocumentListener;
 public class AddComicPage extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
+    private static final String DEFAULT_FONT = "Calibri";
     private JPanel contentPane;
     private JTextField titleField;
     private JTextField issueNumberField;
@@ -30,7 +31,6 @@ public class AddComicPage extends JFrame implements ActionListener {
     private JButton addButton;
     private JLabel messageLabel;
     private JButton backButton;
-    private static final String DEFAULT_FONT = "Calibri";
 
     /**
      * Launch the application.
