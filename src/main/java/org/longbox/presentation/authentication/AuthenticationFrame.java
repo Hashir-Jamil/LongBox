@@ -97,7 +97,11 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
 
 		User user;
 		try{
-			user = userDaoImpl.getUserByUserName(UserName);
+			if (UserName.contains(Character.toString('@'))) {
+				user = userDaoImpl.getUserByUserName(UserName);
+			} else {
+				user = userDaoImpl.getUserByUserName(UserName);
+			}
 			if(UserName.equals(user.getUserName())){
 				if(DecryptPassword.equals(user.getPassword())){
 					loginPanel.getErrorLabel().setText("Login Successful!");
