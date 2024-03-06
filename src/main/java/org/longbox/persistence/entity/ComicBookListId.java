@@ -18,4 +18,11 @@ public class ComicBookListId implements Serializable {
     
     @Column(name = "comic_book_id")
     private Long comicBookId;
+
+    public ComicBookListId() {}
+
+    public ComicBookListId(Long userId, Long comicBookId) {
+        this.userId = userId;
+        this.comicBookId = comicBookId;
+    }
 }

@@ -8,7 +8,7 @@ import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.entity.ComicBook;
-//import org.longbox.persistence.entity.ComicBookList;
+import org.longbox.persistence.entity.ComicBookListId;
 import org.longbox.persistence.entity.ComicBookFavoritesList;
 import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
@@ -24,19 +24,23 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     Session session = null;
     Transaction transaction = null;
     SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-    private final ComicBookDao comicBookDao = new ComicBookDaoImpl();
-    private final UserDao userDao = new UserDaoImpl();
 
     @Override
     public void saveToFavorites(long userId, long comicBookId) throws UserIDDoesNotExistException {
-        LocalDateTime localDateTime = LocalDateTime.now();
-        Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
-        ComicBookFavoritesList userFavourite = new ComicBookFavoritesList();
-        userFavourite.setComicBook(comicBookDao.getComicBookById(comicBookId));
-        userFavourite.setUser(userDao.getUserById(userId));
+
+        UserDaoImpl userDao = new UserDaoImpl();
+        ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl();
 
         try {
             session = sessionFactory.openSession();
+
+            User user = userDao.getUserById(userId);
+            ComicBook comicBook = comicBookDao.getComicBookById(comicBookId);
+
+            ComicBookListId favoritesListId = new ComicBookListId(user.getId(), comicBook.getId());
+
+            ComicBookFavoritesList userFavourite = new ComicBookFavoritesList(favoritesListId, user, comicBook);
+
             transaction = session.beginTransaction();
             session.save(userFavourite);
             transaction.commit();
