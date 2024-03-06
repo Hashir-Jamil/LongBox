@@ -22,6 +22,7 @@ import org.longbox.persistence.dao.CommentDaoImpl;
 public class ComicBookInfoPanel extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
+	private static final String DEFAULT_FONT = "Calibri";
 	private static final String PANEL_LABEL = "Search Result";
 	private static final String VIEW_COMMENTS = "View Comments";
 	private ComicBookDTO comicBookDTO;
@@ -43,6 +44,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	private List<CommentDTO> commentsOnCurrentComic;
 	private UserSession userSession;
 	private JList<CommentDTO> commentList;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -68,7 +70,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	    panel.setLayout(null);
 	    
 	    JLabel comicCollectionTitle = new JLabel(PANEL_LABEL);
-		comicCollectionTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		comicCollectionTitle.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 30));
 		comicCollectionTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		comicCollectionTitle.setBounds(182, 25, 800, 43);
 		panel.add(comicCollectionTitle);
@@ -163,7 +165,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		panel.add(dateAdded);
 		
 		JLabel CommentsTitle = new JLabel("Comments");
-		CommentsTitle.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		CommentsTitle.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 		CommentsTitle.setBounds(618, 135, 123, 34);
 		panel.add(CommentsTitle);
 		
