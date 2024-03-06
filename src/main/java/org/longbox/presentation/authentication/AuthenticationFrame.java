@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
+import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.domainobjects.dto.UserDTO;
@@ -116,6 +117,9 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
 			}
 		} catch (UserNameDoesNotExistException e) {
 			loginPanel.getErrorLabel().setText("User does not exist");
+			loginPanel.getErrorLabel().setForeground(Color.red);
+        } catch (EmailDoesNotExistException e) {
+			loginPanel.getErrorLabel().setText("Email does not exist");
 			loginPanel.getErrorLabel().setForeground(Color.red);
         }
     }
