@@ -14,7 +14,7 @@ VALUES
     ('Phoenix', 'Stan', 'Lee', '3900-05-31', '123fake@nowhere.org', 'Phoenix', 'United Kingdom', '2024-02-14 12:42:43', 0, 0),
     ('ahan', 'Ahan', 'Bhargava', '2003-02-10', 'ahan@email.com', 'Password!1', 'India', '2024-02-15 15:09:10', 0, 0),
     ('naha', 'Ahan', 'Bhargava', '2003-02-10', 'naha@email.com', 'naha', 'India', '2024-02-15 15:09:10', 0, 0),
-    ('123', 'Ahan', 'Bhargava', '2003-02-10', '123@email.com', '123', 'India', '2024-02-15 15:09:10', 0, 0);
+    ('123', 'Quick', 'Access', '2003-02-10', '123@email.com', '123', 'India', '2024-02-15 15:09:10', 0, 0);
 
 -- Next we add comic book objects
 
