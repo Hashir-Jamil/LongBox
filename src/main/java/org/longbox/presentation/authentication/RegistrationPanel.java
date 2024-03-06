@@ -90,8 +90,8 @@ public class RegistrationPanel extends JPanel {
 		lastNameField.setColumns(10);
 
 		//username label
-		JLabel UsernameLabel = new JLabel("Your username (must be unique):");
-		UsernameLabel.setBounds(117, 187, 197, 16);
+		JLabel UsernameLabel = new JLabel("Your username (must be unique and not contain '@'):");
+		UsernameLabel.setBounds(117, 187, 297, 16);
 		UsernameLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 
 		usernameField = new JTextField();
@@ -273,21 +273,34 @@ public class RegistrationPanel extends JPanel {
 				passwordField.getPassword().length > 0 &&
 				countryField.getSelectedItem() != null &&
 				dateChooser.getDate() != null &&
+				RegistrationUtils.isValidUserName(usernameField.getText()) &&
 				RegistrationUtils.isValidEmailAddress(emailAddress.getText()) &&
 				RegistrationUtils.isValidPassword(String.valueOf(passwordField.getPassword())) &&
 				TnCCheckbox.isSelected();
 
+				boolean validUsername = RegistrationUtils.isValidUserName(usernameField.getText());
 				boolean validEmail = RegistrationUtils.isValidEmailAddress(emailAddress.getText());
 				boolean validPassword = RegistrationUtils.isValidPassword(String.valueOf(passwordField.getPassword()));
 
 				// prints the invalid mail and email message
-				if(!validEmail && !validPassword) {
+				if(!validEmail && !validPassword && !validUsername) {
+					messageLabel.setForeground(Color.red);
+					messageLabel.setText("Please enter a valid user name, a valid email and a valid password!");
+				} else if(!validEmail && !validPassword && validUsername) {
 					messageLabel.setForeground(Color.red);
 					messageLabel.setText("Please enter a valid email and a valid password!");
-				}else if(validEmail && !validPassword){
+				}else if(validEmail && !validPassword && !validUsername) {
+					messageLabel.setForeground(Color.red);
+					messageLabel.setText("Please enter a valid user name and a valid password!");
+				}else if(!validEmail && validPassword && !validUsername) {
+					messageLabel.setForeground(Color.red);
+					messageLabel.setText("Please enter a valid user name and a valid email!");
+				}else if(validEmail && !validPassword && validUsername){
 					messageLabel.setText("Please enter a valid password!");
-				}else if(!validEmail && validPassword) {
+				}else if(!validEmail && validPassword && validUsername) {
 					messageLabel.setText("Please enter a valid email!");
+				} else if(validEmail && validPassword && !validUsername) {
+					messageLabel.setText("Please enter a valid user name!");
 				}else {
 					messageLabel.setText("");
 				}

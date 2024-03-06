@@ -27,4 +27,12 @@ public class RegistrationUtils {
 
 		return m.matches();
 	}	
+	
+	public static boolean isValidUserName(String userName) {
+		if (userName.contains(Character.toString('@')) || userName.isBlank()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }
