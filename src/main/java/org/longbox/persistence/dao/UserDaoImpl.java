@@ -76,7 +76,7 @@ public class UserDaoImpl implements UserDao{
     }
     
     @Override
-    public User getUserByEmail(String email) throws UserNameDoesNotExistException {
+    public User getUserByEmail(String email) throws EmailDoesNotExistException {
     	Session session = null;
         Transaction transaction = null;
         User user = null;
@@ -104,7 +104,7 @@ public class UserDaoImpl implements UserDao{
             }
         }
         if(user == null) {
-        	throw new UserNameDoesNotExistException();
+        	throw new EmailDoesNotExistException();
         }
         return user;
     }
