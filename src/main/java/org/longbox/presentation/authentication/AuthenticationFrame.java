@@ -99,31 +99,19 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
 		try{
 			if (UserName.contains(Character.toString('@'))) {
 				user = userDaoImpl.getUserByEmail(UserName);
-				if(UserName.equals(user.getEmail())){
-					if(DecryptPassword.equals(user.getPassword())){
-						loginPanel.getErrorLabel().setText("Login Successful!");
-						loginPanel.getErrorLabel().setForeground(Color.GREEN);
-						dispose();
-						HomeFrame homeFrame = new HomeFrame(UserSession.getInstance(new UserDTO(user)));
-						homeFrame.setVisible(true);
-					} else {
-						loginPanel.getErrorLabel().setText("Password Incorrect");
-						loginPanel.getErrorLabel().setForeground(Color.red);
-					}
-				}
 			} else {
 				user = userDaoImpl.getUserByUserName(UserName);
-				if(UserName.equals(user.getUserName())){
-					if(DecryptPassword.equals(user.getPassword())){
-						loginPanel.getErrorLabel().setText("Login Successful!");
-						loginPanel.getErrorLabel().setForeground(Color.GREEN);
-						dispose();
-						HomeFrame homeFrame = new HomeFrame(UserSession.getInstance(new UserDTO(user)));
-						homeFrame.setVisible(true);
-					} else {
-						loginPanel.getErrorLabel().setText("Password Incorrect");
-						loginPanel.getErrorLabel().setForeground(Color.red);
-					}
+			}
+			if(UserName.equals(user.getUserName()) || UserName.equals(user.getEmail())){
+				if(DecryptPassword.equals(user.getPassword())){
+					loginPanel.getErrorLabel().setText("Login Successful!");
+					loginPanel.getErrorLabel().setForeground(Color.GREEN);
+					dispose();
+					HomeFrame homeFrame = new HomeFrame(UserSession.getInstance(new UserDTO(user)));
+					homeFrame.setVisible(true);
+				} else {
+					loginPanel.getErrorLabel().setText("Password Incorrect");
+					loginPanel.getErrorLabel().setForeground(Color.red);
 				}
 			}
 		} catch (UserNameDoesNotExistException e) {
