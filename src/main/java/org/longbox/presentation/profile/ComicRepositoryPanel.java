@@ -35,6 +35,7 @@ import java.awt.Color;
 public class ComicRepositoryPanel extends JPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
+	private static final String DEFAULT_FONT = "Calibri";
 	public JPanel panel;
 	private JLabel comicRepositoryTitle;
 	private JLabel lblNewLabel_1;
@@ -64,7 +65,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 	    panel.setLayout(null);
 		
 		comicRepositoryTitle = new JLabel("Comic Repository");
-		comicRepositoryTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		comicRepositoryTitle.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 30));
 		comicRepositoryTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		comicRepositoryTitle.setBounds(396, 11, 372, 43);
 		panel.add(comicRepositoryTitle);
