@@ -28,6 +28,7 @@ import javax.swing.*;
 @Setter
 public class FavoritesPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
+	private static final String DEFAULT_FONT = "Calibri";
 	private static FavoritesPanel instance;
 	private JPanel panel;
 	private JLabel comicCollectionTitle;
@@ -73,7 +74,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 		panel.setLayout(null);
 
 		comicCollectionTitle = new JLabel("User Favorites");
-		comicCollectionTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		comicCollectionTitle.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 30));
 		comicCollectionTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		comicCollectionTitle.setBounds(396, 11, 372, 43);
 		panel.add(comicCollectionTitle);
