@@ -30,6 +30,7 @@ public class AddComicPage extends JFrame implements ActionListener {
     private JButton addButton;
     private JLabel messageLabel;
     private JButton backButton;
+    private static final String DEFAULT_FONT = "Calibri";
 
     /**
      * Launch the application.
@@ -61,7 +62,7 @@ public class AddComicPage extends JFrame implements ActionListener {
 
         // Labels for various input fields
         JLabel titleLabel = new JLabel("Title:");
-        titleLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+        titleLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
         titleLabel.setBounds(117, 70, 94, 16);
         contentPane.add(titleLabel);
 
@@ -75,7 +76,7 @@ public class AddComicPage extends JFrame implements ActionListener {
 
         // Button to add comic to collection
         addButton = new JButton("Add Comic to Collection");
-        addButton.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
+        addButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 13));
         addButton.setEnabled(false);
         addButton.setBounds(107, 422, 608, 29);
         contentPane.add(addButton);
@@ -85,12 +86,12 @@ public class AddComicPage extends JFrame implements ActionListener {
         messageLabel.setVerticalTextPosition(SwingConstants.TOP);
         messageLabel.setBounds(117, 370, 588, 16);
         messageLabel.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-        messageLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+        messageLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
         contentPane.add(messageLabel);
 
         // Button to go back
         backButton = new JButton("Back");
-        backButton.setFont(new Font("Bradley Hand", Font.PLAIN, 12));
+        backButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
         backButton.setBounds(451, 458, 264, 29);
         contentPane.add(backButton);
 
