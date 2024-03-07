@@ -10,6 +10,8 @@ import org.longbox.persistence.entity.ComicBookFinishedList;
 import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ComicBookFinishedListDaoImpl implements ComicBookFinishedListDao{
@@ -48,6 +50,7 @@ public class ComicBookFinishedListDaoImpl implements ComicBookFinishedListDao{
         Session session = null;
         Transaction transaction = null;
         int deletedEntities = 0;
+
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
@@ -60,8 +63,8 @@ public class ComicBookFinishedListDaoImpl implements ComicBookFinishedListDao{
         catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
-                e.printStackTrace();
             }
+            e.printStackTrace();
         }
         finally {
             session.close();
@@ -71,12 +74,39 @@ public class ComicBookFinishedListDaoImpl implements ComicBookFinishedListDao{
 
     @Override
     public List<ComicBook> getUsersFinishedList(Long userId) {
+        Session session = null;
 
-        return null;
+        try {
+            session = sessionFactory.openSession();
+            Query<ComicBook> finishedComicBooksList = session.createQuery("SELECT cbf.comicBook FROM ComicBookFinishedList cbf WHERE cbf.user.id = :userId");
+            finishedComicBooksList.setParameter("userId", userId);
+            return finishedComicBooksList.getResultList();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            session.close();
+        }
+
+        return Collections.emptyList();
     }
 
     @Override
     public List<User> getListOfUsersFinished(Long comicBookId) {
-        return null;
+        Session session = null;
+
+        try {
+            session = sessionFactory.openSession();
+            Query<User> allUsersWhoFavorited = session.createQuery("SELECT cbf.user FROM ComicBookFinishedList cbf WHERE cbf.comicBook.id = :comicBookId");
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            session.close();
+        }
+        return Collections.emptyList();
     }
 }
