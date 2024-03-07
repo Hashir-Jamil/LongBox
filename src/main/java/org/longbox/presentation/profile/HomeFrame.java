@@ -141,12 +141,12 @@ public class HomeFrame extends JFrame implements ActionListener {
         nexusPanel.add(comicCollectionButton);
         
         profileButton = new JButton("Profile");
-        profileButton.setBounds(370, 11, 170, 25);
+        profileButton.setBounds(554, 10, 170, 25);
         nexusPanel.add(profileButton);
 
         favoritesButton = new JButton("Favorites");
         favoritesButton.addActionListener(this);
-        favoritesButton.setBounds(550, 11, 170, 25);
+        favoritesButton.setBounds(372, 11, 170, 25);
         nexusPanel.add(favoritesButton);
 
         profileButton.addActionListener(this);
