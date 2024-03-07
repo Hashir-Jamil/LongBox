@@ -168,7 +168,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 			String target = textField.getText();
 			List<ComicBookDTO> searchResults = null;
 			
-			searchResults = ComicBookSearch.comicAdvancedSearch(searchBy, target, searchResults, comicBookFavouritesListDaoImp.getAllFavoritesComicBooks());
+			searchResults = ComicBookSearch.comicAdvancedSearch(searchBy, target, searchResults, comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), this.userSession);
 			
 			System.out.println("Search for: " + textField.getText() + " in " + searchBy);
 //			switch (searchBy) {
@@ -194,12 +194,12 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 //					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), "");
 //					break;
 //			}
-			loadComicBookResultsPage(searchResults, target, searchBy);
+//			loadComicBookResultsPage(searchResults, target, searchBy);
 		}
 	}
 
-	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy) {
-		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy, this.userSession);
-		resultsPage.setVisible(true);
-	}
+//	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy) {
+//		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy, this.userSession);
+//		resultsPage.setVisible(true);
+//	}
 }

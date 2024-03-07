@@ -122,7 +122,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 			String target = textField.getText();
 			List<ComicBookDTO> searchResults = null;
 			
-			searchResults = ComicBookSearch.comicAdvancedSearch(searchBy, target, searchResults, comicBookDaoImpl.getAllComicBooks());
+			searchResults = ComicBookSearch.comicAdvancedSearch(searchBy, target, searchResults, comicBookDaoImpl.getAllComicBooks(), this.userSession);
 			
 			System.out.println("Search for: " + textField.getText() + " in "  + searchBy);
 //			switch(searchBy) {
@@ -148,14 +148,14 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 //					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookDaoImpl.getAllComicBooks(), "");
 //					break;
 //			}
-			loadComicBookResultsPage(searchResults, target, searchBy, this.userSession);
+//			loadComicBookResultsPage(searchResults, target, searchBy, this.userSession);
 		}
     }
 	
-	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy, UserSession user) {
-		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy, user);
-		resultsPage.setVisible(true);
-	}
+//	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy, UserSession user) {
+//		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy, user);
+//		resultsPage.setVisible(true);
+//	}
 	
 	public void reloadTable() {
 		comicBookDaoImpl = new ComicBookDaoImpl();

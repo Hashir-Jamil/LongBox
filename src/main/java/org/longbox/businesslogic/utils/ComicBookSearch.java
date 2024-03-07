@@ -3,6 +3,7 @@ package org.longbox.businesslogic.utils;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.presentation.comicbook.ComicBookFrame;
+import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,7 +109,7 @@ public class ComicBookSearch {
 //		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
 	}
     
-    public static List<ComicBookDTO> comicAdvancedSearch(String searchBy, String target, List<ComicBookDTO> searchResults, List<ComicBookDTO> searchList) {
+    public static List<ComicBookDTO> comicAdvancedSearch(String searchBy, String target, List<ComicBookDTO> searchResults, List<ComicBookDTO> searchList, UserSession user) {
     	switch (searchBy) {
 			case "Title":
 				searchResults = searchComicBookByTitle(searchList, target);
@@ -132,8 +133,14 @@ public class ComicBookSearch {
 				searchResults = searchComicBookByPublisher(searchList, "");
 				break;
     	}
+    	loadComicBookResultsPage(searchResults, target, searchBy, user);
     	return searchResults;
     }
+    
+    private static void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy, UserSession user) {
+		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy, user);
+		resultsPage.setVisible(true);
+	}
 
     public static String generateComicBookHTML(ComicBookDTO comicBook) {
         String htmlContent = String.format(
