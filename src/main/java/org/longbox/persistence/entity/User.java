@@ -50,6 +50,9 @@ public class User {
 	@Column(name = "comics_finished")
 	private Integer comicsFinished;
 
+	@Column(name = "about_me")
+	private String aboutMe;
+
 	@ManyToMany
 	@JoinTable(name = "comic_book_favorites_list",
 		joinColumns = @JoinColumn(name = "user_id"),
