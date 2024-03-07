@@ -107,7 +107,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 
 			scrollPane = new JScrollPane(comicBookTable);
 			scrollPane.setViewportBorder(null);
-			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 			scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 			scrollPane.setBounds(10, 110, 1144, 683);
 			panel.add(scrollPane);
@@ -179,7 +179,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 					searchResults = ComicBookSearch.searchComicBookByArtist(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
 					break;
 				case "Genre":
-					// Implement logic
+					searchResults = ComicBookSearch.searchComicBookByGenre(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
 					break;
 				case "Publisher":
 					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
