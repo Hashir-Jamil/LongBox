@@ -52,6 +52,9 @@ public class User {
 	@Column(name = "comics_finished")
 	private Integer comicsFinished;
 
+	@Column(name = "about_me")
+	private String aboutMe;
+
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<ComicBookFavoritesList> favoriteComicBooks = new HashSet<>();
 

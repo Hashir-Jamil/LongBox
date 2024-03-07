@@ -22,8 +22,33 @@ public class UserDTO {
 	private List<ComicBookDTO> comicBookList = new ArrayList<>();
 	private int comicsReading;
 	private int comicsFinished;
+	private String aboutMe;
 
 	public UserDTO() {
+	}
+
+	public UserDTO(
+			String userName,
+			String firstName,
+			String lastName,
+			Date dob,
+			String email,
+			String password,
+			String country,
+			String aboutMe
+	) {
+		super();
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dob = dob;
+		this.email = email;
+		this.password = password;
+		this.country = country;
+		this.joinDate = new Date();
+		this.comicsReading = 0;
+		this.comicsFinished = 0;
+		this.aboutMe = aboutMe;
 	}
 
 	public UserDTO(
@@ -46,6 +71,34 @@ public class UserDTO {
 		this.joinDate = new Date();
 		this.comicsReading = 0;
 		this.comicsFinished = 0;
+	}
+
+	public UserDTO(
+			long id,
+			String userName,
+			String firstName,
+			String lastName,
+			Date dob,
+			String email,
+			String password,
+			String country,
+			int comicsReading,
+			int comicsFinished,
+			String aboutMe
+	) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dob = dob;
+		this.email = email;
+		this.password = password;
+		this.country = country;
+		this.joinDate = new Date();
+		this.comicsReading = comicsReading;
+		this.comicsFinished = comicsFinished;
+		this.aboutMe = aboutMe;
 	}
 
 	public UserDTO(
@@ -85,7 +138,8 @@ public class UserDTO {
 				user.getPassword(),
 				user.getCountry(),
 				user.getComicsReading(),
-				user.getComicsFinished()
+				user.getComicsFinished(),
+				user.getAboutMe()
 		);
 	}
 
@@ -118,6 +172,12 @@ public class UserDTO {
 				"Country: " + country + "\n" +
 				"Join Date: " + joinDate + "\n" +
 				"Comics Reading: " + comicsReading + "\n" +
-				"Comics Finished: " + comicsFinished + "\n";
+				"Comics Finished: " + comicsFinished + "\n" +
+				"About Me: " + aboutMe + "\n";
 	}
+	
+	public String getUserName() {
+		return this.userName;
+	}
+	
 }

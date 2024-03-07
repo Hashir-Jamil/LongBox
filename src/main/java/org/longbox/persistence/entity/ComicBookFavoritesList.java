@@ -34,8 +34,8 @@ public class ComicBookFavoritesList {
             insertable = false, updatable = false)
     private Date dateAdded;
 
-    public ComicBookFavoritesList(ComicBookListId id, User u, ComicBook cb) {
-        this.id = id;
+    public ComicBookFavoritesList(User u, ComicBook cb) {
+        this.id = new ComicBookListId(u.getId(), cb.getId());
         this.user = u;
         this.comicBook = cb;
         this.dateAdded = new Date();

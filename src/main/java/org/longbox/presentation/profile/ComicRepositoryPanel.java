@@ -175,8 +175,8 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 		comicBookTable.setRowSorter(sorter);
 		
 		scrollPane = new JScrollPane(comicBookTable);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setViewportBorder(null);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(10, 110, 1144, 683);
 		panel.add(scrollPane);
