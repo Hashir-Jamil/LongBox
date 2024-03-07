@@ -179,6 +179,6 @@
 
 ## Wednesday, March 6th, 2024
     
-    Ahan: Fixed the error in FavoritesPanel and ComicBookFavoritesDaoImpl due to incorrect initializing of objects.
+    Ahan: Fixed the error in FavoritesPanel and ComicBookFavoritesDaoImpl due to incorrect initializing of objects. Also refactored the rpofile page.
     Group (All members): Meeting with professor and weekly update in lecture time.
     Group (Ahan, Hashir, Eric, Oscar): Evening work session to finish iteration 2 planning document, discussing any tasks left to complete & discussion of a design decision for common interface of stub data and postgresql data.

@@ -95,7 +95,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 				public void mouseClicked(MouseEvent e) {
 					int row = comicBookTable.rowAtPoint(e.getPoint());
 					int col = comicBookTable.columnAtPoint(e.getPoint());
-					if (col == 0) {
+					if (col == 0 && e.getClickCount() == 2) {
 						ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), comicBookTable.getValueAt(row, col).toString());
 						System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
 						ComicBookSearch.loadComicBookPage(comicBook, userSession);
@@ -107,7 +107,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 
 			scrollPane = new JScrollPane(comicBookTable);
 			scrollPane.setViewportBorder(null);
-			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 			scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 			scrollPane.setBounds(10, 110, 1144, 683);
 			panel.add(scrollPane);
@@ -131,7 +131,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 
 			textField.addActionListener(this);
 
-			JLabel lblNewLabel = new JLabel("Search Collection:");
+			JLabel lblNewLabel = new JLabel("Search Favorites:");
 			lblNewLabel.setBounds(10, 66, 120, 13);
 			panel.add(lblNewLabel);
 
@@ -167,36 +167,39 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 			String searchBy = typeSelection.getSelectedItem().toString();
 			String target = textField.getText();
 			List<ComicBookDTO> searchResults = null;
+			
+			searchResults = ComicBookSearch.comicAdvancedSearch(searchBy, target, searchResults, comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), this.userSession);
+			
 			System.out.println("Search for: " + textField.getText() + " in " + searchBy);
-			switch (searchBy) {
-				case "Title":
-					searchResults = ComicBookSearch.searchComicBookByTitle(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
-					break;
-				case "Author":
-					searchResults = ComicBookSearch.searchComicBookByAuthor(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
-					break;
-				case "Artist":
-					searchResults = ComicBookSearch.searchComicBookByArtist(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
-					break;
-				case "Genre":
-					// Implement logic
-					break;
-				case "Publisher":
-					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
-					break;
-				case "Year":
-					searchResults = ComicBookSearch.searchComicBookByYear(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
-					break;
-				default:
-					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), "");
-					break;
-			}
-			loadComicBookResultsPage(searchResults, target, searchBy);
+//			switch (searchBy) {
+//				case "Title":
+//					searchResults = ComicBookSearch.searchComicBookByTitle(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
+//					break;
+//				case "Author":
+//					searchResults = ComicBookSearch.searchComicBookByAuthor(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
+//					break;
+//				case "Artist":
+//					searchResults = ComicBookSearch.searchComicBookByArtist(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
+//					break;
+//				case "Genre":
+//					searchResults = ComicBookSearch.searchComicBookByGenre(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
+//					break;
+//				case "Publisher":
+//					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
+//					break;
+//				case "Year":
+//					searchResults = ComicBookSearch.searchComicBookByYear(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), textField.getText());
+//					break;
+//				default:
+//					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), "");
+//					break;
+//			}
+//			loadComicBookResultsPage(searchResults, target, searchBy);
 		}
 	}
 
-	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy) {
-		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy, this.userSession);
-		resultsPage.setVisible(true);
-	}
+//	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy) {
+//		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy, this.userSession);
+//		resultsPage.setVisible(true);
+//	}
 }

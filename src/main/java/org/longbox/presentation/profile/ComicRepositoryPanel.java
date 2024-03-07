@@ -121,38 +121,41 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 			String searchBy = typeSelection.getSelectedItem().toString();
 			String target = textField.getText();
 			List<ComicBookDTO> searchResults = null;
+			
+			searchResults = ComicBookSearch.comicAdvancedSearch(searchBy, target, searchResults, comicBookDaoImpl.getAllComicBooks(), this.userSession);
+			
 			System.out.println("Search for: " + textField.getText() + " in "  + searchBy);
-			switch(searchBy) {
-				case "Title":
-					searchResults = ComicBookSearch.searchComicBookByTitle(comicBookDaoImpl.getAllComicBooks(), textField.getText());
-					break;
-				case "Author":
-					searchResults = ComicBookSearch.searchComicBookByAuthor(comicBookDaoImpl.getAllComicBooks(), textField.getText());
-					break;
-				case "Artist":
-					searchResults = ComicBookSearch.searchComicBookByArtist(comicBookDaoImpl.getAllComicBooks(), textField.getText());
-					break;
-				case "Genre":
-					searchResults = ComicBookSearch.searchComicBookByGenre(comicBookDaoImpl.getAllComicBooks(), textField.getText());
-					break;
-				case "Publisher":
-					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookDaoImpl.getAllComicBooks(), textField.getText());
-					break;
-				case "Year":
-					searchResults = ComicBookSearch.searchComicBookByYear(comicBookDaoImpl.getAllComicBooks(), textField.getText());
-					break;
-				default:
-					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookDaoImpl.getAllComicBooks(), "");
-					break;
-			}
-			loadComicBookResultsPage(searchResults, target, searchBy, this.userSession);
+//			switch(searchBy) {
+//				case "Title":
+//					searchResults = ComicBookSearch.searchComicBookByTitle(comicBookDaoImpl.getAllComicBooks(), textField.getText());
+//					break;
+//				case "Author":
+//					searchResults = ComicBookSearch.searchComicBookByAuthor(comicBookDaoImpl.getAllComicBooks(), textField.getText());
+//					break;
+//				case "Artist":
+//					searchResults = ComicBookSearch.searchComicBookByArtist(comicBookDaoImpl.getAllComicBooks(), textField.getText());
+//					break;
+//				case "Genre":
+//					searchResults = ComicBookSearch.searchComicBookByGenre(comicBookDaoImpl.getAllComicBooks(), textField.getText());
+//					break;
+//				case "Publisher":
+//					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookDaoImpl.getAllComicBooks(), textField.getText());
+//					break;
+//				case "Year":
+//					searchResults = ComicBookSearch.searchComicBookByYear(comicBookDaoImpl.getAllComicBooks(), textField.getText());
+//					break;
+//				default:
+//					searchResults = ComicBookSearch.searchComicBookByPublisher(comicBookDaoImpl.getAllComicBooks(), "");
+//					break;
+//			}
+//			loadComicBookResultsPage(searchResults, target, searchBy, this.userSession);
 		}
     }
 	
-	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy, UserSession user) {
-		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy, user);
-		resultsPage.setVisible(true);
-	}
+//	private void loadComicBookResultsPage(List<ComicBookDTO> displayResults, String target, String searchBy, UserSession user) {
+//		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy, user);
+//		resultsPage.setVisible(true);
+//	}
 	
 	public void reloadTable() {
 		comicBookDaoImpl = new ComicBookDaoImpl();
