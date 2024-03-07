@@ -166,8 +166,17 @@
 ## Sunday, March 3rd, 2024
 
     Hashir: Finished hibernate entity class relationship cardinalities
+
+## Monday, March 4th, 2024
+
+    Hashir & Ahan: Debugged database integration issues. Table definitions and key constraints were not handled properly. Also, data transfer was not being done correctly. New objects being created were leading to new keys/rows being made which were supposed to be for existing records in the database.
     
 ## Tuesday, March 5th, 2024
 
 	Oscar: Changed default font to Calibri.
  	Eric: Added ability to login using email and password rather than just username and password. New user registration no longer allows '@' or blank usernames
+    
+## Wednesday, March 6th, 2024
+
+    Group (All members): Meeting with professor and weekly update in lecture time.
+    Group (Ahan, Hashir, Eric, Oscar): Evening work session to finish iteration 2 planning document, discussing any tasks left to complete & discussion of a design decision for common interface of stub data and postgresql data.
