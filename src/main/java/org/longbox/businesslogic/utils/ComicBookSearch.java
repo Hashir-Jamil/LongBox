@@ -107,6 +107,33 @@ public class ComicBookSearch {
 //		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(htmlEditorKit);
 //		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
 	}
+    
+    public static List<ComicBookDTO> comicAdvancedSearch(String searchBy, String target, List<ComicBookDTO> searchResults, List<ComicBookDTO> searchList) {
+    	switch (searchBy) {
+			case "Title":
+				searchResults = searchComicBookByTitle(searchList, target);
+				break;
+			case "Author":
+				searchResults = searchComicBookByAuthor(searchList, target);
+				break;
+			case "Artist":
+				searchResults = searchComicBookByArtist(searchList, target);
+				break;
+			case "Genre":
+				searchResults = searchComicBookByGenre(searchList, target);
+				break;
+			case "Publisher":
+				searchResults = searchComicBookByPublisher(searchList, target);
+				break;
+			case "Year":
+				searchResults = searchComicBookByYear(searchList, target);
+				break;
+			default:
+				searchResults = searchComicBookByPublisher(searchList, "");
+				break;
+    	}
+    	return searchResults;
+    }
 
     public static String generateComicBookHTML(ComicBookDTO comicBook) {
         String htmlContent = String.format(
