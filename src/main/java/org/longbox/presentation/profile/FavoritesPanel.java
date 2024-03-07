@@ -95,7 +95,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 				public void mouseClicked(MouseEvent e) {
 					int row = comicBookTable.rowAtPoint(e.getPoint());
 					int col = comicBookTable.columnAtPoint(e.getPoint());
-					if (col == 0) {
+					if (col == 0 && e.getClickCount() == 2) {
 						ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), comicBookTable.getValueAt(row, col).toString());
 						System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
 						ComicBookSearch.loadComicBookPage(comicBook, userSession);
@@ -131,7 +131,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 
 			textField.addActionListener(this);
 
-			JLabel lblNewLabel = new JLabel("Search Collection:");
+			JLabel lblNewLabel = new JLabel("Search Favorites:");
 			lblNewLabel.setBounds(10, 66, 120, 13);
 			panel.add(lblNewLabel);
 
