@@ -31,8 +31,8 @@ public class ComicBookFavoritesList {
     @Column(name = "date_added_user_list")
     private Date dateAdded;
 
-    public ComicBookFavoritesList(ComicBookListId id, User u, ComicBook cb) {
-        this.id = id;
+    public ComicBookFavoritesList(User u, ComicBook cb) {
+        this.id = new ComicBookListId(u.getId(), cb.getId());
         this.user = u;
         this.comicBook = cb;
         this.dateAdded = new Date();

@@ -37,9 +37,7 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
             User user = userDao.getUserById(userId);
             ComicBook comicBook = comicBookDao.getComicBookById(comicBookId);
 
-            ComicBookListId favoritesListId = new ComicBookListId(user.getId(), comicBook.getId());
-
-            ComicBookFavoritesList userFavourite = new ComicBookFavoritesList(favoritesListId, user, comicBook);
+            ComicBookFavoritesList userFavourite = new ComicBookFavoritesList(user, comicBook);
 
             transaction = session.beginTransaction();
             session.save(userFavourite);
