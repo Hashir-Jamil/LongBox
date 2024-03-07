@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.longbox.domainobjects.dto.UserDTO;
 
 import java.util.Date;
@@ -111,5 +112,22 @@ public class User {
 		User other = (User) obj;
 		return  Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName) && id == other.id
 				&& Objects.equals(lastName, other.lastName) && Objects.equals(userName, other.userName);
+	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", userName='" + userName + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", dob=" + dob +
+				", email='" + email + '\'' +
+				", password='" + password + '\'' +
+				", country='" + country + '\'' +
+				", joinDate=" + joinDate +
+				", comicsReading=" + comicsReading +
+				", comicsFinished=" + comicsFinished +
+				'}';
 	}
 }

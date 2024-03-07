@@ -1,12 +1,9 @@
--- Deleting a schema
-
+-- Schema Definition
 DROP SCHEMA IF EXISTS longbox_schema CASCADE;
-
---Adding tables to the db again
-
 CREATE SCHEMA IF NOT EXISTS longbox_schema;
 SET SEARCH_PATH = longbox_schema;
 
+--Table Definitions
 CREATE TABLE IF NOT EXISTS "user" (
     "id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     "user_name" text UNIQUE,
@@ -64,32 +61,60 @@ CREATE TABLE IF NOT EXISTS "comic_book_reading_list" (
    PRIMARY KEY ("user_id","comic_book_id")
 );
 
+-- Foreign Key Constraints
 ALTER TABLE "comic_book_favorites_list" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
-
 ALTER TABLE "comic_book_favorites_list" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
 
 ALTER TABLE "comments" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
-
 ALTER TABLE "comments" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
 
 ALTER TABLE "comic_book_finished_list" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
-
 ALTER TABLE "comic_book_finished_list" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
 
 ALTER TABLE "comic_book_reading_list" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
-
 ALTER TABLE "comic_book_reading_list" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
+
+-- Functions & Triggers
+
+-- Create a function to update comics_finished column
+CREATE OR REPLACE FUNCTION update_comics_finished_count()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Update comics_finished count for the affected user
+    SET SEARCH_PATH = longbox_schema;
+	IF TG_OP = 'INSERT' THEN
+        -- Increment comics_finished count
+        UPDATE "user" u
+        SET comics_finished = (
+            SELECT COUNT(*)
+            FROM comic_book_finished_list f
+            WHERE f.user_id = NEW.user_id
+        )
+        WHERE u.id = NEW.user_id;
+    ELSEIF TG_OP = 'DELETE' THEN
+        -- Decrement comics_finished count
+        UPDATE "user" u
+        SET comics_finished = (
+            SELECT COUNT(*)
+            FROM comic_book_finished_list f
+            WHERE f.user_id = OLD.user_id
+        )
+        WHERE u.id = OLD.user_id;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Create a trigger to execute the function after insert or delete on comic_book_finished_list table
+CREATE TRIGGER update_comics_finished_trigger
+    AFTER INSERT OR DELETE
+ON comic_book_finished_list
+FOR EACH ROW
+EXECUTE FUNCTION update_comics_finished_count();
 
 -- Add data to the tables
 
-/*
-* This script can be used to insert user test data to batch load a database for this project
-* You can comment out individual lines if that row was already added manually by you in the process of developing and testing your stories
-*/
-
-
 -- First we add user objects
-
 INSERT INTO longbox_schema."user"(
     user_name, first_name, last_name, dob, email, password, country, join_date, comics_reading, comics_finished)
 VALUES
@@ -101,10 +126,8 @@ VALUES
     ('123', 'Quick', 'Access', '2003-02-10', '123@email.com', '123', 'India', '2024-02-15 15:09:10', 0, 0);
 
 -- Next we add comic book objects
-
 INSERT INTO longbox_schema.comic_book(
     series_title, author, artist, genres, description, number_of_issues, publisher, year_published, date_added)
-
 VALUES
     ('Zot!', 'Scott McCloud', 'Scott McCloud',
      'Superhero, Superpower, Adventure, Science Fiction, Futuristic, Romance, Drama',

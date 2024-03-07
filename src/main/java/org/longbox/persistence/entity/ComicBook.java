@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.longbox.domainobjects.dto.ComicBookDTO;
+
+import java.util.HashSet;
 import java.util.Set;
 import java.util.Date;
 
@@ -47,16 +49,16 @@ public class ComicBook {
     private Date dateAdded;
 
     @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
-    private Set<Comment> comments;
+    private Set<Comment> comments = new HashSet<>();
 
     @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
-    private Set<ComicBookFavoritesList> favoritedByList;
+    private Set<ComicBookFavoritesList> favoritedByList = new HashSet<>();
 
     @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
-    private Set<ComicBookFinishedList> finishedByList;
+    private Set<ComicBookFinishedList> finishedByList = new HashSet<>();
 
     @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
-    private Set<ComicBookReadingList> readingInProgressBy;
+    private Set<ComicBookReadingList> readingInProgressBy = new HashSet<>();
 
     public ComicBook(
         String seriesTitle,
@@ -91,5 +93,21 @@ public class ComicBook {
         this.publisher = comicBookDTO.getPublisher();
         this.yearPublished = comicBookDTO.getYearPublished();
         this.dateAdded = new Date();
+    }
+
+    @Override
+    public String toString() {
+        return "ComicBook{" +
+                "id=" + id +
+                ", seriesTitle='" + seriesTitle + '\'' +
+                ", author='" + author + '\'' +
+                ", artist='" + artist + '\'' +
+                ", genres='" + genres + '\'' +
+                ", description='" + description + '\'' +
+                ", numberOfIssues=" + numberOfIssues +
+                ", publisher='" + publisher + '\'' +
+                ", yearPublished=" + yearPublished +
+                ", dateAdded=" + dateAdded +
+                '}';
     }
 }

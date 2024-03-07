@@ -9,7 +9,7 @@ import org.longbox.businesslogic.exception.*;
 import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
 
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
     private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
     @Override
