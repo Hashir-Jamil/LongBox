@@ -35,7 +35,6 @@ public class Comment {
     private String userName;
 
     public Comment() {
-        System.out.println("comment class init");
     }
 
     public Comment(String message, ComicBook comicBook, User user, String userName) {
