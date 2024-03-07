@@ -1,4 +1,4 @@
-package org.longbox.persistence.dao;
+package org.longbox.integration.persistence.dao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
@@ -8,6 +8,7 @@ import java.util.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.domainobjects.dto.CommentDTO;
+import org.longbox.persistence.dao.CommentDaoImpl;
 import org.longbox.persistence.entity.Comment;
 
 class CommentDaoImplTest {

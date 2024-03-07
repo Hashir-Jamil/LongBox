@@ -1,7 +1,9 @@
-package org.longbox.businesslogic.utils;
+package org.longbox.unit.businesslogic.utils;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 
 import java.util.ArrayList;
@@ -136,7 +138,7 @@ public class ComicBookSearchTest {
                 "Image",
                 1993
         );
-        assertEquals(expected, ComicBookSearch.searchComicBook(comicBookDTOList, "The Maxx"));
+        Assertions.assertEquals(expected, ComicBookSearch.searchComicBook(comicBookDTOList, "The Maxx"));
     }
 
     @Test

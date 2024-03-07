@@ -1,7 +1,8 @@
-package org.longbox.businesslogic.comparators;
+package org.longbox.unit.businesslogic.comparators;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.longbox.businesslogic.comparators.ComicBookDateAddedComparator;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

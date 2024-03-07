@@ -1,4 +1,4 @@
-package org.longbox.businesslogic.comparators;
+package org.longbox.unit.businesslogic.comparators;
 
 import org.longbox.domainobjects.dto.CommentDTO;
 

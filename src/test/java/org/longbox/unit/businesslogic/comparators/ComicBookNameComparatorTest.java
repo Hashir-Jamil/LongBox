@@ -1,4 +1,4 @@
-package org.longbox.businesslogic.comparators;
+package org.longbox.unit.businesslogic.comparators;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;

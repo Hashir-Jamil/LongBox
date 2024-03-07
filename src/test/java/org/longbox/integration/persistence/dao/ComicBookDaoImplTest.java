@@ -1,8 +1,9 @@
-package org.longbox.persistence.dao;
+package org.longbox.integration.persistence.dao;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.entity.ComicBook;
 
 import java.util.ArrayList;

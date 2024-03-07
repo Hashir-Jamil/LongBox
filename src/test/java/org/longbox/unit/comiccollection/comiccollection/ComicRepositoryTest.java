@@ -1,4 +1,4 @@
-package org.longbox.comiccollection;
+package org.longbox.unit.comiccollection.comiccollection;
 
 import org.longbox.presentation.profile.ComicRepositoryPanel;
 

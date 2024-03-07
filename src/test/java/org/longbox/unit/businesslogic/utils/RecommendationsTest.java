@@ -1,4 +1,4 @@
-package org.longbox.businesslogic.utils;
+package org.longbox.unit.businesslogic.utils;
 
 import org.longbox.businesslogic.comparators.ComicBookDateAddedComparator;
 import org.longbox.domainobjects.dto.ComicBookDTO;

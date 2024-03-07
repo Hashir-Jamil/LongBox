@@ -1,4 +1,4 @@
-package org.longbox.presentation.authentication;
+package org.longbox.unit.authentication;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

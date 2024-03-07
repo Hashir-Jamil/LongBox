@@ -1,4 +1,4 @@
-package org.longbox.persistence.dao;
+package org.longbox.integration.persistence.dao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,6 +8,7 @@ import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.User;
 
 import java.util.Date;

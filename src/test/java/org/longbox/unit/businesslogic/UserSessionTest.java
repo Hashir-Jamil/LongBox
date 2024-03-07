@@ -1,8 +1,9 @@
-package org.longbox.businesslogic;
+package org.longbox.unit.businesslogic;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.longbox.businesslogic.UserSession;
 import org.longbox.domainobjects.dto.UserDTO;
 import java.util.Date;
 
