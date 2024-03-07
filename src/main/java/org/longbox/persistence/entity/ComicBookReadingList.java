@@ -27,7 +27,7 @@ public class ComicBookReadingList {
             insertable = false, updatable = false)
     private ComicBook comicBook;
 
-    @Column(name = "date_added_user_list")
+    @Column(name = "date_started")
     private Date dateAdded;
 
     public ComicBookReadingList(
