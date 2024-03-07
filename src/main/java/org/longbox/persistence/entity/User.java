@@ -2,6 +2,7 @@ package org.longbox.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.longbox.domainobjects.dto.UserDTO;
 
@@ -14,6 +15,7 @@ import java.util.Set;
 @Table(name = "user")
 @Getter
 @Setter
+@NoArgsConstructor
 public class User {
 
 	@Id
@@ -50,29 +52,17 @@ public class User {
 	@Column(name = "comics_finished")
 	private Integer comicsFinished;
 
-	@ManyToMany
-	@JoinTable(name = "comic_book_favorites_list",
-		joinColumns = @JoinColumn(name = "user_id"),
-		inverseJoinColumns = @JoinColumn(name = "comic_book_id"))
-	private Set<ComicBook> favoriteComicBooks = new HashSet<>();
+	@OneToMany(mappedBy = "user")
+	private Set<ComicBookFavoritesList> favoriteComicBooks = new HashSet<>();
 
-	@ManyToMany
-	@JoinTable(name = "comic_book_finished_list",
-			joinColumns = @JoinColumn(name = "user_id"),
-			inverseJoinColumns = @JoinColumn(name = "comic_book_id"))
-	private Set<ComicBook> finishedComicBooks = new HashSet<>();
+	@OneToMany(mappedBy = "user")
+	private Set<ComicBookFinishedList> finishedComicBooks = new HashSet<>();
 
-	@ManyToMany
-	@JoinTable(name = "comic_book_reading_list",
-			joinColumns = @JoinColumn(name = "user_id"),
-			inverseJoinColumns = @JoinColumn(name = "comic_book_id"))
-	private Set<ComicBook> readingComicBooks = new HashSet<>();
+	@OneToMany(mappedBy = "user")
+	private Set<ComicBookReadingList> readingComicBooks = new HashSet<>();
 
 	@OneToMany(mappedBy = "user")
 	private Set<Comment> comments = new HashSet<>();
-
-	public User() {
-	}
 
 	public User(String userName, String firstName, String lastName, Date dob, String email, String password,
 				String country) {

@@ -16,10 +16,15 @@ public class ComicBookReadingList {
 
     @ManyToOne
     @MapsId("userId")
+    @JoinColumn(
+            name = "user_id",
+            insertable = false, updatable = false)
     private User user;
 
     @ManyToOne
     @MapsId("comicBookId")
+    @JoinColumn(name = "comic_book_id",
+            insertable = false, updatable = false)
     private ComicBook comicBook;
 
     @Column(name = "date_added_user_list")

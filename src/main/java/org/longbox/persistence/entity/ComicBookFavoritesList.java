@@ -13,6 +13,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @Entity
+@EqualsAndHashCode
 @Table(name = "comic_book_favorites_list")
 public class ComicBookFavoritesList {
     @EmbeddedId
@@ -25,10 +26,12 @@ public class ComicBookFavoritesList {
 
     @ManyToOne
     @MapsId("comicBookId")
-    @JoinColumn(name = "comic_book_id")
+    @JoinColumn(name = "comic_book_id",
+            insertable = false, updatable = false)
     private ComicBook comicBook;
 
-    @Column(name = "date_added_user_list")
+    @Column(name = "date_added_user_list",
+            insertable = false, updatable = false)
     private Date dateAdded;
 
     public ComicBookFavoritesList(ComicBookListId id, User u, ComicBook cb) {
