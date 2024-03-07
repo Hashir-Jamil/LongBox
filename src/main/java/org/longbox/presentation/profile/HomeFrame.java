@@ -41,7 +41,7 @@ public class HomeFrame extends JFrame implements ActionListener {
 	private CardLayout cardLayout;
     private static JFrame frame;
     private JPanel comicCollectionPanel = new ComicRepositoryPanel();;
-    private ProfilePanel profilePanel = new ProfilePanel();
+    private ProfilePanel profilePanel;
     private AddComicToRepoPanel addComicToRepoPanel = new AddComicToRepoPanel();
     private JButton searchButtonNexus;
     private JButton addComicButton;
@@ -79,22 +79,19 @@ public class HomeFrame extends JFrame implements ActionListener {
     }
     
     public HomeFrame(UserSession user) {
-    	initiateRegUI();
     	this.userSession = user;
+    	initiateRegUI();
+    	
     	((ComicRepositoryPanel) comicCollectionPanel).setUserSession(this.userSession);
     	favoritesPanel.setUserSession(this.userSession);
-    	//comicCollectionPanel = new ComicRepositoryPanel(this.userSession);
+    	
         userNameLabel = new JLabel(user.getUser().getUserName());
-       // userNameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 13));
+      
         userNameLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         userNameLabel.setBounds(811, 19, 181, 16);
         nexusPanel.add(userNameLabel);
-        HTMLEditorKit kit = new HTMLEditorKit();
-        profilePanel.getUserProfileInformationTextPane().setEditorKit(kit);
-        profilePanel.getUserProfileInformationTextPane().setText(UserSession.generateUserProfileHTML(user));
-        HTMLEditorKit kit1 = new HTMLEditorKit();
-        profilePanel.getUserStatsTextPane().setEditorKit(kit1);
-        profilePanel.getUserStatsTextPane().setText(UserSession.generateUserStatsHTML(user));
+        
+       
     }
 
     public void initiateRegUI() {
@@ -110,6 +107,9 @@ public class HomeFrame extends JFrame implements ActionListener {
 
         // adding elements to the pane
         nexusPanel.setLayout(null);
+        
+        //init profile pane
+        profilePanel  = new ProfilePanel(this.userSession);
         
         activityPanel = new JPanel();
         activityPanel.setBounds(10, 47, 1164, 803);
