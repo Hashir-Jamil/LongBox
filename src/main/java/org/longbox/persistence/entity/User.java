@@ -52,16 +52,16 @@ public class User {
 	@Column(name = "comics_finished")
 	private Integer comicsFinished;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<ComicBookFavoritesList> favoriteComicBooks = new HashSet<>();
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<ComicBookFinishedList> finishedComicBooks = new HashSet<>();
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<ComicBookReadingList> readingComicBooks = new HashSet<>();
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<Comment> comments = new HashSet<>();
 
 	public User(String userName, String firstName, String lastName, Date dob, String email, String password,

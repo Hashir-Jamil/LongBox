@@ -12,7 +12,7 @@ import java.util.Date;
 @Setter
 public class ComicBookReadingList {
     @EmbeddedId
-    private ComicBookListId id;
+    private ComicBookListId id = new ComicBookListId();
 
     @ManyToOne
     @MapsId("userId")

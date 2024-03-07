@@ -46,16 +46,16 @@ public class ComicBook {
     @Column(name = "date_added")
     private Date dateAdded;
 
-    @OneToMany(mappedBy = "comicBook")
+    @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
     private Set<Comment> comments;
 
-    @OneToMany(mappedBy = "comicBook")
+    @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
     private Set<ComicBookFavoritesList> favoritedByList;
 
-    @OneToMany(mappedBy = "comicBook")
+    @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
     private Set<ComicBookFinishedList> finishedByList;
 
-    @OneToMany(mappedBy = "comicBook")
+    @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
     private Set<ComicBookReadingList> readingInProgressBy;
 
     public ComicBook(
