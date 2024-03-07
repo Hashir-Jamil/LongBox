@@ -29,4 +29,13 @@ public class ComicBookReadingList {
 
     @Column(name = "date_added_user_list")
     private Date dateAdded;
+
+    public ComicBookReadingList(
+            User user,
+            ComicBook comicBook) {
+        this.user = user;
+        this.comicBook = comicBook;
+        this.id.setUserId(user.getId());
+        this.id.setComicBookId(comicBook.getId());
+    }
 }
