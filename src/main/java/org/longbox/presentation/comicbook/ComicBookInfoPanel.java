@@ -16,11 +16,8 @@ import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.MultiLineCellRenderer;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.domainobjects.dto.CommentDTO;
-import org.longbox.persistence.dao.ComicBookDaoImpl;
-import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
-import org.longbox.persistence.dao.CommentDaoImpl;
+import org.longbox.persistence.dao.*;
 import org.longbox.persistence.entity.ComicBook;
-import org.longbox.presentation.profile.FavoritesPanel;
 
 @Getter
 @Setter
@@ -29,7 +26,13 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private static final String DEFAULT_FONT = "Calibri";
 	private static final String PANEL_LABEL = "Search Result";
-	private static final String VIEW_COMMENTS = "View Comments";
+	private static final String ADD_COMMENT_LABEL = "Add Comment";
+	private static final String READING_LIST_LABEL = "Add To Reading";
+	private static final String FINISHED_LIST_LABEL = "Add to Finished";
+	private static final String FAVORITES_LIST_LABEL = "Add to Favorites";
+	private static final String REMOVE_FAVORITES_LIST_LABEL = "Remove Favorite";
+	private static final String REMOVE_FINISHED_LIST_LABEL = "Remove From Finished";
+	private static final String REMOVE_READING_LIST_LABEL = "Remove From Reading";
 	private ComicBookDTO comicBookDTO;
 	private JPanel panel;
 	//text labels
@@ -42,8 +45,16 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	private JLabel publisher;
 	private JLabel yearPublished;
 	private JLabel dateAdded;
+	private JLabel commentsTitle;
+	private JLabel addCommentLabel;
+	private JLabel viewCommentsLabel;
 	private JButton addCommentButton;
 	private JButton addToFavoritesButton;
+	private JButton addToFinishedButton;
+	private JButton addToReadingButton;
+	private JButton removeFromFavoritesButton;
+	private JButton removeFromFinishedButton;
+	private JButton removeFromToReadingButton;
 	private JTextArea commentBox;
 	private DefaultListModel<CommentDTO> commentListModel;
 	private CommentDaoImpl commentDaoImpl;
@@ -52,6 +63,8 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	private JList<CommentDTO> commentList;
 	private ComicBookDaoImpl comicBookDaoImpl;
 	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl;
+	private ComicBookFinishedListDaoImpl comicBookFinishedListDaoImpl;
+	private ComicBookReadingListDaoImpl comicBookReadingListDaoImpl;
 	
 	/**
 	 * Create the panel.
@@ -172,10 +185,10 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		dateAdded.setBounds(182, 456, 373, 16);
 		panel.add(dateAdded);
 		
-		JLabel CommentsTitle = new JLabel("Comments");
-		CommentsTitle.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
-		CommentsTitle.setBounds(618, 135, 123, 34);
-		panel.add(CommentsTitle);
+		commentsTitle = new JLabel("Comments");
+		commentsTitle.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
+		commentsTitle.setBounds(618, 135, 123, 34);
+		panel.add(commentsTitle);
 		
 		commentBox = new JTextArea();
 		commentBox.setBounds(618, 201, 517, 103);
@@ -183,26 +196,52 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		commentBox.setWrapStyleWord(true);
 		panel.add(commentBox);
 		
-		addCommentButton = new JButton("Add Comment");
+		addCommentButton = new JButton(ADD_COMMENT_LABEL);
 		addCommentButton.setBounds(1018, 311, 117, 29);
 		addCommentButton.addActionListener(this);
 		panel.add(addCommentButton);
 
-		addToFavoritesButton = new JButton("Add to Favorites");
-		addToFavoritesButton.setBounds(53, 600, 150, 29);
+		addToFavoritesButton = new JButton(FAVORITES_LIST_LABEL);
+		addToFavoritesButton.setBounds(10, 655, 175, 30);
 		addToFavoritesButton.setEnabled(false);
 		addToFavoritesButton.addActionListener(this);
 		panel.add(addToFavoritesButton);
 
-		if (!isComicInFavorites(comicBookDTO.getId())) {
-			addToFavoritesButton.setEnabled(true);
-		}
+		addToFinishedButton = new JButton(FINISHED_LIST_LABEL);
+		addToFinishedButton.setBounds(200, 655, 175, 30);
+		addToFinishedButton.setEnabled(false);
+		addToFinishedButton.addActionListener(this);
+		panel.add(addToFinishedButton);
+
+		addToReadingButton = new JButton(READING_LIST_LABEL);
+		addToReadingButton.setBounds(391, 655, 175, 30);
+		addToReadingButton.setEnabled(false);
+		addToReadingButton.addActionListener(this);
+		panel.add(addToReadingButton);
+
+		removeFromFavoritesButton = new JButton(REMOVE_FAVORITES_LIST_LABEL);
+		removeFromFavoritesButton.setBounds(10, 690, 175, 30);
+		removeFromFavoritesButton.setEnabled(false);
+		removeFromFavoritesButton.addActionListener(this);
+		panel.add(removeFromFavoritesButton);
+
+		removeFromFinishedButton = new JButton(REMOVE_FINISHED_LIST_LABEL);
+		removeFromFinishedButton.setBounds(200, 690, 175, 30);
+		removeFromFinishedButton.setEnabled(false);
+		removeFromFinishedButton.addActionListener(this);
+		panel.add(removeFromFinishedButton);
+
+		removeFromToReadingButton = new JButton(REMOVE_READING_LIST_LABEL);
+		removeFromToReadingButton.setBounds(391, 690, 175, 30);
+		removeFromToReadingButton.setEnabled(false);
+		removeFromToReadingButton.addActionListener(this);
+		panel.add(removeFromToReadingButton);
 		
-		JLabel addCommentLabel = new JLabel("Share your thoughts:");
+		addCommentLabel = new JLabel("Share your thoughts:");
 		addCommentLabel.setBounds(618, 173, 143, 16);
 		panel.add(addCommentLabel);
 		
-		JLabel viewCommentsLabel = new JLabel("What other think about this comic:");
+		viewCommentsLabel = new JLabel("What others think about this comic:");
 		viewCommentsLabel.setBounds(618, 360, 241, 16);
 		panel.add(viewCommentsLabel);
 
@@ -215,6 +254,9 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		commentPane.setBounds(618, 388, 517, 376);
 		panel.add(commentPane);
 
+		favoriteButtonStates();
+		finishedButtonStates();
+		readingButtonStates();
 		setFields();
 		displayComments();
 	}
@@ -259,6 +301,57 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
                 throw new RuntimeException(ex);
             }
 			addToFavoritesButton.setEnabled(false); // Disable the button after adding
+			favoriteButtonStates();
+		}
+		else if (e.getSource() == addToFinishedButton) {
+			comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl();
+			try {
+				comicBookFinishedListDaoImpl.saveToFinished(userSession.getUser().getId(), comicBookDTO.getId());
+			} catch (UserIDDoesNotExistException ex) {
+				throw new RuntimeException(ex);
+			}
+			addToFinishedButton.setEnabled(false); // Disable the button after adding
+			finishedButtonStates();
+		}
+		else if (e.getSource() == addToReadingButton) {
+			comicBookReadingListDaoImpl = new ComicBookReadingListDaoImpl();
+			try {
+				comicBookReadingListDaoImpl.saveToReading(userSession.getUser().getId(), comicBookDTO.getId());
+			} catch (UserIDDoesNotExistException ex) {
+				throw new RuntimeException(ex);
+			}
+			addToReadingButton.setEnabled(false); // Disable the button after adding
+			readingButtonStates();
+		}
+		else if (e.getSource() == removeFromFavoritesButton) {
+			ComicBookFavouritesListDaoImpl favoritesListDaoImpl = new ComicBookFavouritesListDaoImpl();
+			try {
+				favoritesListDaoImpl.removeFromFavorites(userSession.getUser().getId(), comicBookDTO.getId());
+			} catch (Exception ex) {
+				throw new RuntimeException(ex);
+			}
+			removeFromFavoritesButton.setEnabled(false);
+			favoriteButtonStates();
+		}
+		else if (e.getSource() == removeFromFinishedButton) {
+			comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl();
+			try {
+				comicBookFinishedListDaoImpl.removeFromFinished(userSession.getUser().getId(), comicBookDTO.getId());
+			} catch (Exception ex) {
+				throw new RuntimeException(ex);
+			}
+			removeFromFinishedButton.setEnabled(false);
+			finishedButtonStates();
+		}
+		else if (e.getSource() == removeFromToReadingButton) {
+			comicBookReadingListDaoImpl = new ComicBookReadingListDaoImpl();
+			try {
+				comicBookReadingListDaoImpl.removeFromReading(userSession.getUser().getId(), comicBookDTO.getId());
+			} catch (Exception ex) {
+				throw new RuntimeException(ex);
+			}
+			removeFromToReadingButton.setEnabled(false);
+			readingButtonStates();
 		}
 	}
 
@@ -271,4 +364,40 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		return comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO);
 	}
 
+	private boolean isComicInFinished(Long userId, Long comicBookId) {
+		comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl();
+		return comicBookFinishedListDaoImpl.doesRecordExist(userId, comicBookId);
+	}
+
+	private boolean isComicInReading(Long userId, Long comicBookId) {
+		comicBookReadingListDaoImpl = new ComicBookReadingListDaoImpl();
+		return comicBookReadingListDaoImpl.doesRecordExist(userId, comicBookId);
+	}
+
+	private void favoriteButtonStates() {
+		if (!isComicInFavorites(comicBookDTO.getId())) {
+			addToFavoritesButton.setEnabled(true);
+		}
+		else {
+			removeFromFavoritesButton.setEnabled(true);
+		}
+	}
+
+	private void finishedButtonStates() {
+		if (!isComicInFinished(userSession.getUser().getId(), comicBookDTO.getId())) {
+			addToFinishedButton.setEnabled(true);
+		}
+		else {
+			removeFromFinishedButton.setEnabled(true);
+		}
+	}
+
+	private void readingButtonStates() {
+		if (!isComicInReading(userSession.getUser().getId(), comicBookDTO.getId())) {
+			addToReadingButton.setEnabled(true);
+		}
+		else {
+			removeFromToReadingButton.setEnabled(true);
+		}
+	}
 }

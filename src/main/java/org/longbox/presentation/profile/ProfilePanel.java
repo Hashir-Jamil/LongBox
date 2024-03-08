@@ -6,36 +6,27 @@ import lombok.Setter;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import javax.swing.JTable;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.longbox.businesslogic.UserSession;
+import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.domainobjects.dto.UserDTO;
-import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
 import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
+import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.ComicBook;
 
-import javax.swing.JTextPane;
-import javax.swing.JScrollPane;
 @Getter
 @Setter
 public class ProfilePanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private final String PANEL_LABEL = "Profile View";
-	
 	private JLabel userName;
 	private JLabel firstName;
 	private JLabel lastName;
@@ -46,25 +37,30 @@ public class ProfilePanel extends JPanel implements ActionListener {
 	private JLabel comicsReading;
 	private JLabel comicsFinished;
 	private JTextField aboutMe;
-	
+	private JPanel panel;
 	private UserSession user;
-	
+	private ReadingAndFinishedComicBookTableModel readingTableModel;
+	private ReadingAndFinishedComicBookTableModel readTableModel;
+	private JScrollPane readingPane;
+	private JScrollPane readPane;
+	private JTable readingTable;
+	private JTable readTable;
+	private JLabel currentlyReading;
+	private JLabel currentlyRead;
 
 	/**
 	 * Create the panel.
 	 */
-
 	public ProfilePanel(UserSession user) {
 		this.user = user;
 		initProfilePage();
 	}
 
 	private void initProfilePage() {
-		
 		setBounds(10, 47, 1164, 803);
 		setLayout(new BorderLayout());
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 	    panel.setLayout(null);
 	    
 	    JLabel comicCollectionTitle = new JLabel(PANEL_LABEL);
@@ -180,52 +176,17 @@ public class ProfilePanel extends JPanel implements ActionListener {
 			}
 		});
 		panel.add(aboutMeUpdateButton);
-		
-		ComicBookReadingListDaoImpl readingListDaoImpl = new ComicBookReadingListDaoImpl();
-		ComicBookFinishedListDaoImpl readListDaoImpl = new ComicBookFinishedListDaoImpl();
-		
-		List<ComicBook> readingList = readingListDaoImpl.getUsersReadingList(user.getUser().getId());
-		List<ComicBookDTO> readingListDTO = new ArrayList<ComicBookDTO>();
-		
-		List<ComicBook> readList = readListDaoImpl.getUsersFinishedList(user.getUser().getId());
-		List<ComicBookDTO> readListDTO = new ArrayList<ComicBookDTO>();
-		
-		for (ComicBook c : readingList) {
-            ComicBookDTO comicBookDTO = new ComicBookDTO(c);
-            readingListDTO.add(comicBookDTO);
-        }
-		
-		for (ComicBook c : readList) {
-			ComicBookDTO comicBookDTO = new ComicBookDTO(c);
-			readListDTO.add(comicBookDTO);
-		}
-		
-		ReadingAndReadComicBookTableModel readingTableModel = new ReadingAndReadComicBookTableModel(readingListDTO);
-		ReadingAndReadComicBookTableModel readTableModel = new ReadingAndReadComicBookTableModel(readListDTO);
 
-		JTable readingTable = new JTable(readingTableModel);
-		JScrollPane readingPane = new JScrollPane(readingTable);
-		readingPane.setBounds(47, 424, 407, 135);
-		panel.add(readingPane);
-		
-		JTable readTable = new JTable(readTableModel);
-		JScrollPane readPane = new JScrollPane(readTable);
-		readPane.setBounds(47, 617, 407, 135);
-		panel.add(readPane);
-		
-		JLabel currentlyReading = new JLabel("Currently Reading: ");
-		currentlyReading.setBounds(47, 399, 118, 14);
-		panel.add(currentlyReading);
-		
-		JLabel read = new JLabel("Comics Read: ");
-		read.setBounds(47, 592, 118, 14);
-		panel.add(read);
-		
-		setFields();
+        try {
+            reloadTable();
+        } catch (UserIDDoesNotExistException e) {
+            throw new RuntimeException(e);
+        }
+
+        setFields();
 	}
 	
 	private void setFields() {
-
 		userName.setText(this.user.getUser().getUserName());
 		firstName.setText(this.user.getUser().getFirstName());
 		lastName.setText(this.user.getUser().getLastName());
@@ -241,9 +202,54 @@ public class ProfilePanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
-	
 
-	
+	public void reloadTable() throws UserIDDoesNotExistException {
+
+		UserDaoImpl userDaoImpl = new UserDaoImpl();
+		user.setUser(new UserDTO(userDaoImpl.getUserById(user.getUser().getId())));
+		setFields();
+
+		ComicBookReadingListDaoImpl readingListDaoImpl = new ComicBookReadingListDaoImpl();
+		ComicBookFinishedListDaoImpl readListDaoImpl = new ComicBookFinishedListDaoImpl();
+
+		List<ComicBook> readingList = readingListDaoImpl.getUsersReadingList(user.getUser().getId());
+		List<ComicBookDTO> readingListDTO = new ArrayList<ComicBookDTO>();
+
+		List<ComicBook> readList = readListDaoImpl.getUsersFinishedList(user.getUser().getId());
+		List<ComicBookDTO> readListDTO = new ArrayList<ComicBookDTO>();
+
+		for (ComicBook c : readingList) {
+			ComicBookDTO comicBookDTO = new ComicBookDTO(c);
+			readingListDTO.add(comicBookDTO);
+		}
+
+		for (ComicBook c : readList) {
+			ComicBookDTO comicBookDTO = new ComicBookDTO(c);
+			readListDTO.add(comicBookDTO);
+		}
+
+		readingTableModel = new ReadingAndFinishedComicBookTableModel(readingListDTO);
+		readTableModel = new ReadingAndFinishedComicBookTableModel(readListDTO);
+
+		readingTable = new JTable(readingTableModel);
+		readingPane = new JScrollPane(readingTable);
+		readingPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		readingPane.setBounds(47, 424, 407, 135);
+		panel.add(readingPane);
+
+		readTable = new JTable(readTableModel);
+		readPane = new JScrollPane(readTable);
+		readPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		readPane.setBounds(47, 617, 407, 135);
+		panel.add(readPane);
+
+		currentlyReading = new JLabel("Currently Reading: ");
+		currentlyReading.setBounds(47, 399, 118, 14);
+		panel.add(currentlyReading);
+
+		currentlyRead = new JLabel("Comics Read: ");
+		currentlyRead.setBounds(47, 592, 118, 14);
+		panel.add(currentlyRead);
+	}
 }

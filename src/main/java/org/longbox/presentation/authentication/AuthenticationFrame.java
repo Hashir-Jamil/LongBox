@@ -135,5 +135,4 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
 			registrationPanel.getMessageLabel().setForeground(Color.red);
         }
     }
-
 }

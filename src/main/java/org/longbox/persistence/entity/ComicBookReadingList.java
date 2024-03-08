@@ -39,5 +39,12 @@ public class ComicBookReadingList {
         this.comicBook = comicBook;
         this.id.setUserId(user.getId());
         this.id.setComicBookId(comicBook.getId());
+        this.dateAdded = new Date();
+    }
+
+    public ComicBookReadingList(Long userId, Long comicBookId) {
+        this.id.setUserId(user.getId());
+        this.id.setComicBookId(comicBook.getId());
+        this.dateAdded = new Date();
     }
 }

@@ -1,5 +1,8 @@
 package org.longbox.persistence.dao;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -12,18 +15,24 @@ import org.longbox.utils.HibernateUtils;
 
 import java.util.Collections;
 import java.util.List;
-
+@Getter
+@Setter
+@NoArgsConstructor
 public class ComicBookFinishedListDaoImpl implements ComicBookFinishedListDao{
 
     private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
     @Override
-    public boolean saveToFinished(User user, ComicBook comicBook) throws UserIDDoesNotExistException {
+    public void saveToFinished(Long userId, Long comicBookId) throws UserIDDoesNotExistException {
         Session session = null;
         Transaction transaction = null;
+        UserDaoImpl userDao = new UserDaoImpl();
+        ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl();
 
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
+            User user = userDao.getUserById(userId);
+            ComicBook comicBook = comicBookDao.getComicBookById(comicBookId);
             user = (User) session.merge(user);
             comicBook = (ComicBook) session.merge(comicBook);
             ComicBookFinishedList finishedItem = new ComicBookFinishedList(user, comicBook);
@@ -41,22 +50,21 @@ public class ComicBookFinishedListDaoImpl implements ComicBookFinishedListDao{
                 session.close();
             }
         }
-        return true;
     }
 
     @Override
-    public int removeFromFavorites(Long userId, Long comicBookId) {
+    public void removeFromFinished(Long userId, Long comicBookId) {
         Session session = null;
         Transaction transaction = null;
-        int deletedEntities = 0;
 
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
-            Query query = session.createQuery("delete from ComicBookFinishedList where id.userId = :userId and id.comicBookId = :comicBookId");
+            Query query = session.createQuery(
+                    "delete from ComicBookFinishedList where id.userId = :userId and id.comicBookId = :comicBookId");
             query.setParameter("userId", userId);
             query.setParameter("comicBookId", comicBookId);
-            deletedEntities = query.executeUpdate();
+            query.executeUpdate();
             transaction.commit();
         }
         catch (Exception e) {
@@ -68,7 +76,25 @@ public class ComicBookFinishedListDaoImpl implements ComicBookFinishedListDao{
         finally {
             session.close();
         }
-        return deletedEntities;
+    }
+
+    public boolean doesRecordExist(Long userId, Long comicBookId) {
+        Session session = sessionFactory.openSession();
+        Query<Long> query = session.createQuery(
+                "SELECT COUNT(*) FROM ComicBookFinishedList c WHERE c.user.id = :userId AND c.comicBook.id = :comicBookId", Long.class);
+        query.setParameter("userId", userId);
+        query.setParameter("comicBookId", comicBookId);
+        Long count = query.uniqueResult();
+        return count != null && count > 0;
+    }
+
+    public ComicBookFinishedList getFinishedComicBook(Long userId, Long comicBookId) {
+        Session session = sessionFactory.openSession();
+        Query<ComicBookFinishedList> query = session.createQuery(
+                "FROM ComicBookFinishedList c WHERE c.user.id = :userId AND c.comicBook.id = :comicBookId", ComicBookFinishedList.class);
+        query.setParameter("userId", userId);
+        query.setParameter("comicBookId", comicBookId);
+        return query.uniqueResult();
     }
 
     @Override
@@ -77,7 +103,8 @@ public class ComicBookFinishedListDaoImpl implements ComicBookFinishedListDao{
 
         try {
             session = sessionFactory.openSession();
-            Query<ComicBook> finishedComicBooksList = session.createQuery("SELECT cbf.comicBook FROM ComicBookFinishedList cbf WHERE cbf.user.id = :userId");
+            Query<ComicBook> finishedComicBooksList = session.createQuery(
+                    "SELECT cbf.comicBook FROM ComicBookFinishedList cbf WHERE cbf.user.id = :userId", ComicBook.class);
             finishedComicBooksList.setParameter("userId", userId);
             return finishedComicBooksList.getResultList();
         }
@@ -96,7 +123,8 @@ public class ComicBookFinishedListDaoImpl implements ComicBookFinishedListDao{
 
         try {
             session = sessionFactory.openSession();
-            Query<User> allUsersWhoFinished = session.createQuery("SELECT cbf.user FROM ComicBookFinishedList cbf WHERE cbf.comicBook.id = :comicBookId");
+            Query<User> allUsersWhoFinished = session.createQuery(
+                    "SELECT cbf.user FROM ComicBookFinishedList cbf WHERE cbf.comicBook.id = :comicBookId", User.class);
             allUsersWhoFinished.setParameter("comicBookId", comicBookId);
             return allUsersWhoFinished.getResultList();
         }

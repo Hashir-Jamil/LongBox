@@ -128,19 +128,18 @@ public class UserDTO {
 	}
 
 	public UserDTO(User user) {
-		this(
-				user.getId(),
-				user.getUserName(),
-				user.getFirstName(),
-				user.getLastName(),
-				user.getDob(),
-				user.getEmail(),
-				user.getPassword(),
-				user.getCountry(),
-				user.getComicsReading(),
-				user.getComicsFinished(),
-				user.getAboutMe()
-		);
+		this.id = user.getId();
+		this.userName = user.getUserName();
+		this.firstName = user.getFirstName();
+		this.lastName = user.getLastName();
+		this.dob = user.getDob();
+		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.country = user.getCountry();
+		this. comicsReading = user.getComicsReading();
+		this. comicsFinished = user.getComicsFinished();
+		this.aboutMe = user.getAboutMe();
+		this.joinDate = user.getJoinDate();
 	}
 
 	@Override

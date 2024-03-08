@@ -6,6 +6,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.persistence.entity.ComicBook;
+import org.longbox.persistence.entity.ComicBookFinishedList;
 import org.longbox.persistence.entity.ComicBookReadingList;
 import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
@@ -17,19 +18,22 @@ public class ComicBookReadingListDaoImpl implements ComicBookReadingListDao {
     private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
     @Override
-    public boolean saveToReading(User user, ComicBook comicBook) throws UserIDDoesNotExistException {
+    public void saveToReading(Long userId, Long comicBookId) throws UserIDDoesNotExistException {
         Session session = null;
         Transaction transaction = null;
+        UserDaoImpl userDao = new UserDaoImpl();
+        ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl();
 
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
+            User user = userDao.getUserById(userId);
+            ComicBook comicBook = comicBookDao.getComicBookById(comicBookId);
             user = (User) session.merge(user);
             comicBook = (ComicBook) session.merge(comicBook);
-            ComicBookReadingList readingListItem = new ComicBookReadingList(user,comicBook);
+            ComicBookReadingList readingListItem = new ComicBookReadingList(user, comicBook);
             session.persist(readingListItem);
             transaction.commit();
-            return true;
         }
         catch (Exception e) {
             if (transaction != null) {
@@ -42,7 +46,6 @@ public class ComicBookReadingListDaoImpl implements ComicBookReadingListDao {
                 session.close();
             }
         }
-        return false;
     }
 
     @Override
@@ -68,6 +71,25 @@ public class ComicBookReadingListDaoImpl implements ComicBookReadingListDao {
         finally {
             session.close();
         }
+    }
+
+    public boolean doesRecordExist(Long userId, Long comicBookId) {
+        Session session = sessionFactory.openSession();
+        Query<Long> query = session.createQuery(
+                "SELECT COUNT(*) FROM ComicBookReadingList c WHERE c.user.id = :userId AND c.comicBook.id = :comicBookId", Long.class);
+        query.setParameter("userId", userId);
+        query.setParameter("comicBookId", comicBookId);
+        Long count = query.uniqueResult();
+        return count != null && count > 0;
+    }
+
+    public ComicBookReadingList getReadingComicBook(Long userId, Long comicBookId) {
+        Session session = sessionFactory.openSession();
+        Query<ComicBookReadingList> query = session.createQuery(
+                "FROM ComicBookReadingList c WHERE c.user.id = :userId AND c.comicBook.id = :comicBookId", ComicBookReadingList.class);
+        query.setParameter("userId", userId);
+        query.setParameter("comicBookId", comicBookId);
+        return query.uniqueResult();
     }
 
     @Override

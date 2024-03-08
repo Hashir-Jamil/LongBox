@@ -51,8 +51,8 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 	private JTextField textField;
 	private JComboBox<String> typeSelection;
 	private ComicBookTableModel comicBookTableModel;
-	TableRowSorter<TableModel> sorter;
-	ComicBookDaoImpl comicBookDaoImpl;
+	private TableRowSorter<TableModel> sorter;
+	private ComicBookDaoImpl comicBookDaoImpl;
 	private UserSession userSession;
 	private JButton addToFavoritesButton;
 	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl();

@@ -35,13 +35,17 @@ public class ComicBookFinishedList {
     @Column(name = "date_finished")
     private Date dateAdded;
 
-    public ComicBookFinishedList(
-            User user,
-            ComicBook comicBook) {
+    public ComicBookFinishedList(User user, ComicBook comicBook) {
             this.user = user;
             this.comicBook = comicBook;
             this.id.setUserId(user.getId());
             this.id.setComicBookId(comicBook.getId());
             this.dateAdded = new Date();
+    }
+
+    public ComicBookFinishedList(Long userId, Long comicBookId) {
+        this.id.setUserId(userId);
+        this.id.setComicBookId(comicBookId);
+        this.dateAdded = new Date();
     }
 }

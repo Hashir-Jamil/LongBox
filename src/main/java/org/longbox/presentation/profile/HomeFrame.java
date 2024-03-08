@@ -171,7 +171,7 @@ public class HomeFrame extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == comicCollectionButton) {
-        	((ComicRepositoryPanel) comicCollectionPanel).panel.remove(((ComicRepositoryPanel) comicCollectionPanel).scrollPane);;
+        	((ComicRepositoryPanel) comicCollectionPanel).panel.remove(((ComicRepositoryPanel) comicCollectionPanel).scrollPane);
         	((ComicRepositoryPanel) comicCollectionPanel).reloadTable();
         	cardLayout.show(activityPanel, COMIC_COLLECTAION_PANEL);
         }
@@ -181,7 +181,14 @@ public class HomeFrame extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == profileButton) {
-        	cardLayout.show(activityPanel, PROFILE_PANEL);
+            ((ProfilePanel) profilePanel).getPanel().remove(((ProfilePanel) profilePanel).getReadingPane());
+            ((ProfilePanel) profilePanel).getPanel().remove(((ProfilePanel) profilePanel).getReadPane());
+            try {
+                ((ProfilePanel) profilePanel).reloadTable();
+            } catch (UserIDDoesNotExistException ex) {
+                throw new RuntimeException(ex);
+            }
+            cardLayout.show(activityPanel, PROFILE_PANEL);
         }
 
         if (e.getSource() == addComicButton) {
