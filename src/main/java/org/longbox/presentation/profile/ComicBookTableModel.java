@@ -48,4 +48,26 @@ public class ComicBookTableModel extends DefaultTableModel {
     public boolean isCellEditable(int row, int column) {
         return false;
     }
+
+    public long getComicIdAtRow(int row) {
+        return comicBookList.get(row).getId();
+    }
+
+    public void updateData(List<ComicBookDTO> newData) {
+        comicBookList = newData;
+        setRowCount(0); // Clear existing rows
+        for (ComicBookDTO comicBook : comicBookList) {
+            String genres = String.join(", ", comicBook.getGenres());
+            addRow(new Object[]{
+                    comicBook.getSeriesTitle(),
+                    comicBook.getAuthor(),
+                    comicBook.getArtist(),
+                    genres,
+                    comicBook.getNumberOfIssues(),
+                    comicBook.getPublisher(),
+                    comicBook.getYearPublished(),
+                    comicBook.getDateAdded()
+            });
+        }
+    }
 }

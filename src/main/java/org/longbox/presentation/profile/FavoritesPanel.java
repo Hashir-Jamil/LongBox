@@ -40,7 +40,6 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 	private JTable comicBookTable;
 	private JTextField textField;
 	private JComboBox<String> typeSelection;
-	private List<ComicBookDTO> favoriteComicBooks = new ArrayList<>();
 	private ComicBookTableModel comicBookTableModel;
 	private JButton unfavoriteButton;
 	private TableRowSorter<TableModel> sorter;
@@ -49,20 +48,14 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 
 	public FavoritesPanel() {
 		initComicCollectionPage();
+		userSession = UserSession.getActiveUser();
 	}
 
 	public void update(ComicBookDTO comicBook, long userId, long comicBookId) throws UserIDDoesNotExistException {
-		ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl();
-		comicBookFavouritesListDaoImpl.saveToFavorites(userId, comicBookId);
-		comicBookTableModel.addRow(new Object[]{
-				comicBook.getSeriesTitle(),
-				comicBook.getAuthor(),
-				comicBook.getArtist(),
-				ComicBookDTO.genreListToString(comicBook.getGenres()),
-				comicBook.getNumberOfIssues(),
-				comicBook.getPublisher(),
-				comicBook.getYearPublished()
-		});
+		comicBookFavouritesListDaoImp = new ComicBookFavouritesListDaoImpl();
+		comicBookFavouritesListDaoImp.saveToFavorites(userId, comicBookId);
+		List<ComicBookDTO> updatedFavoriteComicBooks = comicBookFavouritesListDaoImp.getAllFavoritesComicBooks();
+		comicBookTableModel.updateData(updatedFavoriteComicBooks);
 	}
 
 	private void initComicCollectionPage() {
@@ -157,9 +150,11 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 			} else {
 				int confirmUnfavorite = JOptionPane.showConfirmDialog(this, "Are you sure you want to unfavorite this comic?", "Unfavorite Confirmation", JOptionPane.YES_NO_OPTION);
 				if (confirmUnfavorite == JOptionPane.YES_OPTION) {
-					ComicBookDTO removedComic = favoriteComicBooks.remove(selectedRow);
+					long userId = userSession.getUser().getId();
+					long comicId = comicBookTableModel.getComicIdAtRow(selectedRow);
+					comicBookFavouritesListDaoImp.removeFromFavorites(userId, comicId);
 					comicBookTableModel.removeRow(selectedRow);
-					JOptionPane.showMessageDialog(this, "Comic '" + removedComic.getSeriesTitle() + "' has been unfavorited.", "Unfavorited", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(this, "Comic has been unfavorited.", "Unfavorited", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		}
