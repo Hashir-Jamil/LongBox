@@ -14,13 +14,16 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.persistence.dao.ComicBookDaoImpl;
 
 import javax.swing.JTextPane;
+import javax.swing.JScrollPane;
 @Getter
 @Setter
 public class ProfilePanel extends JPanel implements ActionListener {
@@ -171,6 +174,19 @@ public class ProfilePanel extends JPanel implements ActionListener {
 			}
 		});
 		panel.add(aboutMeUpdateButton);
+	
+		ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl();
+		ReadingAndReadComicBookTableModel readingTableModel = new ReadingAndReadComicBookTableModel(comicBookDaoImpl.getAllComicBooks());
+		JTable readingTable = new JTable(readingTableModel);
+		
+		JScrollPane readingPane = new JScrollPane(readingTable);
+		
+		readingPane.setBounds(47, 404, 407, 135);
+		panel.add(readingPane);
+		
+		JScrollPane readPane = new JScrollPane();
+		readPane.setBounds(47, 617, 407, 135);
+		panel.add(readPane);
 		
 		setFields();
 	}
