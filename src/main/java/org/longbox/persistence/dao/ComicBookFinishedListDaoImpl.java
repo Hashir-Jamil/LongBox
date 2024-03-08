@@ -10,7 +10,6 @@ import org.longbox.persistence.entity.ComicBookFinishedList;
 import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -88,7 +87,6 @@ public class ComicBookFinishedListDaoImpl implements ComicBookFinishedListDao{
         finally {
             session.close();
         }
-
         return Collections.emptyList();
     }
 
@@ -98,8 +96,9 @@ public class ComicBookFinishedListDaoImpl implements ComicBookFinishedListDao{
 
         try {
             session = sessionFactory.openSession();
-            Query<User> allUsersWhoFavorited = session.createQuery("SELECT cbf.user FROM ComicBookFinishedList cbf WHERE cbf.comicBook.id = :comicBookId");
-
+            Query<User> allUsersWhoFinished = session.createQuery("SELECT cbf.user FROM ComicBookFinishedList cbf WHERE cbf.comicBook.id = :comicBookId");
+            allUsersWhoFinished.setParameter("comicBookId", comicBookId);
+            return allUsersWhoFinished.getResultList();
         }
         catch (Exception e) {
             e.printStackTrace();

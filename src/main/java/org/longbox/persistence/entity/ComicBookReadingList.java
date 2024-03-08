@@ -2,6 +2,7 @@ package org.longbox.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Date;
 @Table(name = "comic_book_reading_list")
 @Getter
 @Setter
+@NoArgsConstructor
 public class ComicBookReadingList {
     @EmbeddedId
     private ComicBookListId id = new ComicBookListId();
