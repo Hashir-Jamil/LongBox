@@ -175,18 +175,28 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		});
 		panel.add(aboutMeUpdateButton);
 	
-		ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl();
-		ReadingAndReadComicBookTableModel readingTableModel = new ReadingAndReadComicBookTableModel(comicBookDaoImpl.getAllComicBooks());
+		ComicBookDaoImpl readingComics = new ComicBookDaoImpl(); // This will be changed in the future
+		ComicBookDaoImpl readComics = new ComicBookDaoImpl(); // This too
+		ReadingAndReadComicBookTableModel readingTableModel = new ReadingAndReadComicBookTableModel(readingComics.getAllComicBooks());
+		ReadingAndReadComicBookTableModel readTableModel = new ReadingAndReadComicBookTableModel(readComics.getAllComicBooks());
+
 		JTable readingTable = new JTable(readingTableModel);
-		
 		JScrollPane readingPane = new JScrollPane(readingTable);
-		
-		readingPane.setBounds(47, 404, 407, 135);
+		readingPane.setBounds(47, 424, 407, 135);
 		panel.add(readingPane);
 		
-		JScrollPane readPane = new JScrollPane();
+		JTable readTable = new JTable(readTableModel);
+		JScrollPane readPane = new JScrollPane(readTable);
 		readPane.setBounds(47, 617, 407, 135);
 		panel.add(readPane);
+		
+		JLabel currentlyReading = new JLabel("Currently Reading: ");
+		currentlyReading.setBounds(47, 399, 118, 14);
+		panel.add(currentlyReading);
+		
+		JLabel read = new JLabel("Comics Read: ");
+		read.setBounds(47, 592, 118, 14);
+		panel.add(read);
 		
 		setFields();
 	}
