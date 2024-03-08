@@ -20,13 +20,21 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.longbox.businesslogic.UserSession;
+import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.domainobjects.dto.UserDTO;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
 import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
+import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.ComicBook;
+import org.longbox.persistence.entity.User;
+import org.longbox.utils.HibernateUtils;
 
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
@@ -46,7 +54,6 @@ public class ProfilePanel extends JPanel implements ActionListener {
 	private JLabel comicsReading;
 	private JLabel comicsFinished;
 	private JTextField aboutMe;
-	
 	private UserSession user;
 	
 
@@ -170,16 +177,24 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		aboutMe.setBounds(557, 141, 554, 127);
 		panel.add(aboutMe);
 		
-		JButton aboutMeUpdateButton = new JButton();
-		aboutMeUpdateButton.setText("Update");
-		aboutMeUpdateButton.setBounds(1036, 281, 75, 16);
-		aboutMeUpdateButton.addActionListener(new ActionListener() {
+		JButton aboutMeEditButton = new JButton();
+
+		
+		JButton aboutMeSaveButton = new JButton();
+		aboutMeSaveButton.setEnabled(false);
+		aboutMeSaveButton.setText("Save");
+		aboutMeSaveButton.setBounds(1024, 281, 87, 16);
+		aboutMeSaveButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				user.getUser().setAboutMe(aboutMe.getText());
+				UserDaoImpl userDaoImpl = new UserDaoImpl();
+				userDaoImpl.updateAboutMeString(user, aboutMe.getText());
+//				aboutMeSaveButton.setText("Updated!");
+//				
+//				aboutMeSaveButton.setText("Update");
 			}
 		});
-		panel.add(aboutMeUpdateButton);
+		panel.add(aboutMeSaveButton);
 		
 		ComicBookReadingListDaoImpl readingListDaoImpl = new ComicBookReadingListDaoImpl();
 		ComicBookFinishedListDaoImpl readListDaoImpl = new ComicBookFinishedListDaoImpl();
