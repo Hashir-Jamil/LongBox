@@ -174,27 +174,53 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		panel.add(comicsFinished);
 		
 		aboutMe = new JTextField();
+		aboutMe.setEditable(false);
 		aboutMe.setBounds(557, 141, 554, 127);
+	
 		panel.add(aboutMe);
 		
 		JButton aboutMeEditButton = new JButton();
-
+		aboutMeEditButton.setText("Edit");
+		aboutMeEditButton.setEnabled(true);
+		aboutMeEditButton.setBounds(1024, 281, 87, 16);
+		panel.add(aboutMeEditButton);
 		
-		JButton aboutMeSaveButton = new JButton();
-		aboutMeSaveButton.setEnabled(false);
-		aboutMeSaveButton.setText("Save");
-		aboutMeSaveButton.setBounds(1024, 281, 87, 16);
-		aboutMeSaveButton.addActionListener(new ActionListener() {
+		JButton aboutMeCancelButton = new JButton();
+		aboutMeCancelButton.setText("Cancel");
+		aboutMeCancelButton.setEnabled(false);
+		aboutMeCancelButton.setBounds(927, 281, 87, 16);
+		panel.add(aboutMeCancelButton);
+		
+		
+		aboutMeEditButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				UserDaoImpl userDaoImpl = new UserDaoImpl();
-				userDaoImpl.updateAboutMeString(user, aboutMe.getText());
-//				aboutMeSaveButton.setText("Updated!");
-//				
-//				aboutMeSaveButton.setText("Update");
+				if (aboutMeEditButton.getText() == "Edit") {
+					aboutMeEditButton.setText("Save");
+					aboutMeCancelButton.setEnabled(true);
+					aboutMe.setEditable(true);
+				}
+				
+				else if (aboutMeEditButton.getText() == "Save") {
+					UserDaoImpl userDaoImpl = new UserDaoImpl();
+					userDaoImpl.updateAboutMeString(user, aboutMe.getText());
+					aboutMeCancelButton.setEnabled(false);
+					aboutMeEditButton.setText("Edit");
+					aboutMe.setEditable(false);
+				}
 			}
 		});
-		panel.add(aboutMeSaveButton);
+		
+		aboutMeCancelButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				aboutMeCancelButton.setEnabled(false);
+				aboutMe.setEditable(false);
+
+				aboutMeEditButton.setEnabled(true);
+				aboutMeEditButton.setText("Edit");
+			}
+		});
 		
 		ComicBookReadingListDaoImpl readingListDaoImpl = new ComicBookReadingListDaoImpl();
 		ComicBookFinishedListDaoImpl readListDaoImpl = new ComicBookFinishedListDaoImpl();
@@ -248,9 +274,9 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		email.setText(this.user.getUser().getEmail());
 		country.setText(this.user.getUser().getCountry());
 		joinDate.setText("" + this.user.getUser().getJoinDate());
-		comicsFinished.setText("" + this.user.getUser().getComicsFinished());
-		comicsReading.setText("" + this.user.getUser().getComicsReading());
-		aboutMe.setText(this.user.getUser().getAboutMe());
+//		comicsFinished.setText("" + this.user.getUser().getComicsFinished());
+//		comicsReading.setText("" + this.user.getUser().getComicsReading());
+//		aboutMe.setText(this.user.getUser().getAboutMe());
 	}
 
 	@Override
