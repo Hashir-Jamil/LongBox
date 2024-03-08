@@ -13,20 +13,29 @@ import java.util.List;
 
 import javax.swing.*;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
+import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
 import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
 import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.ComicBook;
+import org.longbox.persistence.entity.User;
+import org.longbox.utils.HibernateUtils;
 
 @Getter
 @Setter
 public class ProfilePanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private final String PANEL_LABEL = "Profile View";
+	
 	private JLabel userName;
 	private JLabel firstName;
 	private JLabel lastName;
@@ -163,19 +172,53 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		panel.add(comicsFinished);
 		
 		aboutMe = new JTextField();
+		aboutMe.setEditable(false);
 		aboutMe.setBounds(557, 141, 554, 127);
+	
 		panel.add(aboutMe);
 		
-		JButton aboutMeUpdateButton = new JButton();
-		aboutMeUpdateButton.setText("Update");
-		aboutMeUpdateButton.setBounds(1036, 281, 75, 16);
-		aboutMeUpdateButton.addActionListener(new ActionListener() {
+		JButton aboutMeEditButton = new JButton();
+		aboutMeEditButton.setText("Edit");
+		aboutMeEditButton.setEnabled(true);
+		aboutMeEditButton.setBounds(1024, 281, 87, 16);
+		panel.add(aboutMeEditButton);
+		
+		JButton aboutMeCancelButton = new JButton();
+		aboutMeCancelButton.setText("Cancel");
+		aboutMeCancelButton.setEnabled(false);
+		aboutMeCancelButton.setBounds(927, 281, 87, 16);
+		panel.add(aboutMeCancelButton);
+		
+		
+		aboutMeEditButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				user.getUser().setAboutMe(aboutMe.getText());
+				if (aboutMeEditButton.getText() == "Edit") {
+					aboutMeEditButton.setText("Save");
+					aboutMeCancelButton.setEnabled(true);
+					aboutMe.setEditable(true);
+				}
+				
+				else if (aboutMeEditButton.getText() == "Save") {
+					UserDaoImpl userDaoImpl = new UserDaoImpl();
+					userDaoImpl.updateAboutMeString(user, aboutMe.getText());
+					aboutMeCancelButton.setEnabled(false);
+					aboutMeEditButton.setText("Edit");
+					aboutMe.setEditable(false);
+				}
 			}
 		});
-		panel.add(aboutMeUpdateButton);
+		
+		aboutMeCancelButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				aboutMeCancelButton.setEnabled(false);
+				aboutMe.setEditable(false);
+
+				aboutMeEditButton.setEnabled(true);
+				aboutMeEditButton.setText("Edit");
+			}
+		});
 
         try {
             reloadTable();
@@ -185,7 +228,7 @@ public class ProfilePanel extends JPanel implements ActionListener {
 
         setFields();
 	}
-	
+
 	private void setFields() {
 		userName.setText(this.user.getUser().getUserName());
 		firstName.setText(this.user.getUser().getFirstName());
@@ -251,5 +294,15 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		currentlyRead = new JLabel("Comics Read: ");
 		currentlyRead.setBounds(47, 592, 118, 14);
 		panel.add(currentlyRead);
+		userName.setText(this.user.getUser().getUserName());
+		firstName.setText(this.user.getUser().getFirstName());
+		lastName.setText(this.user.getUser().getLastName());
+		dateOfBirth.setText("" + this.user.getUser().getDob());
+		email.setText(this.user.getUser().getEmail());
+		country.setText(this.user.getUser().getCountry());
+		joinDate.setText("" + this.user.getUser().getJoinDate());
+//		comicsFinished.setText("" + this.user.getUser().getComicsFinished());
+//		comicsReading.setText("" + this.user.getUser().getComicsReading());
+//		aboutMe.setText(this.user.getUser().getAboutMe());
 	}
-}
+    }
