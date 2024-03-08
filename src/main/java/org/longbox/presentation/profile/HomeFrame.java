@@ -218,7 +218,7 @@ public class HomeFrame extends JFrame implements ActionListener {
 
         boolean isFavorite = addComicToRepoPanel.getFavoriteCheckbox().isSelected();
         if (isFavorite) {
-            favoritesPanel.update(comicBook, this.userSession.getUser().getId(), comicId);
+            favoritesPanel.update(this.userSession.getUser().getId(), comicId);
         }
 
         JOptionPane.showMessageDialog(this, "Comic book added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);

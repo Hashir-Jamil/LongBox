@@ -45,7 +45,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 		userSession = UserSession.getActiveUser();
 	}
 
-	public void update(ComicBookDTO comicBook, long userId, long comicBookId) throws UserIDDoesNotExistException {
+	public void update(long userId, long comicBookId) throws UserIDDoesNotExistException {
 		comicBookFavouritesListDaoImp = new ComicBookFavouritesListDaoImpl();
 		comicBookFavouritesListDaoImp.saveToFavorites(userId, comicBookId);
 		List<ComicBookDTO> updatedFavoriteComicBooks = comicBookFavouritesListDaoImp.getAllFavoritesComicBooks();
@@ -125,8 +125,16 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 			unfavoriteButton = new JButton("Unfavorite");
 			unfavoriteButton.addActionListener(this);
 			unfavoriteButton.setEnabled(false); // Initially disabled
-			unfavoriteButton.setBounds(1000, 60, 150, 25); // Adjust the position as needed
+			unfavoriteButton.setBounds(930, 62, 129, 23);
 			panel.add(unfavoriteButton);
+
+			JButton refreshButton = new JButton("Refresh");
+			refreshButton.addActionListener(e -> {
+				reloadData();
+			});
+
+			refreshButton.setBounds(1065, 62, 89, 23);
+			panel.add(refreshButton);
 
 			comicBookTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			comicBookTable.getSelectionModel().addListSelectionListener(e -> {
@@ -158,5 +166,8 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 			List<ComicBookDTO> searchResults = null;
 			ComicBookSearch.comicAdvancedSearch(searchBy, target, searchResults, comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), this.userSession);
 		}
+	}
+	public void reloadData() {
+		comicBookTableModel.updateData(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks());
 	}
 }
