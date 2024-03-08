@@ -83,8 +83,6 @@ public class CommentDaoImpl implements CommentDao {
         }
     }
 
-
-
     @Override
     public List<CommentDTO> getCommentsByUser(long userID) {
         Session session = null;
@@ -115,5 +113,4 @@ public class CommentDaoImpl implements CommentDao {
         }
         return commentDTOList;
     }
-
 }
