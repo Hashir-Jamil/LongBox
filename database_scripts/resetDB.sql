@@ -1,9 +1,11 @@
 -- Schema Definition
 DROP SCHEMA IF EXISTS longbox_schema CASCADE;
 CREATE SCHEMA IF NOT EXISTS longbox_schema;
+
+-- longbox_schema is scope for all following statements
 SET SEARCH_PATH = longbox_schema;
 
---Table Definitions
+-- Table Definitions
 CREATE TABLE IF NOT EXISTS "user" (
     "id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     "user_name" text UNIQUE,
@@ -76,7 +78,7 @@ ALTER TABLE "comic_book_reading_list" ADD FOREIGN KEY ("comic_book_id") REFERENC
 
 -- Functions & Triggers
 
--- Create a function to update comics_finished column
+-- Create a function to update user.comics_finished column
 CREATE OR REPLACE FUNCTION update_comics_finished_count()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -111,6 +113,42 @@ CREATE TRIGGER update_comics_finished_trigger
 ON comic_book_finished_list
 FOR EACH ROW
 EXECUTE FUNCTION update_comics_finished_count();
+
+-- Create a function to update user.comics_reading column
+CREATE OR REPLACE FUNCTION update_comics_reading_count()
+    RETURNS TRIGGER AS $$
+BEGIN
+    -- Update comics_reading count for the affected user
+    SET SEARCH_PATH = longbox_schema;
+    IF TG_OP = 'INSERT' THEN
+        -- Increment comics_reading count
+        UPDATE "user" u
+        SET comics_reading = (
+            SELECT COUNT(*)
+            FROM comic_book_reading_list r
+            WHERE r.user_id = NEW.user_id
+        )
+        WHERE u.id = NEW.user_id;
+    ELSEIF TG_OP = 'DELETE' THEN
+        -- Decrement comics_reading count
+        UPDATE "user" u
+        SET comics_reading = (
+            SELECT COUNT(*)
+            FROM comic_book_reading_list r
+            WHERE r.user_id = OLD.user_id
+        )
+        WHERE u.id = OLD.user_id;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Create a trigger to execute the function after insert or delete on comic_book_reading_list table
+CREATE TRIGGER update_comics_reading_trigger
+    AFTER INSERT OR DELETE
+    ON comic_book_reading_list
+    FOR EACH ROW
+EXECUTE FUNCTION update_comics_reading_count();
 
 -- Add data to the tables
 
