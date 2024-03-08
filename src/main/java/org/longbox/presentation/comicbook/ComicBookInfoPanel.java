@@ -12,10 +12,15 @@ import javax.swing.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
+import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.MultiLineCellRenderer;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.domainobjects.dto.CommentDTO;
+import org.longbox.persistence.dao.ComicBookDaoImpl;
+import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
 import org.longbox.persistence.dao.CommentDaoImpl;
+import org.longbox.persistence.entity.ComicBook;
+import org.longbox.presentation.profile.FavoritesPanel;
 
 @Getter
 @Setter
@@ -38,12 +43,15 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	private JLabel yearPublished;
 	private JLabel dateAdded;
 	private JButton addCommentButton;
+	private JButton addToFavoritesButton;
 	private JTextArea commentBox;
 	private DefaultListModel<CommentDTO> commentListModel;
 	private CommentDaoImpl commentDaoImpl;
 	private List<CommentDTO> commentsOnCurrentComic;
 	private UserSession userSession;
 	private JList<CommentDTO> commentList;
+	private ComicBookDaoImpl comicBookDaoImpl;
+	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl;
 	
 	/**
 	 * Create the panel.
@@ -179,6 +187,16 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		addCommentButton.setBounds(1018, 311, 117, 29);
 		addCommentButton.addActionListener(this);
 		panel.add(addCommentButton);
+
+		addToFavoritesButton = new JButton("Add to Favorites");
+		addToFavoritesButton.setBounds(53, 600, 150, 29);
+		addToFavoritesButton.setEnabled(false);
+		addToFavoritesButton.addActionListener(this);
+		panel.add(addToFavoritesButton);
+
+		if (!isComicInFavorites(comicBookDTO.getId())) {
+			addToFavoritesButton.setEnabled(true);
+		}
 		
 		JLabel addCommentLabel = new JLabel("Share your thoughts:");
 		addCommentLabel.setBounds(618, 173, 143, 16);
@@ -233,7 +251,24 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 			CommentDTO newComment = new CommentDTO(message, this.userSession.getUser(), this.comicBookDTO);
 			commentDaoImpl.saveComment(newComment);
 			displayComments();
+		} else if (e.getSource() == addToFavoritesButton) {
+			ComicBookFavouritesListDaoImpl favoritesListDaoImpl = new ComicBookFavouritesListDaoImpl();
+            try {
+                favoritesListDaoImpl.saveToFavorites(userSession.getUser().getId(), comicBookDTO.getId());
+            } catch (UserIDDoesNotExistException ex) {
+                throw new RuntimeException(ex);
+            }
+			addToFavoritesButton.setEnabled(false); // Disable the button after adding
 		}
+	}
+
+	private boolean isComicInFavorites(long comicId) {
+		comicBookDaoImpl = new ComicBookDaoImpl();
+		comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl();
+		ComicBook comicBook = comicBookDaoImpl.getComicBookById(comicId);
+		ComicBookDTO comicBookDTO = new ComicBookDTO(comicBook);
+		System.out.println("the comic in favorites is " + comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO));
+		return comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO);
 	}
 
 }
