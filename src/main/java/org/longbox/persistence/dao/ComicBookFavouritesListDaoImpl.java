@@ -4,6 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookDTO;
@@ -62,8 +63,30 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     }
 
     @Override
-    public void removeFromFavorites(long userId, long comicBookId) {
-        // Implement removing comic book from user's favorites list in the database
+    public int removeFromFavorites(long userId, long comicBookId) {
+        Session session = null;
+        Transaction transaction = null;
+        int deletedEntities = 0;
+
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("delete from ComicBookFavoritesList where id.userId = :userId and id.comicBookId = :comicBookId");
+            query.setParameter("userId", userId);
+            query.setParameter("comicBookId", comicBookId);
+            deletedEntities = query.executeUpdate();
+            transaction.commit();
+        }
+        catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        finally {
+            session.close();
+        }
+        return deletedEntities;
     }
 
     @Override
