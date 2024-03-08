@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS "user" (
     "country" text,
     "join_date" date,
     "comics_reading" integer,
-    "comics_finished" integer
+    "comics_finished" integer,
+    "about_me" text
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book" (
@@ -154,14 +155,14 @@ EXECUTE FUNCTION update_comics_reading_count();
 
 -- First we add user objects
 INSERT INTO longbox_schema."user"(
-    user_name, first_name, last_name, dob, email, password, country, join_date, comics_reading, comics_finished)
+    user_name, first_name, last_name, dob, email, password, country, join_date, comics_reading, comics_finished, about_me)
 VALUES
-    ('Always_Scheming', 'John', 'Smith', '1990-12-1', 'email@domain.com', 'Always_Scheming', 'Canada', '2024-02-21', 0, 0),
-    ('Always_Throwing', 'Neo', 'Anderson', '3829-02-01', 'address@provider.ca', 'Always_Throwing', 'Indonesia', '2024-02-14 12:28:42', 0, 0),
-    ('Phoenix', 'Stan', 'Lee', '3900-05-31', '123fake@nowhere.org', 'Phoenix', 'United Kingdom', '2024-02-14 12:42:43', 0, 0),
-    ('ahan', 'Ahan', 'Bhargava', '2003-02-10', 'ahan@email.com', 'Password!1', 'India', '2024-02-15 15:09:10', 0, 0),
-    ('naha', 'Ahan', 'Bhargava', '2003-02-10', 'naha@email.com', 'naha', 'India', '2024-02-15 15:09:10', 0, 0),
-    ('123', 'Quick', 'Access', '2003-02-10', '123@email.com', '123', 'India', '2024-02-15 15:09:10', 0, 0);
+    ('Always_Scheming', 'John', 'Smith', '1990-12-1', 'email@domain.com', 'Always_Scheming', 'Canada', '2024-02-21', 0, 0, 'Imaginations ally and inks confidante, I craft worlds within the panels, inviting you to escape reality through the lens of my storytelling pen.'),
+    ('Always_Throwing', 'Neo', 'Anderson', '3829-02-01', 'address@provider.ca', 'Always_Throwing', 'Indonesia', '2024-02-14 12:28:42', 0, 0,'An animated soul exploring both pixels and plot twists, I am your guide in the comic cosmos, steering you through adventures that leap off the screen.'),
+    ('Phoenix', 'Stan', 'Lee', '3900-05-31', '123fake@nowhere.org', 'Phoenix', 'United Kingdom', '2024-02-14 12:42:43', 0, 0, 'Code-wielding superhero by day, rhythm-following vigilante by night, I bridge the gap between tech and tunes on this epic quest through the digital comic realm.'),
+    ('ahan', 'Ahan', 'Bhargava', '2003-02-10', 'ahan@email.com', 'Password!1', 'India', '2024-02-15 15:09:10', 0, 0, 'A pixel pioneer on the quest for knowledge, I dive into the virtual inkwell, emerging with stories that captivate and characters that resonate.'),
+    ('naha', 'Ahan', 'Bhargava', '2003-02-10', 'naha@email.com', 'naha', 'India', '2024-02-15 15:09:10', 0, 0, 'Juggling dumbbells and donuts in equal measure, I bring the perfect balance of action and humor to the comic book universe, one swipe at a time.'),
+    ('123', 'Quick', 'Access', '2003-02-10', '123@email.com', '123', 'India', '2024-02-15 15:09:10', 0, 0, 'Roaming the digital landscapes with a camera lens for justice, I capture the essence of heroes and villains alike, freezing epic moments in the frames of your favorite comic book app.');
 
 -- Next we add comic book objects
 INSERT INTO longbox_schema.comic_book(
