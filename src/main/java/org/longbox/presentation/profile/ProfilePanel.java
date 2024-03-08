@@ -13,22 +13,14 @@ import java.util.List;
 
 import javax.swing.*;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
-import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.domainobjects.dto.UserDTO;
-import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
 import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
 import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.ComicBook;
-import org.longbox.persistence.entity.User;
-import org.longbox.utils.HibernateUtils;
 
 @Getter
 @Setter
@@ -45,7 +37,7 @@ public class ProfilePanel extends JPanel implements ActionListener {
 	private JLabel joinDate;
 	private JLabel comicsReading;
 	private JLabel comicsFinished;
-	private JTextField aboutMe;
+	private JTextArea aboutMe;
 	private JPanel panel;
 	private UserSession user;
 	private ReadingAndFinishedComicBookTableModel readingTableModel;
@@ -171,10 +163,11 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		comicsFinished.setBounds(182, 337, 306, 16);
 		panel.add(comicsFinished);
 		
-		aboutMe = new JTextField();
+		aboutMe = new JTextArea();
 		aboutMe.setEditable(false);
 		aboutMe.setBounds(557, 141, 554, 127);
-	
+		aboutMe.setLineWrap(true);
+		aboutMe.setWrapStyleWord(true);
 		panel.add(aboutMe);
 		
 		JButton aboutMeEditButton = new JButton();
@@ -287,12 +280,12 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		readPane.setBounds(47, 617, 407, 135);
 		panel.add(readPane);
 
-		currentlyReading = new JLabel("Currently Reading: ");
-		currentlyReading.setBounds(47, 399, 118, 14);
+		currentlyReading = new JLabel("Comics Currently Reading: ");
+		currentlyReading.setBounds(47, 399, 200, 14);
 		panel.add(currentlyReading);
 
-		currentlyRead = new JLabel("Comics Read: ");
-		currentlyRead.setBounds(47, 592, 118, 14);
+		currentlyRead = new JLabel("Comics Previously Finished: ");
+		currentlyRead.setBounds(47, 592, 200, 14);
 		panel.add(currentlyRead);
 		userName.setText(this.user.getUser().getUserName());
 		firstName.setText(this.user.getUser().getFirstName());
@@ -305,4 +298,4 @@ public class ProfilePanel extends JPanel implements ActionListener {
 //		comicsReading.setText("" + this.user.getUser().getComicsReading());
 //		aboutMe.setText(this.user.getUser().getAboutMe());
 	}
-    }
+}
