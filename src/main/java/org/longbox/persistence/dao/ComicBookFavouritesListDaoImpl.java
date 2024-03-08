@@ -21,26 +21,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDao {
-    Session session = null;
-    Transaction transaction = null;
+
     SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
     @Override
     public void saveToFavorites(long userId, long comicBookId) throws UserIDDoesNotExistException {
+
+        Session session = null;
+        Transaction transaction = null;
 
         UserDaoImpl userDao = new UserDaoImpl();
         ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl();
 
         try {
             session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
 
             User user = userDao.getUserById(userId);
             ComicBook comicBook = comicBookDao.getComicBookById(comicBookId);
 
+            user = (User) session.merge(user);
+            comicBook = (ComicBook) session.merge(comicBook);
+
             ComicBookFavoritesList userFavourite = new ComicBookFavoritesList(user, comicBook);
 
-            transaction = session.beginTransaction();
-            session.save(userFavourite);
+            session.persist(userFavourite);
             transaction.commit();
         }
         catch (Exception e) {
