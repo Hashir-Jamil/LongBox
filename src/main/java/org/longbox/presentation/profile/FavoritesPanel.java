@@ -58,7 +58,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 				comicBook.getSeriesTitle(),
 				comicBook.getAuthor(),
 				comicBook.getArtist(),
-				comicBook.getGenres(),
+				ComicBookDTO.genreListToString(comicBook.getGenres()),
 				comicBook.getNumberOfIssues(),
 				comicBook.getPublisher(),
 				comicBook.getYearPublished()

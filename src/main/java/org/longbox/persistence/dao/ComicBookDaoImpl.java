@@ -76,7 +76,7 @@ public class ComicBookDaoImpl implements ComicBookDao {
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
-            session.save(comicBook);
+            session.persist(comicBook);
             transaction.commit();
         }
         catch (Exception e) {

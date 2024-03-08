@@ -62,12 +62,17 @@ public class CommentDaoImpl implements CommentDao {
 
         try {
             session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
             User user = userDao.getUserById(commentDTO.getUserId());
             ComicBook comicBook = comicBookDao.getComicBookById(commentDTO.getComicBookId());
+
+            user = (User) session.merge(user);
+            comicBook = (ComicBook) session.merge(comicBook);
+
             Comment comment = new Comment(commentDTO, user, comicBook);
 
-            transaction = session.beginTransaction();
-            session.save(comment);
+            session.persist(comment);
             transaction.commit();
         }
         catch (Exception e) {
@@ -82,8 +87,6 @@ public class CommentDaoImpl implements CommentDao {
             }
         }
     }
-
-
 
     @Override
     public List<CommentDTO> getCommentsByUser(long userID) {
@@ -115,5 +118,4 @@ public class CommentDaoImpl implements CommentDao {
         }
         return commentDTOList;
     }
-
 }
