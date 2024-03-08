@@ -125,7 +125,7 @@
         '-> Ali: wire frame sketches on ppt., high level architectural diagram on ppt (that he made).
         '-> Hashir: write personal user stories for itr1,2 on planning doc and ppt., code review slide, other architecture diagrams
         '-> Oscar: edit interview video & talk about user stories on itr1,2 on plann ing document and ppt.
-        '-> Eric: problem statement, customer video highlights, talk about user stories on itr1,2 on plann ing document and ppt., vision & future of project
+        '-> Eric: problem statement, customer video highlights, talk about user stories on itr1,2 on planning document and ppt., vision & future of project
     Ali: Finalized the Favorite Panel functionality without reliance on a database, utilizing a list-based approach for storage and management.
     Eric: Added advanced search for genres
 
@@ -182,3 +182,7 @@
     Ahan: Fixed the error in FavoritesPanel and ComicBookFavoritesDaoImpl due to incorrect initializing of objects. Also refactored the rpofile page.
     Group (All members): Meeting with professor and weekly update in lecture time.
     Group (Ahan, Hashir, Eric, Oscar): Evening work session to finish iteration 2 planning document, discussing any tasks left to complete & discussion of a design decision for common interface of stub data and postgresql data.
+    
+## Thursday, March 7th, 2024
+
+	Oscar: Reorganized "about me" section in profile page and added JTextField and most of the functionality for the update button.

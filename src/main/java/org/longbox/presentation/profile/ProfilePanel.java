@@ -7,11 +7,15 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
+import javax.swing.JTextField;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.domainobjects.dto.UserDTO;
@@ -19,7 +23,7 @@ import org.longbox.domainobjects.dto.UserDTO;
 import javax.swing.JTextPane;
 @Getter
 @Setter
-public class ProfilePanel extends JPanel {
+public class ProfilePanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private final String PANEL_LABEL = "Profile View";
 	
@@ -32,7 +36,7 @@ public class ProfilePanel extends JPanel {
 	private JLabel joinDate;
 	private JLabel comicsReading;
 	private JLabel comicsFinished;
-	private JLabel aboutMe;
+	private JTextField aboutMe;
 	
 	private UserSession user;
 	
@@ -114,7 +118,7 @@ public class ProfilePanel extends JPanel {
 		panel.add(finishedLabel);
 		
 		JLabel aboutMeLabel = new JLabel("About Me:");
-		aboutMeLabel.setBounds(47, 365, 118, 16);
+		aboutMeLabel.setBounds(557, 113, 118, 16);
 		panel.add(aboutMeLabel);
 		
 		userName = new JLabel("");
@@ -153,10 +157,20 @@ public class ProfilePanel extends JPanel {
 		comicsFinished.setBounds(182, 337, 306, 16);
 		panel.add(comicsFinished);
 		
-		aboutMe = new JLabel("");
-		aboutMe.setVerticalAlignment(SwingConstants.TOP);
-		aboutMe.setBounds(182, 365, 306, 126);
+		aboutMe = new JTextField();
+		aboutMe.setBounds(557, 141, 554, 127);
 		panel.add(aboutMe);
+		
+		JButton aboutMeUpdateButton = new JButton();
+		aboutMeUpdateButton.setText("Update");
+		aboutMeUpdateButton.setBounds(1036, 281, 75, 16);
+		aboutMeUpdateButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				user.getUser().setAboutMe(aboutMe.getText());
+			}
+		});
+		panel.add(aboutMeUpdateButton);
 		
 		setFields();
 	}
@@ -172,7 +186,13 @@ public class ProfilePanel extends JPanel {
 		joinDate.setText("" + this.user.getUser().getJoinDate());
 		comicsFinished.setText("" + this.user.getUser().getComicsFinished());
 		comicsReading.setText("" + this.user.getUser().getComicsReading());
-		aboutMe.setText("<html>" + this.user.getUser().getAboutMe() + "</html>");
+		aboutMe.setText(this.user.getUser().getAboutMe());
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
