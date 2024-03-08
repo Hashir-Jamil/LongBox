@@ -9,15 +9,9 @@ import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.entity.ComicBook;
-import org.longbox.persistence.entity.ComicBookListId;
 import org.longbox.persistence.entity.ComicBookFavoritesList;
 import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
-
-import java.time.ZoneId;
-import java.util.Date;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

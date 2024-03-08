@@ -6,20 +6,14 @@ import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
-import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
-import org.longbox.persistence.entity.ComicBook;
-import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
-
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.List;
-
 import java.awt.BorderLayout;
 import java.awt.Font;
 
@@ -162,7 +156,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 			String searchBy = typeSelection.getSelectedItem().toString();
 			String target = textField.getText();
 			List<ComicBookDTO> searchResults = null;
-			searchResults = ComicBookSearch.comicAdvancedSearch(searchBy, target, searchResults, comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), this.userSession);
+			ComicBookSearch.comicAdvancedSearch(searchBy, target, searchResults, comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), this.userSession);
 		}
 	}
 }
