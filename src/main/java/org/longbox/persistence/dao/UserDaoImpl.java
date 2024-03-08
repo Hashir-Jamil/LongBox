@@ -117,7 +117,10 @@ public class UserDaoImpl implements UserDao {
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
-            session.save(user);
+
+            user = (User) session.merge(user);
+
+            session.persist(user);
             transaction.commit();
         }
         catch(ConstraintViolationException cve){
