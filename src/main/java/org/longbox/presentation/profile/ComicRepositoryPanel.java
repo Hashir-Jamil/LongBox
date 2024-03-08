@@ -3,10 +3,13 @@ package org.longbox.presentation.profile;
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
+import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.ComicBookSearch;
 import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
+import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
 import org.longbox.persistence.dao.UserDaoImpl;
+import org.longbox.persistence.entity.ComicBook;
 import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
 
 import java.awt.BorderLayout;
@@ -48,9 +51,11 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 	private JTextField textField;
 	private JComboBox<String> typeSelection;
 	private ComicBookTableModel comicBookTableModel;
-	TableRowSorter<TableModel> sorter;	
+	TableRowSorter<TableModel> sorter;
 	ComicBookDaoImpl comicBookDaoImpl;
 	private UserSession userSession;
+	private JButton addToFavoritesButton;
+	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl();
 
 	public ComicRepositoryPanel() {
 		initComicCollectionPage();
@@ -112,8 +117,14 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 			}
 		});
 		panel.add(refreshButton);
+
+		addToFavoritesButton = new JButton("Add to Favorites");
+		addToFavoritesButton.setBounds(930, 62, 129, 23);
+		addToFavoritesButton.setEnabled(false); // Initially inactive
+		addToFavoritesButton.addActionListener(this);
+		panel.add(addToFavoritesButton);
 	}
-	
+
 	@Override
     public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == textField && !textField.getText().isEmpty()) {
@@ -121,18 +132,50 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 			String target = textField.getText();
 			List<ComicBookDTO> searchResults = null;
 			searchResults = ComicBookSearch.comicAdvancedSearch(searchBy, target, searchResults, comicBookDaoImpl.getAllComicBooks(), this.userSession);
+		} else if (e.getSource() == addToFavoritesButton) {
+			int selectedRow = comicBookTable.getSelectedRow();
+			if (selectedRow != -1) {
+				long comicId = comicBookTableModel.getComicIdAtRow(selectedRow);
+				// Check if the comic book is already in favorites list
+				if (!isComicInFavorites(comicId)) {
+                    try {
+                        addComicToFavorites(comicId);
+                    } catch (UserIDDoesNotExistException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    // Disable the button after adding to favorites
+					addToFavoritesButton.setEnabled(false);
+				}
+			}
 		}
     }
-	
+
+	private boolean isComicInFavorites(long comicId) {
+		ComicBook comicBook = comicBookDaoImpl.getComicBookById(comicId);
+		ComicBookDTO comicBookDTO = new ComicBookDTO(comicBook);
+		System.out.println("the comic in favorites is " + comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO));
+		return comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO);
+	}
+
+	private void addComicToFavorites(long comicId) throws UserIDDoesNotExistException {
+		FavoritesPanel favoritesPanel = new FavoritesPanel();
+		favoritesPanel.update(this.userSession.getUser().getId(), comicId);
+		favoritesPanel.reloadData();
+	}
+
 	public void reloadTable() {
 		comicBookDaoImpl = new ComicBookDaoImpl();
-		
+
 		comicBookTableModel = new ComicBookTableModel(comicBookDaoImpl.getAllComicBooks());
 
 		comicBookTable = new JTable(comicBookTableModel);
 		comicBookTable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				int selectedRow = comicBookTable.getSelectedRow();
+				if (selectedRow != -1) {
+					addToFavoritesButton.setEnabled(true);
+				}
 				int row = comicBookTable.rowAtPoint(e.getPoint());
 				int col = comicBookTable.columnAtPoint(e.getPoint());
 				if (col == 0) {
@@ -143,7 +186,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 		});
 		sorter = new TableRowSorter<TableModel>(comicBookTable.getModel());
 		comicBookTable.setRowSorter(sorter);
-		
+
 		scrollPane = new JScrollPane(comicBookTable);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setViewportBorder(null);
