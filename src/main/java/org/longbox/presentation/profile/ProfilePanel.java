@@ -9,6 +9,8 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -19,8 +21,12 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 
 import org.longbox.businesslogic.UserSession;
+import org.longbox.domainobjects.dto.ComicBookDTO;
 import org.longbox.domainobjects.dto.UserDTO;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
+import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
+import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
+import org.longbox.persistence.entity.ComicBook;
 
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
@@ -174,11 +180,28 @@ public class ProfilePanel extends JPanel implements ActionListener {
 			}
 		});
 		panel.add(aboutMeUpdateButton);
-	
-		ComicBookDaoImpl readingComics = new ComicBookDaoImpl(); // This will be changed in the future
-		ComicBookDaoImpl readComics = new ComicBookDaoImpl(); // This too
-		ReadingAndReadComicBookTableModel readingTableModel = new ReadingAndReadComicBookTableModel(readingComics.getAllComicBooks());
-		ReadingAndReadComicBookTableModel readTableModel = new ReadingAndReadComicBookTableModel(readComics.getAllComicBooks());
+		
+		ComicBookReadingListDaoImpl readingListDaoImpl = new ComicBookReadingListDaoImpl();
+		ComicBookFinishedListDaoImpl readListDaoImpl = new ComicBookFinishedListDaoImpl();
+		
+		List<ComicBook> readingList = readingListDaoImpl.getUsersReadingList(user.getUser().getId());
+		List<ComicBookDTO> readingListDTO = new ArrayList<ComicBookDTO>();
+		
+		List<ComicBook> readList = readListDaoImpl.getUsersFinishedList(user.getUser().getId());
+		List<ComicBookDTO> readListDTO = new ArrayList<ComicBookDTO>();
+		
+		for (ComicBook c : readingList) {
+            ComicBookDTO comicBookDTO = new ComicBookDTO(c);
+            readingListDTO.add(comicBookDTO);
+        }
+		
+		for (ComicBook c : readList) {
+			ComicBookDTO comicBookDTO = new ComicBookDTO(c);
+			readListDTO.add(comicBookDTO);
+		}
+		
+		ReadingAndReadComicBookTableModel readingTableModel = new ReadingAndReadComicBookTableModel(readingListDTO);
+		ReadingAndReadComicBookTableModel readTableModel = new ReadingAndReadComicBookTableModel(readListDTO);
 
 		JTable readingTable = new JTable(readingTableModel);
 		JScrollPane readingPane = new JScrollPane(readingTable);
