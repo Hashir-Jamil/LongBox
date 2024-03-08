@@ -184,5 +184,6 @@
     Group (Ahan, Hashir, Eric, Oscar): Evening work session to finish iteration 2 planning document, discussing any tasks left to complete & discussion of a design decision for common interface of stub data and postgresql data.
     
 ## Thursday, March 7th, 2024
-
+    
+    Eric: Added advanced search to favourites panel, moved advanced favourites logic to ComicBookSearch. Added table model for reading and read comics, now displays in scroll pane / list in profile
 	Oscar: Reorganized "about me" section in profile page and added JTextField and most of the functionality for the update button.
