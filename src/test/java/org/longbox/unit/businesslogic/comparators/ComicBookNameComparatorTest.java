@@ -1,32 +1,28 @@
 package org.longbox.unit.businesslogic.comparators;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.businesslogic.comparators.ComicBookNameComparator;
-
-import java.util.Comparator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ComicBookNameComparatorTest {
 
     ComicBookNameComparator comicBookNameComparator = new ComicBookNameComparator();
-    ComicBookDTO comicBook1;
-    ComicBookDTO comicBook2;
-    ComicBookDTO comicBook3;
-    ComicBookDTO comicBook4;
-    ComicBookDTO comicBook5;
-    ComicBookDTO comicBook6;
-    ComicBookDTO comicBook7;
-    ComicBookDTO comicBook8;
+    ComicBookDto comicBook1;
+    ComicBookDto comicBook2;
+    ComicBookDto comicBook3;
+    ComicBookDto comicBook4;
+    ComicBookDto comicBook5;
+    ComicBookDto comicBook6;
+    ComicBookDto comicBook7;
+    ComicBookDto comicBook8;
 
     @BeforeEach
     public void setup() {
 
-        comicBook1 = new ComicBookDTO(
+        comicBook1 = new ComicBookDto(
                 "Zot!",
                 "Scott McCloud",
                 "Scott McCloud",
@@ -37,7 +33,7 @@ public class ComicBookNameComparatorTest {
                 1984
         );
 
-        comicBook2 = new ComicBookDTO(
+        comicBook2 = new ComicBookDto(
                 "Sanctuary",
                 "Sho Fumimura",
                 "Ryoichi Ikegami",
@@ -48,7 +44,7 @@ public class ComicBookNameComparatorTest {
                 1990
         );
 
-        comicBook3 = new ComicBookDTO(
+        comicBook3 = new ComicBookDto(
                 "Nexus (1981)",
                 "Mike Baron",
                 "Steve Rude",
@@ -59,7 +55,7 @@ public class ComicBookNameComparatorTest {
                 1981
         );
 
-        comicBook4 = new ComicBookDTO(
+        comicBook4 = new ComicBookDto(
                 "The Maxx",
                 "Sam Keith",
                 "Sam Keith",
@@ -70,7 +66,7 @@ public class ComicBookNameComparatorTest {
                 1993
         );
 
-        comicBook5 = new ComicBookDTO(
+        comicBook5 = new ComicBookDto(
                 "",
                 "Scott McCloud",
                 "Scott McCloud",
@@ -81,7 +77,7 @@ public class ComicBookNameComparatorTest {
                 1984
         );
 
-        comicBook6 = new ComicBookDTO(
+        comicBook6 = new ComicBookDto(
                 null,
                 "Sho Fumimura",
                 "Ryoichi Ikegami",
@@ -93,7 +89,7 @@ public class ComicBookNameComparatorTest {
                 1990
         );
 
-        comicBook7 = new ComicBookDTO(
+        comicBook7 = new ComicBookDto(
                 "Nexus (1981)",
                 "Mike Baron",
                 "Steve Rude",
@@ -104,7 +100,7 @@ public class ComicBookNameComparatorTest {
                 1981
         );
 
-        comicBook8 = new ComicBookDTO(
+        comicBook8 = new ComicBookDto(
                 "The Maxx",
                 "Sam Keith",
                 "Sam Keith",

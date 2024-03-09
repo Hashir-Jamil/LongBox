@@ -2,7 +2,7 @@ package org.longbox.integration.persistence.dao;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.entity.ComicBook;
 
@@ -16,14 +16,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ComicBookDaoImplTest {
 
     ComicBook comicBook, comicBook2;
-    ComicBookDTO comicBookDTO1, comicBookDTO2;
+    ComicBookDto comicBookDto1, comicBookDto2;
     ComicBookDaoImpl comicBookDaoImpl;
 
     @BeforeEach
     void init(){
         comicBookDaoImpl = new ComicBookDaoImpl();
 
-        comicBookDTO1 = new ComicBookDTO(
+        comicBookDto1 = new ComicBookDto(
                 "Zot!",
                 "Scott McCloud",
                 "Scott McCloud",
@@ -35,7 +35,7 @@ public class ComicBookDaoImplTest {
                 new Date()
         );
 
-        comicBookDTO2 = new ComicBookDTO(
+        comicBookDto2 = new ComicBookDto(
                 "The Amazing Spider-Man",
                 "Stan Lee",
                 "Steve Ditko",
@@ -48,53 +48,53 @@ public class ComicBookDaoImplTest {
         );
 
         comicBook = new ComicBook(
-                comicBookDTO1.getSeriesTitle(),
-                comicBookDTO1.getAuthor(),
-                comicBookDTO1.getArtist(),
-                ComicBookDTO.genreListToString(comicBookDTO1.getGenres()),
-                comicBookDTO1.getDescription(),
-                comicBookDTO1.getNumberOfIssues(),
-                comicBookDTO1.getPublisher(),
-                comicBookDTO1.getYearPublished(),
-                comicBookDTO1.getDateAdded()
+                comicBookDto1.getSeriesTitle(),
+                comicBookDto1.getAuthor(),
+                comicBookDto1.getArtist(),
+                ComicBookDto.genreListToString(comicBookDto1.getGenres()),
+                comicBookDto1.getDescription(),
+                comicBookDto1.getNumberOfIssues(),
+                comicBookDto1.getPublisher(),
+                comicBookDto1.getYearPublished(),
+                comicBookDto1.getDateAdded()
         );
 
         comicBook2 = new ComicBook(
-                comicBookDTO2.getSeriesTitle(),
-                comicBookDTO2.getAuthor(),
-                comicBookDTO2.getArtist(),
-                ComicBookDTO.genreListToString(comicBookDTO2.getGenres()),
-                comicBookDTO2.getDescription(),
-                comicBookDTO2.getNumberOfIssues(),
-                comicBookDTO2.getPublisher(),
-                comicBookDTO2.getYearPublished(),
-                comicBookDTO2.getDateAdded()
+                comicBookDto2.getSeriesTitle(),
+                comicBookDto2.getAuthor(),
+                comicBookDto2.getArtist(),
+                ComicBookDto.genreListToString(comicBookDto2.getGenres()),
+                comicBookDto2.getDescription(),
+                comicBookDto2.getNumberOfIssues(),
+                comicBookDto2.getPublisher(),
+                comicBookDto2.getYearPublished(),
+                comicBookDto2.getDateAdded()
         );
 
     }
 
     @Test
     void getAllComicsTestBasic() {
-        List<ComicBookDTO> comicBookRecordsDTO = new ArrayList<>();
+        List<ComicBookDto> comicBookRecordsDTO = new ArrayList<>();
         comicBookRecordsDTO = comicBookDaoImpl.getAllComicBooks();
         assertTrue(comicBookRecordsDTO.size() > 0);
     }
 
     @Test
     void saveComicBook() {
-        comicBookDaoImpl.saveComicBook(comicBookDTO2);
+        comicBookDaoImpl.saveComicBook(comicBookDto2);
     }
 
     @Test
     void getComicBookBySeriesNameTest() {
         ComicBook spiderMan = comicBookDaoImpl.getComicBookBySeriesName("The Amazing Spider-Man");
-        assertEquals(comicBookDTO2.getSeriesTitle(), spiderMan.getSeriesTitle());
-        assertEquals(comicBookDTO2.getAuthor(), spiderMan.getAuthor());
-        assertEquals(comicBookDTO2.getArtist(), spiderMan.getArtist());
-        assertEquals(ComicBookDTO.genreListToString(comicBookDTO2.getGenres()), spiderMan.getGenres());
-        assertEquals(comicBookDTO2.getDescription(), spiderMan.getDescription());
-        assertEquals(comicBookDTO2.getNumberOfIssues(), spiderMan.getNumberOfIssues());
-        assertEquals(comicBookDTO2.getPublisher(), spiderMan.getPublisher());
-        assertEquals(comicBookDTO2.getYearPublished(), spiderMan.getYearPublished());
+        assertEquals(comicBookDto2.getSeriesTitle(), spiderMan.getSeriesTitle());
+        assertEquals(comicBookDto2.getAuthor(), spiderMan.getAuthor());
+        assertEquals(comicBookDto2.getArtist(), spiderMan.getArtist());
+        assertEquals(ComicBookDto.genreListToString(comicBookDto2.getGenres()), spiderMan.getGenres());
+        assertEquals(comicBookDto2.getDescription(), spiderMan.getDescription());
+        assertEquals(comicBookDto2.getNumberOfIssues(), spiderMan.getNumberOfIssues());
+        assertEquals(comicBookDto2.getPublisher(), spiderMan.getPublisher());
+        assertEquals(comicBookDto2.getYearPublished(), spiderMan.getYearPublished());
     }
 }

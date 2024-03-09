@@ -3,22 +3,22 @@ package org.longbox.unit.businesslogic.comparators;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.businesslogic.comparators.ComicBookDateAddedComparator;
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ComicBookDateAddedComparatorTest {
-    ComicBookDTO comicBook1;
-    ComicBookDTO comicBook2;
-    ComicBookDTO comicBook3;
-    ComicBookDTO comicBook4;
+    ComicBookDto comicBook1;
+    ComicBookDto comicBook2;
+    ComicBookDto comicBook3;
+    ComicBookDto comicBook4;
     ComicBookDateAddedComparator comparator;
 
     @BeforeEach
     public void setup() {
         comparator = new ComicBookDateAddedComparator();
 
-        comicBook1 = new ComicBookDTO(
+        comicBook1 = new ComicBookDto(
                 "Batman",
                 "Frank Miller",
                 "David Mazzucchelli",
@@ -29,7 +29,7 @@ public class ComicBookDateAddedComparatorTest {
                 1987
         );
 
-        comicBook2 = new ComicBookDTO(
+        comicBook2 = new ComicBookDto(
                 "Spider-Man",
                 "Stan Lee",
                 "Steve Ditko",
@@ -40,7 +40,7 @@ public class ComicBookDateAddedComparatorTest {
                 1962
         );
 
-        comicBook3 = new ComicBookDTO(
+        comicBook3 = new ComicBookDto(
                 "X-Men",
                 "Chris Claremont",
                 "Jim Lee",
@@ -51,7 +51,7 @@ public class ComicBookDateAddedComparatorTest {
                 1991
         );
 
-        comicBook4 = new ComicBookDTO(
+        comicBook4 = new ComicBookDto(
                 "Wonder Woman",
                 "George Perez",
                 "George Perez",

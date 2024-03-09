@@ -1,4 +1,4 @@
-package org.longbox.unit.comiccollection.comiccollection;
+package org.longbox.unit.presentation.profile;
 
 import org.longbox.presentation.profile.ComicRepositoryPanel;
 
@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class ComicRepositoryTest {
+public class ComicRepositoryPanelTest {
 	
 	private ComicRepositoryPanel comicRepositoryPanel;
 
@@ -51,7 +51,4 @@ public class ComicRepositoryTest {
     	assertTrue(comicRepositoryPanel.getTypeSelection().getItemAt(5) == "Year");
     	assertTrue(comicRepositoryPanel.getTypeSelection().getItemAt(6) == null);
     }
-    
- 
-	
 }

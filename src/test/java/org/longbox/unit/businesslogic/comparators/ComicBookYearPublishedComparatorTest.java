@@ -3,29 +3,27 @@ package org.longbox.unit.businesslogic.comparators;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.businesslogic.comparators.ComicBookYearPublishedComparator;
-import org.longbox.domainobjects.dto.ComicBookDTO;
-
-import java.util.Comparator;
+import org.longbox.domainobjects.dto.ComicBookDto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ComicBookYearPublishedComparatorTest {
 
-    ComicBookDTO comicBook1;
-    ComicBookDTO comicBook2;
-    ComicBookDTO comicBook3;
-    ComicBookDTO comicBook4;
-    ComicBookDTO comicBook5;
-    ComicBookDTO comicBook6;
-    ComicBookDTO comicBook7;
-    ComicBookDTO comicBook8;
+    ComicBookDto comicBook1;
+    ComicBookDto comicBook2;
+    ComicBookDto comicBook3;
+    ComicBookDto comicBook4;
+    ComicBookDto comicBook5;
+    ComicBookDto comicBook6;
+    ComicBookDto comicBook7;
+    ComicBookDto comicBook8;
     ComicBookYearPublishedComparator comparator;
 
     @BeforeEach
     public void setup() {
         comparator = new ComicBookYearPublishedComparator();
 
-        comicBook1 = new ComicBookDTO(
+        comicBook1 = new ComicBookDto(
                 "Batman",
                 "Frank Miller",
                 "David Mazzucchelli",
@@ -36,7 +34,7 @@ public class ComicBookYearPublishedComparatorTest {
                 1987
         );
 
-        comicBook2 = new ComicBookDTO(
+        comicBook2 = new ComicBookDto(
                 "Spider-Man",
                 "Stan Lee",
                 "Steve Ditko",
@@ -47,7 +45,7 @@ public class ComicBookYearPublishedComparatorTest {
                 1962
         );
 
-        comicBook3 = new ComicBookDTO(
+        comicBook3 = new ComicBookDto(
                 "X-Men",
                 "Chris Claremont",
                 "Jim Lee",
@@ -58,7 +56,7 @@ public class ComicBookYearPublishedComparatorTest {
                 1991
         );
 
-        comicBook4 = new ComicBookDTO(
+        comicBook4 = new ComicBookDto(
                 "Wonder Woman",
                 "George Perez",
                 "George Perez",
@@ -69,7 +67,7 @@ public class ComicBookYearPublishedComparatorTest {
                 1991
         );
 
-        comicBook5 = new ComicBookDTO(
+        comicBook5 = new ComicBookDto(
                 "Zot!",
                 "Scott McCloud",
                 "Scott McCloud",
@@ -80,7 +78,7 @@ public class ComicBookYearPublishedComparatorTest {
                 1984
         );
 
-        comicBook6 = new ComicBookDTO(
+        comicBook6 = new ComicBookDto(
                 "Sanctuary",
                 "Sho Fumimura",
                 "Ryoichi Ikegami",
@@ -92,7 +90,7 @@ public class ComicBookYearPublishedComparatorTest {
                 1990
         );
 
-        comicBook7 = new ComicBookDTO(
+        comicBook7 = new ComicBookDto(
                 "Nexus (1981)",
                 "Mike Baron",
                 "Steve Rude",
@@ -103,7 +101,7 @@ public class ComicBookYearPublishedComparatorTest {
                 1981
         );
 
-        comicBook8 = new ComicBookDTO(
+        comicBook8 = new ComicBookDto(
                 "The Maxx",
                 "Sam Keith",
                 "Sam Keith",
@@ -145,7 +143,7 @@ public class ComicBookYearPublishedComparatorTest {
     @Test
     public void test_CompareDifferentObjects_SameYear() {
         int expected = 0;
-        ComicBookDTO otherComicBook1 = new ComicBookDTO("Batman", "Frank Miller", "David Mazzucchelli", new String[]{"Action", "Crime"}, "A classic Batman story", 4, "DC Comics", 1987);
+        ComicBookDto otherComicBook1 = new ComicBookDto("Batman", "Frank Miller", "David Mazzucchelli", new String[]{"Action", "Crime"}, "A classic Batman story", 4, "DC Comics", 1987);
         int actual = comparator.compare(comicBook1, otherComicBook1);
         assertEquals(expected, actual);
     }
@@ -153,7 +151,7 @@ public class ComicBookYearPublishedComparatorTest {
     @Test
     public void test_CompareDifferentObjects_DifferentYear() {
         int expected = 1;
-        ComicBookDTO otherComicBook1 = new ComicBookDTO("Batman", "Frank Miller", "David Mazzucchelli", new String[]{"Action", "Crime"}, "A classic Batman story", 4, "DC Comics", 1986);
+        ComicBookDto otherComicBook1 = new ComicBookDto("Batman", "Frank Miller", "David Mazzucchelli", new String[]{"Action", "Crime"}, "A classic Batman story", 4, "DC Comics", 1986);
         int actual = comparator.compare(comicBook1, otherComicBook1);
         assertEquals(expected, actual);
     }
