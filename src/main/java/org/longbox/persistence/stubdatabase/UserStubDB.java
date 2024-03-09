@@ -7,19 +7,19 @@ import java.util.Date;
 import java.util.List;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.domainobjects.dto.UserDto;
 import com.google.gson.Gson;
 
 public class UserStubDB {
 
-    private List<UserDTO> userStubData = new ArrayList<>();
+    private List<UserDto> userStubData = new ArrayList<>();
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/UserStubDB.json";
 
     public UserStubDB() {
     }
 
     public void loadUsers() {
-        UserDTO u1 = new UserDTO(
+        UserDto u1 = new UserDto(
                 1,
                 "Always_Scheming",
                 "John",
@@ -33,7 +33,7 @@ public class UserStubDB {
         );
         userStubData.add(u1);
 
-        UserDTO u2 = new UserDTO(
+        UserDto u2 = new UserDto(
                 2,
                 "Always_Throwing",
                 "Neo",
@@ -47,7 +47,7 @@ public class UserStubDB {
         );
         userStubData.add(u2);
 
-        UserDTO u3 = new UserDTO(
+        UserDto u3 = new UserDto(
                 3,
                 "Phoenix",
                 "Stan",
@@ -62,15 +62,15 @@ public class UserStubDB {
         userStubData.add(u3);
     }
     
-    public List<UserDTO> getUsers(){
+    public List<UserDto> getUsers(){
     	return this.userStubData;
     }
 
-    public List<UserDTO> getUserStubData() {
+    public List<UserDto> getUserStubData() {
         return userStubData;
     }
 
-    public void setUserStubData(List<UserDTO> userStubData) {
+    public void setUserStubData(List<UserDto> userStubData) {
         this.userStubData = userStubData;
     }
 
@@ -78,7 +78,7 @@ public class UserStubDB {
         return ABSOLUTE_FILE_PATH;
     }
 
-    public void addUser(UserDTO user) {
+    public void addUser(UserDto user) {
     	this.userStubData.add(user);
     }
 
@@ -92,8 +92,8 @@ public class UserStubDB {
         }
     }
 
-    public List<UserDTO> deserializeUserStubDB(String filepath) {
-        Type listType = new TypeToken<ArrayList<UserDTO>>(){}.getType();
+    public List<UserDto> deserializeUserStubDB(String filepath) {
+        Type listType = new TypeToken<ArrayList<UserDto>>(){}.getType();
         JsonReader reader = null;
 
         try {
@@ -103,7 +103,7 @@ public class UserStubDB {
             throw new RuntimeException(e);
         }
 
-        List<UserDTO> dummyUsers = new Gson().fromJson(reader, listType);
+        List<UserDto> dummyUsers = new Gson().fromJson(reader, listType);
         return dummyUsers;
     }
 
