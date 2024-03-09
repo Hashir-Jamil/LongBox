@@ -5,12 +5,10 @@ import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.ComicBookSearch;
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
-import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.ComicBook;
-import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -130,7 +128,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 		if (e.getSource() == textField && !textField.getText().isEmpty()) {
 			String searchBy = typeSelection.getSelectedItem().toString();
 			String target = textField.getText();
-			List<ComicBookDTO> searchResults = null;
+			List<ComicBookDto> searchResults = null;
 			searchResults = ComicBookSearch.comicAdvancedSearch(searchBy, target, searchResults, comicBookDaoImpl.getAllComicBooks(), this.userSession);
 		} else if (e.getSource() == addToFavoritesButton) {
 			int selectedRow = comicBookTable.getSelectedRow();
@@ -152,7 +150,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 
 	private boolean isComicInFavorites(long comicId) {
 		ComicBook comicBook = comicBookDaoImpl.getComicBookById(comicId);
-		ComicBookDTO comicBookDTO = new ComicBookDTO(comicBook);
+		ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
 		System.out.println("the comic in favorites is " + comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO));
 		return comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO);
 	}
@@ -179,7 +177,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 				int row = comicBookTable.rowAtPoint(e.getPoint());
 				int col = comicBookTable.columnAtPoint(e.getPoint());
 				if (col == 0) {
-					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
+					ComicBookDto comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
 					ComicBookSearch.loadComicBookPage(comicBook, userSession);
 				}
 			}

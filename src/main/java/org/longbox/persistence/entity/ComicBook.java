@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -83,11 +83,11 @@ public class ComicBook {
         this.dateAdded = new Date(dateAdded.getTime());
     }
 
-    public ComicBook(ComicBookDTO comicBookDTO) {
+    public ComicBook(ComicBookDto comicBookDTO) {
         this.seriesTitle = comicBookDTO.getSeriesTitle();
         this.author = comicBookDTO.getAuthor();
         this.artist = comicBookDTO.getArtist();
-        this.genres = ComicBookDTO.genreListToString(comicBookDTO.getGenres());
+        this.genres = ComicBookDto.genreListToString(comicBookDTO.getGenres());
         this.description = comicBookDTO.getDescription();
         this.numberOfIssues = comicBookDTO.getNumberOfIssues();
         this.publisher = comicBookDTO.getPublisher();

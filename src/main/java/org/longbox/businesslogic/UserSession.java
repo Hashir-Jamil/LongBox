@@ -1,23 +1,17 @@
 package org.longbox.businesslogic;
 
-import org.longbox.domainobjects.dto.UserDTO;
-
-import javax.swing.text.html.HTMLEditorKit;
-
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.longbox.domainobjects.dto.UserDto;
 
 public class UserSession {
 
     private static UserSession activeUser = null;
-    private UserDTO user;
+    private UserDto user;
 
-    private UserSession(UserDTO user) {
+    private UserSession(UserDto user) {
         this.user = user;
     }
 
-    public static UserSession getInstance(UserDTO user) {
+    public static UserSession getInstance(UserDto user) {
         if (activeUser == null) {
             activeUser = new UserSession(user);
         }
@@ -37,11 +31,11 @@ public class UserSession {
 		return activeUser;
 	}
 
-    public UserDTO getUser() {
+    public UserDto getUser() {
         return user;
     }
 
-    public void setUser(UserDTO user) {
+    public void setUser(UserDto user) {
         this.user = user;
     }
 

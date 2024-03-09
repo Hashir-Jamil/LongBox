@@ -14,8 +14,8 @@ import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.MultiLineCellRenderer;
-import org.longbox.domainobjects.dto.ComicBookDTO;
-import org.longbox.domainobjects.dto.CommentDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
+import org.longbox.domainobjects.dto.CommentDto;
 import org.longbox.persistence.dao.*;
 import org.longbox.persistence.entity.ComicBook;
 
@@ -33,7 +33,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	private static final String REMOVE_FAVORITES_LIST_LABEL = "Remove Favorite";
 	private static final String REMOVE_FINISHED_LIST_LABEL = "Remove From Finished";
 	private static final String REMOVE_READING_LIST_LABEL = "Remove From Reading";
-	private ComicBookDTO comicBookDTO;
+	private ComicBookDto comicBookDTO;
 	private JPanel panel;
 	//text labels
 	private JLabel comicSeries;
@@ -56,11 +56,11 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	private JButton removeFromFinishedButton;
 	private JButton removeFromToReadingButton;
 	private JTextArea commentBox;
-	private DefaultListModel<CommentDTO> commentListModel;
+	private DefaultListModel<CommentDto> commentListModel;
 	private CommentDaoImpl commentDaoImpl;
-	private List<CommentDTO> commentsOnCurrentComic;
+	private List<CommentDto> commentsOnCurrentComic;
 	private UserSession userSession;
-	private JList<CommentDTO> commentList;
+	private JList<CommentDto> commentList;
 	private ComicBookDaoImpl comicBookDaoImpl;
 	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl;
 	private ComicBookFinishedListDaoImpl comicBookFinishedListDaoImpl;
@@ -73,7 +73,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 //		initComicBookInfoPage();
 //	}
 	
-	public ComicBookInfoPanel(ComicBookDTO comicBookDTO, UserSession userSession) {
+	public ComicBookInfoPanel(ComicBookDto comicBookDTO, UserSession userSession) {
 		this.comicBookDTO = comicBookDTO;
 		this.userSession = userSession;
 
@@ -245,8 +245,8 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		viewCommentsLabel.setBounds(618, 360, 241, 16);
 		panel.add(viewCommentsLabel);
 
-		commentListModel = new DefaultListModel<CommentDTO>();
-		commentList = new JList<CommentDTO>(commentListModel);
+		commentListModel = new DefaultListModel<CommentDto>();
+		commentList = new JList<CommentDto>(commentListModel);
 
 		commentList.setCellRenderer(new MultiLineCellRenderer());
 
@@ -266,7 +266,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		comicSeries.setText(comicBookDTO.getSeriesTitle());
 		author.setText(comicBookDTO.getAuthor());
 		artist.setText(comicBookDTO.getArtist());
-		genre.setText("<html>" + ComicBookDTO.genreListToString(comicBookDTO.getGenres()) + "</html>");
+		genre.setText("<html>" + ComicBookDto.genreListToString(comicBookDTO.getGenres()) + "</html>");
 		description.setText("<html>" + comicBookDTO.getDescription() + "</html>");
 		numberOfIssues.setText("" + comicBookDTO.getNumberOfIssues());
 		publisher.setText(comicBookDTO.getPublisher());
@@ -278,7 +278,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		commentsOnCurrentComic = commentDaoImpl.getCommentsByComic(comicBookDTO.getId());
 		commentListModel.removeAllElements();
 
-		for (CommentDTO c : commentsOnCurrentComic) {
+		for (CommentDto c : commentsOnCurrentComic) {
 			commentListModel.addElement(c);
 		}
 
@@ -290,7 +290,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == addCommentButton){
 			String message = commentBox.getText();
-			CommentDTO newComment = new CommentDTO(message, this.userSession.getUser(), this.comicBookDTO);
+			CommentDto newComment = new CommentDto(message, this.userSession.getUser(), this.comicBookDTO);
 			commentDaoImpl.saveComment(newComment);
 			displayComments();
 		} else if (e.getSource() == addToFavoritesButton) {
@@ -359,7 +359,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		comicBookDaoImpl = new ComicBookDaoImpl();
 		comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl();
 		ComicBook comicBook = comicBookDaoImpl.getComicBookById(comicId);
-		ComicBookDTO comicBookDTO = new ComicBookDTO(comicBook);
+		ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
 		System.out.println("the comic in favorites is " + comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO));
 		return comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO);
 	}

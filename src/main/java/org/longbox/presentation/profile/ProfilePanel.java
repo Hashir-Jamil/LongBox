@@ -15,8 +15,8 @@ import javax.swing.*;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
-import org.longbox.domainobjects.dto.ComicBookDTO;
-import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
+import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
 import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
 import org.longbox.persistence.dao.UserDaoImpl;
@@ -243,30 +243,30 @@ public class ProfilePanel extends JPanel implements ActionListener {
 	public void reloadTable() throws UserIDDoesNotExistException {
 
 		UserDaoImpl userDaoImpl = new UserDaoImpl();
-		user.setUser(new UserDTO(userDaoImpl.getUserById(user.getUser().getId())));
+		user.setUser(new UserDto(userDaoImpl.getUserById(user.getUser().getId())));
 		setFields();
 
 		ComicBookReadingListDaoImpl readingListDaoImpl = new ComicBookReadingListDaoImpl();
 		ComicBookFinishedListDaoImpl readListDaoImpl = new ComicBookFinishedListDaoImpl();
 
 		List<ComicBook> readingList = readingListDaoImpl.getUsersReadingList(user.getUser().getId());
-		List<ComicBookDTO> readingListDTO = new ArrayList<ComicBookDTO>();
+		List<ComicBookDto> readingListDTO = new ArrayList<ComicBookDto>();
 
 		List<ComicBook> readList = readListDaoImpl.getUsersFinishedList(user.getUser().getId());
-		List<ComicBookDTO> readListDTO = new ArrayList<ComicBookDTO>();
+		List<ComicBookDto> finishedListDTO = new ArrayList<ComicBookDto>();
 
 		for (ComicBook c : readingList) {
-			ComicBookDTO comicBookDTO = new ComicBookDTO(c);
+			ComicBookDto comicBookDTO = new ComicBookDto(c);
 			readingListDTO.add(comicBookDTO);
 		}
 
 		for (ComicBook c : readList) {
-			ComicBookDTO comicBookDTO = new ComicBookDTO(c);
-			readListDTO.add(comicBookDTO);
+			ComicBookDto comicBookDTO = new ComicBookDto(c);
+			finishedListDTO.add(comicBookDTO);
 		}
 
 		readingTableModel = new ReadingAndFinishedComicBookTableModel(readingListDTO);
-		readTableModel = new ReadingAndFinishedComicBookTableModel(readListDTO);
+		finishedTableModel = new ReadingAndFinishedComicBookTableModel(finishedListDTO);
 
 		readingTable = new JTable(readingTableModel);
 		readingPane = new JScrollPane(readingTable);
@@ -274,7 +274,7 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		readingPane.setBounds(47, 424, 407, 135);
 		panel.add(readingPane);
 
-		readTable = new JTable(readTableModel);
+		readTable = new JTable(finishedTableModel);
 		readPane = new JScrollPane(readTable);
 		readPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		readPane.setBounds(47, 617, 407, 135);

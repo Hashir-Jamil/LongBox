@@ -1,7 +1,7 @@
 package org.longbox.persistence.dao;
 
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.entity.ComicBook;
 import org.longbox.persistence.entity.User;
 
@@ -17,5 +17,5 @@ public interface ComicBookFavouritesListDao {
 
     List<User> getUsersByComicBook(long comicBookId);
 
-    List<ComicBookDTO> getAllFavoritesComicBooks();
+    List<ComicBookDto> getAllFavoritesComicBooks();
 }

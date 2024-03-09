@@ -5,11 +5,10 @@ import lombok.Setter;
 import org.longbox.businesslogic.*;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.ComicBookSearch;
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.stubdatabase.ComicBookStubDB;
 import org.longbox.presentation.authentication.AuthenticationFrame;
-import org.longbox.presentation.comicbook.ComicBookFrame;
 
 import java.awt.EventQueue;
 
@@ -19,10 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
 
 import javax.swing.JLabel;
-import java.awt.Font;
 
 import javax.swing.JButton;
-import javax.swing.text.html.HTMLEditorKit;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -199,7 +196,7 @@ public class HomeFrame extends JFrame implements ActionListener {
     private void saveAddComicBookFormInput() throws UserIDDoesNotExistException {
 
         //Create data transfer object for comic book
-        ComicBookDTO comicBook = new ComicBookDTO(
+        ComicBookDto comicBook = new ComicBookDto(
                 addComicToRepoPanel.getComicSeriesTitleTextField().getText(),
                 addComicToRepoPanel.getComicBookAuthorTextField().getText(),
                 addComicToRepoPanel.getComicBookArtistTextField().getText(),
@@ -242,7 +239,7 @@ public class HomeFrame extends JFrame implements ActionListener {
         }
     }
 
-    private ComicBookDTO searchComicBookResults(String searchQuery) {
+    private ComicBookDto searchComicBookResults(String searchQuery) {
         ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
         comicBookStubDB.loadComicBooks();
         return ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), searchQuery);

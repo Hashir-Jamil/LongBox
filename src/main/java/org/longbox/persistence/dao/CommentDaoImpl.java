@@ -4,15 +4,13 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.longbox.domainobjects.dto.ComicBookDTO;
-import org.longbox.domainobjects.dto.CommentDTO;
+import org.longbox.domainobjects.dto.CommentDto;
 import org.longbox.persistence.entity.ComicBook;
 import org.longbox.persistence.entity.Comment;
 import org.longbox.persistence.entity.User;
 import org.longbox.utils.HibernateUtils;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class CommentDaoImpl implements CommentDao {
@@ -21,7 +19,7 @@ public class CommentDaoImpl implements CommentDao {
     public Comment getCommentById(long userId, long comicId) { return null; }
 
     @Override
-    public List<CommentDTO> getCommentsByComic(long comicID) {
+    public List<CommentDto> getCommentsByComic(long comicID) {
         Session session = null;
         Transaction transaction = null;
         List<Comment> commentList = null;
@@ -44,16 +42,16 @@ public class CommentDaoImpl implements CommentDao {
                 session.close();
             }
         }
-        List<CommentDTO> commentDTOList = new ArrayList<>();
+        List<CommentDto> commentDtoList = new ArrayList<>();
         for (Comment c : commentList) {
-            CommentDTO commentDTO = new CommentDTO(c);
-            commentDTOList.add(commentDTO);
+            CommentDto commentDTO = new CommentDto(c);
+            commentDtoList.add(commentDTO);
         }
-        return commentDTOList;
+        return commentDtoList;
     }
 
     @Override
-    public void saveComment(CommentDTO commentDTO) {
+    public void saveComment(CommentDto commentDTO) {
         Session session = null;
         Transaction transaction = null;
 
@@ -89,7 +87,7 @@ public class CommentDaoImpl implements CommentDao {
     }
 
     @Override
-    public List<CommentDTO> getCommentsByUser(long userID) {
+    public List<CommentDto> getCommentsByUser(long userID) {
         Session session = null;
         Transaction transaction = null;
         List<Comment> commentList = null;
@@ -111,11 +109,11 @@ public class CommentDaoImpl implements CommentDao {
                 session.close();
             }
         }
-        List<CommentDTO> commentDTOList = new ArrayList<>();
+        List<CommentDto> commentDtoList = new ArrayList<>();
         for (Comment c : commentList) {
-            CommentDTO commentDTO = new CommentDTO(c);
-            commentDTOList.add(commentDTO);
+            CommentDto commentDTO = new CommentDto(c);
+            commentDtoList.add(commentDTO);
         }
-        return commentDTOList;
+        return commentDtoList;
     }
 }

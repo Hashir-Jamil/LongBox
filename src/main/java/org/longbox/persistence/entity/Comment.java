@@ -3,7 +3,7 @@ package org.longbox.persistence.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.longbox.domainobjects.dto.CommentDTO;
+import org.longbox.domainobjects.dto.CommentDto;
 
 import java.util.Date;
 
@@ -45,7 +45,7 @@ public class Comment {
         this.commentDate = new Date();
     }
 
-    public Comment(CommentDTO c){
+    public Comment(CommentDto c){
         this.user = new User(c.getUser());
         this.userName = c.getUser().getUserName();
         this.comicBook = new ComicBook(c.getComicBook());
@@ -53,7 +53,7 @@ public class Comment {
         this.commentDate = c.getDateAdded();
     }
 
-    public Comment(CommentDTO c, User u, ComicBook cb){
+    public Comment(CommentDto c, User u, ComicBook cb){
         this.user = u;
         this.userName = c.getUser().getUserName();
         this.comicBook = cb;

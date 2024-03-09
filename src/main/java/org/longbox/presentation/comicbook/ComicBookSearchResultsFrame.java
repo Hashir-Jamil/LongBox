@@ -1,6 +1,5 @@
 package org.longbox.presentation.comicbook;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -16,9 +15,8 @@ import javax.swing.border.EmptyBorder;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.utils.ComicBookSearch;
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
-import org.longbox.persistence.stubdatabase.ComicBookStubDB;
 import org.longbox.presentation.profile.ComicBookTableModel;
 
 public class ComicBookSearchResultsFrame extends JFrame {
@@ -34,7 +32,7 @@ public class ComicBookSearchResultsFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ComicBookSearchResultsFrame(List<ComicBookDTO> displayResults, String target, String searchBy, UserSession user) {
+	public ComicBookSearchResultsFrame(List<ComicBookDto> displayResults, String target, String searchBy, UserSession user) {
 		this.userSession = user;
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -69,7 +67,7 @@ public class ComicBookSearchResultsFrame extends JFrame {
 				int row = comicBookTable.rowAtPoint(e.getPoint());
 				int col = comicBookTable.columnAtPoint(e.getPoint());
 				if (col == 0) {
-					ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
+					ComicBookDto comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
 					System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
 					ComicBookSearch.loadComicBookPage(comicBook, userSession);
 					dispose();

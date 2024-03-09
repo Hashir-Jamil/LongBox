@@ -1,15 +1,15 @@
 package org.longbox.domainobjects.dto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.longbox.businesslogic.comparators.CommentDateComparator;
 import org.longbox.persistence.entity.ComicBook;
 
 import java.util.*;
 @Getter
 @Setter
-public class ComicBookDTO {
-
+@NoArgsConstructor
+public class ComicBookDto {
     private long id;
     private String seriesTitle;
     private String author;
@@ -21,18 +21,38 @@ public class ComicBookDTO {
     private int yearPublished;
     private Date dateAdded;
 
-    public ComicBookDTO() {
+    public ComicBookDto(
+        long id,
+        String seriesTitle,
+        String author,
+        String artist,
+        String[] genres,
+        String description,
+        int numberOfIssues,
+        String publisher,
+        int yearPublished
+    ) {
+        this.id = id;
+        this.seriesTitle = seriesTitle;
+        this.author = author;
+        this.artist = artist;
+        this.genres = genres;
+        this.description = description;
+        this.numberOfIssues = numberOfIssues;
+        this.yearPublished = yearPublished;
+        this.publisher = publisher;
+        this.dateAdded = new Date();
     }
 
-    public ComicBookDTO(
-            String seriesTitle,
-            String author,
-            String artist,
-            String genres,
-            String description,
-            int numberOfIssues,
-            String publisher,
-            int yearPublished
+    public ComicBookDto(
+        String seriesTitle,
+        String author,
+        String artist,
+        String genres,
+        String description,
+        int numberOfIssues,
+        String publisher,
+        int yearPublished
     ) {
         this.seriesTitle = seriesTitle;
         this.author = author;
@@ -43,20 +63,18 @@ public class ComicBookDTO {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
-    }
+    };
 
-    ;
-
-    public ComicBookDTO(
-            String seriesTitle,
-            String author,
-            String artist,
-            String genres,
-            String description,
-            int numberOfIssues,
-            String publisher,
-            int yearPublished,
-            Date date
+    public ComicBookDto(
+        String seriesTitle,
+        String author,
+        String artist,
+        String genres,
+        String description,
+        int numberOfIssues,
+        String publisher,
+        int yearPublished,
+        Date date
     ) {
         this.seriesTitle = seriesTitle;
         this.author = author;
@@ -67,19 +85,17 @@ public class ComicBookDTO {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date(date.getTime());
-    }
+    };
 
-    ;
-
-    public ComicBookDTO(
-            String seriesTitle,
-            String author,
-            String artist,
-            String[] genres,
-            String description,
-            int numberOfIssues,
-            String publisher,
-            int yearPublished
+    public ComicBookDto(
+        String seriesTitle,
+        String author,
+        String artist,
+        String[] genres,
+        String description,
+        int numberOfIssues,
+        String publisher,
+        int yearPublished
     ) {
         this.seriesTitle = seriesTitle;
         this.author = author;
@@ -94,16 +110,16 @@ public class ComicBookDTO {
 
     ;
 
-    public ComicBookDTO(
-            String seriesTitle,
-            String author,
-            String artist,
-            String[] genres,
-            String description,
-            int numberOfIssues,
-            String publisher,
-            int yearPublished,
-            Date date
+    public ComicBookDto(
+        String seriesTitle,
+        String author,
+        String artist,
+        String[] genres,
+        String description,
+        int numberOfIssues,
+        String publisher,
+        int yearPublished,
+        Date date
     ) {
         this.seriesTitle = seriesTitle;
         this.author = author;
@@ -114,21 +130,19 @@ public class ComicBookDTO {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = date;
-    }
+    };
 
-    ;
-
-    public ComicBookDTO(ComicBook comicBookRecord) {
+    public ComicBookDto(ComicBook comicBookRecord) {
         this(
-                comicBookRecord.getSeriesTitle(),
-                comicBookRecord.getAuthor(),
-                comicBookRecord.getArtist(),
-                comicBookRecord.getGenres(),
-                comicBookRecord.getDescription(),
-                comicBookRecord.getNumberOfIssues(),
-                comicBookRecord.getPublisher(),
-                comicBookRecord.getYearPublished(),
-                comicBookRecord.getDateAdded()
+            comicBookRecord.getSeriesTitle(),
+            comicBookRecord.getAuthor(),
+            comicBookRecord.getArtist(),
+            comicBookRecord.getGenres(),
+            comicBookRecord.getDescription(),
+            comicBookRecord.getNumberOfIssues(),
+            comicBookRecord.getPublisher(),
+            comicBookRecord.getYearPublished(),
+            comicBookRecord.getDateAdded()
         );
         this.setId(comicBookRecord.getId());
     }
@@ -137,7 +151,7 @@ public class ComicBookDTO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ComicBookDTO that = (ComicBookDTO) o;
+        ComicBookDto that = (ComicBookDto) o;
         return getId() == that.getId() && getNumberOfIssues() == that.getNumberOfIssues() && getYearPublished() == that.getYearPublished() && Objects.equals(getSeriesTitle(),
                 that.getSeriesTitle()) && Objects.equals(getAuthor(),
                 that.getAuthor()) && Objects.equals(getArtist(),
@@ -157,15 +171,12 @@ public class ComicBookDTO {
 
     public static String genreListToString(String[] genresList) {
         String genres = "";
-
         if (genresList.length == 0) {
             return genres;
         }
-
         if (genresList.length == 1) {
             return genresList[0];
         }
-
         for (int i = 0; i < genresList.length - 1; i++) {
             genres = genres + genresList[i] + ", ";
         }
