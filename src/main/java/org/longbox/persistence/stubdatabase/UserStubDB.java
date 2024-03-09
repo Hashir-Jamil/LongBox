@@ -7,15 +7,56 @@ import java.util.Date;
 import java.util.List;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import lombok.Getter;
+import lombok.Setter;
+import org.longbox.businesslogic.exception.EmailDoesNotExistException;
+import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
+import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
+import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.domainobjects.dto.UserDto;
 import com.google.gson.Gson;
+import org.longbox.persistence.dao.UserDao;
+import org.longbox.persistence.entity.User;
 
-public class UserStubDB {
+@Getter
+@Setter
+public class UserStubDB implements UserDao {
 
     private List<UserDto> userStubData = new ArrayList<>();
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/UserStubDB.json";
 
     public UserStubDB() {
+        loadUsers();
+    }
+
+    @Override
+    public User getUserById(long id) throws UserIDDoesNotExistException {
+        return null;
+    }
+
+    @Override
+    public User getUserByUserName(String userName) throws UserNameDoesNotExistException {
+        return null;
+    }
+
+    @Override
+    public User getUserByEmail(String email) throws EmailDoesNotExistException {
+        return null;
+    }
+
+    @Override
+    public void saveUser(User user) throws UsernameOrEmailExistsException {
+
+    }
+
+    @Override
+    public boolean deleteUser(User user) {
+        return false;
+    }
+
+    @Override
+    public boolean modifyUser(User user) {
+        return false;
     }
 
     public void loadUsers() {
@@ -61,26 +102,6 @@ public class UserStubDB {
         );
         userStubData.add(u3);
     }
-    
-    public List<UserDto> getUsers(){
-    	return this.userStubData;
-    }
-
-    public List<UserDto> getUserStubData() {
-        return userStubData;
-    }
-
-    public void setUserStubData(List<UserDto> userStubData) {
-        this.userStubData = userStubData;
-    }
-
-    public String getABSOLUTE_FILE_PATH() {
-        return ABSOLUTE_FILE_PATH;
-    }
-
-    public void addUser(UserDto user) {
-    	this.userStubData.add(user);
-    }
 
     public void serializeUserStubDB() {
         String json = new Gson().toJson(userStubData);
@@ -106,5 +127,4 @@ public class UserStubDB {
         List<UserDto> dummyUsers = new Gson().fromJson(reader, listType);
         return dummyUsers;
     }
-
 }

@@ -1,13 +1,42 @@
 package org.longbox.persistence.stubdatabase;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.longbox.domainobjects.dto.CommentDto;
+import org.longbox.persistence.dao.CommentDao;
+import org.longbox.persistence.entity.Comment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-public class CommentStub {
-
+@Getter
+@Setter
+public class CommentStubDb implements CommentDao {
     private List<CommentDto> commentsStubData = new ArrayList<>();
+    private final String ABSOLUTE_FILE_PATH = "src/main/resources/CommentStubDb.json";
+
+    public CommentStubDb() {
+        loadComments();
+    }
+
+    @Override
+    public Comment getCommentById(long userId, long comicId) {
+        return null;
+    }
+
+    @Override
+    public List<CommentDto> getCommentsByComic(long comicID) {
+        return null;
+    }
+
+    @Override
+    public void saveComment(CommentDto commentDTO) {
+
+    }
+
+    @Override
+    public List<CommentDto> getCommentsByUser(long userID) {
+        return null;
+    }
 
     public void loadComments() {
 
