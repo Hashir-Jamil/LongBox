@@ -62,9 +62,9 @@
     "artist": "Sam Keith",
     "genres": [
       "Fantasy",
-      "Drama", 
+      "Drama",
       "Adventure",
-      "Comedy", 
+      "Comedy",
       "Superhero"
     ],
     "description": "Empty",
@@ -79,8 +79,8 @@
     "author": "Chuck Dixon",
     "artist": "Jorge Zaffino",
     "genres": [
-      "Adventure", 
-      "Post Apocalyptic", 
+      "Adventure",
+      "Post Apocalyptic",
       "Gunslinger"
     ],
     "description": "Empty",
@@ -94,7 +94,13 @@
     "series_title": "Hellhounds Panzer Cops",
     "author": "Mamoru Oshii",
     "artist": "Kamui Fujiwara",
-    "genres": "Military, Police, Adventure, Dystopian, Manga",
+    "genres": [
+      "Military",
+      "Police",
+      "Adventure",
+      "Dystopian",
+      "Manga"
+    ],
     "description": "Empty",
     "number_of_issues": 6,
     "publisher": "Dark Horse",
@@ -106,7 +112,12 @@
     "series_title": "Jon Sable Freelance (1983)",
     "author": "Mike Grell",
     "artist": "Mike Grell",
-    "genres": "Action, Adventure, Crime, Vigilantes",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Crime",
+      "Vigilantes"
+    ],
     "description": "Empty",
     "number_of_issues": 56,
     "publisher": "First Comics",
@@ -118,7 +129,11 @@
     "series_title": "Chronicles of Corum",
     "author": "Mike Baron",
     "artist": "Mike Mignola",
-    "genres": "Action, Adventure, Sword and Socery",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sword and Socery"
+    ],
     "description": "Empty",
     "number_of_issues": 12,
     "publisher": "First Comics",
@@ -130,7 +145,12 @@
     "series_title": "Drakuun",
     "author": "Johji Manabe",
     "artist": "Jonji Manabe",
-    "genres": "Adventure, Sword and Socery, Comedy, Manga",
+    "genres": [
+      "Adventure",
+      "Sword and Socery",
+      "Comedy",
+      "Manga"
+    ],
     "description": "Empty",
     "number_of_issues": 24,
     "publisher": "Dark Horse",
@@ -142,7 +162,11 @@
     "series_title": "Elementals (1984)",
     "author": "Bill Willingham",
     "artist": "Bill Willingham",
-    "genres": "Action, Superhero, Supernatural",
+    "genres": [
+      "Action",
+      "Superhero",
+      "Supernatural"
+    ],
     "description": "Empty",
     "number_of_issues": 29,
     "publisher": "Comico",
@@ -154,7 +178,10 @@
     "series_title": "Airboy (1986)",
     "author": "Chuck Dixon",
     "artist": "Timothy Truman",
-    "genres": "Adventure, War",
+    "genres": [
+      "Adventure",
+      "War"
+    ],
     "description": "Empty",
     "number_of_issues": 50,
     "publisher": "Eclipse",
@@ -166,7 +193,11 @@
     "series_title": "Scout (1985)",
     "author": "Timothy Truman",
     "artist": "Timothy Truman",
-    "genres": "Adventure, War, Post Apocalyptic",
+    "genres": [
+      "Adventure",
+      "War",
+      "Post Apocalyptic"
+    ],
     "description": "Empty",
     "number_of_issues": 24,
     "publisher": "Eclipse",
@@ -178,7 +209,14 @@
     "series_title": "Warlock (1986)",
     "author": "Gordon Derry",
     "artist": "Denis Beauvais",
-    "genres": "Adventure, Action, Post Apocalyptic, Fantasy, Futuristic, Cyber Punk",
+    "genres": [
+      "Adventure",
+      "Action",
+      "Post Apocalyptic",
+      "Fantasy",
+      "Futuristic",
+      "Cyber Punk"
+    ],
     "description": "Empty",
     "number_of_issues": 22,
     "publisher": "Aircel",
@@ -190,7 +228,9 @@
     "series_title": "Dalgoda",
     "author": "Jan Strnad",
     "artist": "Dennis Fujitake",
-    "genres": "Science Fiction",
+    "genres": [
+      "Science Fiction"
+    ],
     "description": "Empty",
     "number_of_issues": 8,
     "publisher": "Fantagraphics",
@@ -202,7 +242,12 @@
     "series_title": "Outlanders",
     "author": "Johji Manabe",
     "artist": "Johji Manabe",
-    "genres": "Science Fiction, Adventure, Sword and Planet, Manga",
+    "genres": [
+      "Science Fiction",
+      "Adventure",
+      "Sword and Planet",
+      "Manga"
+    ],
     "description": "Empty",
     "number_of_issues": 33,
     "publisher": "Dark Horse",
@@ -214,7 +259,11 @@
     "series_title": "Evangeline (1984)",
     "author": "Chuck Dixon",
     "artist": "Judith Hunt",
-    "genres": "Adventure, Action, Science Fiction",
+    "genres": [
+      "Adventure",
+      "Action",
+      "Science Fiction"
+    ],
     "description": "Empty",
     "number_of_issues": 2,
     "publisher": "Comico",
@@ -226,7 +275,11 @@
     "series_title": "Evangeline (1987)",
     "author": "Chuck Dixon",
     "artist": "Judith Hunt",
-    "genres": "Adventure, Action, Science Fiction",
+    "genres": [
+      "Adventure",
+      "Action",
+      "Science Fiction"
+    ],
     "description": "Empty",
     "number_of_issues": 12,
     "publisher": "First",
@@ -238,7 +291,12 @@
     "series_title": "Badger (1983)",
     "author": "Mike Baron",
     "artist": "Jeffrey Butler",
-    "genres": "Adventure, Action, Superhero, Science Fiction",
+    "genres": [
+      "Adventure",
+      "Action",
+      "Superhero",
+      "Science Fiction"
+    ],
     "description": "Empty",
     "number_of_issues": 70,
     "publisher": "First",
@@ -250,7 +308,12 @@
     "series_title": "Fightin Marines",
     "author": "Gene Colan",
     "artist": "Gene Colan",
-    "genres": "Adventure, Action, War, Anthology",
+    "genres": [
+      "Adventure",
+      "Action",
+      "War",
+      "Anthology"
+    ],
     "description": "Empty",
     "number_of_issues": 151,
     "publisher": "Charlton",
@@ -262,7 +325,13 @@
     "series_title": "Grimjack (1984)",
     "author": "John Ostrander",
     "artist": "Timothy Truman",
-    "genres": "Adventure, Action, Science Fiction, Vigilantes, Fantasy",
+    "genres": [
+      "Adventure",
+      "Action",
+      "Science Fiction",
+      "Vigilantes",
+      "Fantasy"
+    ],
     "description": "Empty",
     "number_of_issues": 81,
     "publisher": "First",
@@ -274,7 +343,14 @@
     "series_title": "Caravan Kidd",
     "author": "Johji Manabe",
     "artist": "Johji Manabe",
-    "genres": "Adventure, Action, Science Fiction, Fantasy, Comedy, Manga",
+    "genres": [
+      "Adventure",
+      "Action",
+      "Science Fiction",
+      "Fantasy",
+      "Comedy",
+      "Manga"
+    ],
     "description": "Empty",
     "number_of_issues": 28,
     "publisher": "Dark Horse",
@@ -286,7 +362,13 @@
     "series_title": "Boris the Bear",
     "author": "Mike Richardson",
     "artist": "James Dean Smith",
-    "genres": "Adventure, Action, Satire, Fantasy, Comedy",
+    "genres": [
+      "Adventure",
+      "Action",
+      "Satire",
+      "Fantasy",
+      "Comedy"
+    ],
     "description": "Empty",
     "number_of_issues": 34,
     "publisher": "Dark Horse",
@@ -298,7 +380,13 @@
     "series_title": "Destroyer Duck",
     "author": "Steve Gerber",
     "artist": "Jack Kirby",
-    "genres": "Adventure, Action, Satire, Fantasy, Comedy",
+    "genres": [
+      "Adventure",
+      "Action",
+      "Satire",
+      "Fantasy",
+      "Comedy"
+    ],
     "description": "Empty",
     "number_of_issues": 7,
     "publisher": "Eclipse",
@@ -310,7 +398,11 @@
     "series_title": "Merchants of Death",
     "author": "Grassi",
     "artist": "Enrique Breccia",
-    "genres": "Adventure, Action, Anthology",
+    "genres": [
+      "Adventure",
+      "Action",
+      "Anthology"
+    ],
     "description": "Empty",
     "number_of_issues": 4,
     "publisher": "Eclipse",
@@ -322,7 +414,12 @@
     "series_title": "Mr Monster",
     "author": "Michael T Gilbert",
     "artist": "Michael T Gilbert",
-    "genres": "Action, Supernatural, Superhero, Comedy",
+    "genres": [
+      "Action",
+      "Supernatural",
+      "Superhero",
+      "Comedy"
+    ],
     "description": "Empty",
     "number_of_issues": 10,
     "publisher": "Eclipse",
@@ -334,7 +431,12 @@
     "series_title": "Meridian",
     "author": "Barbara Kesel",
     "artist": "Joshua Middleton",
-    "genres": "Action, Supernatural, Superpower, Fantasy",
+    "genres": [
+      "Action",
+      "Supernatural",
+      "Superpower",
+      "Fantasy"
+    ],
     "description": "Empty",
     "number_of_issues": 44,
     "publisher": "Crossgen",
@@ -346,7 +448,12 @@
     "series_title": "Mystic",
     "author": "Ron Marz",
     "artist": "Brandon Peterson",
-    "genres": "Action, Supernatural, Superpower, Fantasy",
+    "genres": [
+      "Action",
+      "Supernatural",
+      "Superpower",
+      "Fantasy"
+    ],
     "description": "Empty",
     "number_of_issues": 43,
     "publisher": "Crossgen",
@@ -358,7 +465,12 @@
     "series_title": "Scion",
     "author": "Ron Marz",
     "artist": "Jim Cheung",
-    "genres": "Action, Supernatural, Superpower, Fantasy",
+    "genres": [
+      "Action",
+      "Supernatural",
+      "Superpower",
+      "Fantasy"
+    ],
     "description": "Empty",
     "number_of_issues": 43,
     "publisher": "Crossgen",
@@ -370,7 +482,12 @@
     "series_title": "Sigil",
     "author": "Barbara Kesel",
     "artist": "Wil Quintana",
-    "genres": "Action, Supernatural, Superpower, Fantasy",
+    "genres": [
+      "Action",
+      "Supernatural",
+      "Superpower",
+      "Fantasy"
+    ],
     "description": "Empty",
     "number_of_issues": 42,
     "publisher": "Crossgen",
@@ -382,7 +499,9 @@
     "series_title": "The Uncensored Mouse",
     "author": "Disney",
     "artist": "Disney",
-    "genres": "Bootleg",
+    "genres": [
+      "Bootleg"
+    ],
     "description": "Empty",
     "number_of_issues": 2,
     "publisher": "Eternity",
@@ -394,7 +513,12 @@
     "series_title": "Maelstorm",
     "author": "Jim Somerville",
     "artist": "Jim Somerville",
-    "genres": "Dark Fantasy, Supernatural, Superpower, Action",
+    "genres": [
+      "Dark Fantasy",
+      "Supernatural",
+      "Superpower",
+      "Action"
+    ],
     "description": "Empty",
     "number_of_issues": 11,
     "publisher": "Aircel",
@@ -406,7 +530,11 @@
     "series_title": "Sojourn",
     "author": "Ron Marz",
     "artist": "Greg Land",
-    "genres": "Action, Adventure, Sword and Sorcery",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sword and Sorcery"
+    ],
     "description": "Empty",
     "number_of_issues": 34,
     "publisher": "Crossgen",
@@ -418,7 +546,11 @@
     "series_title": "Absolute Zero",
     "author": "David Hahn",
     "artist": "David Hahn",
-    "genres": "Action, Superhero, Adventure",
+    "genres": [
+      "Action",
+      "Superhero",
+      "Adventure"
+    ],
     "description": "Empty",
     "number_of_issues": 6,
     "publisher": "Antarctic Press",
@@ -430,7 +562,11 @@
     "series_title": "Addam Omega",
     "author": "Bill Hughes",
     "artist": "Bill Hughes",
-    "genres": "Horror, Science Fiction, Superhero",
+    "genres": [
+      "Horror",
+      "Science Fiction",
+      "Superhero"
+    ],
     "description": "Empty",
     "number_of_issues": 4,
     "publisher": "Antarctic Press",
@@ -442,7 +578,10 @@
     "series_title": "Actionopolis",
     "author": "Shannon Denton",
     "artist": "Shannon Denton",
-    "genres": "Action, Adventure",
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
     "description": "Empty",
     "number_of_issues": 1,
     "publisher": "Antarctic Press",
@@ -454,7 +593,11 @@
     "series_title": "Alien Worlds",
     "author": "Bruce Jones",
     "artist": "Al Williamson",
-    "genres": "Anthology, Science Fiction, Adventure",
+    "genres": [
+      "Anthology",
+      "Science Fiction",
+      "Adventure"
+    ],
     "description": "Empty",
     "number_of_issues": 9,
     "publisher": "Pacific Comics",
@@ -466,7 +609,10 @@
     "series_title": "Captain Victory and the Galactic Rangers",
     "author": "Jack Kirby",
     "artist": "Jack Kirby",
-    "genres": "Science Fiction, Superhero",
+    "genres": [
+      "Science Fiction",
+      "Superhero"
+    ],
     "description": "Empty",
     "number_of_issues": 13,
     "publisher": "Pacific Comics",
@@ -478,7 +624,10 @@
     "series_title": "Groo the Wanderer",
     "author": "Sergio Aragones",
     "artist": "Sergio Aragones",
-    "genres": "Fantasy, Comedy",
+    "genres": [
+      "Fantasy",
+      "Comedy"
+    ],
     "description": "Empty",
     "number_of_issues": 8,
     "publisher": "Pacific Comics",
