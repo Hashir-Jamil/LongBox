@@ -41,7 +41,14 @@
     "series_title": "Nexus (1981)",
     "author": "Mike Baron",
     "artist": "Steve Rude",
-    "genres": "Superhero, Planetary Romance, Superpower, Science Fiction, Adventure, Fantasy",
+    "genres": [
+      "Superhero",
+      "Planetary Romance",
+      "Superpower",
+      "Science Fiction",
+      "Adventure",
+      "Fantasy"
+    ],
     "description": "Empty",
     "number_of_issues": 3,
     "publisher": "Capital",
@@ -53,7 +60,13 @@
     "series_title": "The Maxx",
     "author": "Sam Keith",
     "artist": "Sam Keith",
-    "genres": "Fantasy, Drama, Comedy, Superhero",
+    "genres": [
+      "Fantasy",
+      "Drama", 
+      "Adventure",
+      "Comedy", 
+      "Superhero"
+    ],
     "description": "Empty",
     "number_of_issues": 35,
     "publisher": "Image",
@@ -65,7 +78,11 @@
     "series_title": "Winter Wolrd",
     "author": "Chuck Dixon",
     "artist": "Jorge Zaffino",
-    "genres": "Adventure, Post Apocalyptic, Gunslinger",
+    "genres": [
+      "Adventure", 
+      "Post Apocalyptic", 
+      "Gunslinger"
+    ],
     "description": "Empty",
     "number_of_issues": 3,
     "publisher": "Eclipse",
