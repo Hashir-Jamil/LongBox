@@ -57,8 +57,12 @@ public class CommentStubDb implements CommentDao, JsonConvertor {
         return commentList;
     }
 
+    public void loadJsonToArrayList(){
+        commentsStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
+    }
 
-    public void serializeUserStubDB() {
+    @Override
+    public void serializeStubData() {
         String json = new Gson().toJson(commentsStubData);
         String file = "src/main/resources/UserStubDb.json";
         try (PrintStream out = new PrintStream(new FileOutputStream(file))) {
@@ -68,7 +72,8 @@ public class CommentStubDb implements CommentDao, JsonConvertor {
         }
     }
 
-    public List<CommentDto> deserializeUserStubDB(String filepath) {
+    @Override
+    public List<CommentDto> deserializeStubData(String filepath) {
         Type listType = new TypeToken<ArrayList<CommentDto>>(){}.getType();
         JsonReader reader = null;
 
@@ -81,9 +86,5 @@ public class CommentStubDb implements CommentDao, JsonConvertor {
 
         List<CommentDto> dummyUsers = new Gson().fromJson(reader, listType);
         return dummyUsers;
-    }
-
-    public void loadJsonToArrayList(){
-        commentsStubData = deserializeUserStubDB(ABSOLUTE_FILE_PATH);
     }
 }
