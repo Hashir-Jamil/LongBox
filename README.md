@@ -92,7 +92,7 @@ Using this page, a user can add a comic book to the system. A user can favorite 
 
 ### Favorites Page
 
-All the comics favorited are visible in this page, a user also can remove a comic from favorites.
+All the comics favorited are visible in this page, a user can remove a comic from favorites.
 
 ![Favorites Page](https://github.com/Hashir-Jamil/LongBox/assets/90640849/4953cd07-9ed9-41ae-bac3-83f0dd2ed367)
 
