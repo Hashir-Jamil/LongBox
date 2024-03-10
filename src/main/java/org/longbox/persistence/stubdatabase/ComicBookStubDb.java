@@ -27,7 +27,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
 
     @Override
     public ComicBook getComicBookById(long id) {
-        List<ComicBookDto> comics = deserializeComicBookStubDB(ABSOLUTE_FILE_PATH);
+        List<ComicBookDto> comics = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (ComicBookDto comic : comics) {
             if (comic.getId() == id) {
                 return new ComicBook(comic);
@@ -38,7 +38,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
 
     @Override
     public ComicBook getComicBookBySeriesName(String seriesTitle) {
-        List<ComicBookDto> comics = deserializeComicBookStubDB(ABSOLUTE_FILE_PATH);
+        List<ComicBookDto> comics = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (ComicBookDto comic : comics) {
             if (comic.getSeriesTitle() == seriesTitle) {
                 return new ComicBook(comic);
@@ -49,19 +49,19 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
 
     @Override
     public Long saveComicBook(ComicBookDto comicBook) {
-        List<ComicBookDto> comics = deserializeComicBookStubDB(ABSOLUTE_FILE_PATH);
+        List<ComicBookDto> comics = deserializeStubData(ABSOLUTE_FILE_PATH);
         comics.add(comicBook);
         comicBookStubData = comics;
-        serializeComicBookStubDB();
+        serializeStubData();
         return comicBook.getId();
     }
 
     @Override
     public boolean deleteComicBook(ComicBook comicBook) {
-        List<ComicBookDto> comics = deserializeComicBookStubDB(ABSOLUTE_FILE_PATH);
+        List<ComicBookDto> comics = deserializeStubData(ABSOLUTE_FILE_PATH);
         if (comics.remove(comicBook)) {
             comicBookStubData = comics;
-            serializeComicBookStubDB();
+            serializeStubData();
             return true;
         }
         return false;
@@ -69,7 +69,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
 
     @Override
     public boolean modifyComicBook(ComicBook comicBook) {
-        List<ComicBookDto> comics = deserializeComicBookStubDB(ABSOLUTE_FILE_PATH);
+        List<ComicBookDto> comics = deserializeStubData(ABSOLUTE_FILE_PATH);
         ComicBookDto comicBookDto = new ComicBookDto(comicBook);
         for (ComicBookDto comic : comics) {
             if (comic.equals(comicBookDto)) {
@@ -84,7 +84,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
                 comic.setPublisher(comicBook.getPublisher());
                 comic.setDateAdded(comicBook.getDateAdded());
                 setComicBookStubData(comics);
-                serializeComicBookStubDB();
+                serializeStubData();
                 return true;
             }
         }
@@ -93,7 +93,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
 
     @Override
     public List<ComicBookDto> getAllComicBooks() {
-        return deserializeComicBookStubDB(ABSOLUTE_FILE_PATH);
+        return deserializeStubData(ABSOLUTE_FILE_PATH);
     }
 
     public void loadComicBooks() {
@@ -231,7 +231,8 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
         comicBookStubData.add(comicBook11);
     }
 
-    public void serializeComicBookStubDB() {
+    @Override
+    public void serializeStubData() {
         String json = new Gson().toJson(comicBookStubData);
         try (PrintStream out = new PrintStream(new FileOutputStream(ABSOLUTE_FILE_PATH))) {
             out.print(json);
@@ -240,7 +241,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
         }
     }
 
-    public List<ComicBookDto> deserializeComicBookStubDB(String filepath) {
+    public List<ComicBookDto> deserializeStubData(String filepath) {
         Type listType = new TypeToken<List<ComicBookDto>>(){}.getType();
         JsonReader reader = null;
         try {
@@ -250,15 +251,5 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
         catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public void serializeStubData() {
-
-    }
-
-    @Override
-    public <T> List<T> deserializeStubData(String filepath) {
-        return null;
     }
 }
