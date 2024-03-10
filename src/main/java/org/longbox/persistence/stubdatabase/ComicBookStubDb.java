@@ -15,12 +15,12 @@ import org.longbox.persistence.entity.ComicBook;
 
 @Getter
 @Setter
-public class ComicBookStubDB implements ComicBookDao {
+public class ComicBookStubDb implements ComicBookDao {
 
     private List<ComicBookDto> comicBookStubData = new ArrayList<>();
-    private final String ABSOLUTE_FILE_PATH = "src/main/resources/ComicBookStubDB.json";
+    private final String ABSOLUTE_FILE_PATH = "src/main/resources/ComicBookStubDb.json";
 
-    public ComicBookStubDB() {
+    public ComicBookStubDb() {
         loadComicBooks();
     }
 
@@ -232,7 +232,7 @@ public class ComicBookStubDB implements ComicBookDao {
 
     public void serializeComicBookStubDB() {
         String json = new Gson().toJson(comicBookStubData);
-        String file = "src/main/resources/ComicBookStubDB.json";
+        String file = "src/main/resources/ComicBookStubDb.json";
         try (PrintStream out = new PrintStream(new FileOutputStream(file))) {
             out.print(json);
         } catch (FileNotFoundException e) {

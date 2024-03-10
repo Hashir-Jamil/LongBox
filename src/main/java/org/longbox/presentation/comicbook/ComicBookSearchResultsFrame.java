@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import org.longbox.businesslogic.UserSession;
-import org.longbox.businesslogic.utils.ComicBookSearch;
+import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.profile.ComicBookTableModel;
@@ -67,9 +67,9 @@ public class ComicBookSearchResultsFrame extends JFrame {
 				int row = comicBookTable.rowAtPoint(e.getPoint());
 				int col = comicBookTable.columnAtPoint(e.getPoint());
 				if (col == 0) {
-					ComicBookDto comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
+					ComicBookDto comicBook = ComicBookSearchUtils.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
 					System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
-					ComicBookSearch.loadComicBookPage(comicBook, userSession);
+					org.longbox.businesslogic.utils.ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
 					dispose();
 				}
 			}

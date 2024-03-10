@@ -20,12 +20,12 @@ import org.longbox.persistence.entity.User;
 
 @Getter
 @Setter
-public class UserStubDB implements UserDao {
+public class UserStubDb implements UserDao {
 
     private List<UserDto> userStubData = new ArrayList<>();
-    private final String ABSOLUTE_FILE_PATH = "src/main/resources/UserStubDB.json";
+    private final String ABSOLUTE_FILE_PATH = "src/main/resources/UserStubDb.json";
 
-    public UserStubDB() {
+    public UserStubDb() {
         loadUsers();
     }
 
@@ -105,7 +105,7 @@ public class UserStubDB implements UserDao {
 
     public void serializeUserStubDB() {
         String json = new Gson().toJson(userStubData);
-        String file = "src/main/resources/UserStubDB.json";
+        String file = "src/main/resources/UserStubDb.json";
         try (PrintStream out = new PrintStream(new FileOutputStream(file))) {
             out.print(json);
         } catch (FileNotFoundException e) {

@@ -8,7 +8,7 @@ import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComicBookSearch {
+public class ComicBookSearchUtils {
 
     public static ComicBookDto searchComicBook(List<ComicBookDto> comicBookList, String searchQuery) {
 
@@ -104,7 +104,7 @@ public class ComicBookSearch {
 		comicBookFrame.setVisible(true);
 //		HTMLEditorKit htmlEditorKit = new HTMLEditorKit();
 //		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setEditorKit(htmlEditorKit);
-//		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearch.generateComicBookHTML(comicBook));
+//		comicBookFrame.getComicBookInfoPane().getComicBookInfoTextPane().setText(ComicBookSearchUtils.generateComicBookHTML(comicBook));
 	}
     
     public static List<ComicBookDto> comicAdvancedSearch(String searchBy, String target, List<ComicBookDto> searchResults, List<ComicBookDto> searchList, UserSession user) {

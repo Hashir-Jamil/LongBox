@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
-import org.longbox.businesslogic.utils.ComicBookSearch;
+import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
@@ -129,7 +129,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 			String searchBy = typeSelection.getSelectedItem().toString();
 			String target = textField.getText();
 			List<ComicBookDto> searchResults = null;
-			searchResults = ComicBookSearch.comicAdvancedSearch(searchBy, target, searchResults, comicBookDaoImpl.getAllComicBooks(), this.userSession);
+			searchResults = org.longbox.businesslogic.utils.ComicBookSearchUtils.comicAdvancedSearch(searchBy, target, searchResults, comicBookDaoImpl.getAllComicBooks(), this.userSession);
 		} else if (e.getSource() == addToFavoritesButton) {
 			int selectedRow = comicBookTable.getSelectedRow();
 			if (selectedRow != -1) {
@@ -177,8 +177,8 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 				int row = comicBookTable.rowAtPoint(e.getPoint());
 				int col = comicBookTable.columnAtPoint(e.getPoint());
 				if (col == 0) {
-					ComicBookDto comicBook = ComicBookSearch.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
-					ComicBookSearch.loadComicBookPage(comicBook, userSession);
+					ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
+					ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
 				}
 			}
 		});

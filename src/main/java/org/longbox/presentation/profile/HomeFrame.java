@@ -4,10 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.*;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
-import org.longbox.businesslogic.utils.ComicBookSearch;
+import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
-import org.longbox.persistence.stubdatabase.ComicBookStubDB;
+import org.longbox.persistence.stubdatabase.ComicBookStubDb;
 import org.longbox.presentation.authentication.AuthenticationFrame;
 
 import java.awt.EventQueue;
@@ -240,8 +240,8 @@ public class HomeFrame extends JFrame implements ActionListener {
     }
 
     private ComicBookDto searchComicBookResults(String searchQuery) {
-        ComicBookStubDB comicBookStubDB = new ComicBookStubDB();
+        ComicBookStubDb comicBookStubDB = new ComicBookStubDb();
         comicBookStubDB.loadComicBooks();
-        return ComicBookSearch.searchComicBook(comicBookStubDB.getComicBookStubData(), searchQuery);
+        return ComicBookSearchUtils.searchComicBook(comicBookStubDB.getComicBookStubData(), searchQuery);
     }
 }

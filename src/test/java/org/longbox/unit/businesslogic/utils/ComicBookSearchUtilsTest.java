@@ -3,7 +3,7 @@ package org.longbox.unit.businesslogic.utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.longbox.businesslogic.utils.ComicBookSearch;
+import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ComicBookSearchTest {
+public class ComicBookSearchUtilsTest {
 
     ComicBookDto comicBook1;
     ComicBookDto comicBook2;
@@ -138,7 +138,7 @@ public class ComicBookSearchTest {
                 "Image",
                 1993
         );
-        Assertions.assertEquals(expected, ComicBookSearch.searchComicBook(comicBookDtoList, "The Maxx"));
+        Assertions.assertEquals(expected, org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookDtoList, "The Maxx"));
     }
 
     @Test
@@ -153,7 +153,7 @@ public class ComicBookSearchTest {
                 "Capital",
                 1981
         );
-        assertEquals(expected, ComicBookSearch.searchComicBook(comicBookDtoList,"Nexus"));
+        assertEquals(expected, org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookDtoList,"Nexus"));
     }
 
     @Test
@@ -168,20 +168,20 @@ public class ComicBookSearchTest {
                 "Eclipse",
                 1984
         );
-        assertNotEquals(expected, ComicBookSearch.searchComicBook(comicBookDtoList,"Nexus"));
+        assertNotEquals(expected, org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookDtoList,"Nexus"));
     }
     
     @Test
     public void comicBookSearchCaseInsensitive() {
     	ComicBookDto expected = comicBook1;
-    	ComicBookDto actual = ComicBookSearch.searchComicBook(comicBookDtoList, "zot");
+    	ComicBookDto actual = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookDtoList, "zot");
     	assertEquals(expected, actual, "case insensitive comic book search");
     }
     
     @Test
     public void comicBookSearchCaseInsensitiveNoMatch() {
     	ComicBookDto expected = comicBook1;
-    	ComicBookDto actual = ComicBookSearch.searchComicBook(comicBookDtoList, "nexus");
+    	ComicBookDto actual = ComicBookSearchUtils.searchComicBook(comicBookDtoList, "nexus");
     	assertNotEquals(expected, actual, "case insensitive comic book search no match");
     }
 
@@ -190,14 +190,14 @@ public class ComicBookSearchTest {
     	List<ComicBookDto> expected = new ArrayList<ComicBookDto>();
     	expected.add(comicBook1);
     	expected.add(comicBook5);
-    	List<ComicBookDto> actual = ComicBookSearch.searchComicBookByAuthor(comicBookDtoList, "scott mccloud");
+    	List<ComicBookDto> actual = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBookByAuthor(comicBookDtoList, "scott mccloud");
     	assertEquals(expected, actual, "case insensitive search by author");	
     }
     
     @Test
     public void comicBookSearchByAuthorCaseInsensitiveNoMatch() {
     	List<ComicBookDto> expected = new ArrayList<ComicBookDto>();
-    	List<ComicBookDto> actual = ComicBookSearch.searchComicBookByAuthor(comicBookDtoList, "scoot mccloud");
+    	List<ComicBookDto> actual = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBookByAuthor(comicBookDtoList, "scoot mccloud");
     	assertEquals(expected, actual, "case insensitive search by author no match");	
     }
     
@@ -206,20 +206,20 @@ public class ComicBookSearchTest {
     	List<ComicBookDto> expected = new ArrayList<ComicBookDto>();
     	expected.add(comicBook2);
     	expected.add(comicBook6);
-    	List<ComicBookDto> actual = ComicBookSearch.searchComicBookByArtist(comicBookDtoList, "ryoichi ikegami");
+    	List<ComicBookDto> actual = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBookByArtist(comicBookDtoList, "ryoichi ikegami");
     	assertEquals(expected, actual, "case insensitive search by artist");
     }
 
     @Test
     public void comicBookSearchByArtistCaseInsensitiveNoMatch() {
     	List<ComicBookDto> expected = new ArrayList<ComicBookDto>();
-    	List<ComicBookDto> actual = ComicBookSearch.searchComicBookByArtist(comicBookDtoList, "ryooichi ikegami");
+    	List<ComicBookDto> actual = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBookByArtist(comicBookDtoList, "ryooichi ikegami");
     	assertEquals(expected, actual, "case insensitive search by artist no match");
     }
     
     @Test
     public void nullException() {
         List<ComicBookDto> nullList = null;
-        assertThrows(NullPointerException.class, () -> ComicBookSearch.searchComicBook(nullList, "Zot!"));
+        assertThrows(NullPointerException.class, () -> org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(nullList, "Zot!"));
     }
 }
