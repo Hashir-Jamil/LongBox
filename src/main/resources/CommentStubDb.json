@@ -1,0 +1,282 @@
+[
+  {
+    "id": 1,
+    "message": "Wow, the art in this comic is absolutely breathtaking! The attention to detail and vibrant colors bring the characters to life in a way thats truly mesmerizing.",
+    "comment_date": "2024-03-02T00:00:00",
+    "comic_book_id": 1,
+    "user_id": 1,
+    "user_name": "Always_Scheming"
+  },
+  {
+    "id": 2,
+    "message": "This comics storyline is a rollercoaster of emotions. From intense action sequences to heartwarming moments, it keeps readers hooked with its perfect blend of drama and humor.",
+    "comment_date": "2024-03-01T00:00:00",
+    "comic_book_id": 3,
+    "user_id": 2,
+    "user_name": "Always_Throwing"
+  },
+  {
+    "id": 3,
+    "message": "Short and sweet, this comics humor is on point! The witty dialogue and clever punchlines had me chuckling from start to finish.",
+    "comment_date": "2024-02-29T00:00:00",
+    "comic_book_id": 2,
+    "user_id": 3,
+    "user_name": "Phoenix"
+  },
+  {
+    "id": 4,
+    "message": "I appreciate how this comic tackles relevant social issues without being preachy. The writers skillfully weave important themes into the narrative, making it both entertaining and thought-provoking.",
+    "comment_date": "2024-02-29T00:00:00",
+    "comic_book_id": 3,
+    "user_id": 5,
+    "user_name": "naha"
+  },
+  {
+    "id": 5,
+    "message": "The character development in this comic is phenomenal. Each character has a unique personality and backstory, adding depth to the overall narrative.",
+    "comment_date": "2024-02-28T00:00:00",
+    "comic_book_id": 10,
+    "user_id": 4,
+    "user_name": "ahan"
+  },
+  {
+    "id": 6,
+    "message": "The world-building in this comic is exceptional. The creators have crafted a rich and immersive universe that sparks the imagination and leaves readers craving more.",
+    "comment_date": "2024-03-02T00:00:00",
+    "comic_book_id": 34,
+    "user_id": 1,
+    "user_name": "Always_Scheming"
+  },
+  {
+    "id": 7,
+    "message": "This comics artwork is a true work of art. The use of unconventional panel layouts and innovative visual storytelling techniques adds a dynamic layer to the overall reading experience.",
+    "comment_date": "2024-03-01T00:00:00",
+    "comic_book_id": 21,
+    "user_id": 2,
+    "user_name": "Always_Throwing"
+  },
+  {
+    "id": 8,
+    "message": "Simple yet powerful, this comics message resonates deeply. Its amazing how a few carefully chosen words and poignant illustrations can leave a lasting impact.",
+    "comment_date": "2024-02-29T00:00:00",
+    "comic_book_id": 18,
+    "user_id": 3,
+    "user_name": "Phoenix"
+  },
+  {
+    "id": 9,
+    "message": "The pacing in this comic is spot-on. It keeps the story moving at a brisk pace, ensuring that readers are always engaged and eager to see what happens next.",
+    "comment_date": "2024-02-29T00:00:00",
+    "comic_book_id": 31,
+    "user_id": 5,
+    "user_name": "naha"
+  },
+  {
+    "id": 10,
+    "message": "This comic is a nostalgia trip! It expertly pays homage to classic comic book tropes while infusing a fresh and modern twist, making it a delightful read for both longtime fans and newcomers alike.",
+    "comment_date": "2024-03-01T00:00:00",
+    "comic_book_id": 7,
+    "user_id": 1,
+    "user_name": "Always_Scheming"
+  },
+  {
+    "id": 11,
+    "message": "I can't get enough of the storyline in comic #5! It keeps me on the edge of my seat with every turn of the page.",
+    "comment_date": "2024-03-02T00:00:00",
+    "comic_book_id": 5,
+    "user_id": 1,
+    "user_name": "Always_Scheming"
+  },
+  {
+    "id": 12,
+    "message": "The character development in comic #12 is outstanding. Kudos to the writers for creating such a compelling narrative.",
+    "comment_date": "2024-02-28T00:00:00",
+    "comic_book_id": 12,
+    "user_id": 1,
+    "user_name": "Always_Scheming"
+  },
+  {
+    "id": 13,
+    "message": "Just finished reading comic #20. The plot twists are mind-blowing! Can't wait for the next issue.",
+    "comment_date": "2024-02-25T00:00:00",
+    "comic_book_id": 20,
+    "user_id": 1,
+    "user_name": "Always_Scheming"
+  },
+  {
+    "id": 14,
+    "message": "The artwork in comic #8 is simply stunning. The artists talent shines through every panel.",
+    "comment_date": "2024-03-01T00:00:00",
+    "comic_book_id": 8,
+    "user_id": 2,
+    "user_name": "Always_Throwing"
+  },
+  {
+    "id": 15,
+    "message": "Comic #15 has a unique storyline that keeps me guessing. Excited to see where it goes next!",
+    "comment_date": "2024-02-28T00:00:00",
+    "comic_book_id": 15,
+    "user_id": 2,
+    "user_name": "Always_Throwing"
+  },
+  {
+    "id": 16,
+    "message": "Kudos to the creators of comic #25! The world-building is fantastic, and the characters are so well-developed.",
+    "comment_date": "2024-02-24T00:00:00",
+    "comic_book_id": 25,
+    "user_id": 2,
+    "user_name": "Always_Throwing"
+  },
+  {
+    "id": 17,
+    "message": "The nostalgia in comic #3 is overwhelming. Stan Lee truly knew how to create timeless characters.",
+    "comment_date": "2024-02-29T00:00:00",
+    "comic_book_id": 3,
+    "user_id": 3,
+    "user_name": "Phoenix"
+  },
+  {
+    "id": 18,
+    "message": "Just started comic #30, and it already has me hooked! Stan Lees legacy lives on.",
+    "comment_date": "2024-02-27T00:00:00",
+    "comic_book_id": 30,
+    "user_id": 3,
+    "user_name": "Phoenix"
+  },
+  {
+    "id": 19,
+    "message": "Comic #38 is a masterpiece! Thank you, Stan Lee, for your incredible contributions to the comic world.",
+    "comment_date": "2024-02-22T00:00:00",
+    "comic_book_id": 38,
+    "user_id": 3,
+    "user_name": "Phoenix"
+  },
+  {
+    "id": 20,
+    "message": "The plot twists in comic #2 are mind-boggling! A must-read for any comic enthusiast.",
+    "comment_date": "2024-02-28T00:00:00",
+    "comic_book_id": 2,
+    "user_id": 4,
+    "user_name": "ahan"
+  },
+  {
+    "id": 21,
+    "message": "Comic #10 is a great blend of action and drama. The character dynamics are well-executed.",
+    "comment_date": "2024-02-26T00:00:00",
+    "comic_book_id": 10,
+    "user_id": 4,
+    "user_name": "ahan"
+  },
+  {
+    "id": 22,
+    "message": "Just finished comic #18, and Im speechless. The storytelling is top-notch!",
+    "comment_date": "2024-02-23T00:00:00",
+    "comic_book_id": 18,
+    "user_id": 4,
+    "user_name": "ahan"
+  },
+  {
+    "id": 23,
+    "message": "Comic #7 is a masterpiece! The storytelling and art are on another level. Cant wait for the next issue.",
+    "comment_date": "2024-02-27T00:00:00",
+    "comic_book_id": 7,
+    "user_id": 1,
+    "user_name": "Always_Scheming"
+  },
+  {
+    "id": 24,
+    "message": "Just started comic #14, and its already becoming one of my favorites. The characters are so relatable!",
+    "comment_date": "2024-02-25T00:00:00",
+    "comic_book_id": 14,
+    "user_id": 1,
+    "user_name": "Always_Scheming"
+  },
+  {
+    "id": 25,
+    "message": "Comic #22 took me on an emotional rollercoaster. Well done to the creative team!",
+    "comment_date": "2024-02-22T00:00:00",
+    "comic_book_id": 22,
+    "user_id": 1,
+    "user_name": "Always_Scheming"
+  },
+  {
+    "id": 26,
+    "message": "Comic #9 has some jaw-dropping action scenes. The fight choreography is phenomenal!",
+    "comment_date": "2024-02-26T00:00:00",
+    "comic_book_id": 9,
+    "user_id": 2,
+    "user_name": "Always_Throwing"
+  },
+  {
+    "id": 27,
+    "message": "The humor in comic #16 is spot on! I found myself laughing out loud multiple times.",
+    "comment_date": "2024-02-24T00:00:00",
+    "comic_book_id": 16,
+    "user_id": 2,
+    "user_name": "Always_Throwing"
+  },
+  {
+    "id": 28,
+    "message": "Comic #28 has an unexpected twist that left me speechless. Bravo to the writers!",
+    "comment_date": "2024-02-21T00:00:00",
+    "comic_book_id": 28,
+    "user_id": 2,
+    "user_name": "Always_Throwing"
+  },
+  {
+    "id": 29,
+    "message": "Comic #4 is a classic. The timeless storytelling and iconic characters never get old.",
+    "comment_date": "2024-02-28T00:00:00",
+    "comic_book_id": 4,
+    "user_id": 3,
+    "user_name": "Phoenix"
+  },
+  {
+    "id": 30,
+    "message": "Just finished comic #11, and it exceeded my expectations. Stan Lees legacy lives on in every page.",
+    "comment_date": "2024-02-27T00:00:00",
+    "comic_book_id": 11,
+    "user_id": 3,
+    "user_name": "Phoenix"
+  },
+  {
+    "id": 31,
+    "message": "Comic #27 has some breathtaking visuals. Stan Lees influence on the industry is unparalleled.",
+    "comment_date": "2024-02-23T00:00:00",
+    "comic_book_id": 27,
+    "user_id": 3,
+    "user_name": "Phoenix"
+  },
+  {
+    "id": 32,
+    "message": "Comic #1 is a great introduction to the series. The world-building is intriguing!",
+    "comment_date": "2024-02-25T00:00:00",
+    "comic_book_id": 1,
+    "user_id": 4,
+    "user_name": "ahan"
+  },
+  {
+    "id": 33,
+    "message": "Just caught up with comic #13, and it left me with so many questions. Cant wait for the next chapter!",
+    "comment_date": "2024-02-23T00:00:00",
+    "comic_book_id": 13,
+    "user_id": 4,
+    "user_name": "ahan"
+  },
+  {
+    "id": 34,
+    "message": "The character development in comic #21 is exceptional. Ahan approves!",
+    "comment_date": "2024-02-20T00:00:00",
+    "comic_book_id": 21,
+    "user_id": 4,
+    "user_name": "ahan"
+  },
+  {
+    "id": 35,
+    "message": "123",
+    "comment_date": "2024-03-08T21:16:17.842",
+    "comic_book_id": 1,
+    "user_id": 6,
+    "user_name": "123"
+  }
+]
