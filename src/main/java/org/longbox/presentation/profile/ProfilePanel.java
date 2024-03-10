@@ -222,6 +222,7 @@ public class ProfilePanel extends JPanel {
 				else if (aboutMeEditButton.getText() == "Save") {
 					UserDaoImpl userDaoImpl = new UserDaoImpl();
 					userDaoImpl.updateAboutMeString(user, aboutMe.getText());
+					user.getUser().setAboutMe(aboutMe.getText());
 					aboutMeCancelButton.setEnabled(false);
 					aboutMeEditButton.setText("Edit");
 					aboutMe.setEditable(false);
@@ -234,7 +235,7 @@ public class ProfilePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				aboutMeCancelButton.setEnabled(false);
 				aboutMe.setEditable(false);
-
+				aboutMe.setText(user.getUser().getAboutMe());
 				aboutMeEditButton.setEnabled(true);
 				aboutMeEditButton.setText("Edit");
 			}

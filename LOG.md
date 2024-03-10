@@ -196,3 +196,7 @@
 ## Saturday, March 9th, 2024
     
     Hashir: General refactoring + service layer creation for preparation of future design refinement & ITR3 refactoring to create further separation of concern. Service layer implementation. Stub database API development. Unit & Integration tests.
+
+## Sunday, March 10th, 2024
+    
+    Ahan: Converted postgresql data to json files, finished CommentStubDB.java implementation and added more tests for CommentDaoImpl.java.
