@@ -187,3 +187,12 @@
     
     Eric: Added advanced search to favourites panel, moved advanced favourites logic to ComicBookSearch. Added table model for reading and read comics, now displays in scroll pane / list in profile
 	Oscar: Reorganized "about me" section in profile page and added JTextField and most of the functionality for the update button.
+    Hashir: General refactoring, bug fixing, database testing, database API completion for finished and reading lists, improved previous stories CRUD APIs to include more use cases, database triggers for computed columns.
+
+## Friday, March 8th, 2024
+    
+    Hashir: Competed user stories for user add/remove comic books to/from personal comic book finished and currently reading lists. GUI integration of user comic book list stories: table views, add/remove buttons. General refactoring. Stub common interface cleanup started.
+
+## Saturday, March 9th, 2024
+    
+    Hashir: General refactoring + service layer creation for preparation of future design refinement & ITR3 refactoring to create further separation of concern. Service layer implementation. Stub database API development. Unit & Integration tests.
