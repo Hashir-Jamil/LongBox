@@ -79,7 +79,7 @@ Users can use the advanced search and search the comics based on Title, Artist, 
 
 ### View Detailed information and Add Comments
 
-After selecting a comic book, users can viewed detailed information about the comic book, In this window user also has an option to add a new comment, view existing comments in order of newest to oldest, 
+After selecting a comic book, users can viewe detailed information about the comic book. In this window user also has an option to add a new comment, view existing comments in order of newest to oldest, 
 favorite and unfavorite a book, add and remove a book from a reading and finished list. Comics added to reading and finished list can be viewed in the profile page.
 
 ![Comic Info Page](https://github.com/Hashir-Jamil/LongBox/assets/90640849/4b78f565-6018-4b12-aadb-3af7b6e3723e)
