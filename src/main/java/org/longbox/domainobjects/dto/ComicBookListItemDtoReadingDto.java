@@ -4,7 +4,7 @@ import lombok.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
 @ToString
 public class ComicBookListItemDtoReadingDto extends ComicBookListItemDto {

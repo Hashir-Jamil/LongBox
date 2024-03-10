@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
