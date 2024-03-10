@@ -7,21 +7,21 @@ import org.junit.jupiter.api.Test;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
-import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.User;
 
 import java.util.Date;
 
 class UserDaoImplTest {
-	UserDTO u2;
+	UserDto u2;
 	User user;
 	UserDaoImpl userDaoImpl;
 
 	@BeforeEach
 	void init(){
 		userDaoImpl = new UserDaoImpl();
-		u2 = new UserDTO(
+		u2 = new UserDto(
 				"Always_Throwing",
 				"Neo",
 				"Anderson",
@@ -46,7 +46,7 @@ class UserDaoImplTest {
 
 	@Test
 	void test_add_2_Fail(){
-		UserDTO u3 = new UserDTO(
+		UserDto u3 = new UserDto(
 				"Phoenix",
 				"Stan",
 				"Lee",

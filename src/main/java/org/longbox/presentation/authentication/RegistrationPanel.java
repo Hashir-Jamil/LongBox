@@ -10,7 +10,7 @@ import javax.swing.event.DocumentListener;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.businesslogic.utils.RegistrationUtils;
 
 import javax.swing.JLabel;
@@ -315,7 +315,7 @@ public class RegistrationPanel extends JPanel {
 				signUpButton.setEnabled(enableButton);
 	}
 
-	public UserDTO getRegistrationDetails() {
+	public UserDto getRegistrationDetails() {
 		String firstName = firstNameField.getText();
 		String lastName = lastNameField.getText();
 		Date dob = dateChooser.getDate();
@@ -324,6 +324,6 @@ public class RegistrationPanel extends JPanel {
 		String password = String.valueOf(passwordField.getPassword());
 		String country = countryField.getSelectedItem().toString();
 
-		return new UserDTO(username, firstName, lastName, dob, email, password, country);
+		return new UserDto(username, firstName, lastName, dob, email, password, country);
 	}
 }

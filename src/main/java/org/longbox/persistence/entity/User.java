@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.domainobjects.dto.UserDto;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -83,7 +82,7 @@ public class User {
 		this.comicsReading = 0;
 	}
 
-	public User(UserDTO user){
+	public User(UserDto user){
 		this(user.getUserName(),
 				user.getFirstName(),
 				user.getLastName(),

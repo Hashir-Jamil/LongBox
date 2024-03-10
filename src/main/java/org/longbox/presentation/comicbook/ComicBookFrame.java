@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 
 import java.awt.CardLayout;
 @Getter
@@ -21,10 +21,10 @@ public class ComicBookFrame extends JFrame {
 	private JPanel comicBookPane;
 	private ComicBookInfoPanel comicBookInfoPane;
 	private CardLayout cardLayout;
-	private ComicBookDTO comicBookResult;
+	private ComicBookDto comicBookResult;
 	private UserSession userSession;
 
-	public ComicBookFrame(ComicBookDTO comicBook, UserSession user) {
+	public ComicBookFrame(ComicBookDto comicBook, UserSession user) {
 		this.userSession = user;
 		this.comicBookResult = comicBook;
 		initComicBookPage(); 

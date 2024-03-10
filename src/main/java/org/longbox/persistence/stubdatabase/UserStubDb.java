@@ -7,19 +7,60 @@ import java.util.Date;
 import java.util.List;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import org.longbox.domainobjects.dto.UserDTO;
+import lombok.Getter;
+import lombok.Setter;
+import org.longbox.businesslogic.exception.EmailDoesNotExistException;
+import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
+import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
+import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
+import org.longbox.domainobjects.dto.UserDto;
 import com.google.gson.Gson;
+import org.longbox.persistence.dao.UserDao;
+import org.longbox.persistence.entity.User;
 
-public class UserStubDB {
+@Getter
+@Setter
+public class UserStubDb implements UserDao {
 
-    private List<UserDTO> userStubData = new ArrayList<>();
-    private final String ABSOLUTE_FILE_PATH = "src/main/resources/UserStubDB.json";
+    private List<UserDto> userStubData = new ArrayList<>();
+    private final String ABSOLUTE_FILE_PATH = "src/main/resources/UserStubDb.json";
 
-    public UserStubDB() {
+    public UserStubDb() {
+        loadUsers();
+    }
+
+    @Override
+    public User getUserById(long id) throws UserIDDoesNotExistException {
+        return null;
+    }
+
+    @Override
+    public User getUserByUserName(String userName) throws UserNameDoesNotExistException {
+        return null;
+    }
+
+    @Override
+    public User getUserByEmail(String email) throws EmailDoesNotExistException {
+        return null;
+    }
+
+    @Override
+    public void saveUser(User user) throws UsernameOrEmailExistsException {
+
+    }
+
+    @Override
+    public boolean deleteUser(User user) {
+        return false;
+    }
+
+    @Override
+    public boolean modifyUser(User user) {
+        return false;
     }
 
     public void loadUsers() {
-        UserDTO u1 = new UserDTO(
+        UserDto u1 = new UserDto(
                 1,
                 "Always_Scheming",
                 "John",
@@ -33,7 +74,7 @@ public class UserStubDB {
         );
         userStubData.add(u1);
 
-        UserDTO u2 = new UserDTO(
+        UserDto u2 = new UserDto(
                 2,
                 "Always_Throwing",
                 "Neo",
@@ -47,7 +88,7 @@ public class UserStubDB {
         );
         userStubData.add(u2);
 
-        UserDTO u3 = new UserDTO(
+        UserDto u3 = new UserDto(
                 3,
                 "Phoenix",
                 "Stan",
@@ -61,30 +102,10 @@ public class UserStubDB {
         );
         userStubData.add(u3);
     }
-    
-    public List<UserDTO> getUsers(){
-    	return this.userStubData;
-    }
-
-    public List<UserDTO> getUserStubData() {
-        return userStubData;
-    }
-
-    public void setUserStubData(List<UserDTO> userStubData) {
-        this.userStubData = userStubData;
-    }
-
-    public String getABSOLUTE_FILE_PATH() {
-        return ABSOLUTE_FILE_PATH;
-    }
-
-    public void addUser(UserDTO user) {
-    	this.userStubData.add(user);
-    }
 
     public void serializeUserStubDB() {
         String json = new Gson().toJson(userStubData);
-        String file = "src/main/resources/UserStubDB.json";
+        String file = "src/main/resources/UserStubDb.json";
         try (PrintStream out = new PrintStream(new FileOutputStream(file))) {
             out.print(json);
         } catch (FileNotFoundException e) {
@@ -92,8 +113,8 @@ public class UserStubDB {
         }
     }
 
-    public List<UserDTO> deserializeUserStubDB(String filepath) {
-        Type listType = new TypeToken<ArrayList<UserDTO>>(){}.getType();
+    public List<UserDto> deserializeUserStubDB(String filepath) {
+        Type listType = new TypeToken<ArrayList<UserDto>>(){}.getType();
         JsonReader reader = null;
 
         try {
@@ -103,8 +124,7 @@ public class UserStubDB {
             throw new RuntimeException(e);
         }
 
-        List<UserDTO> dummyUsers = new Gson().fromJson(reader, listType);
+        List<UserDto> dummyUsers = new Gson().fromJson(reader, listType);
         return dummyUsers;
     }
-
 }

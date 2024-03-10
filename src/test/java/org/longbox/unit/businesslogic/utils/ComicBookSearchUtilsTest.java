@@ -3,32 +3,32 @@ package org.longbox.unit.businesslogic.utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.longbox.businesslogic.utils.ComicBookSearch;
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.businesslogic.utils.ComicBookSearchUtils;
+import org.longbox.domainobjects.dto.ComicBookDto;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ComicBookSearchTest {
+public class ComicBookSearchUtilsTest {
 
-    ComicBookDTO comicBook1;
-    ComicBookDTO comicBook2;
-    ComicBookDTO comicBook3;
-    ComicBookDTO comicBook4;
-    ComicBookDTO comicBook5;
-    ComicBookDTO comicBook6;
-    ComicBookDTO comicBook7;
-    ComicBookDTO comicBook8;
-    List<ComicBookDTO> comicBookDTOList;
+    ComicBookDto comicBook1;
+    ComicBookDto comicBook2;
+    ComicBookDto comicBook3;
+    ComicBookDto comicBook4;
+    ComicBookDto comicBook5;
+    ComicBookDto comicBook6;
+    ComicBookDto comicBook7;
+    ComicBookDto comicBook8;
+    List<ComicBookDto> comicBookDtoList;
 
     @BeforeEach
     public void setup() {
 
-        comicBookDTOList = new ArrayList<>();
+        comicBookDtoList = new ArrayList<>();
 
-        comicBook1 = new ComicBookDTO(
+        comicBook1 = new ComicBookDto(
                 "Zot!",
                 "Scott McCloud",
                 "Scott McCloud",
@@ -38,9 +38,9 @@ public class ComicBookSearchTest {
                 "Eclipse",
                 1984
         );
-        comicBookDTOList.add(comicBook1);
+        comicBookDtoList.add(comicBook1);
 
-        comicBook2 = new ComicBookDTO(
+        comicBook2 = new ComicBookDto(
                 "Sanctuary",
                 "Sho Fumimura",
                 "Ryoichi Ikegami",
@@ -50,9 +50,9 @@ public class ComicBookSearchTest {
                 "Viz",
                 1990
         );
-        comicBookDTOList.add(comicBook2);
+        comicBookDtoList.add(comicBook2);
 
-        comicBook3 = new ComicBookDTO(
+        comicBook3 = new ComicBookDto(
                 "Nexus (1981)",
                 "Mike Baron",
                 "Steve Rude",
@@ -62,9 +62,9 @@ public class ComicBookSearchTest {
                 "Capital",
                 1981
         );
-        comicBookDTOList.add(comicBook3);
+        comicBookDtoList.add(comicBook3);
 
-        comicBook4 = new ComicBookDTO(
+        comicBook4 = new ComicBookDto(
                 "The Maxx",
                 "Sam Keith",
                 "Sam Keith",
@@ -74,9 +74,9 @@ public class ComicBookSearchTest {
                 "Image",
                 1993
         );
-        comicBookDTOList.add(comicBook4);
+        comicBookDtoList.add(comicBook4);
 
-        comicBook5 = new ComicBookDTO(
+        comicBook5 = new ComicBookDto(
                 "",
                 "Scott McCloud",
                 "Scott McCloud",
@@ -86,9 +86,9 @@ public class ComicBookSearchTest {
                 "Eclipse",
                 1984
         );
-        comicBookDTOList.add(comicBook5);
+        comicBookDtoList.add(comicBook5);
 
-        comicBook6 = new ComicBookDTO(
+        comicBook6 = new ComicBookDto(
                 null,
                 "Sho Fumimura",
                 "Ryoichi Ikegami",
@@ -99,9 +99,9 @@ public class ComicBookSearchTest {
                 "Viz",
                 1990
         );
-        comicBookDTOList.add(comicBook6);
+        comicBookDtoList.add(comicBook6);
 
-        comicBook7 = new ComicBookDTO(
+        comicBook7 = new ComicBookDto(
                 "Nexus (1981)",
                 "Mike Baron",
                 "Steve Rude",
@@ -111,9 +111,9 @@ public class ComicBookSearchTest {
                 "Capital",
                 1981
         );
-        comicBookDTOList.add(comicBook7);
+        comicBookDtoList.add(comicBook7);
 
-        comicBook8 = new ComicBookDTO(
+        comicBook8 = new ComicBookDto(
                 "The Maxx",
                 "Sam Keith",
                 "Sam Keith",
@@ -123,12 +123,12 @@ public class ComicBookSearchTest {
                 "Image",
                 1993
         );
-        comicBookDTOList.add(comicBook8);
+        comicBookDtoList.add(comicBook8);
     }
 
     @Test
     public void comicBookExactMatch() {
-        ComicBookDTO expected = new ComicBookDTO(
+        ComicBookDto expected = new ComicBookDto(
                 "The Maxx",
                 "Sam Keith",
                 "Sam Keith",
@@ -138,12 +138,12 @@ public class ComicBookSearchTest {
                 "Image",
                 1993
         );
-        Assertions.assertEquals(expected, ComicBookSearch.searchComicBook(comicBookDTOList, "The Maxx"));
+        Assertions.assertEquals(expected, org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookDtoList, "The Maxx"));
     }
 
     @Test
     public void comicBookPartialMatch() {
-        ComicBookDTO expected = new ComicBookDTO(
+        ComicBookDto expected = new ComicBookDto(
                 "Nexus (1981)",
                 "Mike Baron",
                 "Steve Rude",
@@ -153,12 +153,12 @@ public class ComicBookSearchTest {
                 "Capital",
                 1981
         );
-        assertEquals(expected, ComicBookSearch.searchComicBook(comicBookDTOList,"Nexus"));
+        assertEquals(expected, org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookDtoList,"Nexus"));
     }
 
     @Test
     public void comicBookNoMatch() {
-        ComicBookDTO expected = comicBook1 = new ComicBookDTO(
+        ComicBookDto expected = comicBook1 = new ComicBookDto(
                 "Zot!",
                 "Scott McCloud",
                 "Scott McCloud",
@@ -168,58 +168,58 @@ public class ComicBookSearchTest {
                 "Eclipse",
                 1984
         );
-        assertNotEquals(expected, ComicBookSearch.searchComicBook(comicBookDTOList,"Nexus"));
+        assertNotEquals(expected, org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookDtoList,"Nexus"));
     }
     
     @Test
     public void comicBookSearchCaseInsensitive() {
-    	ComicBookDTO expected = comicBook1;
-    	ComicBookDTO actual = ComicBookSearch.searchComicBook(comicBookDTOList, "zot");
+    	ComicBookDto expected = comicBook1;
+    	ComicBookDto actual = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookDtoList, "zot");
     	assertEquals(expected, actual, "case insensitive comic book search");
     }
     
     @Test
     public void comicBookSearchCaseInsensitiveNoMatch() {
-    	ComicBookDTO expected = comicBook1;
-    	ComicBookDTO actual = ComicBookSearch.searchComicBook(comicBookDTOList, "nexus");
+    	ComicBookDto expected = comicBook1;
+    	ComicBookDto actual = ComicBookSearchUtils.searchComicBook(comicBookDtoList, "nexus");
     	assertNotEquals(expected, actual, "case insensitive comic book search no match");
     }
 
     @Test
     public void comicBookSearchByAuthorCaseInsensitive() {
-    	List<ComicBookDTO> expected = new ArrayList<ComicBookDTO>();
+    	List<ComicBookDto> expected = new ArrayList<ComicBookDto>();
     	expected.add(comicBook1);
     	expected.add(comicBook5);
-    	List<ComicBookDTO> actual = ComicBookSearch.searchComicBookByAuthor(comicBookDTOList, "scott mccloud");
+    	List<ComicBookDto> actual = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBookByAuthor(comicBookDtoList, "scott mccloud");
     	assertEquals(expected, actual, "case insensitive search by author");	
     }
     
     @Test
     public void comicBookSearchByAuthorCaseInsensitiveNoMatch() {
-    	List<ComicBookDTO> expected = new ArrayList<ComicBookDTO>();
-    	List<ComicBookDTO> actual = ComicBookSearch.searchComicBookByAuthor(comicBookDTOList, "scoot mccloud");
+    	List<ComicBookDto> expected = new ArrayList<ComicBookDto>();
+    	List<ComicBookDto> actual = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBookByAuthor(comicBookDtoList, "scoot mccloud");
     	assertEquals(expected, actual, "case insensitive search by author no match");	
     }
     
     @Test
     public void comicBookSearchByArtistCaseInsensitive() {
-    	List<ComicBookDTO> expected = new ArrayList<ComicBookDTO>();
+    	List<ComicBookDto> expected = new ArrayList<ComicBookDto>();
     	expected.add(comicBook2);
     	expected.add(comicBook6);
-    	List<ComicBookDTO> actual = ComicBookSearch.searchComicBookByArtist(comicBookDTOList, "ryoichi ikegami");
+    	List<ComicBookDto> actual = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBookByArtist(comicBookDtoList, "ryoichi ikegami");
     	assertEquals(expected, actual, "case insensitive search by artist");
     }
 
     @Test
     public void comicBookSearchByArtistCaseInsensitiveNoMatch() {
-    	List<ComicBookDTO> expected = new ArrayList<ComicBookDTO>();
-    	List<ComicBookDTO> actual = ComicBookSearch.searchComicBookByArtist(comicBookDTOList, "ryooichi ikegami");
+    	List<ComicBookDto> expected = new ArrayList<ComicBookDto>();
+    	List<ComicBookDto> actual = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBookByArtist(comicBookDtoList, "ryooichi ikegami");
     	assertEquals(expected, actual, "case insensitive search by artist no match");
     }
     
     @Test
     public void nullException() {
-        List<ComicBookDTO> nullList = null;
-        assertThrows(NullPointerException.class, () -> ComicBookSearch.searchComicBook(nullList, "Zot!"));
+        List<ComicBookDto> nullList = null;
+        assertThrows(NullPointerException.class, () -> org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(nullList, "Zot!"));
     }
 }

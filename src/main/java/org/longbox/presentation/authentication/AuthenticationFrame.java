@@ -15,7 +15,7 @@ import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
-import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.User;
 import org.longbox.presentation.profile.HomeFrame;
@@ -108,7 +108,7 @@ public class AuthenticationFrame extends JFrame implements ActionListener {
 					loginPanel.getErrorLabel().setText("Login Successful!");
 					loginPanel.getErrorLabel().setForeground(Color.GREEN);
 					dispose();
-					HomeFrame homeFrame = new HomeFrame(UserSession.getInstance(new UserDTO(user)));
+					HomeFrame homeFrame = new HomeFrame(UserSession.getInstance(new UserDto(user)));
 					homeFrame.setVisible(true);
 				} else {
 					loginPanel.getErrorLabel().setText("Password Incorrect");

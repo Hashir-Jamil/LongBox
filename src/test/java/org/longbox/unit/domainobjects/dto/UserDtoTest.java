@@ -4,19 +4,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.entity.User;
 
 import java.util.Date;
 
-public class UserDTOTest {
+public class UserDtoTest {
 
-    UserDTO u1DTO,u2DTO,u3DTO, u4DTO, u1DTOClone;
+    UserDto u1DTO,u2DTO,u3DTO, u4DTO, u1DTOClone;
     User u1, u2;
     @BeforeEach
     public void loadUsers() {
 
-        u1DTO = new UserDTO(
+        u1DTO = new UserDto(
             "Always_Scheming",
             "John",
             "Smith",
@@ -26,7 +26,7 @@ public class UserDTOTest {
             "Canada"
         );
 
-        u2DTO = new UserDTO(
+        u2DTO = new UserDto(
             2,
             "Always_Throwing",
             "Neo",
@@ -39,7 +39,7 @@ public class UserDTOTest {
             0
         );
 
-        u3DTO = new UserDTO(
+        u3DTO = new UserDto(
             3,
             "Phoenix",
             "Stan",
@@ -52,7 +52,7 @@ public class UserDTOTest {
             0
         );
 
-        u1DTOClone = new UserDTO(
+        u1DTOClone = new UserDto(
                 "Always_Scheming",
                 "John",
                 "Smith",
@@ -72,7 +72,7 @@ public class UserDTOTest {
                 "United Kingdom"
         );
 
-        u4DTO = new UserDTO(u1);
+        u4DTO = new UserDto(u1);
 
         u2 = new User(u3DTO);
     }

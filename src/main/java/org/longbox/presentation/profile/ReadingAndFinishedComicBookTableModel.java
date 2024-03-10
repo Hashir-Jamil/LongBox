@@ -1,6 +1,6 @@
 package org.longbox.presentation.profile;
 
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 
 import java.util.List;
 
@@ -8,19 +8,19 @@ import javax.swing.table.DefaultTableModel;
 
 public class ReadingAndFinishedComicBookTableModel extends DefaultTableModel{
 	
-	List<ComicBookDTO> comicBookList;
+	List<ComicBookDto> comicBookList;
 	private String[] columnNames =
         {"Series Title",
         "Author"};
 
-	public ReadingAndFinishedComicBookTableModel(List<ComicBookDTO> comicBookList) {
+	public ReadingAndFinishedComicBookTableModel(List<ComicBookDto> comicBookList) {
         this.comicBookList = comicBookList;
 
         for (String columnName : columnNames) {
             addColumn(columnName);
         }
 
-        for (ComicBookDTO comicBook : comicBookList) {
+        for (ComicBookDto comicBook : comicBookList) {
             addRow(new Object[]{
                     comicBook.getSeriesTitle(),
                     comicBook.getAuthor()

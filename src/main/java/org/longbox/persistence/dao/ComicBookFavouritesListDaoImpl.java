@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.entity.ComicBook;
 import org.longbox.persistence.entity.ComicBookFavoritesList;
 import org.longbox.persistence.entity.User;
@@ -96,7 +96,7 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     }
 
     @Override
-    public List<ComicBookDTO> getAllFavoritesComicBooks() {
+    public List<ComicBookDto> getAllFavoritesComicBooks() {
         Session session = null;
         Transaction transaction = null;
         List<ComicBook> favouritesLists = null;
@@ -119,11 +119,11 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
                 session.close();
             }
         }
-        List<ComicBookDTO> comicBookDTOList = new ArrayList<>();
+        List<ComicBookDto> comicBookDtoList = new ArrayList<>();
         for (ComicBook c : favouritesLists) {
-            ComicBookDTO comicBookDTO = new ComicBookDTO(c);
-            comicBookDTOList.add(comicBookDTO);
+            ComicBookDto comicBookDTO = new ComicBookDto(c);
+            comicBookDtoList.add(comicBookDTO);
         }
-        return comicBookDTOList;
+        return comicBookDtoList;
     }
 }

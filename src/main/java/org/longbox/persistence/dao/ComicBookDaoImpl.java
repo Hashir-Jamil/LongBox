@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.entity.ComicBook;
 import org.longbox.utils.HibernateUtils;
 
@@ -68,7 +68,7 @@ public class ComicBookDaoImpl implements ComicBookDao {
     }
 
     @Override
-    public Long saveComicBook(ComicBookDTO comicBookDTO) {
+    public Long saveComicBook(ComicBookDto comicBookDTO) {
         Session session = null;
         Transaction transaction = null;
         ComicBook comicBook = new ComicBook(comicBookDTO);
@@ -104,7 +104,7 @@ public class ComicBookDaoImpl implements ComicBookDao {
     }
 
     @Override
-    public List<ComicBookDTO> getAllComicBooks() {
+    public List<ComicBookDto> getAllComicBooks() {
         Session session = null;
         Transaction transaction = null;
         List<ComicBook> comicBookList = null;
@@ -124,11 +124,11 @@ public class ComicBookDaoImpl implements ComicBookDao {
                 session.close();
             }
         }
-        List<ComicBookDTO> comicBookDTOList = new ArrayList<>();
+        List<ComicBookDto> comicBookDtoList = new ArrayList<>();
         for (ComicBook c : comicBookList) {
-            ComicBookDTO comicBookDTO = new ComicBookDTO(c);
-            comicBookDTOList.add(comicBookDTO);
+            ComicBookDto comicBookDTO = new ComicBookDto(c);
+            comicBookDtoList.add(comicBookDTO);
         }
-        return comicBookDTOList;
+        return comicBookDtoList;
     }
 }

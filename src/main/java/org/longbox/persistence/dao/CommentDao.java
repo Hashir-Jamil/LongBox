@@ -1,9 +1,7 @@
 package org.longbox.persistence.dao;
 
-import org.longbox.domainobjects.dto.CommentDTO;
-import org.longbox.persistence.entity.ComicBook;
+import org.longbox.domainobjects.dto.CommentDto;
 import org.longbox.persistence.entity.Comment;
-import org.longbox.persistence.entity.User;
 
 import java.util.List;
 
@@ -11,10 +9,10 @@ public interface CommentDao {
 
     Comment getCommentById(long userId, long comicId);
 
-    public List<CommentDTO> getCommentsByComic(long comicID);
+    public List<CommentDto> getCommentsByComic(long comicID);
 
-    void saveComment(CommentDTO commentDTO);
+    void saveComment(CommentDto commentDTO);
 
-    public List<CommentDTO> getCommentsByUser(long userID);
+    public List<CommentDto> getCommentsByUser(long userID);
 
 }

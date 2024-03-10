@@ -1,12 +1,12 @@
 package org.longbox.businesslogic.comparators;
 
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 
 import java.util.Comparator;
 
-public class ComicBookDateAddedComparator implements Comparator<ComicBookDTO> {
+public class ComicBookDateAddedComparator implements Comparator<ComicBookDto> {
     @Override
-    public int compare(ComicBookDTO comicBook1, ComicBookDTO comicBook2) {
+    public int compare(ComicBookDto comicBook1, ComicBookDto comicBook2) {
 
         if (comicBook1.getDateAdded().compareTo(comicBook2.getDateAdded()) == 1) {
             return 1;

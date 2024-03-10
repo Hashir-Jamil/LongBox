@@ -8,7 +8,7 @@ import java.util.*;
 
 @Getter
 @Setter
-public class UserDTO {
+public class UserDto {
 
 	private long id;
 	private String userName;
@@ -19,15 +19,15 @@ public class UserDTO {
 	private String password;
 	private String country;
 	private Date joinDate;
-	private List<ComicBookDTO> comicBookList = new ArrayList<>();
+	private List<ComicBookDto> comicBookList = new ArrayList<>();
 	private int comicsReading;
 	private int comicsFinished;
 	private String aboutMe;
 
-	public UserDTO() {
+	public UserDto() {
 	}
 
-	public UserDTO(
+	public UserDto(
 			String userName,
 			String firstName,
 			String lastName,
@@ -51,7 +51,7 @@ public class UserDTO {
 		this.aboutMe = aboutMe;
 	}
 
-	public UserDTO(
+	public UserDto(
 			String userName,
 			String firstName,
 			String lastName,
@@ -73,7 +73,7 @@ public class UserDTO {
 		this.comicsFinished = 0;
 	}
 
-	public UserDTO(
+	public UserDto(
 			long id,
 			String userName,
 			String firstName,
@@ -101,7 +101,7 @@ public class UserDTO {
 		this.aboutMe = aboutMe;
 	}
 
-	public UserDTO(
+	public UserDto(
 			long id,
 			String userName,
 			String firstName,
@@ -127,7 +127,7 @@ public class UserDTO {
 		this.comicsFinished = comicsFinished;
 	}
 
-	public UserDTO(User user) {
+	public UserDto(User user) {
 		this.id = user.getId();
 		this.userName = user.getUserName();
 		this.firstName = user.getFirstName();
@@ -145,7 +145,7 @@ public class UserDTO {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof UserDTO userDTO)) return false;
+		if (!(o instanceof UserDto userDTO)) return false;
 		return Objects.equals(getUserName(),
 				userDTO.getUserName()) && Objects.equals(getFirstName(),
 				userDTO.getFirstName()) && Objects.equals(getLastName(),

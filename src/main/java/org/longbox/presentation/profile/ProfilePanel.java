@@ -15,8 +15,8 @@ import javax.swing.*;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
-import org.longbox.domainobjects.dto.ComicBookDTO;
-import org.longbox.domainobjects.dto.UserDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
+import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
 import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
 import org.longbox.persistence.dao.UserDaoImpl;
@@ -24,10 +24,22 @@ import org.longbox.persistence.entity.ComicBook;
 
 @Getter
 @Setter
-public class ProfilePanel extends JPanel implements ActionListener {
+public class ProfilePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private final String PANEL_LABEL = "Profile View";
-	
+	private JLabel comicCollectionTitle;
+	private JSeparator topSeparator;
+	private JSeparator midSeparator;
+	private JLabel usernameLabel;
+	private JLabel firstNameLabel;
+	private JLabel lastNameLabel;
+	private JLabel dobLabel;
+	private JLabel emailLabel;
+	private JLabel countryLabel;
+	private JLabel joinDateLabel;
+	private JLabel readingLabel;
+	private JLabel finishedLabel;
+	private JLabel aboutMeLabel;
 	private JLabel userName;
 	private JLabel firstName;
 	private JLabel lastName;
@@ -41,13 +53,15 @@ public class ProfilePanel extends JPanel implements ActionListener {
 	private JPanel panel;
 	private UserSession user;
 	private ReadingAndFinishedComicBookTableModel readingTableModel;
-	private ReadingAndFinishedComicBookTableModel readTableModel;
+	private ReadingAndFinishedComicBookTableModel finishedTableModel;
 	private JScrollPane readingPane;
 	private JScrollPane readPane;
 	private JTable readingTable;
 	private JTable readTable;
 	private JLabel currentlyReading;
 	private JLabel currentlyRead;
+	private JButton aboutMeEditButton;
+	private JButton aboutMeCancelButton;
 
 	/**
 	 * Create the panel.
@@ -64,7 +78,7 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		panel = new JPanel();
 	    panel.setLayout(null);
 	    
-	    JLabel comicCollectionTitle = new JLabel(PANEL_LABEL);
+	    comicCollectionTitle = new JLabel(PANEL_LABEL);
 		comicCollectionTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		comicCollectionTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		comicCollectionTitle.setBounds(182, 11, 800, 43);
@@ -73,57 +87,57 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		add(panel, BorderLayout.CENTER);
 		
 		//Top horizontal topSeparator
-		JSeparator topSeparator = new JSeparator();
+		topSeparator = new JSeparator();
 		topSeparator.setBackground(new Color(0, 0, 0));
 		topSeparator.setForeground(new Color(0, 0, 0));
 		topSeparator.setBounds(7, 100, 1150, 1);
 		panel.add(topSeparator);
 		
 		//Middle vertical topSeparator
-		JSeparator midSeparator = new JSeparator();
+		midSeparator = new JSeparator();
 		midSeparator.setOrientation(SwingConstants.VERTICAL);
 		midSeparator.setBackground(new Color(0, 0, 0));
 		midSeparator.setForeground(new Color(0, 0, 0));
 		midSeparator.setBounds(500, 100, 30, 700);
 		panel.add(midSeparator);
 		
-		JLabel usernameLabel = new JLabel("Username:");
+		usernameLabel = new JLabel("Username:");
 		usernameLabel.setBounds(47, 113, 118, 16);
 		panel.add(usernameLabel);
 		
-		JLabel firstNameLabel = new JLabel("First Name:");
+		firstNameLabel = new JLabel("First Name:");
 		firstNameLabel.setBounds(47, 141, 118, 16);
 		panel.add(firstNameLabel);
 		
-		JLabel lastNameLabel = new JLabel("Last Name:");
+		lastNameLabel = new JLabel("Last Name:");
 		lastNameLabel.setBounds(47, 169, 118, 16);
 		panel.add(lastNameLabel);
 		
-		JLabel dobLabel = new JLabel("Date of Birth:");
+		dobLabel = new JLabel("Date of Birth:");
 		dobLabel.setBounds(47, 197, 118, 16);
 		panel.add(dobLabel);
 		
-		JLabel emailLabel = new JLabel("Email:");
+		emailLabel = new JLabel("Email:");
 		emailLabel.setBounds(47, 225, 118, 16);
 		panel.add(emailLabel);
 		
-		JLabel countryLabel = new JLabel("Country:");
+		countryLabel = new JLabel("Country:");
 		countryLabel.setBounds(47, 253, 118, 16);
 		panel.add(countryLabel);
 		
-		JLabel joinDateLabel = new JLabel("Joined On:");
+		joinDateLabel = new JLabel("Joined On:");
 		joinDateLabel.setBounds(47, 281, 118, 16);
 		panel.add(joinDateLabel);
 		
-		JLabel readingLabel = new JLabel("Comics Reading:");
+		readingLabel = new JLabel("Comics Reading:");
 		readingLabel.setBounds(47, 309, 118, 16);
 		panel.add(readingLabel);
 		
-		JLabel finishedLabel = new JLabel("Comics Finished:");
+		finishedLabel = new JLabel("Comics Finished:");
 		finishedLabel.setBounds(47, 337, 118, 16);
 		panel.add(finishedLabel);
 		
-		JLabel aboutMeLabel = new JLabel("About Me:");
+		aboutMeLabel = new JLabel("About Me:");
 		aboutMeLabel.setBounds(557, 113, 118, 16);
 		panel.add(aboutMeLabel);
 		
@@ -162,6 +176,14 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		comicsFinished = new JLabel("");
 		comicsFinished.setBounds(182, 337, 306, 16);
 		panel.add(comicsFinished);
+
+		currentlyReading = new JLabel("Comics Currently Reading: ");
+		currentlyReading.setBounds(47, 399, 200, 14);
+		panel.add(currentlyReading);
+
+		currentlyRead = new JLabel("Comics Previously Finished: ");
+		currentlyRead.setBounds(47, 592, 200, 14);
+		panel.add(currentlyRead);
 		
 		aboutMe = new JTextArea();
 		aboutMe.setEditable(false);
@@ -170,18 +192,24 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		aboutMe.setWrapStyleWord(true);
 		panel.add(aboutMe);
 		
-		JButton aboutMeEditButton = new JButton();
+		aboutMeEditButton = new JButton();
 		aboutMeEditButton.setText("Edit");
 		aboutMeEditButton.setEnabled(true);
 		aboutMeEditButton.setBounds(1024, 281, 87, 16);
 		panel.add(aboutMeEditButton);
 		
-		JButton aboutMeCancelButton = new JButton();
+		aboutMeCancelButton = new JButton();
 		aboutMeCancelButton.setText("Cancel");
 		aboutMeCancelButton.setEnabled(false);
 		aboutMeCancelButton.setBounds(927, 281, 87, 16);
 		panel.add(aboutMeCancelButton);
-		
+
+		try {
+			reloadTable();
+		} catch (UserIDDoesNotExistException e) {
+			throw new RuntimeException(e);
+		}
+		setFields();
 		
 		aboutMeEditButton.addActionListener(new ActionListener() {
 			@Override
@@ -191,7 +219,6 @@ public class ProfilePanel extends JPanel implements ActionListener {
 					aboutMeCancelButton.setEnabled(true);
 					aboutMe.setEditable(true);
 				}
-				
 				else if (aboutMeEditButton.getText() == "Save") {
 					UserDaoImpl userDaoImpl = new UserDaoImpl();
 					userDaoImpl.updateAboutMeString(user, aboutMe.getText());
@@ -212,14 +239,6 @@ public class ProfilePanel extends JPanel implements ActionListener {
 				aboutMeEditButton.setText("Edit");
 			}
 		});
-
-        try {
-            reloadTable();
-        } catch (UserIDDoesNotExistException e) {
-            throw new RuntimeException(e);
-        }
-
-        setFields();
 	}
 
 	private void setFields() {
@@ -235,38 +254,33 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		aboutMe.setText(this.user.getUser().getAboutMe());
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-	}
-
 	public void reloadTable() throws UserIDDoesNotExistException {
 
 		UserDaoImpl userDaoImpl = new UserDaoImpl();
-		user.setUser(new UserDTO(userDaoImpl.getUserById(user.getUser().getId())));
+		user.setUser(new UserDto(userDaoImpl.getUserById(user.getUser().getId())));
 		setFields();
 
 		ComicBookReadingListDaoImpl readingListDaoImpl = new ComicBookReadingListDaoImpl();
 		ComicBookFinishedListDaoImpl readListDaoImpl = new ComicBookFinishedListDaoImpl();
 
 		List<ComicBook> readingList = readingListDaoImpl.getUsersReadingList(user.getUser().getId());
-		List<ComicBookDTO> readingListDTO = new ArrayList<ComicBookDTO>();
+		List<ComicBookDto> readingListDTO = new ArrayList<ComicBookDto>();
 
 		List<ComicBook> readList = readListDaoImpl.getUsersFinishedList(user.getUser().getId());
-		List<ComicBookDTO> readListDTO = new ArrayList<ComicBookDTO>();
+		List<ComicBookDto> finishedListDTO = new ArrayList<ComicBookDto>();
 
 		for (ComicBook c : readingList) {
-			ComicBookDTO comicBookDTO = new ComicBookDTO(c);
+			ComicBookDto comicBookDTO = new ComicBookDto(c);
 			readingListDTO.add(comicBookDTO);
 		}
 
 		for (ComicBook c : readList) {
-			ComicBookDTO comicBookDTO = new ComicBookDTO(c);
-			readListDTO.add(comicBookDTO);
+			ComicBookDto comicBookDTO = new ComicBookDto(c);
+			finishedListDTO.add(comicBookDTO);
 		}
 
 		readingTableModel = new ReadingAndFinishedComicBookTableModel(readingListDTO);
-		readTableModel = new ReadingAndFinishedComicBookTableModel(readListDTO);
+		finishedTableModel = new ReadingAndFinishedComicBookTableModel(finishedListDTO);
 
 		readingTable = new JTable(readingTableModel);
 		readingPane = new JScrollPane(readingTable);
@@ -274,28 +288,10 @@ public class ProfilePanel extends JPanel implements ActionListener {
 		readingPane.setBounds(47, 424, 407, 135);
 		panel.add(readingPane);
 
-		readTable = new JTable(readTableModel);
+		readTable = new JTable(finishedTableModel);
 		readPane = new JScrollPane(readTable);
 		readPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		readPane.setBounds(47, 617, 407, 135);
 		panel.add(readPane);
-
-		currentlyReading = new JLabel("Comics Currently Reading: ");
-		currentlyReading.setBounds(47, 399, 200, 14);
-		panel.add(currentlyReading);
-
-		currentlyRead = new JLabel("Comics Previously Finished: ");
-		currentlyRead.setBounds(47, 592, 200, 14);
-		panel.add(currentlyRead);
-		userName.setText(this.user.getUser().getUserName());
-		firstName.setText(this.user.getUser().getFirstName());
-		lastName.setText(this.user.getUser().getLastName());
-		dateOfBirth.setText("" + this.user.getUser().getDob());
-		email.setText(this.user.getUser().getEmail());
-		country.setText(this.user.getUser().getCountry());
-		joinDate.setText("" + this.user.getUser().getJoinDate());
-//		comicsFinished.setText("" + this.user.getUser().getComicsFinished());
-//		comicsReading.setText("" + this.user.getUser().getComicsReading());
-//		aboutMe.setText(this.user.getUser().getAboutMe());
 	}
 }

@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
-import org.longbox.businesslogic.utils.ComicBookSearch;
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.businesslogic.utils.ComicBookSearchUtils;
+import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -48,7 +48,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 	public void update(long userId, long comicBookId) throws UserIDDoesNotExistException {
 		comicBookFavouritesListDaoImp = new ComicBookFavouritesListDaoImpl();
 		comicBookFavouritesListDaoImp.saveToFavorites(userId, comicBookId);
-		List<ComicBookDTO> updatedFavoriteComicBooks = comicBookFavouritesListDaoImp.getAllFavoritesComicBooks();
+		List<ComicBookDto> updatedFavoriteComicBooks = comicBookFavouritesListDaoImp.getAllFavoritesComicBooks();
 		comicBookTableModel.updateData(updatedFavoriteComicBooks);
 	}
 
@@ -83,9 +83,9 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 					int row = comicBookTable.rowAtPoint(e.getPoint());
 					int col = comicBookTable.columnAtPoint(e.getPoint());
 					if (col == 0 && e.getClickCount() == 2) {
-						ComicBookDTO comicBook = ComicBookSearch.searchComicBook(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), comicBookTable.getValueAt(row, col).toString());
+						ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), comicBookTable.getValueAt(row, col).toString());
 						System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
-						ComicBookSearch.loadComicBookPage(comicBook, userSession);
+						org.longbox.businesslogic.utils.ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
 					}
 				}
 			});
@@ -163,8 +163,8 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 		if (e.getSource() == textField && !textField.getText().isEmpty()) {
 			String searchBy = typeSelection.getSelectedItem().toString();
 			String target = textField.getText();
-			List<ComicBookDTO> searchResults = null;
-			ComicBookSearch.comicAdvancedSearch(searchBy, target, searchResults, comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), this.userSession);
+			List<ComicBookDto> searchResults = null;
+			ComicBookSearchUtils.comicAdvancedSearch(searchBy, target, searchResults, comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), this.userSession);
 		}
 	}
 	public void reloadData() {

@@ -1,6 +1,6 @@
 package org.longbox.presentation.profile;
 
-import org.longbox.domainobjects.dto.ComicBookDTO;
+import org.longbox.domainobjects.dto.ComicBookDto;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ComicBookTableModel extends DefaultTableModel {
 
-    List<ComicBookDTO> comicBookList;
+    List<ComicBookDto> comicBookList;
     private String[] columnNames =
             {"Series Title",
             "Author",
@@ -18,14 +18,14 @@ public class ComicBookTableModel extends DefaultTableModel {
             "Publisher",
             "Year Published"};
 
-    public ComicBookTableModel(List<ComicBookDTO> comicBookList) {
+    public ComicBookTableModel(List<ComicBookDto> comicBookList) {
         this.comicBookList = comicBookList;
 
         for (String columnName : columnNames) {
             addColumn(columnName);
         }
 
-        for (ComicBookDTO comicBook : comicBookList) {
+        for (ComicBookDto comicBook : comicBookList) {
             String genres = "";
             for (int i = 0; i < comicBook.getGenres().length - 1; i++) {
                 genres += comicBook.getGenres()[i] + ", ";
@@ -53,10 +53,10 @@ public class ComicBookTableModel extends DefaultTableModel {
         return comicBookList.get(row).getId();
     }
 
-    public void updateData(List<ComicBookDTO> newData) {
+    public void updateData(List<ComicBookDto> newData) {
         comicBookList = newData;
         setRowCount(0); // Clear existing rows
-        for (ComicBookDTO comicBook : comicBookList) {
+        for (ComicBookDto comicBook : comicBookList) {
             String genres = String.join(", ", comicBook.getGenres());
             addRow(new Object[]{
                     comicBook.getSeriesTitle(),
