@@ -1,2 +1,19 @@
-class ComicBookReadingListStubDb {
-}
+[{"user_id":6,"comic_book_id":1,"date_started":"2024-03-10T18:08:54.959"},
+{"user_id":6,"comic_book_id":10,"date_started":"2024-03-10T18:09:11.459"},
+{"user_id":6,"comic_book_id":21,"date_started":"2024-03-10T18:09:24.145"},
+{"user_id":6,"comic_book_id":27,"date_started":"2024-03-10T18:09:28.183"},
+{"user_id":1,"comic_book_id":5,"date_started":"2024-03-10T18:10:02.415"},
+{"user_id":1,"comic_book_id":19,"date_started":"2024-03-10T18:10:22.265"},
+{"user_id":1,"comic_book_id":24,"date_started":"2024-03-10T18:10:28.782"},
+{"user_id":1,"comic_book_id":35,"date_started":"2024-03-10T18:10:44.147"},
+{"user_id":4,"comic_book_id":5,"date_started":"2024-03-10T18:11:25.824"},
+{"user_id":4,"comic_book_id":16,"date_started":"2024-03-10T18:11:34.679"},
+{"user_id":4,"comic_book_id":24,"date_started":"2024-03-10T18:11:38.495"},
+{"user_id":4,"comic_book_id":33,"date_started":"2024-03-10T18:11:53.08"},
+{"user_id":2,"comic_book_id":15,"date_started":"2024-03-10T18:12:57.025"},
+{"user_id":2,"comic_book_id":22,"date_started":"2024-03-10T18:13:00.802"},
+{"user_id":2,"comic_book_id":8,"date_started":"2024-03-10T18:13:15.79"},
+{"user_id":3,"comic_book_id":7,"date_started":"2024-03-10T18:13:55.67"},
+{"user_id":3,"comic_book_id":18,"date_started":"2024-03-10T18:14:05.857"},
+{"user_id":3,"comic_book_id":25,"date_started":"2024-03-10T18:14:13.846"},
+{"user_id":3,"comic_book_id":31,"date_started":"2024-03-10T18:14:16.45"}]

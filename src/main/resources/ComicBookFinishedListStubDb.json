@@ -1,0 +1,117 @@
+[
+  {
+    "user_id": 6,
+    "comic_book_id": 7,
+    "date_finished": "2024-03-10T18:09:00.64"
+  },
+  {
+    "user_id": 6,
+    "comic_book_id": 15,
+    "date_finished": "2024-03-10T18:09:17.431"
+  },
+  {
+    "user_id": 6,
+    "comic_book_id": 18,
+    "date_finished": "2024-03-10T18:09:20.764"
+  },
+  {
+    "user_id": 6,
+    "comic_book_id": 33,
+    "date_finished": "2024-03-10T18:09:35.889"
+  },
+  {
+    "user_id": 6,
+    "comic_book_id": 36,
+    "date_finished": "2024-03-10T18:09:41.066"
+  },
+  {
+    "user_id": 1,
+    "comic_book_id": 1,
+    "date_finished": "2024-03-10T18:09:56.94"
+  },
+  {
+    "user_id": 1,
+    "comic_book_id": 21,
+    "date_finished": "2024-03-10T18:10:25.451"
+  },
+  {
+    "user_id": 1,
+    "comic_book_id": 28,
+    "date_finished": "2024-03-10T18:10:35.675"
+  },
+  {
+    "user_id": 4,
+    "comic_book_id": 2,
+    "date_finished": "2024-03-10T18:11:21.067"
+  },
+  {
+    "user_id": 4,
+    "comic_book_id": 8,
+    "date_finished": "2024-03-10T18:11:30.366"
+  },
+  {
+    "user_id": 4,
+    "comic_book_id": 28,
+    "date_finished": "2024-03-10T18:11:41.88"
+  },
+  {
+    "user_id": 4,
+    "comic_book_id": 31,
+    "date_finished": "2024-03-10T18:11:44.515"
+  },
+  {
+    "user_id": 4,
+    "comic_book_id": 12,
+    "date_finished": "2024-03-10T18:11:48.383"
+  },
+  {
+    "user_id": 2,
+    "comic_book_id": 6,
+    "date_finished": "2024-03-10T18:12:51.336"
+  },
+  {
+    "user_id": 2,
+    "comic_book_id": 9,
+    "date_finished": "2024-03-10T18:12:54.312"
+  },
+  {
+    "user_id": 2,
+    "comic_book_id": 28,
+    "date_finished": "2024-03-10T18:13:04.265"
+  },
+  {
+    "user_id": 2,
+    "comic_book_id": 36,
+    "date_finished": "2024-03-10T18:13:10.11"
+  },
+  {
+    "user_id": 3,
+    "comic_book_id": 1,
+    "date_finished": "2024-03-10T18:13:53.242"
+  },
+  {
+    "user_id": 3,
+    "comic_book_id": 11,
+    "date_finished": "2024-03-10T18:13:58.467"
+  },
+  {
+    "user_id": 3,
+    "comic_book_id": 15,
+    "date_finished": "2024-03-10T18:14:00.789"
+  },
+  {
+    "user_id": 3,
+    "comic_book_id": 21,
+    "date_finished": "2024-03-10T18:14:10.223"
+  },
+  {
+    "user_id": 3,
+    "comic_book_id": 34,
+    "date_finished": "2024-03-10T18:14:23.811"
+  },
+  {
+    "user_id": 3,
+    "comic_book_id": 10,
+    "date_finished": "2024-03-10T18:14:42.703"
+  }
+]
