@@ -11,7 +11,7 @@ import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.entity.ComicBook;
 import org.longbox.persistence.entity.ComicBookFavoritesList;
 import org.longbox.persistence.entity.User;
-import org.longbox.utils.HibernateUtils;
+import org.longbox.config.HibernateUtils;
 import java.util.ArrayList;
 import java.util.List;
 

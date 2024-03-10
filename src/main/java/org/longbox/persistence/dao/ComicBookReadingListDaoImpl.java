@@ -6,10 +6,9 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.persistence.entity.ComicBook;
-import org.longbox.persistence.entity.ComicBookFinishedList;
 import org.longbox.persistence.entity.ComicBookReadingList;
 import org.longbox.persistence.entity.User;
-import org.longbox.utils.HibernateUtils;
+import org.longbox.config.HibernateUtils;
 
 import java.util.Collections;
 import java.util.List;

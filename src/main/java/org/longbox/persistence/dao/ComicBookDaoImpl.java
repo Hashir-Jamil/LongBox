@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.entity.ComicBook;
-import org.longbox.utils.HibernateUtils;
+import org.longbox.config.HibernateUtils;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -8,7 +8,7 @@ import org.hibernate.Transaction;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.*;
 import org.longbox.persistence.entity.User;
-import org.longbox.utils.HibernateUtils;
+import org.longbox.config.HibernateUtils;
 
 public class UserDaoImpl implements UserDao {
     private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
