@@ -57,7 +57,7 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     }
 
     @Override
-    public int removeFromFavorites(long userId, long comicBookId) {
+    public void removeFromFavorites(long userId, long comicBookId) {
         Session session = null;
         Transaction transaction = null;
         int deletedEntities = 0;
@@ -80,7 +80,6 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
         finally {
             session.close();
         }
-        return deletedEntities;
     }
 
     @Override
