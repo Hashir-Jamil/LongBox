@@ -1,4 +1,4 @@
 package org.longbox.businesslogic.service;
 
-public interface CommentService {
+public class CommentService {
 }

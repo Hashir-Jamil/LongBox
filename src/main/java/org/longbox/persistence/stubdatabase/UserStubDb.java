@@ -8,11 +8,13 @@ import java.util.List;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
+import org.longbox.domainobjects.dto.JsonConvertor;
 import org.longbox.domainobjects.dto.UserDto;
 import com.google.gson.Gson;
 import org.longbox.persistence.dao.UserDao;
@@ -20,14 +22,11 @@ import org.longbox.persistence.entity.User;
 
 @Getter
 @Setter
-public class UserStubDb implements UserDao {
+@NoArgsConstructor
+public class UserStubDb implements UserDao, JsonConvertor {
 
     private List<UserDto> userStubData = new ArrayList<>();
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/UserStubDb.json";
-
-    public UserStubDb() {
-        loadUsers();
-    }
 
     @Override
     public User getUserById(long id) throws UserIDDoesNotExistException {
@@ -103,17 +102,17 @@ public class UserStubDb implements UserDao {
         userStubData.add(u3);
     }
 
-    public void serializeUserStubDB() {
+    @Override
+    public void serializeStubData() {
         String json = new Gson().toJson(userStubData);
-        String file = "src/main/resources/UserStubDb.json";
-        try (PrintStream out = new PrintStream(new FileOutputStream(file))) {
+        try (PrintStream out = new PrintStream(new FileOutputStream(ABSOLUTE_FILE_PATH))) {
             out.print(json);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
-
-    public List<UserDto> deserializeUserStubDB(String filepath) {
+    @Override
+    public List<UserDto> deserializeStubData(String filepath) {
         Type listType = new TypeToken<ArrayList<UserDto>>(){}.getType();
         JsonReader reader = null;
 

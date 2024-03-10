@@ -50,6 +50,7 @@ public class CommentDto {
         this.username = c.getUserName();
         this.comicBookId = c.getComicBookId();
         this.dateAdded = c.getCommentDate();
+        this.comicBookId = c.getComicBookId();
     }
     
     @Override

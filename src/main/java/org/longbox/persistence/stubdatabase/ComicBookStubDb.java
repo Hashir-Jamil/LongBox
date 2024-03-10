@@ -10,12 +10,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import com.google.gson.Gson;
+import org.longbox.domainobjects.dto.JsonConvertor;
 import org.longbox.persistence.dao.ComicBookDao;
 import org.longbox.persistence.entity.ComicBook;
 
 @Getter
 @Setter
-public class ComicBookStubDb implements ComicBookDao {
+public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
 
     private List<ComicBookDto> comicBookStubData = new ArrayList<>();
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/ComicBookStubDb.json";
@@ -232,8 +233,7 @@ public class ComicBookStubDb implements ComicBookDao {
 
     public void serializeComicBookStubDB() {
         String json = new Gson().toJson(comicBookStubData);
-        String file = "src/main/resources/ComicBookStubDb.json";
-        try (PrintStream out = new PrintStream(new FileOutputStream(file))) {
+        try (PrintStream out = new PrintStream(new FileOutputStream(ABSOLUTE_FILE_PATH))) {
             out.print(json);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -250,5 +250,15 @@ public class ComicBookStubDb implements ComicBookDao {
         catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void serializeStubData() {
+
+    }
+
+    @Override
+    public <T> List<T> deserializeStubData(String filepath) {
+        return null;
     }
 }
