@@ -199,4 +199,4 @@
 
 ## Sunday, March 10th, 2024
     
-    Ahan: Converted postgresql data to json files, finished CommentStubDB.java implementation and added more tests for CommentDaoImpl.java.
+    Ahan: Converted postgresql data to json files, finished CommentStubDB.java implementation and added more tests for CommentDaoImpl.java. Also updated ReadMe/ Wiki with updated feature list and latest screenshots.
