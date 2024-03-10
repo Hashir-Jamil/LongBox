@@ -68,7 +68,7 @@ public class RegistrationPanel extends JPanel {
 
 		//Header label
 		JLabel HeaderLabel = new JLabel("Sign Up and Start Reading Comics!");
-		HeaderLabel.setBounds(265, 34, 279, 26);
+		HeaderLabel.setBounds(265, 17, 279, 26);
 		HeaderLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 
 		//first name label
@@ -91,7 +91,7 @@ public class RegistrationPanel extends JPanel {
 
 		//username label
 		JLabel UsernameLabel = new JLabel("Your username (must be unique and not contain '@'):");
-		UsernameLabel.setBounds(117, 187, 297, 16);
+		UsernameLabel.setBounds(117, 187, 335, 16);
 		UsernameLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 
 		usernameField = new JTextField();
@@ -192,6 +192,11 @@ public class RegistrationPanel extends JPanel {
 		panel.add(signInButton);
 
 		add(panel, BorderLayout.CENTER);
+		
+		informationLabel = new JLabel("All fields are mandatory.");
+		informationLabel.setFont(new Font("Lucida Grande", Font.ITALIC, 11));
+		informationLabel.setBounds(339, 43, 131, 16);
+		panel.add(informationLabel);
 
 		// action listener
 		firstNameField.addActionListener(fieldsListener);
@@ -263,6 +268,7 @@ public class RegistrationPanel extends JPanel {
 			updateButtonState();
 		}
 	};
+	private JLabel informationLabel;
 
 	private void updateButtonState() {
 		// Enable the button only if all fields are non-empty
