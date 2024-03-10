@@ -54,58 +54,64 @@ Note:
 ### Login Page
 
 This is the first page that the user of the app sees.
-You can take a lot at UserStubDB stubbed users that have been added to the system.
 
-![LoginPage](https://github.com/Hashir-Jamil/LongBox/assets/90640849/94401b5a-5f2c-4d81-9f5d-d589ad11110d)
+![Login](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f301d4e4-9725-477c-82cd-8dc03ea25d7d)
 
 ### Registration Page
 
 New users can sign up and use our app.
 
-![RegistrationPage](https://github.com/Hashir-Jamil/LongBox/assets/90640849/11a86db2-66d6-4859-886a-b7606b660fec)
+![Sign Up](https://github.com/Hashir-Jamil/LongBox/assets/90640849/29155eea-7b16-47bc-97b3-60d623c3d12a)
+
 
 ### Home Page
 
-This is the first page that the user lands on after logging in the system. The current users username is displayed near the logout button.
-The default view isComic Collection page where the user can view all the comic books in the app's collection.
+This is the first page that the user lands on after logging in the system. The current user's username is displayed near the logout button.
+The default view is Comic Repository page where the user can view all the comic books in the app's collection.
 
-![HomePage](https://github.com/Hashir-Jamil/LongBox/assets/90640849/c063eaf4-0cde-4391-b8f7-1596911e065d)
+![Comic Repo Page](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f939fdd5-1ed5-4527-8234-1fcff95d23ab)
+
+### Advanced Search
+
+Users can use the advanced search and search the comics based on Title, Artist, Author, Genre, Publisher and Year Published. The search results are viewed in a different window.
+
+![Search Results](https://github.com/Hashir-Jamil/LongBox/assets/90640849/a2aaeb1a-05c1-422f-b358-5b685564afe7)
+
+### View Detailed information and Add Comments
+
+After selecting a comic book, users can viewed detailed information about the comic book, In this window user also has an option to add a new comment, view existing comments in order of newest to oldest, 
+favorite and unfavorite a book, add and remove a book from a reading and finished list. Comics added to reading and finished list can be viewed in the profile page.
+
+![Comic Info Page](https://github.com/Hashir-Jamil/LongBox/assets/90640849/4b78f565-6018-4b12-aadb-3af7b6e3723e)
 
 ### Add Comic
 
-Using this page, a user can add a comic book to the system.
+Using this page, a user can add a comic book to the system. A user can favorite a comic while adding to the system.
 
-![AddComic](https://github.com/Hashir-Jamil/LongBox/assets/90640849/213fa1c6-a094-4452-ba64-68dfd3fc5b57)
+![Add Comic](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f9afc51d-567c-424d-92df-bd0f889a1208)
 
-### Search Comics
+### Favorites Page
 
-Users can search a comic book and if the comic is in the repository, results can be viewed.
-If there are no matches then the user is prompted that no results are found via a dialogue box.
-Results are shown in a new window that displays data for a specific comic book object.
-Users can search a comic book in the repository.
+All the comics favorited are visible in this page, a user also can remove a comic from favorites.
 
-![Search](https://github.com/Hashir-Jamil/LongBox/assets/90640849/e789b6c6-2fc4-49c0-b3bc-f68449c71919)
+![Favorites Page](https://github.com/Hashir-Jamil/LongBox/assets/90640849/4953cd07-9ed9-41ae-bac3-83f0dd2ed367)
 
-If the Comic is found:
+Confirmation to remove from favorites:
 
-![SearchResult](https://github.com/Hashir-Jamil/LongBox/assets/90640849/3862fcc3-c012-4bb8-8344-8738d351bbd1)
-
-If the comic is not found:
-
-![SearchNotFound](https://github.com/Hashir-Jamil/LongBox/assets/90640849/9cfec22c-23ad-457d-ad12-ce97aa329deb)
+![Unfavorite](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f0523c0a-70de-45d1-b8af-58c217cf10a8)
 
 ### View Profile
 
-Users can view their details on the profile page.
+Users can view their details on the profile page, including comics read and finished. Users also have an option to edit their about me.
 This page will show all user profile information except for the password.
 
-![ViewProfile](https://github.com/Hashir-Jamil/LongBox/assets/90640849/fad928eb-62cc-4983-9fed-c6845c5c25f0)
+![Profile Page](https://github.com/Hashir-Jamil/LongBox/assets/90640849/52dfa3ec-768f-443d-82fa-fdac6d95a62f)
 
 ### Logout
 
 After using the system, the user can logout and will be redirected to the login page.
 
-![Logout](https://github.com/Hashir-Jamil/LongBox/assets/90640849/524cf536-87cb-45e4-baa7-42e1e5f3523b)
+![Logout](https://github.com/Hashir-Jamil/LongBox/assets/90640849/7bb2e520-4505-487d-8f5c-9fbaade7d7f6)
 
 ## Authors
     Hashir Jamil
