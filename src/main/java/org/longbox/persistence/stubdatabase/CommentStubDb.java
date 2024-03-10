@@ -1,8 +1,10 @@
 package org.longbox.persistence.stubdatabase;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.longbox.domainobjects.dto.CommentDto;
+import org.longbox.domainobjects.dto.JsonConvertor;
 import org.longbox.persistence.dao.CommentDao;
 import org.longbox.persistence.entity.Comment;
 
@@ -10,13 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 @Getter
 @Setter
-public class CommentStubDb implements CommentDao {
+@NoArgsConstructor
+public class CommentStubDb implements CommentDao, JsonConvertor {
     private List<CommentDto> commentsStubData = new ArrayList<>();
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/CommentStubDb.json";
-
-    public CommentStubDb() {
-        loadComments();
-    }
 
     @Override
     public Comment getCommentById(long userId, long comicId) {
@@ -30,7 +29,6 @@ public class CommentStubDb implements CommentDao {
 
     @Override
     public void saveComment(CommentDto commentDTO) {
-
     }
 
     @Override
@@ -60,5 +58,15 @@ public class CommentStubDb implements CommentDao {
                 "Arkham Asylum"
         );
         commentsStubData.add(comment3);
+    }
+
+    @Override
+    public void serializeStubData() {
+
+    }
+
+    @Override
+    public <T> List<T> deserializeStubData(String filepath) {
+        return null;
     }
 }

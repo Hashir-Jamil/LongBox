@@ -17,8 +17,7 @@
     "numberOfIssues": 36,
     "publisher": "Eclipse",
     "yearPublished": 1984,
-    "dateAdded": "Feb 15, 2024, 11:51:23 PM",
-    "commentsList": []
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
   },
   {
     "id": 0,
@@ -35,8 +34,7 @@
     "numberOfIssues": 108,
     "publisher": "Viz",
     "yearPublished": 1990,
-    "dateAdded": "Feb 15, 2024, 11:51:23 PM",
-    "commentsList": []
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
   },
   {
     "id": 0,
@@ -55,8 +53,7 @@
     "numberOfIssues": 3,
     "publisher": "Capital",
     "yearPublished": 1981,
-    "dateAdded": "Feb 15, 2024, 11:51:23 PM",
-    "commentsList": []
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
   },
   {
     "id": 0,
@@ -73,8 +70,7 @@
     "numberOfIssues": 35,
     "publisher": "Image",
     "yearPublished": 1993,
-    "dateAdded": "Feb 15, 2024, 11:51:23 PM",
-    "commentsList": []
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
   },
   {
     "id": 0,
@@ -90,8 +86,7 @@
     "numberOfIssues": 3,
     "publisher": "Eclipse",
     "yearPublished": 1987,
-    "dateAdded": "Feb 15, 2024, 11:51:23 PM",
-    "commentsList": []
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
   },
   {
     "id": 0,
@@ -109,8 +104,7 @@
     "numberOfIssues": 6,
     "publisher": "Dark Horse",
     "yearPublished": 1994,
-    "dateAdded": "Feb 15, 2024, 11:51:23 PM",
-    "commentsList": []
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
   },
   {
     "id": 0,
@@ -127,8 +121,7 @@
     "numberOfIssues": 56,
     "publisher": "First Comics",
     "yearPublished": 1983,
-    "dateAdded": "Feb 15, 2024, 11:51:23 PM",
-    "commentsList": []
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
   },
   {
     "id": 0,
@@ -144,8 +137,7 @@
     "numberOfIssues": 12,
     "publisher": "First Comics",
     "yearPublished": 1987,
-    "dateAdded": "Feb 15, 2024, 11:51:23 PM",
-    "commentsList": []
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
   },
   {
     "id": 0,
@@ -162,8 +154,7 @@
     "numberOfIssues": 24,
     "publisher": "Dark Horse",
     "yearPublished": 1997,
-    "dateAdded": "Feb 15, 2024, 11:51:23 PM",
-    "commentsList": []
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
   },
   {
     "id": 0,
@@ -179,8 +170,7 @@
     "numberOfIssues": 34,
     "publisher": "Crossgen",
     "yearPublished": 2001,
-    "dateAdded": "Feb 15, 2024, 11:51:23 PM",
-    "commentsList": []
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
   },
   {
     "id": 0,
@@ -197,7 +187,196 @@
     "numberOfIssues": 6,
     "publisher": "Dark Horse",
     "yearPublished": 1988,
-    "dateAdded": "Feb 15, 2024, 11:51:23 PM",
-    "commentsList": []
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
+  },
+  {
+    "id": 0,
+    "seriesTitle": "Zot!",
+    "author": "Scott McCloud",
+    "artist": "Scott McCloud",
+    "genres": [
+      "Superhero",
+      "Superpower",
+      "Adventure",
+      "Science Fiction",
+      "Futuristic",
+      "Romance",
+      "Drama"
+    ],
+    "description": "Description",
+    "numberOfIssues": 36,
+    "publisher": "Eclipse",
+    "yearPublished": 1984,
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
+  },
+  {
+    "id": 0,
+    "seriesTitle": "Sanctuary",
+    "author": "Sho Fumimura",
+    "artist": "Ryoichi Ikegami",
+    "genres": [
+      "Polital",
+      "Crime",
+      "Thriller",
+      "Manga"
+    ],
+    "description": "Description",
+    "numberOfIssues": 108,
+    "publisher": "Viz",
+    "yearPublished": 1990,
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
+  },
+  {
+    "id": 0,
+    "seriesTitle": "Nexus (1981)",
+    "author": "Mike Baron",
+    "artist": "Steve Rude",
+    "genres": [
+      "Superhero",
+      "Planetary Romance",
+      "Superpower",
+      "Science Fiction",
+      "Adventure",
+      "Fantasy"
+    ],
+    "description": "Description",
+    "numberOfIssues": 3,
+    "publisher": "Capital",
+    "yearPublished": 1981,
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
+  },
+  {
+    "id": 0,
+    "seriesTitle": "The Maxx",
+    "author": "Sam Keith",
+    "artist": "Sam Keith",
+    "genres": [
+      "Fantasy",
+      "Drama",
+      "Comedy",
+      "Superhero"
+    ],
+    "description": "Description",
+    "numberOfIssues": 35,
+    "publisher": "Image",
+    "yearPublished": 1993,
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
+  },
+  {
+    "id": 0,
+    "seriesTitle": "Winter Wolrd",
+    "author": "Chuck Dixon",
+    "artist": "Jorge Zaffino",
+    "genres": [
+      "Adventure",
+      "Post-Apocalyptic",
+      "Gunslinger"
+    ],
+    "description": "Description",
+    "numberOfIssues": 3,
+    "publisher": "Eclipse",
+    "yearPublished": 1987,
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
+  },
+  {
+    "id": 0,
+    "seriesTitle": "Hellhounds Panzer Cops",
+    "author": "Mamoru Oshii",
+    "artist": "Kamui Fujiwara",
+    "genres": [
+      "Military",
+      "Police",
+      "Adventure",
+      "Dystopian",
+      "Manga"
+    ],
+    "description": "Description",
+    "numberOfIssues": 6,
+    "publisher": "Dark Horse",
+    "yearPublished": 1994,
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
+  },
+  {
+    "id": 0,
+    "seriesTitle": "Jon Sable Freelance (1983)",
+    "author": "Mike Grell",
+    "artist": "Mike Grell",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Crime",
+      "Vigilantes"
+    ],
+    "description": "Description",
+    "numberOfIssues": 56,
+    "publisher": "First Comics",
+    "yearPublished": 1983,
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
+  },
+  {
+    "id": 0,
+    "seriesTitle": "Chronicles of Corum",
+    "author": "Mike Baron",
+    "artist": "Mike Mignola",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sword and Socery"
+    ],
+    "description": "Description",
+    "numberOfIssues": 12,
+    "publisher": "First Comics",
+    "yearPublished": 1987,
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
+  },
+  {
+    "id": 0,
+    "seriesTitle": "Drakuun",
+    "author": "Johji Manabe",
+    "artist": "Johnji Manabe",
+    "genres": [
+      "Adventure",
+      "Sword and Socery",
+      "Comedy",
+      "Manga"
+    ],
+    "description": "Description",
+    "numberOfIssues": 24,
+    "publisher": "Dark Horse",
+    "yearPublished": 1997,
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
+  },
+  {
+    "id": 0,
+    "seriesTitle": "Sojourn",
+    "author": "Ron Marz",
+    "artist": "Greg Land",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sword and Sorcery"
+    ],
+    "description": "Description",
+    "numberOfIssues": 34,
+    "publisher": "Crossgen",
+    "yearPublished": 2001,
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
+  },
+  {
+    "id": 0,
+    "seriesTitle": "Trekker (1988)",
+    "author": "Ron Randall",
+    "artist": "Ron Randall",
+    "genres": [
+      "Action",
+      "Crime",
+      "Vigilantes",
+      "Dystopian"
+    ],
+    "description": "Description",
+    "numberOfIssues": 6,
+    "publisher": "Dark Horse",
+    "yearPublished": 1988,
+    "dateAdded": "Mar 10, 2024, 4:14:14 PM"
   }
 ]
