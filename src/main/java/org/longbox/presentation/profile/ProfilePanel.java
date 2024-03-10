@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ import javax.swing.*;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
+import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
@@ -284,12 +287,34 @@ public class ProfilePanel extends JPanel {
 		finishedTableModel = new ReadingAndFinishedComicBookTableModel(finishedListDTO);
 
 		readingTable = new JTable(readingTableModel);
+		readingTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row = readingTable.rowAtPoint(e.getPoint());
+				int col = readingTable.columnAtPoint(e.getPoint());
+				if (col == 0 && e.getClickCount() == 2) {
+					ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(readingListDTO, readingTable.getValueAt(row, col).toString());
+					ComicBookSearchUtils.loadComicBookPage(comicBook, user);
+				}
+			}
+		});
 		readingPane = new JScrollPane(readingTable);
 		readingPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		readingPane.setBounds(47, 424, 407, 135);
 		panel.add(readingPane);
 
 		readTable = new JTable(finishedTableModel);
+		readTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row = readTable.rowAtPoint(e.getPoint());
+				int col = readTable.columnAtPoint(e.getPoint());
+				if (col == 0 && e.getClickCount() == 2) {
+					ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(finishedListDTO, readTable.getValueAt(row, col).toString());
+					ComicBookSearchUtils.loadComicBookPage(comicBook, user);
+				}
+			}
+		});
 		readPane = new JScrollPane(readTable);
 		readPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		readPane.setBounds(47, 617, 407, 135);
