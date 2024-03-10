@@ -12,40 +12,61 @@ import org.longbox.persistence.dao.CommentDaoImpl;
 import org.longbox.persistence.entity.Comment;
 
 class CommentDaoImplTest {
-	
-	Comment comment1, comment2;
-	CommentDto commentDto1, commentDto2;
+
 	CommentDaoImpl commentDaoImpl;
-	List<CommentDto> expectedList;
+
 	
 	@BeforeEach
 	void init() {
-		commentDto1 = new CommentDto(1, 1, "This is a good comic", "Always_Scheming");
-		commentDto2 = new CommentDto(3, 1, "I like this comic", "Pheonix");
-		
-		comment1 = new Comment(commentDto1);
-		comment2 = new Comment(commentDto2);
-		
 		commentDaoImpl = new CommentDaoImpl();
-		
-		expectedList = new ArrayList<CommentDto>();
-		expectedList.add(commentDto1);
-		expectedList.add(commentDto2);
 	}
 	
-	// RUN ONLY ONCE
-//	@Test
-//	void test_add_comment() {
-//		commentDaoImpl.saveComment(commentDTO1);
-//		commentDaoImpl.saveComment(commentDTO2);
-//	}
-	
 	@Test
-	void test_getCommentsByComic() {
+	void test_getCommentsByComic_1() {
 		List<CommentDto> actualList = commentDaoImpl.getCommentsByComic(1);
-		for(CommentDto c: actualList) {
-			System.out.println(c.toString());
-		}
+		int actual = actualList.size();
+		assertEquals(3, actual);
+	}
+
+	@Test
+	void test_getCommentsByComic_2() {
+		List<CommentDto> actualList = commentDaoImpl.getCommentsByComic(14);
+		int actual = actualList.size();
+		assertEquals(1, actual);
+	}
+
+	@Test
+	void test_getCommentsByComic_3() {
+		List<CommentDto> actualList = commentDaoImpl.getCommentsByComic(23);
+		int actual = actualList.size();
+		assertEquals(0, actual);
+	}
+
+	@Test
+	void test_saveComment(){
+		CommentDto addComment = new CommentDto(3, 13, "This is a nice comic", "Phoenix");
+		commentDaoImpl.saveComment(addComment);
+	}
+
+	@Test
+	void test_getCommentByUser_1(){
+		List<CommentDto> actualList = commentDaoImpl.getCommentsByUser(1);
+		int actual = actualList.size();
+		assertEquals(9, actual);
+	}
+
+	@Test
+	void test_getCommentByUser_2(){
+		List<CommentDto> actualList = commentDaoImpl.getCommentsByUser(2);
+		int actual = actualList.size();
+		assertEquals(8, actual);
+	}
+
+	@Test
+	void test_getCommentByUser_3(){
+		List<CommentDto> actualList = commentDaoImpl.getCommentsByUser(5);
+		int actual = actualList.size();
+		assertEquals(2, actual);
 	}
 
 }
