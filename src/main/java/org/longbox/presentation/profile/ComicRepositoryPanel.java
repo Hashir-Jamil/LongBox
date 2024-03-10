@@ -176,7 +176,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 				}
 				int row = comicBookTable.rowAtPoint(e.getPoint());
 				int col = comicBookTable.columnAtPoint(e.getPoint());
-				if (col == 0) {
+				if (col == 0 && e.getClickCount() == 2) {
 					ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
 					ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
 				}
