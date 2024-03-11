@@ -200,3 +200,4 @@
 ## Sunday, March 10th, 2024
     
     Ahan: Converted postgresql data to json files, finished CommentStubDB.java implementation and added more tests for CommentDaoImpl.java. Also updated ReadMe/ Wiki with updated feature list and latest screenshots.
+    Eric: Added ability for user to navigate to comic book pgae by clicking on comic book in their reading / read table in profile
