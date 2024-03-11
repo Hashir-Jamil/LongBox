@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS "comic_book" (
     "number_of_issues" integer,
     "publisher" text,
     "year_published" integer,
-    "date_added" date
+    "date_added" date,
+    "favorites_count" integer DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book_favorites_list" (

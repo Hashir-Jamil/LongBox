@@ -47,6 +47,9 @@ public class ComicBook {
 
     @Column(name = "date_added")
     private Date dateAdded;
+    
+    @Column(name = "favorites_count")
+    private int favoritesCount;
 
     @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
     private Set<Comment> comments = new HashSet<>();
@@ -108,6 +111,7 @@ public class ComicBook {
                 ", publisher='" + publisher + '\'' +
                 ", yearPublished=" + yearPublished +
                 ", dateAdded=" + dateAdded +
+                ", favoritesCount=" + favoritesCount +
                 '}';
     }
 }

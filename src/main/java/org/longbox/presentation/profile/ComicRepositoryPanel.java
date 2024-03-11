@@ -157,6 +157,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 
 	private void addComicToFavorites(long comicId) throws UserIDDoesNotExistException {
 		FavoritesPanel favoritesPanel = new FavoritesPanel();
+		comicBookDaoImpl.favoriteComicBook(comicId);
 		favoritesPanel.update(this.userSession.getUser().getId(), comicId);
 		favoritesPanel.reloadData();
 	}
