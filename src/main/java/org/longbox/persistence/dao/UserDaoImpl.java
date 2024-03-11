@@ -140,7 +140,7 @@ public class UserDaoImpl implements UserDao {
         }
     }
     
-    public void updateAboutMeString(UserSession user, String aboutMe) {
+    public void updateAboutMeString(Long userID, String aboutMe) {
     	Session session = null;
     	Transaction transaction = null;
     	
@@ -150,7 +150,7 @@ public class UserDaoImpl implements UserDao {
     		
     		Query query = session.createQuery("UPDATE User SET aboutMe = :aboutMe WHERE id = :userId");
     		query.setParameter("aboutMe", aboutMe);
-    		query.setParameter("userId", user.getUser().getId());
+    		query.setParameter("userId", userID.toString());
     		query.executeUpdate();
     		transaction.commit();
     	}
