@@ -82,6 +82,16 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
         }
     }
 
+    public boolean doesRecordExist(Long userId, Long comicBookId) {
+        Session session = sessionFactory.openSession();
+        Query<Long> query = session.createQuery(
+                "SELECT COUNT(*) FROM ComicBookFavoritesList c WHERE c.user.id = :userId AND c.comicBook.id = :comicBookId", Long.class);
+        query.setParameter("userId", userId);
+        query.setParameter("comicBookId", comicBookId);
+        Long count = query.uniqueResult();
+        return count != null && count > 0;
+    }
+
     @Override
     public List<ComicBook> getFavoritesByUser(long userId) {
         // Implement retrieving favorite comic books for a given user from the database

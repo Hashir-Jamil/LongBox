@@ -47,6 +47,11 @@ public class ComicBookFavoritesListStubDb implements ComicBookFavouritesListDao,
     }
 
     @Override
+    public boolean doesRecordExist(Long userId, Long comicBookId) {
+        return false;
+    }
+
+    @Override
     public List<ComicBook> getFavoritesByUser(long userId) {
         return null;
     }
