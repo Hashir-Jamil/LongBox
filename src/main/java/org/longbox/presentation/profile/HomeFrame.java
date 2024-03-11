@@ -116,12 +116,12 @@ public class HomeFrame extends JFrame implements ActionListener {
         nexusPanel.add(activityPanel);
         cardLayout = new CardLayout();
         activityPanel.setLayout(cardLayout);
+        activityPanel.add(trendingComicsPanel, TRENDING_COMICS);
         activityPanel.add(comicCollectionPanel, COMIC_COLLECTAION_PANEL);
         //activityPanel.add(searchPanel, SEARCH_COMIC_BOOK);
         activityPanel.add(favoritesPanel, FAVORITES_PANEL);
         activityPanel.add(profilePanel, PROFILE_PANEL);
         activityPanel.add(addComicToRepoPanel, ADD_COMIC_TO_REPO);
-        activityPanel.add(trendingComicsPanel, TRENDING_COMICS);
                 
         //Log Out label
         logOutButton = new JButton("Log Out");
