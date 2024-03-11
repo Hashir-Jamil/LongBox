@@ -14,7 +14,6 @@ import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
-import org.longbox.domainobjects.dto.JsonConvertor;
 import org.longbox.domainobjects.dto.UserDto;
 import com.google.gson.Gson;
 import org.longbox.persistence.dao.UserDao;

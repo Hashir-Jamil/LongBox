@@ -1,4 +1,4 @@
-package org.longbox.config;
+package org.longbox.unit.config;
 
 public class HibernateUtilsTest {
 }

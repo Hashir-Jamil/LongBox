@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.longbox.domainobjects.dto.CommentDto;
-import org.longbox.domainobjects.dto.JsonConvertor;
 import org.longbox.persistence.dao.CommentDao;
 import org.longbox.persistence.entity.Comment;
 

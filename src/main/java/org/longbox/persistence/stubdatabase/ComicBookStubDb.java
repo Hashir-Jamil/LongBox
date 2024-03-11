@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import com.google.gson.Gson;
-import org.longbox.domainobjects.dto.JsonConvertor;
 import org.longbox.persistence.dao.ComicBookDao;
 import org.longbox.persistence.entity.ComicBook;
 

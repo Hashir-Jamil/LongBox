@@ -1,4 +1,4 @@
-package org.longbox.domainobjects.dto;
+package org.longbox.persistence.stubdatabase;
 
 import java.util.List;
 
