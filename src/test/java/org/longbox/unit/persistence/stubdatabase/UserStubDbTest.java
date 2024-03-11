@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
+import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.domainobjects.dto.UserDto;
+import org.longbox.persistence.entity.User;
 import org.longbox.persistence.stubdatabase.UserStubDb;
 
 import java.util.Date;
@@ -36,6 +38,12 @@ public class UserStubDbTest {
                 "Canada",
                 "Imaginations ally and inks confidante, I craft worlds within the panels, inviting you to escape reality through the lens of my storytelling pen."
         );
+    }
+
+    @Test
+    void testSerialize() {
+        userStubDao.setUserStubData(userStubDao.deserializeStubData(userStubDao.getABSOLUTE_FILE_PATH()));
+        userStubDao.serializeStubData();
     }
 
     @Test
@@ -92,4 +100,24 @@ public class UserStubDbTest {
             userStubDao.getUserByEmail("wrongemail@domain.com");
         });
     }
+
+    @Test
+    void saveUserTest() throws UsernameOrEmailExistsException {
+        User user = new User();
+        user.setUserName("Never_Throwing");
+        user.setFirstName("Harry");
+        user.setLastName("Johnson");
+        user.setEmail("123@temp.org");
+        user.setDob(new Date(1986,12,1));
+        user.setPassword("Never_Throwing");
+        user.setCountry("Thailand");
+        user.setJoinDate(new Date());
+        user.setComicsReading(0);
+        user.setComicsFinished(0);
+        user.setAboutMe("I am not real actually.");
+        assertThrows(UsernameOrEmailExistsException.class, () -> {
+            userStubDao.saveUser(user);
+        });
+    }
+
 }
