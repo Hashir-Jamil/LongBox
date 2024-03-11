@@ -1,6 +1,7 @@
 package org.longbox.persistence.stubdatabase;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import lombok.Getter;
@@ -85,9 +86,10 @@ public class ComicBookReadingListStubDb implements ComicBookReadingListDao, Json
         JsonReader reader = null;
         try {
             reader = new JsonReader(new FileReader(filepath));
-            return new Gson().fromJson(reader, listType);
         } catch (FileNotFoundException fe) {
             throw new RuntimeException(fe);
         }
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+        return new Gson().fromJson(reader, listType);
     }
 }

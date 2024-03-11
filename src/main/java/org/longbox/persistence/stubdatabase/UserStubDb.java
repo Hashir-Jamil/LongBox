@@ -2,9 +2,13 @@ package org.longbox.persistence.stubdatabase;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import lombok.Getter;
@@ -24,27 +28,58 @@ import org.longbox.persistence.entity.User;
 @NoArgsConstructor
 public class UserStubDb implements UserDao, JsonConvertor {
 
-    private List<UserDto> userStubData = new ArrayList<>();
+    private List<UserDto> userStubData;
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/UserStubDb.json";
 
     @Override
     public User getUserById(long id) throws UserIDDoesNotExistException {
-        return null;
+        userStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
+        for (UserDto user : userStubData) {
+            if (user.getId() == id) {
+                User u = new User(user);
+                u.setId(user.getId());
+                return u;
+            }
+        }
+        throw new UserIDDoesNotExistException();
     }
 
     @Override
     public User getUserByUserName(String userName) throws UserNameDoesNotExistException {
-        return null;
+        userStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
+        for (UserDto user : userStubData) {
+            if (Objects.equals(user.getUserName(), userName)) {
+                User u = new User(user);
+                u.setId(user.getId());
+                return u;
+            }
+        }
+        throw new UserNameDoesNotExistException();
     }
 
     @Override
     public User getUserByEmail(String email) throws EmailDoesNotExistException {
-        return null;
+        userStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
+        for (UserDto user : userStubData) {
+            if (Objects.equals(user.getEmail(), email)) {
+                User u = new User(user);
+                u.setId(user.getId());
+                return u;
+            }
+        }
+        throw new EmailDoesNotExistException();
     }
 
     @Override
     public void saveUser(User user) throws UsernameOrEmailExistsException {
-
+        userStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
+        for (UserDto u : userStubData) {
+            if (u.getEmail().equals(user.getEmail()) ||
+                u.getUserName().equals(user.getUserName())) {
+                throw new UsernameOrEmailExistsException();
+            }
+        }
+        userStubData.add(new UserDto(user));
     }
 
     @Override
@@ -121,8 +156,7 @@ public class UserStubDb implements UserDao, JsonConvertor {
         catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-
-        List<UserDto> dummyUsers = new Gson().fromJson(reader, listType);
-        return dummyUsers;
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+        return gson.fromJson(reader, listType);
     }
 }

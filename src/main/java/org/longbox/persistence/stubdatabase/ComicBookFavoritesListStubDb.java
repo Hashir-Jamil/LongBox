@@ -1,6 +1,7 @@
 package org.longbox.persistence.stubdatabase;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -40,6 +41,7 @@ public class ComicBookFavoritesListStubDb implements ComicBookFavouritesListDao,
         for (int i = 0; i < favoritesList.size(); i++) {
             if (favoritesList.get(i).getUserId() == userId && favoritesList.get(i).getComicBookId() == comicBookId) {
                 favoritesList.remove(i);
+                break;
             }
         }
         records = favoritesList;
@@ -82,9 +84,10 @@ public class ComicBookFavoritesListStubDb implements ComicBookFavouritesListDao,
         JsonReader reader = null;
         try {
             reader = new JsonReader(new FileReader(filepath));
-            return new Gson().fromJson(reader, listType);
         } catch (FileNotFoundException fe) {
             throw new RuntimeException(fe);
         }
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+        return new Gson().fromJson(reader, listType);
     }
 }
