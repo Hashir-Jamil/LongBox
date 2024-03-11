@@ -2,18 +2,24 @@ package org.longbox.integration.persistence.dao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
+import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.persistence.entity.User;
 
+
 import java.util.Date;
 
 class UserDaoImplTest {
+	private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 	UserDto u2;
 	User user;
 	UserDaoImpl userDaoImpl;
@@ -122,5 +128,51 @@ class UserDaoImplTest {
 		assertThrows(UserIDDoesNotExistException.class, () -> userDaoImpl.getUserById(10));
 	}
 
+	@Test
+	void test_updateAboutMeString() {
+		Session session = null;
+		String actualAboutMe;
+		
+		//run the method to update aboutMe field in database
+		userDaoImpl.updateAboutMeString((long) 1, "hello");
+		
+		//gets the updated about me
+				try {
+		    		session = sessionFactory.openSession();
+		    		
+		    		Query query = session.createQuery("SELECT aboutMe FROM User WHERE id = :userId");
+		    		query.setParameter("userId", (long) 1);
+		    		actualAboutMe = (String) query.uniqueResult();
 
+		    	}
+		    	
+		        finally {
+		            if (session != null) {
+		                session.close();
+		            }
+		        }
+		String expectedAboutMe = "hello";
+		assertEquals(expectedAboutMe, actualAboutMe);
+		
+		//run the method again to update aboutMe field in database
+				userDaoImpl.updateAboutMeString((long) 1, "bye");
+  
+				//gets the updated about me
+				try {
+					session = sessionFactory.openSession();
+		
+					Query query = session.createQuery("SELECT aboutMe FROM User WHERE id = :userId");
+					query.setParameter("userId", (long) 1);
+					actualAboutMe = (String) query.uniqueResult();
+
+				}
+	
+				finally {
+					if (session != null) {
+						session.close();
+					}
+				}
+				expectedAboutMe = "bye";
+				assertEquals(expectedAboutMe, actualAboutMe);
+	}
 }
