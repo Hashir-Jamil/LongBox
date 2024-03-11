@@ -1,17 +1,14 @@
 package org.longbox.businesslogic.controller;
 
-import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.businesslogic.service.UserService;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.UserDaoImpl;
-import org.longbox.persistence.entity.User;
 import org.longbox.presentation.authentication.AuthenticationFrame;
 import org.longbox.presentation.profile.HomeFrame;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
