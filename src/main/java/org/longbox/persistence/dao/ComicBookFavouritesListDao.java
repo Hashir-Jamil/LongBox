@@ -13,6 +13,8 @@ public interface ComicBookFavouritesListDao {
 
     void removeFromFavorites(long userId, long comicBookId);
 
+    boolean doesRecordExist(Long userId, Long comicBookId);
+
     List<ComicBook> getFavoritesByUser(long userId);
 
     List<User> getUsersByComicBook(long comicBookId);
