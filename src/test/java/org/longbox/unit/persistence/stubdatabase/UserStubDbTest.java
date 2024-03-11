@@ -28,30 +28,30 @@ public class UserStubDbTest {
         userStubDao = new UserStubDb();
         users = userStubDao.deserializeStubData(userStubDao.getABSOLUTE_FILE_PATH());
         u1 = new UserDto(
-                1L,
-                "Always_Scheming",
-                "John",
-                "Smith",
-                new Date(1990,12,01),
-                "email@domain.com",
-                "Always_Scheming",
-                "Canada",
-                "Imaginations ally and inks confidante, I craft worlds within the panels, inviting you to escape reality through the lens of my storytelling pen."
+            1L,
+            "Always_Scheming",
+            "John",
+            "Smith",
+            new Date(1990,12,01),
+            "email@domain.com",
+            "Always_Scheming",
+            "Canada",
+            "Imaginations ally and inks confidante, I craft worlds within the panels, inviting you to escape reality through the lens of my storytelling pen."
         );
     }
 
     @Test
-    void testSerialize() {
+    void serializeTest() {
         userStubDao.setUserStubData(userStubDao.deserializeStubData(userStubDao.getABSOLUTE_FILE_PATH()));
         userStubDao.serializeStubData();
     }
 
     @Test
-    void testDeserialize() {
+    void deserializeTest() {
         assertNotNull(users);
-        assertEquals(6, users.size());
-        assertEquals(users.get(0),u1);
-        assertNotEquals(users.get(1),u1);
+        assertEquals(7, users.size());
+        assertEquals(u1, users.get(0));
+        assertNotEquals(u1, users.get(1));
         Set<Long> ids = new HashSet<>();;
         Set<String> userNames = new HashSet<>();
         Set<String> emails = new HashSet<>();
@@ -119,5 +119,4 @@ public class UserStubDbTest {
             userStubDao.saveUser(user);
         });
     }
-
 }
