@@ -131,4 +131,43 @@ public class ComicBookDaoImpl implements ComicBookDao {
         }
         return comicBookDtoList;
     }
+    
+    public void favoriteComicBook(long comicId) {
+    	Session session = null;
+        Transaction transaction = null;
+        
+        int prevCount;
+        int newCount;
+
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            
+            Query query = session.createQuery("SELECT favoritesCount FROM ComicBook WHERE id = :comicId");
+            query.setParameter("comicId", comicId);
+            
+            prevCount = (int) query.uniqueResult();
+            System.out.println("HERE WE HAVE THE PREV VALUE AT: " + prevCount);
+            newCount = (prevCount + 1);
+            System.out.println("HERE WE HAVE THE NEW VALUE AT: " + newCount);
+            
+            Query updateQuery = session.createQuery("UPDATE ComicBook SET favoritesCount = :newCount WHERE id = :comicId");
+            updateQuery.setParameter("newCount", newCount);
+            updateQuery.setParameter("comicId", comicId);
+            
+            updateQuery.executeUpdate();
+    		transaction.commit();
+        }
+        catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
 }
