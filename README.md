@@ -50,20 +50,20 @@ Note:
 
 ## Features
 
-### Login Page
+### Login
 
 This is the first page that the user of the app sees.
 
 ![Login](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f301d4e4-9725-477c-82cd-8dc03ea25d7d)
 
-### Registration Page
+### Registration
 
 New users can sign up and use our app.
 
 ![Sign Up](https://github.com/Hashir-Jamil/LongBox/assets/90640849/29155eea-7b16-47bc-97b3-60d623c3d12a)
 
 
-### Home Page
+### Home
 
 This is the first page that the user lands on after logging in the system. The current user's username is displayed near the logout button.
 The default view is Comic Repository page where the user can view all the comic books in the app's collection.
@@ -81,7 +81,7 @@ Users can use the advanced search and search the comics based on Title, Artist, 
 After selecting a comic book, users can view detailed information about the comic book. In this window user also has an option to add a new comment, view existing comments in order of newest to oldest, 
 favorite and unfavorite a book, add and remove a book from a reading and finished list. Comics added to reading and finished list can be viewed in the profile page.
 
-![Comic Info Page](https://github.com/Hashir-Jamil/LongBox/assets/90640849/4b78f565-6018-4b12-aadb-3af7b6e3723e)
+![Comic Info](https://github.com/Hashir-Jamil/LongBox/assets/90640849/4b78f565-6018-4b12-aadb-3af7b6e3723e)
 
 ### Add Comic
 
@@ -89,7 +89,7 @@ Using this page, a user can add a comic book to the system. A user can favorite 
 
 ![Add Comic](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f9afc51d-567c-424d-92df-bd0f889a1208)
 
-### Favorites Page
+### Favorite
 
 All the comics favorited are visible in this page, a user can remove a comic from favorites.
 
