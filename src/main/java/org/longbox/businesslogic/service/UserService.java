@@ -24,7 +24,7 @@ public class UserService {
         }
 
         public UserSession startSession() {
-            //TO-DO
+            //TO-DO: Login logic for starting user session
             return null;
         }
 
@@ -33,7 +33,7 @@ public class UserService {
         }
 
         public void endSession() {
-            //TO-DO
+            //TO-DO: Logout logic for ending user session
         }
 
         public UserDto getUserById(Long userId) throws UserIDDoesNotExistException {
