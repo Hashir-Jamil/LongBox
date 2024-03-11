@@ -2,8 +2,8 @@ package org.longbox.persistence.stubdatabase;
 
 import java.io.*;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -19,19 +19,20 @@ import org.longbox.persistence.entity.ComicBook;
 @Setter
 public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
 
-    private List<ComicBookDto> comicBookStubData = new ArrayList<>();
+    private List<ComicBookDto> comicBookStubData;
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/ComicBookStubDb.json";
 
     public ComicBookStubDb() {
-        loadComicBooks();
     }
 
     @Override
     public ComicBook getComicBookById(long id) {
-        List<ComicBookDto> comics = deserializeStubData(ABSOLUTE_FILE_PATH);
-        for (ComicBookDto comic : comics) {
+        comicBookStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
+        for (ComicBookDto comic : comicBookStubData) {
             if (comic.getId() == id) {
-                return new ComicBook(comic);
+                ComicBook c = new ComicBook(comic);
+                c.setId(comic.getId());
+                return c;
             }
         }
         return new ComicBook();
@@ -39,10 +40,12 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
 
     @Override
     public ComicBook getComicBookBySeriesName(String seriesTitle) {
-        List<ComicBookDto> comics = deserializeStubData(ABSOLUTE_FILE_PATH);
-        for (ComicBookDto comic : comics) {
-            if (comic.getSeriesTitle() == seriesTitle) {
-                return new ComicBook(comic);
+        comicBookStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
+        for (ComicBookDto comic : comicBookStubData) {
+            if (Objects.equals(comic.getSeriesTitle(), seriesTitle)) {
+                ComicBook c = new ComicBook(comic);
+                c.setId(comic.getId());
+                return c;
             }
         }
         return new ComicBook();
@@ -234,7 +237,8 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
 
     @Override
     public void serializeStubData() {
-        String json = new Gson().toJson(comicBookStubData);
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+        String json = gson.toJson(comicBookStubData);
         try (PrintStream out = new PrintStream(new FileOutputStream(ABSOLUTE_FILE_PATH))) {
             out.print(json);
         } catch (FileNotFoundException e) {
@@ -252,6 +256,6 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
             throw new RuntimeException(e);
         }
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
-        return new Gson().fromJson(reader, listType);
+        return gson.fromJson(reader, listType);
     }
 }
