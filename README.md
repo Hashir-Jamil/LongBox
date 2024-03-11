@@ -21,9 +21,8 @@ This project uses a 3-layer software architecture. The system is built around th
 1. The project needs to be cloned into Eclipse from the [GitHub Repository](https://github.com/Hashir-Jamil/LongBox). In terms of ITR01 release, the branch is named iteration_one and in terms of deliverable 1, the branch is main.
 2. Once the project has been cloned, gradle nature needs to be added to the project. [How to configure gradle in eclipse](https://www.vogella.com/tutorials/EclipseGradle/article.html#add-gradle-support-to-existing-eclipse-project).
 3. To use the database, we need to install [pgAdmin4](https://www.pgadmin.org/download/). In pgAdmin, [create a new database](https://www.tutorialsteacher.com/postgresql/create-database#:~:text=Create%20Database%20using%20pgAdmin&text=Open%20pgAdmin%20and%20right%2Dclick,Database…%20%2C%20as%20shown%20below.&text=This%20will%20open%20Create%20–%20Database,be%20the%20owner%20by%20default). The name of databse should be ***longbox_db***.
-4. After creating the database, [run](https://support.spiresystems.com/support/solutions/articles/13000015301-executing-a-sql-query-using-pgadmin) the *longbox_schema.sql* in the database_scripts package. This will setup the tables required for this project.
-5. After the tables are made, run the *longbox_default_data.sql* in the same manner to load the data into the database.
-6. To ensure the database server communicates with the project, go to the file [hibernate.cfg.xml](src/main/resources/hibernate.cfg.xml) and ensure the connection.url property matches the one for your personal machine's postresql installation.
+4. After creating the database, [run](https://support.spiresystems.com/support/solutions/articles/13000015301-executing-a-sql-query-using-pgadmin) the [*create_longbox_db*](database_scripts/create_longbox_db.sql) in the database_scripts package. This will setup the tables and populate them with the data required for this project.
+5. To ensure the database server communicates with the project, go to the file [hibernate.cfg.xml](src/main/resources/hibernate.cfg.xml) and ensure the connection.url property matches the one for your personal machine's postresql installation.
 
 ### Testing
 
