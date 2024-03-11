@@ -202,3 +202,4 @@
     Ahan: Converted postgresql data to json files, finished CommentStubDB.java implementation and added more tests for CommentDaoImpl.java. Also updated ReadMe/ Wiki with updated feature list and latest screenshots.
     Eric: Added ability for user to navigate to comic book pgae by clicking on comic book in their reading / read table in profile
     Oscar: Finished implementing cancel button for "About Me" section and created test case for updating the field in database.
+    Hashir: Final touches for submission criteria for ITR2 + adding more tests for stories and integration + refactoring
