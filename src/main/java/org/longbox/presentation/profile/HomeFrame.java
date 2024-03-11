@@ -40,6 +40,7 @@ public class HomeFrame extends JFrame implements ActionListener {
     private JPanel comicCollectionPanel = new ComicRepositoryPanel();;
     private ProfilePanel profilePanel;
     private AddComicToRepoPanel addComicToRepoPanel = new AddComicToRepoPanel();
+    private TrendingPanel trendingComicsPanel = new TrendingPanel();
     private JButton searchButtonNexus;
     private JButton addComicButton;
     private JButton comicCollectionButton;
@@ -51,6 +52,8 @@ public class HomeFrame extends JFrame implements ActionListener {
     private final String FAVORITES_PANEL = "User Favorites Panel";
     private final String PROFILE_PANEL = "Profile Panel";
     private final String ADD_COMIC_TO_REPO = "Add Comic To Repo";
+    private final String TRENDING_COMICS = "Trending Comics";
+    private JButton trendingButton;
 
     /**
      * Launch the application.
@@ -118,6 +121,7 @@ public class HomeFrame extends JFrame implements ActionListener {
         activityPanel.add(favoritesPanel, FAVORITES_PANEL);
         activityPanel.add(profilePanel, PROFILE_PANEL);
         activityPanel.add(addComicToRepoPanel, ADD_COMIC_TO_REPO);
+        activityPanel.add(trendingComicsPanel, TRENDING_COMICS);
                 
         //Log Out label
         logOutButton = new JButton("Log Out");
@@ -145,6 +149,11 @@ public class HomeFrame extends JFrame implements ActionListener {
         favoritesButton.addActionListener(this);
         favoritesButton.setBounds(372, 11, 170, 25);
         nexusPanel.add(favoritesButton);
+        
+        trendingButton = new JButton("Trending");
+        trendingButton.addActionListener(this);
+        trendingButton.setBounds(738, 11, 170, 25);
+        nexusPanel.add(trendingButton);
 
         profileButton.addActionListener(this);
         logOutButton.addActionListener(this);
@@ -190,6 +199,10 @@ public class HomeFrame extends JFrame implements ActionListener {
 
         if (e.getSource() == addComicButton) {
         	cardLayout.show(activityPanel, ADD_COMIC_TO_REPO);
+        }
+        
+        if (e.getSource() == trendingButton) {
+        	cardLayout.show(activityPanel, TRENDING_COMICS);
         }
     }
 
