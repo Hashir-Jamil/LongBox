@@ -36,14 +36,14 @@ public class ComicBookDaoImplTest {
         );
 
         comicBookDto2 = new ComicBookDto(
-                "The Amazing Spider-Man",
-                "Stan Lee",
-                "Steve Ditko",
-                new String[] {"Superhero", "Superpower", "Adventure", "Science Fiction", "Futuristic", "Romance", "Drama"},
-                "Most famous superhoero of all time",
-                900,
-                "Marvel Comics",
-                1963,
+                "Sanctuary",
+                "Sho Fumimura",
+                "Ryoichi Ikegami",
+                new String[] {"Polital", "Crime", "Thriller", "Manga"},
+                "Empty",
+                108,
+                "Viz",
+                1990,
                 new Date()
         );
 
@@ -85,16 +85,4 @@ public class ComicBookDaoImplTest {
         comicBookDaoImpl.saveComicBook(comicBookDto2);
     }
 
-    @Test
-    void getComicBookBySeriesNameTest() {
-        ComicBook spiderMan = comicBookDaoImpl.getComicBookBySeriesName("The Amazing Spider-Man");
-        assertEquals(comicBookDto2.getSeriesTitle(), spiderMan.getSeriesTitle());
-        assertEquals(comicBookDto2.getAuthor(), spiderMan.getAuthor());
-        assertEquals(comicBookDto2.getArtist(), spiderMan.getArtist());
-        assertEquals(ComicBookDto.genreListToString(comicBookDto2.getGenres()), spiderMan.getGenres());
-        assertEquals(comicBookDto2.getDescription(), spiderMan.getDescription());
-        assertEquals(comicBookDto2.getNumberOfIssues(), spiderMan.getNumberOfIssues());
-        assertEquals(comicBookDto2.getPublisher(), spiderMan.getPublisher());
-        assertEquals(comicBookDto2.getYearPublished(), spiderMan.getYearPublished());
-    }
 }

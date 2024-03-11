@@ -55,7 +55,7 @@ public class Comment {
 
     public Comment(CommentDto c, User u, ComicBook cb){
         this.user = u;
-        this.userName = c.getUser().getUserName();
+        this.userName = u.getUserName();
         this.comicBook = cb;
         this.message = c.getMessage();
         this.commentDate = c.getDateAdded();
