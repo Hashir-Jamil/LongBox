@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "series_title": "Zot!",
+    "seriesTitle": "Zot!",
     "author": "Scott McCloud",
     "artist": "Scott McCloud",
     "genres": [
@@ -14,14 +14,14 @@
       "Drama"
     ],
     "description": "Empty",
-    "number_of_issues": 36,
+    "numberOfIssues": 36,
     "publisher": "Eclipse",
-    "year_published": 1984,
-    "date_added": "2024-02-15T00:00:00"
+    "yearPublished": 1984,
+    "dateAdded": "2024-02-15T00:00:00"
   },
   {
     "id": 2,
-    "series_title": "Sanctuary",
+    "seriesTitle": "Sanctuary",
     "author": "Sho Fumimura",
     "artist": "Ryoichi Ikegami",
     "genres": [
@@ -31,14 +31,14 @@
       "Manga"
     ],
     "description": "Empty",
-    "number_of_issues": 108,
+    "numberOfIssues": 108,
     "publisher": "Viz",
-    "year_published": 1990,
-    "date_added": "2024-02-15T00:00:00"
+    "yearPublished": 1990,
+    "dateAdded": "2024-02-15T00:00:00"
   },
   {
     "id": 3,
-    "series_title": "Nexus (1981)",
+    "seriesTitle": "Nexus (1981)",
     "author": "Mike Baron",
     "artist": "Steve Rude",
     "genres": [
@@ -50,14 +50,14 @@
       "Fantasy"
     ],
     "description": "Empty",
-    "number_of_issues": 3,
+    "numberOfIssues": 3,
     "publisher": "Capital",
-    "year_published": 1981,
-    "date_added": "2024-02-15T00:00:00"
+    "yearPublished": 1981,
+    "dateAdded": "2024-02-15T00:00:00"
   },
   {
     "id": 4,
-    "series_title": "The Maxx",
+    "seriesTitle": "The Maxx",
     "author": "Sam Keith",
     "artist": "Sam Keith",
     "genres": [
@@ -68,14 +68,14 @@
       "Superhero"
     ],
     "description": "Empty",
-    "number_of_issues": 35,
+    "numberOfIssues": 35,
     "publisher": "Image",
-    "year_published": 1993,
-    "date_added": "2024-02-15T00:00:00"
+    "yearPublished": 1993,
+    "dateAdded": "2024-02-15T00:00:00"
   },
   {
     "id": 5,
-    "series_title": "Winter Wolrd",
+    "seriesTitle": "Winter Wolrd",
     "author": "Chuck Dixon",
     "artist": "Jorge Zaffino",
     "genres": [
@@ -84,14 +84,14 @@
       "Gunslinger"
     ],
     "description": "Empty",
-    "number_of_issues": 3,
+    "numberOfIssues": 3,
     "publisher": "Eclipse",
-    "year_published": 1987,
-    "date_added": "2024-02-15T00:00:00"
+    "yearPublished": 1987,
+    "dateAdded": "2024-02-15T00:00:00"
   },
   {
     "id": 6,
-    "series_title": "Hellhounds Panzer Cops",
+    "seriesTitle": "Hellhounds Panzer Cops",
     "author": "Mamoru Oshii",
     "artist": "Kamui Fujiwara",
     "genres": [
@@ -102,14 +102,14 @@
       "Manga"
     ],
     "description": "Empty",
-    "number_of_issues": 6,
+    "numberOfIssues": 6,
     "publisher": "Dark Horse",
-    "year_published": 1994,
-    "date_added": "2024-02-15T00:00:00"
+    "yearPublished": 1994,
+    "dateAdded": "2024-02-15T00:00:00"
   },
   {
     "id": 7,
-    "series_title": "Jon Sable Freelance (1983)",
+    "seriesTitle": "Jon Sable Freelance (1983)",
     "author": "Mike Grell",
     "artist": "Mike Grell",
     "genres": [
@@ -119,14 +119,14 @@
       "Vigilantes"
     ],
     "description": "Empty",
-    "number_of_issues": 56,
+    "numberOfIssues": 56,
     "publisher": "First Comics",
-    "year_published": 1983,
-    "date_added": "2024-02-15T00:00:00"
+    "yearPublished": 1983,
+    "dateAdded": "2024-02-15T00:00:00"
   },
   {
     "id": 8,
-    "series_title": "Chronicles of Corum",
+    "seriesTitle": "Chronicles of Corum",
     "author": "Mike Baron",
     "artist": "Mike Mignola",
     "genres": [
@@ -135,14 +135,14 @@
       "Sword and Socery"
     ],
     "description": "Empty",
-    "number_of_issues": 12,
+    "numberOfIssues": 12,
     "publisher": "First Comics",
-    "year_published": 1987,
-    "date_added": "2024-02-15T00:00:00"
+    "yearPublished": 1987,
+    "dateAdded": "2024-02-15T00:00:00"
   },
   {
     "id": 9,
-    "series_title": "Drakuun",
+    "seriesTitle": "Drakuun",
     "author": "Johji Manabe",
     "artist": "Jonji Manabe",
     "genres": [
@@ -152,14 +152,14 @@
       "Manga"
     ],
     "description": "Empty",
-    "number_of_issues": 24,
+    "numberOfIssues": 24,
     "publisher": "Dark Horse",
-    "year_published": 1997,
-    "date_added": "2024-02-15T00:00:00"
+    "yearPublished": 1997,
+    "dateAdded": "2024-02-15T00:00:00"
   },
   {
     "id": 10,
-    "series_title": "Elementals (1984)",
+    "seriesTitle": "Elementals (1984)",
     "author": "Bill Willingham",
     "artist": "Bill Willingham",
     "genres": [
@@ -168,14 +168,14 @@
       "Supernatural"
     ],
     "description": "Empty",
-    "number_of_issues": 29,
+    "numberOfIssues": 29,
     "publisher": "Comico",
-    "year_published": 1984,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1984,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 11,
-    "series_title": "Airboy (1986)",
+    "seriesTitle": "Airboy (1986)",
     "author": "Chuck Dixon",
     "artist": "Timothy Truman",
     "genres": [
@@ -183,14 +183,14 @@
       "War"
     ],
     "description": "Empty",
-    "number_of_issues": 50,
+    "numberOfIssues": 50,
     "publisher": "Eclipse",
-    "year_published": 1986,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1986,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 12,
-    "series_title": "Scout (1985)",
+    "seriesTitle": "Scout (1985)",
     "author": "Timothy Truman",
     "artist": "Timothy Truman",
     "genres": [
@@ -199,14 +199,14 @@
       "Post Apocalyptic"
     ],
     "description": "Empty",
-    "number_of_issues": 24,
+    "numberOfIssues": 24,
     "publisher": "Eclipse",
-    "year_published": 1985,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1985,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 13,
-    "series_title": "Warlock (1986)",
+    "seriesTitle": "Warlock (1986)",
     "author": "Gordon Derry",
     "artist": "Denis Beauvais",
     "genres": [
@@ -218,28 +218,28 @@
       "Cyber Punk"
     ],
     "description": "Empty",
-    "number_of_issues": 22,
+    "numberOfIssues": 22,
     "publisher": "Aircel",
-    "year_published": 1986,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1986,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 14,
-    "series_title": "Dalgoda",
+    "seriesTitle": "Dalgoda",
     "author": "Jan Strnad",
     "artist": "Dennis Fujitake",
     "genres": [
       "Science Fiction"
     ],
     "description": "Empty",
-    "number_of_issues": 8,
+    "numberOfIssues": 8,
     "publisher": "Fantagraphics",
-    "year_published": 1984,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1984,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 15,
-    "series_title": "Outlanders",
+    "seriesTitle": "Outlanders",
     "author": "Johji Manabe",
     "artist": "Johji Manabe",
     "genres": [
@@ -249,14 +249,14 @@
       "Manga"
     ],
     "description": "Empty",
-    "number_of_issues": 33,
+    "numberOfIssues": 33,
     "publisher": "Dark Horse",
-    "year_published": 1988,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1988,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 16,
-    "series_title": "Evangeline (1984)",
+    "seriesTitle": "Evangeline (1984)",
     "author": "Chuck Dixon",
     "artist": "Judith Hunt",
     "genres": [
@@ -265,14 +265,14 @@
       "Science Fiction"
     ],
     "description": "Empty",
-    "number_of_issues": 2,
+    "numberOfIssues": 2,
     "publisher": "Comico",
-    "year_published": 1984,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1984,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 17,
-    "series_title": "Evangeline (1987)",
+    "seriesTitle": "Evangeline (1987)",
     "author": "Chuck Dixon",
     "artist": "Judith Hunt",
     "genres": [
@@ -281,14 +281,14 @@
       "Science Fiction"
     ],
     "description": "Empty",
-    "number_of_issues": 12,
+    "numberOfIssues": 12,
     "publisher": "First",
-    "year_published": 1987,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1987,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 18,
-    "series_title": "Badger (1983)",
+    "seriesTitle": "Badger (1983)",
     "author": "Mike Baron",
     "artist": "Jeffrey Butler",
     "genres": [
@@ -298,14 +298,14 @@
       "Science Fiction"
     ],
     "description": "Empty",
-    "number_of_issues": 70,
+    "numberOfIssues": 70,
     "publisher": "First",
-    "year_published": 1983,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1983,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 19,
-    "series_title": "Fightin Marines",
+    "seriesTitle": "Fightin Marines",
     "author": "Gene Colan",
     "artist": "Gene Colan",
     "genres": [
@@ -315,14 +315,14 @@
       "Anthology"
     ],
     "description": "Empty",
-    "number_of_issues": 151,
+    "numberOfIssues": 151,
     "publisher": "Charlton",
-    "year_published": 1951,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1951,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 20,
-    "series_title": "Grimjack (1984)",
+    "seriesTitle": "Grimjack (1984)",
     "author": "John Ostrander",
     "artist": "Timothy Truman",
     "genres": [
@@ -333,14 +333,14 @@
       "Fantasy"
     ],
     "description": "Empty",
-    "number_of_issues": 81,
+    "numberOfIssues": 81,
     "publisher": "First",
-    "year_published": 1984,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1984,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 21,
-    "series_title": "Caravan Kidd",
+    "seriesTitle": "Caravan Kidd",
     "author": "Johji Manabe",
     "artist": "Johji Manabe",
     "genres": [
@@ -352,14 +352,14 @@
       "Manga"
     ],
     "description": "Empty",
-    "number_of_issues": 28,
+    "numberOfIssues": 28,
     "publisher": "Dark Horse",
-    "year_published": 1992,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1992,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 22,
-    "series_title": "Boris the Bear",
+    "seriesTitle": "Boris the Bear",
     "author": "Mike Richardson",
     "artist": "James Dean Smith",
     "genres": [
@@ -370,14 +370,14 @@
       "Comedy"
     ],
     "description": "Empty",
-    "number_of_issues": 34,
+    "numberOfIssues": 34,
     "publisher": "Dark Horse",
-    "year_published": 1986,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1986,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 23,
-    "series_title": "Destroyer Duck",
+    "seriesTitle": "Destroyer Duck",
     "author": "Steve Gerber",
     "artist": "Jack Kirby",
     "genres": [
@@ -388,14 +388,14 @@
       "Comedy"
     ],
     "description": "Empty",
-    "number_of_issues": 7,
+    "numberOfIssues": 7,
     "publisher": "Eclipse",
-    "year_published": 1982,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1982,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 24,
-    "series_title": "Merchants of Death",
+    "seriesTitle": "Merchants of Death",
     "author": "Grassi",
     "artist": "Enrique Breccia",
     "genres": [
@@ -404,14 +404,14 @@
       "Anthology"
     ],
     "description": "Empty",
-    "number_of_issues": 4,
+    "numberOfIssues": 4,
     "publisher": "Eclipse",
-    "year_published": 1988,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1988,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 25,
-    "series_title": "Mr Monster",
+    "seriesTitle": "Mr Monster",
     "author": "Michael T Gilbert",
     "artist": "Michael T Gilbert",
     "genres": [
@@ -421,14 +421,14 @@
       "Comedy"
     ],
     "description": "Empty",
-    "number_of_issues": 10,
+    "numberOfIssues": 10,
     "publisher": "Eclipse",
-    "year_published": 1985,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1985,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 26,
-    "series_title": "Meridian",
+    "seriesTitle": "Meridian",
     "author": "Barbara Kesel",
     "artist": "Joshua Middleton",
     "genres": [
@@ -438,14 +438,14 @@
       "Fantasy"
     ],
     "description": "Empty",
-    "number_of_issues": 44,
+    "numberOfIssues": 44,
     "publisher": "Crossgen",
-    "year_published": 2000,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 2000,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 27,
-    "series_title": "Mystic",
+    "seriesTitle": "Mystic",
     "author": "Ron Marz",
     "artist": "Brandon Peterson",
     "genres": [
@@ -455,14 +455,14 @@
       "Fantasy"
     ],
     "description": "Empty",
-    "number_of_issues": 43,
+    "numberOfIssues": 43,
     "publisher": "Crossgen",
-    "year_published": 2000,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 2000,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 28,
-    "series_title": "Scion",
+    "seriesTitle": "Scion",
     "author": "Ron Marz",
     "artist": "Jim Cheung",
     "genres": [
@@ -472,14 +472,14 @@
       "Fantasy"
     ],
     "description": "Empty",
-    "number_of_issues": 43,
+    "numberOfIssues": 43,
     "publisher": "Crossgen",
-    "year_published": 2000,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 2000,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 29,
-    "series_title": "Sigil",
+    "seriesTitle": "Sigil",
     "author": "Barbara Kesel",
     "artist": "Wil Quintana",
     "genres": [
@@ -489,28 +489,28 @@
       "Fantasy"
     ],
     "description": "Empty",
-    "number_of_issues": 42,
+    "numberOfIssues": 42,
     "publisher": "Crossgen",
-    "year_published": 2000,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 2000,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 30,
-    "series_title": "The Uncensored Mouse",
+    "seriesTitle": "The Uncensored Mouse",
     "author": "Disney",
     "artist": "Disney",
     "genres": [
       "Bootleg"
     ],
     "description": "Empty",
-    "number_of_issues": 2,
+    "numberOfIssues": 2,
     "publisher": "Eternity",
-    "year_published": 1989,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1989,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 31,
-    "series_title": "Maelstorm",
+    "seriesTitle": "Maelstorm",
     "author": "Jim Somerville",
     "artist": "Jim Somerville",
     "genres": [
@@ -520,14 +520,14 @@
       "Action"
     ],
     "description": "Empty",
-    "number_of_issues": 11,
+    "numberOfIssues": 11,
     "publisher": "Aircel",
-    "year_published": 1987,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1987,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 32,
-    "series_title": "Sojourn",
+    "seriesTitle": "Sojourn",
     "author": "Ron Marz",
     "artist": "Greg Land",
     "genres": [
@@ -536,14 +536,14 @@
       "Sword and Sorcery"
     ],
     "description": "Empty",
-    "number_of_issues": 34,
+    "numberOfIssues": 34,
     "publisher": "Crossgen",
-    "year_published": 2001,
-    "date_added": "2024-02-15T00:00:00"
+    "yearPublished": 2001,
+    "dateAdded": "2024-02-15T00:00:00"
   },
   {
     "id": 33,
-    "series_title": "Absolute Zero",
+    "seriesTitle": "Absolute Zero",
     "author": "David Hahn",
     "artist": "David Hahn",
     "genres": [
@@ -552,14 +552,14 @@
       "Adventure"
     ],
     "description": "Empty",
-    "number_of_issues": 6,
+    "numberOfIssues": 6,
     "publisher": "Antarctic Press",
-    "year_published": 1995,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1995,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 34,
-    "series_title": "Addam Omega",
+    "seriesTitle": "Addam Omega",
     "author": "Bill Hughes",
     "artist": "Bill Hughes",
     "genres": [
@@ -568,14 +568,14 @@
       "Superhero"
     ],
     "description": "Empty",
-    "number_of_issues": 4,
+    "numberOfIssues": 4,
     "publisher": "Antarctic Press",
-    "year_published": 1997,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1997,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 35,
-    "series_title": "Actionopolis",
+    "seriesTitle": "Actionopolis",
     "author": "Shannon Denton",
     "artist": "Shannon Denton",
     "genres": [
@@ -583,14 +583,14 @@
       "Adventure"
     ],
     "description": "Empty",
-    "number_of_issues": 1,
+    "numberOfIssues": 1,
     "publisher": "Antarctic Press",
-    "year_published": 2001,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 2001,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 36,
-    "series_title": "Alien Worlds",
+    "seriesTitle": "Alien Worlds",
     "author": "Bruce Jones",
     "artist": "Al Williamson",
     "genres": [
@@ -599,14 +599,14 @@
       "Adventure"
     ],
     "description": "Empty",
-    "number_of_issues": 9,
+    "numberOfIssues": 9,
     "publisher": "Pacific Comics",
-    "year_published": 1982,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1982,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 37,
-    "series_title": "Captain Victory and the Galactic Rangers",
+    "seriesTitle": "Captain Victory and the Galactic Rangers",
     "author": "Jack Kirby",
     "artist": "Jack Kirby",
     "genres": [
@@ -614,14 +614,14 @@
       "Superhero"
     ],
     "description": "Empty",
-    "number_of_issues": 13,
+    "numberOfIssues": 13,
     "publisher": "Pacific Comics",
-    "year_published": 1981,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1981,
+    "dateAdded": "2024-02-25T00:00:00"
   },
   {
     "id": 38,
-    "series_title": "Groo the Wanderer",
+    "seriesTitle": "Groo the Wanderer",
     "author": "Sergio Aragones",
     "artist": "Sergio Aragones",
     "genres": [
@@ -629,9 +629,9 @@
       "Comedy"
     ],
     "description": "Empty",
-    "number_of_issues": 8,
+    "numberOfIssues": 8,
     "publisher": "Pacific Comics",
-    "year_published": 1982,
-    "date_added": "2024-02-25T00:00:00"
+    "yearPublished": 1982,
+    "dateAdded": "2024-02-25T00:00:00"
   }
 ]
