@@ -23,9 +23,9 @@ public class UserService {
             this.userDao = userDao;
         }
 
-        public UserSession startSession() {
+        public UserSession startSession(UserDto userDto) {
             //TO-DO: Login logic for starting user session
-            return null;
+            return UserSession.getInstance(userDto);
         }
 
         public UserDto getLoggedInUser() {
