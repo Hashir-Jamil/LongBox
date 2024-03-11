@@ -7,7 +7,6 @@ import lombok.Setter;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.dto.ComicBookListItemFavoriteDto;
-import org.longbox.domainobjects.dto.JsonConvertor;
 import org.longbox.persistence.dao.ComicBookFavouritesListDao;
 import org.longbox.persistence.entity.ComicBook;
 import org.longbox.persistence.entity.User;
