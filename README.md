@@ -1,4 +1,4 @@
-# LongBox ITR02 Build
+# LongBox ITR03 Build
 
 Your digital solution for archiving and preserving comic books. Developed by passionate fans, this open-source desktop app offers concise documentation for out-of-print, independent, and mainstream comics. Addressing the decline in sales, LongBox provides a user-friendly platform for organizing and archiving collections. With web application plans, it aims to be a central hub for enthusiasts. Users can create profiles, submit comics, and enjoy a recommendation system. Built from scratch, LongBox prioritizes simplicity without relying on existing projects.
 
@@ -34,11 +34,7 @@ These tests make sure that the business logic that drives our system is working 
 ## Deployment
 
 To launch the project:
-1. Go the presentation package in source.
-> LongBox / src / main / java / org / longbox / presentation
-2. Go the authentication package inside presentation.
-> LongBox / src / main / java / org / longbox / presentation / authentication
-3. Run the _AuthenticationPage.java_ file. This is the primary entry point into the project.
+>Run the **Main.java** in *src/main/java*.
 
 Note:
 * This is the first frame of our project, rest of the features can be accessed through this page.
