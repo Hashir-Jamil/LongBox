@@ -80,6 +80,7 @@ public class UserStubDb implements UserDao, JsonConvertor {
             }
         }
         userStubData.add(new UserDto(user));
+        serializeStubData();
     }
 
     @Override
@@ -92,53 +93,10 @@ public class UserStubDb implements UserDao, JsonConvertor {
         return false;
     }
 
-    public void loadUsers() {
-        UserDto u1 = new UserDto(
-                1,
-                "Always_Scheming",
-                "John",
-                "Smith",
-                new Date(1990, 12, 1),
-                "email@domain.com",
-                "Always_Scheming",
-                "Canada",
-                0,
-                0
-        );
-        userStubData.add(u1);
-
-        UserDto u2 = new UserDto(
-                2,
-                "Always_Throwing",
-                "Neo",
-                "Anderson",
-                new Date(1929,1,1),
-                "address@provider.ca",
-                "Always_Throwing",
-                "Indonesia",
-                0,
-                0
-        );
-        userStubData.add(u2);
-
-        UserDto u3 = new UserDto(
-                3,
-                "Phoenix",
-                "Stan",
-                "Lee",
-                new Date(2000,4,31),
-                "123fake@nowhere.org",
-                "Phoenix",
-                "United Kingdom",
-                0,
-                0
-        );
-        userStubData.add(u3);
-    }
-
     @Override
     public void serializeStubData() {
-        String json = new Gson().toJson(userStubData);
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+        String json = gson.toJson(userStubData);
         try (PrintStream out = new PrintStream(new FileOutputStream(ABSOLUTE_FILE_PATH))) {
             out.print(json);
         } catch (FileNotFoundException e) {

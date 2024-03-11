@@ -127,6 +127,7 @@ public class User {
 				", joinDate=" + joinDate +
 				", comicsReading=" + comicsReading +
 				", comicsFinished=" + comicsFinished +
+				", aboutMe=" + aboutMe +
 				'}';
 	}
 }
