@@ -18,6 +18,8 @@ import java.io.FileReader;
 import java.io.PrintStream;
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Objects;
+
 @Getter
 @Setter
 public class ComicBookFinishedListStubDb implements ComicBookFinishedListDao, JsonConvertor {
@@ -37,7 +39,7 @@ public class ComicBookFinishedListStubDb implements ComicBookFinishedListDao, Js
     public void removeFromFinished(Long userId, Long comicBookId) {
         List<ComicBookListItemFinishedDto> finishedList = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (int i = 0; i < finishedList.size(); i++) {
-            if (finishedList.get(i).getUserId() == userId && finishedList.get(i).getComicBookId() == comicBookId) {
+            if (Objects.equals(finishedList.get(i).getUserId(), userId) && Objects.equals(finishedList.get(i).getComicBookId(), comicBookId)) {
                 finishedList.remove(i);
             }
         }
@@ -47,6 +49,12 @@ public class ComicBookFinishedListStubDb implements ComicBookFinishedListDao, Js
 
     @Override
     public boolean doesRecordExist(Long userId, Long comicBookId) {
+        List<ComicBookListItemFinishedDto> finishedList = deserializeStubData(ABSOLUTE_FILE_PATH);
+        for (ComicBookListItemFinishedDto record : finishedList) {
+            if (Objects.equals(record.getUserId(), userId) && Objects.equals(record.getComicBookId(), comicBookId)) {
+                return true;
+            }
+        }
         return false;
     }
 
