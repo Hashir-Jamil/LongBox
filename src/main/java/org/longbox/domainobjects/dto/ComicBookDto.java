@@ -20,6 +20,7 @@ public class ComicBookDto {
     private String publisher;
     private int yearPublished;
     private Date dateAdded;
+    private int favoritesCount = 0;
 
     public ComicBookDto(
         long id,
@@ -197,6 +198,7 @@ public class ComicBookDto {
                 ", publisher='" + publisher + '\'' +
                 ", yearPublished=" + yearPublished +
                 ", dateAdded=" + dateAdded +
+                ", favoritesCount=" + favoritesCount +
                 '}';
     }
 }
