@@ -6,6 +6,7 @@ import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
+import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -152,9 +153,11 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 			} else {
 				int confirmUnfavorite = JOptionPane.showConfirmDialog(this, "Are you sure you want to unfavorite this comic?", "Unfavorite Confirmation", JOptionPane.YES_NO_OPTION);
 				if (confirmUnfavorite == JOptionPane.YES_OPTION) {
+					ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl();
 					long userId = userSession.getUser().getId();
 					long comicId = comicBookTableModel.getComicIdAtRow(selectedRow);
 					comicBookFavouritesListDaoImp.removeFromFavorites(userId, comicId);
+					comicBookDaoImpl.unfavoriteComicBook(comicId);
 					comicBookTableModel.removeRow(selectedRow);
 					JOptionPane.showMessageDialog(this, "Comic has been unfavorited.", "Unfavorited", JOptionPane.INFORMATION_MESSAGE);
 				}
