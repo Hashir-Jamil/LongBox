@@ -50,7 +50,7 @@ public class Comment {
         this.userName = c.getUser().getUserName();
         this.comicBook = new ComicBook(c.getComicBook());
         this.message = c.getMessage();
-        this.commentDate = c.getDateAdded();
+        this.commentDate = c.getCommentDate();
     }
 
     public Comment(CommentDto c, User u, ComicBook cb){
@@ -58,7 +58,7 @@ public class Comment {
         this.userName = u.getUserName();
         this.comicBook = cb;
         this.message = c.getMessage();
-        this.commentDate = c.getDateAdded();
+        this.commentDate = c.getCommentDate();
     }
 
     public long getComicBookId(){
