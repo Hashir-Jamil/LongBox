@@ -14,27 +14,27 @@ public class CommentDto {
     private long userId;
     private long comicBookId;
     private String message;
-    private String username;
+    private String userName;
     private UserDto user;
     private ComicBookDto comicBook;
-    private Date dateAdded;
+    private Date commentDate;
 
     public CommentDto(String message, UserDto user, ComicBookDto comicBook) {
         this.message = message;
-        this.username = user.getUserName();
+        this.userName = user.getUserName();
         this.comicBookId = comicBook.getId();
         this.userId = user.getId();
         this.user = user;
         this.comicBook = comicBook;
-        dateAdded = new Date();
+        commentDate = new Date();
     }
 
-    public CommentDto(long userId, long comicBookId, String message, String username) {
+    public CommentDto(long userId, long comicBookId, String message, String userName) {
         this.userId = userId;
         this.comicBookId = comicBookId;
         this.message = message;
-        this.username = username;
-        this.dateAdded = new Date();
+        this.userName = userName;
+        this.commentDate = new Date();
     }
 
     public CommentDto(String message, String userName, String comicBook) {
@@ -47,15 +47,15 @@ public class CommentDto {
         this.id = c.getId();
         this.message = c.getMessage();
         this.userId = c.getUserId();
-        this.username = c.getUserName();
+        this.userName = c.getUserName();
         this.comicBookId = c.getComicBookId();
-        this.dateAdded = c.getCommentDate();
+        this.commentDate = c.getCommentDate();
         this.comicBookId = c.getComicBookId();
     }
     
     @Override
 	public int hashCode() {
-		return Objects.hash(comicBookId, id, message, userId, username);
+		return Objects.hash(comicBookId, id, message, userId, userName);
 	}
 
 	@Override
@@ -68,22 +68,22 @@ public class CommentDto {
 			return false;
 		CommentDto other = (CommentDto) obj;
 		return comicBookId == other.comicBookId && id == other.id && Objects.equals(message, other.message)
-				&& userId == other.userId && Objects.equals(username, other.username);
+				&& userId == other.userId && Objects.equals(userName, other.userName);
 	}
 	
 	
 	@Override
 	public String toString() {
 		return "CommentDTO [id=" + id + ", userId=" + userId + ", comicBookId=" + comicBookId + ", message=" + message
-				+ ", username=" + username + ", user=" + user + ", comicBook=" + comicBook + ", dateAdded=" + dateAdded
+				+ ", username=" + userName + ", user=" + user + ", comicBook=" + comicBook + ", dateAdded=" + commentDate
 				+ "]";
 	}
 
     public String getUserName() {
-        return this.username;
+        return this.userName;
     }
 
     public Date getCommentDate() {
-        return this.dateAdded;
+        return this.commentDate;
     }
 }
