@@ -75,7 +75,8 @@ public class ComicBookDto {
         int numberOfIssues,
         String publisher,
         int yearPublished,
-        Date date
+        Date date, 
+        int favoritesCount
     ) {
         this.seriesTitle = seriesTitle;
         this.author = author;
@@ -86,6 +87,7 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date(date.getTime());
+        this.favoritesCount = favoritesCount;
     };
 
     public ComicBookDto(
@@ -132,9 +134,9 @@ public class ComicBookDto {
         this.publisher = publisher;
         this.dateAdded = date;
     };
-
+  
     public ComicBookDto(ComicBook comicBookRecord) {
-        this(
+    	this(
             comicBookRecord.getSeriesTitle(),
             comicBookRecord.getAuthor(),
             comicBookRecord.getArtist(),
@@ -143,7 +145,8 @@ public class ComicBookDto {
             comicBookRecord.getNumberOfIssues(),
             comicBookRecord.getPublisher(),
             comicBookRecord.getYearPublished(),
-            comicBookRecord.getDateAdded()
+            comicBookRecord.getDateAdded(),
+            comicBookRecord.getFavoritesCount()
         );
         this.setId(comicBookRecord.getId());
     }

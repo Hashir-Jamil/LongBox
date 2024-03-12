@@ -1,5 +1,6 @@
 package org.longbox.presentation.tablemodels;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
@@ -7,6 +8,8 @@ import javax.swing.table.DefaultTableModel;
 import org.longbox.domainobjects.dto.ComicBookDto;
 
 public class TrendingAllTimeTableModel extends DefaultTableModel {
+	
+	private static final long serialVersionUID = 1L;
 	
 	List<ComicBookDto> comicBookList;
     private String[] columnNames =
@@ -18,6 +21,25 @@ public class TrendingAllTimeTableModel extends DefaultTableModel {
             "Publisher"};
 
 	public TrendingAllTimeTableModel(List<ComicBookDto> comicBookList) {
+		
+		//ComicBookDto[] sortedComicBookList = (ComicBookDto[]) comicBookList.toArray();
+
+		for (int i = 0; i < comicBookList.size() - 1; i++) {
+			int min = i;
+			for (int j = i + 1; j < comicBookList.size(); j++) {
+				if (comicBookList.get(j).getFavoritesCount() > comicBookList.get(min).getFavoritesCount()) {
+					min = j;
+				}
+			}
+			ComicBookDto temp = comicBookList.get(min);
+			comicBookList.set(min, comicBookList.get(i));
+			comicBookList.set(i, temp);		
+		}
+		
+		for (ComicBookDto c : comicBookList) {
+			System.out.println(c.getFavoritesCount() + " " + c);
+		}
+		
 		this.comicBookList = comicBookList;
 
         for (String columnName : columnNames) {
