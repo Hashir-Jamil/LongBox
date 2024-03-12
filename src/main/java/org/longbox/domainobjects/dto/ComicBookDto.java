@@ -156,17 +156,12 @@ public class ComicBookDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ComicBookDto that = (ComicBookDto) o;
-        return getId() == that.getId() && getNumberOfIssues() == that.getNumberOfIssues() && getYearPublished() == that.getYearPublished() && Objects.equals(getSeriesTitle(),
-                that.getSeriesTitle()) && Objects.equals(getAuthor(),
-                that.getAuthor()) && Objects.equals(getArtist(),
-                that.getArtist()) && Objects.equals(getDescription(),
-                that.getDescription()) && Objects.equals(getPublisher(),
-                that.getPublisher());
+        return getYearPublished() == that.getYearPublished() && Objects.equals(getSeriesTitle(), that.getSeriesTitle()) && Objects.equals(getAuthor(), that.getAuthor()) && Objects.equals(getArtist(), that.getArtist()) && Objects.equals(getPublisher(), that.getPublisher());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getSeriesTitle(), getAuthor(), getArtist(), getDescription(), getNumberOfIssues(), getPublisher(), getYearPublished());
+        return Objects.hash(getSeriesTitle(), getAuthor(), getArtist(), getPublisher(), getYearPublished());
     }
 
     public static String[] genreStringToList(String genres) {

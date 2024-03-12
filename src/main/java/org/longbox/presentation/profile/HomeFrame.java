@@ -3,6 +3,7 @@ package org.longbox.presentation.profile;
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.*;
+import org.longbox.businesslogic.controller.AuthenticationController;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
@@ -246,15 +247,9 @@ public class HomeFrame extends JFrame implements ActionListener {
         if (confirmLogOut == JOptionPane.YES_OPTION) {
             userSession.clearUserSession();
             UserSession.setActiveUser(null);
-            AuthenticationFrame loginPage = new AuthenticationFrame();
-            loginPage.setVisible(true);
+            AuthenticationController authenticationController = new AuthenticationController();
             dispose();
         }
     }
 
-    private ComicBookDto searchComicBookResults(String searchQuery) {
-        ComicBookStubDb comicBookStubDB = new ComicBookStubDb();
-        comicBookStubDB.loadComicBooks();
-        return ComicBookSearchUtils.searchComicBook(comicBookStubDB.getComicBookStubData(), searchQuery);
-    }
 }
