@@ -63,9 +63,9 @@ public class CommentStubDb implements CommentDao, JsonConvertor {
 
     @Override
     public void serializeStubData() {
-        String json = new Gson().toJson(commentsStubData);
-        String file = "src/main/resources/UserStubDb.json";
-        try (PrintStream out = new PrintStream(new FileOutputStream(file))) {
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+        String json = gson.toJson(commentsStubData);
+        try (PrintStream out = new PrintStream(new FileOutputStream(ABSOLUTE_FILE_PATH))) {
             out.print(json);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -84,6 +84,6 @@ public class CommentStubDb implements CommentDao, JsonConvertor {
             throw new RuntimeException(e);
         }
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
-        return new Gson().fromJson(reader, listType);
+        return gson.fromJson(reader, listType);
     }
 }
