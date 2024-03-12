@@ -55,7 +55,6 @@ public class FavoritesPanel extends JPanel {
 	}
 
 	private void initComicCollectionPage() {
-
 		setBounds(10, 47, 1164, 803);
 		setLayout(new BorderLayout());
 
@@ -76,101 +75,68 @@ public class FavoritesPanel extends JPanel {
 
 		comicBookFavouritesListDaoImp = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 
-			comicBookTableModel = new ComicBookTableModel(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks());
-
-			comicBookTable = new JTable(comicBookTableModel);
-			comicBookTable.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					int row = comicBookTable.rowAtPoint(e.getPoint());
-					int col = comicBookTable.columnAtPoint(e.getPoint());
-					if (col == 0 && e.getClickCount() == 2) {
-						ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), comicBookTable.getValueAt(row, col).toString());
-						System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
-						org.longbox.businesslogic.utils.ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
-					}
+		comicBookTableModel = new ComicBookTableModel(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks());
+		comicBookTable = new JTable(comicBookTableModel);
+		comicBookTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row = comicBookTable.rowAtPoint(e.getPoint());
+				int col = comicBookTable.columnAtPoint(e.getPoint());
+				if (col == 0 && e.getClickCount() == 2) {
+					ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), comicBookTable.getValueAt(row, col).toString());
+					System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
+					org.longbox.businesslogic.utils.ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
 				}
-			});
-			sorter = new TableRowSorter<TableModel>(comicBookTable.getModel());
-			comicBookTable.setRowSorter(sorter);
+			}
+		});
 
-			scrollPane = new JScrollPane(comicBookTable);
-			scrollPane.setViewportBorder(null);
-			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-			scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-			scrollPane.setBounds(10, 110, 1144, 683);
-			panel.add(scrollPane);
+		sorter = new TableRowSorter<TableModel>(comicBookTable.getModel());
+		comicBookTable.setRowSorter(sorter);
 
-			typeSelection = new JComboBox<String>();
-			typeSelection.setBounds(333, 62, 160, 22);
+		scrollPane = new JScrollPane(comicBookTable);
+		scrollPane.setViewportBorder(null);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setBounds(10, 110, 1144, 683);
+		panel.add(scrollPane);
 
-			typeSelection.addItem("Title");
-			typeSelection.addItem("Author");
-			typeSelection.addItem("Artist");
-			typeSelection.addItem("Genre");
-			typeSelection.addItem("Publisher");
-			typeSelection.addItem("Year");
+		typeSelection = new JComboBox<String>();
+		typeSelection.setBounds(333, 62, 160, 22);
 
-			panel.add(typeSelection);
+		typeSelection.addItem("Title");
+		typeSelection.addItem("Author");
+		typeSelection.addItem("Artist");
+		typeSelection.addItem("Genre");
+		typeSelection.addItem("Publisher");
+		typeSelection.addItem("Year");
 
-			textField = new JTextField();
-			textField.setBounds(116, 62, 213, 22);
-			panel.add(textField);
-			textField.setColumns(10);
+		panel.add(typeSelection);
 
-//			textField.addActionListener(this);
+		textField = new JTextField();
+		textField.setBounds(116, 62, 213, 22);
+		panel.add(textField);
+		textField.setColumns(10);
 
-			lblNewLabel = new JLabel("Search Favorites:");
-			lblNewLabel.setBounds(10, 66, 120, 13);
-			panel.add(lblNewLabel);
+		lblNewLabel = new JLabel("Search Favorites:");
+		lblNewLabel.setBounds(10, 66, 120, 13);
+		panel.add(lblNewLabel);
 
-			unfavoriteButton = new JButton("Unfavorite");
-//			unfavoriteButton.addActionListener(this);
-			unfavoriteButton.setEnabled(false); // Initially disabled
-			unfavoriteButton.setBounds(930, 62, 129, 23);
-			panel.add(unfavoriteButton);
+		unfavoriteButton = new JButton("Unfavorite");
+		unfavoriteButton.setEnabled(false); // Initially disabled
+		unfavoriteButton.setBounds(930, 62, 129, 23);
+		panel.add(unfavoriteButton);
 
-			refreshButton = new JButton("Refresh");
-//			refreshButton.addActionListener(e -> {
-//				reloadData();
-//			});
+		refreshButton = new JButton("Refresh");
+		refreshButton.setBounds(1065, 62, 89, 23);
+		panel.add(refreshButton);
 
-			refreshButton.setBounds(1065, 62, 89, 23);
-			panel.add(refreshButton);
-
-			comicBookTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			comicBookTable.getSelectionModel().addListSelectionListener(e -> {
-				boolean isRowSelected = comicBookTable.getSelectedRow() != -1;
-				unfavoriteButton.setEnabled(isRowSelected);
-			});
+		comicBookTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		comicBookTable.getSelectionModel().addListSelectionListener(e -> {
+			boolean isRowSelected = comicBookTable.getSelectedRow() != -1;
+			unfavoriteButton.setEnabled(isRowSelected);
+		});
 	}
 
-//	@Override
-//	public void actionPerformed(ActionEvent e) {
-//		if (e.getSource() == unfavoriteButton) {
-//			int selectedRow = comicBookTable.getSelectedRow();
-//			if (selectedRow == -1) {
-//				JOptionPane.showMessageDialog(this, "Please select a comic to unfavorite.", "No Comic Selected", JOptionPane.WARNING_MESSAGE);
-//			} else {
-//				int confirmUnfavorite = JOptionPane.showConfirmDialog(this, "Are you sure you want to unfavorite this comic?", "Unfavorite Confirmation", JOptionPane.YES_NO_OPTION);
-//				if (confirmUnfavorite == JOptionPane.YES_OPTION) {
-//					ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
-//					long userId = userSession.getUser().getId();
-//					long comicId = comicBookTableModel.getComicIdAtRow(selectedRow);
-//					comicBookFavouritesListDaoImp.removeFromFavorites(userId, comicId);
-//					comicBookDaoImpl.unfavoriteComicBook(comicId);
-//					comicBookTableModel.removeRow(selectedRow);
-//					JOptionPane.showMessageDialog(this, "Comic has been unfavorited.", "Unfavorited", JOptionPane.INFORMATION_MESSAGE);
-//				}
-//			}
-//		}
-//		if (e.getSource() == textField && !textField.getText().isEmpty()) {
-//			String searchBy = typeSelection.getSelectedItem().toString();
-//			String target = textField.getText();
-//			List<ComicBookDto> searchResults = null;
-//			ComicBookSearchUtils.comicAdvancedSearch(searchBy, target, searchResults, comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), this.userSession);
-//		}
-//	}
 	public void reloadData() {
 		comicBookTableModel.updateData(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks());
 	}
