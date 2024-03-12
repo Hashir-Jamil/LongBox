@@ -6,12 +6,9 @@ import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
-public class ReadingAndFinishedComicBookTableModel extends DefaultTableModel{
-	
+public class ReadingAndFinishedComicBookTableModel extends DefaultTableModel {
 	List<ComicBookDto> comicBookList;
-	private String[] columnNames =
-        {"Series Title",
-        "Author"};
+	private String[] columnNames = {"Series Title","Author"};
 
 	public ReadingAndFinishedComicBookTableModel(List<ComicBookDto> comicBookList) {
         this.comicBookList = comicBookList;
@@ -32,5 +29,4 @@ public class ReadingAndFinishedComicBookTableModel extends DefaultTableModel{
     public boolean isCellEditable(int row, int column) {
         return false;
     }
-
 }

@@ -14,11 +14,8 @@ import java.awt.CardLayout;
 @Getter
 @Setter
 public class ComicBookFrame extends JFrame {
-
-	private static final long serialVersionUID = 1L;
 	private final String FRAME_TITLE = "Search Result";
 	private final String COMIC_BOOK_INFO = "Comic Book Info";
-	
 	private JPanel comicBookPane;
 	private ComicBookInfoPanel comicBookInfoPane;
 	private ComicBookInfoController comicBookInfoController;

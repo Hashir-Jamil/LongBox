@@ -18,17 +18,11 @@ import java.awt.Component;
 import javax.swing.ScrollPaneConstants;
 
 public class TrendingPanel extends JPanel {
-
-	private static final long serialVersionUID = 1L;
 	private JTable allTimeFavoritesTable;
 	private JTable nationalFavoritesTable;
 
-	/**
-	 * Create the panel.
-	 */
 	public TrendingPanel() {
 		initTrendingPanel();
-
 	}
 	
 	private void initTrendingPanel() {
@@ -82,7 +76,5 @@ public class TrendingPanel extends JPanel {
 		JScrollPane nationalFavoritesScrollPane = new JScrollPane(nationalFavoritesTable);
 		nationalFavoritesScrollPane.setBounds(10, 483, 1144, 300);
 		panel.add(nationalFavoritesScrollPane);
-		
-		
 	}
 }

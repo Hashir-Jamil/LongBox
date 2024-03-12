@@ -39,27 +39,19 @@ public class RegistrationPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private static final String DEFAULT_FONT = "Calibri";
 	
-	private JTextField firstNameField;
-	private JTextField lastNameField;
-	private JTextField usernameField;
-	private JTextField emailAddress;
-	
+	private JTextField firstNameField, lastNameField, usernameField, emailAddress;
 	private JPasswordField passwordField;
-	private JButton signUpButton;
+	private JButton signUpButton, signInButton;
 	private JDateChooser dateChooser;
 	private JComboBox countryField;
 	private JCheckBox TnCCheckbox;
 	private JLabel messageLabel;
-	private JButton signInButton;
-	/**
-	 * Create the panel.
-	 */
+
 	public RegistrationPanel() {
 		initiateRegUI();
 	}
 
 	public void initiateRegUI() {
-
 		setBounds(100, 100, 809, 554);
 		setLayout(new BorderLayout());
 

@@ -21,18 +21,13 @@ import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.profile.ComicBookTableModel;
 
 public class ComicBookSearchResultsFrame extends JFrame {
-
-	private static final long serialVersionUID = 1L;
 	private static final String DEFAULT_FONT = "Calibri";
 	private JPanel contentPane;
 	private JTable comicBookTable;
-	ComicBookDaoImpl comicBookDaoImpl;
+	private ComicBookDaoImpl comicBookDaoImpl;
 	private ComicBookTableModel comicBookTableModel;
 	private UserSession userSession;
 
-	/**
-	 * Create the frame.
-	 */
 	public ComicBookSearchResultsFrame(List<ComicBookDto> displayResults, String target, String searchBy, UserSession user) {
 		this.userSession = user;
 		
@@ -75,7 +70,6 @@ public class ComicBookSearchResultsFrame extends JFrame {
 				}
 			}
 		});
-		
 		scrollPane.setViewportView(comicBookTable);
 	}
 }

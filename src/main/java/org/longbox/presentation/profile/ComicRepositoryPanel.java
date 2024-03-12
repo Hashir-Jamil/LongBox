@@ -35,8 +35,6 @@ import java.awt.Color;
 @Getter
 @Setter
 public class ComicRepositoryPanel extends JPanel implements ActionListener{
-
-	private static final long serialVersionUID = 1L;
 	private static final String DEFAULT_FONT = "Calibri";
 	public JPanel panel;
 	private JLabel comicRepositoryTitle;

@@ -23,7 +23,6 @@ import javax.swing.*;
 @Getter
 @Setter
 public class FavoritesPanel extends JPanel implements ActionListener {
-	private static final long serialVersionUID = 1L;
 	private static final String DEFAULT_FONT = "Calibri";
 	private static FavoritesPanel instance;
 	private JPanel panel;
@@ -167,8 +166,8 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 		if (e.getSource() == textField && !textField.getText().isEmpty()) {
 			String searchBy = typeSelection.getSelectedItem().toString();
 			String target = textField.getText();
-			List<ComicBookDto> searchResults = null;
-			ComicBookSearchUtils.comicAdvancedSearch(searchBy, target, searchResults, comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), this.userSession);
+			List<ComicBookDto> searchResults = null; //fix this, its not good practice
+			ComicBookSearchUtils.comicAdvancedSearch(searchBy, target, searchResults, comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), this.userSession); //fix null object here
 		}
 	}
 	public void reloadData() {

@@ -18,13 +18,10 @@ import java.awt.event.ActionEvent;
 @Getter
 @Setter
 public class LoginPanel extends JPanel{
-
-	private static final long serialVersionUID = 1L;
 	private static final String DEFAULT_FONT = "Calibri";
 	private JTextField usernameText;
 	private JPasswordField passwordField;
-	private JButton signInButton;
-	private JButton signUpButton;
+	private JButton signInButton, signUpButton;
 	private JLabel errorLabel;
 	/**
 	 * Create the panel.

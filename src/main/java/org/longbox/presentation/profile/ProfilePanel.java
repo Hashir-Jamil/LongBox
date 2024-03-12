@@ -29,7 +29,6 @@ import org.longbox.persistence.entity.ComicBook;
 @Getter
 @Setter
 public class ProfilePanel extends JPanel {
-	private static final long serialVersionUID = 1L;
 	private final String PANEL_LABEL = "Profile View";
 	private JLabel comicCollectionTitle;
 	private JSeparator topSeparator;

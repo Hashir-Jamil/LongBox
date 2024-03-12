@@ -39,9 +39,7 @@ public class AddComicToRepoPanel extends JPanel {
 	private JButton enterComicBookButton;
 	private JCheckBox favoriteCheckbox;
 	private JPanel panel;
-	/**
-	 * Create the panel.
-	 */
+
 	public AddComicToRepoPanel() {
 		initAddComicToRepoPage();
 	}

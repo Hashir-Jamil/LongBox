@@ -34,7 +34,6 @@ public class ComicBookInfoPanel extends JPanel {
 	private static final String REMOVE_READING_LIST_LABEL = "Remove From Reading";
 	private ComicBookDto comicBookDTO;
 	private JPanel panel;
-	//text labels
 	private JLabel comicSeries;
 	private JLabel author;
 	private JLabel artist;
@@ -60,19 +59,12 @@ public class ComicBookInfoPanel extends JPanel {
 	private List<CommentDto> commentsOnCurrentComic;
 	private UserSession userSession;
 	private JList<CommentDto> commentList;
-
 	private ComicBookDaoImpl comicBookDaoImpl;
 	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl;
 	private ComicBookFinishedListDaoImpl comicBookFinishedListDaoImpl;
 	private ComicBookReadingListDaoImpl comicBookReadingListDaoImpl;
-
 	private CommentService commentService;
-	
-	/**
-	 * Create the panel.
-	 */
 
-	
 	public ComicBookInfoPanel(ComicBookDto comicBookDTO, UserSession userSession) {
 		this.comicBookDTO = comicBookDTO;
 		this.userSession = userSession;

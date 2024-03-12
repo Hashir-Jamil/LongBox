@@ -19,7 +19,6 @@ import java.awt.ComponentOrientation;
 @Getter
 @Setter
 public class HomeFrame extends JFrame {
-
     private final String SEARCH_COMIC_BOOK = "Search Comics Panel";
     private final String COMIC_COLLECTAION_PANEL = "Comic Collection Panel";
     private final String FAVORITES_PANEL = "User Favorites Panel";
@@ -44,25 +43,6 @@ public class HomeFrame extends JFrame {
     private UserSession userSession;
     private JLabel userNameLabel;
 
-    /**
-     * Launch the application.
-     */
-/*    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    frame = new HomeFrame();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }*/
-
-    /**
-     * Create the frame.
-     */
     public HomeFrame() {
         buildHomeFrame();
     }

@@ -7,16 +7,16 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class ComicBookTableModel extends DefaultTableModel {
-
     List<ComicBookDto> comicBookList;
-    private String[] columnNames =
-            {"Series Title",
-            "Author",
-            "Artist",
-            "Genres",
-            "Number of Issues",
-            "Publisher",
-            "Year Published"};
+    private String[] columnNames = {
+        "Series Title",
+        "Author",
+        "Artist",
+        "Genres",
+        "Number of Issues",
+        "Publisher",
+        "Year Published"
+    };
 
     public ComicBookTableModel(List<ComicBookDto> comicBookList) {
         this.comicBookList = comicBookList;

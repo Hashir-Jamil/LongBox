@@ -16,8 +16,6 @@ import javax.swing.JButton;
 @Getter
 @Setter
 public class SearchPanel extends JPanel {
-
-	private static final long serialVersionUID = 1L;
 	private static final String DEFAULT_FONT = "Calibri";
 	private final String PANEL_LABEL = "Search Repository For Comic Books";
 	private final String SEARCH_BY_TITLE = "Search for a comic book by title!";
@@ -25,10 +23,6 @@ public class SearchPanel extends JPanel {
 	private JTextField searchTextField;
 	private JButton searchButton = new JButton(SEARCH_BUTTON);
 
-
-	/**
-	 * Create the panel.
-	 */
 	public SearchPanel() {
 		initSearchPage();
 	}
