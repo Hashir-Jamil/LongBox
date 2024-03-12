@@ -14,14 +14,18 @@ import java.util.Collections;
 import java.util.List;
 
 public class ComicBookReadingListDaoImpl implements ComicBookReadingListDao {
-    private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+    private SessionFactory sessionFactory;
+
+    public ComicBookReadingListDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public void saveToReading(Long userId, Long comicBookId) throws UserIDDoesNotExistException {
         Session session = null;
         Transaction transaction = null;
-        UserDaoImpl userDao = new UserDaoImpl();
-        ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl();
+        UserDaoImpl userDao = new UserDaoImpl(HibernateUtils.getSessionFactory());
+        ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 
         try {
             session = sessionFactory.openSession();

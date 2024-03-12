@@ -26,7 +26,7 @@ class UserDaoImplTest {
 
 	@BeforeEach
 	void init(){
-		userDaoImpl = new UserDaoImpl();
+		userDaoImpl = new UserDaoImpl(HibernateUtils.getSessionFactory());
 		u2 = new UserDto(
 				"Always_Throwing",
 				"Neo",

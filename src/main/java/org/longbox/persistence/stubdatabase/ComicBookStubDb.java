@@ -26,7 +26,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
     }
 
     @Override
-    public ComicBook getComicBookById(long id) {
+    public ComicBook getComicBookById(Long id) {
         comicBookStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (ComicBookDto comic : comicBookStubData) {
             if (comic.getId() == id) {
@@ -39,7 +39,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
     }
 
     @Override
-    public ComicBook getComicBookBySeriesName(String seriesTitle) {
+    public ComicBook getComicBookBySeriesTitle(String seriesTitle) {
         comicBookStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (ComicBookDto comic : comicBookStubData) {
             if (Objects.equals(comic.getSeriesTitle(), seriesTitle)) {
@@ -52,9 +52,10 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
     }
 
     @Override
-    public Long saveComicBook(ComicBookDto comicBook) {
+    public Long saveComicBook(ComicBook comicBook) {
         List<ComicBookDto> comics = deserializeStubData(ABSOLUTE_FILE_PATH);
-        comics.add(comicBook);
+        ComicBookDto comic = new ComicBookDto(comicBook);
+        comics.add(comic);
         comicBookStubData = comics;
         serializeStubData();
         return comicBook.getId();

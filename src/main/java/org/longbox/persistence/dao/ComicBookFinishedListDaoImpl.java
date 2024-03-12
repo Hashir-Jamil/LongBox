@@ -17,16 +17,20 @@ import java.util.Collections;
 import java.util.List;
 @Getter
 @Setter
-@NoArgsConstructor
 public class ComicBookFinishedListDaoImpl implements ComicBookFinishedListDao{
 
-    private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+    private SessionFactory sessionFactory;
+
+    public ComicBookFinishedListDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public void saveToFinished(Long userId, Long comicBookId) throws UserIDDoesNotExistException {
         Session session = null;
         Transaction transaction = null;
-        UserDaoImpl userDao = new UserDaoImpl();
-        ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl();
+        UserDaoImpl userDao = new UserDaoImpl(HibernateUtils.getSessionFactory());
+        ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 
         try {
             session = sessionFactory.openSession();

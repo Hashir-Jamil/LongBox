@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.ComicBookSearchUtils;
+import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
@@ -53,7 +54,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 	private ComicBookDaoImpl comicBookDaoImpl;
 	private UserSession userSession;
 	private JButton addToFavoritesButton;
-	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl();
+	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 
 	public ComicRepositoryPanel() {
 		initComicCollectionPage();
@@ -163,7 +164,7 @@ public class ComicRepositoryPanel extends JPanel implements ActionListener{
 	}
 
 	public void reloadTable() {
-		comicBookDaoImpl = new ComicBookDaoImpl();
+		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 
 		comicBookTableModel = new ComicBookTableModel(comicBookDaoImpl.getAllComicBooks());
 

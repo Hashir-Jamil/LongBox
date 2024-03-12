@@ -2,6 +2,7 @@ package org.longbox.integration.persistence.dao;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.entity.ComicBook;
@@ -10,8 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ComicBookDaoImplTest {
 
@@ -21,7 +21,7 @@ public class ComicBookDaoImplTest {
 
     @BeforeEach
     void init(){
-        comicBookDaoImpl = new ComicBookDaoImpl();
+        comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 
         comicBookDto1 = new ComicBookDto(
                 "Zot!",
@@ -77,12 +77,11 @@ public class ComicBookDaoImplTest {
     void getAllComicsTestBasic() {
         List<ComicBookDto> comicBookRecordsDTO = new ArrayList<>();
         comicBookRecordsDTO = comicBookDaoImpl.getAllComicBooks();
-        assertTrue(comicBookRecordsDTO.size() > 0);
+        assertFalse(comicBookRecordsDTO.isEmpty());
     }
 
     @Test
     void saveComicBook() {
-        comicBookDaoImpl.saveComicBook(comicBookDto2);
+        comicBookDaoImpl.saveComicBook(new ComicBook(comicBookDto2));
     }
-
 }

@@ -18,6 +18,7 @@ import javax.swing.*;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.ComicBookSearchUtils;
+import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
@@ -223,7 +224,7 @@ public class ProfilePanel extends JPanel {
 					aboutMe.setEditable(true);
 				}
 				else if (aboutMeEditButton.getText() == "Save") {
-					UserDaoImpl userDaoImpl = new UserDaoImpl();
+					UserDaoImpl userDaoImpl = new UserDaoImpl(HibernateUtils.getSessionFactory());
 					userDaoImpl.updateAboutMeString(user.getUser().getId(), aboutMe.getText());
 					user.getUser().setAboutMe(aboutMe.getText());
 					aboutMeCancelButton.setEnabled(false);
@@ -260,12 +261,12 @@ public class ProfilePanel extends JPanel {
 
 	public void reloadTable() throws UserIDDoesNotExistException {
 
-		UserDaoImpl userDaoImpl = new UserDaoImpl();
+		UserDaoImpl userDaoImpl = new UserDaoImpl(HibernateUtils.getSessionFactory());
 		user.setUser(new UserDto(userDaoImpl.getUserById(user.getUser().getId())));
 		setFields();
 
-		ComicBookReadingListDaoImpl readingListDaoImpl = new ComicBookReadingListDaoImpl();
-		ComicBookFinishedListDaoImpl readListDaoImpl = new ComicBookFinishedListDaoImpl();
+		ComicBookReadingListDaoImpl readingListDaoImpl = new ComicBookReadingListDaoImpl(HibernateUtils.getSessionFactory());
+		ComicBookFinishedListDaoImpl readListDaoImpl = new ComicBookFinishedListDaoImpl(HibernateUtils.getSessionFactory());
 
 		List<ComicBook> readingList = readingListDaoImpl.getUsersReadingList(user.getUser().getId());
 		List<ComicBookDto> readingListDTO = new ArrayList<ComicBookDto>();

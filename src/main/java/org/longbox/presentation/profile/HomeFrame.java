@@ -2,10 +2,13 @@ package org.longbox.presentation.profile;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.SessionFactory;
 import org.longbox.businesslogic.*;
 import org.longbox.businesslogic.controller.AuthenticationController;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
+import org.longbox.businesslogic.service.ComicBookService;
 import org.longbox.businesslogic.utils.ComicBookSearchUtils;
+import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.stubdatabase.ComicBookStubDb;
@@ -231,8 +234,8 @@ public class HomeFrame extends JFrame implements ActionListener {
         addComicToRepoPanel.getPublisherTextField().setText("");
         addComicToRepoPanel.getYearPublishedTextField().setText("");
 
-        ComicBookDaoImpl comicBookDao = new ComicBookDaoImpl();
-        Long comicId = comicBookDao.saveComicBook(comicBook);
+        ComicBookService comicBookService = new ComicBookService(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
+        Long comicId = comicBookService.saveComicBook(comicBook);
 
         boolean isFavorite = addComicToRepoPanel.getFavoriteCheckbox().isSelected();
         if (isFavorite) {

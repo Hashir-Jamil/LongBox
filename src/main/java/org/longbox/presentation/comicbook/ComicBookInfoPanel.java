@@ -14,6 +14,7 @@ import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.MultiLineCellRenderer;
+import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.dto.CommentDto;
 import org.longbox.persistence.dao.*;
@@ -77,7 +78,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		this.comicBookDTO = comicBookDTO;
 		this.userSession = userSession;
 
-		commentDaoImpl = new CommentDaoImpl();
+		commentDaoImpl = new CommentDaoImpl(HibernateUtils.getSessionFactory());
 		this.commentsOnCurrentComic = commentDaoImpl.getCommentsByComic(this.comicBookDTO.getId());
 
 		initComicBookInfoPage();
@@ -294,7 +295,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 			commentDaoImpl.saveComment(newComment);
 			displayComments();
 		} else if (e.getSource() == addToFavoritesButton) {
-			ComicBookFavouritesListDaoImpl favoritesListDaoImpl = new ComicBookFavouritesListDaoImpl();
+			ComicBookFavouritesListDaoImpl favoritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
             try {
                 favoritesListDaoImpl.saveToFavorites(userSession.getUser().getId(), comicBookDTO.getId());
             } catch (UserIDDoesNotExistException ex) {
@@ -304,7 +305,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 			favoriteButtonStates();
 		}
 		else if (e.getSource() == addToFinishedButton) {
-			comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl();
+			comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl(HibernateUtils.getSessionFactory());
 			try {
 				comicBookFinishedListDaoImpl.saveToFinished(userSession.getUser().getId(), comicBookDTO.getId());
 			} catch (UserIDDoesNotExistException ex) {
@@ -314,7 +315,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 			finishedButtonStates();
 		}
 		else if (e.getSource() == addToReadingButton) {
-			comicBookReadingListDaoImpl = new ComicBookReadingListDaoImpl();
+			comicBookReadingListDaoImpl = new ComicBookReadingListDaoImpl(HibernateUtils.getSessionFactory());
 			try {
 				comicBookReadingListDaoImpl.saveToReading(userSession.getUser().getId(), comicBookDTO.getId());
 			} catch (UserIDDoesNotExistException ex) {
@@ -324,7 +325,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 			readingButtonStates();
 		}
 		else if (e.getSource() == removeFromFavoritesButton) {
-			ComicBookFavouritesListDaoImpl favoritesListDaoImpl = new ComicBookFavouritesListDaoImpl();
+			ComicBookFavouritesListDaoImpl favoritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 			try {
 				favoritesListDaoImpl.removeFromFavorites(userSession.getUser().getId(), comicBookDTO.getId());
 			} catch (Exception ex) {
@@ -334,7 +335,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 			favoriteButtonStates();
 		}
 		else if (e.getSource() == removeFromFinishedButton) {
-			comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl();
+			comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl(HibernateUtils.getSessionFactory());
 			try {
 				comicBookFinishedListDaoImpl.removeFromFinished(userSession.getUser().getId(), comicBookDTO.getId());
 			} catch (Exception ex) {
@@ -344,7 +345,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 			finishedButtonStates();
 		}
 		else if (e.getSource() == removeFromToReadingButton) {
-			comicBookReadingListDaoImpl = new ComicBookReadingListDaoImpl();
+			comicBookReadingListDaoImpl = new ComicBookReadingListDaoImpl(HibernateUtils.getSessionFactory());
 			try {
 				comicBookReadingListDaoImpl.removeFromReading(userSession.getUser().getId(), comicBookDTO.getId());
 			} catch (Exception ex) {
@@ -356,8 +357,8 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	}
 
 	private boolean isComicInFavorites(long comicId) {
-		comicBookDaoImpl = new ComicBookDaoImpl();
-		comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl();
+		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
+		comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 		ComicBook comicBook = comicBookDaoImpl.getComicBookById(comicId);
 		ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
 		System.out.println("the comic in favorites is " + comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO));
@@ -365,12 +366,12 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	}
 
 	private boolean isComicInFinished(Long userId, Long comicBookId) {
-		comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl();
+		comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl(HibernateUtils.getSessionFactory());
 		return comicBookFinishedListDaoImpl.doesRecordExist(userId, comicBookId);
 	}
 
 	private boolean isComicInReading(Long userId, Long comicBookId) {
-		comicBookReadingListDaoImpl = new ComicBookReadingListDaoImpl();
+		comicBookReadingListDaoImpl = new ComicBookReadingListDaoImpl(HibernateUtils.getSessionFactory());
 		return comicBookReadingListDaoImpl.doesRecordExist(userId, comicBookId);
 	}
 

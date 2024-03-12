@@ -31,7 +31,7 @@ public class CommentStubDb implements CommentDao, JsonConvertor {
     }
 
     @Override
-    public List<CommentDto> getCommentsByComic(long comicID) {
+    public List<CommentDto> getCommentsByComic(Long comicID) {
         List<CommentDto> commentList = new ArrayList<>();
         for(CommentDto c: commentsStubData){
             if(c.getComicBookId() == comicID){
@@ -47,7 +47,7 @@ public class CommentStubDb implements CommentDao, JsonConvertor {
     }
 
     @Override
-    public List<CommentDto> getCommentsByUser(long userID) {
+    public List<CommentDto> getCommentsByUser(Long userID) {
         List<CommentDto> commentList = new ArrayList<>();
         for(CommentDto c: commentsStubData){
             if(c.getUserId() == userID){

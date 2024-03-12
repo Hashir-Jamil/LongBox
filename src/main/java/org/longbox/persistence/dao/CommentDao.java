@@ -9,10 +9,10 @@ public interface CommentDao {
 
     Comment getCommentById(long userId, long comicId);
 
-    public List<CommentDto> getCommentsByComic(long comicID);
+    public List<CommentDto> getCommentsByComic(Long comicID);
 
     void saveComment(CommentDto commentDTO);
 
-    public List<CommentDto> getCommentsByUser(long userID);
+    public List<CommentDto> getCommentsByUser(Long userID);
 
 }

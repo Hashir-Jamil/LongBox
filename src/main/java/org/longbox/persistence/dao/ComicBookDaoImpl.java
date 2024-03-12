@@ -14,22 +14,19 @@ import java.util.List;
 
 public class ComicBookDaoImpl implements ComicBookDao {
     private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+    public ComicBookDaoImpl (SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
-    public ComicBook getComicBookById(long comicId) {
+    public ComicBook getComicBookById(Long comicId) {
         Session session = null;
-        Transaction transaction = null;
-        ComicBook comicBook = null;
 
         try {
-            session = sessionFactory.openSession();
-            transaction = session.beginTransaction();
-            comicBook = session.get(ComicBook.class, comicId);
-        }
+            session = sessionFactory.openSession();;
+            return session.get(ComicBook.class, comicId);
+                    }
         catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             e.printStackTrace();
         }
         finally {
@@ -37,26 +34,20 @@ public class ComicBookDaoImpl implements ComicBookDao {
                 session.close();
             }
         }
-        return comicBook;
+        return new ComicBook();
     }
 
     @Override
-    public ComicBook getComicBookBySeriesName(String seriesTitle) {
+    public ComicBook getComicBookBySeriesTitle(String seriesTitle) {
         Session session = null;
-        Transaction transaction = null;
-        ComicBook comicBook = null;
 
         try {
             session = sessionFactory.openSession();
-            transaction = session.beginTransaction();
-            Query query = session.createQuery("FROM ComicBook WHERE seriesTitle = :seriesTitle");
+            Query query = session.createQuery("FROM ComicBook WHERE seriesTitle = :seriesTitle", ComicBook.class);
             query.setParameter("seriesTitle", seriesTitle);
-            comicBook = (ComicBook) query.uniqueResult();
+            return (ComicBook) query.uniqueResult();
         }
         catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             e.printStackTrace();
         }
         finally {
@@ -64,14 +55,13 @@ public class ComicBookDaoImpl implements ComicBookDao {
                 session.close();
             }
         }
-        return comicBook;
+        return new ComicBook();
     }
 
     @Override
-    public Long saveComicBook(ComicBookDto comicBookDTO) {
+    public Long saveComicBook(ComicBook comicBook) {
         Session session = null;
         Transaction transaction = null;
-        ComicBook comicBook = new ComicBook(comicBookDTO);
 
         try {
             session = sessionFactory.openSession();
@@ -106,12 +96,10 @@ public class ComicBookDaoImpl implements ComicBookDao {
     @Override
     public List<ComicBookDto> getAllComicBooks() {
         Session session = null;
-        Transaction transaction = null;
-        List<ComicBook> comicBookList = null;
+        List<ComicBook> comicBookList = new ArrayList<>();
 
         try {
             session = sessionFactory.openSession();
-            transaction = session.beginTransaction();
             comicBookList = session.createQuery(
                     "SELECT cb FROM ComicBook cb",
                     ComicBook.class).list();

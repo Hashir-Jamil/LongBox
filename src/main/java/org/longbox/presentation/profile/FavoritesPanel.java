@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.utils.ComicBookSearchUtils;
+import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
@@ -47,7 +48,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 	}
 
 	public void update(long userId, long comicBookId) throws UserIDDoesNotExistException {
-		comicBookFavouritesListDaoImp = new ComicBookFavouritesListDaoImpl();
+		comicBookFavouritesListDaoImp = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 		comicBookFavouritesListDaoImp.saveToFavorites(userId, comicBookId);
 		List<ComicBookDto> updatedFavoriteComicBooks = comicBookFavouritesListDaoImp.getAllFavoritesComicBooks();
 		comicBookTableModel.updateData(updatedFavoriteComicBooks);
@@ -73,7 +74,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 
 		add(panel, BorderLayout.CENTER);
 
-		comicBookFavouritesListDaoImp = new ComicBookFavouritesListDaoImpl();
+		comicBookFavouritesListDaoImp = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 
 			comicBookTableModel = new ComicBookTableModel(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks());
 
@@ -153,7 +154,7 @@ public class FavoritesPanel extends JPanel implements ActionListener {
 			} else {
 				int confirmUnfavorite = JOptionPane.showConfirmDialog(this, "Are you sure you want to unfavorite this comic?", "Unfavorite Confirmation", JOptionPane.YES_NO_OPTION);
 				if (confirmUnfavorite == JOptionPane.YES_OPTION) {
-					ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl();
+					ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 					long userId = userSession.getUser().getId();
 					long comicId = comicBookTableModel.getComicIdAtRow(selectedRow);
 					comicBookFavouritesListDaoImp.removeFromFavorites(userId, comicId);

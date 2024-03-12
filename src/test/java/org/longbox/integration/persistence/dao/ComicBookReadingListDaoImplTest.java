@@ -3,6 +3,7 @@ package org.longbox.integration.persistence.dao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
+import org.longbox.config.HibernateUtils;
 import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -12,7 +13,7 @@ public class ComicBookReadingListDaoImplTest {
 
     @BeforeEach
     void setup() {
-        readingListDao = new ComicBookReadingListDaoImpl();
+        readingListDao = new ComicBookReadingListDaoImpl(HibernateUtils.getSessionFactory());
     }
 
     /*

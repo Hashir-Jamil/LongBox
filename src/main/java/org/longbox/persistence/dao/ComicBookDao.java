@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface ComicBookDao {
 
-    ComicBook getComicBookById(long id);
+    ComicBook getComicBookById(Long id);
 
-    ComicBook getComicBookBySeriesName(String seriesName);
+    ComicBook getComicBookBySeriesTitle(String seriesName);
 
-    Long saveComicBook(ComicBookDto comicBook);
+    Long saveComicBook(ComicBook comicBook);
 
     boolean deleteComicBook(ComicBook comicBook);
 

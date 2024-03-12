@@ -6,6 +6,7 @@ import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.service.UserService;
+import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.UserDaoImpl;
 
@@ -20,7 +21,7 @@ public class UserServiceTest {
 
     @BeforeEach
     void setup() {
-        userService = new UserService(new UserDaoImpl());
+        userService = new UserService(new UserDaoImpl(HibernateUtils.getSessionFactory()));
         u1 = new UserDto(
                 1L,
                 "Always_Scheming",
