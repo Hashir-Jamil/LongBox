@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
+import org.longbox.businesslogic.controller.ComicBookInfoController;
 import org.longbox.domainobjects.dto.ComicBookDto;
 
 import java.awt.CardLayout;
@@ -20,6 +21,7 @@ public class ComicBookFrame extends JFrame {
 	
 	private JPanel comicBookPane;
 	private ComicBookInfoPanel comicBookInfoPane;
+	private ComicBookInfoController comicBookInfoController;
 	private CardLayout cardLayout;
 	private ComicBookDto comicBookResult;
 	private UserSession userSession;
@@ -32,7 +34,8 @@ public class ComicBookFrame extends JFrame {
 	
 	private void initComicBookPage() {
 		comicBookInfoPane = new ComicBookInfoPanel(this.comicBookResult, this.userSession);
-		
+		comicBookInfoController = new ComicBookInfoController(comicBookInfoPane);
+
 		setTitle(FRAME_TITLE);
 	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    setBounds(100, 100, 1200, 900);

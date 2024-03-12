@@ -13,6 +13,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
+import org.longbox.businesslogic.service.CommentService;
 import org.longbox.businesslogic.utils.MultiLineCellRenderer;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
@@ -22,7 +23,7 @@ import org.longbox.persistence.entity.ComicBook;
 
 @Getter
 @Setter
-public class ComicBookInfoPanel extends JPanel implements ActionListener {
+public class ComicBookInfoPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private static final String DEFAULT_FONT = "Calibri";
@@ -62,24 +63,27 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 	private List<CommentDto> commentsOnCurrentComic;
 	private UserSession userSession;
 	private JList<CommentDto> commentList;
+
 	private ComicBookDaoImpl comicBookDaoImpl;
 	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl;
 	private ComicBookFinishedListDaoImpl comicBookFinishedListDaoImpl;
 	private ComicBookReadingListDaoImpl comicBookReadingListDaoImpl;
+
+	private CommentService commentService;
 	
 	/**
 	 * Create the panel.
 	 */
-//	public ComicBookInfoPanel() {
-//		initComicBookInfoPage();
-//	}
+
 	
 	public ComicBookInfoPanel(ComicBookDto comicBookDTO, UserSession userSession) {
 		this.comicBookDTO = comicBookDTO;
 		this.userSession = userSession;
 
 		commentDaoImpl = new CommentDaoImpl(HibernateUtils.getSessionFactory());
-		this.commentsOnCurrentComic = commentDaoImpl.getCommentsByComic(this.comicBookDTO.getId());
+		commentService = new CommentService(commentDaoImpl);
+
+		this.commentsOnCurrentComic = commentService.getCommentsByComic(this.comicBookDTO.getId());
 
 		initComicBookInfoPage();
 	}
@@ -199,43 +203,36 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		
 		addCommentButton = new JButton(ADD_COMMENT_LABEL);
 		addCommentButton.setBounds(1018, 311, 117, 29);
-		addCommentButton.addActionListener(this);
 		panel.add(addCommentButton);
 
 		addToFavoritesButton = new JButton(FAVORITES_LIST_LABEL);
 		addToFavoritesButton.setBounds(10, 655, 175, 30);
 		addToFavoritesButton.setEnabled(false);
-		addToFavoritesButton.addActionListener(this);
 		panel.add(addToFavoritesButton);
 
 		addToFinishedButton = new JButton(FINISHED_LIST_LABEL);
 		addToFinishedButton.setBounds(200, 655, 175, 30);
 		addToFinishedButton.setEnabled(false);
-		addToFinishedButton.addActionListener(this);
 		panel.add(addToFinishedButton);
 
 		addToReadingButton = new JButton(READING_LIST_LABEL);
 		addToReadingButton.setBounds(391, 655, 175, 30);
 		addToReadingButton.setEnabled(false);
-		addToReadingButton.addActionListener(this);
 		panel.add(addToReadingButton);
 
 		removeFromFavoritesButton = new JButton(REMOVE_FAVORITES_LIST_LABEL);
 		removeFromFavoritesButton.setBounds(10, 690, 175, 30);
 		removeFromFavoritesButton.setEnabled(false);
-		removeFromFavoritesButton.addActionListener(this);
 		panel.add(removeFromFavoritesButton);
 
 		removeFromFinishedButton = new JButton(REMOVE_FINISHED_LIST_LABEL);
 		removeFromFinishedButton.setBounds(200, 690, 175, 30);
 		removeFromFinishedButton.setEnabled(false);
-		removeFromFinishedButton.addActionListener(this);
 		panel.add(removeFromFinishedButton);
 
 		removeFromToReadingButton = new JButton(REMOVE_READING_LIST_LABEL);
 		removeFromToReadingButton.setBounds(391, 690, 175, 30);
 		removeFromToReadingButton.setEnabled(false);
-		removeFromToReadingButton.addActionListener(this);
 		panel.add(removeFromToReadingButton);
 		
 		addCommentLabel = new JLabel("Share your thoughts:");
@@ -275,8 +272,8 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		dateAdded.setText("" + comicBookDTO.getDateAdded());
 	}
 
-	private void displayComments(){
-		commentsOnCurrentComic = commentDaoImpl.getCommentsByComic(comicBookDTO.getId());
+	public void displayComments(){
+		commentsOnCurrentComic = commentService.getCommentsByComic(comicBookDTO.getId());
 		commentListModel.removeAllElements();
 
 		for (CommentDto c : commentsOnCurrentComic) {
@@ -287,76 +284,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		commentBox.setText("");
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == addCommentButton){
-			String message = commentBox.getText();
-			CommentDto newComment = new CommentDto(message, this.userSession.getUser(), this.comicBookDTO);
-			commentDaoImpl.saveComment(newComment);
-			displayComments();
-		} else if (e.getSource() == addToFavoritesButton) {
-			ComicBookFavouritesListDaoImpl favoritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
-            try {
-                favoritesListDaoImpl.saveToFavorites(userSession.getUser().getId(), comicBookDTO.getId());
-            } catch (UserIDDoesNotExistException ex) {
-                throw new RuntimeException(ex);
-            }
-			addToFavoritesButton.setEnabled(false); // Disable the button after adding
-			favoriteButtonStates();
-		}
-		else if (e.getSource() == addToFinishedButton) {
-			comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl(HibernateUtils.getSessionFactory());
-			try {
-				comicBookFinishedListDaoImpl.saveToFinished(userSession.getUser().getId(), comicBookDTO.getId());
-			} catch (UserIDDoesNotExistException ex) {
-				throw new RuntimeException(ex);
-			}
-			addToFinishedButton.setEnabled(false); // Disable the button after adding
-			finishedButtonStates();
-		}
-		else if (e.getSource() == addToReadingButton) {
-			comicBookReadingListDaoImpl = new ComicBookReadingListDaoImpl(HibernateUtils.getSessionFactory());
-			try {
-				comicBookReadingListDaoImpl.saveToReading(userSession.getUser().getId(), comicBookDTO.getId());
-			} catch (UserIDDoesNotExistException ex) {
-				throw new RuntimeException(ex);
-			}
-			addToReadingButton.setEnabled(false); // Disable the button after adding
-			readingButtonStates();
-		}
-		else if (e.getSource() == removeFromFavoritesButton) {
-			ComicBookFavouritesListDaoImpl favoritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
-			try {
-				favoritesListDaoImpl.removeFromFavorites(userSession.getUser().getId(), comicBookDTO.getId());
-			} catch (Exception ex) {
-				throw new RuntimeException(ex);
-			}
-			removeFromFavoritesButton.setEnabled(false);
-			favoriteButtonStates();
-		}
-		else if (e.getSource() == removeFromFinishedButton) {
-			comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl(HibernateUtils.getSessionFactory());
-			try {
-				comicBookFinishedListDaoImpl.removeFromFinished(userSession.getUser().getId(), comicBookDTO.getId());
-			} catch (Exception ex) {
-				throw new RuntimeException(ex);
-			}
-			removeFromFinishedButton.setEnabled(false);
-			finishedButtonStates();
-		}
-		else if (e.getSource() == removeFromToReadingButton) {
-			comicBookReadingListDaoImpl = new ComicBookReadingListDaoImpl(HibernateUtils.getSessionFactory());
-			try {
-				comicBookReadingListDaoImpl.removeFromReading(userSession.getUser().getId(), comicBookDTO.getId());
-			} catch (Exception ex) {
-				throw new RuntimeException(ex);
-			}
-			removeFromToReadingButton.setEnabled(false);
-			readingButtonStates();
-		}
-	}
-
-	private boolean isComicInFavorites(long comicId) {
+	public boolean isComicInFavorites(long comicId) {
 		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 		comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 		ComicBook comicBook = comicBookDaoImpl.getComicBookById(comicId);
@@ -365,17 +293,17 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		return comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO);
 	}
 
-	private boolean isComicInFinished(Long userId, Long comicBookId) {
+	public boolean isComicInFinished(Long userId, Long comicBookId) {
 		comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl(HibernateUtils.getSessionFactory());
 		return comicBookFinishedListDaoImpl.doesRecordExist(userId, comicBookId);
 	}
 
-	private boolean isComicInReading(Long userId, Long comicBookId) {
+	public boolean isComicInReading(Long userId, Long comicBookId) {
 		comicBookReadingListDaoImpl = new ComicBookReadingListDaoImpl(HibernateUtils.getSessionFactory());
 		return comicBookReadingListDaoImpl.doesRecordExist(userId, comicBookId);
 	}
 
-	private void favoriteButtonStates() {
+	public void favoriteButtonStates() {
 		if (!isComicInFavorites(comicBookDTO.getId())) {
 			addToFavoritesButton.setEnabled(true);
 		}
@@ -384,7 +312,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		}
 	}
 
-	private void finishedButtonStates() {
+	public void finishedButtonStates() {
 		if (!isComicInFinished(userSession.getUser().getId(), comicBookDTO.getId())) {
 			addToFinishedButton.setEnabled(true);
 		}
@@ -393,7 +321,7 @@ public class ComicBookInfoPanel extends JPanel implements ActionListener {
 		}
 	}
 
-	private void readingButtonStates() {
+	public void readingButtonStates() {
 		if (!isComicInReading(userSession.getUser().getId(), comicBookDTO.getId())) {
 			addToReadingButton.setEnabled(true);
 		}
