@@ -3,8 +3,6 @@ package org.longbox.presentation.comicbook;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.*;
@@ -12,7 +10,6 @@ import javax.swing.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
-import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.service.CommentService;
 import org.longbox.businesslogic.utils.MultiLineCellRenderer;
 import org.longbox.config.HibernateUtils;
