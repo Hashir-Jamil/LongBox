@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.tablemodels.TrendingAllTimeTableModel;
@@ -59,7 +60,7 @@ public class TrendingPanel extends JPanel {
 		nationalFavorites.setBounds(10, 450, 117, 22);
 		panel.add(nationalFavorites);
 			
-		ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl();
+		ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 		TrendingAllTimeTableModel comicBookTableModel = new TrendingAllTimeTableModel(comicBookDaoImpl.getAllComicBooks());
 		
 		for(ComicBookDto c : comicBookDaoImpl.getAllComicBooks()) {

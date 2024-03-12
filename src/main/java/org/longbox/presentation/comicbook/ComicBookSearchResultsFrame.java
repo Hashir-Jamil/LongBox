@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.utils.ComicBookSearchUtils;
+import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.profile.ComicBookTableModel;
@@ -55,7 +56,7 @@ public class ComicBookSearchResultsFrame extends JFrame {
 		
 		comicBookTable = new JTable();
 		
-		comicBookDaoImpl = new ComicBookDaoImpl();
+		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 
 		comicBookTableModel = new ComicBookTableModel(displayResults);
 
