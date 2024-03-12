@@ -24,7 +24,7 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     }
 
     @Override
-    public void saveToFavorites(long userId, long comicBookId) throws UserIDDoesNotExistException {
+    public void saveToFavorites(Long userId, Long comicBookId) throws UserIDDoesNotExistException {
 
         Session session = null;
         Transaction transaction = null;
@@ -61,7 +61,7 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     }
 
     @Override
-    public void removeFromFavorites(long userId, long comicBookId) {
+    public void removeFromFavorites(Long userId, Long comicBookId) {
         Session session = null;
         Transaction transaction = null;
         int deletedEntities = 0;
@@ -97,13 +97,13 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     }
 
     @Override
-    public List<ComicBook> getFavoritesByUser(long userId) {
+    public List<ComicBook> getFavoritesByUser(Long userId) {
         // Implement retrieving favorite comic books for a given user from the database
         return null;
     }
 
     @Override
-    public List<User> getUsersByComicBook(long comicBookId) {
+    public List<User> getUsersByComicBook(Long comicBookId) {
         // Implement retrieving users who have added a specific comic book to their favorites list from the database
         return null;
     }
