@@ -65,6 +65,7 @@ public class AuthenticationController implements ActionListener {
                     this.authenticationFrame.getLoginPanel().getErrorLabel().setForeground(Color.GREEN);
                     this.authenticationFrame.dispose();
                     HomeFrame homeFrame = new HomeFrame(userService.startSession(user));
+                    HomeController homeController = new HomeController(homeFrame);
                     homeFrame.setVisible(true);
                 } else {
                     this.authenticationFrame.getLoginPanel().getErrorLabel().setText("Password Incorrect");

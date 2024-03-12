@@ -30,13 +30,13 @@ public class ComicBookFavoritesListStubDb implements ComicBookFavouritesListDao,
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/ComicBookFavoritesListStubDb.json";
 
     @Override
-    public void saveToFavorites(long userId, long comicBookId) throws UserIDDoesNotExistException {
+    public void saveToFavorites(Long userId, Long comicBookId) throws UserIDDoesNotExistException {
         List<ComicBookListItemFavoriteDto> readingList = deserializeStubData(ABSOLUTE_FILE_PATH);
         readingList.add(new ComicBookListItemFavoriteDto(userId, comicBookId));
     }
 
     @Override
-    public void removeFromFavorites(long userId, long comicBookId) {
+    public void removeFromFavorites(Long userId, Long comicBookId) {
         List<ComicBookListItemFavoriteDto> favoritesList = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (int i = 0; i < favoritesList.size(); i++) {
             if (favoritesList.get(i).getUserId() == userId && favoritesList.get(i).getComicBookId() == comicBookId) {
@@ -54,12 +54,12 @@ public class ComicBookFavoritesListStubDb implements ComicBookFavouritesListDao,
     }
 
     @Override
-    public List<ComicBook> getFavoritesByUser(long userId) {
+    public List<ComicBook> getFavoritesByUser(Long userId) {
         return null;
     }
 
     @Override
-    public List<User> getUsersByComicBook(long comicBookId) {
+    public List<User> getUsersByComicBook(Long comicBookId) {
         return null;
     }
 
