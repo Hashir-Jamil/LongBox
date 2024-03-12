@@ -7,7 +7,7 @@ SET SEARCH_PATH = longbox_schema;
 
 -- Table Definitions
 CREATE TABLE IF NOT EXISTS "user" (
-    "id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    "id" bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     "user_name" text UNIQUE,
     "first_name" text,
     "last_name" text,
@@ -16,13 +16,13 @@ CREATE TABLE IF NOT EXISTS "user" (
     "password" text,
     "country" text,
     "join_date" date,
-    "comics_reading" integer,
-    "comics_finished" integer,
+    "comics_reading" integer  DEFAULT 0,
+    "comics_finished" integer  DEFAULT 0,
     "about_me" text
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book" (
-    "id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    "id" bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     "series_title" text,
     "author" text,
     "artist" text,
@@ -36,31 +36,31 @@ CREATE TABLE IF NOT EXISTS "comic_book" (
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book_favorites_list" (
-    "user_id" integer NOT NULL,
-    "comic_book_id" integer NOT NULL,
+    "user_id" bigint NOT NULL,
+    "comic_book_id" bigint NOT NULL,
     "date_added_user_list" date,
     PRIMARY KEY ("user_id","comic_book_id")
 );
 
 CREATE TABLE IF NOT EXISTS "comments" (
-    "id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    "id" bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     "message" text,
     "comment_date" date,
-    "comic_book_id" integer,
-    "user_id" integer,
+    "comic_book_id" bigint,
+    "user_id" bigint,
     "user_name" text
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book_finished_list" (
-    "user_id" integer NOT NULL,
-    "comic_book_id" integer NOT NULL,
+    "user_id" bigint NOT NULL,
+    "comic_book_id" bigint NOT NULL,
     "date_finished" date,
     PRIMARY KEY ("user_id","comic_book_id")
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book_reading_list" (
-   "user_id" integer NOT NULL,
-   "comic_book_id" integer NOT NULL,
+   "user_id" bigint NOT NULL,
+   "comic_book_id" bigint NOT NULL,
    "date_started" date,
    PRIMARY KEY ("user_id","comic_book_id")
 );
