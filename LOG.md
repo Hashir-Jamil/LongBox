@@ -203,3 +203,8 @@
     Eric: Added ability for user to navigate to comic book pgae by clicking on comic book in their reading / read table in profile
     Oscar: Finished implementing cancel button for "About Me" section and created test case for updating the field in database.
     Hashir: Final touches for submission criteria for ITR2 + adding more tests for stories and integration + refactoring
+
+## Monday, March 11, 2024
+    
+    Group (All Members): Discussed the ITR2 submission, also started with the ITR3 planning document and divided user stories and refactoring task amongst the group members.
+    Ahan and Hashir: Refatored controller of authentication frame to a seperate class, also incorporated UserService class to the refactored code.
