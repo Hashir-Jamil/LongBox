@@ -60,6 +60,8 @@ public class HomeController implements ActionListener {
 
         if (e.getSource() == this.homeFrame.getFavoritesButton()) {
             this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getFAVORITES_PANEL());
+            this.homeFrame.getFavoritesPanel().reloadData();
+            FavoritesController favoritesController = new FavoritesController(this.homeFrame.getFavoritesPanel());
         }
 
         if (e.getSource() == this.homeFrame.getProfileButton()) {
