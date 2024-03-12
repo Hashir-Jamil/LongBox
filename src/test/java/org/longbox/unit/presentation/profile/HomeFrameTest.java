@@ -1,16 +1,10 @@
 package org.longbox.unit.presentation.profile;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.presentation.profile.AddComicToRepoPanel;
 
 import org.longbox.presentation.profile.HomeFrame;
-
-@Getter
-@Setter
 public class HomeFrameTest {
 
     private HomeFrame homeFrame;
