@@ -208,6 +208,7 @@
     
     Group (All Members): Discussed the ITR2 submission, also started with the ITR3 planning document and divided user stories and refactoring task amongst the group members.
     Ahan and Hashir: Refatored controller of authentication frame to a seperate class, also incorporated UserService class to the refactored code.
+    Eric: added table models, panel, and logic for all time trending. Refactored trending page.
     Hashir: began working on service layer of business logic for better abstraction, improved stub database tests & fixed json stub database format --> refactoring of code is overall goal here
     
 
