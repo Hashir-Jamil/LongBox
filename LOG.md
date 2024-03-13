@@ -208,8 +208,17 @@
     
     Group (All Members): Discussed the ITR2 submission, also started with the ITR3 planning document and divided user stories and refactoring task amongst the group members.
     Ahan and Hashir: Refatored controller of authentication frame to a seperate class, also incorporated UserService class to the refactored code.
+    Hashir: began working on service layer of business logic for better abstraction, improved stub database tests & fixed json stub database format --> refactoring of code is overall goal here
+    
 
 ## Tuesday, March 12th, 2024
 
     Ahan and Hashir: Moved controller for ComicBookInfoPanel to another package, and switched form CommentDao to CommentService
     Ali, Hashir and Ahan: Moved controller for FavoritesPanel to another package.
+    Hashir: More refactoring by cleaning up coding style, unused fields/imports, development of controller to separate gui from its control, finished service layer api for cleaner abstraction of backend services, made database table id fields bigint and all java types Long wrapper object for corresponding fields/params/returns
+
+## Wednesday, March 13th, 2024
+
+    Group Meeting (All members): went over recent refactorings for everyone to be up to date, met with professor to discuss final phase of course and our plan/what we are working on/have worked on
+    Hashir: more refactoring of coding style & project structure, consistent mapping/contracts of dto vs entity at service layer.
+    
