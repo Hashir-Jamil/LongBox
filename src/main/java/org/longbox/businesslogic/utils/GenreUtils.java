@@ -20,5 +20,4 @@ public class GenreUtils {
         genres = genres + genresList[genresList.length - 1];
         return genres;
     }
-
 }
