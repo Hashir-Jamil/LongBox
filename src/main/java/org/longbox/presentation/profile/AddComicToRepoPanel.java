@@ -8,12 +8,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
+
 @Getter
 @Setter
 public class AddComicToRepoPanel extends JPanel {
-
 	private static final long serialVersionUID = 1L;
 	private static final String DEFAULT_FONT = "Calibri";
 	private final String ADD_COMIC_TO_REPO = "Add a Comic Book To The LongBox Repository";

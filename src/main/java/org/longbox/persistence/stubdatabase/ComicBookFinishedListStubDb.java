@@ -24,7 +24,6 @@ import java.util.Objects;
 @Getter
 @Setter
 public class ComicBookFinishedListStubDb implements ComicBookFinishedListDao, JsonConvertor {
-
     private List<ComicBookListItemFinishedDto> records;
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/ComicBookFinishedListStubDb.json";
 

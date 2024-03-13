@@ -11,7 +11,6 @@ import java.util.Date;
 @EqualsAndHashCode
 @ToString
 public class ComicBookListItemDto {
-
     private Long comicBookId;
     private Long userId;
     private Date dateAdded;

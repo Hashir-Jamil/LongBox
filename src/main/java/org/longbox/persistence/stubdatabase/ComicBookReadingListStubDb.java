@@ -20,7 +20,6 @@ import java.util.List;
 @Getter
 @Setter
 public class ComicBookReadingListStubDb implements ComicBookReadingListDao, JsonConvertor {
-
     List<ComicBookListItemReadingDto> records;
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/ComicBookReadingListStubDb.json";
 

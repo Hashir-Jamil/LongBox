@@ -25,7 +25,6 @@ import org.longbox.domainobjects.entity.User;
 @Setter
 @NoArgsConstructor
 public class UserStubDb implements UserDao, JsonConvertor {
-
     private List<UserDto> userStubData;
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/UserStubDb.json";
 

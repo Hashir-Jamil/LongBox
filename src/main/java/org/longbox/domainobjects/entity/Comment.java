@@ -12,7 +12,6 @@ import java.util.Date;
 @Getter
 @Setter
 public class Comment {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

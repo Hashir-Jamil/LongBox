@@ -25,7 +25,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class ComicBookFavoritesListStubDb implements ComicBookFavouritesListDao, JsonConvertor {
-
     private List<ComicBookListItemFavoriteDto> records = new ArrayList<>();
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/ComicBookFavoritesListStubDb.json";
 

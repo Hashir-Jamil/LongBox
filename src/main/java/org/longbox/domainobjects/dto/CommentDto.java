@@ -9,7 +9,6 @@ import java.util.Objects;
 @Getter
 @Setter
 public class CommentDto {
-
 	private long id;
     private long userId;
     private long comicBookId;

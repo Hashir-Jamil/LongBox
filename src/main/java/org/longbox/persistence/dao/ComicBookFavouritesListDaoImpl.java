@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDao {
-
     SessionFactory sessionFactory;
 
     public ComicBookFavouritesListDaoImpl(SessionFactory sessionFactory) {

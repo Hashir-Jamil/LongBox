@@ -5,13 +5,12 @@ import lombok.Setter;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-
+import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JSeparator;
-import java.awt.Color;
 import javax.swing.JButton;
 @Getter
 @Setter

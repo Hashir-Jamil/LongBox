@@ -4,18 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.*;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import javax.swing.JLabel;
-
 import javax.swing.JButton;
-
 import java.awt.CardLayout;
 import java.awt.ComponentOrientation;
+
 @Getter
 @Setter
 public class HomeFrame extends JFrame {

@@ -1,12 +1,5 @@
 package org.longbox.presentation.comicbook;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.util.List;
-
-import javax.swing.*;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
@@ -18,10 +11,15 @@ import org.longbox.domainobjects.dto.CommentDto;
 import org.longbox.persistence.dao.*;
 import org.longbox.domainobjects.entity.ComicBook;
 
+import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.util.List;
+
 @Getter
 @Setter
 public class ComicBookInfoPanel extends JPanel {
-
 	private static final long serialVersionUID = 1L;
 	private static final String DEFAULT_FONT = "Calibri";
 	private static final String PANEL_LABEL = "Search Result";

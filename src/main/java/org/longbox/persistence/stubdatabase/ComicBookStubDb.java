@@ -18,7 +18,6 @@ import org.longbox.domainobjects.entity.ComicBook;
 @Getter
 @Setter
 public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
-
     private List<ComicBookDto> comicBookStubData;
     private final String ABSOLUTE_FILE_PATH = "src/main/resources/ComicBookStubDb.json";
 

@@ -1,13 +1,11 @@
 package org.longbox.presentation.tablemodels;
 
-import java.util.List;
-
-import javax.swing.table.DefaultTableModel;
-
 import org.longbox.domainobjects.dto.ComicBookDto;
 
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
+
 public class TrendingAllTimeTableModel extends DefaultTableModel {
-	
 	private static final long serialVersionUID = 1L;
 	
 	List<ComicBookDto> comicBookList;

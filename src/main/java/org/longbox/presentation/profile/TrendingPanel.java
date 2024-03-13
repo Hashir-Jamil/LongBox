@@ -1,18 +1,17 @@
 package org.longbox.presentation.profile;
 
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.tablemodels.TrendingAllTimeTableModel;
 
+import java.awt.BorderLayout;
+import java.awt.Font;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.JTable;
 
 public class TrendingPanel extends JPanel {

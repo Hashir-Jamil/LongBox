@@ -5,16 +5,17 @@ import lombok.Setter;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.BorderLayout;
-import java.awt.Color;
-
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+
+import java.awt.Font;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 @Getter
 @Setter
 public class LoginPanel extends JPanel{
@@ -23,15 +24,12 @@ public class LoginPanel extends JPanel{
 	private JPasswordField passwordField;
 	private JButton signInButton, signUpButton;
 	private JLabel errorLabel;
-	/**
-	 * Create the panel.
-	 */
+
 	public LoginPanel() {
 		initLoginPage();
 	}
 	
 	public void initLoginPage() {
-		
 		setBounds(100, 100, 809, 554);
 
 		setLayout(new BorderLayout());

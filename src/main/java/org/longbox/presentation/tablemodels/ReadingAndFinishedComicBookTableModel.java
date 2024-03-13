@@ -1,9 +1,8 @@
-package org.longbox.presentation.profile;
+package org.longbox.presentation.tablemodels;
 
 import org.longbox.domainobjects.dto.ComicBookDto;
 
 import java.util.List;
-
 import javax.swing.table.DefaultTableModel;
 
 public class ReadingAndFinishedComicBookTableModel extends DefaultTableModel {

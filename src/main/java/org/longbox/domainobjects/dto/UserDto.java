@@ -11,7 +11,6 @@ import java.util.*;
 @Setter
 @ToString
 public class UserDto {
-
 	private Long id;
 	private String userName;
 	private String firstName;

@@ -3,7 +3,6 @@ package org.longbox.presentation.profile;
 import org.longbox.domainobjects.dto.ComicBookDto;
 
 import java.util.List;
-
 import javax.swing.table.DefaultTableModel;
 
 public class ComicBookTableModel extends DefaultTableModel {

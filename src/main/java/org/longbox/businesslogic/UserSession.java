@@ -3,7 +3,6 @@ package org.longbox.businesslogic;
 import org.longbox.domainobjects.dto.UserDto;
 
 public class UserSession {
-
     private static UserSession activeUser = null;
     private UserDto user;
 

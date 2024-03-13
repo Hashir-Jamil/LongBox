@@ -1,7 +1,6 @@
 package org.longbox.businesslogic.comparators;
 
 import org.longbox.domainobjects.dto.ComicBookDto;
-
 import java.util.Comparator;
 
 public class ComicBookNameComparator implements Comparator<ComicBookDto> {

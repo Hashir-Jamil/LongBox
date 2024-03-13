@@ -17,7 +17,6 @@ import java.util.List;
 @Getter
 @Setter
 public class ComicBookFinishedListDaoImpl implements ComicBookFinishedListDao{
-
     private SessionFactory sessionFactory;
 
     public ComicBookFinishedListDaoImpl(SessionFactory sessionFactory) {

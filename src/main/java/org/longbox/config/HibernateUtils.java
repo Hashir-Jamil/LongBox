@@ -1,9 +1,9 @@
 package org.longbox.config;
 
+import org.longbox.domainobjects.entity.*;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.longbox.domainobjects.entity.*;
-import org.longbox.persistence.entity.*;
 
 public class HibernateUtils {
     private static SessionFactory sessionFactory;

@@ -1,16 +1,16 @@
 package org.longbox.presentation.comicbook;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.controller.ComicBookInfoController;
 import org.longbox.domainobjects.dto.ComicBookDto;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
+
 @Getter
 @Setter
 public class ComicBookFrame extends JFrame {
