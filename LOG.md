@@ -208,6 +208,7 @@
     
     Group (All Members): Discussed the ITR2 submission, also started with the ITR3 planning document and divided user stories and refactoring task amongst the group members.
     Ahan and Hashir: Refatored controller of authentication frame to a seperate class, also incorporated UserService class to the refactored code.
+    Eric: added table models, panel, and logic for all time trending. Refactored trending page.
 
 ## Tuesday, March 12th, 2024
 
