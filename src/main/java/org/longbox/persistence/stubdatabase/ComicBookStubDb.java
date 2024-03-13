@@ -98,6 +98,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
 
     @Override
     public List<ComicBookDto> getAllComicBooks() {
+        //return ComicBookMapper.toEntityList(deserializeStubData(ABSOLUTE_FILE_PATH));
         return deserializeStubData(ABSOLUTE_FILE_PATH);
     }
 

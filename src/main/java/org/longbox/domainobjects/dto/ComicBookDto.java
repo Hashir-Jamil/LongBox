@@ -21,7 +21,7 @@ public class ComicBookDto {
     private String publisher;
     private int yearPublished;
     private Date dateAdded;
-    private int favoritesCount = 0;
+    private int favoritesCount;
 
     public ComicBookDto(
         long id,
@@ -44,6 +44,7 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
+        favoritesCount = 0;
     }
 
     public ComicBookDto(
@@ -65,6 +66,7 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
+        favoritesCount = 0;
     };
 
     public ComicBookDto(
@@ -110,9 +112,8 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
+        this.favoritesCount = 0;
     }
-
-    ;
 
     public ComicBookDto(
         String seriesTitle,
@@ -134,7 +135,8 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = date;
-    };
+        this.favoritesCount = 0;
+    }
   
     public ComicBookDto(ComicBook comicBookRecord) {
     	this(
@@ -165,6 +167,23 @@ public class ComicBookDto {
         return Objects.hash(getSeriesTitle(), getAuthor(), getArtist(), getPublisher(), getYearPublished());
     }
 
+    @Override
+    public String toString() {
+        return "ComicBookDTO{" +
+                "id=" + id +
+                ", seriesTitle='" + seriesTitle + '\'' +
+                ", author='" + author + '\'' +
+                ", artist='" + artist + '\'' +
+                ", genres=" + Arrays.toString(genres) +
+                ", description='" + description + '\'' +
+                ", numberOfIssues=" + numberOfIssues +
+                ", publisher='" + publisher + '\'' +
+                ", yearPublished=" + yearPublished +
+                ", dateAdded=" + dateAdded +
+                ", favoritesCount=" + favoritesCount +
+                '}';
+    }
+
     @Deprecated
     public static String[] genreStringToList(String genres) {
         return genres.split(",\\s*");
@@ -184,22 +203,5 @@ public class ComicBookDto {
         }
         genres = genres + genresList[genresList.length - 1];
         return genres;
-    }
-
-    @Override
-    public String toString() {
-        return "ComicBookDTO{" +
-                "id=" + id +
-                ", seriesTitle='" + seriesTitle + '\'' +
-                ", author='" + author + '\'' +
-                ", artist='" + artist + '\'' +
-                ", genres=" + Arrays.toString(genres) +
-                ", description='" + description + '\'' +
-                ", numberOfIssues=" + numberOfIssues +
-                ", publisher='" + publisher + '\'' +
-                ", yearPublished=" + yearPublished +
-                ", dateAdded=" + dateAdded +
-                ", favoritesCount=" + favoritesCount +
-                '}';
     }
 }

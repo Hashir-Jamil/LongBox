@@ -1,6 +1,7 @@
 package org.longbox.domainobjects.dto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.longbox.domainobjects.entity.Comment;
 
@@ -8,6 +9,7 @@ import java.util.Date;
 import java.util.Objects;
 @Getter
 @Setter
+@NoArgsConstructor
 public class CommentDto {
 	private long id;
     private long userId;
@@ -77,12 +79,4 @@ public class CommentDto {
 				+ ", username=" + userName + ", user=" + user + ", comicBook=" + comicBook + ", dateAdded=" + commentDate
 				+ "]";
 	}
-
-    public String getUserName() {
-        return this.userName;
-    }
-
-    public Date getCommentDate() {
-        return this.commentDate;
-    }
 }

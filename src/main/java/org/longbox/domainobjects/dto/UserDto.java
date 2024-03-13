@@ -20,7 +20,6 @@ public class UserDto {
 	private String password;
 	private String country;
 	private Date joinDate;
-	private List<ComicBookDto> comicBookList = new ArrayList<>();
 	private int comicsReading;
 	private int comicsFinished;
 	private String aboutMe;

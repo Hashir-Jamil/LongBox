@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.entity.ComicBook;
+import org.longbox.domainobjects.mapper.ComicBookMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,12 +112,13 @@ public class ComicBookDaoImpl implements ComicBookDao {
                 session.close();
             }
         }
-        List<ComicBookDto> comicBookDtoList = new ArrayList<>();
+/*        List<ComicBookDto> comicBookDtoList = new ArrayList<>();
         for (ComicBook c : comicBookList) {
             ComicBookDto comicBookDTO = new ComicBookDto(c);
             comicBookDtoList.add(comicBookDTO);
-        }
-        return comicBookDtoList;
+        }*/
+        return ComicBookMapper.toDtoList(comicBookList);
+        //return comicBookDtoList;
     }
     
     public void favoriteComicBook(long comicId) {

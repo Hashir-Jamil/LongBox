@@ -17,12 +17,11 @@ public class CommentService {
         return commentDao.getCommentsByComic(comicId);
     }
 
-    public void saveComment(CommentDto commentDto) {
-        commentDao.saveComment(commentDto);
-    }
-
     public List<CommentDto> getCommentsByUser(Long userId) {
         return commentDao.getCommentsByUser(userId);
     }
 
+    public void saveComment(CommentDto commentDto) {
+        commentDao.saveComment(commentDto);
+    }
 }

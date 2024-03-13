@@ -7,6 +7,7 @@ import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.domainobjects.dto.UserDto;
+import org.longbox.domainobjects.mapper.UserMapper;
 import org.longbox.persistence.dao.UserDao;
 import org.longbox.domainobjects.entity.User;
 
@@ -37,18 +38,21 @@ public class UserService {
         }
 
         public UserDto getUserById(Long userId) throws UserIDDoesNotExistException {
-            return new UserDto(userDao.getUserById(userId));
+            return UserMapper.toDto(userDao.getUserById(userId));
+            //return new UserDto(userDao.getUserById(userId));
         }
 
         public UserDto getUserByUserName(String userName) throws UserNameDoesNotExistException {
-            return new UserDto(userDao.getUserByUserName(userName));
+            return UserMapper.toDto(userDao.getUserByUserName(userName));
+            //return new UserDto(userDao.getUserByUserName(userName));
         }
 
         public UserDto getUserByEmail(String email) throws EmailDoesNotExistException {
-            return new UserDto(userDao.getUserByEmail(email));
+            return UserMapper.toDto(userDao.getUserByEmail(email));
+            //return new UserDto(userDao.getUserByEmail(email));
         }
 
-        public void saveUser(UserDto user) throws UsernameOrEmailExistsException {
-            userDao.saveUser(new User(user));
+        public void saveUser(UserDto userDto) throws UsernameOrEmailExistsException {
+            userDao.saveUser(UserMapper.toEntity(userDto));
         }
 }

@@ -1,6 +1,7 @@
 package org.longbox.businesslogic.service;
 
 import org.longbox.domainobjects.dto.ComicBookDto;
+import org.longbox.domainobjects.mapper.ComicBookMapper;
 import org.longbox.persistence.dao.ComicBookDao;
 import org.longbox.domainobjects.entity.ComicBook;
 
@@ -15,15 +16,18 @@ public class ComicBookService {
     }
 
     public ComicBookDto getComicBookById(Long comicId) {
-        return new ComicBookDto(comicBookDao.getComicBookById(comicId));
+        return ComicBookMapper.toDto(comicBookDao.getComicBookById(comicId));
+        //return new ComicBookDto(comicBookDao.getComicBookById(comicId));
     }
 
     public ComicBookDto getComicBookBySeriesName(String seriesTitle) {
-        return new ComicBookDto(comicBookDao.getComicBookBySeriesTitle(seriesTitle));
+        return ComicBookMapper.toDto(comicBookDao.getComicBookBySeriesTitle(seriesTitle));
+        //return new ComicBookDto(comicBookDao.getComicBookBySeriesTitle(seriesTitle));
     }
 
     public Long saveComicBook(ComicBookDto comicBookDto) {
-        return comicBookDao.saveComicBook(new ComicBook(comicBookDto));
+        return comicBookDao.saveComicBook(ComicBookMapper.toEntity(comicBookDto));
+        //return comicBookDao.saveComicBook(new ComicBook(comicBookDto));
     }
 
     public boolean deleteComicBook(ComicBookDto comicBookDto) {

@@ -18,5 +18,4 @@ public interface ComicBookDao {
     boolean modifyComicBook(ComicBook comicBook);
 
     List<ComicBookDto> getAllComicBooks();
-
 }
