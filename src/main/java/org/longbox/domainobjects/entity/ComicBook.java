@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 
 import java.util.HashSet;
@@ -90,7 +91,7 @@ public class ComicBook {
         this.seriesTitle = comicBookDTO.getSeriesTitle();
         this.author = comicBookDTO.getAuthor();
         this.artist = comicBookDTO.getArtist();
-        this.genres = ComicBookDto.genreListToString(comicBookDTO.getGenres());
+        this.genres = GenreUtils.genreListToString(comicBookDTO.getGenres());
         this.description = comicBookDTO.getDescription();
         this.numberOfIssues = comicBookDTO.getNumberOfIssues();
         this.publisher = comicBookDTO.getPublisher();

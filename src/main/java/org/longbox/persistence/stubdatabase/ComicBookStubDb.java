@@ -10,6 +10,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import lombok.Getter;
 import lombok.Setter;
+import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import com.google.gson.Gson;
 import org.longbox.persistence.dao.ComicBookDao;
@@ -81,7 +82,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
                 comic.setSeriesTitle(comicBook.getSeriesTitle());
                 comic.setAuthor(comicBook.getAuthor());
                 comic.setArtist(comicBook.getArtist());
-                comic.setGenres(ComicBookDto.genreStringToList(comicBook.getGenres()));
+                comic.setGenres(GenreUtils.genreStringToList(comicBook.getGenres()));
                 comic.setDescription(comicBook.getDescription());
                 comic.setNumberOfIssues(comicBook.getNumberOfIssues());
                 comic.setYearPublished(comicBook.getYearPublished());

@@ -1,6 +1,7 @@
 package org.longbox.unit.domainobjects.dto;
 
 import org.junit.jupiter.api.Test;
+import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,36 +43,36 @@ public class ComicBookDtoTest {
     @Test
     public void multipleGenresListToString() {
         String expected = "Superhero, Superpower, Adventure, Science Fiction, Futuristic, Romance, Drama";
-        assertEquals(expected, ComicBookDto.genreListToString(comicBook1.getGenres()));
+        assertEquals(expected, GenreUtils.genreListToString(comicBook1.getGenres()));
     }
 
     @Test
     public void onlyOneGenreListToString() {
         String expected = "Superhero";
-        assertEquals(expected, ComicBookDto.genreListToString(comicBook3.getGenres()));
+        assertEquals(expected, GenreUtils.genreListToString(comicBook3.getGenres()));
     }
 
     @Test
     public void noGenresListToString() {
         String expected = "";
-        assertEquals("", ComicBookDto.genreListToString(comicBook2.getGenres()));
+        assertEquals("", GenreUtils.genreListToString(comicBook2.getGenres()));
     }
 
     @Test
     public void multipleGenresStringToList() {
         String[] expected = {"Superhero", "Superpower", "Adventure", "Science Fiction", "Futuristic", "Romance", "Drama"};
         String input = "Superhero, Superpower, Adventure, Science Fiction, Futuristic, Romance, Drama";
-        assertArrayEquals(expected, ComicBookDto.genreStringToList(input));
+        assertArrayEquals(expected, GenreUtils.genreStringToList(input));
     }
 
     @Test void noGenresStringToList() {
         String[] expected = {""};
-        assertArrayEquals(expected, ComicBookDto.genreStringToList(""));
+        assertArrayEquals(expected, GenreUtils.genreStringToList(""));
     }
 
     @Test void oneGenresStringToList() {
         String[] expected = {"Fantasy"};
-        assertArrayEquals(expected, ComicBookDto.genreStringToList("Fantasy"));
+        assertArrayEquals(expected, GenreUtils.genreStringToList("Fantasy"));
     }
 
 }

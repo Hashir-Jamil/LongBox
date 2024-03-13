@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.service.CommentService;
+import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.businesslogic.utils.MultiLineCellRenderer;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
@@ -251,7 +252,7 @@ public class ComicBookInfoPanel extends JPanel {
 		comicSeries.setText(comicBookDTO.getSeriesTitle());
 		author.setText(comicBookDTO.getAuthor());
 		artist.setText(comicBookDTO.getArtist());
-		genre.setText("<html>" + ComicBookDto.genreListToString(comicBookDTO.getGenres()) + "</html>");
+		genre.setText("<html>" + GenreUtils.genreListToString(comicBookDTO.getGenres()) + "</html>");
 		description.setText("<html>" + comicBookDTO.getDescription() + "</html>");
 		numberOfIssues.setText("" + comicBookDTO.getNumberOfIssues());
 		publisher.setText(comicBookDTO.getPublisher());

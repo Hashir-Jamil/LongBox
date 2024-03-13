@@ -3,6 +3,7 @@ package org.longbox.domainobjects.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.domainobjects.entity.ComicBook;
 
 import java.util.*;
@@ -58,7 +59,7 @@ public class ComicBookDto {
         this.seriesTitle = seriesTitle;
         this.author = author;
         this.artist = artist;
-        this.genres = genreStringToList(genres);
+        this.genres = GenreUtils.genreStringToList(genres);
         this.description = description;
         this.numberOfIssues = numberOfIssues;
         this.yearPublished = yearPublished;
@@ -81,7 +82,7 @@ public class ComicBookDto {
         this.seriesTitle = seriesTitle;
         this.author = author;
         this.artist = artist;
-        this.genres = genreStringToList(genres);
+        this.genres = GenreUtils.genreStringToList(genres);
         this.description = description;
         this.numberOfIssues = numberOfIssues;
         this.yearPublished = yearPublished;
@@ -164,10 +165,12 @@ public class ComicBookDto {
         return Objects.hash(getSeriesTitle(), getAuthor(), getArtist(), getPublisher(), getYearPublished());
     }
 
+    @Deprecated
     public static String[] genreStringToList(String genres) {
         return genres.split(",\\s*");
     }
 
+    @Deprecated
     public static String genreListToString(String[] genresList) {
         String genres = "";
         if (genresList.length == 0) {

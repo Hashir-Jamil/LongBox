@@ -152,7 +152,7 @@ public class ComicBookSearchUtils {
                 comicBook.getSeriesTitle(),
                 comicBook.getAuthor(),
                 comicBook.getArtist(),
-                ComicBookDto.genreListToString(comicBook.getGenres()),
+				GenreUtils.genreListToString(comicBook.getGenres()),
                 comicBook.getDescription(),
                 comicBook.getNumberOfIssues(),
                 comicBook.getYearPublished(),

@@ -2,6 +2,7 @@ package org.longbox.integration.persistence.dao;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
@@ -51,7 +52,7 @@ public class ComicBookDaoImplTest {
                 comicBookDto1.getSeriesTitle(),
                 comicBookDto1.getAuthor(),
                 comicBookDto1.getArtist(),
-                ComicBookDto.genreListToString(comicBookDto1.getGenres()),
+                GenreUtils.genreListToString(comicBookDto1.getGenres()),
                 comicBookDto1.getDescription(),
                 comicBookDto1.getNumberOfIssues(),
                 comicBookDto1.getPublisher(),
@@ -63,7 +64,7 @@ public class ComicBookDaoImplTest {
                 comicBookDto2.getSeriesTitle(),
                 comicBookDto2.getAuthor(),
                 comicBookDto2.getArtist(),
-                ComicBookDto.genreListToString(comicBookDto2.getGenres()),
+                GenreUtils.genreListToString(comicBookDto2.getGenres()),
                 comicBookDto2.getDescription(),
                 comicBookDto2.getNumberOfIssues(),
                 comicBookDto2.getPublisher(),
