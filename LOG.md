@@ -204,7 +204,12 @@
     Oscar: Finished implementing cancel button for "About Me" section and created test case for updating the field in database.
     Hashir: Final touches for submission criteria for ITR2 + adding more tests for stories and integration + refactoring
 
-## Monday, March 11, 2024
+## Monday, March 11th, 2024
     
     Group (All Members): Discussed the ITR2 submission, also started with the ITR3 planning document and divided user stories and refactoring task amongst the group members.
     Ahan and Hashir: Refatored controller of authentication frame to a seperate class, also incorporated UserService class to the refactored code.
+
+## Tuesday, March 12th, 2024
+
+    Ahan and Hashir: Moved controller for ComicBookInfoPanel to another package, and switched form CommentDao to CommentService
+    Ali, Hashir and Ahan: Moved controller for FavoritesPanel to another package.
