@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.CommentDto;
 import org.longbox.persistence.dao.CommentDaoImpl;
-import org.longbox.persistence.entity.Comment;
 
 class CommentDaoImplTest {
 

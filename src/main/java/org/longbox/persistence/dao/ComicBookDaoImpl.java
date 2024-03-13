@@ -6,14 +6,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.longbox.domainobjects.dto.ComicBookDto;
-import org.longbox.persistence.entity.ComicBook;
-import org.longbox.config.HibernateUtils;
+import org.longbox.domainobjects.entity.ComicBook;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ComicBookDaoImpl implements ComicBookDao {
-    private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+    private SessionFactory sessionFactory;
     public ComicBookDaoImpl (SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

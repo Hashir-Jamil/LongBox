@@ -4,7 +4,7 @@ import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
-import org.longbox.persistence.entity.User;
+import org.longbox.domainobjects.entity.User;
 
 public interface UserDao {
 

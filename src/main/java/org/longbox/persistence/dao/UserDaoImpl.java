@@ -6,8 +6,7 @@ import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
 import org.hibernate.Transaction;
 import org.longbox.businesslogic.exception.*;
-import org.longbox.persistence.entity.User;
-import org.longbox.config.HibernateUtils;
+import org.longbox.domainobjects.entity.User;
 
 public class UserDaoImpl implements UserDao {
     private SessionFactory sessionFactory;

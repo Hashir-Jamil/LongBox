@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.longbox.domainobjects.dto.CommentDto;
 import org.longbox.persistence.dao.CommentDao;
-import org.longbox.persistence.entity.Comment;
+import org.longbox.domainobjects.entity.Comment;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

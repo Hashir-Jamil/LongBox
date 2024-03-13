@@ -3,7 +3,7 @@ package org.longbox.domainobjects.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.longbox.persistence.entity.ComicBook;
+import org.longbox.domainobjects.entity.ComicBook;
 
 import java.util.*;
 @Getter

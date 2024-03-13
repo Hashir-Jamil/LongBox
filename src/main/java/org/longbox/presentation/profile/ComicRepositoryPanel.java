@@ -9,7 +9,7 @@ import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
-import org.longbox.persistence.entity.ComicBook;
+import org.longbox.domainobjects.entity.ComicBook;
 
 import java.awt.BorderLayout;
 import java.awt.Font;

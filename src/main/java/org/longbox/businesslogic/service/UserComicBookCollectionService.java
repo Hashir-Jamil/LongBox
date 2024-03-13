@@ -5,7 +5,7 @@ import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookFavouritesListDao;
 import org.longbox.persistence.dao.ComicBookFinishedListDao;
 import org.longbox.persistence.dao.ComicBookReadingListDao;
-import org.longbox.persistence.entity.ComicBook;
+import org.longbox.domainobjects.entity.ComicBook;
 
 import java.util.List;
 
@@ -63,5 +63,4 @@ public class UserComicBookCollectionService {
     public List<ComicBook> getUserFinishedList(Long userId) {
         return finishedListDao.getUsersFinishedList(userId);
     }
-
 }

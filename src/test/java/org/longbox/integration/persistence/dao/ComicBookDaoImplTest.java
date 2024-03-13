@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
-import org.longbox.persistence.entity.ComicBook;
+import org.longbox.domainobjects.entity.ComicBook;
 
 import java.util.ArrayList;
 import java.util.Date;

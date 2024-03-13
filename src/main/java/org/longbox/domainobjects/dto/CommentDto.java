@@ -2,7 +2,7 @@ package org.longbox.domainobjects.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.longbox.persistence.entity.Comment;
+import org.longbox.domainobjects.entity.Comment;
 
 import java.util.Date;
 import java.util.Objects;

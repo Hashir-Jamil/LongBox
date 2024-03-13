@@ -1,7 +1,6 @@
 package org.longbox;
 
 import org.longbox.businesslogic.controller.AuthenticationController;
-import org.longbox.presentation.authentication.AuthenticationFrame;
 
 import javax.swing.*;
 

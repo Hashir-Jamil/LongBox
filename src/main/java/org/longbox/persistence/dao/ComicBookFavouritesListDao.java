@@ -2,8 +2,8 @@ package org.longbox.persistence.dao;
 
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookDto;
-import org.longbox.persistence.entity.ComicBook;
-import org.longbox.persistence.entity.User;
+import org.longbox.domainobjects.entity.ComicBook;
+import org.longbox.domainobjects.entity.User;
 
 import java.util.List;
 

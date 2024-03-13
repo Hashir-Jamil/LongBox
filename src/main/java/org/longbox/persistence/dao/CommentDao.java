@@ -1,7 +1,7 @@
 package org.longbox.persistence.dao;
 
 import org.longbox.domainobjects.dto.CommentDto;
-import org.longbox.persistence.entity.Comment;
+import org.longbox.domainobjects.entity.Comment;
 
 import java.util.List;
 

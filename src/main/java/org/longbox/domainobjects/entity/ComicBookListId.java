@@ -1,4 +1,4 @@
-package org.longbox.persistence.entity;
+package org.longbox.domainobjects.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

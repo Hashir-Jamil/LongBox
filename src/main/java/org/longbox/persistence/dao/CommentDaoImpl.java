@@ -5,9 +5,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.longbox.domainobjects.dto.CommentDto;
-import org.longbox.persistence.entity.ComicBook;
-import org.longbox.persistence.entity.Comment;
-import org.longbox.persistence.entity.User;
+import org.longbox.domainobjects.entity.ComicBook;
+import org.longbox.domainobjects.entity.Comment;
+import org.longbox.domainobjects.entity.User;
 import org.longbox.config.HibernateUtils;
 
 import java.util.ArrayList;

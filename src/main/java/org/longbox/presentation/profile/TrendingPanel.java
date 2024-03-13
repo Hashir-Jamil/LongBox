@@ -14,8 +14,6 @@ import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.tablemodels.TrendingAllTimeTableModel;
 
 import javax.swing.JTable;
-import java.awt.Component;
-import javax.swing.ScrollPaneConstants;
 
 public class TrendingPanel extends JPanel {
 	private JTable allTimeFavoritesTable;

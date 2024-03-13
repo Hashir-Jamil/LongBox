@@ -1,16 +1,15 @@
 package org.longbox.persistence.dao;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
-import org.longbox.persistence.entity.ComicBook;
-import org.longbox.persistence.entity.ComicBookFinishedList;
-import org.longbox.persistence.entity.User;
+import org.longbox.domainobjects.entity.ComicBook;
+import org.longbox.domainobjects.entity.ComicBookFinishedList;
+import org.longbox.domainobjects.entity.User;
 import org.longbox.config.HibernateUtils;
 
 import java.util.Collections;

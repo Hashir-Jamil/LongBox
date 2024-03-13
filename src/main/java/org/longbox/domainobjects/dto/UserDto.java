@@ -3,7 +3,7 @@ package org.longbox.domainobjects.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.longbox.persistence.entity.User;
+import org.longbox.domainobjects.entity.User;
 
 import java.util.*;
 

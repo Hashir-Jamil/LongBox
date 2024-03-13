@@ -2,9 +2,7 @@ package org.longbox.persistence.stubdatabase;
 
 import java.io.*;
 import java.lang.reflect.Type;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,7 +19,7 @@ import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.domainobjects.dto.UserDto;
 import com.google.gson.Gson;
 import org.longbox.persistence.dao.UserDao;
-import org.longbox.persistence.entity.User;
+import org.longbox.domainobjects.entity.User;
 
 @Getter
 @Setter

@@ -24,7 +24,7 @@ import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
 import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
 import org.longbox.persistence.dao.UserDaoImpl;
-import org.longbox.persistence.entity.ComicBook;
+import org.longbox.domainobjects.entity.ComicBook;
 
 @Getter
 @Setter

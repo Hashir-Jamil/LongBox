@@ -13,7 +13,7 @@ import lombok.Setter;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import com.google.gson.Gson;
 import org.longbox.persistence.dao.ComicBookDao;
-import org.longbox.persistence.entity.ComicBook;
+import org.longbox.domainobjects.entity.ComicBook;
 
 @Getter
 @Setter

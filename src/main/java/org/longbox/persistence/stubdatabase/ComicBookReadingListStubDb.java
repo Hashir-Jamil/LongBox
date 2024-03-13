@@ -9,9 +9,9 @@ import lombok.Setter;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookListItemReadingDto;
 import org.longbox.persistence.dao.ComicBookReadingListDao;
-import org.longbox.persistence.entity.ComicBook;
-import org.longbox.persistence.entity.ComicBookReadingList;
-import org.longbox.persistence.entity.User;
+import org.longbox.domainobjects.entity.ComicBook;
+import org.longbox.domainobjects.entity.ComicBookReadingList;
+import org.longbox.domainobjects.entity.User;
 
 import java.io.*;
 import java.lang.reflect.Type;

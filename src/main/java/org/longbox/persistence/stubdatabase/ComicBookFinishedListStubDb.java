@@ -9,9 +9,9 @@ import lombok.Setter;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookListItemFinishedDto;
 import org.longbox.persistence.dao.ComicBookFinishedListDao;
-import org.longbox.persistence.entity.ComicBook;
-import org.longbox.persistence.entity.ComicBookFinishedList;
-import org.longbox.persistence.entity.User;
+import org.longbox.domainobjects.entity.ComicBook;
+import org.longbox.domainobjects.entity.ComicBookFinishedList;
+import org.longbox.domainobjects.entity.User;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

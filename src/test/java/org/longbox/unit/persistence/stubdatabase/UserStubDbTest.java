@@ -7,7 +7,7 @@ import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.domainobjects.dto.UserDto;
-import org.longbox.persistence.entity.User;
+import org.longbox.domainobjects.entity.User;
 import org.longbox.persistence.stubdatabase.UserStubDb;
 
 import java.util.Date;

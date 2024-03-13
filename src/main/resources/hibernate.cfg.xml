@@ -28,12 +28,12 @@
         <property name="highlight_sql">true</property> <!-- Log SQL with highlighting via ANSI escape codes -->
 
         <!-- Mapping Classes -->
-        <mapping class="org.longbox.persistence.entity.User"/>
-        <mapping class="org.longbox.persistence.entity.ComicBookFavoritesList"/>
-        <mapping class="org.longbox.persistence.entity.ComicBook"/>
-        <mapping class="org.longbox.persistence.entity.Comment"/>
-        <mapping class="org.longbox.persistence.entity.ComicBookFinishedList"/>
-        <mapping class="org.longbox.persistence.entity.ComicBookReadingList"/>
+        <mapping class="org.longbox.domainobjects.entity.User"/>
+        <mapping class="org.longbox.domainobjects.entity.ComicBookFavoritesList"/>
+        <mapping class="org.longbox.domainobjects.entity.ComicBook"/>
+        <mapping class="org.longbox.domainobjects.entity.Comment"/>
+        <mapping class="org.longbox.domainobjects.entity.ComicBookFinishedList"/>
+        <mapping class="org.longbox.domainobjects.entity.ComicBookReadingList"/>
 
     </session-factory>
 </hibernate-configuration>

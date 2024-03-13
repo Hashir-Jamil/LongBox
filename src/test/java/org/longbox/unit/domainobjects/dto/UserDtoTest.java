@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.longbox.domainobjects.dto.UserDto;
-import org.longbox.persistence.entity.User;
+import org.longbox.domainobjects.entity.User;
 
 import java.util.Date;
 
