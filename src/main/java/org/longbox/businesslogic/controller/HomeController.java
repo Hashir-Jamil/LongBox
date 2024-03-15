@@ -53,7 +53,6 @@ public class HomeController implements ActionListener {
         }
 
         if (e.getSource() == this.homeFrame.getComicCollectionButton()) {
-            ((ComicRepositoryPanel) this.homeFrame.getComicCollectionPanel()).panel.remove(((ComicRepositoryPanel) this.homeFrame.getComicCollectionPanel()).scrollPane);
             this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getCOMIC_COLLECTAION_PANEL());
             //((ComicRepositoryPanel) this.homeFrame.getComicCollectionPanel()).reloadTable();
             ComicRepositoryController comicRepsoitoryController = new ComicRepositoryController(this.homeFrame.getComicCollectionPanel());

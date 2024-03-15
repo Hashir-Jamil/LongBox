@@ -177,19 +177,19 @@ public class ComicRepositoryPanel extends JPanel {
 //		}
 //    }
 
-	private boolean isComicInFavorites(long comicId) {
-		ComicBook comicBook = comicBookDaoImpl.getComicBookById(comicId);
-		ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
-		System.out.println("the comic in favorites is " + comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO));
-		return comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO);
-	}
-
-	private void addComicToFavorites(long comicId) throws UserIDDoesNotExistException {
-		FavoritesPanel favoritesPanel = new FavoritesPanel();
-		comicBookDaoImpl.favoriteComicBook(comicId);
-		favoritesPanel.update(this.userSession.getUser().getId(), comicId);
-		favoritesPanel.reloadData();
-	}
+//	private boolean isComicInFavorites(long comicId) {
+//		ComicBook comicBook = comicBookDaoImpl.getComicBookById(comicId);
+//		ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
+//		System.out.println("the comic in favorites is " + comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO));
+//		return comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO);
+//	}
+//
+//	private void addComicToFavorites(long comicId) throws UserIDDoesNotExistException {
+//		FavoritesPanel favoritesPanel = new FavoritesPanel();
+//		comicBookDaoImpl.favoriteComicBook(comicId);
+//		favoritesPanel.update(this.userSession.getUser().getId(), comicId);
+//		favoritesPanel.reloadData();
+//	}
 
 //	public void reloadTable() {
 //		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
