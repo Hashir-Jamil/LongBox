@@ -34,22 +34,35 @@ public class FavoritesController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() ==  this.favoritesPanel.getUnfavoriteButton()) {
             int selectedRow = this.favoritesPanel.getComicBookTable().getSelectedRow();
-            int confirmUnfavorite = JOptionPane.showConfirmDialog(
-                    this.favoritesPanel,
-                    "Are you sure you want to unfavorite this comic?",
-                    "Unfavorite Confirmation",
-                    JOptionPane.YES_NO_OPTION);
-
-            if (confirmUnfavorite == JOptionPane.YES_OPTION) {
-                long userId = this.favoritesPanel.getUserSession().getUser().getId();
-                long comicId = this.favoritesPanel.getComicBookTableModel().getComicIdAtRow(selectedRow);
-                userComicBookCollectionService.removeFromFavorites(userId, comicId);
-                this.favoritesPanel.getComicBookTableModel().removeRow(selectedRow);
-                JOptionPane.showMessageDialog(
+            if (selectedRow != -1) {
+                int confirmUnfavorite = JOptionPane.showConfirmDialog(
                         this.favoritesPanel,
-                        "Comic has been unfavorited.",
-                        "Unfavorited",
-                        JOptionPane.INFORMATION_MESSAGE);
+                        "Are you sure you want to unfavorite this comic?",
+                        "Unfavorite Confirmation",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmUnfavorite == JOptionPane.YES_OPTION) {
+                    long userId = this.favoritesPanel.getUserSession().getUser().getId();
+                    long comicId = this.favoritesPanel.getComicBookTableModel().getComicIdAtRow(selectedRow);
+                    boolean removed = userComicBookCollectionService.removeFromFavorites(userId, comicId);
+                    if (removed) {
+                        // Removal successful
+                        this.favoritesPanel.getComicBookTableModel().removeRow(selectedRow);
+                        JOptionPane.showMessageDialog(
+                                this.favoritesPanel,
+                                "Comic has been unfavorited.",
+                                "Unfavorited",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        this.favoritesPanel.reloadData();
+                    } else {
+                        // Removal failed
+                        JOptionPane.showMessageDialog(
+                                this.favoritesPanel,
+                                "Failed to remove comic from favorites.",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                }
             }
         }
         else if (e.getSource() == this.favoritesPanel.getRefreshButton()) {

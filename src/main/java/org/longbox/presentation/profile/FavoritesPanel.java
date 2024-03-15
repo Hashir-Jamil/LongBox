@@ -3,6 +3,7 @@ package org.longbox.presentation.profile;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
+import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
@@ -130,9 +131,14 @@ public class FavoritesPanel extends JPanel {
 		panel.add(refreshButton);
 
 		comicBookTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		comicBookTable.getSelectionModel().addListSelectionListener(e -> {
-			boolean isRowSelected = comicBookTable.getSelectedRow() != -1;
-			unfavoriteButton.setEnabled(isRowSelected);
+		comicBookTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int selectedRow = comicBookTable.getSelectedRow();
+				if (selectedRow != -1) {
+					unfavoriteButton.setEnabled(true);
+				}
+			}
 		});
 	}
 
