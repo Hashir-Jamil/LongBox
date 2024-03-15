@@ -32,7 +32,7 @@ public class HomeFrame extends JFrame {
     private JPanel activityPanel;
     private FavoritesPanel favoritesPanel;
     private TrendingPanel trendingComicsPanel;
-    private JPanel comicCollectionPanel;
+    private ComicRepositoryPanel comicCollectionPanel;
     private ProfilePanel profilePanel;
     private AddComicToRepoPanel addComicToRepoPanel;
     private CardLayout cardLayout;

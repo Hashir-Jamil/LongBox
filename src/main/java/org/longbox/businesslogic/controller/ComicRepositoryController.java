@@ -2,12 +2,27 @@ package org.longbox.businesslogic.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.List;
+
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.service.UserService;
+import org.longbox.businesslogic.utils.ComicBookSearchUtils;
+import org.longbox.config.HibernateUtils;
+import org.longbox.domainobjects.dto.ComicBookDto;
+import org.longbox.persistence.dao.ComicBookDaoImpl;
+import org.longbox.presentation.profile.ComicBookTableModel;
 import org.longbox.presentation.profile.ComicRepositoryPanel;
 
-public class ComicRepositoryController implements ActionListener {
+public class ComicRepositoryController implements ActionListener, MouseListener {
 	
 	private ComicRepositoryPanel comicRepositoryPanel;
 	private UserSession userSession;
@@ -16,15 +31,87 @@ public class ComicRepositoryController implements ActionListener {
 	public ComicRepositoryController(ComicRepositoryPanel comicRepositoryPanel) {
 		this.comicRepositoryPanel = comicRepositoryPanel;
 		this.userSession = comicRepositoryPanel.getUserSession();
+		addListeners();
 	}
 	
 	private void addListeners() {
-		
+		this.comicRepositoryPanel.getRefreshButton().addActionListener(this);
+		this.comicRepositoryPanel.getComicBookTable().addMouseListener(this);
+		this.comicRepositoryPanel.getTextField().addActionListener(this);
+		this.comicRepositoryPanel.getAddToFavoritesButton().addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == this.comicRepositoryPanel.getRefreshButton()) {
+			
+		}
+		
+		if(e.getSource() == this.comicRepositoryPanel.getTextField() && !this.comicRepositoryPanel.getTextField().getText().isEmpty()) {
+			String searchBy = this.comicRepositoryPanel.getTypeSelection().getSelectedItem().toString();
+			String target = this.comicRepositoryPanel.getTextField().getText();
+			List<ComicBookDto> searchResults = null;
+			searchResults = org.longbox.businesslogic.utils.ComicBookSearchUtils.comicAdvancedSearch(searchBy, target, searchResults, this.comicRepositoryPanel.getComicBookDaoImpl().getAllComicBooks(), this.userSession);
+		}
+		
+		
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		int selectedRow = this.comicRepositoryPanel.getComicBookTable().getSelectedRow();
+		if (selectedRow != -1) {
+			//addToFavoritesButton.setEnabled(true);
+		}
+		int row = this.comicRepositoryPanel.getComicBookTable().rowAtPoint(e.getPoint());
+		int col = this.comicRepositoryPanel.getComicBookTable().columnAtPoint(e.getPoint());
+		if (col == 0 && e.getClickCount() == 2) {
+			ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(this.comicRepositoryPanel.getComicBookDaoImpl().getAllComicBooks(), this.comicRepositoryPanel.getComicBookTable().getValueAt(row, col).toString());
+			ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
+	public void reloadTable() {
+		this.comicRepositoryPanel.setComicBookDaoImpl(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
+
+		this.comicRepositoryPanel.setComicBookTableModel(new ComicBookTableModel(this.comicRepositoryPanel.getComicBookDaoImpl().getAllComicBooks()));
+
+		this.comicRepositoryPanel.setComicBookTable(new JTable(this.comicRepositoryPanel.getComicBookTableModel()));
+
+		this.comicRepositoryPanel.setSorter(new TableRowSorter<TableModel>(this.comicRepositoryPanel.getComicBookTable().getModel()));
+		this.comicRepositoryPanel.getComicBookTable().setRowSorter(this.comicRepositoryPanel.getSorter());
+
+		this.comicRepositoryPanel.setScrollPane(new JScrollPane(this.comicRepositoryPanel.getComicBookTable()));
+		this.comicRepositoryPanel.getScrollPane().setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		this.comicRepositoryPanel.getScrollPane().setViewportBorder(null);
+		this.comicRepositoryPanel.getScrollPane().setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		this.comicRepositoryPanel.getScrollPane().setBounds(10, 110, 1144, 683);
+		this.comicRepositoryPanel.getPanel().add(this.comicRepositoryPanel.getScrollPane());
 	}
 }
