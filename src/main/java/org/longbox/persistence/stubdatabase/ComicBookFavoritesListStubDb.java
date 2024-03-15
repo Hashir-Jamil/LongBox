@@ -35,7 +35,7 @@ public class ComicBookFavoritesListStubDb implements ComicBookFavouritesListDao,
     }
 
     @Override
-    public void removeFromFavorites(Long userId, Long comicBookId) {
+    public boolean removeFromFavorites(Long userId, Long comicBookId) {
         List<ComicBookListItemFavoriteDto> favoritesList = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (int i = 0; i < favoritesList.size(); i++) {
             if (favoritesList.get(i).getUserId() == userId && favoritesList.get(i).getComicBookId() == comicBookId) {
@@ -45,6 +45,7 @@ public class ComicBookFavoritesListStubDb implements ComicBookFavouritesListDao,
         }
         records = favoritesList;
         serializeStubData();
+        return favoritesList.isEmpty();
     }
 
     @Override

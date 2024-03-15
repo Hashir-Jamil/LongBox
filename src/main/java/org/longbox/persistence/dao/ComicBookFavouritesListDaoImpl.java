@@ -60,7 +60,7 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     }
 
     @Override
-    public void removeFromFavorites(Long userId, Long comicBookId) {
+    public boolean removeFromFavorites(Long userId, Long comicBookId) {
         Session session = null;
         Transaction transaction = null;
         int deletedEntities = 0;
@@ -79,11 +79,17 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
                 transaction.rollback();
             }
             e.printStackTrace();
+            return false; // Operation failed
         }
         finally {
-            session.close();
+            if (session != null) {
+                session.close();
+            }
         }
+
+        return deletedEntities > 0; // Return true if at least one entity was deleted, false otherwise
     }
+
 
     public boolean doesRecordExist(Long userId, Long comicBookId) {
         Session session = sessionFactory.openSession();

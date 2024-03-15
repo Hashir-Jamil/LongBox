@@ -11,7 +11,7 @@ public interface ComicBookFavouritesListDao {
 
     void saveToFavorites(Long userId, Long comicBookIdd) throws UserIDDoesNotExistException;
 
-    void removeFromFavorites(Long userId, Long comicBookId);
+    boolean removeFromFavorites(Long userId, Long comicBookId);
 
     boolean doesRecordExist(Long userId, Long comicBookId);
 

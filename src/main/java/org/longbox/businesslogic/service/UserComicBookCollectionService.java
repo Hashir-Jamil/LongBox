@@ -30,8 +30,8 @@ public class UserComicBookCollectionService {
         favouritesListDao.saveToFavorites(userId, comicBookId);
     }
 
-    public void removeFromFavorites(Long userId, Long comicBookId) {
-        favouritesListDao.removeFromFavorites(userId, comicBookId);
+    public boolean removeFromFavorites(Long userId, Long comicBookId) {
+        return favouritesListDao.removeFromFavorites(userId, comicBookId);
     }
 
     public List<ComicBookDto> getAllFavoritesComicBooks() {
