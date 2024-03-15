@@ -119,6 +119,8 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 	
 	
 	public void reloadTable() {
+		this.comicRepositoryPanel.getPanel().remove(this.comicRepositoryPanel.getScrollPane());
+		
 		this.comicRepositoryPanel.setComicBookDaoImpl(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 
 		this.comicRepositoryPanel.setComicBookTableModel(new ComicBookTableModel(this.comicRepositoryPanel.getComicBookDaoImpl().getAllComicBooks()));
@@ -134,6 +136,8 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 		this.comicRepositoryPanel.getScrollPane().setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		this.comicRepositoryPanel.getScrollPane().setBounds(10, 110, 1144, 683);
 		this.comicRepositoryPanel.getPanel().add(this.comicRepositoryPanel.getScrollPane());
+		
+		this.comicRepositoryPanel.getComicBookTable().addMouseListener(this);
 	}
 	
 	private boolean isComicInFavorites(long comicId) {

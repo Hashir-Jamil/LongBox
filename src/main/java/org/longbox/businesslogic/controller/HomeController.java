@@ -20,10 +20,13 @@ public class HomeController implements ActionListener {
     private HomeFrame homeFrame;
     private UserSession userSession;
     private UserService userService;
+    
+    ComicRepositoryController comicRepsoitoryController;
 
     public HomeController(HomeFrame homeFrame) {
         this.homeFrame = homeFrame;
         this.userSession = homeFrame.getUserSession();
+        comicRepsoitoryController = new ComicRepositoryController(this.homeFrame.getComicCollectionPanel());
         addListeners();
     }
 
@@ -55,7 +58,8 @@ public class HomeController implements ActionListener {
         if (e.getSource() == this.homeFrame.getComicCollectionButton()) {
             this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getCOMIC_COLLECTAION_PANEL());
             //((ComicRepositoryPanel) this.homeFrame.getComicCollectionPanel()).reloadTable();
-            ComicRepositoryController comicRepsoitoryController = new ComicRepositoryController(this.homeFrame.getComicCollectionPanel());
+//            ComicRepositoryController comicRepsoitoryController = new ComicRepositoryController(this.homeFrame.getComicCollectionPanel());
+            comicRepsoitoryController.reloadTable();
             
         }
 
