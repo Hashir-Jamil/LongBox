@@ -44,7 +44,8 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.comicRepositoryPanel.getRefreshButton()) {
-			
+			this.comicRepositoryPanel.getPanel().remove(comicRepositoryPanel.getScrollPane());
+			this.reloadTable();
 		}
 		
 		if(e.getSource() == this.comicRepositoryPanel.getTextField() && !this.comicRepositoryPanel.getTextField().getText().isEmpty()) {
