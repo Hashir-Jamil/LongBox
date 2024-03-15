@@ -223,3 +223,7 @@
     Group Meeting (All members): went over recent refactorings for everyone to be up to date, met with professor to discuss final phase of course and our plan/what we are working on/have worked on
     Hashir: more refactoring of coding style & project structure, consistent mapping/contracts of dto vs entity at service layer.
     
+## Thursday, March 14th, 2024
+
+    Eric: Refactored all Comic Repo Panel logic into its respected controller class, removal of unused code and imports, and multiple bug fixes such as fixing imporper comics opening, multiple tables loading, improper refreshing, and improper favoriting
+    
