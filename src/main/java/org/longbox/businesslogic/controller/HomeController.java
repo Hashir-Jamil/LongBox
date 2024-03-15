@@ -7,7 +7,6 @@ import org.longbox.businesslogic.service.UserService;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
-import org.longbox.presentation.profile.ComicRepositoryPanel;
 import org.longbox.presentation.profile.HomeFrame;
 import org.longbox.presentation.profile.ProfilePanel;
 
@@ -57,8 +56,6 @@ public class HomeController implements ActionListener {
 
         if (e.getSource() == this.homeFrame.getComicCollectionButton()) {
             this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getCOMIC_COLLECTAION_PANEL());
-            //((ComicRepositoryPanel) this.homeFrame.getComicCollectionPanel()).reloadTable();
-//            ComicRepositoryController comicRepsoitoryController = new ComicRepositoryController(this.homeFrame.getComicCollectionPanel());
             comicRepsoitoryController.reloadTable();
             
         }

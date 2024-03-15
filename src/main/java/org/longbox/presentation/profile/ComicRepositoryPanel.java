@@ -3,18 +3,12 @@ package org.longbox.presentation.profile;
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
-import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
-import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.config.HibernateUtils;
-import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
-import org.longbox.domainobjects.entity.ComicBook;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -27,9 +21,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.List;
 import javax.swing.JButton;
 import java.awt.Color;
 @Getter
