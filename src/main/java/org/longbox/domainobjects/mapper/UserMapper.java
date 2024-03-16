@@ -33,7 +33,6 @@ public class UserMapper {
 
     public static User toEntity(UserDto dto) {
         User entity = new User();
-        entity.setId(dto.getId());
         entity.setUserName(dto.getUserName());
         entity.setFirstName(dto.getFirstName());
         entity.setLastName(dto.getLastName());
