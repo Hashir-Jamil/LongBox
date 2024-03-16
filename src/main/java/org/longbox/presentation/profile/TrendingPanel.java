@@ -1,7 +1,6 @@
 package org.longbox.presentation.profile;
 
 import org.longbox.config.HibernateUtils;
-import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.tablemodels.TrendingAllTimeTableModel;
 
@@ -67,10 +66,6 @@ public class TrendingPanel extends JPanel {
 			
 		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 		comicBookTableModel = new TrendingAllTimeTableModel(comicBookDaoImpl.getAllComicBooks());
-		
-		for(ComicBookDto c : comicBookDaoImpl.getAllComicBooks()) {
-			System.out.println(c + " "+ c.getFavoritesCount());
-		}
 		
 		allTimeFavoritesTable = new JTable(comicBookTableModel);
 		allTimeFavoritesTable.setBounds(0, 0, 1, 1);
