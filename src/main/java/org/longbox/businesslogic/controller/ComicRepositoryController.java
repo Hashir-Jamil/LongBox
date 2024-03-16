@@ -20,7 +20,7 @@ import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.entity.ComicBook;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
-import org.longbox.presentation.profile.ComicBookTableModel;
+import org.longbox.presentation.tablemodels.ComicBookTableModel;
 import org.longbox.presentation.profile.ComicRepositoryPanel;
 import org.longbox.presentation.profile.FavoritesPanel;
 

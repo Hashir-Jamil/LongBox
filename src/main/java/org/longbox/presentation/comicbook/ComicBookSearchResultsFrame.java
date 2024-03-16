@@ -13,7 +13,7 @@ import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
-import org.longbox.presentation.profile.ComicBookTableModel;
+import org.longbox.presentation.tablemodels.ComicBookTableModel;
 
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
