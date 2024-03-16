@@ -6,6 +6,7 @@ import org.longbox.businesslogic.UserSession;
 import org.longbox.config.HibernateUtils;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
+import org.longbox.presentation.tablemodels.ComicBookTableModel;
 
 import java.awt.BorderLayout;
 import java.awt.Font;

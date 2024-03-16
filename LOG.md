@@ -227,3 +227,7 @@
 
     Eric: Refactored all Comic Repo Panel logic into its respected controller class, removal of unused code and imports, and multiple bug fixes such as fixing imporper comics opening, multiple tables loading, improper refreshing, and improper favoriting
     
+## Friday, March 15th, 2024
+    
+    Group Meeting (Ali, Ahan, Eric, Hashir): discussed division of stories for take home assignment. Divided stories evenly & discussed conventions for e2e tests, bug reports, github issues and code review checklists. Agree upon conventions for these documentations and made template for take home assignment.
+    Hashir: did e2e testing and wrote bug reports.

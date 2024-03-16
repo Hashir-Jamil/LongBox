@@ -1,4 +1,4 @@
-package org.longbox.presentation.profile;
+package org.longbox.presentation.tablemodels;
 
 import org.longbox.domainobjects.dto.ComicBookDto;
 

@@ -3,13 +3,14 @@ package org.longbox.presentation.profile;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
-import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.longbox.presentation.tablemodels.ComicBookTableModel;
+
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.event.MouseAdapter;
