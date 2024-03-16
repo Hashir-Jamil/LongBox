@@ -11,6 +11,7 @@ import org.longbox.presentation.profile.HomeFrame;
 import org.longbox.presentation.profile.ProfilePanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -125,6 +126,14 @@ public class HomeController implements ActionListener {
         if (confirmLogOut == JOptionPane.YES_OPTION) {
             userSession.clearUserSession();
             UserSession.setActiveUser(null);
+
+            // close all active windows when logging out
+            Window[] windows = Window.getWindows();
+            for (Window window : windows) {
+                if (window != null && window.isShowing() && window != homeFrame) {
+                    window.dispose();
+                }
+            }
             AuthenticationController authenticationController = new AuthenticationController();
             this.homeFrame.dispose();
         }
