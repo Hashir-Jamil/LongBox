@@ -1,6 +1,8 @@
 package org.longbox.businesslogic.utils;
 
 import org.longbox.businesslogic.UserSession;
+import org.longbox.businesslogic.controller.ComicBookSearchResultsController;
+import org.longbox.businesslogic.controller.ComicRepositoryController;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.presentation.comicbook.ComicBookFrame;
 import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
@@ -134,6 +136,7 @@ public class ComicBookSearchUtils {
     
     private static void loadComicBookResultsPage(List<ComicBookDto> displayResults, String target, String searchBy, UserSession user) {
 		ComicBookSearchResultsFrame resultsPage = new ComicBookSearchResultsFrame(displayResults, target, searchBy, user);
+		ComicBookSearchResultsController resultsController = new ComicBookSearchResultsController(resultsPage);
 		resultsPage.setVisible(true);
 	}
 

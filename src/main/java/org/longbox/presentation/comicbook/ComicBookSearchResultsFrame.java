@@ -79,4 +79,12 @@ public class ComicBookSearchResultsFrame extends JFrame {
 	public UserSession getUserSession() {
 		return this.userSession;
 	}
+	
+	public ComicBookDaoImpl getComicBookDaoImpl() {
+		return this.comicBookDaoImpl;
+	}
+	
+	public JTable getComicBookTable() {
+		return this.comicBookTable;
+	}
 }
