@@ -22,11 +22,13 @@ public class HomeController implements ActionListener {
     private UserService userService;
     
     ComicRepositoryController comicRepsoitoryController;
+    TrendingController trendingController;
 
     public HomeController(HomeFrame homeFrame) {
         this.homeFrame = homeFrame;
         this.userSession = homeFrame.getUserSession();
-        comicRepsoitoryController = new ComicRepositoryController(this.homeFrame.getComicCollectionPanel());
+        this.comicRepsoitoryController = new ComicRepositoryController(this.homeFrame.getComicCollectionPanel());
+        this.trendingController = new TrendingController(this.homeFrame.getTrendingComicsPanel());
         addListeners();
     }
 
@@ -84,6 +86,7 @@ public class HomeController implements ActionListener {
 
         if (e.getSource() == this.homeFrame.getTrendingButton()) {
             this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getTRENDING_COMICS());
+            this.trendingController.reloadTrending();
         }
     }
 
