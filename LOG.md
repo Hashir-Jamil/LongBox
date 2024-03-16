@@ -231,3 +231,4 @@
     
     Group Meeting (Ali, Ahan, Eric, Hashir): discussed division of stories for take home assignment. Divided stories evenly & discussed conventions for e2e tests, bug reports, github issues and code review checklists. Agree upon conventions for these documentations and made template for take home assignment.
     Hashir: did e2e testing and wrote bug reports.
+    Ahan: Fixed reported bugs related to my user stories.
