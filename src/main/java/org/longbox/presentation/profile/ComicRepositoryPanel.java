@@ -27,6 +27,7 @@ import java.awt.Color;
 @Getter
 @Setter
 public class ComicRepositoryPanel extends JPanel {
+	
 	private static final String DEFAULT_FONT = "Calibri";
 	public JPanel panel;
 	private JLabel comicRepositoryTitle;

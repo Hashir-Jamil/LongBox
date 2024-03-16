@@ -2,7 +2,6 @@ package org.longbox.businesslogic.utils;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.controller.ComicBookSearchResultsController;
-import org.longbox.businesslogic.controller.ComicRepositoryController;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.presentation.comicbook.ComicBookFrame;
 import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;

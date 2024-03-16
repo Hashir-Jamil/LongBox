@@ -9,21 +9,16 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import org.longbox.businesslogic.UserSession;
-import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.tablemodels.ComicBookTableModel;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.List;
 
 public class ComicBookSearchResultsFrame extends JFrame {
+	
 	private static final String DEFAULT_FONT = "Calibri";
 	private JPanel contentPane;
 	private JTable comicBookTable;
@@ -60,19 +55,6 @@ public class ComicBookSearchResultsFrame extends JFrame {
 
 		comicBookTable = new JTable(comicBookTableModel);
 		
-//		comicBookTable.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				int row = comicBookTable.rowAtPoint(e.getPoint());
-//				int col = comicBookTable.columnAtPoint(e.getPoint());
-//				if (col == 0) {
-//					ComicBookDto comicBook = ComicBookSearchUtils.searchComicBook(comicBookDaoImpl.getAllComicBooks(), comicBookTable.getValueAt(row, col).toString());
-//					System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
-//					org.longbox.businesslogic.utils.ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
-//					dispose();
-//				}
-//			}
-//		});
 		scrollPane.setViewportView(comicBookTable);
 	}
 	

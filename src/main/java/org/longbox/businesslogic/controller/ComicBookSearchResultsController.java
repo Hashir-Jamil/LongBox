@@ -4,16 +4,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import org.longbox.businesslogic.UserSession;
-import org.longbox.businesslogic.service.UserService;
 import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
 
 public class ComicBookSearchResultsController implements MouseListener {
 	
-	ComicBookSearchResultsFrame comicBookSearchResultsFrame;
+	private ComicBookSearchResultsFrame comicBookSearchResultsFrame;
 	private UserSession userSession;
-    private UserService userService;
 
 	public ComicBookSearchResultsController(ComicBookSearchResultsFrame comicBookSearchResultsFrame) {
 		this.comicBookSearchResultsFrame = comicBookSearchResultsFrame;
