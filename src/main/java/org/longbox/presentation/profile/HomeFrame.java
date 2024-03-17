@@ -16,7 +16,7 @@ import java.awt.ComponentOrientation;
 @Setter
 public class HomeFrame extends JFrame {
     private final String SEARCH_COMIC_BOOK = "Search Comics Panel";
-    private final String COMIC_COLLECTAION_PANEL = "Comic Collection Panel";
+    private final String COMIC_REPO_PANEL = "Comic Repo Panel";
     private final String FAVORITES_PANEL = "User Favorites Panel";
     private final String PROFILE_PANEL = "Profile Panel";
     private final String ADD_COMIC_TO_REPO = "Add Comic To Repo";
@@ -24,7 +24,7 @@ public class HomeFrame extends JFrame {
     private JButton logOutButton;
     private JButton searchButtonNexus;
     private JButton addComicButton;
-    private JButton comicCollectionButton;
+    private JButton comicRepoButton;
     private JButton profileButton;
     private JButton favoritesButton;
     private JButton trendingButton;
@@ -32,7 +32,7 @@ public class HomeFrame extends JFrame {
     private JPanel activityPanel;
     private FavoritesPanel favoritesPanel;
     private TrendingPanel trendingComicsPanel;
-    private ComicRepositoryPanel comicCollectionPanel;
+    private ComicRepositoryPanel comicRepoPanel;
     private ProfilePanel profilePanel;
     private AddComicToRepoPanel addComicToRepoPanel;
     private CardLayout cardLayout;
@@ -46,7 +46,7 @@ public class HomeFrame extends JFrame {
     public HomeFrame(UserSession user) {
     	this.userSession = user;
     	buildHomeFrame();
-    	((ComicRepositoryPanel) comicCollectionPanel).setUserSession(this.userSession);
+    	((ComicRepositoryPanel) comicRepoPanel).setUserSession(this.userSession);
     	favoritesPanel.setUserSession(this.userSession);
         userNameLabel = new JLabel(user.getUser().getUserName());
         userNameLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -68,7 +68,7 @@ public class HomeFrame extends JFrame {
         nexusPanel.setLayout(null);
         profilePanel  = new ProfilePanel(this.userSession);
         favoritesPanel = new FavoritesPanel();
-        comicCollectionPanel = new ComicRepositoryPanel();
+        comicRepoPanel = new ComicRepositoryPanel();
         addComicToRepoPanel = new AddComicToRepoPanel();
         trendingComicsPanel = new TrendingPanel();
         activityPanel = new JPanel();
@@ -77,15 +77,15 @@ public class HomeFrame extends JFrame {
         cardLayout = new CardLayout();
         activityPanel.setLayout(cardLayout);
         activityPanel.add(trendingComicsPanel, TRENDING_COMICS);
-        activityPanel.add(comicCollectionPanel, COMIC_COLLECTAION_PANEL);
+        activityPanel.add(comicRepoPanel, COMIC_REPO_PANEL);
         activityPanel.add(favoritesPanel, FAVORITES_PANEL);
         activityPanel.add(profilePanel, PROFILE_PANEL);
         activityPanel.add(addComicToRepoPanel, ADD_COMIC_TO_REPO);
 
         //adding buttons
-        comicCollectionButton = new JButton("Comic Repository");
-        comicCollectionButton.setBounds(10, 11, 170, 25);
-        nexusPanel.add(comicCollectionButton);
+        comicRepoButton = new JButton("Comic Repository");
+        comicRepoButton.setBounds(10, 11, 170, 25);
+        nexusPanel.add(comicRepoButton);
 
         addComicButton = new JButton("Add Comic");
         addComicButton.setBounds(190, 11, 170, 25);
