@@ -156,7 +156,6 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 
 	private void addComicToFavorites(long comicId) throws UserIDDoesNotExistException {
 		FavoritesPanel favoritesPanel = new FavoritesPanel();
-		this.comicRepositoryPanel.getComicBookDaoImpl().favoriteComicBook(comicId);
 		favoritesPanel.update(this.userSession.getUser().getId(), comicId);
 		favoritesPanel.reloadData();
 	}
