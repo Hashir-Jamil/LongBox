@@ -80,6 +80,31 @@ ALTER TABLE "comic_book_reading_list" ADD FOREIGN KEY ("comic_book_id") REFERENC
 
 -- Functions & Triggers
 
+-- Create a function to update comic_book.favorites_count column
+CREATE OR REPLACE FUNCTION update_comic_favorites_count()
+RETURNS TRIGGER AS $$
+BEGIN
+	SET SEARCH_PATH = longbox_schema;
+	IF TG_OP = 'INSERT' THEN
+		UPDATE comic_book c
+		SET favorites_count = favorites_count + 1
+		WHERE c.id = NEW.comic_book_id;
+	ELSEIF TG_OP = 'DELETE' THEN
+		UPDATE comic_book c
+		SET favorites_count = favorites_count - 1
+		WHERE c.id = OLD.comic_book_id;
+	END IF;
+	RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Create a trigger to execute the function after insert or delete on comic_book_favorites_list table
+CREATE TRIGGER update_comic_favorites_trigger
+	AFTER INSERT OR DELETE
+ON comic_book_favorites_list
+FOR EACH ROW
+EXECUTE FUNCTION update_comic_favorites_count();
+
 -- Create a function to update user.comics_finished column
 CREATE OR REPLACE FUNCTION update_comics_finished_count()
 RETURNS TRIGGER AS $$
