@@ -1,9 +1,6 @@
 package org.longbox.domainobjects.dto;
 
-import java.util.Date;
 import java.util.Objects;
-
-import org.longbox.domainobjects.entity.Comment;
 import org.longbox.domainobjects.entity.StarRating;
 
 public class StarRatingDto {
