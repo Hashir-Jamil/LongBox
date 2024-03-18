@@ -3,6 +3,7 @@ package org.longbox.presentation.profile;
 import org.longbox.config.HibernateUtils;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.tablemodels.TrendingAllTimeTableModel;
+import org.longbox.presentation.tablemodels.TrendingRegionalTableModel;
 
 import lombok.*;
 
@@ -29,7 +30,7 @@ public class TrendingPanel extends JPanel {
 	private JLabel regionalFavorites;
 	private ComicBookDaoImpl comicBookDaoImpl;
 	private TrendingAllTimeTableModel comicBookTableModel;
-	private TrendingAllTimeTableModel regionalComicBookTableModel;
+	private TrendingRegionalTableModel regionalComicBookTableModel;
 	private JScrollPane allTimeFavoritesScrollPane;
 	private JScrollPane regionalFavoritesScrollPane;
 	private JComboBox<String> regionBox;
@@ -68,15 +69,15 @@ public class TrendingPanel extends JPanel {
 		panel.add(regionalFavorites);
 			
 		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
-		comicBookTableModel = new TrendingAllTimeTableModel(comicBookDaoImpl.getAllComicBooks());
-		
-		regionalComicBookTableModel = new TrendingAllTimeTableModel(comicBookDaoImpl.getAllComicBooks()); // change to get by region
+
+		comicBookTableModel = new TrendingAllTimeTableModel(comicBookDaoImpl.getAllComicBooks());		
+		regionalComicBookTableModel = new TrendingRegionalTableModel(comicBookDaoImpl.getAllComicBooks(), "North America");
 		
 		allTimeFavoritesTable = new JTable(comicBookTableModel);
 		allTimeFavoritesTable.setBounds(0, 0, 1, 1);
 		panel.add(allTimeFavoritesTable);
 		
-		regionalFavoritesTable = new JTable(comicBookTableModel);
+		regionalFavoritesTable = new JTable(regionalComicBookTableModel);
 		regionalFavoritesTable.setBounds(0, 0, 1, 1);
 		panel.add(regionalFavoritesTable);
 		

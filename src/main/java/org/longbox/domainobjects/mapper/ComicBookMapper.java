@@ -22,6 +22,7 @@ public class ComicBookMapper {
         dto.setYearPublished(entity.getYearPublished());
         dto.setDateAdded(entity.getDateAdded());
         dto.setFavoritesCount(entity.getFavoritesCount());
+        dto.setNorthAmericaFavoritesCount((entity.getNorthAmericaFavoritesCount()));
         return dto;
     }
 
@@ -43,6 +44,7 @@ public class ComicBookMapper {
         entity.setYearPublished(dto.getYearPublished());
         entity.setDateAdded(dto.getDateAdded());
         entity.setFavoritesCount(dto.getFavoritesCount());
+        entity.setNorthAmericaFavoritesCount(dto.getNorthAmericaFavoritesCount());
         return entity;
     }
 

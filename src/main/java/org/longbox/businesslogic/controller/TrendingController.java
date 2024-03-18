@@ -10,6 +10,7 @@ import org.longbox.config.HibernateUtils;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.profile.TrendingPanel;
 import org.longbox.presentation.tablemodels.TrendingAllTimeTableModel;
+import org.longbox.presentation.tablemodels.TrendingRegionalTableModel;
 
 public class TrendingController implements ActionListener {
 
@@ -31,25 +32,25 @@ public class TrendingController implements ActionListener {
 		}
 	}
 	
-	public void reloadRegionalTrending(String region) {
-		this.trendingPanel.getPanel().remove(this.trendingPanel.getRegionalFavoritesScrollPane());
-	}
+//	public void reloadRegionalTrending(String region) {
+//		this.trendingPanel.getPanel().remove(this.trendingPanel.getRegionalFavoritesScrollPane());
+//	}
 	
 	public void reloadTrending() {
 		this.trendingPanel.getPanel().remove(this.trendingPanel.getAllTimeFavoritesScrollPane());
 		this.trendingPanel.getPanel().remove(this.trendingPanel.getRegionalFavoritesScrollPane());
 		
 		this.trendingPanel.setComicBookDaoImpl(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
+		//this.trendingPanel.setRegionalComicBookDaoImpl(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 		
 		this.trendingPanel.setComicBookTableModel(new TrendingAllTimeTableModel(this.trendingPanel.getComicBookDaoImpl().getAllComicBooks()));
-		
-		this.trendingPanel.setRegionalComicBookTableModel(new TrendingAllTimeTableModel(this.trendingPanel.getComicBookDaoImpl().getAllComicBooks())); // regional
+		this.trendingPanel.setRegionalComicBookTableModel(new TrendingRegionalTableModel(this.trendingPanel.getComicBookDaoImpl().getAllComicBooks(), "North America")); // regional
 		
 		this.trendingPanel.setAllTimeFavoritesTable(new JTable(this.trendingPanel.getComicBookTableModel()));
 		this.trendingPanel.getAllTimeFavoritesTable().setBounds(0, 0, 1, 1);
 		this.trendingPanel.getPanel().add(this.trendingPanel.getAllTimeFavoritesTable());
 		
-		this.trendingPanel.setRegionalFavoritesTable(new JTable(this.trendingPanel.getComicBookTableModel()));
+		this.trendingPanel.setRegionalFavoritesTable(new JTable(this.trendingPanel.getRegionalComicBookTableModel()));
 		this.trendingPanel.getRegionalFavoritesTable().setBounds(0, 0, 1, 1);
 		this.trendingPanel.getPanel().add(this.trendingPanel.getRegionalFavoritesTable());
 		
