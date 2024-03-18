@@ -32,6 +32,78 @@ private static final long serialVersionUID = 1L;
 				comicBookList.set(min, comicBookList.get(i));
 				comicBookList.set(i, temp);		
 			}
+		} else if(region.equals("South America")) {
+			for (int i = 0; i < comicBookList.size() - 1; i++) {
+				int min = i;
+				for (int j = i + 1; j < comicBookList.size(); j++) {
+					if (comicBookList.get(j).getSouthAmericaFavoritesCount() > comicBookList.get(min).getSouthAmericaFavoritesCount()) {
+						min = j;
+					}
+				}
+				ComicBookDto temp = comicBookList.get(min);
+				comicBookList.set(min, comicBookList.get(i));
+				comicBookList.set(i, temp);		
+			}
+		} else if(region.equals("Europe")) {
+			for (int i = 0; i < comicBookList.size() - 1; i++) {
+				int min = i;
+				for (int j = i + 1; j < comicBookList.size(); j++) {
+					if (comicBookList.get(j).getEuropeFavoritesCount() > comicBookList.get(min).getEuropeFavoritesCount()) {
+						min = j;
+					}
+				}
+				ComicBookDto temp = comicBookList.get(min);
+				comicBookList.set(min, comicBookList.get(i));
+				comicBookList.set(i, temp);		
+			}
+		} else if(region.equals("Asia")) {
+			for (int i = 0; i < comicBookList.size() - 1; i++) {
+				int min = i;
+				for (int j = i + 1; j < comicBookList.size(); j++) {
+					if (comicBookList.get(j).getAsiaFavoritesCount() > comicBookList.get(min).getAsiaFavoritesCount()) {
+						min = j;
+					}
+				}
+				ComicBookDto temp = comicBookList.get(min);
+				comicBookList.set(min, comicBookList.get(i));
+				comicBookList.set(i, temp);		
+			}
+		} else if(region.equals("Africa")) {
+			for (int i = 0; i < comicBookList.size() - 1; i++) {
+				int min = i;
+				for (int j = i + 1; j < comicBookList.size(); j++) {
+					if (comicBookList.get(j).getAfricaFavoritesCount() > comicBookList.get(min).getAfricaFavoritesCount()) {
+						min = j;
+					}
+				}
+				ComicBookDto temp = comicBookList.get(min);
+				comicBookList.set(min, comicBookList.get(i));
+				comicBookList.set(i, temp);		
+			}
+		} else if(region.equals("Oceania")) {
+			for (int i = 0; i < comicBookList.size() - 1; i++) {
+				int min = i;
+				for (int j = i + 1; j < comicBookList.size(); j++) {
+					if (comicBookList.get(j).getOceaniaFavoritesCount() > comicBookList.get(min).getOceaniaFavoritesCount()) {
+						min = j;
+					}
+				}
+				ComicBookDto temp = comicBookList.get(min);
+				comicBookList.set(min, comicBookList.get(i));
+				comicBookList.set(i, temp);		
+			}
+		} else if(region.equals("Antarctica")) {
+			for (int i = 0; i < comicBookList.size() - 1; i++) {
+				int min = i;
+				for (int j = i + 1; j < comicBookList.size(); j++) {
+					if (comicBookList.get(j).getAntarcticaFavoritesCount() > comicBookList.get(min).getAntarcticaFavoritesCount()) {
+						min = j;
+					}
+				}
+				ComicBookDto temp = comicBookList.get(min);
+				comicBookList.set(min, comicBookList.get(i));
+				comicBookList.set(i, temp);		
+			}
 		} else {
 			for (int i = 0; i < comicBookList.size() - 1; i++) {
 				int min = i;
@@ -56,6 +128,60 @@ private static final long serialVersionUID = 1L;
         	if(region.equals("North America")) {
         		addRow(new Object[]{
 	            		comicBook.getNorthAmericaFavoritesCount(),
+	                    comicBook.getSeriesTitle(),
+	                    comicBook.getAuthor(),
+	                    comicBook.getArtist(),
+	                    comicBook.getNumberOfIssues(),
+	                    comicBook.getPublisher()
+	            });
+        	} else if(region.equals("South America")) {
+        		addRow(new Object[]{
+	            		comicBook.getSouthAmericaFavoritesCount(),
+	                    comicBook.getSeriesTitle(),
+	                    comicBook.getAuthor(),
+	                    comicBook.getArtist(),
+	                    comicBook.getNumberOfIssues(),
+	                    comicBook.getPublisher()
+	            });
+        	} else if(region.equals("Europe")) {
+        		addRow(new Object[]{
+	            		comicBook.getEuropeFavoritesCount(),
+	                    comicBook.getSeriesTitle(),
+	                    comicBook.getAuthor(),
+	                    comicBook.getArtist(),
+	                    comicBook.getNumberOfIssues(),
+	                    comicBook.getPublisher()
+	            });
+        	} else if(region.equals("Asia")) {
+        		addRow(new Object[]{
+	            		comicBook.getAsiaFavoritesCount(),
+	                    comicBook.getSeriesTitle(),
+	                    comicBook.getAuthor(),
+	                    comicBook.getArtist(),
+	                    comicBook.getNumberOfIssues(),
+	                    comicBook.getPublisher()
+	            });
+        	} else if(region.equals("Afrcia")) {
+        		addRow(new Object[]{
+	            		comicBook.getAfricaFavoritesCount(),
+	                    comicBook.getSeriesTitle(),
+	                    comicBook.getAuthor(),
+	                    comicBook.getArtist(),
+	                    comicBook.getNumberOfIssues(),
+	                    comicBook.getPublisher()
+	            });
+        	} else if(region.equals("Oceania")) {
+        		addRow(new Object[]{
+	            		comicBook.getOceaniaFavoritesCount(),
+	                    comicBook.getSeriesTitle(),
+	                    comicBook.getAuthor(),
+	                    comicBook.getArtist(),
+	                    comicBook.getNumberOfIssues(),
+	                    comicBook.getPublisher()
+	            });
+        	} else if(region.equals("Antarctica")) {
+        		addRow(new Object[]{
+	            		comicBook.getAntarcticaFavoritesCount(),
 	                    comicBook.getSeriesTitle(),
 	                    comicBook.getAuthor(),
 	                    comicBook.getArtist(),
