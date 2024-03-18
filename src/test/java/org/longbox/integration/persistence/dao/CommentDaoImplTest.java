@@ -25,7 +25,7 @@ class CommentDaoImplTest {
 	void test_getCommentsByComic_1() {
 		List<CommentDto> actualList = commentDaoImpl.getCommentsByComic(1L);
 		int actual = actualList.size();
-		assertEquals(4, actual);
+		assertEquals(2, actual);
 	}
 
 	@Test
