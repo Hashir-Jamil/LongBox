@@ -19,6 +19,7 @@ public class UserDto {
 	private String email;
 	private String password;
 	private String country;
+	private String continent;
 	private Date joinDate;
 	private int comicsReading;
 	private int comicsFinished;
