@@ -206,43 +206,13 @@ public class ProfilePanel extends JPanel {
 		aboutMeCancelButton.setEnabled(false);
 		aboutMeCancelButton.setBounds(927, 281, 87, 16);
 		panel.add(aboutMeCancelButton);
-
+		
 		try {
 			reloadTable();
 		} catch (UserIDDoesNotExistException e) {
 			throw new RuntimeException(e);
 		}
 		setFields();
-		
-		aboutMeEditButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (aboutMeEditButton.getText() == "Edit") {
-					aboutMeEditButton.setText("Save");
-					aboutMeCancelButton.setEnabled(true);
-					aboutMe.setEditable(true);
-				}
-				else if (aboutMeEditButton.getText() == "Save") {
-					UserDaoImpl userDaoImpl = new UserDaoImpl(HibernateUtils.getSessionFactory());
-					userDaoImpl.updateAboutMeString(user.getUser().getId(), aboutMe.getText());
-					user.getUser().setAboutMe(aboutMe.getText());
-					aboutMeCancelButton.setEnabled(false);
-					aboutMeEditButton.setText("Edit");
-					aboutMe.setEditable(false);
-				}
-			}
-		});
-		
-		aboutMeCancelButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				aboutMeCancelButton.setEnabled(false);
-				aboutMe.setEditable(false);
-				aboutMe.setText(user.getUser().getAboutMe());
-				aboutMeEditButton.setEnabled(true);
-				aboutMeEditButton.setText("Edit");
-			}
-		});
 	}
 
 	private void setFields() {
@@ -319,5 +289,21 @@ public class ProfilePanel extends JPanel {
 		readPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		readPane.setBounds(47, 617, 407, 135);
 		panel.add(readPane);
+	}
+	
+	public UserSession getUserSession() {
+		return user;
+	}
+	
+	public JTextArea getAboutMe() {
+		return aboutMe;
+	}
+	
+	public JButton getAboutMeEditButton() {
+		return aboutMeEditButton;
+	}
+	
+	public JButton getAboutMeCancelButton() {
+		return aboutMeCancelButton;
 	}
 }

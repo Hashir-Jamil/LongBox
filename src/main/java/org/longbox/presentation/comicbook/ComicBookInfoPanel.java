@@ -4,11 +4,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.service.CommentService;
+import org.longbox.businesslogic.service.StarRatingService;
 import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.businesslogic.utils.MultiLineCellRenderer;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.dto.CommentDto;
+import org.longbox.domainobjects.dto.StarRatingDto;
 import org.longbox.persistence.dao.*;
 import org.longbox.domainobjects.entity.ComicBook;
 
@@ -16,6 +18,7 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -45,6 +48,10 @@ public class ComicBookInfoPanel extends JPanel {
 	private JLabel commentsTitle;
 	private JLabel addCommentLabel;
 	private JLabel viewCommentsLabel;
+	private JLabel avgRating;
+	private JLabel userRating;
+	private JLabel inputRatingPrompt;
+	private JTextField inputRating;
 	private JButton addCommentButton;
 	private JButton addToFavoritesButton;
 	private JButton addToFinishedButton;
@@ -55,7 +62,9 @@ public class ComicBookInfoPanel extends JPanel {
 	private JTextArea commentBox;
 	private DefaultListModel<CommentDto> commentListModel;
 	private CommentDaoImpl commentDaoImpl;
+	private StarRatingDaoImpl starRatingDaoImpl;
 	private List<CommentDto> commentsOnCurrentComic;
+	private List<StarRatingDto> avgRatingTotal;
 	private UserSession userSession;
 	private JList<CommentDto> commentList;
 	private ComicBookDaoImpl comicBookDaoImpl;
@@ -63,6 +72,7 @@ public class ComicBookInfoPanel extends JPanel {
 	private ComicBookFinishedListDaoImpl comicBookFinishedListDaoImpl;
 	private ComicBookReadingListDaoImpl comicBookReadingListDaoImpl;
 	private CommentService commentService;
+	private StarRatingService starRatingService;
 
 	public ComicBookInfoPanel(ComicBookDto comicBookDTO, UserSession userSession) {
 		this.comicBookDTO = comicBookDTO;
@@ -70,6 +80,7 @@ public class ComicBookInfoPanel extends JPanel {
 
 		commentDaoImpl = new CommentDaoImpl(HibernateUtils.getSessionFactory());
 		commentService = new CommentService(commentDaoImpl);
+		starRatingService = new StarRatingService(starRatingDaoImpl);
 
 		this.commentsOnCurrentComic = commentService.getCommentsByComic(this.comicBookDTO.getId());
 
@@ -140,6 +151,18 @@ public class ComicBookInfoPanel extends JPanel {
 		DateAddedLabel.setBounds(53, 456, 94, 16);
 		panel.add(DateAddedLabel);
 		
+		JLabel avgRatingLabel = new JLabel("Average Rating: ");
+		avgRatingLabel.setBounds(53, 456, 94, 16);
+		panel.add(avgRatingLabel);
+		
+		JLabel userRatingLabel = new JLabel("Your Rating: ");
+		userRatingLabel.setBounds(53, 456, 94, 16);
+		panel.add(userRatingLabel);
+		
+		JLabel inputRatingPromptLabel = new JLabel("Input a rating between 1-5 stars: ");
+		inputRatingPromptLabel.setBounds(53, 456, 94, 16);
+		panel.add(inputRatingPromptLabel);
+		
 		comicSeries = new JLabel("");
 		comicSeries.setBounds(182, 240, 373, 16);
 		panel.add(comicSeries);
@@ -177,6 +200,18 @@ public class ComicBookInfoPanel extends JPanel {
 		dateAdded = new JLabel("");
 		dateAdded.setBounds(182, 456, 373, 16);
 		panel.add(dateAdded);
+		
+		avgRating = new JLabel("");
+		avgRating.setBounds(53, 456, 94, 16);
+		panel.add(avgRating);
+		
+		userRating = new JLabel("");
+		userRating.setBounds(53, 456, 94, 16);
+		panel.add(userRating);
+		
+		inputRating = new JTextField("");
+		inputRating.setBounds(53, 456, 94, 16);
+		panel.add(inputRating);
 		
 		commentsTitle = new JLabel("Comments");
 		commentsTitle.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
@@ -245,6 +280,7 @@ public class ComicBookInfoPanel extends JPanel {
 		readingButtonStates();
 		setFields();
 		displayComments();
+		displayAvgRating();
 	}
 
 
@@ -259,7 +295,25 @@ public class ComicBookInfoPanel extends JPanel {
 		yearPublished.setText("" + comicBookDTO.getYearPublished());
 		dateAdded.setText("" + comicBookDTO.getDateAdded());
 	}
+	
+	public void displayAvgRating() {
+		avgRatingTotal = starRatingService.getStarRatingsByComic(comicBookDTO.getId());
+		int i = 0;
+		ArrayList <StarRatingDto> l = new ArrayList<StarRatingDto>();
+		
+		for (StarRatingDto s : avgRatingTotal) {
+			i =+ s.getRating();
+			l.add(s);
+		}
+		
+		avgRating.setText("" + (double) i/l.size());
+	}
 
+	public void displayUserRating() {
+		int i = starRatingService.getStarRatingByID(userSession.getUser().getId(), comicBookDTO.getId()).getRating();
+		userRating.setText("" + i);
+	}
+	
 	public void displayComments(){
 		commentsOnCurrentComic = commentService.getCommentsByComic(comicBookDTO.getId());
 		commentListModel.removeAllElements();
