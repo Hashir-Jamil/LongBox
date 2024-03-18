@@ -23,12 +23,14 @@ public class HomeController implements ActionListener {
     
     ComicRepositoryController comicRepsoitoryController;
     TrendingController trendingController;
+    ProfileController profileController;
 
     public HomeController(HomeFrame homeFrame) {
         this.homeFrame = homeFrame;
         this.userSession = homeFrame.getUserSession();
         this.comicRepsoitoryController = new ComicRepositoryController(this.homeFrame.getComicRepoPanel());
         this.trendingController = new TrendingController(this.homeFrame.getTrendingComicsPanel());
+        this.profileController = new ProfileController(this.homeFrame.getProfilePanel());
         addListeners();
     }
 

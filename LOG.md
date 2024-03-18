@@ -232,3 +232,15 @@
     Group Meeting (Ali, Ahan, Eric, Hashir): discussed division of stories for take home assignment. Divided stories evenly & discussed conventions for e2e tests, bug reports, github issues and code review checklists. Agree upon conventions for these documentations and made template for take home assignment.
     Hashir: did e2e testing and wrote bug reports.
     Ahan: Fixed reported bugs related to my user stories.
+    
+## Saturday, March 16th, 2024
+
+	Oscar: Started working on star rating feature.
+	
+## Sunday, March 17th, 2024
+
+	Oscar: Almost finished with star rating feature.
+	
+## Monday, March 18th, 2024
+
+	Oscar: Refactored ProfilePanel so that the functionality of the aboutMe buttons are moved to ProfileController.
