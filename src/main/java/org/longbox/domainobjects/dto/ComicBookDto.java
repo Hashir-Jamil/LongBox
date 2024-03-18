@@ -1,10 +1,11 @@
 package org.longbox.domainobjects.dto;
 
+import org.longbox.businesslogic.utils.GenreUtils;
+import org.longbox.domainobjects.entity.ComicBook;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.longbox.businesslogic.utils.GenreUtils;
-import org.longbox.domainobjects.entity.ComicBook;
 
 import java.util.*;
 @Getter
@@ -21,6 +22,13 @@ public class ComicBookDto {
     private String publisher;
     private int yearPublished;
     private Date dateAdded;
+    private int northAmericaFavoritesCount;
+    private int southAmericaFavoritesCount;
+    private int europeFavoritesCount;
+    private int asiaFavoritesCount;
+    private int africaFavoritesCount;
+    private int oceaniaFavoritesCount;
+    private int antarcticaFavoritesCount;    
     private int favoritesCount;
 
     public ComicBookDto(
@@ -44,7 +52,14 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
-        favoritesCount = 0;
+        this.northAmericaFavoritesCount = 0;
+        this.southAmericaFavoritesCount = 0;
+        this.europeFavoritesCount = 0;
+        this.asiaFavoritesCount = 0;
+        this.africaFavoritesCount = 0;
+        this.oceaniaFavoritesCount = 0;
+        this.antarcticaFavoritesCount = 0;
+        this.favoritesCount = 0;
     }
 
     public ComicBookDto(
@@ -66,7 +81,14 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
-        favoritesCount = 0;
+        this.northAmericaFavoritesCount = 0;
+        this.southAmericaFavoritesCount = 0;
+        this.europeFavoritesCount = 0;
+        this.asiaFavoritesCount = 0;
+        this.africaFavoritesCount = 0;
+        this.oceaniaFavoritesCount = 0;
+        this.antarcticaFavoritesCount = 0;
+        this.favoritesCount = 0;
     };
 
     public ComicBookDto(
@@ -79,6 +101,13 @@ public class ComicBookDto {
         String publisher,
         int yearPublished,
         Date date, 
+        int northAmericaFavoritesCount,
+        int southAmericaFavoritesCount,
+        int europeFavoritesCount,
+        int asiaFavoritesCount,
+        int africaFavoritesCount,
+        int oceaniaFavoritesCount,
+        int antarcticaFavoritesCount,
         int favoritesCount
     ) {
         this.seriesTitle = seriesTitle;
@@ -90,6 +119,13 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date(date.getTime());
+        this.northAmericaFavoritesCount = northAmericaFavoritesCount;
+        this.southAmericaFavoritesCount = southAmericaFavoritesCount;
+        this.europeFavoritesCount = europeFavoritesCount;
+        this.asiaFavoritesCount = asiaFavoritesCount;
+        this.africaFavoritesCount = africaFavoritesCount;
+        this.oceaniaFavoritesCount = oceaniaFavoritesCount;
+        this.antarcticaFavoritesCount = antarcticaFavoritesCount;
         this.favoritesCount = favoritesCount;
     };
 
@@ -112,6 +148,13 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
+        this.northAmericaFavoritesCount = 0;
+        this.southAmericaFavoritesCount = 0;
+        this.europeFavoritesCount = 0;
+        this.asiaFavoritesCount = 0;
+        this.africaFavoritesCount = 0;
+        this.oceaniaFavoritesCount = 0;
+        this.antarcticaFavoritesCount = 0;
         this.favoritesCount = 0;
     }
 
@@ -135,6 +178,13 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = date;
+        this.northAmericaFavoritesCount = 0;
+        this.southAmericaFavoritesCount = 0;
+        this.europeFavoritesCount = 0;
+        this.asiaFavoritesCount = 0;
+        this.africaFavoritesCount = 0;
+        this.oceaniaFavoritesCount = 0;
+        this.antarcticaFavoritesCount = 0;
         this.favoritesCount = 0;
     }
   
@@ -149,6 +199,13 @@ public class ComicBookDto {
             comicBookRecord.getPublisher(),
             comicBookRecord.getYearPublished(),
             comicBookRecord.getDateAdded(),
+            comicBookRecord.getNorthAmericaFavoritesCount(),
+            comicBookRecord.getSouthAmericaFavoritesCount(),
+            comicBookRecord.getEuropeFavoritesCount(),
+            comicBookRecord.getAsiaFavoritesCount(),
+            comicBookRecord.getAfricaFavoritesCount(),
+            comicBookRecord.getOceaniaFavoritesCount(),
+            comicBookRecord.getAntarcticaFavoritesCount(),
             comicBookRecord.getFavoritesCount()
         );
         this.setId(comicBookRecord.getId());

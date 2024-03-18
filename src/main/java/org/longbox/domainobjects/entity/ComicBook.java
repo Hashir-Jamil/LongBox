@@ -49,6 +49,27 @@ public class ComicBook {
     @Column(name = "date_added")
     private Date dateAdded;
     
+    @Column(name = "north_america_favorites_count")
+    private int northAmericaFavoritesCount;
+    
+    @Column(name = "south_america_favorites_count")
+    private int southAmericaFavoritesCount;
+    
+    @Column(name = "europe_favorites_count")
+    private int europeFavoritesCount;
+    
+    @Column(name = "asia_favorites_count")
+    private int asiaFavoritesCount;
+    
+    @Column(name = "africa_favorites_count")
+    private int africaFavoritesCount;
+    
+    @Column(name = "oceania_favorites_count")
+    private int oceaniaFavoritesCount;
+    
+    @Column(name = "antarctica_favorites_count")
+    private int antarcticaFavoritesCount;
+    
     @Column(name = "favorites_count")
     private int favoritesCount;
     
@@ -115,6 +136,13 @@ public class ComicBook {
                 ", publisher='" + publisher + '\'' +
                 ", yearPublished=" + yearPublished +
                 ", dateAdded=" + dateAdded +
+                ", northAmericaFavoritesCount=" + northAmericaFavoritesCount +
+                ", southAmericaFavoritesCount=" + southAmericaFavoritesCount +
+                ", europeFavoritesCount=" + europeFavoritesCount +
+                ", asiaFavoritesCount=" + asiaFavoritesCount +
+                ", africaFavoritesCount=" + africaFavoritesCount +
+                ", oceaniaFavoritesCount=" + oceaniaFavoritesCount +
+                ", antarcticaFavoritesCount=" + antarcticaFavoritesCount +
                 ", favoritesCount=" + favoritesCount +
                 '}';
     }
