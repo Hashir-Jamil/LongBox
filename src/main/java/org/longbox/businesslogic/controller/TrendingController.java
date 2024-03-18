@@ -28,8 +28,24 @@ public class TrendingController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.trendingPanel.getRegionBox()) {
-			System.out.println(this.trendingPanel.getRegionBox().getSelectedItem().toString());
+			reloadRegional(this.trendingPanel.getRegionBox().getSelectedItem().toString());
 		}
+	}
+	
+	public void reloadRegional(String region) {
+		this.trendingPanel.getPanel().remove(this.trendingPanel.getRegionalFavoritesScrollPane());
+		
+		this.trendingPanel.setComicBookDaoImpl(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
+		
+		this.trendingPanel.setRegionalComicBookTableModel(new TrendingRegionalTableModel(this.trendingPanel.getComicBookDaoImpl().getAllComicBooks(), region));
+		
+		this.trendingPanel.setRegionalFavoritesTable(new JTable(this.trendingPanel.getRegionalComicBookTableModel()));
+		this.trendingPanel.getRegionalFavoritesTable().setBounds(0, 0, 1, 1);
+		this.trendingPanel.getPanel().add(this.trendingPanel.getRegionalFavoritesTable());
+		
+		this.trendingPanel.setRegionalFavoritesScrollPane(new JScrollPane(this.trendingPanel.getRegionalFavoritesTable()));
+		this.trendingPanel.getRegionalFavoritesScrollPane().setBounds(10, 483, 1144, 300);
+		this.trendingPanel.getPanel().add(this.trendingPanel.getRegionalFavoritesScrollPane());
 	}
 	
 	public void reloadTrending() {

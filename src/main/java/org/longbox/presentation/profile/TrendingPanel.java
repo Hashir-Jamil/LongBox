@@ -95,7 +95,7 @@ public class TrendingPanel extends JPanel {
 		regionBox.addItem("South America");
 		regionBox.addItem("Europe");
 		regionBox.addItem("Asia");
-		regionBox.addItem("Afrcia");
+		regionBox.addItem("Africa");
 		regionBox.addItem("Oceania");
 		regionBox.addItem("Antarctica");
 		panel.add(regionBox);

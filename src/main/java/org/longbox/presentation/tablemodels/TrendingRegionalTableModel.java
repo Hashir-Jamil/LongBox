@@ -161,7 +161,7 @@ private static final long serialVersionUID = 1L;
 	                    comicBook.getNumberOfIssues(),
 	                    comicBook.getPublisher()
 	            });
-        	} else if(region.equals("Afrcia")) {
+        	} else if(region.equals("Africa")) {
         		addRow(new Object[]{
 	            		comicBook.getAfricaFavoritesCount(),
 	                    comicBook.getSeriesTitle(),
