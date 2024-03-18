@@ -23,7 +23,7 @@ public class TrendingController {
 	
 	public void reloadTrending() {
 		this.trendingPanel.getPanel().remove(this.trendingPanel.getAllTimeFavoritesScrollPane());
-		this.trendingPanel.getPanel().remove(this.trendingPanel.getNationalFavoritesScrollPane());
+		this.trendingPanel.getPanel().remove(this.trendingPanel.getRegionalFavoritesScrollPane());
 		
 		this.trendingPanel.setComicBookDaoImpl(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 		
@@ -33,17 +33,17 @@ public class TrendingController {
 		this.trendingPanel.getAllTimeFavoritesTable().setBounds(0, 0, 1, 1);
 		this.trendingPanel.getPanel().add(this.trendingPanel.getAllTimeFavoritesTable());
 		
-		this.trendingPanel.setNationalFavoritesTable(new JTable(this.trendingPanel.getComicBookTableModel()));
-		this.trendingPanel.getNationalFavoritesTable().setBounds(0, 0, 1, 1);
-		this.trendingPanel.getPanel().add(this.trendingPanel.getNationalFavoritesTable());
+		this.trendingPanel.setRegionalFavoritesTable(new JTable(this.trendingPanel.getComicBookTableModel()));
+		this.trendingPanel.getRegionalFavoritesTable().setBounds(0, 0, 1, 1);
+		this.trendingPanel.getPanel().add(this.trendingPanel.getRegionalFavoritesTable());
 		
 		this.trendingPanel.setAllTimeFavoritesScrollPane(new JScrollPane(this.trendingPanel.getAllTimeFavoritesTable()));
 		this.trendingPanel.getAllTimeFavoritesScrollPane().setBounds(10, 139, 1144, 300);
 		this.trendingPanel.getPanel().add(this.trendingPanel.getAllTimeFavoritesScrollPane());
 		
-		this.trendingPanel.setNationalFavoritesScrollPane(new JScrollPane(this.trendingPanel.getNationalFavoritesTable()));
-		this.trendingPanel.getNationalFavoritesScrollPane().setBounds(10, 483, 1144, 300);
-		this.trendingPanel.getPanel().add(this.trendingPanel.getNationalFavoritesScrollPane());
+		this.trendingPanel.setRegionalFavoritesScrollPane(new JScrollPane(this.trendingPanel.getRegionalFavoritesTable()));
+		this.trendingPanel.getRegionalFavoritesScrollPane().setBounds(10, 483, 1144, 300);
+		this.trendingPanel.getPanel().add(this.trendingPanel.getRegionalFavoritesScrollPane());
 	}
 
 }

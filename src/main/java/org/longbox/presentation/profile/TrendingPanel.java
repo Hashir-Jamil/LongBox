@@ -20,16 +20,16 @@ import javax.swing.JTable;
 public class TrendingPanel extends JPanel {
 	
 	private JTable allTimeFavoritesTable;
-	private JTable nationalFavoritesTable;
+	private JTable regionalFavoritesTable;
 	private JPanel panel;
 	private JLabel trendingTitle;
 	private JSeparator separator;
 	private JLabel allTimeFavoritesLabel;
-	private JLabel nationalFavorites;
+	private JLabel regionalFavorites;
 	private ComicBookDaoImpl comicBookDaoImpl;
 	private TrendingAllTimeTableModel comicBookTableModel;
 	private JScrollPane allTimeFavoritesScrollPane;
-	private JScrollPane nationalFavoritesScrollPane;
+	private JScrollPane regionalFavoritesScrollPane;
 
 	public TrendingPanel() {
 		initTrendingPanel();
@@ -59,10 +59,10 @@ public class TrendingPanel extends JPanel {
 		allTimeFavoritesLabel.setBounds(10, 106, 117, 22);
 		panel.add(allTimeFavoritesLabel);
 		
-		nationalFavorites = new JLabel("National Favorites: ");
-		nationalFavorites.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		nationalFavorites.setBounds(10, 450, 117, 22);
-		panel.add(nationalFavorites);
+		regionalFavorites = new JLabel("Regional Favorites: ");
+		regionalFavorites.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		regionalFavorites.setBounds(10, 450, 127, 22);
+		panel.add(regionalFavorites);
 			
 		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 		comicBookTableModel = new TrendingAllTimeTableModel(comicBookDaoImpl.getAllComicBooks());
@@ -71,16 +71,16 @@ public class TrendingPanel extends JPanel {
 		allTimeFavoritesTable.setBounds(0, 0, 1, 1);
 		panel.add(allTimeFavoritesTable);
 		
-		nationalFavoritesTable = new JTable(comicBookTableModel);
-		nationalFavoritesTable.setBounds(0, 0, 1, 1);
-		panel.add(nationalFavoritesTable);
+		regionalFavoritesTable = new JTable(comicBookTableModel);
+		regionalFavoritesTable.setBounds(0, 0, 1, 1);
+		panel.add(regionalFavoritesTable);
 		
 		allTimeFavoritesScrollPane = new JScrollPane(allTimeFavoritesTable);
 		allTimeFavoritesScrollPane.setBounds(10, 139, 1144, 300);
 		panel.add(allTimeFavoritesScrollPane);
 		
-		nationalFavoritesScrollPane = new JScrollPane(nationalFavoritesTable);
-		nationalFavoritesScrollPane.setBounds(10, 483, 1144, 300);
-		panel.add(nationalFavoritesScrollPane);
+		regionalFavoritesScrollPane = new JScrollPane(regionalFavoritesTable);
+		regionalFavoritesScrollPane.setBounds(10, 483, 1144, 300);
+		panel.add(regionalFavoritesScrollPane);
 	}
 }
