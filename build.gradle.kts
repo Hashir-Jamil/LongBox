@@ -24,6 +24,11 @@ dependencies {
     testImplementation("org.mockito:mockito-core:2.1.0")
 }
 
-tasks.test {
+tasks.named<Test>("test") {
     useJUnitPlatform()
+    maxHeapSize = "1G"
+
+    testLogging {
+        events("passed")
+    }
 }
