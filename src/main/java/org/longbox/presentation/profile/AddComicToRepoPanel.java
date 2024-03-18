@@ -8,7 +8,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 @Getter
 @Setter
@@ -21,9 +25,9 @@ public class AddComicToRepoPanel extends JPanel {
 	private final String ARTIST_NAME = "Artist Name";
 	private final String GENRES = "Genres";
 	private final String DESCRIPTION = "Description";
-	private final String NUMBER_OF_ISSUES = "Number of Issues";
+	private final String NUMBER_OF_ISSUES = "Number of Issues (Positive number)";
 	private final String PUBLISHER = "Publisher";
-	private final String YEAR_PUBLISHED = "Year Published";
+	private final String YEAR_PUBLISHED = "Year Published (Positive number)";
 	private final String ENTER_COMIC_BOOK_BUTTON = "Enter Comic Book";
 	private final String SUCCESS_MESSAGE = "Comic Book Successfully Added!";
 	private JTextField comicSeriesTitleTextField;
@@ -75,7 +79,7 @@ public class AddComicToRepoPanel extends JPanel {
 		
 		//Field 1 Series Title Input Box
 		comicSeriesTitleTextField = new JTextField();
-		comicSeriesTitleTextField.setBounds(287, 150, 590, 20);
+		comicSeriesTitleTextField.setBounds(400, 150, 590, 20);
 		panel.add(comicSeriesTitleTextField);
 		comicSeriesTitleTextField.setColumns(50);
 		
@@ -89,7 +93,7 @@ public class AddComicToRepoPanel extends JPanel {
 		//Field 2 Author Name Input Box
 		comicBookAuthorTextField = new JTextField();
 		comicBookAuthorTextField.setColumns(50);
-		comicBookAuthorTextField.setBounds(287, 212, 590, 20);
+		comicBookAuthorTextField.setBounds(400, 212, 590, 20);
 		panel.add(comicBookAuthorTextField);
 
 		//Field 3 Artist Name Label
@@ -102,7 +106,7 @@ public class AddComicToRepoPanel extends JPanel {
 		//Field 3 Artist Name Input Box
 		comicBookArtistTextField = new JTextField();
 		comicBookArtistTextField.setColumns(50);
-		comicBookArtistTextField.setBounds(287, 274, 590, 20);
+		comicBookArtistTextField.setBounds(400, 274, 590, 20);
 		panel.add(comicBookArtistTextField);
 
 		//Field 4 Genres Label
@@ -115,7 +119,7 @@ public class AddComicToRepoPanel extends JPanel {
 		//Field 4 Genres Input Box
 		genresTextField = new JTextField();
 		genresTextField.setColumns(50);
-		genresTextField.setBounds(287, 336, 590, 20);
+		genresTextField.setBounds(400, 336, 590, 20);
 		panel.add(genresTextField);
 		
 		//Field 5 Description Label
@@ -128,20 +132,20 @@ public class AddComicToRepoPanel extends JPanel {
 		//Field 5 Description Input Box
 		descriptionTextField = new JTextField();
 		descriptionTextField.setColumns(50);
-		descriptionTextField.setBounds(287, 386, 590, 20);
+		descriptionTextField.setBounds(400, 386, 590, 20);
 		panel.add(descriptionTextField);
 
 		//Field 6 Number of Issues Label
 		JLabel numberOfIssuesLabel = new JLabel(NUMBER_OF_ISSUES);
 		numberOfIssuesLabel.setForeground(Color.BLACK);
 		numberOfIssuesLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
-		numberOfIssuesLabel.setBounds(111, 436, 174, 20);
+		numberOfIssuesLabel.setBounds(111, 436, 250, 20);
 		panel.add(numberOfIssuesLabel);
 
 		//Field 6 Number of Issues Text Box
 		numberOfIssuesTextField = new JTextField();
 		numberOfIssuesTextField.setColumns(50);
-		numberOfIssuesTextField.setBounds(287, 436, 590, 20);
+		numberOfIssuesTextField.setBounds(400, 436, 590, 20);
 		panel.add(numberOfIssuesTextField);
 
 		//Field 7 Publisher Label
@@ -154,30 +158,63 @@ public class AddComicToRepoPanel extends JPanel {
 		//Field 7 Publisher Input Box
 		publisherTextField = new JTextField();
 		publisherTextField.setColumns(50);
-		publisherTextField.setBounds(287, 486, 590, 20);
+		publisherTextField.setBounds(400, 486, 590, 20);
 		panel.add(publisherTextField);
 
 		//Field 8 Year Published Label
 		JLabel yearPublishedLabel = new JLabel(YEAR_PUBLISHED);
 		yearPublishedLabel.setForeground(Color.BLACK);
 		yearPublishedLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
-		yearPublishedLabel.setBounds(111, 536, 174, 20);
+		yearPublishedLabel.setBounds(111, 536, 250, 20);
 		panel.add(yearPublishedLabel);
 
 		//Field 8 Year Published Input Box
 		yearPublishedTextField = new JTextField();
 		yearPublishedTextField.setColumns(50);
-		yearPublishedTextField.setBounds(287, 536, 590, 20);
+		yearPublishedTextField.setBounds(400, 536, 590, 20);
 		panel.add(yearPublishedTextField);
 
+		//Button to send the form input
 		enterComicBookButton = new JButton(ENTER_COMIC_BOOK_BUTTON);
 		enterComicBookButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 		enterComicBookButton.setBounds(482, 650, 200, 40);
+		enterComicBookButton.setEnabled(false);
 
+		//Radio button to
 		favoriteCheckbox = new JCheckBox("Is Favorite");
 		favoriteCheckbox.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
 		favoriteCheckbox.setBounds(287, 600, 590, 20);
 		panel.add(favoriteCheckbox);
+
+		// Action listeners for each field's text input box
+		comicSeriesTitleTextField.addActionListener(fieldsListener);
+		comicBookAuthorTextField.addActionListener(fieldsListener);
+		comicBookArtistTextField.addActionListener(fieldsListener);
+		genresTextField.addActionListener(fieldsListener);
+		descriptionTextField.addActionListener(fieldsListener);
+		numberOfIssuesTextField.addActionListener(fieldsListener);
+		publisherTextField.addActionListener(fieldsListener);
+		yearPublishedTextField.addActionListener(fieldsListener);
+
+		// Focus adapters
+		comicSeriesTitleTextField.addFocusListener(focusAdapter);
+		comicBookAuthorTextField.addFocusListener(focusAdapter);
+		comicBookArtistTextField.addFocusListener(focusAdapter);
+		genresTextField.addFocusListener(focusAdapter);
+		descriptionTextField.addFocusListener(focusAdapter);
+		numberOfIssuesTextField.addFocusListener(focusAdapter);
+		publisherTextField.addFocusListener(focusAdapter);
+		yearPublishedTextField.addFocusListener(focusAdapter);
+
+		//Document listener for each field
+		comicSeriesTitleTextField.getDocument().addDocumentListener(documentListener);
+		comicBookAuthorTextField.getDocument().addDocumentListener(documentListener);
+		comicBookArtistTextField.getDocument().addDocumentListener(documentListener);
+		genresTextField.getDocument().addDocumentListener(documentListener);
+		descriptionTextField.getDocument().addDocumentListener(documentListener);
+		numberOfIssuesTextField.getDocument().addDocumentListener(documentListener);
+		publisherTextField.getDocument().addDocumentListener(documentListener);
+		yearPublishedTextField.getDocument().addDocumentListener(documentListener);
 
 		enterComicBookButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -185,5 +222,51 @@ public class AddComicToRepoPanel extends JPanel {
 		});
 		panel.add(enterComicBookButton);
 		enterComicBookButton.setFocusable(false);
+	}
+
+	ActionListener fieldsListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			updateButtonState();
+		}
+	};
+
+	FocusAdapter focusAdapter = new FocusAdapter() {
+		@Override
+		public void focusLost(FocusEvent e) {
+			updateButtonState();
+		}
+	};
+
+	DocumentListener documentListener = new DocumentListener() {
+		@Override
+		public void insertUpdate(DocumentEvent e) {
+			updateButtonState();
+		}
+
+		@Override
+		public void removeUpdate(DocumentEvent e) {
+			updateButtonState();
+		}
+
+		@Override
+		public void changedUpdate(DocumentEvent e) {
+			updateButtonState();
+		}
+	};
+
+	private void updateButtonState() {
+		if (!comicSeriesTitleTextField.getText().isEmpty() &&
+			!comicBookAuthorTextField.getText().isEmpty() &&
+			!comicBookArtistTextField.getText().isEmpty() &&
+			!genresTextField.getText().isEmpty() &&
+			!numberOfIssuesTextField.getText().isEmpty() &&
+			numberOfIssuesTextField.getText().matches("\\d+") &&
+			!publisherTextField.getText().isEmpty() &&
+			!yearPublishedTextField.getText().isEmpty() &&
+			yearPublishedTextField.getText().matches("\\d+")
+		) {
+			enterComicBookButton.setEnabled(true);
+		}
 	}
 }

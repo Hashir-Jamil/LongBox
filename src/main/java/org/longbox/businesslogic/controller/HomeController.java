@@ -4,6 +4,7 @@ import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.service.ComicBookService;
 import org.longbox.businesslogic.service.UserService;
+import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
@@ -14,6 +15,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class HomeController implements ActionListener {
 
@@ -94,16 +96,23 @@ public class HomeController implements ActionListener {
 
     private void saveAddComicBookFormInput() throws UserIDDoesNotExistException {
 
-        //Create data transfer object for comic book
-        ComicBookDto comicBook = new ComicBookDto(
-                this.homeFrame.getAddComicToRepoPanel().getComicSeriesTitleTextField().getText(),
-                this.homeFrame.getAddComicToRepoPanel().getComicBookAuthorTextField().getText(),
-                this.homeFrame.getAddComicToRepoPanel().getComicBookArtistTextField().getText(),
-                this.homeFrame.getAddComicToRepoPanel().getGenresTextField().getText(),
-                this.homeFrame.getAddComicToRepoPanel().getDescriptionTextField().getText(),
-                Integer.parseInt(this.homeFrame.getAddComicToRepoPanel().getNumberOfIssuesTextField().getText()),
-                this.homeFrame.getAddComicToRepoPanel().getPublisherTextField().getText(),
-                Integer.parseInt(this.homeFrame.getAddComicToRepoPanel().getYearPublishedTextField().getText())
+        //Create data transfer object for comic book & first set string fields
+        ComicBookDto comicBook = new ComicBookDto();
+        comicBook.setSeriesTitle(this.homeFrame.getAddComicToRepoPanel().getComicSeriesTitleTextField().getText());
+        comicBook.setAuthor(this.homeFrame.getAddComicToRepoPanel().getComicBookAuthorTextField().getText());
+        comicBook.setArtist(this.homeFrame.getAddComicToRepoPanel().getComicBookArtistTextField().getText());
+        comicBook.setGenres(GenreUtils.genreStringToList(this.homeFrame.getAddComicToRepoPanel().getGenresTextField().getText()));
+        comicBook.setDescription(this.homeFrame.getAddComicToRepoPanel().getDescriptionTextField().getText());
+        comicBook.setPublisher(this.homeFrame.getAddComicToRepoPanel().getPublisherTextField().getText());
+
+        //Handle edge cases for number to string mappings
+        comicBook.setNumberOfIssues(
+            !Objects.equals(this.homeFrame.getAddComicToRepoPanel().getNumberOfIssuesTextField().getText(), "") ?
+            Integer.parseInt(this.homeFrame.getAddComicToRepoPanel().getNumberOfIssuesTextField().getText()) : 0
+        );
+        comicBook.setYearPublished(
+            !Objects.equals(this.homeFrame.getAddComicToRepoPanel().getYearPublishedTextField().getText(), "") ?
+            Integer.parseInt(this.homeFrame.getAddComicToRepoPanel().getYearPublishedTextField().getText()) : 0
         );
 
         // Reset Text

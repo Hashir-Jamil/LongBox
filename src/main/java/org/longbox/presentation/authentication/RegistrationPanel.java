@@ -40,6 +40,7 @@ public class RegistrationPanel extends JPanel {
 	private JComboBox countryField;
 	private JCheckBox TnCCheckbox;
 	private JLabel messageLabel;
+	private JLabel informationLabel;
 
 	public RegistrationPanel() {
 		initiateRegUI();
@@ -254,7 +255,6 @@ public class RegistrationPanel extends JPanel {
 			updateButtonState();
 		}
 	};
-	private JLabel informationLabel;
 
 	private void updateButtonState() {
 		// Enable the button only if all fields are non-empty
@@ -270,35 +270,35 @@ public class RegistrationPanel extends JPanel {
 				RegistrationUtils.isValidPassword(String.valueOf(passwordField.getPassword())) &&
 				TnCCheckbox.isSelected();
 
-				boolean validUsername = RegistrationUtils.isValidUserName(usernameField.getText());
-				boolean validEmail = RegistrationUtils.isValidEmailAddress(emailAddress.getText());
-				boolean validPassword = RegistrationUtils.isValidPassword(String.valueOf(passwordField.getPassword()));
+		boolean validUsername = RegistrationUtils.isValidUserName(usernameField.getText());
+		boolean validEmail = RegistrationUtils.isValidEmailAddress(emailAddress.getText());
+		boolean validPassword = RegistrationUtils.isValidPassword(String.valueOf(passwordField.getPassword()));
 
-				// prints the invalid mail and email message
-				if(!validEmail && !validPassword && !validUsername) {
-					messageLabel.setForeground(Color.red);
-					messageLabel.setText("Please enter a valid user name, a valid email and a valid password!");
-				} else if(!validEmail && !validPassword && validUsername) {
-					messageLabel.setForeground(Color.red);
-					messageLabel.setText("Please enter a valid email and a valid password!");
-				}else if(validEmail && !validPassword && !validUsername) {
-					messageLabel.setForeground(Color.red);
-					messageLabel.setText("Please enter a valid user name and a valid password!");
-				}else if(!validEmail && validPassword && !validUsername) {
-					messageLabel.setForeground(Color.red);
-					messageLabel.setText("Please enter a valid user name and a valid email!");
-				}else if(validEmail && !validPassword && validUsername){
-					messageLabel.setText("Please enter a valid password!");
-				}else if(!validEmail && validPassword && validUsername) {
-					messageLabel.setText("Please enter a valid email!");
-				} else if(validEmail && validPassword && !validUsername) {
-					messageLabel.setText("Please enter a valid user name!");
-				}else {
-					messageLabel.setText("");
-				}
-				
-				//if all the conditions are matched enable the button
-				signUpButton.setEnabled(enableButton);
+		// prints the invalid mail and email message
+		if(!validEmail && !validPassword && !validUsername) {
+			messageLabel.setForeground(Color.red);
+			messageLabel.setText("Please enter a valid user name, a valid email and a valid password!");
+		} else if(!validEmail && !validPassword && validUsername) {
+			messageLabel.setForeground(Color.red);
+			messageLabel.setText("Please enter a valid email and a valid password!");
+		}else if(validEmail && !validPassword && !validUsername) {
+			messageLabel.setForeground(Color.red);
+			messageLabel.setText("Please enter a valid user name and a valid password!");
+		}else if(!validEmail && validPassword && !validUsername) {
+			messageLabel.setForeground(Color.red);
+			messageLabel.setText("Please enter a valid user name and a valid email!");
+		}else if(validEmail && !validPassword && validUsername){
+			messageLabel.setText("Please enter a valid password!");
+		}else if(!validEmail && validPassword && validUsername) {
+			messageLabel.setText("Please enter a valid email!");
+		} else if(validEmail && validPassword && !validUsername) {
+			messageLabel.setText("Please enter a valid user name!");
+		}else {
+			messageLabel.setText("");
+		}
+
+		//if all the conditions are matched enable the button
+		signUpButton.setEnabled(enableButton);
 	}
 
 	public UserDto getRegistrationDetails() {
