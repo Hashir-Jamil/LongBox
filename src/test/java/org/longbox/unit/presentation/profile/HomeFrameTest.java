@@ -22,15 +22,4 @@ public class HomeFrameTest {
         addComicToRepoPanel.getPublisherTextField().setText("");
         addComicToRepoPanel.getYearPublishedTextField().setText("");
     }
-
-    @Test
-    public void testUIInitialization() {
-
-    }
-
-    @Test
-    public void testGetComicBookFavorite() {
-
-    }
-
 }
