@@ -29,6 +29,7 @@ public class TrendingPanel extends JPanel {
 	private JLabel regionalFavorites;
 	private ComicBookDaoImpl comicBookDaoImpl;
 	private TrendingAllTimeTableModel comicBookTableModel;
+	private TrendingAllTimeTableModel regionalComicBookTableModel;
 	private JScrollPane allTimeFavoritesScrollPane;
 	private JScrollPane regionalFavoritesScrollPane;
 	private JComboBox<String> regionBox;
@@ -68,6 +69,8 @@ public class TrendingPanel extends JPanel {
 			
 		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 		comicBookTableModel = new TrendingAllTimeTableModel(comicBookDaoImpl.getAllComicBooks());
+		
+		regionalComicBookTableModel = new TrendingAllTimeTableModel(comicBookDaoImpl.getAllComicBooks()); // change to get by region
 		
 		allTimeFavoritesTable = new JTable(comicBookTableModel);
 		allTimeFavoritesTable.setBounds(0, 0, 1, 1);
