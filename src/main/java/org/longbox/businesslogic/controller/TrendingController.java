@@ -32,19 +32,14 @@ public class TrendingController implements ActionListener {
 		}
 	}
 	
-//	public void reloadRegionalTrending(String region) {
-//		this.trendingPanel.getPanel().remove(this.trendingPanel.getRegionalFavoritesScrollPane());
-//	}
-	
 	public void reloadTrending() {
 		this.trendingPanel.getPanel().remove(this.trendingPanel.getAllTimeFavoritesScrollPane());
 		this.trendingPanel.getPanel().remove(this.trendingPanel.getRegionalFavoritesScrollPane());
 		
 		this.trendingPanel.setComicBookDaoImpl(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
-		//this.trendingPanel.setRegionalComicBookDaoImpl(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 		
 		this.trendingPanel.setComicBookTableModel(new TrendingAllTimeTableModel(this.trendingPanel.getComicBookDaoImpl().getAllComicBooks()));
-		this.trendingPanel.setRegionalComicBookTableModel(new TrendingRegionalTableModel(this.trendingPanel.getComicBookDaoImpl().getAllComicBooks(), "North America")); // regional
+		this.trendingPanel.setRegionalComicBookTableModel(new TrendingRegionalTableModel(this.trendingPanel.getComicBookDaoImpl().getAllComicBooks(), "North America"));
 		
 		this.trendingPanel.setAllTimeFavoritesTable(new JTable(this.trendingPanel.getComicBookTableModel()));
 		this.trendingPanel.getAllTimeFavoritesTable().setBounds(0, 0, 1, 1);
