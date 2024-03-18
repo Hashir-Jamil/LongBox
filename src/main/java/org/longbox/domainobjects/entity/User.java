@@ -41,6 +41,9 @@ public class User {
 
 	@Column(name = "country")
 	private String country;
+	
+	@Column(name = "continent")
+	private String continent;
 
 	@Column(name = "join_date")
 	private Date joinDate;
@@ -123,6 +126,7 @@ public class User {
 				", email='" + email + '\'' +
 				", password='" + password + '\'' +
 				", country='" + country + '\'' +
+				", continent='" + continent + '\'' +
 				", joinDate=" + joinDate +
 				", comicsReading=" + comicsReading +
 				", comicsFinished=" + comicsFinished +
