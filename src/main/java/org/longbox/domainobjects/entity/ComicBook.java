@@ -51,6 +51,9 @@ public class ComicBook {
     
     @Column(name = "favorites_count")
     private int favoritesCount;
+    
+    @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
+    private Set<Comment> starRatings = new HashSet<>();
 
     @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
     private Set<Comment> comments = new HashSet<>();
