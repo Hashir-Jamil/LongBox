@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS "user" (
     "email" text UNIQUE,
     "password" text,
     "country" text,
+    "continent" text,
     "join_date" date,
     "comics_reading" integer  DEFAULT 0,
     "comics_finished" integer  DEFAULT 0,
@@ -32,7 +33,14 @@ CREATE TABLE IF NOT EXISTS "comic_book" (
     "publisher" text,
     "year_published" integer,
     "date_added" date,
-    "favorites_count" integer DEFAULT 0
+    "favorites_count" integer DEFAULT 0,
+    "north_america_favorites_count" integer DEFAULT 0,
+    "south_america_favorites_count" integer DEFAULT 0,
+    "europe_favorites_count" integer DEFAULT 0,
+    "asia_favorites_count" integer DEFAULT 0,
+    "africa_favorites_count" integer DEFAULT 0,
+    "oceania_favorites_count" integer DEFAULT 0,
+    "antarctica_favorites_count" integer DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book_favorites_list" (
