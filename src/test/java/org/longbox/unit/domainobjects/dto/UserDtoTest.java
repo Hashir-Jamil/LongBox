@@ -79,7 +79,7 @@ public class UserDtoTest {
 
     @Test
     public void testUserDTONoIDConstructor() {
-        assertEquals(0, u1DTO.getId());
+        assertNull(u1DTO.getId());
         assertEquals("Always_Scheming", u1DTO.getUserName());
         assertEquals("John", u1DTO.getFirstName());
         assertEquals("Smith", u1DTO.getLastName());
