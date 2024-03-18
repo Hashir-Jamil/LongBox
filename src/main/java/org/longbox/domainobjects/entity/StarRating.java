@@ -1,10 +1,6 @@
 package org.longbox.domainobjects.entity;
 
-import java.util.Date;
-
-import org.longbox.domainobjects.dto.CommentDto;
 import org.longbox.domainobjects.dto.StarRatingDto;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

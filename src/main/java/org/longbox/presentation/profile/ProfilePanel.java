@@ -290,20 +290,4 @@ public class ProfilePanel extends JPanel {
 		readPane.setBounds(47, 617, 407, 135);
 		panel.add(readPane);
 	}
-	
-	public UserSession getUserSession() {
-		return user;
-	}
-	
-	public JTextArea getAboutMe() {
-		return aboutMe;
-	}
-	
-	public JButton getAboutMeEditButton() {
-		return aboutMeEditButton;
-	}
-	
-	public JButton getAboutMeCancelButton() {
-		return aboutMeCancelButton;
-	}
 }
