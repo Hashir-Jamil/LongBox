@@ -21,6 +21,13 @@ public class ComicBookDto {
     private String publisher;
     private int yearPublished;
     private Date dateAdded;
+    private int northAmericaFavoritesCount;
+    private int southAmericaFavoritesCount;
+    private int europeFavoritesCount;
+    private int asiaFavoritesCount;
+    private int africaFavoritesCount;
+    private int oceaniaFavoritesCount;
+    private int antarcticaFavoritesCount;    
     private int favoritesCount;
 
     public ComicBookDto(
@@ -44,7 +51,14 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
-        favoritesCount = 0;
+        this.northAmericaFavoritesCount = 0;
+        this.southAmericaFavoritesCount = 0;
+        this.europeFavoritesCount = 0;
+        this.asiaFavoritesCount = 0;
+        this.africaFavoritesCount = 0;
+        this.oceaniaFavoritesCount = 0;
+        this.antarcticaFavoritesCount = 0;
+        this.favoritesCount = 0;
     }
 
     public ComicBookDto(
@@ -66,7 +80,14 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
-        favoritesCount = 0;
+        this.northAmericaFavoritesCount = 0;
+        this.southAmericaFavoritesCount = 0;
+        this.europeFavoritesCount = 0;
+        this.asiaFavoritesCount = 0;
+        this.africaFavoritesCount = 0;
+        this.oceaniaFavoritesCount = 0;
+        this.antarcticaFavoritesCount = 0;
+        this.favoritesCount = 0;
     };
 
     public ComicBookDto(
@@ -90,6 +111,13 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date(date.getTime());
+        this.northAmericaFavoritesCount = 0;
+        this.southAmericaFavoritesCount = 0;
+        this.europeFavoritesCount = 0;
+        this.asiaFavoritesCount = 0;
+        this.africaFavoritesCount = 0;
+        this.oceaniaFavoritesCount = 0;
+        this.antarcticaFavoritesCount = 0;
         this.favoritesCount = favoritesCount;
     };
 
@@ -112,6 +140,13 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
+        this.northAmericaFavoritesCount = 0;
+        this.southAmericaFavoritesCount = 0;
+        this.europeFavoritesCount = 0;
+        this.asiaFavoritesCount = 0;
+        this.africaFavoritesCount = 0;
+        this.oceaniaFavoritesCount = 0;
+        this.antarcticaFavoritesCount = 0;
         this.favoritesCount = 0;
     }
 
@@ -135,6 +170,13 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = date;
+        this.northAmericaFavoritesCount = 0;
+        this.southAmericaFavoritesCount = 0;
+        this.europeFavoritesCount = 0;
+        this.asiaFavoritesCount = 0;
+        this.africaFavoritesCount = 0;
+        this.oceaniaFavoritesCount = 0;
+        this.antarcticaFavoritesCount = 0;
         this.favoritesCount = 0;
     }
   

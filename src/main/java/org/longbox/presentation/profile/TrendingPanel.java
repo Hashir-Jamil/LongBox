@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.JTable;
+import javax.swing.JComboBox;
 
 @Setter
 @Getter
@@ -30,6 +31,7 @@ public class TrendingPanel extends JPanel {
 	private TrendingAllTimeTableModel comicBookTableModel;
 	private JScrollPane allTimeFavoritesScrollPane;
 	private JScrollPane regionalFavoritesScrollPane;
+	private JComboBox<String> regionBox;
 
 	public TrendingPanel() {
 		initTrendingPanel();
@@ -82,5 +84,16 @@ public class TrendingPanel extends JPanel {
 		regionalFavoritesScrollPane = new JScrollPane(regionalFavoritesTable);
 		regionalFavoritesScrollPane.setBounds(10, 483, 1144, 300);
 		panel.add(regionalFavoritesScrollPane);
+		
+		regionBox = new JComboBox<String>();
+		regionBox.setBounds(130, 452, 117, 22);
+		regionBox.addItem("North America");
+		regionBox.addItem("South America");
+		regionBox.addItem("Europe");
+		regionBox.addItem("Asia");
+		regionBox.addItem("Afrcia");
+		regionBox.addItem("Oceania");
+		regionBox.addItem("Antarctica");
+		panel.add(regionBox);
 	}
 }
