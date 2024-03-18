@@ -23,6 +23,12 @@ public class ComicBookMapper {
         dto.setDateAdded(entity.getDateAdded());
         dto.setFavoritesCount(entity.getFavoritesCount());
         dto.setNorthAmericaFavoritesCount((entity.getNorthAmericaFavoritesCount()));
+        dto.setSouthAmericaFavoritesCount((entity.getSouthAmericaFavoritesCount()));
+        dto.setEuropeFavoritesCount((entity.getEuropeFavoritesCount()));
+        dto.setAsiaFavoritesCount((entity.getAsiaFavoritesCount()));
+        dto.setAfricaFavoritesCount((entity.getAfricaFavoritesCount()));
+        dto.setOceaniaFavoritesCount((entity.getOceaniaFavoritesCount()));
+        dto.setAntarcticaFavoritesCount((entity.getAntarcticaFavoritesCount()));
         return dto;
     }
 
@@ -45,6 +51,12 @@ public class ComicBookMapper {
         entity.setDateAdded(dto.getDateAdded());
         entity.setFavoritesCount(dto.getFavoritesCount());
         entity.setNorthAmericaFavoritesCount(dto.getNorthAmericaFavoritesCount());
+        entity.setSouthAmericaFavoritesCount((dto.getSouthAmericaFavoritesCount()));
+        entity.setEuropeFavoritesCount((dto.getEuropeFavoritesCount()));
+        entity.setAsiaFavoritesCount((dto.getAsiaFavoritesCount()));
+        entity.setAfricaFavoritesCount((dto.getAfricaFavoritesCount()));
+        entity.setOceaniaFavoritesCount((dto.getOceaniaFavoritesCount()));
+        entity.setAntarcticaFavoritesCount((dto.getAntarcticaFavoritesCount()));
         return entity;
     }
 
