@@ -20,7 +20,7 @@ public class AuthenticationFrame extends JFrame {
 
 	public AuthenticationFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 800, 550);
+        setBounds(100, 100, 800, 700);
         setTitle("LongBox");
         setLocationRelativeTo(null);
         
