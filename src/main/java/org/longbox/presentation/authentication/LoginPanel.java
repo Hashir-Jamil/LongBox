@@ -49,7 +49,7 @@ public class LoginPanel extends JPanel{
 	}
 	
 	public void initLoginPage() {
-		setBounds(100, 100, 809, 554);
+		setBounds(100, 100, 809, 664);
 
 		setLayout(new BorderLayout());
 		
@@ -60,17 +60,17 @@ public class LoginPanel extends JPanel{
 		welcomeLabel = new JLabel(WELCOME_TEXT);
 		welcomeLabel.setForeground(new Color(0, 0, 0));
 		welcomeLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
-		welcomeLabel.setBounds(297, 52, WIDTH_215, HEIGHT_26);
+		welcomeLabel.setBounds(297, 164, WIDTH_215, HEIGHT_26);
 		panel.add(welcomeLabel);
 		
 		//username entry
 		usernameLabel = new JLabel(USERNAME_TEXT);
 		usernameLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
-		usernameLabel.setBounds(X_208, 144, WIDTH_215, HEIGHT_16);
+		usernameLabel.setBounds(208, 243, WIDTH_215, HEIGHT_16);
 		panel.add(usernameLabel);
 		
 		usernameText = new JTextField();
-		usernameText.setBounds(X_205, 159, WIDTH_398, HEIGHT_26);
+		usernameText.setBounds(205, 272, WIDTH_398, HEIGHT_26);
 		panel.add(usernameText);
 		usernameText.setColumns(10);
 		
@@ -78,30 +78,30 @@ public class LoginPanel extends JPanel{
 		passwordLabel = new JLabel(PASSWORD_TEXT);
 		passwordLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 		passwordLabel.setVerticalAlignment(SwingConstants.TOP);
-		passwordLabel.setBounds(X_208, 216, 172, HEIGHT_16);
+		passwordLabel.setBounds(208, 326, 172, HEIGHT_16);
 		panel.add(passwordLabel);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(X_205, 233, WIDTH_398, HEIGHT_26);
+		passwordField.setBounds(205, 347, WIDTH_398, HEIGHT_26);
 		panel.add(passwordField);
 		
 		//Sign in button
 		signInButton = new JButton(SIGN_IN_BUTTON_TEXT);
 		signInButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
-		signInButton.setBounds(X_345, 300, WIDTH_117, 29);
+		signInButton.setBounds(345, 385, WIDTH_117, 29);
 		panel.add(signInButton);
 		
 		//sign up label
 		signUpLabel = new JLabel(SIGN_UP_TEXT);
 		signUpLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 13));
-		signUpLabel.setBounds(330, 337, 148, HEIGHT_16);
+		signUpLabel.setBounds(329, 426, 148, HEIGHT_16);
 		panel.add(signUpLabel);
 		signInButton.setFocusable(false);
 		
 		//sign up button
 		signUpButton = new JButton(SIGN_UP_BUTTON_TEXT);
 		signUpButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
-		signUpButton.setBounds(X_345, 361, WIDTH_117, 29);
+		signUpButton.setBounds(345, 454, WIDTH_117, 29);
 		panel.add(signUpButton);
 		signUpButton.setFocusable(false);
 		
