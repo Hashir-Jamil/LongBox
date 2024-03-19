@@ -10,7 +10,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AuthenticationFrame extends JFrame {
-	private JPanel cardPanel;
+    private static final String LOGIN = "login";
+    private static final String REGISTRATION = "registration";
+
+    private JPanel cardPanel;
 	private CardLayout cardLayout;
     private LoginPanel loginPanel = new LoginPanel();
     private RegistrationPanel registrationPanel = new RegistrationPanel();
@@ -24,20 +27,20 @@ public class AuthenticationFrame extends JFrame {
         cardPanel = new JPanel();
         cardLayout = new CardLayout();
         cardPanel.setLayout(cardLayout);
-        cardPanel.add(loginPanel, "login");
-        cardPanel.add(registrationPanel, "registration");
+        cardPanel.add(loginPanel, LOGIN);
+        cardPanel.add(registrationPanel, REGISTRATION);
 
         // Set the default panel to login page
-        cardLayout.show(cardPanel, "login");
+        cardLayout.show(cardPanel, LOGIN);
         add(cardPanel);
         setVisible(true);
 	}
 
 	public void showLogin(){
-		cardLayout.show(cardPanel, "login");
+		cardLayout.show(cardPanel, LOGIN);
 	}
 
 	public void showRegistration(){
-		cardLayout.show(cardPanel, "registration");
+		cardLayout.show(cardPanel, REGISTRATION);
 	}
 }

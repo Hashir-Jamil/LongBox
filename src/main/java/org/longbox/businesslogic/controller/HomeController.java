@@ -9,6 +9,7 @@ import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
+import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.presentation.profile.HomeFrame;
 import org.longbox.presentation.profile.ProfilePanel;
 import org.longbox.presentation.tablemodels.ComicBookTableModel;
@@ -153,7 +154,10 @@ public class HomeController implements ActionListener {
                     window.dispose();
                 }
             }
-            AuthenticationController authenticationController = new AuthenticationController();
+            UserDaoImpl userDaoImpl = new UserDaoImpl(HibernateUtils.getSessionFactory());
+            SwingUtilities.invokeLater(() -> {
+                AuthenticationController authenticationController = new AuthenticationController(userDaoImpl);
+            });
             this.homeFrame.dispose();
         }
     }

@@ -20,10 +20,29 @@ import java.awt.event.ActionEvent;
 @Setter
 public class LoginPanel extends JPanel{
 	private static final String DEFAULT_FONT = "Calibri";
+	private static final String WELCOME_TEXT = "Welcome Back to LongBox!";
+	private static final String USERNAME_TEXT = "Please enter your username:";
+	private static final String PASSWORD_TEXT = "Please enter your password:";
+	private static final String SIGN_IN_BUTTON_TEXT = "Sign in!";
+	private static final String SIGN_UP_TEXT = "New user? Sign up now!";
+	private static final String SIGN_UP_BUTTON_TEXT = "Sign Up!";
+	private static final String EMPTY = "";
+
+	private static final int X_208 = 208;
+	private static final int X_205 = 205;
+	private static final int X_345 = 345;
+
+	private static final int HEIGHT_16 = 16;
+	private static final int HEIGHT_26 = 26;
+
+	private static final int WIDTH_215 = 215;
+	private static final int WIDTH_398 = 398;
+	private static final int WIDTH_117 = 117;
+
 	private JTextField usernameText;
 	private JPasswordField passwordField;
 	private JButton signInButton, signUpButton;
-	private JLabel errorLabel;
+	private JLabel errorLabel, welcomeLabel, usernameLabel, passwordLabel, signUpLabel;
 
 	public LoginPanel() {
 		initLoginPage();
@@ -38,64 +57,60 @@ public class LoginPanel extends JPanel{
 	    panel.setLayout(null);
 		
 		//Welcome label
-		JLabel welcomeLabel = new JLabel("Welcome Back to LongBox!");
+		welcomeLabel = new JLabel(WELCOME_TEXT);
 		welcomeLabel.setForeground(new Color(0, 0, 0));
 		welcomeLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
-		welcomeLabel.setBounds(297, 52, 215, 26);
+		welcomeLabel.setBounds(297, 52, WIDTH_215, HEIGHT_26);
 		panel.add(welcomeLabel);
 		
 		//username entry
-		JLabel usernameLabel = new JLabel("Please enter your username:");
+		usernameLabel = new JLabel(USERNAME_TEXT);
 		usernameLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
-		usernameLabel.setBounds(208, 144, 215, 16);
+		usernameLabel.setBounds(X_208, 144, WIDTH_215, HEIGHT_16);
 		panel.add(usernameLabel);
 		
 		usernameText = new JTextField();
-		usernameText.setBounds(205, 159, 398, 26);
+		usernameText.setBounds(X_205, 159, WIDTH_398, HEIGHT_26);
 		panel.add(usernameText);
 		usernameText.setColumns(10);
 		
 		//password entry
-		JLabel passwordLabel = new JLabel("Please enter your password:");
+		passwordLabel = new JLabel(PASSWORD_TEXT);
 		passwordLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
 		passwordLabel.setVerticalAlignment(SwingConstants.TOP);
-		passwordLabel.setBounds(208, 216, 172, 16);
+		passwordLabel.setBounds(X_208, 216, 172, HEIGHT_16);
 		panel.add(passwordLabel);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(205, 233, 398, 26);
+		passwordField.setBounds(X_205, 233, WIDTH_398, HEIGHT_26);
 		panel.add(passwordField);
 		
 		//Sign in button
-		signInButton = new JButton("Sign in!");
-		signInButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		signInButton = new JButton(SIGN_IN_BUTTON_TEXT);
 		signInButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
-		signInButton.setBounds(345, 300, 117, 29);
+		signInButton.setBounds(X_345, 300, WIDTH_117, 29);
 		panel.add(signInButton);
 		
 		//sign up label
-		JLabel signUpLabel = new JLabel("New user? Sign up now!");
+		signUpLabel = new JLabel(SIGN_UP_TEXT);
 		signUpLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 13));
-		signUpLabel.setBounds(330, 337, 148, 16);
+		signUpLabel.setBounds(330, 337, 148, HEIGHT_16);
 		panel.add(signUpLabel);
 		signInButton.setFocusable(false);
 		
 		//sign up button
-		signUpButton = new JButton("Sign Up!");
+		signUpButton = new JButton(SIGN_UP_BUTTON_TEXT);
 		signUpButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
-		signUpButton.setBounds(345, 361, 117, 29);
+		signUpButton.setBounds(X_345, 361, WIDTH_117, 29);
 		panel.add(signUpButton);
 		signUpButton.setFocusable(false);
 		
 		add(panel, BorderLayout.CENTER);
 		
 		// error label
-		errorLabel = new JLabel("");
+		errorLabel = new JLabel(EMPTY);
 		errorLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
-		errorLabel.setBounds(205, 272, 398, 16);
+		errorLabel.setBounds(X_205, 272, WIDTH_398, HEIGHT_16);
 		panel.add(errorLabel);
 	}
 
