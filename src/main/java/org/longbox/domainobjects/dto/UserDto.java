@@ -24,6 +24,7 @@ public class UserDto {
 	private int comicsReading;
 	private int comicsFinished;
 	private String aboutMe;
+	private String[] preferredGenre;
 
 	public UserDto() {
 	}
@@ -162,8 +163,8 @@ public class UserDto {
 		this.email = user.getEmail();
 		this.password = user.getPassword();
 		this.country = user.getCountry();
-		this. comicsReading = user.getComicsReading();
-		this. comicsFinished = user.getComicsFinished();
+		this.comicsReading = user.getComicsReading();
+		this.comicsFinished = user.getComicsFinished();
 		this.aboutMe = user.getAboutMe();
 		this.joinDate = user.getJoinDate();
 	}
@@ -180,4 +181,9 @@ public class UserDto {
 	public int hashCode() {
 		return Objects.hash(getId(), getUserName(), getFirstName(), getLastName(), getEmail());
 	}
+
+	public UserDto getUser(){
+		return this;
+	}
+
 }

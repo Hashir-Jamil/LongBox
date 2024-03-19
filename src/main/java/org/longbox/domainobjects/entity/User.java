@@ -57,6 +57,9 @@ public class User {
 	@Column(name = "about_me")
 	private String aboutMe;
 
+	@Column(name = "preferred_genre",  columnDefinition = "text[]")
+	private String preferredGenre;
+
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<ComicBookFavoritesList> favoriteComicBooks = new HashSet<>();
 
@@ -133,4 +136,5 @@ public class User {
 				", aboutMe=" + aboutMe +
 				'}';
 	}
+
 }
