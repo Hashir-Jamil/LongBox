@@ -14,7 +14,6 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FavoritesPanelTest {
-    private HomeFrame homeFrame;
     private FavoritesPanel favoritesPanel;
     UserDto userDto = new UserDto(
             1L,

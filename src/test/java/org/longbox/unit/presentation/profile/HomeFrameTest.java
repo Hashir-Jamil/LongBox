@@ -3,15 +3,8 @@ package org.longbox.unit.presentation.profile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.domainobjects.dto.UserDto;
-import org.longbox.domainobjects.entity.User;
-import org.longbox.presentation.profile.AddComicToRepoPanel;
 import org.longbox.presentation.profile.HomeFrame;
-import org.longbox.presentation.profile.FavoritesPanel;
-import org.longbox.presentation.profile.ComicRepositoryPanel;
-import org.longbox.presentation.profile.TrendingPanel;
 import org.longbox.businesslogic.UserSession;
-import javax.swing.JFrame;
-import javax.swing.JButton;
 
 import java.util.Date;
 
