@@ -27,6 +27,8 @@ public class RecommendationServiceTest {
         recommendationService = new RecommendationService(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 
         userDto = new UserDto();
+        String[] genres = {"Adventure","Action","Political"};
+        userDto.setPreferredGenre(genres);
 
         comicBookDto1 = new ComicBookDto(
                 "Zot!",
@@ -80,8 +82,7 @@ public class RecommendationServiceTest {
 
     @Test
     void getRecommendationsByGenresTest() {
-        String[] genres = {"Adventure","Action","Political"};
-        List<ComicBookDto> recommendations = recommendationService.getRecommendations();
+        List<ComicBookDto> recommendations = recommendationService.getRecommendations(userDto);
         assertTrue(recommendations.contains(comicBookDto1));
     }
 }
