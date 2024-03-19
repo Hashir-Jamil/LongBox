@@ -17,10 +17,11 @@ import java.awt.event.ActionListener;
 public class AuthenticationController implements ActionListener {
 
     AuthenticationFrame authenticationFrame;
-    UserDaoImpl userDaoImpl = new UserDaoImpl(HibernateUtils.getSessionFactory());
-    UserService userService = new UserService(userDaoImpl);
 
-    public AuthenticationController(){
+    UserService userService;
+
+    public AuthenticationController(UserDaoImpl userDaoImpl){
+        userService = new UserService(userDaoImpl);
         authenticationFrame = new AuthenticationFrame();
         addListeners();
     }
