@@ -89,19 +89,97 @@ ALTER TABLE "comic_book_reading_list" ADD FOREIGN KEY ("comic_book_id") REFERENC
 
 -- Functions & Triggers
 
--- Create a function to update comic_book.favorites_count column
-CREATE OR REPLACE FUNCTION update_comic_favorites_count()
+-- Create a function to update comic_book.favorites_count and comic_book.*(continent)_favorites_count column
+REATE OR REPLACE FUNCTION update_comic_favorites_count()
 RETURNS TRIGGER AS $$
 BEGIN
 	SET SEARCH_PATH = longbox_schema;
 	IF TG_OP = 'INSERT' THEN
-		UPDATE comic_book c
-		SET favorites_count = favorites_count + 1
-		WHERE c.id = NEW.comic_book_id;
+		DECLARE
+			user_continent text;
+		BEGIN
+			SELECT continent INTO user_continent FROM "user" AS u WHERE u.id = NEW.user_id;
+			
+			IF user_continent = 'North_America' THEN
+				UPDATE comic_book AS c
+				SET north_america_favorites_count = north_america_favorites_count + 1,
+					favorites_count = favorites_count + 1
+				WHERE c.id = NEW.comic_book_id;
+			ELSIF user_continent = 'South_America' THEN
+				UPDATE comic_book AS c
+				SET south_america_favorites_count = south_america_favorites_count + 1,
+					favorites_count = favorites_count + 1
+				WHERE c.id = NEW.comic_book_id;
+			ELSIF user_continent = 'Europe' THEN
+				UPDATE comic_book AS c
+				SET europe_favorites_count = europe_favorites_count + 1,
+					favorites_count = favorites_count + 1
+				WHERE c.id = NEW.comic_book_id;
+			ELSIF user_continent = 'Asia' THEN
+				UPDATE comic_book AS c
+				SET asia_favorites_count = asia_favorites_count + 1,
+					favorites_count = favorites_count + 1
+				WHERE c.id = NEW.comic_book_id;
+			ELSIF user_continent = 'Africa' THEN
+				UPDATE comic_book AS c
+				SET africa_favorites_count = africa_favorites_count + 1,
+					favorites_count = favorites_count + 1
+				WHERE c.id = NEW.comic_book_id;
+			ELSIF user_continent = 'Oceania' THEN
+				UPDATE comic_book AS c
+				SET oceania_favorites_count = oceania_favorites_count + 1,
+					favorites_count = favorites_count + 1
+				WHERE c.id = NEW.comic_book_id;
+			ELSIF user_continent = 'Antarctica' THEN
+				UPDATE comic_book AS c
+				SET antarctica_favorites_count = antarctica_favorites_count + 1,
+					favorites_count = favorites_count + 1
+				WHERE c.id = NEW.comic_book_id;
+			END IF;
+		END;
 	ELSEIF TG_OP = 'DELETE' THEN
-		UPDATE comic_book c
-		SET favorites_count = favorites_count - 1
-		WHERE c.id = OLD.comic_book_id;
+		DECLARE
+			user_continent text;
+		BEGIN
+			SELECT continent INTO user_continent FROM "user" AS u WHERE u.id = OLD.user_id;
+			
+			IF user_continent = 'North_America' THEN
+				UPDATE comic_book AS c
+				SET north_america_favorites_count = north_america_favorites_count - 1,
+					favorites_count = favorites_count - 1
+				WHERE c.id = OLD.comic_book_id;
+			ELSIF user_continent = 'South_America' THEN
+				UPDATE comic_book AS c
+				SET south_america_favorites_count = south_america_favorites_count - 1,
+					favorites_count = favorites_count - 1
+				WHERE c.id = OLD.comic_book_id;
+			ELSIF user_continent = 'Europe' THEN
+				UPDATE comic_book AS c
+				SET europe_favorites_count = europe_favorites_count - 1,
+					favorites_count = favorites_count - 1
+				WHERE c.id = OLD.comic_book_id;
+			ELSIF user_continent = 'Asia' THEN
+				UPDATE comic_book AS c
+				SET asia_favorites_count = asia_favorites_count - 1,
+					favorites_count = favorites_count - 1
+				WHERE c.id = OLD.comic_book_id;
+			ELSIF user_continent = 'Africa' THEN
+				UPDATE comic_book AS c
+				SET africa_favorites_count = africa_favorites_count - 1,
+					favorites_count = favorites_coun - 1
+				WHERE c.id = OLD.comic_book_id;
+			ELSIF user_continent = 'Oceania' THEN
+				UPDATE comic_book AS c
+				SET oceania_favorites_count = oceania_favorites_count - 1,
+					favorites_count = favorites_count - 1
+				WHERE c.id = OLD.comic_book_id;
+			ELSIF user_continent = 'Antarctica' THEN
+				UPDATE comic_book AS c
+				SET antarctica_favorites_count = antarctica_favorites_count - 1,
+					favorites_count = favorites_count - 1
+				WHERE c.id = OLD.comic_book_id;
+			END IF;
+		END;
 	END IF;
 	RETURN NULL;
 END;
