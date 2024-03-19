@@ -3,6 +3,7 @@ package org.longbox.presentation.profile;
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.*;
+import org.longbox.presentation.tablemodels.ComicBookTableModel;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,7 +21,12 @@ public class HomeFrame extends JFrame {
     private final String FAVORITES_PANEL = "User Favorites Panel";
     private final String PROFILE_PANEL = "Profile Panel";
     private final String ADD_COMIC_TO_REPO = "Add Comic To Repo";
-    private final String TRENDING_COMICS = "Trending Comics";
+    private final String TRENDING_PANEL = "Trending Panel";
+    private final String RECCOMENDEDATIONS_PANEL = "Recommendations Panel";
+    private final int BUTTON_WIDTH = 130;
+    private final int BUTTON_X_POSITION = 10;
+    private final int BUTTON_Y_POSITION = 11;
+    private final int BUTTON_HEIGHT = 25;
     private JButton logOutButton;
     private JButton searchButtonNexus;
     private JButton addComicButton;
@@ -28,6 +34,7 @@ public class HomeFrame extends JFrame {
     private JButton profileButton;
     private JButton favoritesButton;
     private JButton trendingButton;
+    private JButton recommendationsButton;
     private JPanel nexusPanel;
     private JPanel activityPanel;
     private FavoritesPanel favoritesPanel;
@@ -35,13 +42,10 @@ public class HomeFrame extends JFrame {
     private ComicRepositoryPanel comicRepoPanel;
     private ProfilePanel profilePanel;
     private AddComicToRepoPanel addComicToRepoPanel;
+    private RecommendationsPanel recommendationsPanel;
     private CardLayout cardLayout;
     private UserSession userSession;
     private JLabel userNameLabel;
-
-    public HomeFrame() {
-        buildHomeFrame();
-    }
     
     public HomeFrame(UserSession user) {
     	this.userSession = user;
@@ -71,40 +75,47 @@ public class HomeFrame extends JFrame {
         comicRepoPanel = new ComicRepositoryPanel();
         addComicToRepoPanel = new AddComicToRepoPanel();
         trendingComicsPanel = new TrendingPanel();
+        recommendationsPanel = new RecommendationsPanel(this.userSession);
         activityPanel = new JPanel();
         activityPanel.setBounds(10, 47, 1164, 803);
         nexusPanel.add(activityPanel);
         cardLayout = new CardLayout();
         activityPanel.setLayout(cardLayout);
-        activityPanel.add(trendingComicsPanel, TRENDING_COMICS);
+        activityPanel.add(trendingComicsPanel, TRENDING_PANEL);
         activityPanel.add(comicRepoPanel, COMIC_REPO_PANEL);
         activityPanel.add(favoritesPanel, FAVORITES_PANEL);
         activityPanel.add(profilePanel, PROFILE_PANEL);
         activityPanel.add(addComicToRepoPanel, ADD_COMIC_TO_REPO);
+        activityPanel.add(recommendationsPanel, RECCOMENDEDATIONS_PANEL);
 
         //adding buttons
         comicRepoButton = new JButton("Comic Repository");
-        comicRepoButton.setBounds(10, 11, 170, 25);
+        comicRepoButton.setBounds(BUTTON_X_POSITION, BUTTON_Y_POSITION, BUTTON_WIDTH, BUTTON_HEIGHT);
         nexusPanel.add(comicRepoButton);
 
         addComicButton = new JButton("Add Comic");
-        addComicButton.setBounds(190, 11, 170, 25);
+        addComicButton.setBounds(BUTTON_X_POSITION + BUTTON_WIDTH, BUTTON_Y_POSITION, BUTTON_WIDTH, BUTTON_HEIGHT);
         nexusPanel.add(addComicButton);
 
         favoritesButton = new JButton("Favorites");
-        favoritesButton.setBounds(372, 11, 170, 25);
+        favoritesButton.setBounds(BUTTON_X_POSITION + 2*BUTTON_WIDTH, BUTTON_Y_POSITION, BUTTON_WIDTH, BUTTON_HEIGHT);
         nexusPanel.add(favoritesButton);
         
         profileButton = new JButton("Profile");
-        profileButton.setBounds(554, 11, 170, 25);
+        profileButton.setBounds(BUTTON_X_POSITION + 3*BUTTON_WIDTH, BUTTON_Y_POSITION, BUTTON_WIDTH, BUTTON_HEIGHT);
         nexusPanel.add(profileButton);
         
         trendingButton = new JButton("Trending");
-        trendingButton.setBounds(738, 11, 170, 25);
+        trendingButton.setBounds(BUTTON_X_POSITION + 4*BUTTON_WIDTH, 11, BUTTON_WIDTH, BUTTON_HEIGHT);
         nexusPanel.add(trendingButton);
+        
+        recommendationsButton = new JButton("Recommended");
+        recommendationsButton.setBounds(BUTTON_X_POSITION + 5*BUTTON_WIDTH, BUTTON_Y_POSITION, BUTTON_WIDTH, BUTTON_HEIGHT);
+        nexusPanel.add(recommendationsButton);
 
         logOutButton = new JButton("Log Out");
-        logOutButton.setBounds(1004, 11, 170, 25);
+        logOutButton.setBounds(1024, BUTTON_Y_POSITION, BUTTON_WIDTH, BUTTON_HEIGHT);
         nexusPanel.add(logOutButton);
+        
     }
 }

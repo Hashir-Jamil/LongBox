@@ -3,6 +3,7 @@ package org.longbox.businesslogic.controller;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.service.ComicBookService;
+import org.longbox.businesslogic.service.RecommendationService;
 import org.longbox.businesslogic.service.UserService;
 import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.config.HibernateUtils;
@@ -10,6 +11,7 @@ import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.profile.HomeFrame;
 import org.longbox.presentation.profile.ProfilePanel;
+import org.longbox.presentation.tablemodels.ComicBookTableModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,11 +23,9 @@ public class HomeController implements ActionListener {
 
     private HomeFrame homeFrame;
     private UserSession userSession;
-    private UserService userService;
-    
-    ComicRepositoryController comicRepsoitoryController;
-    TrendingController trendingController;
-    ProfileController profileController;
+    private ComicRepositoryController comicRepsoitoryController;
+    private TrendingController trendingController;
+    private ProfileController profileController;
 
     public HomeController(HomeFrame homeFrame) {
         this.homeFrame = homeFrame;
@@ -44,6 +44,7 @@ public class HomeController implements ActionListener {
         this.homeFrame.getProfileButton().addActionListener(this);
         this.homeFrame.getAddComicButton().addActionListener(this);
         this.homeFrame.getTrendingButton().addActionListener(this);
+        this.homeFrame.getRecommendationsButton().addActionListener(this);
     }
 
     @Override
@@ -89,8 +90,12 @@ public class HomeController implements ActionListener {
         }
 
         if (e.getSource() == this.homeFrame.getTrendingButton()) {
-            this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getTRENDING_COMICS());
+            this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getTRENDING_PANEL());
             this.trendingController.reloadTrending();
+        }
+
+        if(e.getSource() == this.homeFrame.getRecommendationsButton()) {
+            this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getRECCOMENDEDATIONS_PANEL());
         }
     }
 

@@ -102,6 +102,11 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
         return deserializeStubData(ABSOLUTE_FILE_PATH);
     }
 
+    @Override
+    public List<ComicBookDto> getRecommendationsByGenre(String[] genres) {
+        return null;
+    }
+
     public void loadComicBooks() {
 
         ComicBookDto comicBook1 = new ComicBookDto(

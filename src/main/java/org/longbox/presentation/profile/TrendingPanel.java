@@ -40,7 +40,6 @@ public class TrendingPanel extends JPanel {
 	}
 	
 	private void initTrendingPanel() {
-		
 		setBounds(10, 47, 1164, 803);
 		setLayout(new BorderLayout());
 		

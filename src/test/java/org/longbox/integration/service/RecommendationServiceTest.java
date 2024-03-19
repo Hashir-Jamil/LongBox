@@ -1,28 +1,32 @@
-package org.longbox.integration.persistence.dao;
+package org.longbox.integration.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.longbox.businesslogic.service.RecommendationService;
 import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
-import org.longbox.persistence.dao.ComicBookDaoImpl;
+import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.domainobjects.entity.ComicBook;
+import org.longbox.persistence.dao.ComicBookDaoImpl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ComicBookDaoImplTest {
+public class RecommendationServiceTest {
 
+    UserDto userDto;
     ComicBook comicBook, comicBook2;
     ComicBookDto comicBookDto1, comicBookDto2;
-    ComicBookDaoImpl comicBookDaoImpl;
+    RecommendationService recommendationService;
 
     @BeforeEach
     void init(){
-        comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
+        recommendationService = new RecommendationService(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
+
+        userDto = new UserDto();
 
         comicBookDto1 = new ComicBookDto(
                 "Zot!",
@@ -75,34 +79,9 @@ public class ComicBookDaoImplTest {
     }
 
     @Test
-    void getAllComicsTestBasic() {
-        List<ComicBookDto> comicBookRecordsDTO = new ArrayList<>();
-        comicBookRecordsDTO = comicBookDaoImpl.getAllComicBooks();
-        assertFalse(comicBookRecordsDTO.isEmpty());
-    }
-
-    @Test
-    void getComicBookBySeriesTitleTest() {
-        ComicBook zot = comicBookDaoImpl.getComicBookBySeriesTitle("Zot!");
-        assertEquals("Zot!", zot.getSeriesTitle());
-        assertEquals("Scott McCloud", zot.getAuthor());
-        assertEquals("Scott McCloud", zot.getArtist());
-        assertEquals("Superhero, Superpower, Adventure, Science Fiction, Futuristic, Romance, Drama", zot.getGenres());
-        assertEquals("Empty", zot.getDescription());
-        assertEquals(36, zot.getNumberOfIssues());
-        assertEquals("Eclipse", zot.getPublisher());
-        assertEquals(1984, zot.getYearPublished());
-    }
-
-    @Test
-    void saveComicBook() {
-        comicBookDaoImpl.saveComicBook(new ComicBook(comicBookDto2));
-    }
-
-    @Test
     void getRecommendationsByGenresTest() {
         String[] genres = {"Adventure","Action","Political"};
-        List<ComicBookDto> recommendations = comicBookDaoImpl.getRecommendationsByGenre(genres);
+        List<ComicBookDto> recommendations = recommendationService.getRecommendations();
         assertTrue(recommendations.contains(comicBookDto1));
     }
 }
