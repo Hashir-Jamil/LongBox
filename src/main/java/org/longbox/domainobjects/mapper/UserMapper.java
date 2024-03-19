@@ -28,6 +28,7 @@ public class UserMapper {
         return dto;
     }
 
+
     public static List<UserDto> toDtoList(List<User> entityList) {
         return entityList.stream()
                 .map(UserMapper::toDto)
