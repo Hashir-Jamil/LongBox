@@ -243,4 +243,11 @@
 	
 ## Monday, March 18th, 2024
 
-	Oscar: Refactored ProfilePanel so that the functionality of the aboutMe buttons are moved to ProfileController.
+	Group Meeting (All Members): Discussed code review, refactoring & end-2-end testing. Fully divided and confirmed everything a second time so that everyone can do the idnvidual parts of the assignment.
+    Oscar: Refactored ProfilePanel so that the functionality of the aboutMe buttons are moved to ProfileController.
+    Hashir: Performed code review, created problem reports/GitHub issues. Fixed add comic book form issue [BR4]. Worked on refactoring document and develoepr stories (90% finished, rest of group should contribute to these as well)
+
+## Tuesday, March 19th, 2024
+    
+    
+    
