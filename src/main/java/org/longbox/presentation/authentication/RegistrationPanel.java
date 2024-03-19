@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.businesslogic.utils.RegistrationUtils;
+import org.longbox.businesslogic.utils.StringArrayConverter;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -31,6 +32,16 @@ import java.util.Locale;
 @Getter
 @Setter
 public class RegistrationPanel extends JPanel {
+	private static final String ADVENTURE = "Adventure";
+	private static final String SUPERHERO = "Superhero";
+	private static final String THRILLER = "Thriller";
+	private static final String FANTASY = "Fantasy";
+	private static final String ANTHOLOGY = "Anthology";
+	private static final String COMEDY = "Comedy";
+	private static final String MANGA = "Manga";
+	private static final String SCIENCE_FICTION = "Science Fiction";
+	private static final String ACTION = "Action";
+	private static final String GENRE_TEXT = "My Preferred Genres are:";
 	private static final String DEFAULT_FONT = "Calibri";
 	private static final String HEADER_TEXT = "Sign Up and Start Reading Comics!";
 	private static final String FIRST_NAME_TEXT = "Your first name:";
@@ -47,6 +58,13 @@ public class RegistrationPanel extends JPanel {
 	private static final String SIGN_IN_TEXT = "Already a member? Sign In!";
 	private static final String SIGN_IN_BUTTON_TEXT = "Sign In!";
 	private static final String MANDATORY_TEXT = "All fields are mandatory.";
+	private static final String ALL_INVALID = "Please enter a valid user name, a valid email and a valid password!";
+	private static final String INVALID_EMAIL_PASSWORD = "Please enter a valid email and a valid password!";
+	private static final String INVALID_USRNM_PW = "Please enter a valid user name and a valid password!";
+	private static final String INVALID_USRNM_EM = "Please enter a valid user name and a valid email!";
+	private static final String INVALID_PW = "Please enter a valid password!";
+	private static final String INVALID_EM = "Please enter a valid email!";
+	private static final String INVALID_USRNM = "Please enter a valid user name!";
 
 	private static final int X_117 = 117;
 	private static final int X_107 = 107;
@@ -58,24 +76,28 @@ public class RegistrationPanel extends JPanel {
 	private static final int Y_124 = 124;
 	private static final int Y_141 = 141;
 
+
+	private JPanel panel;
 	private JTextField firstNameField, lastNameField, usernameField, emailAddress;
 	private JPasswordField passwordField;
 	private JButton signUpButton, signInButton;
 	private JDateChooser dateChooser;
 	private JComboBox countryField;
-	private JCheckBox TnCCheckbox;
+	private JCheckBox TnCCheckbox, genre1CheckBox, genre2CheckBox, genre3CheckBox, genre4CheckBox, genre5CheckBox,
+			genre6CheckBox, genre7CheckBox, genre8CheckBox, genre9CheckBox;
 	private JLabel messageLabel, informationLabel, headerLabel, firstNameLabel , lastNameLabel, userNameLabel,
-			emailLabel, pwdSpecLabel, dateLabel, passwordLabel, countryLabel, signInLabel;
+			emailLabel, pwdSpecLabel, dateLabel, passwordLabel, countryLabel, signInLabel, prefGenreLabel;
+
 
 	public RegistrationPanel() {
 		initiateRegUI();
 	}
 
 	public void initiateRegUI() {
-		setBounds(100, 100, 809, 554);
+		setBounds(100, 100, 809, 664);
 		setLayout(new BorderLayout());
 
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setLayout(null);
 
 		//Header label
@@ -150,14 +172,14 @@ public class RegistrationPanel extends JPanel {
 
 		//sign up button
 		signUpButton = new JButton(SIGN_UP_BUTTON_TEXT);
-		signUpButton.setBounds(X_107, 422, 608, 29);
+		signUpButton.setBounds(107, 577, 608, 29);
 		signUpButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 13));
 		signUpButton.setEnabled(false);
 		signUpButton.setFocusable(false);
 
 		//Terms and Conditions check box
 		TnCCheckbox = new JCheckBox(TnC_TEXT);
-		TnCCheckbox.setBounds(X_107, 387, 598, 23);
+		TnCCheckbox.setBounds(117, 542, 598, 23);
 		TnCCheckbox.setFont(new Font(DEFAULT_FONT, Font.PLAIN, SIZE_12));
 
 		// message label to print invalid email and password
@@ -170,12 +192,12 @@ public class RegistrationPanel extends JPanel {
 		//sign in label
 		signInLabel = new JLabel(SIGN_IN_TEXT);
 		signInLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 13));
-		signInLabel.setBounds(X_117, 463, 287, SIZE_16);
+		signInLabel.setBounds(117, 618, 287, SIZE_16);
 
 		//sign up button
 		signInButton = new JButton(SIGN_IN_BUTTON_TEXT);
 		signInButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, SIZE_12));
-		signInButton.setBounds(X_451, 458, 264, 29);
+		signInButton.setBounds(451, 613, 264, 29);
 
 		//info label
 		informationLabel = new JLabel(MANDATORY_TEXT);
@@ -232,7 +254,50 @@ public class RegistrationPanel extends JPanel {
 		emailAddress.getDocument().addDocumentListener(documentListener);
 		passwordField.getDocument().addDocumentListener(documentListener);
 
+		addGenreCheckBox();
 		updateButtonState();
+	}
+	
+	private void addGenreCheckBox() {
+		prefGenreLabel = new JLabel(GENRE_TEXT);
+		prefGenreLabel.setBounds(117, 398, 176, 16);
+		panel.add(prefGenreLabel);
+		
+		genre1CheckBox = new JCheckBox(ACTION);
+		genre1CheckBox.setBounds(117, 423, 128, 23);
+		panel.add(genre1CheckBox);
+		
+		genre2CheckBox = new JCheckBox(SCIENCE_FICTION);
+		genre2CheckBox.setBounds(117, 458, 128, 23);
+		panel.add(genre2CheckBox);
+		
+		genre3CheckBox = new JCheckBox(MANGA);
+		genre3CheckBox.setBounds(117, 493, 128, 23);
+		panel.add(genre3CheckBox);
+		
+		genre4CheckBox = new JCheckBox(COMEDY);
+		genre4CheckBox.setBounds(340, 423, 128, 23);
+		panel.add(genre4CheckBox);
+		
+		genre5CheckBox = new JCheckBox(ANTHOLOGY);
+		genre5CheckBox.setBounds(340, 458, 128, 23);
+		panel.add(genre5CheckBox);
+		
+		genre6CheckBox = new JCheckBox(FANTASY);
+		genre6CheckBox.setBounds(340, 493, 128, 23);
+		panel.add(genre6CheckBox);
+		
+		genre7CheckBox = new JCheckBox(THRILLER);
+		genre7CheckBox.setBounds(577, 423, 128, 23);
+		panel.add(genre7CheckBox);
+		
+		genre8CheckBox = new JCheckBox(SUPERHERO);
+		genre8CheckBox.setBounds(577, 458, 128, 23);
+		panel.add(genre8CheckBox);
+		
+		genre9CheckBox = new JCheckBox(ADVENTURE);
+		genre9CheckBox.setBounds(577, 493, 128, 23);
+		panel.add(genre9CheckBox);
 	}
 
 	// used the below code from https://stackoverflow.com/questions/19004303/populate-a-choice-menu-with-all-countries-to-in-java
@@ -299,22 +364,22 @@ public class RegistrationPanel extends JPanel {
 		// prints the invalid mail and email message
 		if(!validEmail && !validPassword && !validUsername) {
 			messageLabel.setForeground(Color.red);
-			messageLabel.setText("Please enter a valid user name, a valid email and a valid password!");
+			messageLabel.setText(ALL_INVALID);
 		} else if(!validEmail && !validPassword && validUsername) {
 			messageLabel.setForeground(Color.red);
-			messageLabel.setText("Please enter a valid email and a valid password!");
+			messageLabel.setText(INVALID_EMAIL_PASSWORD);
 		}else if(validEmail && !validPassword && !validUsername) {
 			messageLabel.setForeground(Color.red);
-			messageLabel.setText("Please enter a valid user name and a valid password!");
+			messageLabel.setText(INVALID_USRNM_PW);
 		}else if(!validEmail && validPassword && !validUsername) {
 			messageLabel.setForeground(Color.red);
-			messageLabel.setText("Please enter a valid user name and a valid email!");
+			messageLabel.setText(INVALID_USRNM_EM);
 		}else if(validEmail && !validPassword && validUsername){
-			messageLabel.setText("Please enter a valid password!");
+			messageLabel.setText(INVALID_PW);
 		}else if(!validEmail && validPassword && validUsername) {
-			messageLabel.setText("Please enter a valid email!");
+			messageLabel.setText(INVALID_EM);
 		} else if(validEmail && validPassword && !validUsername) {
-			messageLabel.setText("Please enter a valid user name!");
+			messageLabel.setText(INVALID_USRNM);
 		}else {
 			messageLabel.setText("");
 		}
@@ -331,7 +396,47 @@ public class RegistrationPanel extends JPanel {
 		String email = emailAddress.getText();
 		String password = String.valueOf(passwordField.getPassword());
 		String country = countryField.getSelectedItem().toString();
-
-		return new UserDto(username, firstName, lastName, dob, email, password, country);
+		String[] prefGenre = this.getGenreForUser();
+		
+		UserDto userDto = new UserDto();
+		
+		userDto.setFirstName(firstName);
+		userDto.setLastName(lastName);
+		userDto.setDob(dob);
+		userDto.setUserName(username);
+		userDto.setEmail(email);
+		userDto.setPassword(password);
+		userDto.setCountry(country);
+		userDto.setPreferredGenre(prefGenre);
+		userDto.setJoinDate(new Date());
+		
+		return userDto.getUser();
 	}
+	
+	@SuppressWarnings("deprecation")
+	public String[] getGenreForUser() {
+		 StringBuilder selectedValues = new StringBuilder();
+         if (genre1CheckBox.isSelected()) {
+        	 selectedValues.append(ACTION).append(", ");
+         } if (genre2CheckBox.isSelected()) {
+        	 selectedValues.append(SCIENCE_FICTION).append(", ");
+         } if (genre3CheckBox.isSelected()) {
+        	 selectedValues.append(MANGA).append(", ");
+         } if (genre4CheckBox.isSelected()) {
+        	 selectedValues.append(COMEDY).append(", ");
+         } if (genre5CheckBox.isSelected()) {
+        	 selectedValues.append(ANTHOLOGY).append(", ");
+         } if (genre6CheckBox.isSelected()) {
+        	 selectedValues.append(FANTASY).append(", ");
+         } if (genre7CheckBox.isSelected()) {
+        	 selectedValues.append(THRILLER).append(", ");
+         } if (genre8CheckBox.isSelected()) {
+        	 selectedValues.append(SUPERHERO).append(", ");
+		 } if (genre9CheckBox.isSelected()) {
+        	 selectedValues.append(ADVENTURE).append(", ");
+         }
+         
+         return StringArrayConverter.stringToList(selectedValues.toString());
+	}
+	
 }
