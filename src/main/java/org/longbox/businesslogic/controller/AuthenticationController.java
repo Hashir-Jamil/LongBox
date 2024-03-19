@@ -4,7 +4,6 @@ import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.businesslogic.service.UserService;
-import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.presentation.authentication.AuthenticationFrame;
