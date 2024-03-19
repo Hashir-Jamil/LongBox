@@ -4,9 +4,9 @@ package org.longbox.presentation.authentication;
 import com.toedter.calendar.JDateChooser;
 import lombok.Getter;
 import lombok.Setter;
+import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.businesslogic.utils.RegistrationUtils;
-import org.longbox.businesslogic.utils.StringArrayConverter;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -436,7 +436,7 @@ public class RegistrationPanel extends JPanel {
         	 selectedValues.append(ADVENTURE).append(", ");
          }
          
-         return StringArrayConverter.stringToList(selectedValues.toString());
+         return GenreUtils.genreStringToList(selectedValues.toString());
 	}
 	
 }
