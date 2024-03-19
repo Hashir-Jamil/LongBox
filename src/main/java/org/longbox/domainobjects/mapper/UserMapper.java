@@ -23,6 +23,7 @@ public class UserMapper {
         dto.setComicsReading(entity.getComicsReading());
         dto.setComicsFinished(entity.getComicsFinished());
         dto.setAboutMe(entity.getAboutMe());
+        dto.setPreferredGenre(StringArrayConverter.stringToList(entity.getPreferredGenre()));
         return dto;
     }
 
