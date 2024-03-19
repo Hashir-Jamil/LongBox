@@ -181,11 +181,11 @@ public class ProfilePanel extends JPanel {
 		panel.add(comicsFinished);
 
 		currentlyReading = new JLabel("Comics Currently Reading: ");
-		currentlyReading.setBounds(47, 399, 200, 14);
+		currentlyReading.setBounds(557, 310, 200, 14);
 		panel.add(currentlyReading);
 
 		currentlyRead = new JLabel("Comics Previously Finished: ");
-		currentlyRead.setBounds(47, 592, 200, 14);
+		currentlyRead.setBounds(557, 542, 200, 14);
 		panel.add(currentlyRead);
 		
 		aboutMe = new JTextArea();
@@ -270,7 +270,7 @@ public class ProfilePanel extends JPanel {
 		});
 		readingPane = new JScrollPane(readingTable);
 		readingPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		readingPane.setBounds(47, 424, 407, 135);
+		readingPane.setBounds(557, 337, 554, 185);
 		panel.add(readingPane);
 
 		readTable = new JTable(finishedTableModel);
@@ -287,7 +287,7 @@ public class ProfilePanel extends JPanel {
 		});
 		readPane = new JScrollPane(readTable);
 		readPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		readPane.setBounds(47, 617, 407, 135);
+		readPane.setBounds(557, 567, 554, 185);
 		panel.add(readPane);
 	}
 }
