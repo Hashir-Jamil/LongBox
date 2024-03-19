@@ -9,6 +9,7 @@ import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.dto.UserDto;
+import org.longbox.domainobjects.mapper.UserMapper;
 import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
 import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
 import org.longbox.persistence.dao.UserDaoImpl;
@@ -231,7 +232,7 @@ public class ProfilePanel extends JPanel {
 	public void reloadTable() throws UserIDDoesNotExistException {
 
 		UserDaoImpl userDaoImpl = new UserDaoImpl(HibernateUtils.getSessionFactory());
-		user.setUser(new UserDto(userDaoImpl.getUserById(user.getUser().getId())));
+		user.setUser(UserMapper.toDto(userDaoImpl.getUserById(user.getUser().getId())));
 		setFields();
 
 		ComicBookReadingListDaoImpl readingListDaoImpl = new ComicBookReadingListDaoImpl(HibernateUtils.getSessionFactory());
