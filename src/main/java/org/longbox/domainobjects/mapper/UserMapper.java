@@ -1,5 +1,6 @@
 package org.longbox.domainobjects.mapper;
 
+import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.businesslogic.utils.StringArrayConverter;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.domainobjects.entity.User;
@@ -23,7 +24,7 @@ public class UserMapper {
         dto.setComicsReading(entity.getComicsReading());
         dto.setComicsFinished(entity.getComicsFinished());
         dto.setAboutMe(entity.getAboutMe());
-        dto.setPreferredGenre(StringArrayConverter.stringToList(entity.getPreferredGenre()));
+        dto.setPreferredGenre(entity.getPreferredGenre() != null ? GenreUtils.genreStringToList(entity.getPreferredGenre()) : new String[0]);
         return dto;
     }
 

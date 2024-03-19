@@ -116,6 +116,9 @@ public class ComicBookDaoImpl implements ComicBookDao {
     }
 
     public List<ComicBookDto> getRecommendationsByGenre(String[] genres) {
+        if (genres == null) {
+            return new ArrayList<ComicBookDto>();
+        }
         Session session = null;
         List<ComicBook> comicBookList = new ArrayList<>();
         session = sessionFactory.openSession();
