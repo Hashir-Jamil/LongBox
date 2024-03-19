@@ -40,11 +40,11 @@ tasks.jacocoTestReport {
         xml.required = true
         csv.required = true
         html.required = true
-        html.outputLocation = layout.buildDirectory.dir("jacocoHtml")
+        html.outputLocation = layout.buildDirectory.dir("jacoco-reports")
     }
 }
 
 jacoco {
     toolVersion = "0.8.11"
-    reportsDirectory = layout.buildDirectory.dir("customJacocoReportDir")
+    reportsDirectory = layout.buildDirectory.dir("jacoco-reports")
 }

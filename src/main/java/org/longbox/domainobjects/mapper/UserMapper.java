@@ -52,5 +52,4 @@ public class UserMapper {
                 .map(UserMapper::toEntity)
                 .collect(Collectors.toList());
     }
-
 }

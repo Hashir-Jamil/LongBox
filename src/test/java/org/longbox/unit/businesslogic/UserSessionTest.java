@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.domainobjects.dto.UserDto;
+import org.longbox.domainobjects.entity.User;
+
 import java.util.Date;
 
 public class UserSessionTest {
@@ -100,6 +102,4 @@ public class UserSessionTest {
         assertNull(userSession.getUser());
         assertNull(UserSession.getActiveUser());
     }
-
-  
 }

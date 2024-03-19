@@ -125,4 +125,172 @@ public class UserDtoTest {
         assertEquals(u1.getComicsReading(), u4DTO.getComicsReading());
         assertEquals(u1.getComicsFinished(), u4DTO.getComicsFinished());
     }
+
+    @Test
+    public void testEmptyConstructor() {
+        UserDto userDto = new UserDto();
+        assertNotNull(userDto);
+    }
+
+    @Test
+    public void testConstructorWithBasicFields() {
+        Long id = 1L;
+        String userName = "user1";
+        String firstName = "John";
+        String lastName = "Doe";
+        Date dob = new Date();
+        String email = "john.doe@example.com";
+        String password = "password";
+        String country = "USA";
+        String aboutMe = "About me";
+
+        UserDto userDto = new UserDto(id, userName, firstName, lastName, dob, email, password, country, aboutMe);
+
+        assertEquals(id, userDto.getId());
+        assertEquals(userName, userDto.getUserName());
+        assertEquals(firstName, userDto.getFirstName());
+        assertEquals(lastName, userDto.getLastName());
+        assertEquals(dob, userDto.getDob());
+        assertEquals(email, userDto.getEmail());
+        assertEquals(password, userDto.getPassword());
+        assertEquals(country, userDto.getCountry());
+        assertEquals(aboutMe, userDto.getAboutMe());
+    }
+
+    @Test
+    public void testEqualsAndHashCode() {
+        Long id = 1L;
+        String userName = "user1";
+        String firstName = "John";
+        String lastName = "Doe";
+        Date dob = new Date();
+        String email = "john.doe@example.com";
+        String password = "password";
+        String country = "USA";
+        String aboutMe = "About me";
+
+        UserDto userDto1 = new UserDto(id, userName, firstName, lastName, dob, email, password, country, aboutMe);
+        UserDto userDto2 = new UserDto(id, userName, firstName, lastName, dob, email, password, country, aboutMe);
+
+        // Test equals method
+        assertTrue(userDto1.equals(userDto2));
+        assertTrue(userDto2.equals(userDto1));
+
+        // Test hashCode method
+        assertEquals(userDto1.hashCode(), userDto2.hashCode());
+    }
+
+    @Test
+    public void testConstructorWithAllParameters() {
+        // Prepare test data
+        long id = 1L;
+        String userName = "user1";
+        String firstName = "John";
+        String lastName = "Doe";
+        Date dob = new Date();
+        String email = "john.doe@example.com";
+        String password = "password";
+        String country = "USA";
+        int comicsReading = 5;
+        int comicsFinished = 10;
+        String aboutMe = "About me";
+
+        // Create UserDto object using the constructor
+        UserDto userDto = new UserDto(id, userName, firstName, lastName, dob, email, password, country, comicsReading, comicsFinished, aboutMe);
+
+        // Assert that the fields of the UserDto object are initialized correctly
+        assertEquals(id, userDto.getId());
+        assertEquals(userName, userDto.getUserName());
+        assertEquals(firstName, userDto.getFirstName());
+        assertEquals(lastName, userDto.getLastName());
+        assertEquals(dob, userDto.getDob());
+        assertEquals(email, userDto.getEmail());
+        assertEquals(password, userDto.getPassword());
+        assertEquals(country, userDto.getCountry());
+        assertEquals(comicsReading, userDto.getComicsReading());
+        assertEquals(comicsFinished, userDto.getComicsFinished());
+        assertEquals(aboutMe, userDto.getAboutMe());
+
+        // Assert that joinDate field is initialized with the current date
+        assertNotNull(userDto.getJoinDate());
+    }
+
+    @Test
+    public void continentTest() {
+        u1DTO.setContinent("Africa");
+        assertEquals("Africa", u1DTO.getContinent());
+    }
+
+    @Test
+    public void testConstructorWithBasicParameters() {
+        // Prepare test data
+        String userName = "user1";
+        String firstName = "John";
+        String lastName = "Doe";
+        Date dob = new Date();
+        String email = "john.doe@example.com";
+        String password = "password";
+        String country = "USA";
+        String aboutMe = "About me";
+
+        // Create UserDto object using the constructor
+        UserDto userDto = new UserDto(userName, firstName, lastName, dob, email, password, country, aboutMe);
+
+        // Assert that the fields of the UserDto object are initialized correctly
+        assertEquals(userName, userDto.getUserName());
+        assertEquals(firstName, userDto.getFirstName());
+        assertEquals(lastName, userDto.getLastName());
+        assertEquals(dob, userDto.getDob());
+        assertEquals(email, userDto.getEmail());
+        assertEquals(password, userDto.getPassword());
+        assertEquals(country, userDto.getCountry());
+        assertEquals(0, userDto.getComicsReading());
+        assertEquals(0, userDto.getComicsFinished());
+        assertEquals(aboutMe, userDto.getAboutMe());
+
+        // Assert that joinDate field is initialized with the current date
+        assertNotNull(userDto.getJoinDate());
+    }
+    @Test
+    public void testToString() {
+        // Prepare test data
+        Long id = 1L;
+        String userName = "user1";
+        String firstName = "John";
+        String lastName = "Doe";
+        Date dob = new Date();
+        String email = "john.doe@example.com";
+        String password = "password";
+        String country = "USA";
+        String continent = "North America";
+        Date joinDate = new Date();
+        int comicsReading = 5;
+        int comicsFinished = 10;
+        String aboutMe = "About me";
+
+        // Create UserDto object
+        UserDto userDto = new UserDto();
+        userDto.setId(id);
+        userDto.setUserName(userName);
+        userDto.setFirstName(firstName);
+        userDto.setLastName(lastName);
+        userDto.setDob(dob);
+        userDto.setEmail(email);
+        userDto.setPassword(password);
+        userDto.setCountry(country);
+        userDto.setContinent(continent);
+        userDto.setJoinDate(joinDate);
+        userDto.setComicsReading(comicsReading);
+        userDto.setComicsFinished(comicsFinished);
+        userDto.setAboutMe(aboutMe);
+
+        // Generate toString representation
+        String expectedToString = "UserDto(id=1, userName=user1, firstName=John, lastName=Doe, " +
+                "dob=" + dob + ", email=john.doe@example.com, password=password, country=USA, " +
+                "continent=North America, joinDate=" + joinDate + ", comicsReading=5, comicsFinished=10, " +
+                "aboutMe=About me)";
+
+        // Verify toString representation
+        assertEquals(expectedToString, userDto.toString());
+    }
 }

@@ -82,6 +82,19 @@ public class ComicBookDaoImplTest {
     }
 
     @Test
+    void getComicBookBySeriesTitleTest() {
+        ComicBook zot = comicBookDaoImpl.getComicBookBySeriesTitle("Zot!");
+        assertEquals("Zot!", zot.getSeriesTitle());
+        assertEquals("Scott McCloud", zot.getAuthor());
+        assertEquals("Scott McCloud", zot.getArtist());
+        assertEquals("Superhero, Superpower, Adventure, Science Fiction, Futuristic, Romance, Drama", zot.getGenres());
+        assertEquals("Empty", zot.getDescription());
+        assertEquals(36, zot.getNumberOfIssues());
+        assertEquals("Eclipse", zot.getPublisher());
+        assertEquals(1984, zot.getYearPublished());
+    }
+
+    @Test
     void saveComicBook() {
         comicBookDaoImpl.saveComicBook(new ComicBook(comicBookDto2));
     }
