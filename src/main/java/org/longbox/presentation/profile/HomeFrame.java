@@ -23,6 +23,7 @@ public class HomeFrame extends JFrame {
     private final String ADD_COMIC_TO_REPO = "Add Comic To Repo";
     private final String TRENDING_PANEL = "Trending Panel";
     private final String RECCOMENDEDATIONS_PANEL = "Recommendations Panel";
+    private final String FRAME_TITLE = "LongBox - Home Page";
     private final int BUTTON_WIDTH = 130;
     private final int BUTTON_X_POSITION = 10;
     private final int BUTTON_Y_POSITION = 11;
@@ -60,7 +61,7 @@ public class HomeFrame extends JFrame {
 
     private void buildHomeFrame() {
         //initializing the home frame and its parent container
-        setTitle("LongBox - Home Page");
+        setTitle(FRAME_TITLE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1200, 900);
         nexusPanel = new JPanel();
@@ -87,6 +88,7 @@ public class HomeFrame extends JFrame {
         activityPanel.add(profilePanel, PROFILE_PANEL);
         activityPanel.add(addComicToRepoPanel, ADD_COMIC_TO_REPO);
         activityPanel.add(recommendationsPanel, RECCOMENDEDATIONS_PANEL);
+        cardLayout.show(activityPanel, RECCOMENDEDATIONS_PANEL);
 
         //adding buttons
         comicRepoButton = new JButton("Comic Repository");
@@ -116,6 +118,5 @@ public class HomeFrame extends JFrame {
         logOutButton = new JButton("Log Out");
         logOutButton.setBounds(1024, BUTTON_Y_POSITION, BUTTON_WIDTH, BUTTON_HEIGHT);
         nexusPanel.add(logOutButton);
-        
     }
 }

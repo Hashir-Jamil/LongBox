@@ -21,10 +21,11 @@ public class UserMapperTest {
         user.setComicsReading(5);
         user.setComicsFinished(10);
         user.setAboutMe("About me");
+        user.setPreferredGenre("Genre1, Genre2, Genre3");
 
         // Map the entity to DTO
         UserDto dto = UserMapper.toDto(user);
-
+        String[] expectedGenres = {"Genre1", "Genre2", "Genre3"};
         // Verify that the DTO attributes match the entity
         assertEquals(user.getId(), dto.getId());
         assertEquals(user.getUserName(), dto.getUserName());
@@ -38,6 +39,7 @@ public class UserMapperTest {
         assertEquals(user.getComicsReading(), dto.getComicsReading());
         assertEquals(user.getComicsFinished(), dto.getComicsFinished());
         assertEquals(user.getAboutMe(), dto.getAboutMe());
+        assertArrayEquals(expectedGenres,dto.getPreferredGenre());
     }
 
     @Test
@@ -47,6 +49,7 @@ public class UserMapperTest {
         dto.setJoinDate(new Date());
         dto.setComicsReading(5);
         dto.setComicsFinished(10);
+        dto.setPreferredGenre(new String[]{"Genre1","Genre2"});
 
         // Map the DTO to entity
         User user = UserMapper.toEntity(dto);
@@ -64,6 +67,7 @@ public class UserMapperTest {
         assertEquals(dto.getComicsReading(), user.getComicsReading());
         assertEquals(dto.getComicsFinished(), user.getComicsFinished());
         assertEquals(dto.getAboutMe(), user.getAboutMe());
+        assertEquals("Genre1, Genre2",user.getPreferredGenre());
     }
 
     @Test
@@ -71,14 +75,16 @@ public class UserMapperTest {
         // Create a list of User entities
         List<User> userList = new ArrayList<>();
         userList.add(new User("user1", "John", "Doe", new Date(), "john.doe@example.com", "password", "USA"));
+        userList.get(0).setPreferredGenre("Genre1, Genre2");
         userList.add(new User("user2", "Jane", "Doe", new Date(), "jane.doe@example.com", "password", "Canada"));
+        userList.get(1).setPreferredGenre("Genre1, Genre2");
 
         // Map the list of entities to DTOs
         List<UserDto> dtoList = UserMapper.toDtoList(userList);
 
         // Verify that the size of the DTO list matches the size of the entity list
         assertEquals(userList.size(), dtoList.size());
-
+        String[] expectedGenres = {"Genre1", "Genre2"};
         // Verify that each DTO in the list matches its corresponding entity
         for (int i = 0; i < userList.size(); i++) {
             User user = userList.get(i);
@@ -95,6 +101,7 @@ public class UserMapperTest {
             assertEquals(user.getComicsReading(), dto.getComicsReading());
             assertEquals(user.getComicsFinished(), dto.getComicsFinished());
             assertEquals(user.getAboutMe(), dto.getAboutMe());
+            assertArrayEquals(expectedGenres,dto.getPreferredGenre());
         }
     }
 
@@ -103,7 +110,9 @@ public class UserMapperTest {
         // Create a list of UserDto objects
         List<UserDto> dtoList = new ArrayList<>();
         dtoList.add(new UserDto("user1", "John", "Doe", new Date(), "john.doe@example.com", "password", "USA", "About me"));
+        dtoList.get(0).setPreferredGenre(new String[]{"Genre1", "Genre2"});
         dtoList.add(new UserDto("user2", "Jane", "Doe", new Date(), "jane.doe@example.com", "password", "Canada", "About her"));
+        dtoList.get(1).setPreferredGenre(new String[]{"Genre1", "Genre2"});
 
         // Map the list of DTOs to entities
         List<User> userList = UserMapper.toEntityList(dtoList);
@@ -127,6 +136,7 @@ public class UserMapperTest {
             assertEquals(dto.getComicsReading(), user.getComicsReading());
             assertEquals(dto.getComicsFinished(), user.getComicsFinished());
             assertEquals(dto.getAboutMe(), user.getAboutMe());
+            assertEquals("Genre1, Genre2", user.getPreferredGenre());
         }
     }
 }

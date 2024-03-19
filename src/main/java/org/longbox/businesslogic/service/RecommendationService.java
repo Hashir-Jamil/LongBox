@@ -19,8 +19,10 @@ public class RecommendationService {
     }
 
     public List<ComicBookDto> getRecommendations(UserDto dto) {
-        String[] genres = {"Action"};
-        //genres = dto.getGenres
-        return comicBookDao.getRecommendationsByGenre(genres);
+        String[] genres;
+        genres = dto.getPreferredGenre();
+        System.out.println(genres);
+        System.out.println(dto.getUserName());
+        return comicBookDao.getRecommendationsByGenre(dto.getPreferredGenre());
     }
 }
