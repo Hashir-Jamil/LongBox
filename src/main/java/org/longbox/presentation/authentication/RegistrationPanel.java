@@ -31,7 +31,6 @@ import java.util.Locale;
 @Getter
 @Setter
 public class RegistrationPanel extends JPanel {
-	private static final long serialVersionUID = 1L;
 	private static final String DEFAULT_FONT = "Calibri";
 	private static final String HEADER_TEXT = "Sign Up and Start Reading Comics!";
 	private static final String FIRST_NAME_TEXT = "Your first name:";
