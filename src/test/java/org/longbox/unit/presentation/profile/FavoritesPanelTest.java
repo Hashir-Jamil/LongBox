@@ -32,7 +32,6 @@ public class FavoritesPanelTest {
     @BeforeEach
     public void setUp() {
         UserSession userSession = UserSession.getInstance(userDto);
-        homeFrame = new HomeFrame(userSession);
         favoritesPanel = new FavoritesPanel();
     }
     @Test
