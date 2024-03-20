@@ -90,7 +90,7 @@ ALTER TABLE "comic_book_reading_list" ADD FOREIGN KEY ("comic_book_id") REFERENC
 -- Functions & Triggers
 
 -- Create a function to update comic_book.favorites_count and comic_book.*(continent)_favorites_count column
-REATE OR REPLACE FUNCTION update_comic_favorites_count()
+CREATE OR REPLACE FUNCTION update_comic_favorites_count()
 RETURNS TRIGGER AS $$
 BEGIN
 	SET SEARCH_PATH = longbox_schema;
