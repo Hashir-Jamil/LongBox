@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.domainobjects.entity.User;
+import org.longbox.domainobjects.mapper.UserMapper;
 
 import java.util.Date;
 
@@ -66,7 +67,7 @@ public class UserDtoTest {
         u1.setCountry("United Kingdom");
         u1.setDefaults();
 
-        u4DTO = new UserDto(u1);
+        u4DTO = UserMapper.toDto(u1);
 
         u2 = new User(u3DTO);
     }

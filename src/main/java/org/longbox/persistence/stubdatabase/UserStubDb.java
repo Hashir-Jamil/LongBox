@@ -18,6 +18,7 @@ import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.domainobjects.dto.UserDto;
 import com.google.gson.Gson;
+import org.longbox.domainobjects.mapper.UserMapper;
 import org.longbox.persistence.dao.UserDao;
 import org.longbox.domainobjects.entity.User;
 
@@ -76,7 +77,7 @@ public class UserStubDb implements UserDao, JsonConvertor {
                 throw new UsernameOrEmailExistsException();
             }
         }
-        userStubData.add(new UserDto(user));
+        userStubData.add(UserMapper.toDto(user));
         serializeStubData();
     }
 
