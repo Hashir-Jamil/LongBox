@@ -1,5 +1,6 @@
 package org.longbox.unit.domainobjects.mapper;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.domainobjects.entity.User;
@@ -11,7 +12,56 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserMapperTest {
+    UserDto dto, dto1;
+    User user1, user2;
+    @BeforeEach
+    void setup(){
+        dto = new UserDto();
+        dto.setUserName("user1");
+        dto.setFirstName("John");
+        dto.setLastName("Doe");
+        dto.setDob(new Date());
+        dto.setEmail("john.doe@example.com");
+        dto.setPassword("password");
+        dto.setCountry("USA");
+        dto.setAboutMe("About me.");
+        dto.setJoinDate(new Date());
+        dto.setDefaults();
 
+        dto1 = new UserDto();
+        dto1.setUserName("user2");
+        dto1.setFirstName("Jane");
+        dto1.setLastName("Doe");
+        dto1.setDob(new Date());
+        dto1.setEmail("jane.doe@example.com");
+        dto1.setPassword("password");
+        dto1.setCountry("Canada");
+        dto1.setAboutMe("About me.");
+        dto1.setJoinDate(new Date());
+        dto1.setDefaults();
+
+        user1 = new User();
+        user1.setUserName("user1");
+        user1.setFirstName("John");
+        user1.setLastName("Doe");
+        user1.setDob(new Date());
+        user1.setEmail("john.doe@example.com");
+        user1.setPassword("password");
+        user1.setCountry("USA");
+        user1.setJoinDate(new Date());
+        user1.setDefaults();
+
+        user2 = new User();
+        user2.setUserName("user2");
+        user2.setFirstName("Jane");
+        user2.setLastName("Doe");
+        user2.setDob(new Date());
+        user2.setEmail("jane.doe@example.com");
+        user2.setPassword("password");
+        user2.setCountry("Canada");
+        user2.setJoinDate(new Date());
+        user2.setDefaults();
+    }
     @Test
     public void testToDto() {
         // Create a User entity
@@ -44,9 +94,6 @@ public class UserMapperTest {
 
     @Test
     public void testToEntity() {
-        // Create a UserDto
-        UserDto dto = new UserDto("user1", "John", "Doe", new Date(), "john.doe@example.com", "password", "USA", "About me");
-        dto.setJoinDate(new Date());
         dto.setComicsReading(5);
         dto.setComicsFinished(10);
         dto.setPreferredGenre(new String[]{"Genre1","Genre2"});
@@ -74,9 +121,9 @@ public class UserMapperTest {
     public void testToDtoList() {
         // Create a list of User entities
         List<User> userList = new ArrayList<>();
-        userList.add(new User("user1", "John", "Doe", new Date(), "john.doe@example.com", "password", "USA"));
+        userList.add(user1);
         userList.get(0).setPreferredGenre("Genre1, Genre2");
-        userList.add(new User("user2", "Jane", "Doe", new Date(), "jane.doe@example.com", "password", "Canada"));
+        userList.add(user2);
         userList.get(1).setPreferredGenre("Genre1, Genre2");
 
         // Map the list of entities to DTOs
@@ -109,9 +156,9 @@ public class UserMapperTest {
     public void testToEntityList() {
         // Create a list of UserDto objects
         List<UserDto> dtoList = new ArrayList<>();
-        dtoList.add(new UserDto("user1", "John", "Doe", new Date(), "john.doe@example.com", "password", "USA", "About me"));
+        dtoList.add(dto);
         dtoList.get(0).setPreferredGenre(new String[]{"Genre1", "Genre2"});
-        dtoList.add(new UserDto("user2", "Jane", "Doe", new Date(), "jane.doe@example.com", "password", "Canada", "About her"));
+        dtoList.add(dto1);
         dtoList.get(1).setPreferredGenre(new String[]{"Genre1", "Genre2"});
 
         // Map the list of DTOs to entities

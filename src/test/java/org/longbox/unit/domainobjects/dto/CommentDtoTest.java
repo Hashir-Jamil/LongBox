@@ -22,15 +22,15 @@ public class CommentDtoTest {
 
         commentDto1 = new CommentDto(1, 1,"nice comic", "Phoenix");
 
-        u1DTO = new UserDto(
-                "Always_Scheming",
-                "John",
-                "Smith",
-                new Date(1990, 12, 1),
-                "email@domain.com",
-                "Always_Scheming",
-                "Canada"
-        );
+        u1DTO = new UserDto();
+        u1DTO.setUserName("user1");
+        u1DTO.setFirstName("John");
+        u1DTO.setLastName("Doe");
+        u1DTO.setDob(new Date());
+        u1DTO.setEmail("email@domain.com");
+        u1DTO.setPassword("Always_Scheming");
+        u1DTO.setCountry("USA");
+        u1DTO.setDefaults();
 
         comicBook1 = new ComicBookDto(
                 "Zot!",

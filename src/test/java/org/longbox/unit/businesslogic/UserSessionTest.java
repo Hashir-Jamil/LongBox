@@ -17,8 +17,27 @@ public class UserSessionTest {
     @BeforeEach
     public void setUp() {
         // Initialize UserDTOs for testing
-        userDto1 = new UserDto("user1", "John", "Doe", new Date(), "john@example.com", "password123", "USA");
-        userDto2 = new UserDto("user2", "Jane", "Doe", new Date(), "jane@example.com", "pass456", "Canada");
+
+        userDto1 = new UserDto();
+        userDto1.setUserName("user1");
+        userDto1.setFirstName("John");
+        userDto1.setLastName("Doe");
+        userDto1.setDob(new Date());
+        userDto1.setEmail("john@example.com");
+        userDto1.setPassword("password123");
+        userDto1.setCountry("USA");
+        userDto1.setDefaults();
+
+        userDto2 = new UserDto();
+        userDto2.setUserName("user2");
+        userDto2.setFirstName("Jane");
+        userDto2.setLastName("Doe");
+        userDto2.setDob(new Date());
+        userDto2.setEmail("jane@example.com");
+        userDto2.setPassword("pass456");
+        userDto2.setCountry("Canada");
+        userDto2.setDefaults();
+
     }
     
     @Test

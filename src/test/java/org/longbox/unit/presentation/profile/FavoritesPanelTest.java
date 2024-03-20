@@ -15,24 +15,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FavoritesPanelTest {
     private FavoritesPanel favoritesPanel;
-    UserDto userDto = new UserDto(
-            1L,
-            "john_doe",
-            "John",
-            "Doe",
-            new Date(),
-            "john@example.com",
-            "password",
-            "USA",
-            0,
-            0,
-            "About John"
-    );
+    UserDto userDto;
 
     @BeforeEach
     public void setUp() {
         UserSession userSession = UserSession.getInstance(userDto);
         favoritesPanel = new FavoritesPanel();
+
+        userDto = new UserDto();
+        userDto.setId(1L);
+        userDto.setUserName("john_doe");
+        userDto.setFirstName("john_doe");
+        userDto.setLastName("Doe");
+        userDto.setDob(new Date());
+        userDto.setEmail("john@example.com");
+        userDto.setPassword("password");
+        userDto.setCountry("Canada");
+        userDto.setAboutMe("About John");
+        userDto.setJoinDate(new Date());
+        userDto.setDefaults();
     }
     @Test
     void testInitialization() {
