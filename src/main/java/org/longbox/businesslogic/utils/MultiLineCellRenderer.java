@@ -8,7 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MultiLineCellRenderer extends JLabel implements ListCellRenderer<CommentDto> {
-    private static final int LINE_HEIGHT = 18; // Adjust this value as needed
+    private static final long serialVersionUID = 1L;
+	private static final int LINE_HEIGHT = 18; 
 
     public MultiLineCellRenderer() {
         setOpaque(true);
@@ -36,7 +37,7 @@ public class MultiLineCellRenderer extends JLabel implements ListCellRenderer<Co
     }
 
     private int calculateNumLines(String text) {
-        int lineWidth = 495; // Adjust this value based on your component's width
+        int lineWidth = 495; 
         FontMetrics fm = getFontMetrics(getFont());
 
         int numLines = 0;
