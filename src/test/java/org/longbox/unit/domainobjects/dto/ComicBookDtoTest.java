@@ -127,7 +127,7 @@ public class ComicBookDtoTest {
     }
     
     @Test
-    public void favoritesCountTest() {
+    public void favoritesCountTest_1() {
     	ComicBookDto EndOfEvangelion = new ComicBookDto();
     	EndOfEvangelion.setFavoritesCount(208);
     	EndOfEvangelion.setNorthAmericaFavoritesCount(31);
@@ -145,6 +145,19 @@ public class ComicBookDtoTest {
     	assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getAfricaFavoritesCount());
     	assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getOceaniaFavoritesCount());
     	assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getAntarcticaFavoritesCount());
+    }
+    
+    @Test
+    public void favoritesCountTest_2() {
+    	ComicBookDto EndOfEvangelion = new ComicBookDto();
+    	EndOfEvangelion.setFavoritesCount(208);
+    	EndOfEvangelion.setNorthAmericaFavoritesCount(31);
+    	EndOfEvangelion.setSouthAmericaFavoritesCount(28);
+    	EndOfEvangelion.setEuropeFavoritesCount(22);
+    	EndOfEvangelion.setAsiaFavoritesCount(98);
+    	EndOfEvangelion.setAfricaFavoritesCount(12);
+    	EndOfEvangelion.setOceaniaFavoritesCount(16);
+    	EndOfEvangelion.setAntarcticaFavoritesCount(1);
     	
     	assertEquals(EndOfEvangelion.getFavoritesCount(),
     			EndOfEvangelion.getNorthAmericaFavoritesCount() + 
