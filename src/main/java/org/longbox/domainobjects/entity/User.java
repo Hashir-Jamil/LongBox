@@ -72,31 +72,6 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<Comment> comments = new HashSet<>();
 
-	public User(String userName, String firstName, String lastName, Date dob, String email, String password,
-				String country) {
-		super();
-		this.userName = userName;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.dob = dob;
-		this.email = email;
-		this.password = password;
-		this.country = country;
-		this.joinDate = new Date();
-		this.comicsFinished = 0;
-		this.comicsReading = 0;
-	}
-
-	public User(UserDto user){
-		this(user.getUserName(),
-				user.getFirstName(),
-				user.getLastName(),
-				user.getDob(),
-				user.getEmail(),
-				user.getPassword(),
-				user.getCountry());
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(comicsFinished, comicsReading, country, dob, email, firstName, id, joinDate, lastName,
@@ -104,7 +79,6 @@ public class User {
 	}
 	
 	//two users are equal if they have the same name, user name and emails
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -135,6 +109,12 @@ public class User {
 				", comicsFinished=" + comicsFinished +
 				", aboutMe=" + aboutMe +
 				'}';
+	}
+
+	public void setDefaults(){
+		this.setComicsReading(0);
+		this.setComicsFinished(0);
+		this.setJoinDate(new Date());
 	}
 
 }
