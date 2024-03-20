@@ -4,6 +4,7 @@ import org.longbox.domainobjects.dto.StarRatingDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.longbox.domainobjects.mapper.UserMapper;
 
 @Entity
 @Table(name = "starRating")
@@ -37,7 +38,7 @@ public class StarRating {
     }
 
     public StarRating(StarRatingDto s){
-    	this.user = new User(s.getUser());
+    	this.user = UserMapper.toEntity(s.getUser());
     	this.comicBook = new ComicBook(s.getComicBook());
     	this.rating = s.getRating();
     }

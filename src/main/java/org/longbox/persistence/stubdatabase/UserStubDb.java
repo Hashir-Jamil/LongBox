@@ -34,7 +34,7 @@ public class UserStubDb implements UserDao, JsonConvertor {
         userStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (UserDto user : userStubData) {
             if (user.getId() == id) {
-                User u = new User(user);
+                User u = UserMapper.toEntity(user);
                 u.setId(user.getId());
                 return u;
             }
@@ -47,7 +47,7 @@ public class UserStubDb implements UserDao, JsonConvertor {
         userStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (UserDto user : userStubData) {
             if (Objects.equals(user.getUserName(), userName)) {
-                User u = new User(user);
+                User u = UserMapper.toEntity(user);
                 u.setId(user.getId());
                 return u;
             }
@@ -60,7 +60,7 @@ public class UserStubDb implements UserDao, JsonConvertor {
         userStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (UserDto user : userStubData) {
             if (Objects.equals(user.getEmail(), email)) {
-                User u = new User(user);
+                User u = UserMapper.toEntity(user);
                 u.setId(user.getId());
                 return u;
             }

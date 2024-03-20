@@ -69,7 +69,7 @@ public class UserDtoTest {
 
         u4DTO = UserMapper.toDto(u1);
 
-        u2 = new User(u3DTO);
+        u2 = UserMapper.toEntity(u3DTO);
     }
 
     @Test
