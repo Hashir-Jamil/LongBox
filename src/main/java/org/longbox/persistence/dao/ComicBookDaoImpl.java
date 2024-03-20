@@ -11,6 +11,7 @@ import org.longbox.domainobjects.mapper.ComicBookMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ComicBookDaoImpl implements ComicBookDao {
     private SessionFactory sessionFactory;
@@ -137,6 +138,6 @@ public class ComicBookDaoImpl implements ComicBookDao {
         if (session != null) {
             session.close();
         }
-        return ComicBookMapper.toDtoList(comicBookList);
+        return ComicBookMapper.toDtoList(comicBookList).stream().distinct().collect(Collectors.toList());
     }
 }
