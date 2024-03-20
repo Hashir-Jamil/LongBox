@@ -4,6 +4,8 @@ package org.longbox.presentation.authentication;
 import com.toedter.calendar.JDateChooser;
 import lombok.Getter;
 import lombok.Setter;
+
+import org.longbox.businesslogic.utils.CountryToContinentUtils;
 import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.businesslogic.utils.RegistrationUtils;
@@ -407,6 +409,7 @@ public class RegistrationPanel extends JPanel {
 		userDto.setEmail(email);
 		userDto.setPassword(password);
 		userDto.setCountry(country);
+		userDto.setContinent(CountryToContinentUtils.getContinent(country));
 		userDto.setPreferredGenre(prefGenre);
 		userDto.setJoinDate(new Date());
 		

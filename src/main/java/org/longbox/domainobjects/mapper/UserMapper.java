@@ -19,6 +19,7 @@ public class UserMapper {
         dto.setEmail(entity.getEmail());
         dto.setPassword(entity.getPassword());
         dto.setCountry(entity.getCountry());
+        dto.setContinent(entity.getContinent());
         dto.setJoinDate(entity.getJoinDate());
         dto.setComicsReading(entity.getComicsReading());
         dto.setComicsFinished(entity.getComicsFinished());
@@ -43,6 +44,7 @@ public class UserMapper {
         entity.setEmail(dto.getEmail());
         entity.setPassword(dto.getPassword());
         entity.setCountry(dto.getCountry());
+        entity.setContinent(dto.getContinent());
         entity.setJoinDate(dto.getJoinDate());
         entity.setComicsReading(dto.getComicsReading());
         entity.setComicsFinished(dto.getComicsFinished());
