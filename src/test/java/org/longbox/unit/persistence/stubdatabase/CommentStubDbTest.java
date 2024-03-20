@@ -20,8 +20,17 @@ public class CommentStubDbTest {
         commentStubDb.loadJsonToArrayList();
         commentList = commentStubDb.deserializeStubData(commentStubDb.getABSOLUTE_FILE_PATH());
 
-        comment1 = new CommentDto(1, 1, "Wow, the art in this comic is absolutely breathtaking! The attention to detail and vibrant colors bring the characters to life in a way thats truly mesmerizing.", "Always_Scheming");
-        comment2 = new CommentDto(3,8,"nice comic", "Phoenix");
+        comment1 = new CommentDto();
+        comment1.setUserId(1L);
+        comment1.setComicBookId(1L);
+        comment1.setMessage("Wow, the art in this comic is absolutely breathtaking! The attention to detail and vibrant colors bring the characters to life in a way thats truly mesmerizing.");
+        comment1.setUserName("Always_Scheming");
+
+        comment2 = new CommentDto();
+        comment2.setUserId(3L);
+        comment2.setComicBookId(8L);
+        comment2.setMessage("nice comic");
+        comment2.setUserName("nice comic");
     }
 
     @Test

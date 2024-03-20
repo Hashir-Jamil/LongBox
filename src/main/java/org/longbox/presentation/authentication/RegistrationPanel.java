@@ -413,7 +413,7 @@ public class RegistrationPanel extends JPanel {
 		userDto.setPreferredGenre(prefGenre);
 		userDto.setJoinDate(new Date());
 		
-		return userDto.getUser();
+		return userDto;
 	}
 	
 	@SuppressWarnings("deprecation")

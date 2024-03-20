@@ -60,6 +60,13 @@ CREATE TABLE IF NOT EXISTS "comments" (
     "user_name" text
 );
 
+CREATE TABLE IF NOT EXISTS "star_ratings" (
+    "id" bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    "comic_book_id" bigint,
+    "user_id" bigint,
+    "rating" bigint,
+);
+
 CREATE TABLE IF NOT EXISTS "comic_book_finished_list" (
     "user_id" bigint NOT NULL,
     "comic_book_id" bigint NOT NULL,
@@ -80,6 +87,9 @@ ALTER TABLE "comic_book_favorites_list" ADD FOREIGN KEY ("comic_book_id") REFERE
 
 ALTER TABLE "comments" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
 ALTER TABLE "comments" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
+
+ALTER TABLE "star_ratings" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
+ALTER TABLE "star_ratings" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
 
 ALTER TABLE "comic_book_finished_list" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
 ALTER TABLE "comic_book_finished_list" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
