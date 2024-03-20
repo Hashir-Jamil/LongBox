@@ -11,6 +11,7 @@ import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.dto.CommentDto;
 import org.longbox.domainobjects.dto.StarRatingDto;
+import org.longbox.domainobjects.mapper.ComicBookMapper;
 import org.longbox.persistence.dao.*;
 import org.longbox.domainobjects.entity.ComicBook;
 
@@ -330,7 +331,8 @@ public class ComicBookInfoPanel extends JPanel {
 		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 		comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 		ComicBook comicBook = comicBookDaoImpl.getComicBookById(comicId);
-		ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
+		ComicBookDto comicBookDto = ComicBookMapper.toDto(comicBook);
+		//ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
 		System.out.println("the comic in favorites is " + comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO));
 		return comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO);
 	}

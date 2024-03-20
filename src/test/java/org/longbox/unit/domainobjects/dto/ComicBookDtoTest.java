@@ -79,55 +79,30 @@ public class ComicBookDtoTest {
     }
 
     @Test
-    public void testConstructorWithAllFields() {
-        ComicBookDto comicBookDto = new ComicBookDto(
-                1,
-                "Series Title",
-                "Author",
-                "Artist",
-                new String[]{"Genre1", "Genre2"},
-                "Description",
-                10,
-                "Publisher",
-                2022
-        );
-
-        assertEquals(1, comicBookDto.getId());
-        assertEquals("Series Title", comicBookDto.getSeriesTitle());
-        assertEquals("Author", comicBookDto.getAuthor());
-        assertEquals("Artist", comicBookDto.getArtist());
-        assertArrayEquals(new String[]{"Genre1", "Genre2"}, comicBookDto.getGenres());
-        assertEquals("Description", comicBookDto.getDescription());
-        assertEquals(10, comicBookDto.getNumberOfIssues());
-        assertEquals("Publisher", comicBookDto.getPublisher());
-        assertEquals(2022, comicBookDto.getYearPublished());
-    }
-
-    @Test
     public void testEqualsAndHashCode() {
-        ComicBookDto comicBookDto1 = new ComicBookDto(
-                1,
-                "Series Title",
-                "Author",
-                "Artist",
-                new String[]{"Genre1", "Genre2"},
-                "Description",
-                10,
-                "Publisher",
-                2022
-        );
+        ComicBookDto comicBookDto1 = new ComicBookDto();
+        comicBookDto1.setId(1L);
+        comicBookDto1.setSeriesTitle("Series Title");
+        comicBookDto1.setAuthor("Author");
+        comicBookDto1.setArtist("Artist");
+        comicBookDto1.setGenres(new String[]{"Genre1", "Genre2"});
+        comicBookDto1.setDescription("Description");
+        comicBookDto1.setNumberOfIssues(10);
+        comicBookDto1.setPublisher("Publisher");
+        comicBookDto1.setYearPublished(2022);
+        comicBookDto1.setDateAdded(new Date());
 
-        ComicBookDto comicBookDto2 = new ComicBookDto(
-                1,
-                "Series Title",
-                "Author",
-                "Artist",
-                new String[]{"Genre1", "Genre2"},
-                "Description",
-                10,
-                "Publisher",
-                2022
-        );
+        ComicBookDto comicBookDto2 = new ComicBookDto();
+        comicBookDto2.setId(1L);
+        comicBookDto2.setSeriesTitle("Series Title");
+        comicBookDto2.setAuthor("Author");
+        comicBookDto2.setArtist("Artist");
+        comicBookDto2.setGenres(new String[]{"Genre1", "Genre2"});
+        comicBookDto2.setDescription("Description");
+        comicBookDto2.setNumberOfIssues(10);
+        comicBookDto2.setPublisher("Publisher");
+        comicBookDto2.setYearPublished(2022);
+        comicBookDto2.setDateAdded(new Date());
 
         assertTrue(comicBookDto1.equals(comicBookDto2));
         assertEquals(comicBookDto1.hashCode(), comicBookDto2.hashCode());
@@ -135,23 +110,23 @@ public class ComicBookDtoTest {
 
     @Test
     public void testToString() {
-        ComicBookDto comicBookDto = new ComicBookDto(
-                1,
-                "Series Title",
-                "Author",
-                "Artist",
-                new String[]{"Genre1", "Genre2"},
-                "Description",
-                10,
-                "Publisher",
-                2022
-        );
+        ComicBookDto comicBookDto = new ComicBookDto();
+        comicBookDto.setId(1L);
+        comicBookDto.setSeriesTitle("Series Title");
+        comicBookDto.setAuthor("Author");
+        comicBookDto.setArtist("Artist");
+        comicBookDto.setGenres(new String[]{"Genre1", "Genre2"});
+        comicBookDto.setDescription("Description");
+        comicBookDto.setNumberOfIssues(10);
+        comicBookDto.setPublisher("Publisher");
+        comicBookDto.setYearPublished(2022);
+        comicBookDto.setDateAdded(new Date());
 
         String expectedToString = "ComicBookDTO{id=1, seriesTitle='Series Title', author='Author', artist='Artist', genres=[Genre1, Genre2], description='Description', numberOfIssues=10, publisher='Publisher', yearPublished=2022, dateAdded=" + comicBookDto.getDateAdded() + ", favoritesCount=" + comicBookDto.getFavoritesCount() + '}';
         assertEquals(expectedToString, comicBookDto.toString());
     }
 
-    @Test
+/*    @Test
     public void testComicBookDtoConstructor() {
         ComicBook comicBookRecord = new ComicBook();
         comicBookRecord.setId(1L);
@@ -193,37 +168,5 @@ public class ComicBookDtoTest {
         assertEquals(6, comicBookDto.getOceaniaFavoritesCount());
         assertEquals(0, comicBookDto.getAntarcticaFavoritesCount());
         assertEquals(21, comicBookDto.getFavoritesCount());
-    }
-
-    @Test
-    public void testComicBookDtoDefaultFavoriteValueConstructor() {
-        String seriesTitle = "Series Title";
-        String author = "Author";
-        String artist = "Artist";
-        String genres = "Genre1,Genre2";
-        String description = "Description";
-        int numberOfIssues = 10;
-        String publisher = "Publisher";
-        int yearPublished = 2022;
-
-        ComicBookDto comicBookDto = new ComicBookDto(seriesTitle, author, artist, genres, description, numberOfIssues, publisher, yearPublished);
-
-        assertEquals(seriesTitle, comicBookDto.getSeriesTitle());
-        assertEquals(author, comicBookDto.getAuthor());
-        assertEquals(artist, comicBookDto.getArtist());
-        assertArrayEquals(new String[]{"Genre1", "Genre2"}, comicBookDto.getGenres());
-        assertEquals(description, comicBookDto.getDescription());
-        assertEquals(numberOfIssues, comicBookDto.getNumberOfIssues());
-        assertEquals(publisher, comicBookDto.getPublisher());
-        assertEquals(yearPublished, comicBookDto.getYearPublished());
-        assertNotNull(comicBookDto.getDateAdded());
-        assertEquals(0, comicBookDto.getNorthAmericaFavoritesCount());
-        assertEquals(0, comicBookDto.getSouthAmericaFavoritesCount());
-        assertEquals(0, comicBookDto.getEuropeFavoritesCount());
-        assertEquals(0, comicBookDto.getAsiaFavoritesCount());
-        assertEquals(0, comicBookDto.getAfricaFavoritesCount());
-        assertEquals(0, comicBookDto.getOceaniaFavoritesCount());
-        assertEquals(0, comicBookDto.getAntarcticaFavoritesCount());
-        assertEquals(0, comicBookDto.getFavoritesCount());
-    }
+    }*/
 }
