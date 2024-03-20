@@ -39,7 +39,12 @@ public class ComicBookInfoController implements ActionListener {
         if(e.getSource() == this.comicBookInfoPanel.getAddCommentButton()){
 
             String message = this.comicBookInfoPanel.getCommentBox().getText();
-            CommentDto newComment = new CommentDto(message, this.comicBookInfoPanel.getUserSession().getUser(), this.comicBookInfoPanel.getComicBookDTO());
+
+            CommentDto newComment = new CommentDto();
+            newComment.setUser(this.comicBookInfoPanel.getUserSession().getUser());
+            newComment.setComicBook(this.comicBookInfoPanel.getComicBookDTO());
+            newComment.setMessage(message);
+
             commentService.saveComment(newComment);
             this.comicBookInfoPanel.displayComments();
 

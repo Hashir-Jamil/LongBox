@@ -44,7 +44,11 @@ class CommentDaoImplTest {
 
 	@Test
 	void test_saveComment(){
-		CommentDto addComment = new CommentDto(3, 13, "This is a nice comic", "Phoenix");
+		CommentDto addComment = new CommentDto();
+		addComment.setUserId(3);
+		addComment.setComicBookId(13);
+		addComment.setMessage("This is a nice comic");
+		addComment.setUserName("Phoenix");
 		commentDaoImpl.saveComment(addComment);
 	}
 

@@ -9,6 +9,7 @@ import org.longbox.domainobjects.entity.ComicBook;
 import org.longbox.domainobjects.entity.Comment;
 import org.longbox.domainobjects.entity.User;
 import org.longbox.config.HibernateUtils;
+import org.longbox.domainobjects.mapper.CommentMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,7 @@ public class CommentDaoImpl implements CommentDao {
         }
         List<CommentDto> commentDtoList = new ArrayList<>();
         for (Comment c : commentList) {
-            CommentDto commentDTO = new CommentDto(c);
+            CommentDto commentDTO = CommentMapper.toDto(c);
             commentDtoList.add(commentDTO);
         }
         return commentDtoList;
@@ -112,7 +113,7 @@ public class CommentDaoImpl implements CommentDao {
         }
         List<CommentDto> commentDtoList = new ArrayList<>();
         for (Comment c : commentList) {
-            CommentDto commentDTO = new CommentDto(c);
+            CommentDto commentDTO = CommentMapper.toDto(c);
             commentDtoList.add(commentDTO);
         }
         return commentDtoList;

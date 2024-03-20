@@ -20,7 +20,11 @@ public class CommentDtoTest {
     @BeforeEach
     void init() {
 
-        commentDto1 = new CommentDto(1, 1,"nice comic", "Phoenix");
+        commentDto1 = new CommentDto();
+        commentDto1.setUserId(1L);
+        commentDto1.setComicBookId(1L);
+        commentDto1.setMessage("nice comic");
+        commentDto1.setUserName("Phoenix");
 
         u1DTO = new UserDto();
         u1DTO.setUserName("user1");
@@ -65,7 +69,15 @@ public class CommentDtoTest {
         comicBookDto.setId(1L);
 
         // Test the constructor
-        CommentDto commentDto = new CommentDto("Great comic!", userDto, comicBookDto);
+
+        CommentDto commentDto = new CommentDto();
+        commentDto.setUser(userDto);
+        commentDto.setComicBook(comicBookDto);
+        commentDto.setMessage("Great comic!");
+        commentDto.setUserName(userDto.getUserName());
+        commentDto.setUserId(userDto.getId());
+        commentDto.setComicBookId(comicBookDto.getId());
+        commentDto.setCommentDate(new Date());
 
         // Verify that the CommentDto object is initialized correctly
         assertEquals("Great comic!", commentDto.getMessage());
@@ -78,7 +90,12 @@ public class CommentDtoTest {
     @Test
     public void testConstructorWithUserIdComicBookIdMessageUserName() {
         // Test the constructor
-        CommentDto commentDto = new CommentDto(1L, 1L, "Great comic!", "user1");
+        CommentDto commentDto = new CommentDto();
+        commentDto.setUserId(1L);
+        commentDto.setComicBookId(1L);
+        commentDto.setMessage("Great comic!");
+        commentDto.setUserName("user1");
+        commentDto.setCommentDate(new Date());
 
         // Verify that the CommentDto object is initialized correctly
         assertEquals(1L, commentDto.getUserId());
@@ -91,11 +108,24 @@ public class CommentDtoTest {
     @Test
     public void testEqualsAndHashCode() {
         // Create two CommentDto objects with identical properties
-        CommentDto commentDto1 = new CommentDto(1L, 1L, "Great comic!", "user1");
-        CommentDto commentDto2 = new CommentDto(1L, 1L, "Great comic!", "user1");
+        CommentDto commentDto1 = new CommentDto();
+        commentDto1.setUserId(1L);
+        commentDto1.setComicBookId(1L);
+        commentDto1.setMessage("Great comic!");
+        commentDto1.setUserName("user1");
+
+        CommentDto commentDto2 = new CommentDto();
+        commentDto2.setUserId(1L);
+        commentDto2.setComicBookId(1L);
+        commentDto2.setMessage("Great comic!");
+        commentDto2.setUserName("user1");
 
         // Create another CommentDto object with different properties
-        CommentDto commentDto3 = new CommentDto(2L, 1L, "Awesome!", "user2");
+        CommentDto commentDto3 = new CommentDto();
+        commentDto3.setUserId(2L);
+        commentDto3.setComicBookId(1L);
+        commentDto3.setMessage("Awesome!");
+        commentDto3.setUserName("user2");
 
         // Test equals() method
         assertTrue(commentDto1.equals(commentDto2)); // commentDto1 should be equal to commentDto2
@@ -108,7 +138,12 @@ public class CommentDtoTest {
     @Test
     public void testToString() {
         // Create a CommentDto object
-        CommentDto commentDto = new CommentDto(1L, 1L, "Great comic!", "user1");
+        CommentDto commentDto = new CommentDto();
+        commentDto.setUserId(1L);
+        commentDto.setComicBookId(1L);
+        commentDto.setMessage("Great comic!");
+        commentDto.setUserName("user1");
+
 
         // Test toString() method
         String expectedString = "CommentDTO [id=0, userId=1, comicBookId=1, message=Great comic!, username=user1, user=null, comicBook=null, dateAdded=" + commentDto.getCommentDate() + "]";
