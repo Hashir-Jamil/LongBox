@@ -249,5 +249,10 @@
 
 ## Tuesday, March 19th, 2024
     
+    Ahan: Refactoring: removed all instances of UserDto and User constructors throughout the code, used Java Beans in its place.
+
+## Wednesday, March 20th, 2024
+    
+    Ahan: Refactoring: removed all instances of CommentDto and Comment constructors throughout the code, used Java Beans in its place. Also made a frame for other user that views its comments.
     
     
