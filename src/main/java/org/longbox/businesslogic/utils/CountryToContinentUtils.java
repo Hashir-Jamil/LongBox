@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class CountryToContinentUtils {
 	
 	private static HashMap<String, String> regionsHashMap = new HashMap<String, String>();
+	
 	private static final String NA = "North_America";
 	private static final String SA = "South_America";
 	private static final String EU = "Europe";
@@ -15,7 +16,6 @@ public class CountryToContinentUtils {
 	
 	static {
 		regionsHashMap.put("Canada", NA);
-		regionsHashMap.put("Mexico", NA);
 		regionsHashMap.put("United States", NA);
 		
 		regionsHashMap.put("Andorra", AF);
@@ -274,6 +274,8 @@ public class CountryToContinentUtils {
 		regionsHashMap.put("Ukraine", EU);
 		regionsHashMap.put("Uganda", AF);
 		regionsHashMap.put("United States Minor Outlying Islands", NA);
+		regionsHashMap.put("United States of America", NA);
+		regionsHashMap.put("United States Of America", NA);
 		regionsHashMap.put("Uruguay", SA);
 		regionsHashMap.put("Uzbekistan", AS);
 		regionsHashMap.put("Holy See (Vatican City State)", EU);
@@ -297,7 +299,11 @@ public class CountryToContinentUtils {
 	}
 	
 	public static String getContinent(String country) {
-		return regionsHashMap.get(country);
+		if (regionsHashMap.containsKey(country)) {
+			return regionsHashMap.get(country);
+		} else {
+			return NA;
+		}
 	}
 
 }
