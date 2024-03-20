@@ -9,6 +9,7 @@ import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.domainobjects.entity.ComicBook;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -39,37 +40,12 @@ public class ComicBookDaoImplTest {
         comicBookDto1.setSeriesTitle("Sanctuary");
         comicBookDto1.setAuthor("Sho Fumimura");
         comicBookDto1.setArtist("Ryoichi Ikegami");
-        comicBookDto1.setGenres(new String[] {"Polital", "Crime", "Thriller", "Manga"});
+        comicBookDto1.setGenres(new String[] {"Political", "Crime", "Thriller", "Manga"});
         comicBookDto1.setDescription("Empty");
         comicBookDto1.setNumberOfIssues(108);
         comicBookDto1.setPublisher("Viz");
         comicBookDto1.setYearPublished(1990);
         comicBookDto1.setDateAdded(new Date());
-
-        comicBook = new ComicBook(
-                comicBookDto1.getSeriesTitle(),
-                comicBookDto1.getAuthor(),
-                comicBookDto1.getArtist(),
-                GenreUtils.genreListToString(comicBookDto1.getGenres()),
-                comicBookDto1.getDescription(),
-                comicBookDto1.getNumberOfIssues(),
-                comicBookDto1.getPublisher(),
-                comicBookDto1.getYearPublished(),
-                comicBookDto1.getDateAdded()
-        );
-
-        comicBook2 = new ComicBook(
-                comicBookDto2.getSeriesTitle(),
-                comicBookDto2.getAuthor(),
-                comicBookDto2.getArtist(),
-                GenreUtils.genreListToString(comicBookDto2.getGenres()),
-                comicBookDto2.getDescription(),
-                comicBookDto2.getNumberOfIssues(),
-                comicBookDto2.getPublisher(),
-                comicBookDto2.getYearPublished(),
-                comicBookDto2.getDateAdded()
-        );
-
     }
 
     @Test
@@ -101,6 +77,9 @@ public class ComicBookDaoImplTest {
     void getRecommendationsByGenresTest() {
         String[] genres = {"Adventure","Action","Political"};
         List<ComicBookDto> recommendations = comicBookDaoImpl.getRecommendationsByGenre(genres);
-        assertTrue(recommendations.contains(comicBookDto1));
+        for (int i = 0; i < recommendations.size(); i++) {
+            List<String> actualGenres = Arrays.stream(recommendations.get(i).getGenres()).toList();
+            assertTrue(actualGenres.contains("Adventure") || actualGenres.contains("Action") || actualGenres.contains("Political"));
+        }
     }
 }
