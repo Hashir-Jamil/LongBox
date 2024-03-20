@@ -11,8 +11,26 @@ public class UserTest {
     @Test
     public void testEqualsAndHashCode() {
         // Create two users with the same email, user name, and name
-        User user1 = new User("user1", "John", "Doe", new Date(), "john.doe@example.com", "password", "USA");
-        User user2 = new User("user1", "John", "Doe", new Date(), "john.doe@example.com", "password", "USA");
+        User user1 = user1 = new User();
+        user1.setUserName("user1");
+        user1.setFirstName("John");
+        user1.setLastName("Doe");
+        user1.setDob(new Date());
+        user1.setEmail("john.doe@example.com");
+        user1.setPassword("password");
+        user1.setCountry("USA");
+        user1.setDefaults();
+
+        User user2 = new User();
+        user2.setUserName("user1");
+        user2.setFirstName("John");
+        user2.setLastName("Doe");
+        user2.setDob(new Date());
+        user2.setEmail("john.doe@example.com");
+        user2.setPassword("password");
+        user2.setCountry("USA");
+        user2.setJoinDate(new Date());
+        user2.setDefaults();
 
         // Ensure that the equals() method correctly identifies them as equal
         assertTrue(user1.equals(user2));
@@ -22,8 +40,26 @@ public class UserTest {
         assertEquals(user1.hashCode(), user2.hashCode());
 
         // Create two users with different email
-        User user3 = new User("user2", "John", "Doe", new Date(), "jane.doe@example.com", "password", "USA");
-        User user4 = new User("user2", "John", "Doe", new Date(), "john.doe@example.com", "password", "USA");
+        User user3 = new User();
+        user3.setUserName("user2");
+        user3.setFirstName("John");
+        user3.setLastName("Doe");
+        user3.setDob(new Date());
+        user3.setEmail("jane.doe@example.com");
+        user3.setPassword("password");
+        user3.setCountry("USA");
+        user3.setDefaults();
+
+        User user4 = new User();
+        user4.setUserName("user2");
+        user4.setFirstName("John");
+        user4.setLastName("Doe");
+        user4.setDob(new Date());
+        user4.setEmail("john.doe@example.com");
+        user4.setPassword("password");
+        user4.setCountry("USA");
+        user4.setJoinDate(new Date());
+        user4.setDefaults();
 
         // Ensure that the equals() method correctly identifies them as not equal
         assertFalse(user3.equals(user4));
@@ -41,7 +77,15 @@ public class UserTest {
         String aboutMe = "About me";
 
         // Create a user
-        User user = new User("user1", "John", "Doe", dob, "john.doe@example.com", "password", "USA");
+        User user = new User();
+        user.setUserName("user1");
+        user.setFirstName("John");
+        user.setLastName("Doe");
+        user.setDob(new Date());
+        user.setEmail("john.doe@example.com");
+        user.setPassword("password");
+        user.setCountry("USA");
+        user.setJoinDate(new Date());
         user.setContinent("North America");
         user.setJoinDate(joinDate);
         user.setComicsReading(5);

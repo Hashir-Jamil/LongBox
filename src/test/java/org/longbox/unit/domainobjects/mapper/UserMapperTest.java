@@ -65,7 +65,15 @@ public class UserMapperTest {
     @Test
     public void testToDto() {
         // Create a User entity
-        User user = new User("user1", "John", "Doe", new Date(), "john.doe@example.com", "password", "USA");
+        User user = new User();
+        user.setUserName("user1");
+        user.setFirstName("John");
+        user.setLastName("Doe");
+        user.setDob(new Date());
+        user.setEmail("john.doe@example.com");
+        user.setPassword("password");
+        user.setCountry("USA");
+        user.setJoinDate(new Date());
         user.setId(1L);
         user.setJoinDate(new Date());
         user.setComicsReading(5);
