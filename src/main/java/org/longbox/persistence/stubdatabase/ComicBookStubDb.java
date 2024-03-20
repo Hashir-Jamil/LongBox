@@ -13,6 +13,7 @@ import lombok.Setter;
 import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import com.google.gson.Gson;
+import org.longbox.domainobjects.mapper.ComicBookMapper;
 import org.longbox.persistence.dao.ComicBookDao;
 import org.longbox.domainobjects.entity.ComicBook;
 
@@ -54,7 +55,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
     @Override
     public Long saveComicBook(ComicBook comicBook) {
         List<ComicBookDto> comics = deserializeStubData(ABSOLUTE_FILE_PATH);
-        ComicBookDto comic = new ComicBookDto(comicBook);
+        ComicBookDto comic = ComicBookMapper.toDto(comicBook);
         comics.add(comic);
         comicBookStubData = comics;
         serializeStubData();
@@ -75,7 +76,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
     @Override
     public boolean modifyComicBook(ComicBook comicBook) {
         List<ComicBookDto> comics = deserializeStubData(ABSOLUTE_FILE_PATH);
-        ComicBookDto comicBookDto = new ComicBookDto(comicBook);
+        ComicBookDto comicBookDto = ComicBookMapper.toDto(comicBook);
         for (ComicBookDto comic : comics) {
             if (comic.equals(comicBookDto)) {
                 comic.setId(comicBook.getId());
@@ -102,139 +103,9 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
         return deserializeStubData(ABSOLUTE_FILE_PATH);
     }
 
-    public void loadComicBooks() {
-
-        ComicBookDto comicBook1 = new ComicBookDto(
-                "Zot!",
-                "Scott McCloud",
-                "Scott McCloud",
-                new String[] {"Superhero", "Superpower", "Adventure", "Science Fiction", "Futuristic", "Romance", "Drama"},
-                "Description",
-                36,
-                "Eclipse",
-                1984
-        );
-        comicBookStubData.add(comicBook1);
-
-        ComicBookDto comicBook2 = new ComicBookDto(
-                "Sanctuary",
-                "Sho Fumimura",
-                "Ryoichi Ikegami",
-                new String[] {"Polital", "Crime", "Thriller", "Manga"},
-                "Description",
-                108,
-                "Viz",
-                1990
-        );
-        comicBookStubData.add(comicBook2);
-
-        ComicBookDto comicBook3 = new ComicBookDto(
-                "Nexus (1981)",
-                "Mike Baron",
-                "Steve Rude",
-                new String[] {"Superhero", "Planetary Romance", "Superpower", "Science Fiction", "Adventure", "Fantasy"},
-                "Description",
-                3,
-                "Capital",
-                1981
-        );
-        comicBookStubData.add(comicBook3);
-
-        ComicBookDto comicBook4 = new ComicBookDto(
-                "The Maxx",
-                "Sam Keith",
-                "Sam Keith",
-                new String[] {"Fantasy", "Drama", "Comedy", "Superhero"},
-                "Description",
-                35,
-                "Image",
-                1993
-        );
-        comicBookStubData.add(comicBook4);
-        
-        ComicBookDto comicBook5 = new ComicBookDto(
-                "Winter Wolrd",
-                "Chuck Dixon",
-                "Jorge Zaffino",
-                new String[] {"Adventure", "Post-Apocalyptic", "Gunslinger"},
-                "Description",
-                3,
-                "Eclipse",
-                1987
-        );
-        comicBookStubData.add(comicBook5);
-        
-        ComicBookDto comicBook6 = new ComicBookDto(
-                "Hellhounds Panzer Cops",
-                "Mamoru Oshii",
-                "Kamui Fujiwara",
-                new String[] {"Military", "Police", "Adventure", "Dystopian", "Manga"},
-                "Description",
-                6,
-                "Dark Horse",
-                1994
-        );
-        comicBookStubData.add(comicBook6);
-        
-        ComicBookDto comicBook7 = new ComicBookDto(
-                "Jon Sable Freelance (1983)",
-                "Mike Grell",
-                "Mike Grell",
-                new String[] {"Action", "Adventure", "Crime", "Vigilantes"},
-                "Description",
-                56,
-                "First Comics",
-                1983
-        );
-        comicBookStubData.add(comicBook7);
-        
-        ComicBookDto comicBook8 = new ComicBookDto(
-                "Chronicles of Corum",
-                "Mike Baron",
-                "Mike Mignola",
-                new String[] {"Action", "Adventure", "Sword and Socery"},
-                "Description",
-                12,
-                "First Comics",
-                1987
-        );
-        comicBookStubData.add(comicBook8);
-        
-        ComicBookDto comicBook9 = new ComicBookDto(
-                "Drakuun",
-                "Johji Manabe",
-                "Johnji Manabe",
-                new String[] {"Adventure", "Sword and Socery", "Comedy", "Manga"},
-                "Description",
-                24,
-                "Dark Horse",
-                1997
-        );
-        comicBookStubData.add(comicBook9);
-        
-        ComicBookDto comicBook10 = new ComicBookDto(
-                "Sojourn",
-                "Ron Marz",
-                "Greg Land",
-                new String[] {"Action", "Adventure", "Sword and Sorcery"},
-                "Description",
-                34,
-                "Crossgen",
-                2001
-        );
-        comicBookStubData.add(comicBook10);
-        
-        ComicBookDto comicBook11 = new ComicBookDto(
-                "Trekker (1988)",
-                "Ron Randall",
-                "Ron Randall",
-                new String[] {"Action", "Crime", "Vigilantes", "Dystopian"},
-                "Description",
-                6,
-                "Dark Horse",
-                1988
-        );
-        comicBookStubData.add(comicBook11);
+    @Override
+    public List<ComicBookDto> getRecommendationsByGenre(String[] genres) {
+        return null;
     }
 
     @Override

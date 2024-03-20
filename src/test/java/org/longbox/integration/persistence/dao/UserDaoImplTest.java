@@ -27,22 +27,26 @@ class UserDaoImplTest {
 	@BeforeEach
 	void init(){
 		userDaoImpl = new UserDaoImpl(HibernateUtils.getSessionFactory());
-		u2 = new UserDto(
-				"Always_Throwing",
-				"Neo",
-				"Anderson",
-				new Date(1929,1,1),
-				"address@provider.ca",
-				"Always_Throwing",
-				"Indonesia");
 
-		user = new User(u2.getUserName(),
-				u2.getFirstName(),
-				u2.getLastName(),
-				u2.getDob(),
-				u2.getEmail(),
-				u2.getPassword(),
-				u2.getCountry());
+		u2 = new UserDto();
+		u2.setUserName("Always_Throwing");
+		u2.setFirstName("Neo");
+		u2.setLastName("Anderson");
+		u2.setDob(new Date(1929,1,1));
+		u2.setEmail("address@provider.ca");
+		u2.setPassword("Always_Throwing");
+		u2.setCountry("Indonesia");
+		u2.setDefaults();
+
+		user = new User();
+		user.setUserName(u2.getUserName());
+		user.setFirstName(u2.getFirstName());
+		user.setLastName(u2.getLastName());
+		user.setDob(u2.getDob());
+		user.setEmail(u2.getEmail());
+		user.setPassword(u2.getPassword());
+		user.setCountry(u2.getCountry());
+		user.setDefaults();
 	}
 
 	@Test
@@ -52,37 +56,41 @@ class UserDaoImplTest {
 
 	@Test
 	void test_add_2_Fail(){
-		UserDto u3 = new UserDto(
-				"Phoenix",
-				"Stan",
-				"Lee",
-				new Date(2000,4,31),
-				"123fake@nowhere.org",
-				"Phoenix",
-				"United Kingdom");
+		UserDto u3 = new UserDto();
+		u3.setUserName("Phoenix");
+		u3.setFirstName("Stan");
+		u3.setLastName("Lee");
+		u3.setDob(new Date(2000,4,31));
+		u3.setEmail("123fake@nowhere.org");
+		u3.setPassword("Phoenix");
+		u3.setCountry("United Kingdom");
+		u3.setDefaults();
 
-		User user1 = new User(u3.getUserName(),
-				u3.getFirstName(),
-				u3.getLastName(),
-				u3.getDob(),
-				u3.getEmail(),
-				u3.getPassword(),
-				u3.getCountry());
+		User user1 = new User();
+		user1.setUserName(u3.getUserName());
+		user1.setFirstName(u3.getFirstName());
+		user1.setLastName(u3.getLastName());
+		user1.setDob(u3.getDob());
+		user1.setEmail(u3.getEmail());
+		user1.setPassword(u3.getPassword());
+		user1.setCountry(u3.getCountry());
+		user1.setDefaults();
 
 		assertThrows(UsernameOrEmailExistsException.class, () -> userDaoImpl.saveUser(user1));
     }
 
 	@Test
 	void test_getUserByUserName(){
-		User expected = new User(
-				"Always_Scheming",
-				"John",
-				"Smith",
-				new Date(1990, 12, 1),
-				"email@domain.com",
-				"Always_Scheming",
-				"Canada");
-		
+		User expected = new User();
+		expected.setUserName("Always_Scheming");
+		expected.setFirstName("John");
+		expected.setLastName("Smith");
+		expected.setDob(new Date(1990, 12, 1));
+		expected.setEmail("email@domain.com");
+		expected.setPassword("Always_Scheming");
+		expected.setCountry("Canada");
+		expected.setDefaults();
+
 		User actual;
 		try {
 			actual = userDaoImpl.getUserByUserName(expected.getUserName());
@@ -102,15 +110,16 @@ class UserDaoImplTest {
 	
 	@Test
 	void test_getUserByID(){
-		User expected = new User(
-				"Always_Scheming",
-				"John",
-				"Smith",
-				new Date(1990, 12, 1),
-				"email@domain.com",
-				"Always_Scheming",
-				"Canada");
-		
+		User expected = new User();
+		expected.setUserName("Always_Scheming");
+		expected.setFirstName("John");
+		expected.setLastName("Smith");
+		expected.setDob(new Date(1990, 12, 1));
+		expected.setEmail("email@domain.com");
+		expected.setPassword("Always_Scheming");
+		expected.setCountry("Canada");
+		expected.setDefaults();
+
 		User actual;
 		try {
 			actual = userDaoImpl.getUserById(1);
@@ -125,7 +134,7 @@ class UserDaoImplTest {
 	
 	@Test
 	void test_getUserByID_Fail(){
-		assertThrows(UserIDDoesNotExistException.class, () -> userDaoImpl.getUserById(10));
+		assertThrows(UserIDDoesNotExistException.class, () -> userDaoImpl.getUserById(20));
 	}
 
 	@Test

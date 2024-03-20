@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.domainobjects.dto.CommentDto;
+import org.longbox.domainobjects.mapper.UserMapper;
 
 import java.util.Date;
 
@@ -45,7 +46,7 @@ public class Comment {
     }
 
     public Comment(CommentDto c){
-        this.user = new User(c.getUser());
+        this.user = UserMapper.toEntity(c.getUser());
         this.userName = c.getUser().getUserName();
         this.comicBook = new ComicBook(c.getComicBook());
         this.message = c.getMessage();

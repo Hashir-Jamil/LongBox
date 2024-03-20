@@ -11,6 +11,7 @@ import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.dto.CommentDto;
 import org.longbox.domainobjects.dto.StarRatingDto;
+import org.longbox.domainobjects.mapper.ComicBookMapper;
 import org.longbox.persistence.dao.*;
 import org.longbox.domainobjects.entity.ComicBook;
 
@@ -280,8 +281,7 @@ public class ComicBookInfoPanel extends JPanel {
 		readingButtonStates();
 		setFields();
 		displayComments();
-//		displayAvgRating();
-//		displayUserRating();
+		//displayAvgRating();
 	}
 
 
@@ -297,18 +297,18 @@ public class ComicBookInfoPanel extends JPanel {
 		dateAdded.setText("" + comicBookDTO.getDateAdded());
 	}
 	
-	public void displayAvgRating() {
-		avgRatingTotal = starRatingService.getStarRatingsByComic(comicBookDTO.getId());
-		int counter = 0;
-		ArrayList <StarRatingDto> length = new ArrayList<StarRatingDto>();
-		
-		for (StarRatingDto s : avgRatingTotal) {
-			counter =+ s.getRating();
-			length.add(s);
-		}
-		
-		avgRating.setText("" + (double) counter/length.size());
-	}
+//	public void displayAvgRating() {
+//		avgRatingTotal = starRatingService.getStarRatingsByComic(comicBookDTO.getId());
+//		int i = 0;
+//		ArrayList <StarRatingDto> l = new ArrayList<StarRatingDto>();
+//
+//		for (StarRatingDto s : avgRatingTotal) {
+//			i =+ s.getRating();
+//			l.add(s);
+//		}
+//
+//		avgRating.setText("" + (double) i/l.size());
+//	}
 
 	public void displayUserRating() {
 		int i = starRatingService.getStarRatingByID(userSession.getUser().getId(), comicBookDTO.getId()).getRating();
@@ -331,7 +331,8 @@ public class ComicBookInfoPanel extends JPanel {
 		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 		comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 		ComicBook comicBook = comicBookDaoImpl.getComicBookById(comicId);
-		ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
+		ComicBookDto comicBookDto = ComicBookMapper.toDto(comicBook);
+		//ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
 		System.out.println("the comic in favorites is " + comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO));
 		return comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO);
 	}

@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("jacoco")
 }
 
 group = "org.longbox"
@@ -27,8 +28,23 @@ dependencies {
 tasks.named<Test>("test") {
     useJUnitPlatform()
     maxHeapSize = "1G"
-
     testLogging {
         events("passed")
     }
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.named<Test>("test")) // tests are required to run before generating the report
+    reports {
+        xml.required = true
+        csv.required = true
+        html.required = true
+        html.outputLocation = layout.buildDirectory.dir("jacoco-reports")
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.11"
+    reportsDirectory = layout.buildDirectory.dir("jacoco-reports")
 }

@@ -8,6 +8,9 @@ public class GenreUtils {
 
     public static String genreListToString(String[] genresList) {
         String genres = "";
+        if (genresList == null) {
+            return genres;
+        }
         if (genresList.length == 0) {
             return genres;
         }

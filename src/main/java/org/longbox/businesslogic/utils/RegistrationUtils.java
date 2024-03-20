@@ -29,6 +29,9 @@ public class RegistrationUtils {
 	}	
 	
 	public static boolean isValidUserName(String userName) {
+		if (userName == null) {
+			return false;
+		}
 		if (userName.contains(Character.toString('@')) || userName.isBlank()) {
 			return false;
 		} else {

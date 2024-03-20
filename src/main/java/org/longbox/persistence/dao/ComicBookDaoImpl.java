@@ -11,6 +11,7 @@ import org.longbox.domainobjects.mapper.ComicBookMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ComicBookDaoImpl implements ComicBookDao {
     private SessionFactory sessionFactory;
@@ -112,12 +113,31 @@ public class ComicBookDaoImpl implements ComicBookDao {
                 session.close();
             }
         }
-/*        List<ComicBookDto> comicBookDtoList = new ArrayList<>();
-        for (ComicBook c : comicBookList) {
-            ComicBookDto comicBookDTO = new ComicBookDto(c);
-            comicBookDtoList.add(comicBookDTO);
-        }*/
         return ComicBookMapper.toDtoList(comicBookList);
-        //return comicBookDtoList;
+    }
+
+    public List<ComicBookDto> getRecommendationsByGenre(String[] genres) {
+        if (genres == null) {
+            return new ArrayList<ComicBookDto>();
+        }
+        Session session = null;
+        List<ComicBook> comicBookList = new ArrayList<>();
+        session = sessionFactory.openSession();
+        String currentGenre = "";
+        for (int i = 0; i < genres.length; i++) {
+            currentGenre = genres[i];
+            try {
+                String hql = "SELECT cb FROM ComicBook cb WHERE cb.genres LIKE :currentGenre";
+                Query<ComicBook> query = session.createQuery(hql, ComicBook.class);
+                query.setParameter("currentGenre", "%" + currentGenre + "%");
+                comicBookList.addAll(query.getResultList());
+            } catch (HibernateException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (session != null) {
+            session.close();
+        }
+        return ComicBookMapper.toDtoList(comicBookList).stream().distinct().collect(Collectors.toList());
     }
 }

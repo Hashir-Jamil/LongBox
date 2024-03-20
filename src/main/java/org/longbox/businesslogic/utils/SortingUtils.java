@@ -37,5 +37,4 @@ public class SortingUtils {
         Collections.reverse(commentsList);
         return commentsList;
     }
-
 }

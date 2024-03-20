@@ -18,6 +18,7 @@ import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
 import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.domainobjects.dto.UserDto;
 import com.google.gson.Gson;
+import org.longbox.domainobjects.mapper.UserMapper;
 import org.longbox.persistence.dao.UserDao;
 import org.longbox.domainobjects.entity.User;
 
@@ -33,7 +34,7 @@ public class UserStubDb implements UserDao, JsonConvertor {
         userStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (UserDto user : userStubData) {
             if (user.getId() == id) {
-                User u = new User(user);
+                User u = UserMapper.toEntity(user);
                 u.setId(user.getId());
                 return u;
             }
@@ -46,7 +47,7 @@ public class UserStubDb implements UserDao, JsonConvertor {
         userStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (UserDto user : userStubData) {
             if (Objects.equals(user.getUserName(), userName)) {
-                User u = new User(user);
+                User u = UserMapper.toEntity(user);
                 u.setId(user.getId());
                 return u;
             }
@@ -59,7 +60,7 @@ public class UserStubDb implements UserDao, JsonConvertor {
         userStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (UserDto user : userStubData) {
             if (Objects.equals(user.getEmail(), email)) {
-                User u = new User(user);
+                User u = UserMapper.toEntity(user);
                 u.setId(user.getId());
                 return u;
             }
@@ -76,7 +77,7 @@ public class UserStubDb implements UserDao, JsonConvertor {
                 throw new UsernameOrEmailExistsException();
             }
         }
-        userStubData.add(new UserDto(user));
+        userStubData.add(UserMapper.toDto(user));
         serializeStubData();
     }
 

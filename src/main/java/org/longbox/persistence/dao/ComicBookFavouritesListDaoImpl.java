@@ -12,6 +12,8 @@ import org.longbox.domainobjects.entity.ComicBook;
 import org.longbox.domainobjects.entity.ComicBookFavoritesList;
 import org.longbox.domainobjects.entity.User;
 import org.longbox.config.HibernateUtils;
+import org.longbox.domainobjects.mapper.ComicBookMapper;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,11 +139,11 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
                 session.close();
             }
         }
-        List<ComicBookDto> comicBookDtoList = new ArrayList<>();
-        for (ComicBook c : favouritesLists) {
+        List<ComicBookDto> comicBookDtoList = ComicBookMapper.toDtoList(favouritesLists);
+/*        for (ComicBook c : favouritesLists) {
             ComicBookDto comicBookDTO = new ComicBookDto(c);
             comicBookDtoList.add(comicBookDTO);
-        }
+        }*/
         return comicBookDtoList;
     }
 }

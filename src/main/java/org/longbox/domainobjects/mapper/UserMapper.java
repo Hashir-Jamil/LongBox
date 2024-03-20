@@ -1,5 +1,6 @@
 package org.longbox.domainobjects.mapper;
 
+import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.domainobjects.entity.User;
 
@@ -18,12 +19,15 @@ public class UserMapper {
         dto.setEmail(entity.getEmail());
         dto.setPassword(entity.getPassword());
         dto.setCountry(entity.getCountry());
+        dto.setContinent(entity.getContinent());
         dto.setJoinDate(entity.getJoinDate());
         dto.setComicsReading(entity.getComicsReading());
         dto.setComicsFinished(entity.getComicsFinished());
         dto.setAboutMe(entity.getAboutMe());
+        dto.setPreferredGenre(entity.getPreferredGenre() != null ? GenreUtils.genreStringToList(entity.getPreferredGenre()) : new String[0]);
         return dto;
     }
+
 
     public static List<UserDto> toDtoList(List<User> entityList) {
         return entityList.stream()
@@ -40,10 +44,12 @@ public class UserMapper {
         entity.setEmail(dto.getEmail());
         entity.setPassword(dto.getPassword());
         entity.setCountry(dto.getCountry());
+        entity.setContinent(dto.getContinent());
         entity.setJoinDate(dto.getJoinDate());
         entity.setComicsReading(dto.getComicsReading());
         entity.setComicsFinished(dto.getComicsFinished());
         entity.setAboutMe(dto.getAboutMe());
+        entity.setPreferredGenre(GenreUtils.genreListToString(dto.getPreferredGenre()));
         return entity;
     }
 
@@ -52,5 +58,4 @@ public class UserMapper {
                 .map(UserMapper::toEntity)
                 .collect(Collectors.toList());
     }
-
 }

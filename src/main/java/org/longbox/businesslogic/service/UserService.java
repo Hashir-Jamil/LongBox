@@ -34,22 +34,20 @@ public class UserService {
         }
 
         public void endSession() {
-            //TO-DO: Logout logic for ending user session
+            currentUserLoggedIn.clearUserSession();
+            UserSession.setActiveUser(null);
         }
 
         public UserDto getUserById(Long userId) throws UserIDDoesNotExistException {
             return UserMapper.toDto(userDao.getUserById(userId));
-            //return new UserDto(userDao.getUserById(userId));
         }
 
         public UserDto getUserByUserName(String userName) throws UserNameDoesNotExistException {
             return UserMapper.toDto(userDao.getUserByUserName(userName));
-            //return new UserDto(userDao.getUserByUserName(userName));
         }
 
         public UserDto getUserByEmail(String email) throws EmailDoesNotExistException {
             return UserMapper.toDto(userDao.getUserByEmail(email));
-            //return new UserDto(userDao.getUserByEmail(email));
         }
 
         public void saveUser(UserDto userDto) throws UsernameOrEmailExistsException {

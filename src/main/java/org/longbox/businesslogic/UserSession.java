@@ -21,7 +21,6 @@ public class UserSession {
         activeUser = userSession;
     }
 
-
     public void clearUserSession() {
     	this.user = null;
     }

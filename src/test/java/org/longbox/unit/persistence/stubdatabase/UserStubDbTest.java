@@ -27,17 +27,18 @@ public class UserStubDbTest {
     void setup() {
         userStubDao = new UserStubDb();
         users = userStubDao.deserializeStubData(userStubDao.getABSOLUTE_FILE_PATH());
-        u1 = new UserDto(
-            1L,
-            "Always_Scheming",
-            "John",
-            "Smith",
-            new Date(1990,12,01),
-            "email@domain.com",
-            "Always_Scheming",
-            "Canada",
-            "Imaginations ally and inks confidante, I craft worlds within the panels, inviting you to escape reality through the lens of my storytelling pen."
-        );
+        u1 = new UserDto();
+        u1.setId(1L);
+        u1.setUserName("Always_Scheming");
+        u1.setFirstName("John");
+        u1.setLastName("Smith");
+        u1.setDob(new Date(1990,12,01));
+        u1.setEmail("email@domain.com");
+        u1.setPassword("Always_Scheming");
+        u1.setCountry("Canada");
+        u1.setJoinDate(new Date());
+        u1.setAboutMe("Imaginations ally and inks confidante, I craft worlds within the panels, inviting you to escape reality through the lens of my storytelling pen.");
+        u1.setDefaults();
     }
 
     @Test
