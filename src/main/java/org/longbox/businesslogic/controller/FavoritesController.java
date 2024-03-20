@@ -22,10 +22,10 @@ public class FavoritesController implements ActionListener {
                 new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory()),
                 new ComicBookReadingListDaoImpl(HibernateUtils.getSessionFactory()),
                 new ComicBookFinishedListDaoImpl(HibernateUtils.getSessionFactory()));
-        addListners();
+        addListeners();
     }
 
-    private void addListners() {
+    private void addListeners() {
         this.favoritesPanel.getUnfavoriteButton().addActionListener(this);
         this.favoritesPanel.getRefreshButton().addActionListener(this);
     }
