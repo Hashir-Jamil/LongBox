@@ -13,6 +13,7 @@ import lombok.Setter;
 import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import com.google.gson.Gson;
+import org.longbox.domainobjects.mapper.ComicBookMapper;
 import org.longbox.persistence.dao.ComicBookDao;
 import org.longbox.domainobjects.entity.ComicBook;
 
@@ -54,7 +55,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
     @Override
     public Long saveComicBook(ComicBook comicBook) {
         List<ComicBookDto> comics = deserializeStubData(ABSOLUTE_FILE_PATH);
-        ComicBookDto comic = new ComicBookDto(comicBook);
+        ComicBookDto comic = ComicBookMapper.toDto(comicBook);
         comics.add(comic);
         comicBookStubData = comics;
         serializeStubData();
@@ -75,7 +76,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
     @Override
     public boolean modifyComicBook(ComicBook comicBook) {
         List<ComicBookDto> comics = deserializeStubData(ABSOLUTE_FILE_PATH);
-        ComicBookDto comicBookDto = new ComicBookDto(comicBook);
+        ComicBookDto comicBookDto = ComicBookMapper.toDto(comicBook);
         for (ComicBookDto comic : comics) {
             if (comic.equals(comicBookDto)) {
                 comic.setId(comicBook.getId());

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.stubdatabase.ComicBookStubDb;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,17 +22,17 @@ public class ComicBookStubDbTest {
     void setup() {
         comicBookStubDao = new ComicBookStubDb();
         comics = comicBookStubDao.deserializeStubData(comicBookStubDao.getABSOLUTE_FILE_PATH());
-        c1 = new ComicBookDto(
-            1L,
-            "Zot!",
-            "Scott McCloud",
-            "Scott McCloud",
-            new String[] {"Superhero", "Superpower", "Adventure", "Science Fiction", "Futuristic", "Romance", "Drama"},
-            "Description",
-            36,
-            "Eclipse",
-            1984
-        );
+        c1 = new ComicBookDto();
+        c1.setId(1L);
+        c1.setSeriesTitle("Zot!");
+        c1.setAuthor("Scott McCloud");
+        c1.setArtist("Scott McCloud");
+        c1.setGenres(new String[] {"Superhero", "Superpower", "Adventure", "Science Fiction", "Futuristic", "Romance", "Drama"});
+        c1.setDescription("Description");
+        c1.setNumberOfIssues(36);
+        c1.setPublisher("Eclipse");
+        c1.setYearPublished(1984);
+        c1.setDateAdded(new Date());
     }
 
     @Test

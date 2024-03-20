@@ -9,6 +9,7 @@ import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.dto.UserDto;
+import org.longbox.domainobjects.mapper.ComicBookMapper;
 import org.longbox.domainobjects.mapper.UserMapper;
 import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
 import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
@@ -244,7 +245,10 @@ public class ProfilePanel extends JPanel {
 		List<ComicBook> readList = readListDaoImpl.getUsersFinishedList(user.getUser().getId());
 		List<ComicBookDto> finishedListDTO = new ArrayList<ComicBookDto>();
 
-		for (ComicBook c : readingList) {
+		readingListDTO = ComicBookMapper.toDtoList(readingList);
+		finishedListDTO = ComicBookMapper.toDtoList(readList);
+
+/*		for (ComicBook c : readingList) {
 			ComicBookDto comicBookDTO = new ComicBookDto(c);
 			readingListDTO.add(comicBookDTO);
 		}
@@ -252,19 +256,20 @@ public class ProfilePanel extends JPanel {
 		for (ComicBook c : readList) {
 			ComicBookDto comicBookDTO = new ComicBookDto(c);
 			finishedListDTO.add(comicBookDTO);
-		}
+		}*/
 
 		readingTableModel = new ReadingAndFinishedComicBookTableModel(readingListDTO);
 		finishedTableModel = new ReadingAndFinishedComicBookTableModel(finishedListDTO);
 
 		readingTable = new JTable(readingTableModel);
+		List<ComicBookDto> finalReadingListDTO = readingListDTO;
 		readingTable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int row = readingTable.rowAtPoint(e.getPoint());
 				int col = readingTable.columnAtPoint(e.getPoint());
 				if (col == 0 && e.getClickCount() == 2) {
-					ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(readingListDTO, readingTable.getValueAt(row, col).toString());
+					ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(finalReadingListDTO, readingTable.getValueAt(row, col).toString());
 					ComicBookSearchUtils.loadComicBookPage(comicBook, user);
 				}
 			}
@@ -275,13 +280,14 @@ public class ProfilePanel extends JPanel {
 		panel.add(readingPane);
 
 		readTable = new JTable(finishedTableModel);
+		List<ComicBookDto> finalFinishedListDTO = finishedListDTO;
 		readTable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int row = readTable.rowAtPoint(e.getPoint());
 				int col = readTable.columnAtPoint(e.getPoint());
 				if (col == 0 && e.getClickCount() == 2) {
-					ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(finishedListDTO, readTable.getValueAt(row, col).toString());
+					ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(finalFinishedListDTO, readTable.getValueAt(row, col).toString());
 					ComicBookSearchUtils.loadComicBookPage(comicBook, user);
 				}
 			}

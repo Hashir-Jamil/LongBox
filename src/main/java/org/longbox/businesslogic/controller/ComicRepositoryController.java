@@ -19,6 +19,7 @@ import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.entity.ComicBook;
+import org.longbox.domainobjects.mapper.ComicBookMapper;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.tablemodels.ComicBookTableModel;
 import org.longbox.presentation.profile.ComicRepositoryPanel;
@@ -149,7 +150,8 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 	
 	private boolean isComicInFavorites(long comicId) {
 		ComicBook comicBook = this.comicRepositoryPanel.getComicBookDaoImpl().getComicBookById(comicId);
-		ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
+		ComicBookDto comicBookDTO = ComicBookMapper.toDto(comicBook);
+		//ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
 		System.out.println("the comic in favorites is " + this.comicRepositoryPanel.getComicBookFavouritesListDaoImpl().getAllFavoritesComicBooks().contains(comicBookDTO));
 		return this.comicRepositoryPanel.getComicBookFavouritesListDaoImpl().getAllFavoritesComicBooks().contains(comicBookDTO);
 	}
