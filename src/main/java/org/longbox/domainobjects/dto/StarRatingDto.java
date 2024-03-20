@@ -2,6 +2,12 @@ package org.longbox.domainobjects.dto;
 
 import java.util.Objects;
 import org.longbox.domainobjects.entity.StarRating;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@Getter
+@Setter
+@NoArgsConstructor
 
 public class StarRatingDto {
 	private long id;
@@ -62,25 +68,5 @@ public class StarRatingDto {
 		return "StarRatingDTO [id=" + id + ", userId=" + userId + ", comicBookId=" + comicBookId + ", rating=" + rating
 				+ ", user=" + user + ", comicBook=" + comicBook
 				+ "]";
-	}
-
-	public UserDto getUser() {
-		return user;
-	}
-
-	public ComicBookDto getComicBook() {
-		return comicBook;
-	}
-
-	public int getRating() {
-		return rating;
-	}
-
-	public Long getComicBookId() {
-		return comicBookId;
-	}
-
-	public Long getUserId() {
-		return userId;
 	}
 }
