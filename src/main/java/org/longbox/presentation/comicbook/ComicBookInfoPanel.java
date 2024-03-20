@@ -297,18 +297,18 @@ public class ComicBookInfoPanel extends JPanel {
 		dateAdded.setText("" + comicBookDTO.getDateAdded());
 	}
 	
-//	public void displayAvgRating() {
-//		avgRatingTotal = starRatingService.getStarRatingsByComic(comicBookDTO.getId());
-//		int i = 0;
-//		ArrayList <StarRatingDto> l = new ArrayList<StarRatingDto>();
-//
-//		for (StarRatingDto s : avgRatingTotal) {
-//			i =+ s.getRating();
-//			l.add(s);
-//		}
-//
-//		avgRating.setText("" + (double) i/l.size());
-//	}
+	public void displayAvgRating() {
+		avgRatingTotal = starRatingService.getStarRatingsByComic(comicBookDTO.getId());
+		int counter = 0;
+		ArrayList <StarRatingDto> length = new ArrayList<StarRatingDto>();
+
+		for (StarRatingDto s : avgRatingTotal) {
+			counter =+ s.getRating();
+			length.add(s);
+		}
+
+		avgRating.setText("" + (double) counter/length.size());
+	}
 
 	public void displayUserRating() {
 		int i = starRatingService.getStarRatingByID(userSession.getUser().getId(), comicBookDTO.getId()).getRating();
