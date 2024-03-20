@@ -118,7 +118,7 @@ public class ComicBookDto {
         this.numberOfIssues = numberOfIssues;
         this.yearPublished = yearPublished;
         this.publisher = publisher;
-        this.dateAdded = new Date(date.getTime());
+        this.dateAdded = date;
         this.northAmericaFavoritesCount = northAmericaFavoritesCount;
         this.southAmericaFavoritesCount = southAmericaFavoritesCount;
         this.europeFavoritesCount = europeFavoritesCount;
