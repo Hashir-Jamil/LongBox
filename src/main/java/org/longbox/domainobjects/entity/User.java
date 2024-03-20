@@ -68,6 +68,9 @@ public class User {
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<Comment> comments = new HashSet<>();
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private Set<StarRating> starRatings = new HashSet<>();
 
 	public User(String userName, String firstName, String lastName, Date dob, String email, String password,
 				String country) {
