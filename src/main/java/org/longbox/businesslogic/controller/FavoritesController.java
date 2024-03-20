@@ -28,6 +28,7 @@ public class FavoritesController implements ActionListener {
     private void addListners() {
         this.favoritesPanel.getUnfavoriteButton().addActionListener(this);
         this.favoritesPanel.getRefreshButton().addActionListener(this);
+        this.favoritesPanel.getTextField().addActionListener(this);
     }
 
     @Override
@@ -64,11 +65,9 @@ public class FavoritesController implements ActionListener {
                     }
                 }
             }
-        }
-        else if (e.getSource() == this.favoritesPanel.getRefreshButton()) {
+        } else if (e.getSource() == this.favoritesPanel.getRefreshButton()) {
             this.favoritesPanel.reloadData();
-        }
-        else if (e.getSource() == this.favoritesPanel.getTextField() && ! this.favoritesPanel.getTextField().getText().isEmpty()) {
+        } else if (e.getSource() == this.favoritesPanel.getTextField() && ! this.favoritesPanel.getTextField().getText().isEmpty()) {
             String searchBy = this.favoritesPanel.getTypeSelection().getSelectedItem().toString();
             String target = this.favoritesPanel.getTextField().getText();
             List<ComicBookDto> searchResults = null;
