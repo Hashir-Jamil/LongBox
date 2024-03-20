@@ -2,6 +2,11 @@ package org.longbox.businesslogic.utils;
 
 import java.util.HashMap;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class CountryToContinentUtils {
 	
 	private static HashMap<String, String> regionsHashMap = new HashMap<String, String>();
@@ -304,6 +309,34 @@ public class CountryToContinentUtils {
 		} else {
 			return NA;
 		}
+	}
+	
+	public static String getNA() {
+		return NA;
+	}
+	
+	public static String getSA() {
+		return SA;
+	}
+	
+	public static String getEU() {
+		return EU;
+	}
+	
+	public static String getAS() {
+		return AS;
+	}
+	
+	public static String getAF() {
+		return AF;
+	}
+	
+	public static String getOC() {
+		return OC;
+	}
+	
+	public static String getAT() {
+		return AT;
 	}
 
 }
