@@ -280,7 +280,8 @@ public class ComicBookInfoPanel extends JPanel {
 		readingButtonStates();
 		setFields();
 		displayComments();
-		displayAvgRating();
+//		displayAvgRating();
+//		displayUserRating();
 	}
 
 
@@ -298,15 +299,15 @@ public class ComicBookInfoPanel extends JPanel {
 	
 	public void displayAvgRating() {
 		avgRatingTotal = starRatingService.getStarRatingsByComic(comicBookDTO.getId());
-		int i = 0;
-		ArrayList <StarRatingDto> l = new ArrayList<StarRatingDto>();
+		int counter = 0;
+		ArrayList <StarRatingDto> length = new ArrayList<StarRatingDto>();
 		
 		for (StarRatingDto s : avgRatingTotal) {
-			i =+ s.getRating();
-			l.add(s);
+			counter =+ s.getRating();
+			length.add(s);
 		}
 		
-		avgRating.setText("" + (double) i/l.size());
+		avgRating.setText("" + (double) counter/length.size());
 	}
 
 	public void displayUserRating() {
