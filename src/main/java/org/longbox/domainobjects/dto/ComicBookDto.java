@@ -70,35 +70,6 @@ public class ComicBookDto {
         String description,
         int numberOfIssues,
         String publisher,
-        int yearPublished
-    ) {
-        this.seriesTitle = seriesTitle;
-        this.author = author;
-        this.artist = artist;
-        this.genres = GenreUtils.genreStringToList(genres);
-        this.description = description;
-        this.numberOfIssues = numberOfIssues;
-        this.yearPublished = yearPublished;
-        this.publisher = publisher;
-        this.dateAdded = new Date();
-        this.northAmericaFavoritesCount = 0;
-        this.southAmericaFavoritesCount = 0;
-        this.europeFavoritesCount = 0;
-        this.asiaFavoritesCount = 0;
-        this.africaFavoritesCount = 0;
-        this.oceaniaFavoritesCount = 0;
-        this.antarcticaFavoritesCount = 0;
-        this.favoritesCount = 0;
-    };
-
-    public ComicBookDto(
-        String seriesTitle,
-        String author,
-        String artist,
-        String genres,
-        String description,
-        int numberOfIssues,
-        String publisher,
         int yearPublished,
         Date date, 
         int northAmericaFavoritesCount,
@@ -148,36 +119,6 @@ public class ComicBookDto {
         this.yearPublished = yearPublished;
         this.publisher = publisher;
         this.dateAdded = new Date();
-        this.northAmericaFavoritesCount = 0;
-        this.southAmericaFavoritesCount = 0;
-        this.europeFavoritesCount = 0;
-        this.asiaFavoritesCount = 0;
-        this.africaFavoritesCount = 0;
-        this.oceaniaFavoritesCount = 0;
-        this.antarcticaFavoritesCount = 0;
-        this.favoritesCount = 0;
-    }
-
-    public ComicBookDto(
-        String seriesTitle,
-        String author,
-        String artist,
-        String[] genres,
-        String description,
-        int numberOfIssues,
-        String publisher,
-        int yearPublished,
-        Date date
-    ) {
-        this.seriesTitle = seriesTitle;
-        this.author = author;
-        this.artist = artist;
-        this.genres = genres;
-        this.description = description;
-        this.numberOfIssues = numberOfIssues;
-        this.yearPublished = yearPublished;
-        this.publisher = publisher;
-        this.dateAdded = date;
         this.northAmericaFavoritesCount = 0;
         this.southAmericaFavoritesCount = 0;
         this.europeFavoritesCount = 0;

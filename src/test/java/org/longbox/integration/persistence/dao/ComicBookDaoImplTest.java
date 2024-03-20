@@ -24,29 +24,27 @@ public class ComicBookDaoImplTest {
     void init(){
         comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 
-        comicBookDto1 = new ComicBookDto(
-                "Zot!",
-                "Scott McCloud",
-                "Scott McCloud",
-                new String[] {"Superhero", "Superpower", "Adventure", "Science Fiction", "Futuristic", "Romance", "Drama"},
-                "Description",
-                36,
-                "Eclipse",
-                1984,
-                new Date()
-        );
+        comicBookDto1 = new ComicBookDto();
+        comicBookDto1.setSeriesTitle("Zot!");
+        comicBookDto1.setAuthor("Scott McCloud");
+        comicBookDto1.setArtist("Scott McCloud");
+        comicBookDto1.setGenres(new String[] {"Superhero", "Superpower", "Adventure", "Science Fiction", "Futuristic", "Romance", "Drama"});
+        comicBookDto1.setDescription("Description");
+        comicBookDto1.setNumberOfIssues(36);
+        comicBookDto1.setPublisher("Eclipse");
+        comicBookDto1.setYearPublished(1984);
+        comicBookDto1.setDateAdded(new Date());
 
-        comicBookDto2 = new ComicBookDto(
-                "Sanctuary",
-                "Sho Fumimura",
-                "Ryoichi Ikegami",
-                new String[] {"Polital", "Crime", "Thriller", "Manga"},
-                "Empty",
-                108,
-                "Viz",
-                1990,
-                new Date()
-        );
+        comicBookDto2 = new ComicBookDto();
+        comicBookDto1.setSeriesTitle("Sanctuary");
+        comicBookDto1.setAuthor("Sho Fumimura");
+        comicBookDto1.setArtist("Ryoichi Ikegami");
+        comicBookDto1.setGenres(new String[] {"Polital", "Crime", "Thriller", "Manga"});
+        comicBookDto1.setDescription("Empty");
+        comicBookDto1.setNumberOfIssues(108);
+        comicBookDto1.setPublisher("Viz");
+        comicBookDto1.setYearPublished(1990);
+        comicBookDto1.setDateAdded(new Date());
 
         comicBook = new ComicBook(
                 comicBookDto1.getSeriesTitle(),
