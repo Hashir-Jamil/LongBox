@@ -88,20 +88,20 @@ public class LoginPanel extends JPanel{
 		//Sign in button
 		signInButton = new JButton(SIGN_IN_BUTTON_TEXT);
 		signInButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
-		signInButton.setBounds(345, 385, WIDTH_117, 29);
+		signInButton.setBounds(345, 396, WIDTH_117, 29);
 		panel.add(signInButton);
 		
 		//sign up label
 		signUpLabel = new JLabel(SIGN_UP_TEXT);
 		signUpLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 13));
-		signUpLabel.setBounds(329, 426, 148, HEIGHT_16);
+		signUpLabel.setBounds(331, 437, 148, HEIGHT_16);
 		panel.add(signUpLabel);
 		signInButton.setFocusable(false);
 		
 		//sign up button
 		signUpButton = new JButton(SIGN_UP_BUTTON_TEXT);
 		signUpButton.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
-		signUpButton.setBounds(345, 454, WIDTH_117, 29);
+		signUpButton.setBounds(345, 465, WIDTH_117, 29);
 		panel.add(signUpButton);
 		signUpButton.setFocusable(false);
 		
@@ -110,7 +110,7 @@ public class LoginPanel extends JPanel{
 		// error label
 		errorLabel = new JLabel(EMPTY);
 		errorLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 12));
-		errorLabel.setBounds(X_205, 272, WIDTH_398, HEIGHT_16);
+		errorLabel.setBounds(208, 373, 395, 16);
 		panel.add(errorLabel);
 	}
 
