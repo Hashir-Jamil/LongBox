@@ -1,12 +1,19 @@
 package org.longbox.persistence.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
 import org.hibernate.Transaction;
 import org.longbox.businesslogic.exception.*;
+import org.longbox.domainobjects.dto.UserDto;
+import org.longbox.domainobjects.entity.ComicBook;
 import org.longbox.domainobjects.entity.User;
+import org.longbox.domainobjects.mapper.UserMapper;
 
 public class UserDaoImpl implements UserDao {
     private SessionFactory sessionFactory;
@@ -178,4 +185,26 @@ public class UserDaoImpl implements UserDao {
     public boolean modifyUser(User user) {
         return false;
     }
+
+	@Override
+	public List<UserDto> getAllUsers() {
+		Session session = null;
+        List<User> userList = new ArrayList<>();
+
+        try {
+            session = sessionFactory.openSession();
+            userList = session.createQuery(
+                    "SELECT u FROM User u ORDER BY comicsFinished DESC",
+                    User.class).list();
+        }
+        catch (HibernateException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+		return UserMapper.toDtoList(userList);
+	}
 }
