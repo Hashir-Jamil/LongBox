@@ -34,17 +34,17 @@ CREATE TABLE IF NOT EXISTS "comic_book" (
     "publisher" text,
     "year_published" integer DEFAULT 0,
     "date_added" date,
-    "favorites_count" integer DEFAULT 0,
-    "north_america_favorites_count" integer DEFAULT 0,
-    "south_america_favorites_count" integer DEFAULT 0,
-    "europe_favorites_count" integer DEFAULT 0,
-    "asia_favorites_count" integer DEFAULT 0,
-    "africa_favorites_count" integer DEFAULT 0,
-    "oceania_favorites_count" integer DEFAULT 0,
-    "antarctica_favorites_count" integer DEFAULT 0
+    "favourites_count" integer DEFAULT 0,
+    "north_america_favourites_count" integer DEFAULT 0,
+    "south_america_favourites_count" integer DEFAULT 0,
+    "europe_favourites_count" integer DEFAULT 0,
+    "asia_favourites_count" integer DEFAULT 0,
+    "africa_favourites_count" integer DEFAULT 0,
+    "oceania_favourites_count" integer DEFAULT 0,
+    "antarctica_favourites_count" integer DEFAULT 0
 );
 
-CREATE TABLE IF NOT EXISTS "comic_book_favorites_list" (
+CREATE TABLE IF NOT EXISTS "comic_book_favourites_list" (
     "user_id" bigint NOT NULL,
     "comic_book_id" bigint NOT NULL,
     "date_added_user_list" date,
@@ -82,8 +82,8 @@ CREATE TABLE IF NOT EXISTS "comic_book_reading_list" (
 );
 
 -- Foreign Key Constraints
-ALTER TABLE "comic_book_favorites_list" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
-ALTER TABLE "comic_book_favorites_list" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
+ALTER TABLE "comic_book_favourites_list" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
+ALTER TABLE "comic_book_favourites_list" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
 
 ALTER TABLE "comments" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
 ALTER TABLE "comments" ADD FOREIGN KEY ("comic_book_id") REFERENCES "comic_book" ("id");
@@ -99,8 +99,8 @@ ALTER TABLE "comic_book_reading_list" ADD FOREIGN KEY ("comic_book_id") REFERENC
 
 -- Functions & Triggers
 
--- Create a function to update comic_book.favorites_count and comic_book.*(continent)_favorites_count column
-CREATE OR REPLACE FUNCTION update_comic_favorites_count()
+-- Create a function to update comic_book.favourites_count and comic_book.*(continent)_favourites_count column
+CREATE OR REPLACE FUNCTION update_comic_favourites_count()
 RETURNS TRIGGER AS $$
 BEGIN
 	SET SEARCH_PATH = longbox_schema;
@@ -112,38 +112,38 @@ BEGIN
 			
 			IF user_continent = 'North_America' THEN
 				UPDATE comic_book AS c
-				SET north_america_favorites_count = north_america_favorites_count + 1,
-					favorites_count = favorites_count + 1
+				SET north_america_favourites_count = north_america_favourites_count + 1,
+					favourites_count = favourites_count + 1
 				WHERE c.id = NEW.comic_book_id;
 			ELSIF user_continent = 'South_America' THEN
 				UPDATE comic_book AS c
-				SET south_america_favorites_count = south_america_favorites_count + 1,
-					favorites_count = favorites_count + 1
+				SET south_america_favourites_count = south_america_favourites_count + 1,
+					favourites_count = favourites_count + 1
 				WHERE c.id = NEW.comic_book_id;
 			ELSIF user_continent = 'Europe' THEN
 				UPDATE comic_book AS c
-				SET europe_favorites_count = europe_favorites_count + 1,
-					favorites_count = favorites_count + 1
+				SET europe_favourites_count = europe_favourites_count + 1,
+					favourites_count = favourites_count + 1
 				WHERE c.id = NEW.comic_book_id;
 			ELSIF user_continent = 'Asia' THEN
 				UPDATE comic_book AS c
-				SET asia_favorites_count = asia_favorites_count + 1,
-					favorites_count = favorites_count + 1
+				SET asia_favourites_count = asia_favourites_count + 1,
+					favourites_count = favourites_count + 1
 				WHERE c.id = NEW.comic_book_id;
 			ELSIF user_continent = 'Africa' THEN
 				UPDATE comic_book AS c
-				SET africa_favorites_count = africa_favorites_count + 1,
-					favorites_count = favorites_count + 1
+				SET africa_favourites_count = africa_favourites_count + 1,
+					favourites_count = favourites_count + 1
 				WHERE c.id = NEW.comic_book_id;
 			ELSIF user_continent = 'Oceania' THEN
 				UPDATE comic_book AS c
-				SET oceania_favorites_count = oceania_favorites_count + 1,
-					favorites_count = favorites_count + 1
+				SET oceania_favourites_count = oceania_favourites_count + 1,
+					favourites_count = favourites_count + 1
 				WHERE c.id = NEW.comic_book_id;
 			ELSIF user_continent = 'Antarctica' THEN
 				UPDATE comic_book AS c
-				SET antarctica_favorites_count = antarctica_favorites_count + 1,
-					favorites_count = favorites_count + 1
+				SET antarctica_favourites_count = antarctica_favourites_count + 1,
+					favourites_count = favourites_count + 1
 				WHERE c.id = NEW.comic_book_id;
 			END IF;
 		END;
@@ -155,38 +155,38 @@ BEGIN
 			
 			IF user_continent = 'North_America' THEN
 				UPDATE comic_book AS c
-				SET north_america_favorites_count = north_america_favorites_count - 1,
-					favorites_count = favorites_count - 1
+				SET north_america_favourites_count = north_america_favourites_count - 1,
+					favourites_count = favourites_count - 1
 				WHERE c.id = OLD.comic_book_id;
 			ELSIF user_continent = 'South_America' THEN
 				UPDATE comic_book AS c
-				SET south_america_favorites_count = south_america_favorites_count - 1,
-					favorites_count = favorites_count - 1
+				SET south_america_favourites_count = south_america_favourites_count - 1,
+					favourites_count = favourites_count - 1
 				WHERE c.id = OLD.comic_book_id;
 			ELSIF user_continent = 'Europe' THEN
 				UPDATE comic_book AS c
-				SET europe_favorites_count = europe_favorites_count - 1,
-					favorites_count = favorites_count - 1
+				SET europe_favourites_count = europe_favourites_count - 1,
+					favourites_count = favourites_count - 1
 				WHERE c.id = OLD.comic_book_id;
 			ELSIF user_continent = 'Asia' THEN
 				UPDATE comic_book AS c
-				SET asia_favorites_count = asia_favorites_count - 1,
-					favorites_count = favorites_count - 1
+				SET asia_favourites_count = asia_favourites_count - 1,
+					favourites_count = favourites_count - 1
 				WHERE c.id = OLD.comic_book_id;
 			ELSIF user_continent = 'Africa' THEN
 				UPDATE comic_book AS c
-				SET africa_favorites_count = africa_favorites_count - 1,
-					favorites_count = favorites_coun - 1
+				SET africa_favourites_count = africa_favourites_count - 1,
+					favourites_count = favourites_count - 1
 				WHERE c.id = OLD.comic_book_id;
 			ELSIF user_continent = 'Oceania' THEN
 				UPDATE comic_book AS c
-				SET oceania_favorites_count = oceania_favorites_count - 1,
-					favorites_count = favorites_count - 1
+				SET oceania_favourites_count = oceania_favourites_count - 1,
+					favourites_count = favourites_count - 1
 				WHERE c.id = OLD.comic_book_id;
 			ELSIF user_continent = 'Antarctica' THEN
 				UPDATE comic_book AS c
-				SET antarctica_favorites_count = antarctica_favorites_count - 1,
-					favorites_count = favorites_count - 1
+				SET antarctica_favourites_count = antarctica_favourites_count - 1,
+					favourites_count = favourites_count - 1
 				WHERE c.id = OLD.comic_book_id;
 			END IF;
 		END;
@@ -195,12 +195,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Create a trigger to execute the function after insert or delete on comic_book_favorites_list table
-CREATE TRIGGER update_comic_favorites_trigger
+-- Create a trigger to execute the function after insert or delete on comic_book_favourites_list table
+CREATE TRIGGER update_comic_favourites_trigger
 	AFTER INSERT OR DELETE
-ON comic_book_favorites_list
+ON comic_book_favourites_list
 FOR EACH ROW
-EXECUTE FUNCTION update_comic_favorites_count();
+EXECUTE FUNCTION update_comic_favourites_count();
 
 -- Create a function to update user.comics_finished column
 CREATE OR REPLACE FUNCTION update_comics_finished_count()
@@ -285,7 +285,7 @@ VALUES
     ('Phoenix', 'Stan', 'Lee', '3900-05-31', '123fake@nowhere.org', 'Phoenix', 'United Kingdom', 'Europe', '2024-02-14 12:42:43', 0, 0, 'Code-wielding superhero by day, rhythm-following vigilante by night, I bridge the gap between tech and tunes on this epic quest through the digital comic realm.', 'Science Fiction, Manga, Superhero'),
     ('ahan', 'Ahan', 'Bhargava', '2003-02-10', 'ahan@email.com', 'Password!1', 'India', 'Africa', '2024-02-15 15:09:10', 0, 0, 'A pixel pioneer on the quest for knowledge, I dive into the virtual inkwell, emerging with stories that captivate and characters that resonate.', ''),
     ('naha', 'Ahan', 'Bhargava', '2003-02-10', 'naha@email.com', 'naha', 'India', 'Asia', '2024-02-15 15:09:10', 0, 0, 'Juggling dumbbells and donuts in equal measure, I bring the perfect balance of action and humor to the comic book universe, one swipe at a time.', 'Thriller'),
-    ('123', 'Quick', 'Access', '2003-02-10', '123@email.com', '123', 'India', 'North_America', '2024-02-15 15:09:10', 0, 0, 'Roaming the digital landscapes with a camera lens for justice, I capture the essence of heroes and villains alike, freezing epic moments in the frames of your favorite comic book app.', 'Action, Science Fiction, Anthology, Fantasy, Superhero');
+    ('123', 'Quick', 'Access', '2003-02-10', '123@email.com', '123', 'India', 'North_America', '2024-02-15 15:09:10', 0, 0, 'Roaming the digital landscapes with a camera lens for justice, I capture the essence of heroes and villains alike, freezing epic moments in the frames of your favourite comic book app.', 'Action, Science Fiction, Anthology, Fantasy, Superhero');
 
 -- Next we add comic book objects
 INSERT INTO longbox_schema.comic_book(
@@ -493,7 +493,7 @@ VALUES
      '2024-02-23', 18, 4, 'ahan'),
     ('Comic #7 is a masterpiece! The storytelling and art are on another level. Cant wait for the next issue.',
      '2024-02-27', 7, 1, 'Always_Scheming'),
-    ('Just started comic #14, and its already becoming one of my favorites. The characters are so relatable!',
+    ('Just started comic #14, and its already becoming one of my favourites. The characters are so relatable!',
      '2024-02-25', 14, 1, 'Always_Scheming'),
     ('Comic #22 took me on an emotional rollercoaster. Well done to the creative team!',
      '2024-02-22', 22, 1, 'Always_Scheming'),

@@ -13,8 +13,8 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @EqualsAndHashCode
-@Table(name = "comic_book_favorites_list")
-public class ComicBookFavoritesList {
+@Table(name = "comic_book_favourites_list")
+public class ComicBookFavouritesList {
     @EmbeddedId
     private ComicBookListId id = new ComicBookListId();;
 
@@ -33,7 +33,7 @@ public class ComicBookFavoritesList {
     @Column(name = "date_added_user_list")
     private Date dateAdded;
 
-    public ComicBookFavoritesList(User u, ComicBook cb) {
+    public ComicBookFavouritesList(User u, ComicBook cb) {
         this.user = u;
         this.comicBook = cb;
         this.id.setUserId(this.user.getId());

@@ -128,51 +128,51 @@ public class ComicBookDtoTest {
         comicBookDto.setYearPublished(2022);
         comicBookDto.setDateAdded(new Date());
 
-        String expectedToString = "ComicBookDTO{id=1, seriesTitle='Series Title', author='Author', artist='Artist', genres=[Genre1, Genre2], description='Description', numberOfIssues=10, publisher='Publisher', yearPublished=2022, dateAdded=" + comicBookDto.getDateAdded() + ", favoritesCount=" + comicBookDto.getFavoritesCount() + '}';
+        String expectedToString = "ComicBookDTO{id=1, seriesTitle='Series Title', author='Author', artist='Artist', genres=[Genre1, Genre2], description='Description', numberOfIssues=10, publisher='Publisher', yearPublished=2022, dateAdded=" + comicBookDto.getDateAdded() + ", favouritesCount=" + comicBookDto.getFavouritesCount() + '}';
         assertEquals(expectedToString, comicBookDto.toString());
     }
 
     @Test
-    public void favoritesCountTest_1() {
+    public void favouritesCountTest_1() {
         ComicBookDto EndOfEvangelion = new ComicBookDto();
-        EndOfEvangelion.setFavoritesCount(208);
-        EndOfEvangelion.setNorthAmericaFavoritesCount(31);
-        EndOfEvangelion.setSouthAmericaFavoritesCount(28);
-        EndOfEvangelion.setEuropeFavoritesCount(22);
-        EndOfEvangelion.setAsiaFavoritesCount(98);
-        EndOfEvangelion.setAfricaFavoritesCount(12);
-        EndOfEvangelion.setOceaniaFavoritesCount(16);
-        EndOfEvangelion.setAntarcticaFavoritesCount(1);
+        EndOfEvangelion.setFavouritesCount(208);
+        EndOfEvangelion.setNorthAmericaFavouritesCount(31);
+        EndOfEvangelion.setSouthAmericaFavouritesCount(28);
+        EndOfEvangelion.setEuropeFavouritesCount(22);
+        EndOfEvangelion.setAsiaFavouritesCount(98);
+        EndOfEvangelion.setAfricaFavouritesCount(12);
+        EndOfEvangelion.setOceaniaFavouritesCount(16);
+        EndOfEvangelion.setAntarcticaFavouritesCount(1);
 
-        assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getNorthAmericaFavoritesCount());
-        assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getSouthAmericaFavoritesCount());
-        assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getEuropeFavoritesCount());
-        assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getAsiaFavoritesCount());
-        assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getAfricaFavoritesCount());
-        assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getOceaniaFavoritesCount());
-        assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getAntarcticaFavoritesCount());
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getNorthAmericaFavouritesCount());
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getSouthAmericaFavouritesCount());
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getEuropeFavouritesCount());
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getAsiaFavouritesCount());
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getAfricaFavouritesCount());
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getOceaniaFavouritesCount());
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getAntarcticaFavouritesCount());
     }
 
     @Test
-    public void favoritesCountTest_2() {
+    public void favouritesCountTest_2() {
         ComicBookDto EndOfEvangelion = new ComicBookDto();
-        EndOfEvangelion.setFavoritesCount(208);
-        EndOfEvangelion.setNorthAmericaFavoritesCount(31);
-        EndOfEvangelion.setSouthAmericaFavoritesCount(28);
-        EndOfEvangelion.setEuropeFavoritesCount(22);
-        EndOfEvangelion.setAsiaFavoritesCount(98);
-        EndOfEvangelion.setAfricaFavoritesCount(12);
-        EndOfEvangelion.setOceaniaFavoritesCount(16);
-        EndOfEvangelion.setAntarcticaFavoritesCount(1);
+        EndOfEvangelion.setFavouritesCount(208);
+        EndOfEvangelion.setNorthAmericaFavouritesCount(31);
+        EndOfEvangelion.setSouthAmericaFavouritesCount(28);
+        EndOfEvangelion.setEuropeFavouritesCount(22);
+        EndOfEvangelion.setAsiaFavouritesCount(98);
+        EndOfEvangelion.setAfricaFavouritesCount(12);
+        EndOfEvangelion.setOceaniaFavouritesCount(16);
+        EndOfEvangelion.setAntarcticaFavouritesCount(1);
 
-        assertEquals(EndOfEvangelion.getFavoritesCount(),
-                EndOfEvangelion.getNorthAmericaFavoritesCount() +
-                        EndOfEvangelion.getSouthAmericaFavoritesCount() +
-                        EndOfEvangelion.getEuropeFavoritesCount() +
-                        EndOfEvangelion.getAsiaFavoritesCount() +
-                        EndOfEvangelion.getAfricaFavoritesCount() +
-                        EndOfEvangelion.getOceaniaFavoritesCount() +
-                        EndOfEvangelion.getAntarcticaFavoritesCount()
+        assertEquals(EndOfEvangelion.getFavouritesCount(),
+                EndOfEvangelion.getNorthAmericaFavouritesCount() +
+                        EndOfEvangelion.getSouthAmericaFavouritesCount() +
+                        EndOfEvangelion.getEuropeFavouritesCount() +
+                        EndOfEvangelion.getAsiaFavouritesCount() +
+                        EndOfEvangelion.getAfricaFavouritesCount() +
+                        EndOfEvangelion.getOceaniaFavouritesCount() +
+                        EndOfEvangelion.getAntarcticaFavouritesCount()
         );
     }
 }

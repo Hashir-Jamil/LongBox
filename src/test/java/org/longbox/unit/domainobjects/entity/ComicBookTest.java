@@ -124,7 +124,7 @@ public class ComicBookTest {
         comicBook.setYearPublished(2022);
         comicBook.setDateAdded(currentDate);
 
-        String expectedToString = "ComicBook{id=null, seriesTitle='Series Title', author='Author', artist='Artist', genres='Genre1,Genre2', description='Description', numberOfIssues=10, publisher='Publisher', yearPublished=2022, dateAdded=" + currentDate + ", northAmericaFavoritesCount=0, southAmericaFavoritesCount=0, europeFavoritesCount=0, asiaFavoritesCount=0, africaFavoritesCount=0, oceaniaFavoritesCount=0, antarcticaFavoritesCount=0, favoritesCount=0}";
+        String expectedToString = "ComicBook{id=null, seriesTitle='Series Title', author='Author', artist='Artist', genres='Genre1,Genre2', description='Description', numberOfIssues=10, publisher='Publisher', yearPublished=2022, dateAdded=" + currentDate + ", northAmericaFavouritesCount=0, southAmericaFavouritesCount=0, europeFavouritesCount=0, asiaFavouritesCount=0, africaFavouritesCount=0, oceaniaFavouritesCount=0, antarcticaFavouritesCount=0, favouritesCount=0}";
         assertEquals(expectedToString, comicBook.toString());
     }
 
@@ -141,16 +141,16 @@ public class ComicBookTest {
         comicBook.setPublisher("Publisher");
         comicBook.setYearPublished(2022);
         comicBook.setDateAdded(new Date());
-        comicBook.setNorthAmericaFavoritesCount(1);
-        comicBook.setSouthAmericaFavoritesCount(2);
-        comicBook.setEuropeFavoritesCount(3);
-        comicBook.setAsiaFavoritesCount(4);
-        comicBook.setAfricaFavoritesCount(5);
-        comicBook.setOceaniaFavoritesCount(6);
-        comicBook.setAntarcticaFavoritesCount(7);
-        comicBook.setFavoritesCount(8);
+        comicBook.setNorthAmericaFavouritesCount(1);
+        comicBook.setSouthAmericaFavouritesCount(2);
+        comicBook.setEuropeFavouritesCount(3);
+        comicBook.setAsiaFavouritesCount(4);
+        comicBook.setAfricaFavouritesCount(5);
+        comicBook.setOceaniaFavouritesCount(6);
+        comicBook.setAntarcticaFavouritesCount(7);
+        comicBook.setFavouritesCount(8);
 
-        String expectedToString = "ComicBook{id=1, seriesTitle='Series Title', author='Author', artist='Artist', genres='Genre1,Genre2', description='Description', numberOfIssues=10, publisher='Publisher', yearPublished=2022, dateAdded=" + comicBook.getDateAdded() + ", northAmericaFavoritesCount=1, southAmericaFavoritesCount=2, europeFavoritesCount=3, asiaFavoritesCount=4, africaFavoritesCount=5, oceaniaFavoritesCount=6, antarcticaFavoritesCount=7, favoritesCount=8}";
+        String expectedToString = "ComicBook{id=1, seriesTitle='Series Title', author='Author', artist='Artist', genres='Genre1,Genre2', description='Description', numberOfIssues=10, publisher='Publisher', yearPublished=2022, dateAdded=" + comicBook.getDateAdded() + ", northAmericaFavouritesCount=1, southAmericaFavouritesCount=2, europeFavouritesCount=3, asiaFavouritesCount=4, africaFavouritesCount=5, oceaniaFavouritesCount=6, antarcticaFavouritesCount=7, favouritesCount=8}";
         assertEquals(expectedToString, comicBook.toString());
     }
 }

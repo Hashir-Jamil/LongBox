@@ -50,29 +50,29 @@ public class ComicBook {
     @Column(name = "date_added")
     private Date dateAdded;
     
-    @Column(name = "north_america_favorites_count")
-    private int northAmericaFavoritesCount;
+    @Column(name = "north_america_favourites_count")
+    private int northAmericaFavouritesCount;
     
-    @Column(name = "south_america_favorites_count")
-    private int southAmericaFavoritesCount;
+    @Column(name = "south_america_favourites_count")
+    private int southAmericaFavouritesCount;
     
-    @Column(name = "europe_favorites_count")
-    private int europeFavoritesCount;
+    @Column(name = "europe_favourites_count")
+    private int europeFavouritesCount;
     
-    @Column(name = "asia_favorites_count")
-    private int asiaFavoritesCount;
+    @Column(name = "asia_favourites_count")
+    private int asiaFavouritesCount;
     
-    @Column(name = "africa_favorites_count")
-    private int africaFavoritesCount;
+    @Column(name = "africa_favourites_count")
+    private int africaFavouritesCount;
     
-    @Column(name = "oceania_favorites_count")
-    private int oceaniaFavoritesCount;
+    @Column(name = "oceania_favourites_count")
+    private int oceaniaFavouritesCount;
     
-    @Column(name = "antarctica_favorites_count")
-    private int antarcticaFavoritesCount;
+    @Column(name = "antarctica_favourites_count")
+    private int antarcticaFavouritesCount;
     
-    @Column(name = "favorites_count")
-    private int favoritesCount;
+    @Column(name = "favourites_count")
+    private int favouritesCount;
     
     @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
     private Set<StarRating> starRatings = new HashSet<>();
@@ -81,7 +81,7 @@ public class ComicBook {
     private Set<Comment> comments = new HashSet<>();
 
     @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
-    private Set<ComicBookFavoritesList> favoritedByList = new HashSet<>();
+    private Set<ComicBookFavouritesList> favouritedByList = new HashSet<>();
 
     @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
     private Set<ComicBookFinishedList> finishedByList = new HashSet<>();
@@ -115,14 +115,14 @@ public class ComicBook {
                 ", publisher='" + publisher + '\'' +
                 ", yearPublished=" + yearPublished +
                 ", dateAdded=" + dateAdded +
-                ", northAmericaFavoritesCount=" + northAmericaFavoritesCount +
-                ", southAmericaFavoritesCount=" + southAmericaFavoritesCount +
-                ", europeFavoritesCount=" + europeFavoritesCount +
-                ", asiaFavoritesCount=" + asiaFavoritesCount +
-                ", africaFavoritesCount=" + africaFavoritesCount +
-                ", oceaniaFavoritesCount=" + oceaniaFavoritesCount +
-                ", antarcticaFavoritesCount=" + antarcticaFavoritesCount +
-                ", favoritesCount=" + favoritesCount +
+                ", northAmericaFavouritesCount=" + northAmericaFavouritesCount +
+                ", southAmericaFavouritesCount=" + southAmericaFavouritesCount +
+                ", europeFavouritesCount=" + europeFavouritesCount +
+                ", asiaFavouritesCount=" + asiaFavouritesCount +
+                ", africaFavouritesCount=" + africaFavouritesCount +
+                ", oceaniaFavouritesCount=" + oceaniaFavouritesCount +
+                ", antarcticaFavouritesCount=" + antarcticaFavouritesCount +
+                ", favouritesCount=" + favouritesCount +
                 '}';
     }
 }

@@ -44,7 +44,7 @@ public class ComicRepositoryPanel extends JPanel {
 	private TableRowSorter<TableModel> sorter;
 	private ComicBookDaoImpl comicBookDaoImpl;
 	private UserSession userSession;
-	private JButton addToFavoritesButton;
+	private JButton addToFavouritesButton;
 	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 
 	public ComicRepositoryPanel() {
@@ -112,9 +112,9 @@ public class ComicRepositoryPanel extends JPanel {
 		refreshButton.setBounds(1065, 62, 89, 23);
 		panel.add(refreshButton);
 
-		addToFavoritesButton = new JButton("Add to Favorites");
-		addToFavoritesButton.setBounds(930, 62, 129, 23);
-		addToFavoritesButton.setEnabled(false); // Initially inactive
-		panel.add(addToFavoritesButton);
+		addToFavouritesButton = new JButton("Add to Favourites");
+		addToFavouritesButton.setBounds(930, 62, 129, 23);
+		addToFavouritesButton.setEnabled(false); // Initially inactive
+		panel.add(addToFavouritesButton);
 	}
 }

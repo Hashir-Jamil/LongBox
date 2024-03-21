@@ -25,17 +25,17 @@ public class UserComicBookCollectionService {
         this.finishedListDao = finishedListDao;
     }
 
-    // Favorites list services
-    public void saveToFavorites(Long userId, Long comicBookId) throws UserIDDoesNotExistException {
-        favouritesListDao.saveToFavorites(userId, comicBookId);
+    // Favourites list services
+    public void saveToFavourites(Long userId, Long comicBookId) throws UserIDDoesNotExistException {
+        favouritesListDao.saveToFavourites(userId, comicBookId);
     }
 
-    public boolean removeFromFavorites(Long userId, Long comicBookId) {
-        return favouritesListDao.removeFromFavorites(userId, comicBookId);
+    public boolean removeFromFavourites(Long userId, Long comicBookId) {
+        return favouritesListDao.removeFromFavourites(userId, comicBookId);
     }
 
-    public List<ComicBookDto> getAllFavoritesComicBooks() {
-        return favouritesListDao.getAllFavoritesComicBooks();
+    public List<ComicBookDto> getAllFavouritesComicBooks() {
+        return favouritesListDao.getAllFavouritesComicBooks();
     }
 
     // Reading list services

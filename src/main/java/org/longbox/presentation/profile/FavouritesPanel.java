@@ -22,9 +22,9 @@ import java.util.List;
 import javax.swing.*;
 @Getter
 @Setter
-public class FavoritesPanel extends JPanel {
+public class FavouritesPanel extends JPanel {
 	private static final String DEFAULT_FONT = "Calibri";
-	private static FavoritesPanel instance;
+	private static FavouritesPanel instance;
 	private JPanel panel;
 	private JLabel comicCollectionTitle;
 	private JLabel lblNewLabel_1;
@@ -36,23 +36,23 @@ public class FavoritesPanel extends JPanel {
 	private JTextField textField;
 	private JComboBox<String> typeSelection;
 	private ComicBookTableModel comicBookTableModel;
-	private JButton unfavoriteButton;
+	private JButton unfavouriteButton;
 	private TableRowSorter<TableModel> sorter;
 	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImp;
 	private UserSession userSession;
 	private JButton refreshButton;
 	private JLabel lblNewLabel;
 
-	public FavoritesPanel() {
+	public FavouritesPanel() {
 		initComicCollectionPage();
 		userSession = UserSession.getActiveUser();
 	}
 
 	public void update(long userId, long comicBookId) throws UserIDDoesNotExistException {
 		comicBookFavouritesListDaoImp = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
-		comicBookFavouritesListDaoImp.saveToFavorites(userId, comicBookId);
-		List<ComicBookDto> updatedFavoriteComicBooks = comicBookFavouritesListDaoImp.getAllFavoritesComicBooks();
-		comicBookTableModel.updateData(updatedFavoriteComicBooks);
+		comicBookFavouritesListDaoImp.saveToFavourites(userId, comicBookId);
+		List<ComicBookDto> updatedFavouriteComicBooks = comicBookFavouritesListDaoImp.getAllFavouritesComicBooks();
+		comicBookTableModel.updateData(updatedFavouriteComicBooks);
 	}
 
 	private void initComicCollectionPage() {
@@ -62,7 +62,7 @@ public class FavoritesPanel extends JPanel {
 		panel = new JPanel();
 		panel.setLayout(null);
 
-		comicCollectionTitle = new JLabel("User Favorites");
+		comicCollectionTitle = new JLabel("User Favourites");
 		comicCollectionTitle.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 30));
 		comicCollectionTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		comicCollectionTitle.setBounds(396, 11, 372, 43);
@@ -76,7 +76,7 @@ public class FavoritesPanel extends JPanel {
 
 		comicBookFavouritesListDaoImp = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 
-		comicBookTableModel = new ComicBookTableModel(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks());
+		comicBookTableModel = new ComicBookTableModel(comicBookFavouritesListDaoImp.getAllFavouritesComicBooks());
 		comicBookTable = new JTable(comicBookTableModel);
 		comicBookTable.addMouseListener(new MouseAdapter() {
 			@Override
@@ -84,7 +84,7 @@ public class FavoritesPanel extends JPanel {
 				int row = comicBookTable.rowAtPoint(e.getPoint());
 				int col = comicBookTable.columnAtPoint(e.getPoint());
 				if (col == 0 && e.getClickCount() == 2) {
-					ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks(), comicBookTable.getValueAt(row, col).toString());
+					ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookFavouritesListDaoImp.getAllFavouritesComicBooks(), comicBookTable.getValueAt(row, col).toString());
 					System.out.println("Clicked on: " + comicBookTable.getValueAt(row, col).toString());
 					org.longbox.businesslogic.utils.ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
 				}
@@ -118,14 +118,14 @@ public class FavoritesPanel extends JPanel {
 		panel.add(textField);
 		textField.setColumns(10);
 
-		lblNewLabel = new JLabel("Search Favorites:");
+		lblNewLabel = new JLabel("Search Favourites:");
 		lblNewLabel.setBounds(10, 66, 120, 13);
 		panel.add(lblNewLabel);
 
-		unfavoriteButton = new JButton("Unfavorite");
-		unfavoriteButton.setEnabled(false); // Initially disabled
-		unfavoriteButton.setBounds(930, 62, 129, 23);
-		panel.add(unfavoriteButton);
+		unfavouriteButton = new JButton("Unfavourite");
+		unfavouriteButton.setEnabled(false); // Initially disabled
+		unfavouriteButton.setBounds(930, 62, 129, 23);
+		panel.add(unfavouriteButton);
 
 		refreshButton = new JButton("Refresh");
 		refreshButton.setBounds(1065, 62, 89, 23);
@@ -137,13 +137,13 @@ public class FavoritesPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				int selectedRow = comicBookTable.getSelectedRow();
 				if (selectedRow != -1) {
-					unfavoriteButton.setEnabled(true);
+					unfavouriteButton.setEnabled(true);
 				}
 			}
 		});
 	}
 
 	public void reloadData() {
-		comicBookTableModel.updateData(comicBookFavouritesListDaoImp.getAllFavoritesComicBooks());
+		comicBookTableModel.updateData(comicBookFavouritesListDaoImp.getAllFavouritesComicBooks());
 	}
 }

@@ -26,10 +26,10 @@ public class ComicBookInfoController implements ActionListener {
         this.comicBookInfoPanel.getAddCommentButton().addActionListener(this);
 
         this.comicBookInfoPanel.getAddToFinishedButton().addActionListener(this);
-        this.comicBookInfoPanel.getAddToFavoritesButton().addActionListener(this);
+        this.comicBookInfoPanel.getAddToFavouritesButton().addActionListener(this);
         this.comicBookInfoPanel.getAddToReadingButton().addActionListener(this);
 
-        this.comicBookInfoPanel.getRemoveFromFavoritesButton().addActionListener(this);
+        this.comicBookInfoPanel.getRemoveFromFavouritesButton().addActionListener(this);
         this.comicBookInfoPanel.getRemoveFromToReadingButton().addActionListener(this);
         this.comicBookInfoPanel.getRemoveFromFinishedButton().addActionListener(this);
     }
@@ -48,15 +48,15 @@ public class ComicBookInfoController implements ActionListener {
             commentService.saveComment(newComment);
             this.comicBookInfoPanel.displayComments();
 
-        } else if (e.getSource() == this.comicBookInfoPanel.getAddToFavoritesButton()) {
-            ComicBookFavouritesListDaoImpl favoritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
+        } else if (e.getSource() == this.comicBookInfoPanel.getAddToFavouritesButton()) {
+            ComicBookFavouritesListDaoImpl favouritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
             try {
-                favoritesListDaoImpl.saveToFavorites(this.comicBookInfoPanel.getUserSession().getUser().getId(), this.comicBookInfoPanel.getComicBookDTO().getId());
+                favouritesListDaoImpl.saveToFavourites(this.comicBookInfoPanel.getUserSession().getUser().getId(), this.comicBookInfoPanel.getComicBookDTO().getId());
             } catch (UserIDDoesNotExistException ex) {
                 throw new RuntimeException(ex);
             }
-            this.comicBookInfoPanel.getAddToFavoritesButton().setEnabled(false); // Disable the button after adding
-            this.comicBookInfoPanel.favoriteButtonStates();
+            this.comicBookInfoPanel.getAddToFavouritesButton().setEnabled(false); // Disable the button after adding
+            this.comicBookInfoPanel.favouriteButtonStates();
         }
         else if (e.getSource() == this.comicBookInfoPanel.getAddToFinishedButton()) {
             ComicBookFinishedListDaoImpl comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl(HibernateUtils.getSessionFactory());
@@ -78,15 +78,15 @@ public class ComicBookInfoController implements ActionListener {
             this.comicBookInfoPanel.getAddToReadingButton().setEnabled(false); // Disable the button after adding
             this.comicBookInfoPanel.readingButtonStates();
         }
-        else if (e.getSource() == this.comicBookInfoPanel.getRemoveFromFavoritesButton()) {
-            ComicBookFavouritesListDaoImpl favoritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
+        else if (e.getSource() == this.comicBookInfoPanel.getRemoveFromFavouritesButton()) {
+            ComicBookFavouritesListDaoImpl favouritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
             try {
-                favoritesListDaoImpl.removeFromFavorites(this.comicBookInfoPanel.getUserSession().getUser().getId(), this.comicBookInfoPanel.getComicBookDTO().getId());
+                favouritesListDaoImpl.removeFromFavourites(this.comicBookInfoPanel.getUserSession().getUser().getId(), this.comicBookInfoPanel.getComicBookDTO().getId());
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
-            this.comicBookInfoPanel.getRemoveFromFavoritesButton().setEnabled(false);
-            this.comicBookInfoPanel.favoriteButtonStates();
+            this.comicBookInfoPanel.getRemoveFromFavouritesButton().setEnabled(false);
+            this.comicBookInfoPanel.favouriteButtonStates();
         }
         else if (e.getSource() == this.comicBookInfoPanel.getRemoveFromFinishedButton()) {
             ComicBookFinishedListDaoImpl comicBookFinishedListDaoImpl = new ComicBookFinishedListDaoImpl(HibernateUtils.getSessionFactory());

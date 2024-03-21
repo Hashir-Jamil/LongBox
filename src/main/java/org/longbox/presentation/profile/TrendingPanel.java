@@ -21,18 +21,18 @@ import javax.swing.JComboBox;
 @Getter
 public class TrendingPanel extends JPanel {
 	
-	private JTable allTimeFavoritesTable;
-	private JTable regionalFavoritesTable;
+	private JTable allTimeFavouritesTable;
+	private JTable regionalFavouritesTable;
 	private JPanel panel;
 	private JLabel trendingTitle;
 	private JSeparator separator;
-	private JLabel allTimeFavoritesLabel;
-	private JLabel regionalFavorites;
+	private JLabel allTimeFavouritesLabel;
+	private JLabel regionalFavourites;
 	private ComicBookDaoImpl comicBookDaoImpl;
 	private TrendingAllTimeTableModel comicBookTableModel;
 	private TrendingRegionalTableModel regionalComicBookTableModel;
-	private JScrollPane allTimeFavoritesScrollPane;
-	private JScrollPane regionalFavoritesScrollPane;
+	private JScrollPane allTimeFavouritesScrollPane;
+	private JScrollPane regionalFavouritesScrollPane;
 	private JComboBox<String> regionBox;
 
 	public TrendingPanel() {
@@ -57,36 +57,36 @@ public class TrendingPanel extends JPanel {
 		separator.setBounds(10, 92, 1144, 14);
 		panel.add(separator);
 		
-		allTimeFavoritesLabel = new JLabel("All Time Favorites:");
-		allTimeFavoritesLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		allTimeFavoritesLabel.setBounds(10, 106, 117, 22);
-		panel.add(allTimeFavoritesLabel);
+		allTimeFavouritesLabel = new JLabel("All Time Favourites:");
+		allTimeFavouritesLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		allTimeFavouritesLabel.setBounds(10, 106, 117, 22);
+		panel.add(allTimeFavouritesLabel);
 		
-		regionalFavorites = new JLabel("Regional Favorites: ");
-		regionalFavorites.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		regionalFavorites.setBounds(10, 450, 127, 22);
-		panel.add(regionalFavorites);
+		regionalFavourites = new JLabel("Regional Favourites: ");
+		regionalFavourites.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		regionalFavourites.setBounds(10, 450, 127, 22);
+		panel.add(regionalFavourites);
 			
 		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 
 		comicBookTableModel = new TrendingAllTimeTableModel(comicBookDaoImpl.getAllComicBooks());		
 		regionalComicBookTableModel = new TrendingRegionalTableModel(comicBookDaoImpl.getAllComicBooks(), "North America");
 		
-		allTimeFavoritesTable = new JTable(comicBookTableModel);
-		allTimeFavoritesTable.setBounds(0, 0, 1, 1);
-		panel.add(allTimeFavoritesTable);
+		allTimeFavouritesTable = new JTable(comicBookTableModel);
+		allTimeFavouritesTable.setBounds(0, 0, 1, 1);
+		panel.add(allTimeFavouritesTable);
 		
-		regionalFavoritesTable = new JTable(regionalComicBookTableModel);
-		regionalFavoritesTable.setBounds(0, 0, 1, 1);
-		panel.add(regionalFavoritesTable);
+		regionalFavouritesTable = new JTable(regionalComicBookTableModel);
+		regionalFavouritesTable.setBounds(0, 0, 1, 1);
+		panel.add(regionalFavouritesTable);
 		
-		allTimeFavoritesScrollPane = new JScrollPane(allTimeFavoritesTable);
-		allTimeFavoritesScrollPane.setBounds(10, 139, 1144, 300);
-		panel.add(allTimeFavoritesScrollPane);
+		allTimeFavouritesScrollPane = new JScrollPane(allTimeFavouritesTable);
+		allTimeFavouritesScrollPane.setBounds(10, 139, 1144, 300);
+		panel.add(allTimeFavouritesScrollPane);
 		
-		regionalFavoritesScrollPane = new JScrollPane(regionalFavoritesTable);
-		regionalFavoritesScrollPane.setBounds(10, 483, 1144, 300);
-		panel.add(regionalFavoritesScrollPane);
+		regionalFavouritesScrollPane = new JScrollPane(regionalFavouritesTable);
+		regionalFavouritesScrollPane.setBounds(10, 483, 1144, 300);
+		panel.add(regionalFavouritesScrollPane);
 		
 		regionBox = new JComboBox<String>();
 		regionBox.setBounds(130, 452, 117, 22);

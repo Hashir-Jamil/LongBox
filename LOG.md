@@ -102,7 +102,7 @@
     Hashir & Ahan: setup hibernate to postgresql connection & created database connection + basic queries to test if it works
     Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): Spoke with Prof. Hemmati about imbalanced github contribution problem and followed up with group meeting to reorganize teamwork.
 	Oscar: Reorganized layout of profile page with future features in mind and added comics reading and comics finished stat.
-    Ali: Initiated development on the Favorite Collection Comic Book feature, laying the groundwork for its implementation. 
+    Ali: Initiated development on the Favourite Collection Comic Book feature, laying the groundwork for its implementation. 
     Eric: Added advanced search for title and year, advanced search logic in switch satement
 
 ## Thursday, February 22nd, 2024
@@ -126,7 +126,7 @@
         '-> Hashir: write personal user stories for itr1,2 on planning doc and ppt., code review slide, other architecture diagrams
         '-> Oscar: edit interview video & talk about user stories on itr1,2 on plann ing document and ppt.
         '-> Eric: problem statement, customer video highlights, talk about user stories on itr1,2 on planning document and ppt., vision & future of project
-    Ali: Finalized the Favorite Panel functionality without reliance on a database, utilizing a list-based approach for storage and management.
+    Ali: Finalized the Favourite Panel functionality without reliance on a database, utilizing a list-based approach for storage and management.
     Eric: Added advanced search for genres
 
 ## Sunday, February 25th, 2024
@@ -148,7 +148,7 @@
 
     Group Meeting (Ahan, Ali, Hashir, Oscar, Eric): discussed tasks/user stories needed for conclusion of iteration 2
         '-> Ahan: add comment to comic book, view comment on comic book
-        '-> Ali: user can add a comic book to favorites and user can remove a comic book from favorites
+        '-> Ali: user can add a comic book to favourites and user can remove a comic book from favourites
         '-> Eric: user can login with email or username (may need modification for username's valid characters upon registration)
         '-> Hashir: user can add a comic book to their current reading list and add comic books to their finished list
         '-> Oscar: fix fonts, about me box for profile view1
@@ -160,7 +160,7 @@
 
 ## Saturday, March 2nd, 2024
 
-    Eric & Ahan: Passed user session into the search comic repo and the favoruties panel.
+    Eric & Ahan: Passed user session into the search comic repo and the favouruties panel.
     Ahan: Added user can comment on a comic functionality, and the add comment appears in the list of comments.
 
 ## Sunday, March 3rd, 2024
@@ -175,11 +175,11 @@
 
 	Oscar: Changed default font to Calibri.
  	Eric: Added ability to login using email and password rather than just username and password. New user registration no longer allows '@' or blank usernames
-    Ali & Ahan: Went over the error in FavoritesPanel and ComicBookFavoritesDaoImpl.
+    Ali & Ahan: Went over the error in FavouritesPanel and ComicBookFavouritesDaoImpl.
 
 ## Wednesday, March 6th, 2024
     
-    Ahan: Fixed the error in FavoritesPanel and ComicBookFavoritesDaoImpl due to incorrect initializing of objects. Also refactored the rpofile page.
+    Ahan: Fixed the error in FavouritesPanel and ComicBookFavouritesDaoImpl due to incorrect initializing of objects. Also refactored the rpofile page.
     Group (All members): Meeting with professor and weekly update in lecture time.
     Group (Ahan, Hashir, Eric, Oscar): Evening work session to finish iteration 2 planning document, discussing any tasks left to complete & discussion of a design decision for common interface of stub data and postgresql data.
     
@@ -215,7 +215,7 @@
 ## Tuesday, March 12th, 2024
 
     Ahan and Hashir: Moved controller for ComicBookInfoPanel to another package, and switched form CommentDao to CommentService
-    Ali, Hashir and Ahan: Moved controller for FavoritesPanel to another package.
+    Ali, Hashir and Ahan: Moved controller for FavouritesPanel to another package.
     Hashir: More refactoring by cleaning up coding style, unused fields/imports, development of controller to separate gui from its control, finished service layer api for cleaner abstraction of backend services, made database table id fields bigint and all java types Long wrapper object for corresponding fields/params/returns
 
 ## Wednesday, March 13th, 2024
@@ -225,7 +225,7 @@
     
 ## Thursday, March 14th, 2024
 
-    Eric: Refactored all Comic Repo Panel logic into its respected controller class, removal of unused code and imports, and multiple bug fixes such as fixing imporper comics opening, multiple tables loading, improper refreshing, and improper favoriting
+    Eric: Refactored all Comic Repo Panel logic into its respected controller class, removal of unused code and imports, and multiple bug fixes such as fixing imporper comics opening, multiple tables loading, improper refreshing, and improper favouriting
     
 ## Friday, March 15th, 2024
     

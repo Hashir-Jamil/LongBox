@@ -22,14 +22,14 @@ public class ComicBookDto {
     private String publisher;
     private int yearPublished;
     private Date dateAdded;
-    private int northAmericaFavoritesCount;
-    private int southAmericaFavoritesCount;
-    private int europeFavoritesCount;
-    private int asiaFavoritesCount;
-    private int africaFavoritesCount;
-    private int oceaniaFavoritesCount;
-    private int antarcticaFavoritesCount;    
-    private int favoritesCount;
+    private int northAmericaFavouritesCount;
+    private int southAmericaFavouritesCount;
+    private int europeFavouritesCount;
+    private int asiaFavouritesCount;
+    private int africaFavouritesCount;
+    private int oceaniaFavouritesCount;
+    private int antarcticaFavouritesCount;    
+    private int favouritesCount;
 
     @Override
     public boolean equals(Object o) {
@@ -57,7 +57,7 @@ public class ComicBookDto {
                 ", publisher='" + publisher + '\'' +
                 ", yearPublished=" + yearPublished +
                 ", dateAdded=" + dateAdded +
-                ", favoritesCount=" + favoritesCount +
+                ", favouritesCount=" + favouritesCount +
                 '}';
     }
 }
