@@ -8,6 +8,7 @@ import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.Date;
 
@@ -74,7 +75,7 @@ public class ComicBook {
     private int favoritesCount;
     
     @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
-    private Set<Comment> starRatings = new HashSet<>();
+    private Set<StarRating> starRatings = new HashSet<>();
 
     @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
     private Set<Comment> comments = new HashSet<>();
@@ -88,39 +89,17 @@ public class ComicBook {
     @OneToMany(mappedBy = "comicBook", cascade = CascadeType.ALL)
     private Set<ComicBookReadingList> readingInProgressBy = new HashSet<>();
 
-    public ComicBook(
-        String seriesTitle,
-        String author,
-        String artist,
-        String genres,
-        String description,
-        int numberOfIssues,
-        String publisher,
-        int yearPublished,
-        Date dateAdded
-    )
-    {
-        this.seriesTitle = seriesTitle;
-        this.author = author;
-        this.artist = artist;
-        this.genres = genres;
-        this.description = description;
-        this.numberOfIssues = numberOfIssues;
-        this.publisher = publisher;
-        this.yearPublished = yearPublished;
-        this.dateAdded = new Date(dateAdded.getTime());
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ComicBook comicBook = (ComicBook) o;
+        return getYearPublished() == comicBook.getYearPublished() && Objects.equals(getId(), comicBook.getId()) && Objects.equals(getSeriesTitle(), comicBook.getSeriesTitle()) && Objects.equals(getAuthor(), comicBook.getAuthor()) && Objects.equals(getArtist(), comicBook.getArtist()) && Objects.equals(getPublisher(), comicBook.getPublisher());
     }
 
-    public ComicBook(ComicBookDto comicBookDTO) {
-        this.seriesTitle = comicBookDTO.getSeriesTitle();
-        this.author = comicBookDTO.getAuthor();
-        this.artist = comicBookDTO.getArtist();
-        this.genres = GenreUtils.genreListToString(comicBookDTO.getGenres());
-        this.description = comicBookDTO.getDescription();
-        this.numberOfIssues = comicBookDTO.getNumberOfIssues();
-        this.publisher = comicBookDTO.getPublisher();
-        this.yearPublished = comicBookDTO.getYearPublished();
-        this.dateAdded = new Date();
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getSeriesTitle(), getAuthor(), getArtist(), getPublisher(), getYearPublished());
     }
 
     @Override
