@@ -115,4 +115,9 @@ public class UserStubDb implements UserDao, JsonConvertor {
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
         return gson.fromJson(reader, listType);
     }
+
+	@Override
+	public List<UserDto> getAllUsers() {
+		return userStubData;
+	}
 }
