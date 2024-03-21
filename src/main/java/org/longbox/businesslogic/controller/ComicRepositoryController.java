@@ -28,7 +28,7 @@ import org.longbox.presentation.profile.FavouritesPanel;
 public class ComicRepositoryController implements ActionListener, MouseListener {
 	
 	private ComicRepositoryPanel comicRepositoryPanel;
-	private ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());;
+	private ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 	private UserSession userSession;
     private UserService userService;
 	
