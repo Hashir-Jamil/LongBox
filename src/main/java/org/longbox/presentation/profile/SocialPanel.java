@@ -2,8 +2,6 @@ package org.longbox.presentation.profile;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.*;
 import lombok.*;
 
@@ -12,11 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import org.longbox.businesslogic.service.UserService;
-import org.longbox.businesslogic.utils.UserSearchUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.UserDaoImpl;
-import org.longbox.presentation.otheruser.OtherUserProfileFrame;
 import org.longbox.presentation.tablemodels.UsersTableModel;
 
 import javax.swing.JScrollPane;
@@ -50,6 +46,7 @@ public class SocialPanel extends JPanel {
 	
 	public SocialPanel() {
 		userService = new UserService(new UserDaoImpl(HibernateUtils.getSessionFactory()));
+		this.allUsersList = userService.getAllUsers();
 
 		initComponents();
 	}
@@ -83,6 +80,13 @@ public class SocialPanel extends JPanel {
 		resetButton = new JButton(RESET_TEXT);
 		resetButton.setBounds(1016, 749, 117, 29);
 		panel.add(resetButton);
+
+		usersTableModel = new UsersTableModel(allUsersList);
+		allUsersTable = new JTable(usersTableModel);
+
+		scrollPane = new JScrollPane(allUsersTable);
+		scrollPane.setBounds(29, 120, 1104, 624);
+		panel.add(scrollPane);
 		
 		numberComboBox = new JComboBox();
 		numberComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "20", "25"}));
@@ -98,38 +102,6 @@ public class SocialPanel extends JPanel {
 		choiceComboBox.setModel(new DefaultComboBoxModel(new String[] {"Reading", "Finished"}));
 		choiceComboBox.setBounds(705, 91, 112, 27);
 		panel.add(choiceComboBox);
-
-		reset();
-	}
-	
-	public void addElementsToTable(List<UserDto> displayList) {
-
-		usersTableModel = new UsersTableModel(displayList);
-		allUsersTable = new JTable(usersTableModel);
-
-		allUsersTable.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int row = allUsersTable.rowAtPoint(e.getPoint());
-				int col = allUsersTable.columnAtPoint(e.getPoint());
-				if (col == 0 && e.getClickCount() == 2) {
-					System.out.println("\n mouse clicked \n");
-					UserDto userDto = UserSearchUtils.getSearchedUser(displayList, allUsersTable.getValueAt(row, col).toString());
-					new OtherUserProfileFrame(userDto);
-				}
-			}
-		});
-
-		scrollPane = new JScrollPane(allUsersTable);
-		scrollPane.setBounds(29, 120, 1104, 624);
-		panel.add(scrollPane);
-
-
-	}
-	
-	public void reset() {
-		this.allUsersList = userService.getAllUsers();
-		addElementsToTable(allUsersList);
 	}
 	
 	public int getNumberSelected() {
