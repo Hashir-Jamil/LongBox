@@ -25,6 +25,8 @@ public class ComicBookSearchResultsFrame extends JFrame {
 	private ComicBookDaoImpl comicBookDaoImpl;
 	private ComicBookTableModel comicBookTableModel;
 	private UserSession userSession;
+	private JLabel lblNewLabel;
+	private JScrollPane scrollPane;
 
 	public ComicBookSearchResultsFrame(List<ComicBookDto> displayResults, String target, String searchBy, UserSession user) {
 		this.userSession = user;
@@ -37,13 +39,13 @@ public class ComicBookSearchResultsFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Results for " + target + " in " + searchBy);
+		lblNewLabel = new JLabel("Results for " + target + " in " + searchBy);
 		lblNewLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 11, 814, 46);
 		contentPane.add(lblNewLabel);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 63, 814, 342);
 		contentPane.add(scrollPane);
 		
