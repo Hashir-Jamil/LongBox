@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.longbox.businesslogic.service.CommentService;
+import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.businesslogic.utils.MultiLineCellRendererForUser;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
@@ -26,6 +27,8 @@ import javax.swing.*;
 @Getter
 @Setter
 public class OtherUserProfileFrame extends JFrame {
+	private static final String PREFERRED_GENRE_TEXT = "Preferred Genre:";
+	private static final String COMMENTS_TEXT = "Comments:";
 	private static final String COMICS_PREVIOUSLY_FINISHED_TEXT = "Comics Previously Finished: ";
 	private static final String COMICS_CURRENTLY_READING_TEXT = "Comics Currently Reading: ";
 	private static final String EMPTY = "";
@@ -34,18 +37,18 @@ public class OtherUserProfileFrame extends JFrame {
 	private static final String COMICS_READING_TEXT = "Comics Reading:";
 	private static final String JOINED_ON_TEXT = "Joined On:";
 	private static final String COUNTRY_TEXT = "Country:";
-	private static final String EMAIL_TEXT = "Email:";
 	private static final String DATE_OF_BIRTH_TEXT = "Date of Birth:";
 	private static final String LAST_NAME_TEXT = "Last Name:";
 	private static final String FIRST_NAME_TEXT = "First Name:";
 	private static final String USERNAME_TEXT = "Username:";
+	private static final String PANEL_LABEL = "Other User";
+	
 	private static final long serialVersionUID = 1L;
-	private final String PANEL_LABEL = "Other User";
 
 	private JSeparator topSeparator, midSeparator;
-	private JLabel comicCollectionTitle, usernameLabel, firstNameLabel, lastNameLabel, dobLabel, emailLabel, countryLabel, joinDateLabel,
-			readingLabel, finishedLabel, aboutMeLabel, userName, firstName, lastName, dateOfBirth, email, country, joinDate,
-			comicsReading, comicsFinished, currentlyReading, currentlyRead, aboutMe;
+	private JLabel comicCollectionTitle, usernameLabel, firstNameLabel, lastNameLabel, dobLabel, countryLabel, joinDateLabel,
+			readingLabel, finishedLabel, aboutMeLabel, userNameValue, firstNameValue, lastNameValue, dateOfBirthValue, countryValue, joinDateValue,
+			comicsReadingValue, comicsFinishedValue, currentlyReading, currentlyRead, aboutMeValue;
 	private JPanel panel;
 	private UserDto user;
 	private ReadingAndFinishedComicBookTableModel readingTableModel, finishedTableModel;
@@ -56,6 +59,8 @@ public class OtherUserProfileFrame extends JFrame {
 	private CommentService commentService;
 	private DefaultListModel<CommentDto> commentListModel;
 	private JList<CommentDto> commentList;
+	private JLabel prefGenreLabel;
+	private JLabel prefGenreValue;
 
 	/**
 	 * Create the panel.
@@ -114,65 +119,57 @@ public class OtherUserProfileFrame extends JFrame {
 		dobLabel.setBounds(47, 197, 118, 16);
 		panel.add(dobLabel);
 		
-		emailLabel = new JLabel(EMAIL_TEXT);
-		emailLabel.setBounds(47, 225, 118, 16);
-		panel.add(emailLabel);
-		
 		countryLabel = new JLabel(COUNTRY_TEXT);
-		countryLabel.setBounds(47, 253, 118, 16);
+		countryLabel.setBounds(47, 225, 118, 16);
 		panel.add(countryLabel);
 		
 		joinDateLabel = new JLabel(JOINED_ON_TEXT);
-		joinDateLabel.setBounds(47, 281, 118, 16);
+		joinDateLabel.setBounds(47, 253, 118, 16);
 		panel.add(joinDateLabel);
 		
 		readingLabel = new JLabel(COMICS_READING_TEXT);
-		readingLabel.setBounds(47, 309, 118, 16);
+		readingLabel.setBounds(47, 281, 118, 16);
 		panel.add(readingLabel);
 		
 		finishedLabel = new JLabel(COMICS_FINISHED_TEXT);
-		finishedLabel.setBounds(47, 337, 118, 16);
+		finishedLabel.setBounds(47, 309, 118, 16);
 		panel.add(finishedLabel);
 		
 		aboutMeLabel = new JLabel(ABOUT_ME_TEXT);
 		aboutMeLabel.setBounds(557, 113, 118, 16);
 		panel.add(aboutMeLabel);
 		
-		userName = new JLabel(EMPTY);
-		userName.setBounds(182, 113, 306, 16);
-		panel.add(userName);
+		userNameValue = new JLabel(EMPTY);
+		userNameValue.setBounds(182, 113, 306, 16);
+		panel.add(userNameValue);
 		
-		firstName = new JLabel(EMPTY);
-		firstName.setBounds(182, 141, 306, 16);
-		panel.add(firstName);
+		firstNameValue = new JLabel(EMPTY);
+		firstNameValue.setBounds(182, 141, 306, 16);
+		panel.add(firstNameValue);
 		
-		lastName = new JLabel(EMPTY);
-		lastName.setBounds(182, 169, 306, 16);
-		panel.add(lastName);
+		lastNameValue = new JLabel(EMPTY);
+		lastNameValue.setBounds(182, 169, 306, 16);
+		panel.add(lastNameValue);
 		
-		dateOfBirth = new JLabel(EMPTY);
-		dateOfBirth.setBounds(182, 197, 306, 16);
-		panel.add(dateOfBirth);
+		dateOfBirthValue = new JLabel(EMPTY);
+		dateOfBirthValue.setBounds(182, 197, 306, 16);
+		panel.add(dateOfBirthValue);
 		
-		email = new JLabel(EMPTY);
-		email.setBounds(182, 225, 306, 16);
-		panel.add(email);
+		countryValue = new JLabel(EMPTY);
+		countryValue.setBounds(182, 225, 306, 16);
+		panel.add(countryValue);
 		
-		country = new JLabel(EMPTY);
-		country.setBounds(182, 253, 306, 16);
-		panel.add(country);
+		joinDateValue = new JLabel(EMPTY);
+		joinDateValue.setBounds(182, 253, 306, 16);
+		panel.add(joinDateValue);
 		
-		joinDate = new JLabel(EMPTY);
-		joinDate.setBounds(182, 281, 306, 16);
-		panel.add(joinDate);
+		comicsReadingValue = new JLabel(EMPTY);
+		comicsReadingValue.setBounds(182, 281, 306, 16);
+		panel.add(comicsReadingValue);
 		
-		comicsReading = new JLabel(EMPTY);
-		comicsReading.setBounds(182, 309, 306, 16);
-		panel.add(comicsReading);
-		
-		comicsFinished = new JLabel(EMPTY);
-		comicsFinished.setBounds(182, 337, 306, 16);
-		panel.add(comicsFinished);
+		comicsFinishedValue = new JLabel(EMPTY);
+		comicsFinishedValue.setBounds(182, 309, 306, 16);
+		panel.add(comicsFinishedValue);
 
 		currentlyReading = new JLabel(COMICS_CURRENTLY_READING_TEXT);
 		currentlyReading.setBounds(557, 310, 200, 14);
@@ -182,13 +179,22 @@ public class OtherUserProfileFrame extends JFrame {
 		currentlyRead.setBounds(557, 542, 200, 14);
 		panel.add(currentlyRead);
 		
-		aboutMe = new JLabel();
-		aboutMe.setVerticalAlignment(SwingConstants.TOP);
-		aboutMe.setBounds(557, 141, 554, 127);
-		panel.add(aboutMe);
+		aboutMeValue = new JLabel();
+		aboutMeValue.setVerticalAlignment(SwingConstants.TOP);
+		aboutMeValue.setBounds(557, 141, 554, 127);
+		panel.add(aboutMeValue);
+		
+		prefGenreLabel = new JLabel(PREFERRED_GENRE_TEXT);
+		prefGenreLabel.setBounds(47, 337, 118, 22);
+		panel.add(prefGenreLabel);
+		
+		prefGenreValue = new JLabel(EMPTY);
+		prefGenreValue.setVerticalAlignment(SwingConstants.TOP);
+		prefGenreValue.setBounds(182, 342, 306, 50);
+		panel.add(prefGenreValue);
 
-		commentLabel = new JLabel("Comments:");
-		commentLabel.setBounds(47, 379, 103, 16);
+		commentLabel = new JLabel(COMMENTS_TEXT);
+		commentLabel.setBounds(47, 402, 103, 16);
 		panel.add(commentLabel);
 		
 		commentListModel = new DefaultListModel<CommentDto>();
@@ -206,16 +212,16 @@ public class OtherUserProfileFrame extends JFrame {
 	}
 
 	private void setFields() {
-		userName.setText(this.user.getUser().getUserName());
-		firstName.setText(this.user.getUser().getFirstName());
-		lastName.setText(this.user.getUser().getLastName());
-		dateOfBirth.setText(EMPTY + this.user.getUser().getDob());
-		email.setText(this.user.getUser().getEmail());
-		country.setText(this.user.getUser().getCountry());
-		joinDate.setText(EMPTY + this.user.getUser().getJoinDate());
-		comicsFinished.setText(EMPTY + this.user.getUser().getComicsFinished());
-		comicsReading.setText(EMPTY + this.user.getUser().getComicsReading());
-		aboutMe.setText("<html>" + this.user.getUser().getAboutMe() + "</html>");
+		userNameValue.setText(this.user.getUser().getUserName());
+		firstNameValue.setText(this.user.getUser().getFirstName());
+		lastNameValue.setText(this.user.getUser().getLastName());
+		dateOfBirthValue.setText(EMPTY + this.user.getUser().getDob());
+		countryValue.setText(this.user.getUser().getCountry());
+		joinDateValue.setText(EMPTY + this.user.getUser().getJoinDate());
+		comicsFinishedValue.setText(EMPTY + this.user.getUser().getComicsFinished());
+		comicsReadingValue.setText(EMPTY + this.user.getUser().getComicsReading());
+		aboutMeValue.setText("<html>" + this.user.getUser().getAboutMe() + "</html>");
+		prefGenreValue.setText("<htm>" + GenreUtils.genreListToString(this.user.getPreferredGenre()) + "</htm>");
 	}
 
 	public void reloadTable() {
