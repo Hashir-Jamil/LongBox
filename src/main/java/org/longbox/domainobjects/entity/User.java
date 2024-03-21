@@ -71,6 +71,9 @@ public class User {
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<Comment> comments = new HashSet<>();
+	
+//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//	private Set<StarRating> starRatings = new HashSet<>();
 
 	@Override
 	public int hashCode() {

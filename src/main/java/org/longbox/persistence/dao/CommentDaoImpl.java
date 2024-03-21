@@ -46,12 +46,8 @@ public class CommentDaoImpl implements CommentDao {
                 session.close();
             }
         }
-        List<CommentDto> commentDtoList = new ArrayList<>();
-        for (Comment c : commentList) {
-            CommentDto commentDTO = CommentMapper.toDto(c);
-            commentDtoList.add(commentDTO);
-        }
-        return commentDtoList;
+     
+        return CommentMapper.toDtoList(commentList);
     }
 
     @Override
@@ -111,11 +107,7 @@ public class CommentDaoImpl implements CommentDao {
                 session.close();
             }
         }
-        List<CommentDto> commentDtoList = new ArrayList<>();
-        for (Comment c : commentList) {
-            CommentDto commentDTO = CommentMapper.toDto(c);
-            commentDtoList.add(commentDTO);
-        }
-        return commentDtoList;
+        
+        return CommentMapper.toDtoListWithComicBook(commentList);
     }
 }

@@ -1,33 +1,34 @@
-package org.longbox.presentation.profile;
+package org.longbox.presentation.otheruser;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import org.longbox.businesslogic.UserSession;
-import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
-import org.longbox.businesslogic.utils.ComicBookSearchUtils;
+import org.longbox.businesslogic.service.CommentService;
+import org.longbox.businesslogic.utils.GenreUtils;
+import org.longbox.businesslogic.utils.MultiLineCellRendererForUser;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
+import org.longbox.domainobjects.dto.CommentDto;
+import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.domainobjects.mapper.ComicBookMapper;
-import org.longbox.domainobjects.mapper.UserMapper;
 import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
 import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
-import org.longbox.persistence.dao.UserDaoImpl;
+import org.longbox.persistence.dao.CommentDaoImpl;
 import org.longbox.domainobjects.entity.ComicBook;
 import org.longbox.presentation.tablemodels.ReadingAndFinishedComicBookTableModel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 
 @Getter
 @Setter
-public class ProfilePanel extends JPanel {
+public class OtherUserProfileFrame extends JFrame {
+	private static final String PREFERRED_GENRE_TEXT = "Preferred Genre:";
+	private static final String COMMENTS_TEXT = "Comments:";
 	private static final String COMICS_PREVIOUSLY_FINISHED_TEXT = "Comics Previously Finished: ";
 	private static final String COMICS_CURRENTLY_READING_TEXT = "Comics Currently Reading: ";
 	private static final String EMPTY = "";
@@ -36,38 +37,45 @@ public class ProfilePanel extends JPanel {
 	private static final String COMICS_READING_TEXT = "Comics Reading:";
 	private static final String JOINED_ON_TEXT = "Joined On:";
 	private static final String COUNTRY_TEXT = "Country:";
-	private static final String EMAIL_TEXT = "Email:";
 	private static final String DATE_OF_BIRTH_TEXT = "Date of Birth:";
 	private static final String LAST_NAME_TEXT = "Last Name:";
 	private static final String FIRST_NAME_TEXT = "First Name:";
 	private static final String USERNAME_TEXT = "Username:";
+	private static final String PANEL_LABEL = "Other User";
+	
 	private static final long serialVersionUID = 1L;
-	private final String PANEL_LABEL = "Profile View";
 
 	private JSeparator topSeparator, midSeparator;
-	private JLabel comicCollectionTitle, usernameLabel, firstNameLabel, lastNameLabel, dobLabel, emailLabel, countryLabel, joinDateLabel,
-			readingLabel, finishedLabel, aboutMeLabel, userName, firstName, lastName, dateOfBirth, email, country, joinDate,
-			comicsReading, comicsFinished, currentlyReading, currentlyRead;
-	private JTextArea aboutMe;
+	private JLabel comicCollectionTitle, usernameLabel, firstNameLabel, lastNameLabel, dobLabel, countryLabel, joinDateLabel,
+			readingLabel, finishedLabel, aboutMeLabel, userNameValue, firstNameValue, lastNameValue, dateOfBirthValue, countryValue, joinDateValue,
+			comicsReadingValue, comicsFinishedValue, currentlyReading, currentlyRead, aboutMeValue;
 	private JPanel panel;
-	private UserSession user;
+	private UserDto user;
 	private ReadingAndFinishedComicBookTableModel readingTableModel, finishedTableModel;
-	private JScrollPane readingPane, readPane;
+	private JScrollPane readingPane, readPane, commentPane;
 	private JTable readingTable, readTable;
-	private JButton aboutMeEditButton, aboutMeCancelButton;
-
+	private JLabel commentLabel;
+	private List<CommentDto> commentsbyUser;
+	private CommentService commentService;
+	private DefaultListModel<CommentDto> commentListModel;
+	private JList<CommentDto> commentList;
+	private JLabel prefGenreLabel;
+	private JLabel prefGenreValue;
 
 	/**
 	 * Create the panel.
 	 */
-	public ProfilePanel(UserSession user) {
+	public OtherUserProfileFrame(UserDto user) {
 		this.user = user;
+		commentService = new CommentService(new CommentDaoImpl(HibernateUtils.getSessionFactory()));
+		this.commentsbyUser = commentService.getCommentsByUser(this.user.getId());
 		initProfilePage();
 	}
 
 	private void initProfilePage() {
 		setBounds(10, 47, 1164, 803);
-		setLayout(new BorderLayout());
+		getContentPane().setLayout(new BorderLayout());
+		setVisible(true);
 		
 		panel = new JPanel();
 	    panel.setLayout(null);
@@ -78,7 +86,7 @@ public class ProfilePanel extends JPanel {
 		comicCollectionTitle.setBounds(182, 11, 800, 43);
 		panel.add(comicCollectionTitle);
 		
-		add(panel, BorderLayout.CENTER);
+		getContentPane().add(panel, BorderLayout.CENTER);
 		
 		//Top horizontal topSeparator
 		topSeparator = new JSeparator();
@@ -111,65 +119,57 @@ public class ProfilePanel extends JPanel {
 		dobLabel.setBounds(47, 197, 118, 16);
 		panel.add(dobLabel);
 		
-		emailLabel = new JLabel(EMAIL_TEXT);
-		emailLabel.setBounds(47, 225, 118, 16);
-		panel.add(emailLabel);
-		
 		countryLabel = new JLabel(COUNTRY_TEXT);
-		countryLabel.setBounds(47, 253, 118, 16);
+		countryLabel.setBounds(47, 225, 118, 16);
 		panel.add(countryLabel);
 		
 		joinDateLabel = new JLabel(JOINED_ON_TEXT);
-		joinDateLabel.setBounds(47, 281, 118, 16);
+		joinDateLabel.setBounds(47, 253, 118, 16);
 		panel.add(joinDateLabel);
 		
 		readingLabel = new JLabel(COMICS_READING_TEXT);
-		readingLabel.setBounds(47, 309, 118, 16);
+		readingLabel.setBounds(47, 281, 118, 16);
 		panel.add(readingLabel);
 		
 		finishedLabel = new JLabel(COMICS_FINISHED_TEXT);
-		finishedLabel.setBounds(47, 337, 118, 16);
+		finishedLabel.setBounds(47, 309, 118, 16);
 		panel.add(finishedLabel);
 		
 		aboutMeLabel = new JLabel(ABOUT_ME_TEXT);
 		aboutMeLabel.setBounds(557, 113, 118, 16);
 		panel.add(aboutMeLabel);
 		
-		userName = new JLabel(EMPTY);
-		userName.setBounds(182, 113, 306, 16);
-		panel.add(userName);
+		userNameValue = new JLabel(EMPTY);
+		userNameValue.setBounds(182, 113, 306, 16);
+		panel.add(userNameValue);
 		
-		firstName = new JLabel(EMPTY);
-		firstName.setBounds(182, 141, 306, 16);
-		panel.add(firstName);
+		firstNameValue = new JLabel(EMPTY);
+		firstNameValue.setBounds(182, 141, 306, 16);
+		panel.add(firstNameValue);
 		
-		lastName = new JLabel(EMPTY);
-		lastName.setBounds(182, 169, 306, 16);
-		panel.add(lastName);
+		lastNameValue = new JLabel(EMPTY);
+		lastNameValue.setBounds(182, 169, 306, 16);
+		panel.add(lastNameValue);
 		
-		dateOfBirth = new JLabel(EMPTY);
-		dateOfBirth.setBounds(182, 197, 306, 16);
-		panel.add(dateOfBirth);
+		dateOfBirthValue = new JLabel(EMPTY);
+		dateOfBirthValue.setBounds(182, 197, 306, 16);
+		panel.add(dateOfBirthValue);
 		
-		email = new JLabel(EMPTY);
-		email.setBounds(182, 225, 306, 16);
-		panel.add(email);
+		countryValue = new JLabel(EMPTY);
+		countryValue.setBounds(182, 225, 306, 16);
+		panel.add(countryValue);
 		
-		country = new JLabel(EMPTY);
-		country.setBounds(182, 253, 306, 16);
-		panel.add(country);
+		joinDateValue = new JLabel(EMPTY);
+		joinDateValue.setBounds(182, 253, 306, 16);
+		panel.add(joinDateValue);
 		
-		joinDate = new JLabel(EMPTY);
-		joinDate.setBounds(182, 281, 306, 16);
-		panel.add(joinDate);
+		comicsReadingValue = new JLabel(EMPTY);
+		comicsReadingValue.setBounds(182, 281, 306, 16);
+		panel.add(comicsReadingValue);
 		
-		comicsReading = new JLabel(EMPTY);
-		comicsReading.setBounds(182, 309, 306, 16);
-		panel.add(comicsReading);
-		
-		comicsFinished = new JLabel(EMPTY);
-		comicsFinished.setBounds(182, 337, 306, 16);
-		panel.add(comicsFinished);
+		comicsFinishedValue = new JLabel(EMPTY);
+		comicsFinishedValue.setBounds(182, 309, 306, 16);
+		panel.add(comicsFinishedValue);
 
 		currentlyReading = new JLabel(COMICS_CURRENTLY_READING_TEXT);
 		currentlyReading.setBounds(557, 310, 200, 14);
@@ -179,51 +179,52 @@ public class ProfilePanel extends JPanel {
 		currentlyRead.setBounds(557, 542, 200, 14);
 		panel.add(currentlyRead);
 		
-		aboutMe = new JTextArea();
-		aboutMe.setEditable(false);
-		aboutMe.setBounds(557, 141, 554, 127);
-		aboutMe.setLineWrap(true);
-		aboutMe.setWrapStyleWord(true);
-		panel.add(aboutMe);
+		aboutMeValue = new JLabel();
+		aboutMeValue.setVerticalAlignment(SwingConstants.TOP);
+		aboutMeValue.setBounds(557, 141, 554, 127);
+		panel.add(aboutMeValue);
 		
-		aboutMeEditButton = new JButton();
-		aboutMeEditButton.setText("Edit");
-		aboutMeEditButton.setEnabled(true);
-		aboutMeEditButton.setBounds(1024, 281, 87, 16);
-		panel.add(aboutMeEditButton);
+		prefGenreLabel = new JLabel(PREFERRED_GENRE_TEXT);
+		prefGenreLabel.setBounds(47, 337, 118, 22);
+		panel.add(prefGenreLabel);
 		
-		aboutMeCancelButton = new JButton();
-		aboutMeCancelButton.setText("Cancel");
-		aboutMeCancelButton.setEnabled(false);
-		aboutMeCancelButton.setBounds(927, 281, 87, 16);
-		panel.add(aboutMeCancelButton);
+		prefGenreValue = new JLabel(EMPTY);
+		prefGenreValue.setVerticalAlignment(SwingConstants.TOP);
+		prefGenreValue.setBounds(182, 342, 306, 50);
+		panel.add(prefGenreValue);
+
+		commentLabel = new JLabel(COMMENTS_TEXT);
+		commentLabel.setBounds(47, 402, 103, 16);
+		panel.add(commentLabel);
 		
-		try {
-			reloadTable();
-		} catch (UserIDDoesNotExistException e) {
-			throw new RuntimeException(e);
-		}
+		commentListModel = new DefaultListModel<CommentDto>();
+		commentList = new JList<CommentDto>(commentListModel);
+		
+		commentList.setCellRenderer(new MultiLineCellRendererForUser());
+		
+		commentPane = new JScrollPane(commentList);
+		commentPane.setBounds(32, 430, 429, 322);
+		panel.add(commentPane);
+		
+		reloadTable();
 		setFields();
+		displayComments();
 	}
 
 	private void setFields() {
-		userName.setText(this.user.getUser().getUserName());
-		firstName.setText(this.user.getUser().getFirstName());
-		lastName.setText(this.user.getUser().getLastName());
-		dateOfBirth.setText(EMPTY + this.user.getUser().getDob());
-		email.setText(this.user.getUser().getEmail());
-		country.setText(this.user.getUser().getCountry());
-		joinDate.setText(EMPTY + this.user.getUser().getJoinDate());
-		comicsFinished.setText(EMPTY + this.user.getUser().getComicsFinished());
-		comicsReading.setText(EMPTY + this.user.getUser().getComicsReading());
-		aboutMe.setText(this.user.getUser().getAboutMe());
+		userNameValue.setText(this.user.getUser().getUserName());
+		firstNameValue.setText(this.user.getUser().getFirstName());
+		lastNameValue.setText(this.user.getUser().getLastName());
+		dateOfBirthValue.setText(EMPTY + this.user.getUser().getDob());
+		countryValue.setText(this.user.getUser().getCountry());
+		joinDateValue.setText(EMPTY + this.user.getUser().getJoinDate());
+		comicsFinishedValue.setText(EMPTY + this.user.getUser().getComicsFinished());
+		comicsReadingValue.setText(EMPTY + this.user.getUser().getComicsReading());
+		aboutMeValue.setText("<html>" + this.user.getUser().getAboutMe() + "</html>");
+		prefGenreValue.setText("<htm>" + GenreUtils.genreListToString(this.user.getPreferredGenre()) + "</htm>");
 	}
 
-	public void reloadTable() throws UserIDDoesNotExistException {
-
-		UserDaoImpl userDaoImpl = new UserDaoImpl(HibernateUtils.getSessionFactory());
-		user.setUser(UserMapper.toDto(userDaoImpl.getUserById(user.getUser().getId())));
-		setFields();
+	public void reloadTable() {
 
 		ComicBookReadingListDaoImpl readingListDaoImpl = new ComicBookReadingListDaoImpl(HibernateUtils.getSessionFactory());
 		ComicBookFinishedListDaoImpl readListDaoImpl = new ComicBookFinishedListDaoImpl(HibernateUtils.getSessionFactory());
@@ -241,39 +242,27 @@ public class ProfilePanel extends JPanel {
 		finishedTableModel = new ReadingAndFinishedComicBookTableModel(finishedListDTO);
 
 		readingTable = new JTable(readingTableModel);
-		List<ComicBookDto> finalReadingListDTO = readingListDTO;
-		readingTable.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int row = readingTable.rowAtPoint(e.getPoint());
-				int col = readingTable.columnAtPoint(e.getPoint());
-				if (col == 0 && e.getClickCount() == 2) {
-					ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(finalReadingListDTO, readingTable.getValueAt(row, col).toString());
-					ComicBookSearchUtils.loadComicBookPage(comicBook, user);
-				}
-			}
-		});
+		
 		readingPane = new JScrollPane(readingTable);
 		readingPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		readingPane.setBounds(557, 337, 554, 185);
 		panel.add(readingPane);
 
 		readTable = new JTable(finishedTableModel);
-		List<ComicBookDto> finalFinishedListDTO = finishedListDTO;
-		readTable.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int row = readTable.rowAtPoint(e.getPoint());
-				int col = readTable.columnAtPoint(e.getPoint());
-				if (col == 0 && e.getClickCount() == 2) {
-					ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(finalFinishedListDTO, readTable.getValueAt(row, col).toString());
-					ComicBookSearchUtils.loadComicBookPage(comicBook, user);
-				}
-			}
-		});
+		
 		readPane = new JScrollPane(readTable);
 		readPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		readPane.setBounds(557, 567, 554, 185);
 		panel.add(readPane);
+	}
+	
+	public void displayComments(){
+		commentListModel.removeAllElements();
+
+		for (CommentDto c : commentsbyUser) {
+			commentListModel.addElement(c);
+		}
+
+		commentList.setModel(commentListModel);
 	}
 }

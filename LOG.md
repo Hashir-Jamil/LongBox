@@ -250,10 +250,12 @@
 ## Tuesday, March 19th, 2024
     
     Hashir: Added unit tests in business logic and domain object classes and improved data access object integration tests. Added service layer integration tests. Finished recommendations user story. Refactored comic book tables on user profile view page. Hotfixed mapping of genres for users preferred genres between entity and dto. Created empty test classes for tests perceived to be insufficient. These tests will be done by everyone as they span across everyone's features.
+    Ahan: Refactoring: removed all instances of UserDto and User constructors throughout the code, used Java Beans in its place.
 
 ## Wednesday, March 20th, 2024
 
     Hashir: Refactored ComicBookDTO and ComicBook entity classes to remove constructors and associated cascades to unecessary tests. This is in line with refactor task 3 in refactor document and refactoring developer stories.
-    Group Meeting (All Members): Met with professor and discussed documentation for submission, bug reports, issue tracking, 
+    Group Meeting (All Members): Met with professor and discussed documentation for submission, bug reports, issue tracking,
+    Ahan: Refactoring: removed all instances of CommentDto and Comment constructors throughout the code, used Java Beans in its place. Also made a frame for other user that views its comments.
     
     

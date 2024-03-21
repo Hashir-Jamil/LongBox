@@ -125,6 +125,50 @@ public class ComicBookDtoTest {
         String expectedToString = "ComicBookDTO{id=1, seriesTitle='Series Title', author='Author', artist='Artist', genres=[Genre1, Genre2], description='Description', numberOfIssues=10, publisher='Publisher', yearPublished=2022, dateAdded=" + comicBookDto.getDateAdded() + ", favoritesCount=" + comicBookDto.getFavoritesCount() + '}';
         assertEquals(expectedToString, comicBookDto.toString());
     }
+    
+    @Test
+    public void favoritesCountTest_1() {
+    	ComicBookDto EndOfEvangelion = new ComicBookDto();
+    	EndOfEvangelion.setFavoritesCount(208);
+    	EndOfEvangelion.setNorthAmericaFavoritesCount(31);
+    	EndOfEvangelion.setSouthAmericaFavoritesCount(28);
+    	EndOfEvangelion.setEuropeFavoritesCount(22);
+    	EndOfEvangelion.setAsiaFavoritesCount(98);
+    	EndOfEvangelion.setAfricaFavoritesCount(12);
+    	EndOfEvangelion.setOceaniaFavoritesCount(16);
+    	EndOfEvangelion.setAntarcticaFavoritesCount(1);
+    	
+    	assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getNorthAmericaFavoritesCount());
+    	assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getSouthAmericaFavoritesCount());
+    	assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getEuropeFavoritesCount());
+    	assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getAsiaFavoritesCount());
+    	assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getAfricaFavoritesCount());
+    	assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getOceaniaFavoritesCount());
+    	assertTrue(EndOfEvangelion.getFavoritesCount() >= EndOfEvangelion.getAntarcticaFavoritesCount());
+    }
+    
+    @Test
+    public void favoritesCountTest_2() {
+    	ComicBookDto EndOfEvangelion = new ComicBookDto();
+    	EndOfEvangelion.setFavoritesCount(208);
+    	EndOfEvangelion.setNorthAmericaFavoritesCount(31);
+    	EndOfEvangelion.setSouthAmericaFavoritesCount(28);
+    	EndOfEvangelion.setEuropeFavoritesCount(22);
+    	EndOfEvangelion.setAsiaFavoritesCount(98);
+    	EndOfEvangelion.setAfricaFavoritesCount(12);
+    	EndOfEvangelion.setOceaniaFavoritesCount(16);
+    	EndOfEvangelion.setAntarcticaFavoritesCount(1);
+    	
+    	assertEquals(EndOfEvangelion.getFavoritesCount(),
+    			EndOfEvangelion.getNorthAmericaFavoritesCount() + 
+    			EndOfEvangelion.getSouthAmericaFavoritesCount() +
+    			EndOfEvangelion.getEuropeFavoritesCount() +
+    			EndOfEvangelion.getAsiaFavoritesCount() +
+    			EndOfEvangelion.getAfricaFavoritesCount() +
+    			EndOfEvangelion.getOceaniaFavoritesCount() +
+    			EndOfEvangelion.getAntarcticaFavoritesCount()
+    			);
+    }
 
 /*    @Test
     public void testComicBookDtoConstructor() {

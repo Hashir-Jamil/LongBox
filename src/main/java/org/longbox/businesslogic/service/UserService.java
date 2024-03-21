@@ -1,6 +1,9 @@
 package org.longbox.businesslogic.service;
 
 import lombok.*;
+
+import java.util.List;
+
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
@@ -52,5 +55,9 @@ public class UserService {
 
         public void saveUser(UserDto userDto) throws UsernameOrEmailExistsException {
             userDao.saveUser(UserMapper.toEntity(userDto));
+        }
+        
+        public List<UserDto> getAllUsers(){
+        	return userDao.getAllUsers();
         }
 }

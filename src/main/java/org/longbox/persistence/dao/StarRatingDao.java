@@ -8,10 +8,10 @@ public interface StarRatingDao {
 
 	StarRating getStarRatingById(long userId, long comicId);
 
-    public List<StarRatingDto> getStarRatingsByComic(Long comicID);
+    public List<StarRatingDto> getStarRatingsByComic(Long comicId);
 
     void saveStarRating(StarRatingDto StarRatingDTO);
 
-    public List<StarRatingDto> getStarRatingsByUser(Long userID);
+    public List<StarRatingDto> getStarRatingsByUser(Long userId);
 
 }

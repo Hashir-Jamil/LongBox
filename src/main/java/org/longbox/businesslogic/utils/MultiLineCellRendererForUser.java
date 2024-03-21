@@ -7,11 +7,11 @@ import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MultiLineCellRenderer extends JLabel implements ListCellRenderer<CommentDto> {
+public class MultiLineCellRendererForUser extends JLabel implements ListCellRenderer<CommentDto> {
     private static final long serialVersionUID = 1L;
 	private static final int LINE_HEIGHT = 18; 
-
-    public MultiLineCellRenderer() {
+	private static final int lineWidth = 350; 
+    public MultiLineCellRendererForUser() {
         setOpaque(true);
     }
 
@@ -25,10 +25,10 @@ public class MultiLineCellRenderer extends JLabel implements ListCellRenderer<Co
         int height = (numLines + 1) * LINE_HEIGHT;
 
         // Set the text and preferred size
-        setText("<html><b>" + value.getUserName() + "</b>: " + value.getMessage() +
+        setText("<html><b>" + value.getComicBook().getSeriesTitle() + "</b>: " + value.getMessage() +
                 " <font color='gray'><i>" + formatDate(value.getCommentDate()) + "</i></font></html>");
 
-        setPreferredSize(new Dimension(495, height));
+        setPreferredSize(new Dimension(lineWidth, height));
         setBackground(isSelected ? list.getSelectionBackground() : list.getBackground());
         setForeground(isSelected ? list.getSelectionForeground() : list.getForeground());
         setVerticalAlignment(SwingConstants.TOP);
@@ -37,7 +37,7 @@ public class MultiLineCellRenderer extends JLabel implements ListCellRenderer<Co
     }
 
     private int calculateNumLines(String text) {
-        int lineWidth = 495; 
+        
         FontMetrics fm = getFontMetrics(getFont());
 
         int numLines = 0;

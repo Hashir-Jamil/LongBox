@@ -24,6 +24,7 @@ public class HomeFrame extends JFrame {
     private final String TRENDING_PANEL = "Trending Panel";
     private final String RECCOMENDEDATIONS_PANEL = "Recommendations Panel";
     private final String FRAME_TITLE = "LongBox - Home Page";
+    private final String SOCIAL_PANEL = "Social Panel";
     private final int BUTTON_WIDTH = 130;
     private final int BUTTON_X_POSITION = 10;
     private final int BUTTON_Y_POSITION = 11;
@@ -44,9 +45,11 @@ public class HomeFrame extends JFrame {
     private ProfilePanel profilePanel;
     private AddComicToRepoPanel addComicToRepoPanel;
     private RecommendationsPanel recommendationsPanel;
+    private SocialPanel socialPanel;
     private CardLayout cardLayout;
     private UserSession userSession;
     private JLabel userNameLabel;
+    private JButton socialButton;
     
     public HomeFrame(UserSession user) {
     	this.userSession = user;
@@ -55,8 +58,10 @@ public class HomeFrame extends JFrame {
     	favoritesPanel.setUserSession(this.userSession);
         userNameLabel = new JLabel(user.getUser().getUserName());
         userNameLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        userNameLabel.setBounds(811, 19, 181, 16);
+        userNameLabel.setBounds(875, 14, 172, 16);
         nexusPanel.add(userNameLabel);
+        
+        
     }
 
     private void buildHomeFrame() {
@@ -77,10 +82,13 @@ public class HomeFrame extends JFrame {
         addComicToRepoPanel = new AddComicToRepoPanel();
         trendingComicsPanel = new TrendingPanel();
         recommendationsPanel = new RecommendationsPanel(this.userSession);
+        socialPanel = new SocialPanel();
+        
         activityPanel = new JPanel();
         activityPanel.setBounds(10, 47, 1164, 803);
         nexusPanel.add(activityPanel);
         cardLayout = new CardLayout();
+        
         activityPanel.setLayout(cardLayout);
         activityPanel.add(trendingComicsPanel, TRENDING_PANEL);
         activityPanel.add(comicRepoPanel, COMIC_REPO_PANEL);
@@ -88,6 +96,8 @@ public class HomeFrame extends JFrame {
         activityPanel.add(profilePanel, PROFILE_PANEL);
         activityPanel.add(addComicToRepoPanel, ADD_COMIC_TO_REPO);
         activityPanel.add(recommendationsPanel, RECCOMENDEDATIONS_PANEL);
+        activityPanel.add(socialPanel, SOCIAL_PANEL);
+        
         cardLayout.show(activityPanel, RECCOMENDEDATIONS_PANEL);
 
         //adding buttons
@@ -114,9 +124,13 @@ public class HomeFrame extends JFrame {
         recommendationsButton = new JButton("Recommended");
         recommendationsButton.setBounds(BUTTON_X_POSITION + 5*BUTTON_WIDTH, BUTTON_Y_POSITION, BUTTON_WIDTH, BUTTON_HEIGHT);
         nexusPanel.add(recommendationsButton);
+        
+        socialButton = new JButton("Social");
+        socialButton.setBounds(BUTTON_X_POSITION + 6*BUTTON_WIDTH, BUTTON_Y_POSITION, BUTTON_WIDTH, BUTTON_HEIGHT);
+        nexusPanel.add(socialButton);
 
         logOutButton = new JButton("Log Out");
-        logOutButton.setBounds(1024, BUTTON_Y_POSITION, BUTTON_WIDTH, BUTTON_HEIGHT);
+        logOutButton.setBounds(1044, 11, BUTTON_WIDTH, BUTTON_HEIGHT);
         nexusPanel.add(logOutButton);
     }
 }
