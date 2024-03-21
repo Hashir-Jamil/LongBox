@@ -31,7 +31,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
         comicBookStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (ComicBookDto comic : comicBookStubData) {
             if (comic.getId() == id) {
-                ComicBook c = new ComicBook(comic);
+                ComicBook c = ComicBookMapper.toEntity(comic);
                 c.setId(comic.getId());
                 return c;
             }
@@ -44,7 +44,7 @@ public class ComicBookStubDb implements ComicBookDao, JsonConvertor {
         comicBookStubData = deserializeStubData(ABSOLUTE_FILE_PATH);
         for (ComicBookDto comic : comicBookStubData) {
             if (Objects.equals(comic.getSeriesTitle(), seriesTitle)) {
-                ComicBook c = new ComicBook(comic);
+                ComicBook c = ComicBookMapper.toEntity(comic);
                 c.setId(comic.getId());
                 return c;
             }
