@@ -3,7 +3,7 @@ package org.longbox.businesslogic.controller;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.service.CommentService;
 import org.longbox.config.HibernateUtils;
-import org.longbox.domainobjects.dto.CommentDto;
+
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
 import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
 import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
@@ -37,15 +37,7 @@ public class ComicBookInfoController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.comicBookInfoPanel.getAddCommentButton()){
-
-            String message = this.comicBookInfoPanel.getCommentBox().getText();
-
-            CommentDto newComment = new CommentDto();
-            newComment.setUser(this.comicBookInfoPanel.getUserSession().getUser());
-            newComment.setComicBook(this.comicBookInfoPanel.getComicBookDTO());
-            newComment.setMessage(message);
-
-            commentService.saveComment(newComment);
+            commentService.saveComment(this.comicBookInfoPanel.getComment());
             this.comicBookInfoPanel.displayComments();
 
         } else if (e.getSource() == this.comicBookInfoPanel.getAddToFavouritesButton()) {

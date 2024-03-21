@@ -20,6 +20,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -372,5 +373,21 @@ public class ComicBookInfoPanel extends JPanel {
 		else {
 			removeFromToReadingButton.setEnabled(true);
 		}
+	}
+
+	public CommentDto getComment(){
+
+		String message = this.commentBox.getText();
+
+		CommentDto newComment = new CommentDto();
+		newComment.setUser(this.userSession.getUser());
+		newComment.setComicBook(comicBookDTO);
+		newComment.setMessage(message);
+		newComment.setCommentDate(new Date());
+		newComment.setComicBookId(this.comicBookDTO.getId());
+		newComment.setUserId(this.userSession.getUser().getId());
+		newComment.setUserName(this.userSession.getUser().getUserName());
+
+		return newComment;
 	}
 }
