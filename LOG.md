@@ -258,4 +258,6 @@
     Group Meeting (All Members): Met with professor and discussed documentation for submission, bug reports, issue tracking,
     Ahan: Refactoring: removed all instances of CommentDto and Comment constructors throughout the code, used Java Beans in its place. Also made a frame for other user that views its comments.
     
+## Thursday, March 21st, 2024
     
+    Hashir: Worked on refactoring tasks and addressed bugs
