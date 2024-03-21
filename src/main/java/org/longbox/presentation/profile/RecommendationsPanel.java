@@ -43,7 +43,7 @@ public class RecommendationsPanel extends JPanel {
 			recommendationsTitleLabel = new JLabel(PAGE_TITLE);
 			recommendationsTitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			recommendationsTitleLabel.setFont(new Font("Calibri", Font.PLAIN, 30));
-			recommendationsTitleLabel.setBounds(396, 11, 372, 43);
+			recommendationsTitleLabel.setBounds(396, 11, 433, 43);
 			panel.add(recommendationsTitleLabel);
 			
 			titleSeparator = new JSeparator();
