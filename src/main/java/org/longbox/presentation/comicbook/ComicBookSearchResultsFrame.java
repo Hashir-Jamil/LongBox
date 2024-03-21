@@ -71,4 +71,8 @@ public class ComicBookSearchResultsFrame extends JFrame {
 	public JTable getComicBookTable() {
 		return this.comicBookTable;
 	}
+	
+	public String getTitle() {
+		return this.lblNewLabel.getText();
+	}
 }

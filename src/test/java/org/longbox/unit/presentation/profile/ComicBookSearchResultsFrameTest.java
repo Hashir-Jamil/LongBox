@@ -41,8 +41,37 @@ class ComicBookSearchResultsFrameTest {
     }
     
     @Test
-    public void testComicBookTable() {
-        assertNotNull(frame.getComicBookTable());
+    public void testComicBookTitle_1() {
+        assertNotNull(frame.getTitle());
+        assertTrue(frame.getTitle().equals("Results for Nexus in Title"));
+    }
+    
+    @Test
+    public void testComicBookTitle_2() {
+    	frame = new ComicBookSearchResultsFrame(testResults, "Manga", "Genre", testUser);
+        assertNotNull(frame.getTitle());
+        assertTrue(frame.getTitle().equals("Results for Manga in Genre"));
+    }
+    
+    @Test
+    public void testComicBookTitle_3() {
+    	frame = new ComicBookSearchResultsFrame(testResults, "Manabe", "Author", testUser);
+        assertNotNull(frame.getTitle());
+        assertTrue(frame.getTitle().equals("Results for Manabe in Author"));
+    }
+    
+    @Test
+    public void testComicBookTitle_4() {
+    	frame = new ComicBookSearchResultsFrame(testResults, "Dark Horse", "Publisher", testUser);
+        assertNotNull(frame.getTitle());
+        assertTrue(frame.getTitle().equals("Results for Dark Horse in Publisher"));
+    }
+    
+    @Test
+    public void testComicBookTitle_5() {
+    	frame = new ComicBookSearchResultsFrame(testResults, "1999", "Year", testUser);
+        assertNotNull(frame.getTitle());
+        assertTrue(frame.getTitle().equals("Results for 1999 in Year"));
     }
 
     @Test
