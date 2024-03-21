@@ -46,7 +46,7 @@ public class OtherUserProfileFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JSeparator topSeparator, midSeparator;
-	private JLabel comicCollectionTitle, usernameLabel, firstNameLabel, lastNameLabel, dobLabel, countryLabel, joinDateLabel,
+	private JLabel titleLabel, usernameLabel, firstNameLabel, lastNameLabel, dobLabel, countryLabel, joinDateLabel,
 			readingLabel, finishedLabel, aboutMeLabel, userNameValue, firstNameValue, lastNameValue, dateOfBirthValue, countryValue, joinDateValue,
 			comicsReadingValue, comicsFinishedValue, currentlyReading, currentlyRead, aboutMeValue;
 	private JPanel panel;
@@ -73,18 +73,19 @@ public class OtherUserProfileFrame extends JFrame {
 	}
 
 	private void initProfilePage() {
-		setBounds(10, 47, 1164, 803);
+		setBounds(10, 47, 1164, 850);
 		getContentPane().setLayout(new BorderLayout());
 		setVisible(true);
+		setLocationRelativeTo(null);
 		
 		panel = new JPanel();
 	    panel.setLayout(null);
 	    
-	    comicCollectionTitle = new JLabel(PANEL_LABEL);
-		comicCollectionTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		comicCollectionTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		comicCollectionTitle.setBounds(182, 11, 800, 43);
-		panel.add(comicCollectionTitle);
+	    titleLabel = new JLabel("About " + this.user.getUserName());
+		titleLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		titleLabel.setBounds(182, 11, 800, 43);
+		panel.add(titleLabel);
 		
 		getContentPane().add(panel, BorderLayout.CENTER);
 		
@@ -221,7 +222,7 @@ public class OtherUserProfileFrame extends JFrame {
 		comicsFinishedValue.setText(EMPTY + this.user.getUser().getComicsFinished());
 		comicsReadingValue.setText(EMPTY + this.user.getUser().getComicsReading());
 		aboutMeValue.setText("<html>" + this.user.getUser().getAboutMe() + "</html>");
-		prefGenreValue.setText("<htm>" + GenreUtils.genreListToString(this.user.getPreferredGenre()) + "</htm>");
+		prefGenreValue.setText("<html>" + GenreUtils.genreListToString(this.user.getPreferredGenre()) + "</html>");
 	}
 
 	public void reloadTable() {
