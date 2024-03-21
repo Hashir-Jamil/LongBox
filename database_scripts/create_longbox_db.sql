@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS "star_ratings" (
     "id" bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     "comic_book_id" bigint,
     "user_id" bigint,
-    "rating" bigint,
+    "rating" integer
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book_finished_list" (

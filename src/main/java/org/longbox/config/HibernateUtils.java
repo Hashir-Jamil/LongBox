@@ -17,7 +17,8 @@ public class HibernateUtils {
                     .addAnnotatedClass(ComicBookFavoritesList.class)
                     .addAnnotatedClass(ComicBookReadingList.class)
                     .addAnnotatedClass(ComicBookFinishedList.class)
-                    .addAnnotatedClass(Comment.class);
+                    .addAnnotatedClass(Comment.class)
+                    .addAnnotatedClass(StarRating.class);
             sessionFactory = configuration.buildSessionFactory();
         }
         return sessionFactory;
