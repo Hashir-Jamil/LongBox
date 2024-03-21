@@ -68,7 +68,12 @@ public class CommentDaoImpl implements CommentDao {
             user = (User) session.merge(user);
             comicBook = (ComicBook) session.merge(comicBook);
 
-            Comment comment = new Comment(commentDto, user, comicBook);
+            Comment comment = new Comment();
+            comment.setUser(user);
+            comment.setUserName(user.getUserName());
+            comment.setComicBook(comicBook);
+            comment.setMessage(commentDto.getMessage());
+            comment.setCommentDate(commentDto.getCommentDate());
 
             session.persist(comment);
             transaction.commit();
