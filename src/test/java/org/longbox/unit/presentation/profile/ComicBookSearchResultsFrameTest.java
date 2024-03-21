@@ -2,7 +2,6 @@ package org.longbox.unit.presentation.profile;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
 import java.util.*;
 
 import org.junit.jupiter.api.*;
@@ -10,7 +9,6 @@ import org.longbox.businesslogic.UserSession;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
 import org.longbox.presentation.tablemodels.ComicBookTableModel;
-import org.mockito.Mockito;
 
 class ComicBookSearchResultsFrameTest {
 
@@ -21,7 +19,6 @@ class ComicBookSearchResultsFrameTest {
     @BeforeAll
     public static void setUp() {
         testResults = new ArrayList<>();
-        testUser = Mockito.mock(UserSession.class);
         frame = new ComicBookSearchResultsFrame(testResults, "Nexus", "Title", testUser);
     }
 
