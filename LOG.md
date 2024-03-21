@@ -256,8 +256,9 @@
 
     Hashir: Refactored ComicBookDTO and ComicBook entity classes to remove constructors and associated cascades to unecessary tests. This is in line with refactor task 3 in refactor document and refactoring developer stories.
     Group Meeting (All Members): Met with professor and discussed documentation for submission, bug reports, issue tracking,
-    Ahan: Refactoring: removed all instances of CommentDto and Comment constructors throughout the code, used Java Beans in its place. Also made a frame for other user that views its comments.
+    Ahan: Refactoring: removed all instances of CommentDto and Comment constructors throughout the code, used Java Beans in its place. Also made a frame for other user that views its comments. Added a social panel that currently displays all the users registerd.
     
 ## Thursday, March 21st, 2024
     
     Hashir: Worked on refactoring tasks and addressed bugs
+    Ahan: Completed my user story for ITR3, full functioning of social panel with a filter feature to filter based on the number of comics reading/ finished and more/ less.
