@@ -18,11 +18,11 @@ public interface UserDao {
     User getUserByEmail(String email) throws EmailDoesNotExistException;
 
     void saveUser(User user) throws UsernameOrEmailExistsException;
-
-    boolean deleteUser(User user);
-
-    boolean modifyUser(User user);
     
     List<UserDto> getAllUsers();
+    
+    List<UserDto> getUsersMoreThan(String fieldName, int value);
+    
+    List<UserDto> getUsersLessThan(String fieldName, int value);
 
 }

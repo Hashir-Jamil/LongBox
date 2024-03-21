@@ -82,16 +82,6 @@ public class UserStubDb implements UserDao, JsonConvertor {
     }
 
     @Override
-    public boolean deleteUser(User user) {
-        return false;
-    }
-
-    @Override
-    public boolean modifyUser(User user) {
-        return false;
-    }
-
-    @Override
     public void serializeStubData() {
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
         String json = gson.toJson(userStubData);
@@ -119,5 +109,15 @@ public class UserStubDb implements UserDao, JsonConvertor {
 	@Override
 	public List<UserDto> getAllUsers() {
 		return userStubData;
+	}
+
+	@Override
+	public List<UserDto> getUsersMoreThan(String fieldName, int value) {
+		return null;
+	}
+
+	@Override
+	public List<UserDto> getUsersLessThan(String fieldName, int value) {
+		return null;
 	}
 }
