@@ -12,6 +12,7 @@ import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.presentation.profile.HomeFrame;
 import org.longbox.presentation.profile.ProfilePanel;
+import org.longbox.presentation.profile.SocialPanel;
 import org.longbox.presentation.tablemodels.ComicBookTableModel;
 
 import javax.swing.*;
@@ -46,6 +47,7 @@ public class HomeController implements ActionListener {
         this.homeFrame.getAddComicButton().addActionListener(this);
         this.homeFrame.getTrendingButton().addActionListener(this);
         this.homeFrame.getRecommendationsButton().addActionListener(this);
+        this.homeFrame.getSocialButton().addActionListener(this);
     }
 
     @Override
@@ -98,6 +100,11 @@ public class HomeController implements ActionListener {
         if(e.getSource() == this.homeFrame.getRecommendationsButton()) {
             this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getRECCOMENDEDATIONS_PANEL());
         }
+        
+        if (e.getSource() == this.homeFrame.getSocialButton()) {
+        	this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getSOCIAL_PANEL());
+        }
+       
     }
 
     private void saveAddComicBookFormInput() throws UserIDDoesNotExistException {
