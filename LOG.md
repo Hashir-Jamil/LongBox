@@ -261,4 +261,4 @@
 ## Thursday, March 21st, 2024
     
     Hashir: Worked on refactoring tasks and addressed bugs
-    Ahan: Completed my user story for ITR3, full functioning of social panel with a filter feature to filter based on the number of comics reading/ finished and more/ less. Added tests for a new method used.
+    Ahan: Completed my user story for ITR3, full functioning of social panel with a filter feature to filter based on the number of comics reading/ finished and more/ less. Added tests for a new method used. Added more enteries in the script for users.
