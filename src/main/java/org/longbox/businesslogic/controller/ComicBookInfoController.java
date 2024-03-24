@@ -2,21 +2,24 @@ package org.longbox.businesslogic.controller;
 
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.service.CommentService;
+import org.longbox.businesslogic.service.UserService;
 import org.longbox.config.HibernateUtils;
 
-import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
-import org.longbox.persistence.dao.ComicBookFinishedListDaoImpl;
-import org.longbox.persistence.dao.ComicBookReadingListDaoImpl;
-import org.longbox.persistence.dao.CommentDaoImpl;
+import org.longbox.domainobjects.dto.UserDto;
+import org.longbox.persistence.dao.*;
 import org.longbox.presentation.comicbook.ComicBookInfoPanel;
+import org.longbox.presentation.otheruser.OtherUserProfileFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class ComicBookInfoController implements ActionListener {
+public class ComicBookInfoController implements ActionListener, MouseListener {
     private ComicBookInfoPanel comicBookInfoPanel;
     private CommentDaoImpl commentDaoImpl = new CommentDaoImpl(HibernateUtils.getSessionFactory());
     private CommentService commentService = new CommentService(commentDaoImpl);
+    private UserService userService = new UserService(new UserDaoImpl(HibernateUtils.getSessionFactory()));;
     public ComicBookInfoController(ComicBookInfoPanel comicBookInfoPanel){
         this.comicBookInfoPanel = comicBookInfoPanel;
         addListeners();
@@ -32,6 +35,7 @@ public class ComicBookInfoController implements ActionListener {
         this.comicBookInfoPanel.getRemoveFromFavouritesButton().addActionListener(this);
         this.comicBookInfoPanel.getRemoveFromToReadingButton().addActionListener(this);
         this.comicBookInfoPanel.getRemoveFromFinishedButton().addActionListener(this);
+        this.comicBookInfoPanel.getCommentList().addMouseListener(this);
     }
 
     @Override
@@ -100,5 +104,38 @@ public class ComicBookInfoController implements ActionListener {
             this.comicBookInfoPanel.getRemoveFromToReadingButton().setEnabled(false);
             this.comicBookInfoPanel.readingButtonStates();
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if(e.getSource() ==  this.comicBookInfoPanel.getCommentList() && e.getClickCount() == 2) {
+            UserDto userDto = null;
+            try {
+                userDto = userService.getUserById(this.comicBookInfoPanel.getCommentList().getSelectedValue().getUserId());
+            } catch (UserIDDoesNotExistException ex) {
+                throw new RuntimeException(ex);
+            }
+            new OtherUserProfileFrame(userDto);
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
