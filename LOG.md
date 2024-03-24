@@ -232,6 +232,7 @@
     Group Meeting (Ali, Ahan, Eric, Hashir): discussed division of stories for take home assignment. Divided stories evenly & discussed conventions for e2e tests, bug reports, github issues and code review checklists. Agree upon conventions for these documentations and made template for take home assignment.
     Hashir: did e2e testing and wrote bug reports.
     Ahan: Fixed reported bugs related to my user stories.
+    Ali: Fixed reported bugs related to FavoritesPanel.
     
 ## Saturday, March 16th, 2024
 
@@ -262,3 +263,5 @@
     
     Hashir: Worked on refactoring tasks and addressed bugs
     Ahan: Completed my user story for ITR3, full functioning of social panel with a filter feature to filter based on the number of comics reading/ finished and more/ less. Added tests for a new method used. Added more enteries in the script for users.
+## Sunday, March 24th, 2024
+    Ali: Completed my user story for ITR3, now a user can view another user profile from comments by double clicking
