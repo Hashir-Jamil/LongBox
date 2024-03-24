@@ -237,27 +237,32 @@
 ## Saturday, March 16th, 2024
 
 	Oscar: Started working on star rating feature.
+    	Eric: Refactroed ComicBookSearchResults logic and functionality into its respcitive controller class. Refactored trending functionality to its respective controller class as well. Comic favourites count now increments through postgres function. Renamed instances of 'comic collection...' to 'comic repo...'.
 	
 ## Sunday, March 17th, 2024
 
 	Oscar: Almost finished with star rating feature.
+    	Eric: Refactored 'National Favoruties' to 'Continetnental/Regional Favourites'. Comicbooks now have a favourites count for every continent and users now have a continent field. Regional favourites logic is seperate fom all time favourites
 	
 ## Monday, March 18th, 2024
 
 	Group Meeting (All Members): Discussed code review, refactoring & end-2-end testing. Fully divided and confirmed everything a second time so that everyone can do the idnvidual parts of the assignment.
     Oscar: Refactored ProfilePanel so that the functionality of the aboutMe buttons are moved to ProfileController.
     Hashir: Performed code review, created problem reports/GitHub issues. Fixed add comic book form issue [BR4]. Worked on refactoring document and develoepr stories (90% finished, rest of group should contribute to these as well). Integrated Jacoco reports into builid system test tasks.
+    Eric: User and comic book DTO further refined, proper mappings, and selection for continetns in trending
 
 ## Tuesday, March 19th, 2024
     
     Hashir: Added unit tests in business logic and domain object classes and improved data access object integration tests. Added service layer integration tests. Finished recommendations user story. Refactored comic book tables on user profile view page. Hotfixed mapping of genres for users preferred genres between entity and dto. Created empty test classes for tests perceived to be insufficient. These tests will be done by everyone as they span across everyone's features.
     Ahan: Refactoring: removed all instances of UserDto and User constructors throughout the code, used Java Beans in its place.
+    Eric: Schema handles regional favourite for users and comic books with proper incrementation, users now get automatically assigned a continent based on the country they select to sign up with during registatation
 
 ## Wednesday, March 20th, 2024
 
     Hashir: Refactored ComicBookDTO and ComicBook entity classes to remove constructors and associated cascades to unecessary tests. This is in line with refactor task 3 in refactor document and refactoring developer stories.
     Group Meeting (All Members): Met with professor and discussed documentation for submission, bug reports, issue tracking,
     Ahan: Refactoring: removed all instances of CommentDto and Comment constructors throughout the code, used Java Beans in its place. Also made a frame for other user that views its comments. Added a social panel that currently displays all the users registerd.
+    Eric: Most, if not all, countries are mapped to their proper continent. Added test cases for favouriting, trending, and advanced search
     
 ## Thursday, March 21st, 2024
     
