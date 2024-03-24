@@ -481,7 +481,122 @@ VALUES
 
     ('Captain Victory and the Galactic Rangers', 'Jack Kirby', 'Jack Kirby',
      'Science Fiction, Superhero',
-     'Empty', 13, 'Pacific Comics', 1981, '2024-02-25'),
+     'Empty', 13, 'Pacific Comics', 1981, '2024-02-25'), 
+
+    ('Vampire Doll', 'Erika Kari', 'Erika Kari',
+     'Vampire, Comedy, Manga',
+     'Empty', 32, 'TokyoPop', 2006, '2024-03-24'),
+
+	
+    ('Full Metal Panic!', 'Shouji Gatou', 'Retsu Tateo',
+     'Science Fiction, Military, School Life, Comedy, Manga',
+     'Empty', 13, 'ADV', 2004, '2024-03-24'),
+
+	
+    ('American Flagg!', 'Howard Chaykin', 'Howard Chaykin',
+     'Science Fiction, Political, Action, Satire',
+     'Empty', 50, 'First Comics', 1983, '2024-03-24'),
+
+	
+    ('Gunsmith Cats', 'Kenichi Sonada', 'Kenichi Sonada',
+     'Gunslinger, Girls With Guns, Action, Comedy, Manga',
+     'Empty', 32, 'Dark Horse', 1998, '2024-03-24'),
+
+	
+    ('Bastard!! Heavy Metal Dark Fantasy', 'Kazushi Hagiwara', 'Kazushi Hagiwara',
+     'Dark Fantasy, Fantasy, Action, Manga',
+     'Empty', 26, 'Viz', 1999, '2024-03-24'),
+
+	
+    ('Robotech The Macross Saga', 'Carl Macek', 'Neil Vokes',
+     'Science Fiction, Mecha, Space Opera',
+     'Empty', 52, 'Comico', 1982, '2024-03-24'),
+
+	
+    ('Slayers', 'Hajime Kanzaka', 'Rui Araizumi',
+     'Fantasy, Adventure, Comedy, Satire, Manga',
+     'Empty', 5, 'CPM', 1995, '2024-03-24'),
+
+	
+    ('Marmalade Bot', 'Wataru Yoshizumi', 'Wataru Yoshizumi',
+     'Slice of Life, Manga, Drama',
+     'Empty', 5, 'TokyoPop', 2003, '2024-03-24'),
+
+	
+    ('Daragon Knights', 'Mineko Ohkami', 'Mineko Ohkami',
+     'Fantasy, Drama, Manga',
+     'Empty', 6, 'TokyoPop', 2002, '2024-03-24'),
+
+	
+    ('Cyber 7 (Vol 1)', 'Shuho Itashi', 'Shuho Itashi',
+     'Fantasy, Manga, Science Fiction',
+     'Empty', 7, 'Eclipse', 1988, '2024-03-24'),
+
+	
+    ('Cyber 7 (Vol 2)', 'Shuho Itashi', 'Shuho Itashi',
+     'Fantasy, Manga, Science Fiction',
+     'Empty', 6, 'Eclipse', 1989, '2024-03-24'),
+
+	
+    ('Record of Lodoss War The Lady Pharis', 'Ryo Mizuno', 'Akihiro Yamada',
+     'Fantasy, Adventure, Manga',
+     'Empty', 8, 'CPM', 1999, '2024-03-24'),
+
+	
+    ('Record of Lodoss War The Grey Witch', 'Ryo Mizuno', 'Akihiro Yamada',
+     'Fantasy, Adventure, Manga',
+     'Empty', 7, 'CPM', 1999, '2024-03-24'),
+
+	
+    ('Record of Lodoess War Deeedlits Tale', 'Ryo Mizuno', 'Akihiro Yamada',
+     'Fantasy, Adventure, Manga',
+     'Empty', 8, 'CPM', 1999, '2024-03-24'),
+
+	
+    ('DNAgents', 'Mark Evanier', 'Mark Evanier',
+     'Science Fiction, Superhero',
+     'Empty', 34, 'Eclipse', 1983, '2024-03-24'),
+
+	
+    ('Poison Elves', 'Drew Hayes', 'Drew Hayes',
+     'Science Fiction, Drama, Violent',
+     'Empty', 34, 'Sirius', 1995, '2024-03-24'),
+
+	
+    ('The Spirit', 'Will Eisner', 'Will Eisner',
+     'Superhero, Comedy',
+     'Empty', 32, 'Kitchen Sink', 1981, '2024-03-24'),
+
+	
+    ('Black Kiss', 'Howard Chaykin', 'Howard Chaykin',
+     'Drama',
+     'Empty', 19, 'Vortex', 1998, '2024-03-24'),
+
+	
+    ('Total War', 'Wally Wood', 'Wally Wood',
+     'Science Fiction, Military, War',
+     'Empty', 8, 'Gold Key', 1965, '2024-03-24'),
+
+	
+    ('Troll Lords', 'Scott Beaderstadt', 'Paul Fricke',
+     'Science Fiction, Comedy',
+     'Empty', 19, 'Tru Studios', 1995, '2024-03-24'),
+
+	
+    ('Spy Boy', 'Peter David', 'Pop Mhan',
+     'Science Fiction, Adventure, Comedy',
+     'Empty', 13, 'Dark Horse', 2006, '2024-03-24'),
+
+	
+    ('Crimson Skies', 'Microsoft', 'Howard Chaykin',
+     'Action, ADventure',
+     'Empty', 1, 'Top Cow', 2004, '2024-03-24'),
+
+	
+    ('Initial D', 'Shuichi Shigeno', 'Shuichi Shigeno',
+     'Racing, Drama, Manga',
+     'Empty', 105, 'Kodansha', 1995, '2024-03-24'),
+
 
     ('Groo the Wanderer', 'Sergio Aragones', 'Sergio Aragones',
      'Fantasy, Comedy',
