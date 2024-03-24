@@ -19,7 +19,7 @@ public class ComicBookInfoController implements ActionListener, MouseListener {
     private ComicBookInfoPanel comicBookInfoPanel;
     private CommentDaoImpl commentDaoImpl = new CommentDaoImpl(HibernateUtils.getSessionFactory());
     private CommentService commentService = new CommentService(commentDaoImpl);
-    private UserService userService = new UserService(new UserDaoImpl(HibernateUtils.getSessionFactory()));;
+    private UserService userService = new UserService(new UserDaoImpl(HibernateUtils.getSessionFactory()));
     public ComicBookInfoController(ComicBookInfoPanel comicBookInfoPanel){
         this.comicBookInfoPanel = comicBookInfoPanel;
         addListeners();
