@@ -1,4 +1,5 @@
 plugins {
+    id("application")
     id("java")
     id("jacoco")
 }
@@ -8,6 +9,10 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+}
+
+application {
+    mainClass = "org.longbox.Main"
 }
 
 dependencies {
