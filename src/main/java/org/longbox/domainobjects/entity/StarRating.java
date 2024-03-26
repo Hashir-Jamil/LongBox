@@ -8,7 +8,7 @@ import org.longbox.domainobjects.mapper.ComicBookMapper;
 import org.longbox.domainobjects.mapper.UserMapper;
 
 @Entity
-@Table(name = "starRatings")
+@Table(name = "star_ratings")
 @Getter
 @Setter
 
