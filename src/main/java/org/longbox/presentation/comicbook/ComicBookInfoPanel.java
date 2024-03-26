@@ -75,6 +75,7 @@ public class ComicBookInfoPanel extends JPanel {
 	private ComicBookReadingListDaoImpl comicBookReadingListDaoImpl;
 	private CommentService commentService;
 	private StarRatingService starRatingService;
+	private JScrollPane commentPane, addCommentPane;
 
 	public ComicBookInfoPanel(ComicBookDto comicBookDTO, UserSession userSession) {
 		this.comicBookDTO = comicBookDTO;
@@ -224,7 +225,10 @@ public class ComicBookInfoPanel extends JPanel {
 		commentBox.setBounds(618, 201, 517, 103);
 		commentBox.setLineWrap(true);
 		commentBox.setWrapStyleWord(true);
-		panel.add(commentBox);
+		
+		addCommentPane = new JScrollPane(commentBox);
+		addCommentPane.setBounds(618, 201, 517, 103);
+		panel.add(addCommentPane);
 		
 		addCommentButton = new JButton(ADD_COMMENT_LABEL);
 		addCommentButton.setBounds(1018, 311, 117, 29);
@@ -273,7 +277,7 @@ public class ComicBookInfoPanel extends JPanel {
 
 		commentList.setCellRenderer(new MultiLineCellRenderer());
 
-		JScrollPane commentPane = new JScrollPane(commentList);
+		commentPane = new JScrollPane(commentList);
 		commentPane.setBounds(618, 388, 517, 376);
 		panel.add(commentPane);
 
