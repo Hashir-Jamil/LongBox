@@ -5,13 +5,16 @@ import java.awt.event.MouseListener;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.service.UserService;
+import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.config.HibernateUtils;
+import org.longbox.domainobjects.dto.ComicBookDto;
+import org.longbox.persistence.dao.ComicBookDao;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.profile.RecommendationsPanel;
 
 public class RecommendationsController implements MouseListener {
 	
-	private ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
+	ComicBookDao comicBookDao;
 	private RecommendationsPanel recommentationsPanel;
 	private UserSession userSession;
     private UserService userService;
@@ -23,13 +26,18 @@ public class RecommendationsController implements MouseListener {
 	}
 	
 	private void loadListeners() {
-		
+		this.recommentationsPanel.getRecommendationsTable().addMouseListener(this);		
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		int row = this.recommentationsPanel.getRecommendationsTable().rowAtPoint(e.getPoint());
+		int col = this.recommentationsPanel.getRecommendationsTable().columnAtPoint(e.getPoint());
+		if (col == 0 && e.getClickCount() == 2) {
+			ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookDao.getAllComicBooks(), this.recommentationsPanel.getRecommendationsTable().getValueAt(row, col).toString());
+			ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
+		}
+		System.out.println("Worked");
 	}
 
 	@Override
