@@ -49,6 +49,7 @@ public class ProfilePanel extends JPanel {
 			readingLabel, finishedLabel, aboutMeLabel, userName, firstName, lastName, dateOfBirth, email, country, joinDate,
 			comicsReading, comicsFinished, currentlyReading, currentlyRead;
 	private JTextArea aboutMe;
+	private JScrollPane scrollPane;
 	private JPanel panel;
 	private UserSession user;
 	private ReadingAndFinishedComicBookTableModel readingTableModel, finishedTableModel;
@@ -185,6 +186,11 @@ public class ProfilePanel extends JPanel {
 		aboutMe.setLineWrap(true);
 		aboutMe.setWrapStyleWord(true);
 		panel.add(aboutMe);
+		
+		scrollPane = new JScrollPane(aboutMe);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(557, 141, 554, 127);
+		panel.add(scrollPane);
 		
 		aboutMeEditButton = new JButton();
 		aboutMeEditButton.setText("Edit");
