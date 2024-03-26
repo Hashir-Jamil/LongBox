@@ -7,7 +7,7 @@ import lombok.Setter;
 import org.longbox.domainobjects.mapper.UserMapper;
 
 @Entity
-@Table(name = "starRating")
+@Table(name = "starRatings")
 @Getter
 @Setter
 
