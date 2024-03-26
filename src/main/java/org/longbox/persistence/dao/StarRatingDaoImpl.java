@@ -1,8 +1,6 @@
 package org.longbox.persistence.dao;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,12 +10,13 @@ import org.longbox.domainobjects.dto.StarRatingDto;
 import org.longbox.domainobjects.entity.ComicBook;
 import org.longbox.domainobjects.entity.StarRating;
 import org.longbox.domainobjects.entity.User;
+import org.longbox.domainobjects.mapper.StarRatingMapper;
 
 public class StarRatingDaoImpl implements StarRatingDao {
-	 private SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
-	 public StarRatingDaoImpl(SessionFactory sessionFactory) {
-		 this.sessionFactory = sessionFactory;
+	public StarRatingDaoImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	 }
 
 	@Override
@@ -53,7 +52,7 @@ public class StarRatingDaoImpl implements StarRatingDao {
         try {
             session = sessionFactory.openSession();
             starRatingList = session.createQuery(
-                            "SELECT s FROM StarRating s WHERE s.comicBook.id = :comicID ORDER BY s.rating DESC",
+                            "SELECT s FROM StarRating s WHERE s.comicBook.id = :comicID",
                             StarRating.class)
                     .setParameter("comicID", comicId)
                     .list();
@@ -66,12 +65,7 @@ public class StarRatingDaoImpl implements StarRatingDao {
                 session.close();
             }
         }
-        List<StarRatingDto> starRatingDtoList = new ArrayList<>();
-        for (StarRating s : starRatingList) {
-        	StarRatingDto starRatingDTO = new StarRatingDto(s);
-        	starRatingDtoList.add(starRatingDTO);
-        }
-        return starRatingDtoList;
+        return StarRatingMapper.toDtoList(starRatingList);
 	}
 
 	@Override
