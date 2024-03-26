@@ -8,6 +8,13 @@ This project uses a 3-layer software architecture. The system is built around th
 
 ![SystemDiagram](design_documents/diagrams/architecture_diagram_dark_mode.png)
 
+### Documentation
+
+There are three major documentation types for this project.
+1. Several design & planning documents. These have several iterations/revisions and can be found in the [planning directory](design_documents/planning)
+2. A [code review document](design_documents/code_review/EECS2311-Z-Team3-TakeHomeAssignment.pdf) that provides peer review done by the team on each other's user stories/features. It provides problem reports, code smells and end-2-end tests for the project.
+3. A [refactoring document](design_documents/code_review/Refactoring_Document.pdf) that highlights major design changes in response to code review and problem reports above.
+
 ## Getting Started
 
 ### Prerequisites
@@ -44,12 +51,10 @@ To view the coverage of the tests navigate to the [JaCoCo coverage report](build
 If using Eclipse, they can all be run as follows: 
 > right click on src/test/java > RunAs > JUnit Test.
 
-These tests make sure that the business logic that drives our system is working correctly and as expected.We have done a thorough testing such that all the possible edge cases are covered in the test.
-
 ## Launching in Eclipse IDE
 
 To launch the project:
->Run the **Main.java** in *src/main/java*.
+>Run **Main.java** in *src/main/java*.
 
 ### Build System
 
