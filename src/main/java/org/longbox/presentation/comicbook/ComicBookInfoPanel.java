@@ -286,8 +286,8 @@ public class ComicBookInfoPanel extends JPanel {
 		readingButtonStates();
 		setFields();
 		displayComments();
-		displayAvgRating();
-		displayUserRating();
+		//displayAvgRating();
+		//displayUserRating();
 	}
 
 	private void setFields() {
