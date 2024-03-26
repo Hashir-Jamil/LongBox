@@ -119,101 +119,101 @@ public class ComicBookInfoPanel extends JPanel {
 		panel.add(midSeparator);
 		
 		JLabel ComicTitleLabel = new JLabel("Series Title:");
-		ComicTitleLabel.setBounds(53, 240, 80, 16);
+		ComicTitleLabel.setBounds(53, 200, 80, 16);
 		panel.add(ComicTitleLabel);
 		
 		JLabel AuthorLabel = new JLabel("Author:");
-		AuthorLabel.setBounds(53, 268, 80, 16);
+		AuthorLabel.setBounds(53, 225, 80, 16);
 		panel.add(AuthorLabel);
 		
 		JLabel ArtistLabel = new JLabel("Artist:");
-		ArtistLabel.setBounds(53, 296, 80, 16);
+		ArtistLabel.setBounds(53, 250, 80, 16);
 		panel.add(ArtistLabel);
 		
 		JLabel GenreLabel = new JLabel("Genre:");
-		GenreLabel.setBounds(53, 324, 80, 16);
+		GenreLabel.setBounds(53, 275, 80, 16);
 		panel.add(GenreLabel);
 		
 		JLabel DescriptionLabel = new JLabel("Description: ");
-		DescriptionLabel.setBounds(53, 484, 94, 16);
+		DescriptionLabel.setBounds(53, 425, 94, 16);
 		panel.add(DescriptionLabel);
 		
 		JLabel IssuesLabel = new JLabel("Number of Issues:");
-		IssuesLabel.setBounds(53, 372, 115, 16);
+		IssuesLabel.setBounds(53, 325, 115, 16);
 		panel.add(IssuesLabel);
 		
 		JLabel PublisherLabel = new JLabel("Publisher:");
-		PublisherLabel.setBounds(53, 400, 80, 16);
+		PublisherLabel.setBounds(53, 350, 80, 16);
 		panel.add(PublisherLabel);
 		
 		JLabel YearPublishedLabel = new JLabel("Year Published: ");
-		YearPublishedLabel.setBounds(53, 428, 115, 16);
+		YearPublishedLabel.setBounds(53, 375, 115, 16);
 		panel.add(YearPublishedLabel);
 		
 		JLabel DateAddedLabel = new JLabel("Date Added:");
-		DateAddedLabel.setBounds(53, 456, 94, 16);
+		DateAddedLabel.setBounds(53, 400, 94, 16);
 		panel.add(DateAddedLabel);
 		
 		JLabel avgRatingLabel = new JLabel("Average Rating: ");
-		avgRatingLabel.setBounds(53, 456, 94, 16);
+		avgRatingLabel.setBounds(53, 525, 94, 16);
 		panel.add(avgRatingLabel);
 		
 		JLabel userRatingLabel = new JLabel("Your Rating: ");
-		userRatingLabel.setBounds(53, 456, 94, 16);
+		userRatingLabel.setBounds(53, 550, 94, 16);
 		panel.add(userRatingLabel);
 		
 		JLabel inputRatingPromptLabel = new JLabel("Input a rating between 1-5 stars: ");
-		inputRatingPromptLabel.setBounds(53, 456, 94, 16);
+		inputRatingPromptLabel.setBounds(53, 575, 94, 16);
 		panel.add(inputRatingPromptLabel);
 		
 		comicSeries = new JLabel("");
-		comicSeries.setBounds(182, 240, 373, 16);
+		comicSeries.setBounds(182, 200, 373, 16);
 		panel.add(comicSeries);
 		
 		author = new JLabel("");
-		author.setBounds(182, 268, 373, 16);
+		author.setBounds(182, 225, 373, 16);
 		panel.add(author);
 		
 		artist = new JLabel("");
-		artist.setBounds(182, 296, 373, 16);
+		artist.setBounds(182, 250, 373, 16);
 		panel.add(artist);
 		
 		genre = new JLabel("");
 		genre.setVerticalAlignment(SwingConstants.TOP);
-		genre.setBounds(182, 324, 373, 36);
+		genre.setBounds(182, 275, 373, 36);
 		panel.add(genre);
 		
 		description = new JLabel("");
 		description.setVerticalAlignment(SwingConstants.TOP);
-		description.setBounds(182, 484, 373, 153);
+		description.setBounds(182, 425, 373, 80);
 		panel.add(description);
 		
 		numberOfIssues = new JLabel("");
-		numberOfIssues.setBounds(182, 372, 373, 16);
+		numberOfIssues.setBounds(182, 325, 373, 16);
 		panel.add(numberOfIssues);
 		
 		publisher = new JLabel("");
-		publisher.setBounds(182, 400, 373, 16);
+		publisher.setBounds(182, 350, 373, 16);
 		panel.add(publisher);
 		
 		yearPublished = new JLabel("");
-		yearPublished.setBounds(182, 428, 373, 16);
+		yearPublished.setBounds(182, 375, 373, 16);
 		panel.add(yearPublished);
 		
 		dateAdded = new JLabel("");
-		dateAdded.setBounds(182, 456, 373, 16);
+		dateAdded.setBounds(182, 400, 373, 16);
 		panel.add(dateAdded);
 		
 		avgRating = new JLabel("");
-		avgRating.setBounds(53, 456, 94, 16);
+		avgRating.setBounds(182, 525, 94, 16);
 		panel.add(avgRating);
 		
 		userRating = new JLabel("");
-		userRating.setBounds(53, 456, 94, 16);
+		userRating.setBounds(182, 550, 94, 16);
 		panel.add(userRating);
 		
 		inputRating = new JTextField("");
-		inputRating.setBounds(53, 456, 94, 16);
+		inputRating.setBounds(182, 575, 94, 16);
 		panel.add(inputRating);
 		
 		commentsTitle = new JLabel("Comments");
