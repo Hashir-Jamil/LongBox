@@ -116,15 +116,15 @@ This page will show all user profile information except for the password.
 
 Users can add and remove books from their personal reading and finished lists of comic books. Add and remove is accomplished when viewing a comic book in its individual page. The lists can be viewed in the profile view and from here the comic books can be selected again to edit their list membership.
 
-![Editing Lists]()
+![Editing Lists](https://github.com/Hashir-Jamil/LongBox/assets/77168895/07c4fc74-c3f4-4d67-98d8-732a8036e7af)
 
-![Viewing Lists]()
+![Viewing Lists](https://github.com/Hashir-Jamil/LongBox/assets/77168895/f7d02b3f-8d3e-4340-b6c5-ee6f36be5b49)
 
 ### Recommendations
 
 Upon login users land on a page of recommendations that are tailored to for them. The entries in this list can be opened to explore more about them.
 
-![Recommendations]()
+![Recommendations](https://github.com/Hashir-Jamil/LongBox/assets/77168895/6e7aefda-cefb-4668-9aae-e80d0c90942d)
 
 ### Trending
 
