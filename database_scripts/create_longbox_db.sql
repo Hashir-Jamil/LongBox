@@ -280,12 +280,12 @@ EXECUTE FUNCTION update_comics_reading_count();
 INSERT INTO longbox_schema."user"(
     user_name, first_name, last_name, dob, email, password, country, continent, join_date, comics_reading, comics_finished, about_me, preferred_genre)
 VALUES
-    ('Always_Scheming', 'John', 'Smith', '1990-12-1', 'email@domain.com', 'Always_Scheming', 'Canada', 'Antarctica', '2024-02-21', 0, 0, 'Imaginations ally and inks confidante, I craft worlds within the panels, inviting you to escape reality through the lens of my storytelling pen.', 'Action, Manga, Fantasy'),
-    ('Always_Throwing', 'Neo', 'Anderson', '3829-02-01', 'address@provider.ca', 'Always_Throwing', 'Indonesia', 'South_America', '2024-02-14 12:28:42', 0, 0,'An animated soul exploring both pixels and plot twists, I am your guide in the comic cosmos, steering you through adventures that leap off the screen.', 'Action, Comedy, Anthology, Fantasy'),
+    ('Always_Scheming', 'John', 'Smith', '1990-12-1', 'email@domain.com', 'Always_Scheming', 'Canada', 'Antarctica', '2024-02-21', 10, 7, 'Imaginations ally and inks confidante, I craft worlds within the panels, inviting you to escape reality through the lens of my storytelling pen.', 'Action, Manga, Fantasy'),
+    ('Always_Throwing', 'Neo', 'Anderson', '3829-02-01', 'address@provider.ca', 'Always_Throwing', 'Indonesia', 'South_America', '2024-02-14 12:28:42', 12, 6,'An animated soul exploring both pixels and plot twists, I am your guide in the comic cosmos, steering you through adventures that leap off the screen.', 'Action, Comedy, Anthology, Fantasy'),
     ('Phoenix', 'Stan', 'Lee', '3900-05-31', '123fake@nowhere.org', 'Phoenix', 'United Kingdom', 'Europe', '2024-02-14 12:42:43', 0, 0, 'Code-wielding superhero by day, rhythm-following vigilante by night, I bridge the gap between tech and tunes on this epic quest through the digital comic realm.', 'Science Fiction, Manga, Superhero'),
     ('ahan', 'Ahan', 'Bhargava', '2003-02-10', 'ahan@email.com', 'Password!1', 'India', 'Africa', '2024-02-15 15:09:10', 0, 0, 'A pixel pioneer on the quest for knowledge, I dive into the virtual inkwell, emerging with stories that captivate and characters that resonate.', ''),
     ('naha', 'Ahan', 'Bhargava', '2003-02-10', 'naha@email.com', 'naha', 'India', 'Asia', '2024-02-15 15:09:10', 0, 0, 'Juggling dumbbells and donuts in equal measure, I bring the perfect balance of action and humor to the comic book universe, one swipe at a time.', 'Thriller'),
-    ('123', 'Quick', 'Access', '2003-02-10', '123@email.com', '123', 'India', 'North_America', '2024-02-15 15:09:10', 0, 0, 'Roaming the digital landscapes with a camera lens for justice, I capture the essence of heroes and villains alike, freezing epic moments in the frames of your favourite comic book app.', 'Action, Science Fiction, Anthology, Fantasy, Superhero'),
+    ('123', 'Quick', 'Access', '2003-02-10', '123@email.com', '123', 'India', 'North_America', '2024-02-15 15:09:10', 14, 14, 'Roaming the digital landscapes with a camera lens for justice, I capture the essence of heroes and villains alike, freezing epic moments in the frames of your favourite comic book app.', 'Action, Science Fiction, Anthology, Fantasy, Superhero'),
     ('ComicExplorer', 'Alice', 'Wong', '1985-07-15', 'alice@example.com', 'ExploringComics', 'United States', 'North America', '2024-03-10', 0, 0, 'Lost in the maze of panels, I wander through the realms of imagination, seeking treasures of art and story to share with fellow travelers.', 'Adventure, Fantasy, Science Fiction'),
     ('InkMaster', 'Emily', 'Johnson', '1992-04-28', 'emily@email.com', 'InkMeister', 'United Kingdom', 'Europe', '2024-03-05', 0, 0, 'With every stroke of the pen, I weave tales that dance on the canvas of your mind, inviting you to explore the depths of imagination.', 'Fantasy, Adventure, Anthology'),
     ('PixelPilot', 'David', 'Lee', '1988-11-03', 'david@domain.com', 'PixelPilot123', 'Australia', 'Australia', '2024-03-18', 0, 0, 'Navigating the digital cosmos, I guide you through pixels and code, unlocking doors to worlds where heroes rise and villains fall.', 'Science Fiction, Superhero, Thriller'),
@@ -674,3 +674,69 @@ VALUES
      '2024-02-23', 13, 4, 'ahan'),
     ('The character development in comic #21 is exceptional. Ahan approves!',
      '2024-02-20', 21, 4, 'ahan');
+
+INSERT INTO longbox_schema."comic_book_finished_list"(
+    user_id, comic_book_id, date_finished)
+VALUES
+    (6, 1, '2024-03-26 17:13:23.198'),
+    (6, 14, '2024-03-26 17:13:32.996'),
+    (6, 19, '2024-03-26 17:13:36.119'),
+    (6, 26, '2024-03-26 17:14:48.968'),
+    (6, 29, '2024-03-26 17:14:51.684'),
+    (6, 33, '2024-03-26 17:14:54.962'),
+    (6, 39, '2024-03-26 17:14:59.139'),
+    (6, 44, '2024-03-26 17:15:02.896'),
+    (6, 53, '2024-03-26 17:15:14.821'),
+    (6, 56, '2024-03-26 17:15:18.326'),
+    (6, 58, '2024-03-26 17:15:21.833'),
+    (6, 11, '2024-03-26 17:15:29.387'),
+    (1, 2, '2024-03-26 17:16:00.624'),
+    (1, 31, '2024-03-26 17:16:08.208'),
+    (1, 33, '2024-03-26 17:16:23.441'),
+    (1, 46, '2024-03-26 17:16:33.996'),
+    (1, 50, '2024-03-26 17:16:37.743'),
+    (1, 53, '2024-03-26 17:16:40.875'),
+    (1, 60, '2024-03-26 17:16:52.277'),
+    (2, 12, '2024-03-26 17:17:38.11'),
+    (2, 27, '2024-03-26 17:17:41.582'),
+    (2, 54, '2024-03-26 17:18:08.921'),
+    (2, 38, '2024-03-26 17:18:11.64'),
+    (2, 30, '2024-03-26 17:18:26.478'),
+    (2, 41, '2024-03-26 17:18:29.969');
+
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 1, '2024-03-26 17:13:24.579');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 5, '2024-03-26 17:13:28.52');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 19, '2024-03-26 17:13:35.468');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 22, '2024-03-26 17:13:38.689');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 23, '2024-03-26 17:14:45.435');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 26, '2024-03-26 17:14:48.763');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 29, '2024-03-26 17:14:51.905');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 33, '2024-03-26 17:14:55.173');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 39, '2024-03-26 17:14:59.323');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 51, '2024-03-26 17:15:05.969');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 46, '2024-03-26 17:15:12.047');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 56, '2024-03-26 17:15:18.01');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 58, '2024-03-26 17:15:21.185');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 60, '2024-03-26 17:15:24.839');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 2, '2024-03-26 17:16:00.871');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 14, '2024-03-26 17:16:04.187');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 35, '2024-03-26 17:16:26.749');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 42, '2024-03-26 17:16:30.393');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 56, '2024-03-26 17:16:43.758');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 58, '2024-03-26 17:16:48.941');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 38, '2024-03-26 17:16:56.238');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 18, '2024-03-26 17:17:01.362');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 7, '2024-03-26 17:17:05.644');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 43, '2024-03-26 17:17:09.952');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 2, '2024-03-26 17:17:28.782');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 17, '2024-03-26 17:17:35.286');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 20, '2024-03-26 17:17:44.219');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 21, '2024-03-26 17:17:47.497');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 35, '2024-03-26 17:17:50.767');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 42, '2024-03-26 17:17:53.46');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 48, '2024-03-26 17:17:57.782');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 51, '2024-03-26 17:18:05.068');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 46, '2024-03-26 17:18:14.894');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 19, '2024-03-26 17:18:18.818');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 8, '2024-03-26 17:18:22.522');
+INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 41, '2024-03-26 17:18:29.634');
