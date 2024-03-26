@@ -4,12 +4,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import org.longbox.businesslogic.UserSession;
-import org.longbox.businesslogic.service.RecommendationService;
-import org.longbox.businesslogic.service.UserService;
 import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
-import org.longbox.persistence.dao.ComicBookDao;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.profile.RecommendationsPanel;
 
@@ -18,7 +15,6 @@ public class RecommendationsController implements MouseListener {
 	private ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 	private RecommendationsPanel recommentationsPanel;
 	private UserSession userSession;
-    private UserService userService;
 
 	public RecommendationsController(RecommendationsPanel recommentationsPanel) {
 		this.recommentationsPanel = recommentationsPanel;
