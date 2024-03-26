@@ -27,12 +27,16 @@ public class RecommendationsPanel extends JPanel {
 	private JSeparator titleSeparator;
 	private JTable recommendationsTable;
 	private JScrollPane recommendationsTableScrollPane;
+	private UserSession userSession;
 	
 	public RecommendationsPanel(UserSession currentUser) {
 		initTrendingPanel(currentUser);
 	}
 	
 	private void initTrendingPanel(UserSession currentUser) {
+		
+			this.userSession = currentUser;
+			
 			setBounds(10, 47, 1164, 803);
 			setLayout(new BorderLayout());
 			

@@ -29,6 +29,7 @@ public class HomeController implements ActionListener {
     private TrendingController trendingController;
     private ProfileController profileController;
     private SocialController socialController;
+    private RecommendationsController recommendationsController;
 
     public HomeController(HomeFrame homeFrame) {
         this.homeFrame = homeFrame;
@@ -37,6 +38,7 @@ public class HomeController implements ActionListener {
         this.trendingController = new TrendingController(this.homeFrame.getTrendingComicsPanel());
         this.profileController = new ProfileController(this.homeFrame.getProfilePanel());
         this.socialController = new SocialController(this.homeFrame.getSocialPanel());
+        this.recommendationsController = new RecommendationsController(this.homeFrame.getRecommendationsPanel());
         addListeners();
     }
 

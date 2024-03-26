@@ -119,101 +119,101 @@ public class ComicBookInfoPanel extends JPanel {
 		panel.add(midSeparator);
 		
 		JLabel ComicTitleLabel = new JLabel("Series Title:");
-		ComicTitleLabel.setBounds(53, 200, 80, 16);
+		ComicTitleLabel.setBounds(53, 135, 80, 16);
 		panel.add(ComicTitleLabel);
 		
 		JLabel AuthorLabel = new JLabel("Author:");
-		AuthorLabel.setBounds(53, 225, 80, 16);
+		AuthorLabel.setBounds(53, 165, 80, 16);
 		panel.add(AuthorLabel);
 		
 		JLabel ArtistLabel = new JLabel("Artist:");
-		ArtistLabel.setBounds(53, 250, 80, 16);
+		ArtistLabel.setBounds(53, 195, 80, 16);
 		panel.add(ArtistLabel);
 		
 		JLabel GenreLabel = new JLabel("Genre:");
-		GenreLabel.setBounds(53, 275, 80, 16);
+		GenreLabel.setBounds(53, 225, 80, 16);
 		panel.add(GenreLabel);
 		
 		JLabel DescriptionLabel = new JLabel("Description: ");
-		DescriptionLabel.setBounds(53, 425, 94, 16);
+		DescriptionLabel.setBounds(53, 395, 94, 16);
 		panel.add(DescriptionLabel);
 		
 		JLabel IssuesLabel = new JLabel("Number of Issues:");
-		IssuesLabel.setBounds(53, 325, 115, 16);
+		IssuesLabel.setBounds(53, 275, 115, 16);
 		panel.add(IssuesLabel);
 		
 		JLabel PublisherLabel = new JLabel("Publisher:");
-		PublisherLabel.setBounds(53, 350, 80, 16);
+		PublisherLabel.setBounds(53, 305, 80, 16);
 		panel.add(PublisherLabel);
 		
 		JLabel YearPublishedLabel = new JLabel("Year Published: ");
-		YearPublishedLabel.setBounds(53, 375, 115, 16);
+		YearPublishedLabel.setBounds(53, 365, 115, 16);
 		panel.add(YearPublishedLabel);
 		
 		JLabel DateAddedLabel = new JLabel("Date Added:");
-		DateAddedLabel.setBounds(53, 400, 94, 16);
+		DateAddedLabel.setBounds(53, 335, 94, 16);
 		panel.add(DateAddedLabel);
 		
 		JLabel avgRatingLabel = new JLabel("Average Rating: ");
-		avgRatingLabel.setBounds(53, 525, 94, 16);
+		avgRatingLabel.setBounds(53, 560, 94, 16);
 		panel.add(avgRatingLabel);
 		
 		JLabel userRatingLabel = new JLabel("Your Rating: ");
-		userRatingLabel.setBounds(53, 550, 94, 16);
+		userRatingLabel.setBounds(53, 590, 94, 16);
 		panel.add(userRatingLabel);
 		
-		JLabel inputRatingPromptLabel = new JLabel("Input a rating between 1-5 stars: ");
-		inputRatingPromptLabel.setBounds(53, 575, 94, 16);
+		JLabel inputRatingPromptLabel = new JLabel("Input rating 1-5:");
+		inputRatingPromptLabel.setBounds(53, 620, 115, 16);
 		panel.add(inputRatingPromptLabel);
 		
 		comicSeries = new JLabel("");
-		comicSeries.setBounds(182, 200, 373, 16);
+		comicSeries.setBounds(182, 135, 373, 16);
 		panel.add(comicSeries);
 		
 		author = new JLabel("");
-		author.setBounds(182, 225, 373, 16);
+		author.setBounds(182, 165, 373, 16);
 		panel.add(author);
 		
 		artist = new JLabel("");
-		artist.setBounds(182, 250, 373, 16);
+		artist.setBounds(182, 195, 373, 16);
 		panel.add(artist);
 		
 		genre = new JLabel("");
 		genre.setVerticalAlignment(SwingConstants.TOP);
-		genre.setBounds(182, 275, 373, 36);
+		genre.setBounds(182, 225, 373, 36);
 		panel.add(genre);
 		
 		description = new JLabel("");
 		description.setVerticalAlignment(SwingConstants.TOP);
-		description.setBounds(182, 425, 373, 80);
+		description.setBounds(182, 395, 373, 153);
 		panel.add(description);
 		
 		numberOfIssues = new JLabel("");
-		numberOfIssues.setBounds(182, 325, 373, 16);
+		numberOfIssues.setBounds(182, 275, 373, 16);
 		panel.add(numberOfIssues);
 		
 		publisher = new JLabel("");
-		publisher.setBounds(182, 350, 373, 16);
+		publisher.setBounds(182, 305, 373, 16);
 		panel.add(publisher);
 		
 		yearPublished = new JLabel("");
-		yearPublished.setBounds(182, 375, 373, 16);
+		yearPublished.setBounds(182, 365, 373, 16);
 		panel.add(yearPublished);
 		
 		dateAdded = new JLabel("");
-		dateAdded.setBounds(182, 400, 373, 16);
+		dateAdded.setBounds(182, 335, 373, 16);
 		panel.add(dateAdded);
 		
 		avgRating = new JLabel("");
-		avgRating.setBounds(182, 525, 94, 16);
+		avgRating.setBounds(182, 560, 94, 16);
 		panel.add(avgRating);
 		
 		userRating = new JLabel("");
-		userRating.setBounds(182, 550, 94, 16);
+		userRating.setBounds(182, 590, 94, 16);
 		panel.add(userRating);
 		
 		inputRating = new JTextField("");
-		inputRating.setBounds(182, 575, 94, 16);
+		inputRating.setBounds(182, 620, 94, 16);
 		panel.add(inputRating);
 		
 		commentsTitle = new JLabel("Comments");
@@ -235,32 +235,32 @@ public class ComicBookInfoPanel extends JPanel {
 		panel.add(addCommentButton);
 
 		addToFavouritesButton = new JButton(FAVORITES_LIST_LABEL);
-		addToFavouritesButton.setBounds(10, 655, 175, 30);
+		addToFavouritesButton.setBounds(10, 675, 175, 30);
 		addToFavouritesButton.setEnabled(false);
 		panel.add(addToFavouritesButton);
 
 		addToFinishedButton = new JButton(FINISHED_LIST_LABEL);
-		addToFinishedButton.setBounds(200, 655, 175, 30);
+		addToFinishedButton.setBounds(200, 675, 175, 30);
 		addToFinishedButton.setEnabled(false);
 		panel.add(addToFinishedButton);
 
 		addToReadingButton = new JButton(READING_LIST_LABEL);
-		addToReadingButton.setBounds(391, 655, 175, 30);
+		addToReadingButton.setBounds(391, 675, 175, 30);
 		addToReadingButton.setEnabled(false);
 		panel.add(addToReadingButton);
 
 		removeFromFavouritesButton = new JButton(REMOVE_FAVORITES_LIST_LABEL);
-		removeFromFavouritesButton.setBounds(10, 690, 175, 30);
+		removeFromFavouritesButton.setBounds(10, 710, 175, 30);
 		removeFromFavouritesButton.setEnabled(false);
 		panel.add(removeFromFavouritesButton);
 
 		removeFromFinishedButton = new JButton(REMOVE_FINISHED_LIST_LABEL);
-		removeFromFinishedButton.setBounds(200, 690, 175, 30);
+		removeFromFinishedButton.setBounds(200, 710, 175, 30);
 		removeFromFinishedButton.setEnabled(false);
 		panel.add(removeFromFinishedButton);
 
 		removeFromToReadingButton = new JButton(REMOVE_READING_LIST_LABEL);
-		removeFromToReadingButton.setBounds(391, 690, 175, 30);
+		removeFromToReadingButton.setBounds(391, 710, 175, 30);
 		removeFromToReadingButton.setEnabled(false);
 		panel.add(removeFromToReadingButton);
 		
