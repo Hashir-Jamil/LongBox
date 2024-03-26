@@ -25,7 +25,7 @@ public class HomeFrame extends JFrame {
     private final String RECCOMENDEDATIONS_PANEL = "Recommendations Panel";
     private final String FRAME_TITLE = "LongBox - Home Page";
     private final String SOCIAL_PANEL = "Social Panel";
-    private final int BUTTON_WIDTH = 130;
+    private final int BUTTON_WIDTH = 135;
     private final int BUTTON_X_POSITION = 10;
     private final int BUTTON_Y_POSITION = 11;
     private final int BUTTON_HEIGHT = 25;
@@ -58,7 +58,7 @@ public class HomeFrame extends JFrame {
     	favouritesPanel.setUserSession(this.userSession);
         userNameLabel = new JLabel(user.getUser().getUserName());
         userNameLabel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        userNameLabel.setBounds(875, 14, 172, 16);
+        userNameLabel.setBounds(965, 11, 129, 25);
         nexusPanel.add(userNameLabel);
         
         
@@ -130,7 +130,7 @@ public class HomeFrame extends JFrame {
         nexusPanel.add(socialButton);
 
         logOutButton = new JButton("Log Out");
-        logOutButton.setBounds(1044, 11, BUTTON_WIDTH, BUTTON_HEIGHT);
+        logOutButton.setBounds(1099, 11, 78, 25);
         nexusPanel.add(logOutButton);
     }
 }
