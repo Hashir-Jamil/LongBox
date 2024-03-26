@@ -9,15 +9,15 @@ import java.util.List;
 
 public interface ComicBookFavouritesListDao {
 
-    void saveToFavorites(Long userId, Long comicBookIdd) throws UserIDDoesNotExistException;
+    void saveToFavourites(Long userId, Long comicBookIdd) throws UserIDDoesNotExistException;
 
-    boolean removeFromFavorites(Long userId, Long comicBookId);
+    boolean removeFromFavourites(Long userId, Long comicBookId);
 
     boolean doesRecordExist(Long userId, Long comicBookId);
 
-    List<ComicBook> getFavoritesByUser(Long userId);
+    List<ComicBook> getFavouritesByUser(Long userId);
 
     List<User> getUsersByComicBook(Long comicBookId);
 
-    List<ComicBookDto> getAllFavoritesComicBooks();
+    List<ComicBookDto> getAllFavouritesComicBooks();
 }

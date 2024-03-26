@@ -29,11 +29,12 @@
 
         <!-- Mapping Classes -->
         <mapping class="org.longbox.domainobjects.entity.User"/>
-        <mapping class="org.longbox.domainobjects.entity.ComicBookFavoritesList"/>
+        <mapping class="org.longbox.domainobjects.entity.ComicBookFavouritesList"/>
         <mapping class="org.longbox.domainobjects.entity.ComicBook"/>
         <mapping class="org.longbox.domainobjects.entity.Comment"/>
         <mapping class="org.longbox.domainobjects.entity.ComicBookFinishedList"/>
         <mapping class="org.longbox.domainobjects.entity.ComicBookReadingList"/>
+        <mapping class="org.longbox.domainobjects.entity.StarRating"/>
 
     </session-factory>
 </hibernate-configuration>

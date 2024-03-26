@@ -20,6 +20,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -31,8 +32,8 @@ public class ComicBookInfoPanel extends JPanel {
 	private static final String ADD_COMMENT_LABEL = "Add Comment";
 	private static final String READING_LIST_LABEL = "Add To Reading";
 	private static final String FINISHED_LIST_LABEL = "Add to Finished";
-	private static final String FAVORITES_LIST_LABEL = "Add to Favorites";
-	private static final String REMOVE_FAVORITES_LIST_LABEL = "Remove Favorite";
+	private static final String FAVORITES_LIST_LABEL = "Add to Favourites";
+	private static final String REMOVE_FAVORITES_LIST_LABEL = "Remove Favourite";
 	private static final String REMOVE_FINISHED_LIST_LABEL = "Remove From Finished";
 	private static final String REMOVE_READING_LIST_LABEL = "Remove From Reading";
 	private ComicBookDto comicBookDTO;
@@ -54,10 +55,10 @@ public class ComicBookInfoPanel extends JPanel {
 	private JLabel inputRatingPrompt;
 	private JTextField inputRating;
 	private JButton addCommentButton;
-	private JButton addToFavoritesButton;
+	private JButton addToFavouritesButton;
 	private JButton addToFinishedButton;
 	private JButton addToReadingButton;
-	private JButton removeFromFavoritesButton;
+	private JButton removeFromFavouritesButton;
 	private JButton removeFromFinishedButton;
 	private JButton removeFromToReadingButton;
 	private JTextArea commentBox;
@@ -74,6 +75,7 @@ public class ComicBookInfoPanel extends JPanel {
 	private ComicBookReadingListDaoImpl comicBookReadingListDaoImpl;
 	private CommentService commentService;
 	private StarRatingService starRatingService;
+	private JScrollPane commentPane, addCommentPane;
 
 	public ComicBookInfoPanel(ComicBookDto comicBookDTO, UserSession userSession) {
 		this.comicBookDTO = comicBookDTO;
@@ -223,16 +225,19 @@ public class ComicBookInfoPanel extends JPanel {
 		commentBox.setBounds(618, 201, 517, 103);
 		commentBox.setLineWrap(true);
 		commentBox.setWrapStyleWord(true);
-		panel.add(commentBox);
+		
+		addCommentPane = new JScrollPane(commentBox);
+		addCommentPane.setBounds(618, 201, 517, 103);
+		panel.add(addCommentPane);
 		
 		addCommentButton = new JButton(ADD_COMMENT_LABEL);
 		addCommentButton.setBounds(1018, 311, 117, 29);
 		panel.add(addCommentButton);
 
-		addToFavoritesButton = new JButton(FAVORITES_LIST_LABEL);
-		addToFavoritesButton.setBounds(10, 655, 175, 30);
-		addToFavoritesButton.setEnabled(false);
-		panel.add(addToFavoritesButton);
+		addToFavouritesButton = new JButton(FAVORITES_LIST_LABEL);
+		addToFavouritesButton.setBounds(10, 655, 175, 30);
+		addToFavouritesButton.setEnabled(false);
+		panel.add(addToFavouritesButton);
 
 		addToFinishedButton = new JButton(FINISHED_LIST_LABEL);
 		addToFinishedButton.setBounds(200, 655, 175, 30);
@@ -244,10 +249,10 @@ public class ComicBookInfoPanel extends JPanel {
 		addToReadingButton.setEnabled(false);
 		panel.add(addToReadingButton);
 
-		removeFromFavoritesButton = new JButton(REMOVE_FAVORITES_LIST_LABEL);
-		removeFromFavoritesButton.setBounds(10, 690, 175, 30);
-		removeFromFavoritesButton.setEnabled(false);
-		panel.add(removeFromFavoritesButton);
+		removeFromFavouritesButton = new JButton(REMOVE_FAVORITES_LIST_LABEL);
+		removeFromFavouritesButton.setBounds(10, 690, 175, 30);
+		removeFromFavouritesButton.setEnabled(false);
+		panel.add(removeFromFavouritesButton);
 
 		removeFromFinishedButton = new JButton(REMOVE_FINISHED_LIST_LABEL);
 		removeFromFinishedButton.setBounds(200, 690, 175, 30);
@@ -272,11 +277,11 @@ public class ComicBookInfoPanel extends JPanel {
 
 		commentList.setCellRenderer(new MultiLineCellRenderer());
 
-		JScrollPane commentPane = new JScrollPane(commentList);
+		commentPane = new JScrollPane(commentList);
 		commentPane.setBounds(618, 388, 517, 376);
 		panel.add(commentPane);
 
-		favoriteButtonStates();
+		favouriteButtonStates();
 		finishedButtonStates();
 		readingButtonStates();
 		setFields();
@@ -327,14 +332,14 @@ public class ComicBookInfoPanel extends JPanel {
 		commentBox.setText("");
 	}
 
-	public boolean isComicInFavorites(long comicId) {
+	public boolean isComicInFavourites(long comicId) {
 		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 		comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 		ComicBook comicBook = comicBookDaoImpl.getComicBookById(comicId);
 		ComicBookDto comicBookDto = ComicBookMapper.toDto(comicBook);
 		//ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
-		System.out.println("the comic in favorites is " + comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO));
-		return comicBookFavouritesListDaoImpl.getAllFavoritesComicBooks().contains(comicBookDTO);
+		System.out.println("the comic in favourites is " + comicBookFavouritesListDaoImpl.getAllFavouritesComicBooks().contains(comicBookDTO));
+		return comicBookFavouritesListDaoImpl.getAllFavouritesComicBooks().contains(comicBookDTO);
 	}
 
 	public boolean isComicInFinished(Long userId, Long comicBookId) {
@@ -347,12 +352,12 @@ public class ComicBookInfoPanel extends JPanel {
 		return comicBookReadingListDaoImpl.doesRecordExist(userId, comicBookId);
 	}
 
-	public void favoriteButtonStates() {
-		if (!isComicInFavorites(comicBookDTO.getId())) {
-			addToFavoritesButton.setEnabled(true);
+	public void favouriteButtonStates() {
+		if (!isComicInFavourites(comicBookDTO.getId())) {
+			addToFavouritesButton.setEnabled(true);
 		}
 		else {
-			removeFromFavoritesButton.setEnabled(true);
+			removeFromFavouritesButton.setEnabled(true);
 		}
 	}
 
@@ -372,5 +377,21 @@ public class ComicBookInfoPanel extends JPanel {
 		else {
 			removeFromToReadingButton.setEnabled(true);
 		}
+	}
+
+	public CommentDto getComment(){
+
+		String message = this.commentBox.getText();
+
+		CommentDto newComment = new CommentDto();
+		newComment.setUser(this.userSession.getUser());
+		newComment.setComicBook(comicBookDTO);
+		newComment.setMessage(message);
+		newComment.setCommentDate(new Date());
+		newComment.setComicBookId(this.comicBookDTO.getId());
+		newComment.setUserId(this.userSession.getUser().getId());
+		newComment.setUserName(this.userSession.getUser().getUserName());
+
+		return newComment;
 	}
 }

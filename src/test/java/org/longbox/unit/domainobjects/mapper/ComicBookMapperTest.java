@@ -15,18 +15,17 @@ public class ComicBookMapperTest {
 
     @Test
     public void testToDto() {
-        ComicBook entity = new ComicBook(
-                "Series Title",
-                "Author",
-                "Artist",
-                "Genre1,Genre2",
-                "Description",
-                10,
-                "Publisher",
-                2022,
-                new Date()
-        );
+        ComicBook entity = new ComicBook();
         entity.setId(0L);
+        entity.setSeriesTitle("Series Title");
+        entity.setAuthor("Author");
+        entity.setArtist("Artist");
+        entity.setGenres("Genre1,Genre2");
+        entity.setDescription("Description");
+        entity.setNumberOfIssues(10);
+        entity.setPublisher("Publisher");
+        entity.setYearPublished(2022);
+        entity.setDateAdded(new Date());
 
         ComicBookDto dto = ComicBookMapper.toDto(entity);
         assertEquals(0L,dto.getId());
@@ -42,16 +41,15 @@ public class ComicBookMapperTest {
 
     @Test
     public void testToEntity() {
-        ComicBookDto dto = new ComicBookDto(
-                "Series Title",
-                "Author",
-                "Artist",
-                new String[]{"Genre1", "Genre2"},
-                "Description",
-                10,
-                "Publisher",
-                2022
-        );
+        ComicBookDto dto = new ComicBookDto();
+        dto.setSeriesTitle("Series Title");
+        dto.setAuthor("Author");
+        dto.setArtist("Artist");
+        dto.setGenres(new String[]{"Genre1", "Genre2"});
+        dto.setDescription("Description");
+        dto.setNumberOfIssues(10);
+        dto.setPublisher("Publisher");
+        dto.setYearPublished(2022);
 
         ComicBook entity = ComicBookMapper.toEntity(dto);
 
@@ -68,30 +66,31 @@ public class ComicBookMapperTest {
     @Test
     public void testToDtoList() {
         List<ComicBook> entityList = new ArrayList<>();
-        entityList.add(new ComicBook(
-                "Series Title 1",
-                "Author 1",
-                "Artist 1",
-                "Genre1,Genre2",
-                "Description 1",
-                10,
-                "Publisher 1",
-                2022,
-                new Date()
-        ));
-        entityList.add(new ComicBook(
-                "Series Title 2",
-                "Author 2",
-                "Artist 2",
-                "Genre3,Genre4",
-                "Description 2",
-                20,
-                "Publisher 2",
-                2023,
-                new Date()
-        ));
-        entityList.get(0).setId(0L);
-        entityList.get(1).setId(1L);
+        ComicBook comicBook = new ComicBook();
+        comicBook.setId(0L);
+        comicBook.setSeriesTitle("Series Title 1");
+        comicBook.setAuthor("Author 1");
+        comicBook.setArtist("Artist 1");
+        comicBook.setGenres("Genre1,Genre2");
+        comicBook.setDescription("Description 1");
+        comicBook.setNumberOfIssues(10);
+        comicBook.setPublisher("Publisher 1");
+        comicBook.setYearPublished(2022);
+        comicBook.setDateAdded(new Date());
+        entityList.add(comicBook);
+
+        ComicBook comicBook2 = new ComicBook();
+        comicBook2.setId(1L);
+        comicBook2.setSeriesTitle("Series Title 2");
+        comicBook2.setAuthor("Author 2");
+        comicBook2.setArtist("Artist 2");
+        comicBook2.setGenres("Genre3,Genre4");
+        comicBook2.setDescription("Description 2");
+        comicBook2.setNumberOfIssues(20);
+        comicBook2.setPublisher("Publisher 2");
+        comicBook2.setYearPublished(2023);
+        comicBook2.setDateAdded(new Date());
+        entityList.add(comicBook2);
 
         List<ComicBookDto> dtoList = ComicBookMapper.toDtoList(entityList);
 
@@ -118,26 +117,28 @@ public class ComicBookMapperTest {
     @Test
     public void testToEntityList() {
         List<ComicBookDto> dtoList = new ArrayList<>();
-        dtoList.add(new ComicBookDto(
-                "Series Title 1",
-                "Author 1",
-                "Artist 1",
-                new String[]{"Genre1", "Genre2"},
-                "Description 1",
-                10,
-                "Publisher 1",
-                2022
-        ));
-        dtoList.add(new ComicBookDto(
-                "Series Title 2",
-                "Author 2",
-                "Artist 2",
-                new String[]{"Genre3", "Genre4"},
-                "Description 2",
-                20,
-                "Publisher 2",
-                2023
-        ));
+
+        ComicBookDto cb1 = new ComicBookDto();
+        cb1.setSeriesTitle("Series Title 1");
+        cb1.setAuthor("Author 1");
+        cb1.setArtist("Artist 1");
+        cb1.setGenres(new String[]{"Genre1", "Genre2"});
+        cb1.setDescription("Description 1");
+        cb1.setNumberOfIssues(10);
+        cb1.setPublisher("Publisher 1");
+        cb1.setYearPublished(2022);
+        dtoList.add(cb1);
+
+        ComicBookDto cb2 = new ComicBookDto();
+        cb2.setSeriesTitle("Series Title 2");
+        cb2.setAuthor("Author 2");
+        cb2.setArtist("Artist 2");
+        cb2.setGenres(new String[]{"Genre3", "Genre4"});
+        cb2.setDescription("Description 2");
+        cb2.setNumberOfIssues(20);
+        cb2.setPublisher("Publisher 2");
+        cb2.setYearPublished(2023);
+        dtoList.add(cb2);
 
         List<ComicBook> entityList = ComicBookMapper.toEntityList(dtoList);
 

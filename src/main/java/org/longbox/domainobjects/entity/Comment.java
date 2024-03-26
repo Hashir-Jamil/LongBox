@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.domainobjects.dto.CommentDto;
+import org.longbox.domainobjects.mapper.ComicBookMapper;
 import org.longbox.domainobjects.mapper.UserMapper;
 
 import java.util.Date;
@@ -35,30 +36,6 @@ public class Comment {
     private String userName;
 
     public Comment() {
-    }
-
-    public Comment(String message, ComicBook comicBook, User user, String userName) {
-        this.message = message;
-        this.comicBook = comicBook;
-        this.user = user;
-        this.userName = userName;
-        this.commentDate = new Date();
-    }
-
-    public Comment(CommentDto c){
-        this.user = UserMapper.toEntity(c.getUser());
-        this.userName = c.getUser().getUserName();
-        this.comicBook = new ComicBook(c.getComicBook());
-        this.message = c.getMessage();
-        this.commentDate = c.getCommentDate();
-    }
-
-    public Comment(CommentDto c, User u, ComicBook cb){
-        this.user = u;
-        this.userName = u.getUserName();
-        this.comicBook = cb;
-        this.message = c.getMessage();
-        this.commentDate = c.getCommentDate();
     }
 
     public long getComicBookId(){

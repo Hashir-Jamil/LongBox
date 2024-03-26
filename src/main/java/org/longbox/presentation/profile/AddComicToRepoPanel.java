@@ -40,7 +40,7 @@ public class AddComicToRepoPanel extends JPanel {
 	private JTextField yearPublishedTextField;
 	private JTextField successMessage;
 	private JButton enterComicBookButton;
-	private JCheckBox favoriteCheckbox;
+	private JCheckBox favouriteCheckbox;
 	private JPanel panel;
 
 	public AddComicToRepoPanel() {
@@ -181,10 +181,10 @@ public class AddComicToRepoPanel extends JPanel {
 		enterComicBookButton.setEnabled(false);
 
 		//Radio button to
-		favoriteCheckbox = new JCheckBox("Is Favorite");
-		favoriteCheckbox.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
-		favoriteCheckbox.setBounds(287, 600, 590, 20);
-		panel.add(favoriteCheckbox);
+		favouriteCheckbox = new JCheckBox("Is Favourite");
+		favouriteCheckbox.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
+		favouriteCheckbox.setBounds(287, 600, 590, 20);
+		panel.add(favouriteCheckbox);
 
 		// Action listeners for each field's text input box
 		comicSeriesTitleTextField.addActionListener(fieldsListener);

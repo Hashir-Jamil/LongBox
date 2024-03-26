@@ -9,7 +9,7 @@ import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.entity.ComicBook;
-import org.longbox.domainobjects.entity.ComicBookFavoritesList;
+import org.longbox.domainobjects.entity.ComicBookFavouritesList;
 import org.longbox.domainobjects.entity.User;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.mapper.ComicBookMapper;
@@ -25,7 +25,7 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     }
 
     @Override
-    public void saveToFavorites(Long userId, Long comicBookId) throws UserIDDoesNotExistException {
+    public void saveToFavourites(Long userId, Long comicBookId) throws UserIDDoesNotExistException {
 
         Session session = null;
         Transaction transaction = null;
@@ -43,7 +43,7 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
             user = (User) session.merge(user);
             comicBook = (ComicBook) session.merge(comicBook);
 
-            ComicBookFavoritesList userFavourite = new ComicBookFavoritesList(user, comicBook);
+            ComicBookFavouritesList userFavourite = new ComicBookFavouritesList(user, comicBook);
 
             session.persist(userFavourite);
             transaction.commit();
@@ -62,7 +62,7 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     }
 
     @Override
-    public boolean removeFromFavorites(Long userId, Long comicBookId) {
+    public boolean removeFromFavourites(Long userId, Long comicBookId) {
         Session session = null;
         Transaction transaction = null;
         int deletedEntities = 0;
@@ -70,7 +70,7 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
-            Query query = session.createQuery("delete from ComicBookFavoritesList where id.userId = :userId and id.comicBookId = :comicBookId");
+            Query query = session.createQuery("delete from ComicBookFavouritesList where id.userId = :userId and id.comicBookId = :comicBookId");
             query.setParameter("userId", userId);
             query.setParameter("comicBookId", comicBookId);
             deletedEntities = query.executeUpdate();
@@ -96,7 +96,7 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     public boolean doesRecordExist(Long userId, Long comicBookId) {
         Session session = sessionFactory.openSession();
         Query<Long> query = session.createQuery(
-                "SELECT COUNT(*) FROM ComicBookFavoritesList c WHERE c.user.id = :userId AND c.comicBook.id = :comicBookId", Long.class);
+                "SELECT COUNT(*) FROM ComicBookFavouritesList c WHERE c.user.id = :userId AND c.comicBook.id = :comicBookId", Long.class);
         query.setParameter("userId", userId);
         query.setParameter("comicBookId", comicBookId);
         Long count = query.uniqueResult();
@@ -104,19 +104,19 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
     }
 
     @Override
-    public List<ComicBook> getFavoritesByUser(Long userId) {
-        // Implement retrieving favorite comic books for a given user from the database
+    public List<ComicBook> getFavouritesByUser(Long userId) {
+        // Implement retrieving favourite comic books for a given user from the database
         return null;
     }
 
     @Override
     public List<User> getUsersByComicBook(Long comicBookId) {
-        // Implement retrieving users who have added a specific comic book to their favorites list from the database
+        // Implement retrieving users who have added a specific comic book to their favourites list from the database
         return null;
     }
 
     @Override
-    public List<ComicBookDto> getAllFavoritesComicBooks() {
+    public List<ComicBookDto> getAllFavouritesComicBooks() {
         Session session = null;
         Transaction transaction = null;
         List<ComicBook> favouritesLists = null;
@@ -126,7 +126,7 @@ public class ComicBookFavouritesListDaoImpl implements ComicBookFavouritesListDa
             session=sessionFactory.openSession();
             transaction = session.beginTransaction();
             favouritesLists = session.createQuery(
-                            "SELECT cb FROM ComicBook cb JOIN ComicBookFavoritesList cbl ON cb.id = cbl.comicBook.id WHERE cbl.user.id = :userId",
+                            "SELECT cb FROM ComicBook cb JOIN ComicBookFavouritesList cbl ON cb.id = cbl.comicBook.id WHERE cbl.user.id = :userId",
                             ComicBook.class
                     ).setParameter("userId", userId)
                     .getResultList();

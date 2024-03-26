@@ -75,25 +75,25 @@ Users can use the advanced search and search the comics based on Title, Artist, 
 ### View Detailed information and Add Comments
 
 After selecting a comic book, users can view detailed information about the comic book. In this window user also has an option to add a new comment, view existing comments in order of newest to oldest, 
-favorite and unfavorite a book, add and remove a book from a reading and finished list. Comics added to reading and finished list can be viewed in the profile page.
+favourite and unfavourite a book, add and remove a book from a reading and finished list. Comics added to reading and finished list can be viewed in the profile page.
 
 ![Comic Info](https://github.com/Hashir-Jamil/LongBox/assets/90640849/4b78f565-6018-4b12-aadb-3af7b6e3723e)
 
 ### Add Comic
 
-Using this page, a user can add a comic book to the system. A user can favorite a comic while adding to the system.
+Using this page, a user can add a comic book to the system. A user can favourite a comic while adding to the system.
 
 ![Add Comic](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f9afc51d-567c-424d-92df-bd0f889a1208)
 
-### Favorite a comic
+### Favourite a comic
 
-All the comics favorited are visible in this page, a user can remove a comic from favorites.
+All the comics favourited are visible in this page, a user can remove a comic from favourites.
 
-![Favorites Page](https://github.com/Hashir-Jamil/LongBox/assets/90640849/4953cd07-9ed9-41ae-bac3-83f0dd2ed367)
+![Favourites Page](https://github.com/Hashir-Jamil/LongBox/assets/90640849/4953cd07-9ed9-41ae-bac3-83f0dd2ed367)
 
-Confirmation to remove from favorites:
+Confirmation to remove from favourites:
 
-![Unfavorite](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f0523c0a-70de-45d1-b8af-58c217cf10a8)
+![Unfavourite](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f0523c0a-70de-45d1-b8af-58c217cf10a8)
 
 ### View Profile
 

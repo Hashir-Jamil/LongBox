@@ -14,10 +14,11 @@ public class HibernateUtils {
                     .configure("hibernate.cfg.xml")
                     .addAnnotatedClass(User.class)
                     .addAnnotatedClass(ComicBook.class)
-                    .addAnnotatedClass(ComicBookFavoritesList.class)
+                    .addAnnotatedClass(ComicBookFavouritesList.class)
                     .addAnnotatedClass(ComicBookReadingList.class)
                     .addAnnotatedClass(ComicBookFinishedList.class)
-                    .addAnnotatedClass(Comment.class);
+                    .addAnnotatedClass(Comment.class)
+                    .addAnnotatedClass(StarRating.class);
             sessionFactory = configuration.buildSessionFactory();
         }
         return sessionFactory;

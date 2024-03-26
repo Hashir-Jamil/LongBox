@@ -10,7 +10,7 @@ public class TrendingAllTimeTableModel extends DefaultTableModel {
 	
 	List<ComicBookDto> comicBookList;
     private String[] columnNames =
-            {"Favorites Count",
+            {"Favourites Count",
             "Series Title",
             "Author",
             "Artist",
@@ -24,7 +24,7 @@ public class TrendingAllTimeTableModel extends DefaultTableModel {
 		for (int i = 0; i < comicBookList.size() - 1; i++) {
 			int min = i;
 			for (int j = i + 1; j < comicBookList.size(); j++) {
-				if (comicBookList.get(j).getFavoritesCount() > comicBookList.get(min).getFavoritesCount()) {
+				if (comicBookList.get(j).getFavouritesCount() > comicBookList.get(min).getFavouritesCount()) {
 					min = j;
 				}
 			}
@@ -34,7 +34,7 @@ public class TrendingAllTimeTableModel extends DefaultTableModel {
 		}
 		
 		for (ComicBookDto c : comicBookList) {
-			System.out.println(c.getFavoritesCount() + " " + c);
+			System.out.println(c.getFavouritesCount() + " " + c);
 		}
 		
 		this.comicBookList = comicBookList;
@@ -46,7 +46,7 @@ public class TrendingAllTimeTableModel extends DefaultTableModel {
         for (ComicBookDto comicBook : comicBookList) {
             
             addRow(new Object[]{
-            		comicBook.getFavoritesCount(),
+            		comicBook.getFavouritesCount(),
                     comicBook.getSeriesTitle(),
                     comicBook.getAuthor(),
                     comicBook.getArtist(),
@@ -70,7 +70,7 @@ public class TrendingAllTimeTableModel extends DefaultTableModel {
         setRowCount(0); // Clear existing rows
         for (ComicBookDto comicBook : comicBookList) {
             addRow(new Object[]{
-            		comicBook.getFavoritesCount(),
+            		comicBook.getFavouritesCount(),
                     comicBook.getSeriesTitle(),
                     comicBook.getAuthor(),
                     comicBook.getArtist(),

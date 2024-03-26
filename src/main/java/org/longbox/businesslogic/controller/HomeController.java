@@ -12,6 +12,7 @@ import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.UserDaoImpl;
 import org.longbox.presentation.profile.HomeFrame;
 import org.longbox.presentation.profile.ProfilePanel;
+import org.longbox.presentation.profile.SocialPanel;
 import org.longbox.presentation.tablemodels.ComicBookTableModel;
 
 import javax.swing.*;
@@ -27,6 +28,7 @@ public class HomeController implements ActionListener {
     private ComicRepositoryController comicRepsoitoryController;
     private TrendingController trendingController;
     private ProfileController profileController;
+    private SocialController socialController;
 
     public HomeController(HomeFrame homeFrame) {
         this.homeFrame = homeFrame;
@@ -34,6 +36,7 @@ public class HomeController implements ActionListener {
         this.comicRepsoitoryController = new ComicRepositoryController(this.homeFrame.getComicRepoPanel());
         this.trendingController = new TrendingController(this.homeFrame.getTrendingComicsPanel());
         this.profileController = new ProfileController(this.homeFrame.getProfilePanel());
+        this.socialController = new SocialController(this.homeFrame.getSocialPanel());
         addListeners();
     }
 
@@ -41,11 +44,12 @@ public class HomeController implements ActionListener {
         this.homeFrame.getLogOutButton().addActionListener(this);
         this.homeFrame.getAddComicToRepoPanel().getEnterComicBookButton().addActionListener(this);
         this.homeFrame.getComicRepoButton().addActionListener(this);
-        this.homeFrame.getFavoritesButton().addActionListener(this);
+        this.homeFrame.getFavouritesButton().addActionListener(this);
         this.homeFrame.getProfileButton().addActionListener(this);
         this.homeFrame.getAddComicButton().addActionListener(this);
         this.homeFrame.getTrendingButton().addActionListener(this);
         this.homeFrame.getRecommendationsButton().addActionListener(this);
+        this.homeFrame.getSocialButton().addActionListener(this);
     }
 
     @Override
@@ -69,10 +73,10 @@ public class HomeController implements ActionListener {
             
         }
 
-        if (e.getSource() == this.homeFrame.getFavoritesButton()) {
-            this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getFAVORITES_PANEL());
-            this.homeFrame.getFavoritesPanel().reloadData();
-            FavoritesController favoritesController = new FavoritesController(this.homeFrame.getFavoritesPanel());
+        if (e.getSource() == this.homeFrame.getFavouritesButton()) {
+            this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getFAVOURITES_PANEL());
+            this.homeFrame.getFavouritesPanel().reloadData();
+            FavouritesController favouritesController = new FavouritesController(this.homeFrame.getFavouritesPanel());
         }
 
         if (e.getSource() == this.homeFrame.getProfileButton()) {
@@ -98,6 +102,11 @@ public class HomeController implements ActionListener {
         if(e.getSource() == this.homeFrame.getRecommendationsButton()) {
             this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getRECCOMENDEDATIONS_PANEL());
         }
+        
+        if (e.getSource() == this.homeFrame.getSocialButton()) {
+        	this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getSOCIAL_PANEL());
+        }
+       
     }
 
     private void saveAddComicBookFormInput() throws UserIDDoesNotExistException {
@@ -134,9 +143,9 @@ public class HomeController implements ActionListener {
         ComicBookService comicBookService = new ComicBookService(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
         Long comicId = comicBookService.saveComicBook(comicBook);
 
-        boolean isFavorite = this.homeFrame.getAddComicToRepoPanel().getFavoriteCheckbox().isSelected();
-        if (isFavorite) {
-            this.homeFrame.getFavoritesPanel().update(this.userSession.getUser().getId(), comicId);
+        boolean isFavourite = this.homeFrame.getAddComicToRepoPanel().getFavouriteCheckbox().isSelected();
+        if (isFavourite) {
+            this.homeFrame.getFavouritesPanel().update(this.userSession.getUser().getId(), comicId);
         }
         JOptionPane.showMessageDialog(this.homeFrame, "Comic book added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }

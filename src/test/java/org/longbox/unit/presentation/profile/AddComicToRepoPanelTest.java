@@ -8,15 +8,15 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AddComicToRepoPanelTest {
 
     @Test
-    void testFavoriteCheckboxAdded() {
+    void testFavouriteCheckboxAdded() {
         AddComicToRepoPanel panel = new AddComicToRepoPanel();
-        assertNotNull(panel.getFavoriteCheckbox());
+        assertNotNull(panel.getFavouriteCheckbox());
     }
 
     @Test
-    void testFavoriteCheckboxText() {
+    void testFavouriteCheckboxText() {
         AddComicToRepoPanel panel = new AddComicToRepoPanel();
-        assertEquals("Is Favorite", panel.getFavoriteCheckbox().getText());
+        assertEquals("Is Favourite", panel.getFavouriteCheckbox().getText());
     }
 
 

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
+import org.longbox.domainobjects.mapper.ComicBookMapper;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.domainobjects.entity.ComicBook;
 
@@ -70,7 +71,7 @@ public class ComicBookDaoImplTest {
 
     @Test
     void saveComicBook() {
-        comicBookDaoImpl.saveComicBook(new ComicBook(comicBookDto2));
+        comicBookDaoImpl.saveComicBook(ComicBookMapper.toEntity(comicBookDto2));
     }
 
     @Test

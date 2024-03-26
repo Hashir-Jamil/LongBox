@@ -61,7 +61,7 @@ public class User {
 	private String preferredGenre;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private Set<ComicBookFavoritesList> favoriteComicBooks = new HashSet<>();
+	private Set<ComicBookFavouritesList> favouriteComicBooks = new HashSet<>();
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<ComicBookFinishedList> finishedComicBooks = new HashSet<>();

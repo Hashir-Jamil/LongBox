@@ -71,7 +71,7 @@ public class ComicBookStubDbTest {
         assertEquals(0,comicBookStubDao.getComicBookById(100L).getYearPublished());
         assertNull(comicBookStubDao.getComicBookById(100L).getGenres());
         assertEquals(0,comicBookStubDao.getComicBookById(100L).getNumberOfIssues());
-        assertEquals(0,comicBookStubDao.getComicBookById(100L).getFavoritesCount());
+        assertEquals(0,comicBookStubDao.getComicBookById(100L).getFavouritesCount());
         assertNull(comicBookStubDao.getComicBookById(100L).getDescription());
         assertNull(comicBookStubDao.getComicBookById(100L).getDateAdded());
     }
@@ -93,7 +93,7 @@ public class ComicBookStubDbTest {
         assertEquals(0,comicBookStubDao.getComicBookBySeriesTitle("Not Zot!").getYearPublished());
         assertNull(comicBookStubDao.getComicBookBySeriesTitle("Not Zot!").getGenres());
         assertEquals(0,comicBookStubDao.getComicBookBySeriesTitle("Not Zot!").getNumberOfIssues());
-        assertEquals(0,comicBookStubDao.getComicBookBySeriesTitle("Not Zot!").getFavoritesCount());
+        assertEquals(0,comicBookStubDao.getComicBookBySeriesTitle("Not Zot!").getFavouritesCount());
         assertNull(comicBookStubDao.getComicBookBySeriesTitle("Not Zot!").getDescription());
         assertNull(comicBookStubDao.getComicBookBySeriesTitle("Not Zot!").getDateAdded());
     }

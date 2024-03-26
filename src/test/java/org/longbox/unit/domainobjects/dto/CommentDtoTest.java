@@ -36,17 +36,15 @@ public class CommentDtoTest {
         u1DTO.setCountry("USA");
         u1DTO.setDefaults();
 
-        comicBook1 = new ComicBookDto(
-                "Zot!",
-                "Scott McCloud",
-                "Scott McCloud",
-                new String[] {"Superhero", "Superpower", "Adventure", "Science Fiction", "Futuristic", "Romance", "Drama"},
-                "Description",
-                36,
-                "Eclipse",
-                1984
-        );
-
+        comicBook1 = new ComicBookDto();
+        comicBook1.setSeriesTitle("Zot!");
+        comicBook1.setAuthor("Scott McCloud");
+        comicBook1.setArtist("Scott McCloud");
+        comicBook1.setGenres(new String[] {"Superhero", "Superpower", "Adventure", "Science Fiction", "Futuristic", "Romance", "Drama"});
+        comicBook1.setDescription("Description");
+        comicBook1.setNumberOfIssues(36);
+        comicBook1.setPublisher("Eclipse");
+        comicBook1.setYearPublished(1984);
     }
 
     @Test

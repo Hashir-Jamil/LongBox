@@ -9,21 +9,21 @@ import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ComicBookFavoritesListDaoImplTest {
+public class ComicBookFavouritesListDaoImplTest {
 
     ComicBookFavouritesListDaoImpl favouritesListDao;
 
     @BeforeEach
     void setup() {
         favouritesListDao = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
-        favouritesListDao.removeFromFavorites(5L,30L);
+        favouritesListDao.removeFromFavourites(5L,30L);
     }
 
     @Test
-    void saveToFavoritesTest() {
+    void saveToFavouritesTest() {
         try {
-            favouritesListDao.removeFromFavorites(6L,20L);
-            favouritesListDao.saveToFavorites(6L,20L);
+            favouritesListDao.removeFromFavourites(6L,20L);
+            favouritesListDao.saveToFavourites(6L,20L);
         } catch (UserIDDoesNotExistException e) {
             throw new RuntimeException(e);
         }
@@ -31,10 +31,10 @@ public class ComicBookFavoritesListDaoImplTest {
     }
 
     @Test
-    void removeFromFavoritesTest() {
+    void removeFromFavouritesTest() {
         try {
-            favouritesListDao.saveToFavorites(5L,30L);
-            favouritesListDao.removeFromFavorites(5L,30L);
+            favouritesListDao.saveToFavourites(5L,30L);
+            favouritesListDao.removeFromFavourites(5L,30L);
         } catch (UserIDDoesNotExistException e) {
             throw new RuntimeException(e);
         }

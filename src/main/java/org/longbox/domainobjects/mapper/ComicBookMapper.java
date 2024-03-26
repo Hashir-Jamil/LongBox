@@ -21,14 +21,14 @@ public class ComicBookMapper {
         dto.setPublisher(entity.getPublisher());
         dto.setYearPublished(entity.getYearPublished());
         dto.setDateAdded(entity.getDateAdded());
-        dto.setFavoritesCount(entity.getFavoritesCount());
-        dto.setNorthAmericaFavoritesCount((entity.getNorthAmericaFavoritesCount()));
-        dto.setSouthAmericaFavoritesCount((entity.getSouthAmericaFavoritesCount()));
-        dto.setEuropeFavoritesCount((entity.getEuropeFavoritesCount()));
-        dto.setAsiaFavoritesCount((entity.getAsiaFavoritesCount()));
-        dto.setAfricaFavoritesCount((entity.getAfricaFavoritesCount()));
-        dto.setOceaniaFavoritesCount((entity.getOceaniaFavoritesCount()));
-        dto.setAntarcticaFavoritesCount((entity.getAntarcticaFavoritesCount()));
+        dto.setFavouritesCount(entity.getFavouritesCount());
+        dto.setNorthAmericaFavouritesCount((entity.getNorthAmericaFavouritesCount()));
+        dto.setSouthAmericaFavouritesCount((entity.getSouthAmericaFavouritesCount()));
+        dto.setEuropeFavouritesCount((entity.getEuropeFavouritesCount()));
+        dto.setAsiaFavouritesCount((entity.getAsiaFavouritesCount()));
+        dto.setAfricaFavouritesCount((entity.getAfricaFavouritesCount()));
+        dto.setOceaniaFavouritesCount((entity.getOceaniaFavouritesCount()));
+        dto.setAntarcticaFavouritesCount((entity.getAntarcticaFavouritesCount()));
         return dto;
     }
 
@@ -49,14 +49,14 @@ public class ComicBookMapper {
         entity.setPublisher(dto.getPublisher());
         entity.setYearPublished(dto.getYearPublished());
         entity.setDateAdded(dto.getDateAdded());
-        entity.setFavoritesCount(dto.getFavoritesCount());
-        entity.setNorthAmericaFavoritesCount(dto.getNorthAmericaFavoritesCount());
-        entity.setSouthAmericaFavoritesCount((dto.getSouthAmericaFavoritesCount()));
-        entity.setEuropeFavoritesCount((dto.getEuropeFavoritesCount()));
-        entity.setAsiaFavoritesCount((dto.getAsiaFavoritesCount()));
-        entity.setAfricaFavoritesCount((dto.getAfricaFavoritesCount()));
-        entity.setOceaniaFavoritesCount((dto.getOceaniaFavoritesCount()));
-        entity.setAntarcticaFavoritesCount((dto.getAntarcticaFavoritesCount()));
+        entity.setFavouritesCount(dto.getFavouritesCount());
+        entity.setNorthAmericaFavouritesCount(dto.getNorthAmericaFavouritesCount());
+        entity.setSouthAmericaFavouritesCount((dto.getSouthAmericaFavouritesCount()));
+        entity.setEuropeFavouritesCount((dto.getEuropeFavouritesCount()));
+        entity.setAsiaFavouritesCount((dto.getAsiaFavouritesCount()));
+        entity.setAfricaFavouritesCount((dto.getAfricaFavouritesCount()));
+        entity.setOceaniaFavouritesCount((dto.getOceaniaFavouritesCount()));
+        entity.setAntarcticaFavouritesCount((dto.getAntarcticaFavouritesCount()));
         return entity;
     }
 

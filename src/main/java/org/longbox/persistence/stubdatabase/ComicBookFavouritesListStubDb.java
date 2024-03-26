@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.domainobjects.dto.ComicBookDto;
-import org.longbox.domainobjects.dto.ComicBookListItemFavoriteDto;
+import org.longbox.domainobjects.dto.ComicBookListItemFavouriteDto;
 import org.longbox.persistence.dao.ComicBookFavouritesListDao;
 import org.longbox.domainobjects.entity.ComicBook;
 import org.longbox.domainobjects.entity.User;
@@ -24,28 +24,28 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ComicBookFavoritesListStubDb implements ComicBookFavouritesListDao, JsonConvertor {
-    private List<ComicBookListItemFavoriteDto> records = new ArrayList<>();
-    private final String ABSOLUTE_FILE_PATH = "src/main/resources/ComicBookFavoritesListStubDb.json";
+public class ComicBookFavouritesListStubDb implements ComicBookFavouritesListDao, JsonConvertor {
+    private List<ComicBookListItemFavouriteDto> records = new ArrayList<>();
+    private final String ABSOLUTE_FILE_PATH = "src/main/resources/ComicBookFavouritesListStubDb.json";
 
     @Override
-    public void saveToFavorites(Long userId, Long comicBookId) throws UserIDDoesNotExistException {
-        List<ComicBookListItemFavoriteDto> readingList = deserializeStubData(ABSOLUTE_FILE_PATH);
-        readingList.add(new ComicBookListItemFavoriteDto(userId, comicBookId));
+    public void saveToFavourites(Long userId, Long comicBookId) throws UserIDDoesNotExistException {
+        List<ComicBookListItemFavouriteDto> readingList = deserializeStubData(ABSOLUTE_FILE_PATH);
+        readingList.add(new ComicBookListItemFavouriteDto(userId, comicBookId));
     }
 
     @Override
-    public boolean removeFromFavorites(Long userId, Long comicBookId) {
-        List<ComicBookListItemFavoriteDto> favoritesList = deserializeStubData(ABSOLUTE_FILE_PATH);
-        for (int i = 0; i < favoritesList.size(); i++) {
-            if (favoritesList.get(i).getUserId() == userId && favoritesList.get(i).getComicBookId() == comicBookId) {
-                favoritesList.remove(i);
+    public boolean removeFromFavourites(Long userId, Long comicBookId) {
+        List<ComicBookListItemFavouriteDto> favouritesList = deserializeStubData(ABSOLUTE_FILE_PATH);
+        for (int i = 0; i < favouritesList.size(); i++) {
+            if (favouritesList.get(i).getUserId() == userId && favouritesList.get(i).getComicBookId() == comicBookId) {
+                favouritesList.remove(i);
                 break;
             }
         }
-        records = favoritesList;
+        records = favouritesList;
         serializeStubData();
-        return favoritesList.isEmpty();
+        return favouritesList.isEmpty();
     }
 
     @Override
@@ -54,7 +54,7 @@ public class ComicBookFavoritesListStubDb implements ComicBookFavouritesListDao,
     }
 
     @Override
-    public List<ComicBook> getFavoritesByUser(Long userId) {
+    public List<ComicBook> getFavouritesByUser(Long userId) {
         return null;
     }
 
@@ -64,7 +64,7 @@ public class ComicBookFavoritesListStubDb implements ComicBookFavouritesListDao,
     }
 
     @Override
-    public List<ComicBookDto> getAllFavoritesComicBooks() {
+    public List<ComicBookDto> getAllFavouritesComicBooks() {
         return null;
     }
 
@@ -79,8 +79,8 @@ public class ComicBookFavoritesListStubDb implements ComicBookFavouritesListDao,
     }
 
     @Override
-    public List<ComicBookListItemFavoriteDto> deserializeStubData(String filepath) {
-        Type listType = new TypeToken<List<ComicBookListItemFavoriteDto>>(){}.getType();
+    public List<ComicBookListItemFavouriteDto> deserializeStubData(String filepath) {
+        Type listType = new TypeToken<List<ComicBookListItemFavouriteDto>>(){}.getType();
         JsonReader reader = null;
         try {
             reader = new JsonReader(new FileReader(filepath));

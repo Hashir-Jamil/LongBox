@@ -33,44 +33,44 @@ public class TrendingController implements ActionListener {
 	}
 	
 	public void reloadRegional(String region) {
-		this.trendingPanel.getPanel().remove(this.trendingPanel.getRegionalFavoritesScrollPane());
+		this.trendingPanel.getPanel().remove(this.trendingPanel.getRegionalFavouritesScrollPane());
 		
 		this.trendingPanel.setComicBookDaoImpl(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 		
 		this.trendingPanel.setRegionalComicBookTableModel(new TrendingRegionalTableModel(this.trendingPanel.getComicBookDaoImpl().getAllComicBooks(), region));
 		
-		this.trendingPanel.setRegionalFavoritesTable(new JTable(this.trendingPanel.getRegionalComicBookTableModel()));
-		this.trendingPanel.getRegionalFavoritesTable().setBounds(0, 0, 1, 1);
-		this.trendingPanel.getPanel().add(this.trendingPanel.getRegionalFavoritesTable());
+		this.trendingPanel.setRegionalFavouritesTable(new JTable(this.trendingPanel.getRegionalComicBookTableModel()));
+		this.trendingPanel.getRegionalFavouritesTable().setBounds(0, 0, 1, 1);
+		this.trendingPanel.getPanel().add(this.trendingPanel.getRegionalFavouritesTable());
 		
-		this.trendingPanel.setRegionalFavoritesScrollPane(new JScrollPane(this.trendingPanel.getRegionalFavoritesTable()));
-		this.trendingPanel.getRegionalFavoritesScrollPane().setBounds(10, 483, 1144, 300);
-		this.trendingPanel.getPanel().add(this.trendingPanel.getRegionalFavoritesScrollPane());
+		this.trendingPanel.setRegionalFavouritesScrollPane(new JScrollPane(this.trendingPanel.getRegionalFavouritesTable()));
+		this.trendingPanel.getRegionalFavouritesScrollPane().setBounds(10, 483, 1144, 300);
+		this.trendingPanel.getPanel().add(this.trendingPanel.getRegionalFavouritesScrollPane());
 	}
 	
 	public void reloadTrending() {
-		this.trendingPanel.getPanel().remove(this.trendingPanel.getAllTimeFavoritesScrollPane());
-		this.trendingPanel.getPanel().remove(this.trendingPanel.getRegionalFavoritesScrollPane());
+		this.trendingPanel.getPanel().remove(this.trendingPanel.getAllTimeFavouritesScrollPane());
+		this.trendingPanel.getPanel().remove(this.trendingPanel.getRegionalFavouritesScrollPane());
 		
 		this.trendingPanel.setComicBookDaoImpl(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 		
 		this.trendingPanel.setComicBookTableModel(new TrendingAllTimeTableModel(this.trendingPanel.getComicBookDaoImpl().getAllComicBooks()));
 		this.trendingPanel.setRegionalComicBookTableModel(new TrendingRegionalTableModel(this.trendingPanel.getComicBookDaoImpl().getAllComicBooks(), "North America"));
 		
-		this.trendingPanel.setAllTimeFavoritesTable(new JTable(this.trendingPanel.getComicBookTableModel()));
-		this.trendingPanel.getAllTimeFavoritesTable().setBounds(0, 0, 1, 1);
-		this.trendingPanel.getPanel().add(this.trendingPanel.getAllTimeFavoritesTable());
+		this.trendingPanel.setAllTimeFavouritesTable(new JTable(this.trendingPanel.getComicBookTableModel()));
+		this.trendingPanel.getAllTimeFavouritesTable().setBounds(0, 0, 1, 1);
+		this.trendingPanel.getPanel().add(this.trendingPanel.getAllTimeFavouritesTable());
 		
-		this.trendingPanel.setRegionalFavoritesTable(new JTable(this.trendingPanel.getRegionalComicBookTableModel()));
-		this.trendingPanel.getRegionalFavoritesTable().setBounds(0, 0, 1, 1);
-		this.trendingPanel.getPanel().add(this.trendingPanel.getRegionalFavoritesTable());
+		this.trendingPanel.setRegionalFavouritesTable(new JTable(this.trendingPanel.getRegionalComicBookTableModel()));
+		this.trendingPanel.getRegionalFavouritesTable().setBounds(0, 0, 1, 1);
+		this.trendingPanel.getPanel().add(this.trendingPanel.getRegionalFavouritesTable());
 		
-		this.trendingPanel.setAllTimeFavoritesScrollPane(new JScrollPane(this.trendingPanel.getAllTimeFavoritesTable()));
-		this.trendingPanel.getAllTimeFavoritesScrollPane().setBounds(10, 139, 1144, 300);
-		this.trendingPanel.getPanel().add(this.trendingPanel.getAllTimeFavoritesScrollPane());
+		this.trendingPanel.setAllTimeFavouritesScrollPane(new JScrollPane(this.trendingPanel.getAllTimeFavouritesTable()));
+		this.trendingPanel.getAllTimeFavouritesScrollPane().setBounds(10, 139, 1144, 300);
+		this.trendingPanel.getPanel().add(this.trendingPanel.getAllTimeFavouritesScrollPane());
 		
-		this.trendingPanel.setRegionalFavoritesScrollPane(new JScrollPane(this.trendingPanel.getRegionalFavoritesTable()));
-		this.trendingPanel.getRegionalFavoritesScrollPane().setBounds(10, 483, 1144, 300);
-		this.trendingPanel.getPanel().add(this.trendingPanel.getRegionalFavoritesScrollPane());
+		this.trendingPanel.setRegionalFavouritesScrollPane(new JScrollPane(this.trendingPanel.getRegionalFavouritesTable()));
+		this.trendingPanel.getRegionalFavouritesScrollPane().setBounds(10, 483, 1144, 300);
+		this.trendingPanel.getPanel().add(this.trendingPanel.getRegionalFavouritesScrollPane());
 	}
 }

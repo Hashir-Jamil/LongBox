@@ -22,81 +22,14 @@ public class ComicBookDto {
     private String publisher;
     private int yearPublished;
     private Date dateAdded;
-    private int northAmericaFavoritesCount;
-    private int southAmericaFavoritesCount;
-    private int europeFavoritesCount;
-    private int asiaFavoritesCount;
-    private int africaFavoritesCount;
-    private int oceaniaFavoritesCount;
-    private int antarcticaFavoritesCount;    
-    private int favoritesCount;
-
-    public ComicBookDto(
-        String seriesTitle,
-        String author,
-        String artist,
-        String genres,
-        String description,
-        int numberOfIssues,
-        String publisher,
-        int yearPublished,
-        Date date, 
-        int northAmericaFavoritesCount,
-        int southAmericaFavoritesCount,
-        int europeFavoritesCount,
-        int asiaFavoritesCount,
-        int africaFavoritesCount,
-        int oceaniaFavoritesCount,
-        int antarcticaFavoritesCount,
-        int favoritesCount
-    ) {
-        this.seriesTitle = seriesTitle;
-        this.author = author;
-        this.artist = artist;
-        this.genres = GenreUtils.genreStringToList(genres);
-        this.description = description;
-        this.numberOfIssues = numberOfIssues;
-        this.yearPublished = yearPublished;
-        this.publisher = publisher;
-        this.dateAdded = date;
-        this.northAmericaFavoritesCount = northAmericaFavoritesCount;
-        this.southAmericaFavoritesCount = southAmericaFavoritesCount;
-        this.europeFavoritesCount = europeFavoritesCount;
-        this.asiaFavoritesCount = asiaFavoritesCount;
-        this.africaFavoritesCount = africaFavoritesCount;
-        this.oceaniaFavoritesCount = oceaniaFavoritesCount;
-        this.antarcticaFavoritesCount = antarcticaFavoritesCount;
-        this.favoritesCount = favoritesCount;
-    };
-
-    public ComicBookDto(
-        String seriesTitle,
-        String author,
-        String artist,
-        String[] genres,
-        String description,
-        int numberOfIssues,
-        String publisher,
-        int yearPublished
-    ) {
-        this.seriesTitle = seriesTitle;
-        this.author = author;
-        this.artist = artist;
-        this.genres = genres;
-        this.description = description;
-        this.numberOfIssues = numberOfIssues;
-        this.yearPublished = yearPublished;
-        this.publisher = publisher;
-        this.dateAdded = new Date();
-        this.northAmericaFavoritesCount = 0;
-        this.southAmericaFavoritesCount = 0;
-        this.europeFavoritesCount = 0;
-        this.asiaFavoritesCount = 0;
-        this.africaFavoritesCount = 0;
-        this.oceaniaFavoritesCount = 0;
-        this.antarcticaFavoritesCount = 0;
-        this.favoritesCount = 0;
-    }
+    private int northAmericaFavouritesCount;
+    private int southAmericaFavouritesCount;
+    private int europeFavouritesCount;
+    private int asiaFavouritesCount;
+    private int africaFavouritesCount;
+    private int oceaniaFavouritesCount;
+    private int antarcticaFavouritesCount;    
+    private int favouritesCount;
 
     @Override
     public boolean equals(Object o) {
@@ -124,7 +57,7 @@ public class ComicBookDto {
                 ", publisher='" + publisher + '\'' +
                 ", yearPublished=" + yearPublished +
                 ", dateAdded=" + dateAdded +
-                ", favoritesCount=" + favoritesCount +
+                ", favouritesCount=" + favouritesCount +
                 '}';
     }
 }

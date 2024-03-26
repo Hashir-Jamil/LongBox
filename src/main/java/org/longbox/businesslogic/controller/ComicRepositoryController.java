@@ -23,12 +23,12 @@ import org.longbox.domainobjects.mapper.ComicBookMapper;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.presentation.tablemodels.ComicBookTableModel;
 import org.longbox.presentation.profile.ComicRepositoryPanel;
-import org.longbox.presentation.profile.FavoritesPanel;
+import org.longbox.presentation.profile.FavouritesPanel;
 
 public class ComicRepositoryController implements ActionListener, MouseListener {
 	
 	private ComicRepositoryPanel comicRepositoryPanel;
-	private ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());;
+	private ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 	private UserSession userSession;
     private UserService userService;
 	
@@ -42,7 +42,7 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 		this.comicRepositoryPanel.getRefreshButton().addActionListener(this);
 		this.comicRepositoryPanel.getComicBookTable().addMouseListener(this);
 		this.comicRepositoryPanel.getTextField().addActionListener(this);
-		this.comicRepositoryPanel.getAddToFavoritesButton().addActionListener(this);
+		this.comicRepositoryPanel.getAddToFavouritesButton().addActionListener(this);
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 			searchResults = org.longbox.businesslogic.utils.ComicBookSearchUtils.comicAdvancedSearch(searchBy, target, searchResults, this.comicRepositoryPanel.getComicBookDaoImpl().getAllComicBooks(), this.userSession);
 		}
 		
-		if(e.getSource() == this.comicRepositoryPanel.getAddToFavoritesButton()) {
+		if(e.getSource() == this.comicRepositoryPanel.getAddToFavouritesButton()) {
 			int selectedRow = this.comicRepositoryPanel.getComicBookTable().getSelectedRow();
 			if (selectedRow != -1) {
 //				long comicId = this.comicRepositoryPanel.getComicBookTableModel().getComicIdAtRow(selectedRow);
@@ -71,15 +71,15 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 				long comicId = comicBookDaoImpl.getComicBookBySeriesTitle(name).getId();
 				
 				System.out.println("HERE WE HAVE THE NAME: " + name);
-				// Check if the comic book is already in favorites list
-				if (!isComicInFavorites(comicId)) {
+				// Check if the comic book is already in favourites list
+				if (!isComicInFavourites(comicId)) {
                     try {
-                        addComicToFavorites(comicId);
+                        addComicToFavourites(comicId);
                     } catch (UserIDDoesNotExistException ex) {
                         throw new RuntimeException(ex);
                     }
-                    // Disable the button after adding to favorites
-                    this.comicRepositoryPanel.getAddToFavoritesButton().setEnabled(false);
+                    // Disable the button after adding to favourites
+                    this.comicRepositoryPanel.getAddToFavouritesButton().setEnabled(false);
 				}
 			}
 		}
@@ -90,7 +90,7 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 	public void mouseClicked(MouseEvent e) {
 		int selectedRow = this.comicRepositoryPanel.getComicBookTable().getSelectedRow();
 		if (selectedRow != -1) {
-			this.comicRepositoryPanel.getAddToFavoritesButton().setEnabled(true);
+			this.comicRepositoryPanel.getAddToFavouritesButton().setEnabled(true);
 		}
 		int row = this.comicRepositoryPanel.getComicBookTable().rowAtPoint(e.getPoint());
 		int col = this.comicRepositoryPanel.getComicBookTable().columnAtPoint(e.getPoint());
@@ -148,17 +148,17 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 		this.comicRepositoryPanel.getComicBookTable().addMouseListener(this);
 	}
 	
-	private boolean isComicInFavorites(long comicId) {
+	private boolean isComicInFavourites(long comicId) {
 		ComicBook comicBook = this.comicRepositoryPanel.getComicBookDaoImpl().getComicBookById(comicId);
 		ComicBookDto comicBookDTO = ComicBookMapper.toDto(comicBook);
 		//ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
-		System.out.println("the comic in favorites is " + this.comicRepositoryPanel.getComicBookFavouritesListDaoImpl().getAllFavoritesComicBooks().contains(comicBookDTO));
-		return this.comicRepositoryPanel.getComicBookFavouritesListDaoImpl().getAllFavoritesComicBooks().contains(comicBookDTO);
+		System.out.println("the comic in favourites is " + this.comicRepositoryPanel.getComicBookFavouritesListDaoImpl().getAllFavouritesComicBooks().contains(comicBookDTO));
+		return this.comicRepositoryPanel.getComicBookFavouritesListDaoImpl().getAllFavouritesComicBooks().contains(comicBookDTO);
 	}
 
-	private void addComicToFavorites(long comicId) throws UserIDDoesNotExistException {
-		FavoritesPanel favoritesPanel = new FavoritesPanel();
-		favoritesPanel.update(this.userSession.getUser().getId(), comicId);
-		favoritesPanel.reloadData();
+	private void addComicToFavourites(long comicId) throws UserIDDoesNotExistException {
+		FavouritesPanel favouritesPanel = new FavouritesPanel();
+		favouritesPanel.update(this.userSession.getUser().getId(), comicId);
+		favouritesPanel.reloadData();
 	}
 }

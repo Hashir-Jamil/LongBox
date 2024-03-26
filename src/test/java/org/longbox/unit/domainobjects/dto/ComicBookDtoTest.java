@@ -1,5 +1,6 @@
 package org.longbox.unit.domainobjects.dto;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
@@ -10,38 +11,41 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.*;
 public class ComicBookDtoTest {
 
-    ComicBookDto comicBook1 = new ComicBookDto(
-            "Zot!",
-            "Scott McCloud",
-            "Scott McCloud",
-            new String[] {"Superhero", "Superpower", "Adventure", "Science Fiction", "Futuristic", "Romance", "Drama"},
-            "Description",
-            36,
-            "Eclipse",
-            1984
-    );
+    ComicBookDto comicBook1;
+    ComicBookDto comicBook2;
+    ComicBookDto comicBook3;
+    @BeforeEach
+    public void setup() {
+        comicBook1 = new ComicBookDto();
+        comicBook1.setSeriesTitle("Zot!");
+        comicBook1.setAuthor("Scott McCloud");
+        comicBook1.setArtist("Scott McCloud");
+        comicBook1.setGenres(new String[] {"Superhero", "Superpower", "Adventure", "Science Fiction", "Futuristic", "Romance", "Drama"});
+        comicBook1.setDescription("Description");
+        comicBook1.setNumberOfIssues(36);
+        comicBook1.setPublisher("Eclipse");
+        comicBook1.setYearPublished(1984);
 
-    ComicBookDto comicBook2 = new ComicBookDto(
-            "Zot!",
-            "Scott McCloud",
-            "Scott McCloud",
-            new String[] {},
-            "Description",
-            36,
-            "Eclipse",
-            1984
-    );
+        comicBook2 = new ComicBookDto();
+        comicBook2.setSeriesTitle("Zot!");
+        comicBook2.setAuthor("Scott McCloud");
+        comicBook2.setArtist("Scott McCloud");
+        comicBook2.setGenres(new String[] {});
+        comicBook2.setDescription("Description");
+        comicBook2.setNumberOfIssues(36);
+        comicBook2.setPublisher("Eclipse");
+        comicBook2.setYearPublished(1984);
 
-    ComicBookDto comicBook3 = new ComicBookDto(
-            "Zot!",
-            "Scott McCloud",
-            "Scott McCloud",
-            new String[] {"Superhero"},
-            "Description",
-            36,
-            "Eclipse",
-            1984
-    );
+        comicBook3 = new ComicBookDto();
+        comicBook3.setSeriesTitle("Zot!");
+        comicBook3.setAuthor("Scott McCloud");
+        comicBook3.setArtist("Scott McCloud");
+        comicBook3.setGenres(new String[] {"Superhero"});
+        comicBook3.setDescription("Description");
+        comicBook3.setNumberOfIssues(36);
+        comicBook3.setPublisher("Eclipse");
+        comicBook3.setYearPublished(1984);
+    }
 
     @Test
     public void multipleGenresListToString() {
@@ -68,12 +72,14 @@ public class ComicBookDtoTest {
         assertArrayEquals(expected, GenreUtils.genreStringToList(input));
     }
 
-    @Test void noGenresStringToList() {
+    @Test
+    void noGenresStringToList() {
         String[] expected = {""};
         assertArrayEquals(expected, GenreUtils.genreStringToList(""));
     }
 
-    @Test void oneGenresStringToList() {
+    @Test
+    void oneGenresStringToList() {
         String[] expected = {"Fantasy"};
         assertArrayEquals(expected, GenreUtils.genreStringToList("Fantasy"));
     }
@@ -122,51 +128,51 @@ public class ComicBookDtoTest {
         comicBookDto.setYearPublished(2022);
         comicBookDto.setDateAdded(new Date());
 
-        String expectedToString = "ComicBookDTO{id=1, seriesTitle='Series Title', author='Author', artist='Artist', genres=[Genre1, Genre2], description='Description', numberOfIssues=10, publisher='Publisher', yearPublished=2022, dateAdded=" + comicBookDto.getDateAdded() + ", favoritesCount=" + comicBookDto.getFavoritesCount() + '}';
+        String expectedToString = "ComicBookDTO{id=1, seriesTitle='Series Title', author='Author', artist='Artist', genres=[Genre1, Genre2], description='Description', numberOfIssues=10, publisher='Publisher', yearPublished=2022, dateAdded=" + comicBookDto.getDateAdded() + ", favouritesCount=" + comicBookDto.getFavouritesCount() + '}';
         assertEquals(expectedToString, comicBookDto.toString());
     }
 
-/*    @Test
-    public void testComicBookDtoConstructor() {
-        ComicBook comicBookRecord = new ComicBook();
-        comicBookRecord.setId(1L);
-        comicBookRecord.setAuthor("Author");
-        comicBookRecord.setSeriesTitle("Series Title");
-        comicBookRecord.setArtist("Artist");
-        comicBookRecord.setGenres("Genre1, Genre2");
-        comicBookRecord.setDescription("Description");
-        comicBookRecord.setNumberOfIssues(10);
-        comicBookRecord.setPublisher("Publisher");
-        comicBookRecord.setYearPublished(2022);
-        comicBookRecord.setDateAdded(new Date());
-        comicBookRecord.setNorthAmericaFavoritesCount(1);
-        comicBookRecord.setSouthAmericaFavoritesCount(2);
-        comicBookRecord.setEuropeFavoritesCount(3);
-        comicBookRecord.setAsiaFavoritesCount(4);
-        comicBookRecord.setAfricaFavoritesCount(5);
-        comicBookRecord.setOceaniaFavoritesCount(6);
-        comicBookRecord.setAntarcticaFavoritesCount(0);
-        comicBookRecord.setFavoritesCount(21);
+    @Test
+    public void favouritesCountTest_1() {
+        ComicBookDto EndOfEvangelion = new ComicBookDto();
+        EndOfEvangelion.setFavouritesCount(208);
+        EndOfEvangelion.setNorthAmericaFavouritesCount(31);
+        EndOfEvangelion.setSouthAmericaFavouritesCount(28);
+        EndOfEvangelion.setEuropeFavouritesCount(22);
+        EndOfEvangelion.setAsiaFavouritesCount(98);
+        EndOfEvangelion.setAfricaFavouritesCount(12);
+        EndOfEvangelion.setOceaniaFavouritesCount(16);
+        EndOfEvangelion.setAntarcticaFavouritesCount(1);
 
-        ComicBookDto comicBookDto = new ComicBookDto(comicBookRecord);
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getNorthAmericaFavouritesCount());
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getSouthAmericaFavouritesCount());
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getEuropeFavouritesCount());
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getAsiaFavouritesCount());
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getAfricaFavouritesCount());
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getOceaniaFavouritesCount());
+        assertTrue(EndOfEvangelion.getFavouritesCount() >= EndOfEvangelion.getAntarcticaFavouritesCount());
+    }
 
-        assertEquals(1L, comicBookDto.getId());
-        assertEquals("Series Title", comicBookDto.getSeriesTitle());
-        assertEquals("Author", comicBookDto.getAuthor());
-        assertEquals("Artist", comicBookDto.getArtist());
-        assertArrayEquals(new String[]{"Genre1", "Genre2"}, comicBookDto.getGenres());
-        assertEquals("Description", comicBookDto.getDescription());
-        assertEquals(10, comicBookDto.getNumberOfIssues());
-        assertEquals("Publisher", comicBookDto.getPublisher());
-        assertEquals(2022, comicBookDto.getYearPublished());
-        assertEquals(comicBookRecord.getDateAdded(), comicBookDto.getDateAdded());
-        assertEquals(1, comicBookDto.getNorthAmericaFavoritesCount());
-        assertEquals(2, comicBookDto.getSouthAmericaFavoritesCount());
-        assertEquals(3, comicBookDto.getEuropeFavoritesCount());
-        assertEquals(4, comicBookDto.getAsiaFavoritesCount());
-        assertEquals(5, comicBookDto.getAfricaFavoritesCount());
-        assertEquals(6, comicBookDto.getOceaniaFavoritesCount());
-        assertEquals(0, comicBookDto.getAntarcticaFavoritesCount());
-        assertEquals(21, comicBookDto.getFavoritesCount());
-    }*/
+    @Test
+    public void favouritesCountTest_2() {
+        ComicBookDto EndOfEvangelion = new ComicBookDto();
+        EndOfEvangelion.setFavouritesCount(208);
+        EndOfEvangelion.setNorthAmericaFavouritesCount(31);
+        EndOfEvangelion.setSouthAmericaFavouritesCount(28);
+        EndOfEvangelion.setEuropeFavouritesCount(22);
+        EndOfEvangelion.setAsiaFavouritesCount(98);
+        EndOfEvangelion.setAfricaFavouritesCount(12);
+        EndOfEvangelion.setOceaniaFavouritesCount(16);
+        EndOfEvangelion.setAntarcticaFavouritesCount(1);
+
+        assertEquals(EndOfEvangelion.getFavouritesCount(),
+                EndOfEvangelion.getNorthAmericaFavouritesCount() +
+                        EndOfEvangelion.getSouthAmericaFavouritesCount() +
+                        EndOfEvangelion.getEuropeFavouritesCount() +
+                        EndOfEvangelion.getAsiaFavouritesCount() +
+                        EndOfEvangelion.getAfricaFavouritesCount() +
+                        EndOfEvangelion.getOceaniaFavouritesCount() +
+                        EndOfEvangelion.getAntarcticaFavouritesCount()
+        );
+    }
 }
