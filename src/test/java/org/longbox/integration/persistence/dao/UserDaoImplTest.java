@@ -133,8 +133,8 @@ class UserDaoImplTest {
 	}
 	
 	@Test
-	void test_getUserByID_Fail(){
-		assertThrows(UserIDDoesNotExistException.class, () -> userDaoImpl.getUserById(20));
+	void test_getUserByIDFail(){
+		assertThrows(UserIDDoesNotExistException.class, () -> userDaoImpl.getUserById(2000L));
 	}
 
 	@Test
