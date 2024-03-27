@@ -7,78 +7,78 @@ SET SEARCH_PATH = longbox_schema;
 
 -- Table Definitions
 CREATE TABLE IF NOT EXISTS "user" (
-    "id" bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    "user_name" text UNIQUE,
-    "first_name" text,
-    "last_name" text,
-    "dob" date,
-    "email" text UNIQUE,
-    "password" text,
-    "country" text,
-    "continent" text,
-    "join_date" date,
-    "comics_reading" integer  DEFAULT 0,
-    "comics_finished" integer  DEFAULT 0,
-    "about_me" text,
-    "preferred_genre" text
+                                      "id" bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                                      "user_name" text UNIQUE,
+                                      "first_name" text,
+                                      "last_name" text,
+                                      "dob" date,
+                                      "email" text UNIQUE,
+                                      "password" text,
+                                      "country" text,
+                                      "continent" text,
+                                      "join_date" date,
+                                      "comics_reading" integer  DEFAULT 0,
+                                      "comics_finished" integer  DEFAULT 0,
+                                      "about_me" text,
+                                      "preferred_genre" text
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book" (
-    "id" bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    "series_title" text,
-    "author" text,
-    "artist" text,
-    "genres" text,
-    "description" text,
-    "number_of_issues" integer DEFAULT 0,
-    "publisher" text,
-    "year_published" integer DEFAULT 0,
-    "date_added" date,
-    "favourites_count" integer DEFAULT 0,
-    "north_america_favourites_count" integer DEFAULT 0,
-    "south_america_favourites_count" integer DEFAULT 0,
-    "europe_favourites_count" integer DEFAULT 0,
-    "asia_favourites_count" integer DEFAULT 0,
-    "africa_favourites_count" integer DEFAULT 0,
-    "oceania_favourites_count" integer DEFAULT 0,
-    "antarctica_favourites_count" integer DEFAULT 0
+                                            "id" bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                                            "series_title" text,
+                                            "author" text,
+                                            "artist" text,
+                                            "genres" text,
+                                            "description" text,
+                                            "number_of_issues" integer DEFAULT 0,
+                                            "publisher" text,
+                                            "year_published" integer DEFAULT 0,
+                                            "date_added" date,
+                                            "favourites_count" integer DEFAULT 0,
+                                            "north_america_favourites_count" integer DEFAULT 0,
+                                            "south_america_favourites_count" integer DEFAULT 0,
+                                            "europe_favourites_count" integer DEFAULT 0,
+                                            "asia_favourites_count" integer DEFAULT 0,
+                                            "africa_favourites_count" integer DEFAULT 0,
+                                            "oceania_favourites_count" integer DEFAULT 0,
+                                            "antarctica_favourites_count" integer DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book_favourites_list" (
-    "user_id" bigint NOT NULL,
-    "comic_book_id" bigint NOT NULL,
-    "date_added_user_list" date,
-    PRIMARY KEY ("user_id","comic_book_id")
+                                                            "user_id" bigint NOT NULL,
+                                                            "comic_book_id" bigint NOT NULL,
+                                                            "date_added_user_list" date,
+                                                            PRIMARY KEY ("user_id","comic_book_id")
 );
 
 CREATE TABLE IF NOT EXISTS "comments" (
-    "id" bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    "message" text,
-    "comment_date" date,
-    "comic_book_id" bigint,
-    "user_id" bigint,
-    "user_name" text
+                                          "id" bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                                          "message" text,
+                                          "comment_date" date,
+                                          "comic_book_id" bigint,
+                                          "user_id" bigint,
+                                          "user_name" text
 );
 
 CREATE TABLE IF NOT EXISTS "star_ratings" (
-    "id" bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    "comic_book_id" bigint,
-    "user_id" bigint,
-    "rating" integer
+                                              "id" bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                                              "comic_book_id" bigint,
+                                              "user_id" bigint,
+                                              "rating" integer
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book_finished_list" (
-    "user_id" bigint NOT NULL,
-    "comic_book_id" bigint NOT NULL,
-    "date_finished" date,
-    PRIMARY KEY ("user_id","comic_book_id")
+                                                          "user_id" bigint NOT NULL,
+                                                          "comic_book_id" bigint NOT NULL,
+                                                          "date_finished" date,
+                                                          PRIMARY KEY ("user_id","comic_book_id")
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book_reading_list" (
-   "user_id" bigint NOT NULL,
-   "comic_book_id" bigint NOT NULL,
-   "date_started" date,
-   PRIMARY KEY ("user_id","comic_book_id")
+                                                         "user_id" bigint NOT NULL,
+                                                         "comic_book_id" bigint NOT NULL,
+                                                         "date_started" date,
+                                                         PRIMARY KEY ("user_id","comic_book_id")
 );
 
 -- Foreign Key Constraints
@@ -101,114 +101,114 @@ ALTER TABLE "comic_book_reading_list" ADD FOREIGN KEY ("comic_book_id") REFERENC
 
 -- Create a function to update comic_book.favourites_count and comic_book.*(continent)_favourites_count column
 CREATE OR REPLACE FUNCTION update_comic_favourites_count()
-RETURNS TRIGGER AS $$
+    RETURNS TRIGGER AS $$
 BEGIN
-	SET SEARCH_PATH = longbox_schema;
-	IF TG_OP = 'INSERT' THEN
-		DECLARE
-			user_continent text;
-		BEGIN
-			SELECT continent INTO user_continent FROM "user" AS u WHERE u.id = NEW.user_id;
-			
-			IF user_continent = 'North_America' THEN
-				UPDATE comic_book AS c
-				SET north_america_favourites_count = north_america_favourites_count + 1,
-					favourites_count = favourites_count + 1
-				WHERE c.id = NEW.comic_book_id;
-			ELSIF user_continent = 'South_America' THEN
-				UPDATE comic_book AS c
-				SET south_america_favourites_count = south_america_favourites_count + 1,
-					favourites_count = favourites_count + 1
-				WHERE c.id = NEW.comic_book_id;
-			ELSIF user_continent = 'Europe' THEN
-				UPDATE comic_book AS c
-				SET europe_favourites_count = europe_favourites_count + 1,
-					favourites_count = favourites_count + 1
-				WHERE c.id = NEW.comic_book_id;
-			ELSIF user_continent = 'Asia' THEN
-				UPDATE comic_book AS c
-				SET asia_favourites_count = asia_favourites_count + 1,
-					favourites_count = favourites_count + 1
-				WHERE c.id = NEW.comic_book_id;
-			ELSIF user_continent = 'Africa' THEN
-				UPDATE comic_book AS c
-				SET africa_favourites_count = africa_favourites_count + 1,
-					favourites_count = favourites_count + 1
-				WHERE c.id = NEW.comic_book_id;
-			ELSIF user_continent = 'Oceania' THEN
-				UPDATE comic_book AS c
-				SET oceania_favourites_count = oceania_favourites_count + 1,
-					favourites_count = favourites_count + 1
-				WHERE c.id = NEW.comic_book_id;
-			ELSIF user_continent = 'Antarctica' THEN
-				UPDATE comic_book AS c
-				SET antarctica_favourites_count = antarctica_favourites_count + 1,
-					favourites_count = favourites_count + 1
-				WHERE c.id = NEW.comic_book_id;
-			END IF;
-		END;
-	ELSEIF TG_OP = 'DELETE' THEN
-		DECLARE
-			user_continent text;
-		BEGIN
-			SELECT continent INTO user_continent FROM "user" AS u WHERE u.id = OLD.user_id;
-			
-			IF user_continent = 'North_America' THEN
-				UPDATE comic_book AS c
-				SET north_america_favourites_count = north_america_favourites_count - 1,
-					favourites_count = favourites_count - 1
-				WHERE c.id = OLD.comic_book_id;
-			ELSIF user_continent = 'South_America' THEN
-				UPDATE comic_book AS c
-				SET south_america_favourites_count = south_america_favourites_count - 1,
-					favourites_count = favourites_count - 1
-				WHERE c.id = OLD.comic_book_id;
-			ELSIF user_continent = 'Europe' THEN
-				UPDATE comic_book AS c
-				SET europe_favourites_count = europe_favourites_count - 1,
-					favourites_count = favourites_count - 1
-				WHERE c.id = OLD.comic_book_id;
-			ELSIF user_continent = 'Asia' THEN
-				UPDATE comic_book AS c
-				SET asia_favourites_count = asia_favourites_count - 1,
-					favourites_count = favourites_count - 1
-				WHERE c.id = OLD.comic_book_id;
-			ELSIF user_continent = 'Africa' THEN
-				UPDATE comic_book AS c
-				SET africa_favourites_count = africa_favourites_count - 1,
-					favourites_count = favourites_count - 1
-				WHERE c.id = OLD.comic_book_id;
-			ELSIF user_continent = 'Oceania' THEN
-				UPDATE comic_book AS c
-				SET oceania_favourites_count = oceania_favourites_count - 1,
-					favourites_count = favourites_count - 1
-				WHERE c.id = OLD.comic_book_id;
-			ELSIF user_continent = 'Antarctica' THEN
-				UPDATE comic_book AS c
-				SET antarctica_favourites_count = antarctica_favourites_count - 1,
-					favourites_count = favourites_count - 1
-				WHERE c.id = OLD.comic_book_id;
-			END IF;
-		END;
-	END IF;
-	RETURN NULL;
+    SET SEARCH_PATH = longbox_schema;
+    IF TG_OP = 'INSERT' THEN
+        DECLARE
+            user_continent text;
+        BEGIN
+            SELECT continent INTO user_continent FROM "user" AS u WHERE u.id = NEW.user_id;
+
+            IF user_continent = 'North_America' THEN
+                UPDATE comic_book AS c
+                SET north_america_favourites_count = north_america_favourites_count + 1,
+                    favourites_count = favourites_count + 1
+                WHERE c.id = NEW.comic_book_id;
+            ELSIF user_continent = 'South_America' THEN
+                UPDATE comic_book AS c
+                SET south_america_favourites_count = south_america_favourites_count + 1,
+                    favourites_count = favourites_count + 1
+                WHERE c.id = NEW.comic_book_id;
+            ELSIF user_continent = 'Europe' THEN
+                UPDATE comic_book AS c
+                SET europe_favourites_count = europe_favourites_count + 1,
+                    favourites_count = favourites_count + 1
+                WHERE c.id = NEW.comic_book_id;
+            ELSIF user_continent = 'Asia' THEN
+                UPDATE comic_book AS c
+                SET asia_favourites_count = asia_favourites_count + 1,
+                    favourites_count = favourites_count + 1
+                WHERE c.id = NEW.comic_book_id;
+            ELSIF user_continent = 'Africa' THEN
+                UPDATE comic_book AS c
+                SET africa_favourites_count = africa_favourites_count + 1,
+                    favourites_count = favourites_count + 1
+                WHERE c.id = NEW.comic_book_id;
+            ELSIF user_continent = 'Oceania' THEN
+                UPDATE comic_book AS c
+                SET oceania_favourites_count = oceania_favourites_count + 1,
+                    favourites_count = favourites_count + 1
+                WHERE c.id = NEW.comic_book_id;
+            ELSIF user_continent = 'Antarctica' THEN
+                UPDATE comic_book AS c
+                SET antarctica_favourites_count = antarctica_favourites_count + 1,
+                    favourites_count = favourites_count + 1
+                WHERE c.id = NEW.comic_book_id;
+            END IF;
+        END;
+    ELSEIF TG_OP = 'DELETE' THEN
+        DECLARE
+            user_continent text;
+        BEGIN
+            SELECT continent INTO user_continent FROM "user" AS u WHERE u.id = OLD.user_id;
+
+            IF user_continent = 'North_America' THEN
+                UPDATE comic_book AS c
+                SET north_america_favourites_count = north_america_favourites_count - 1,
+                    favourites_count = favourites_count - 1
+                WHERE c.id = OLD.comic_book_id;
+            ELSIF user_continent = 'South_America' THEN
+                UPDATE comic_book AS c
+                SET south_america_favourites_count = south_america_favourites_count - 1,
+                    favourites_count = favourites_count - 1
+                WHERE c.id = OLD.comic_book_id;
+            ELSIF user_continent = 'Europe' THEN
+                UPDATE comic_book AS c
+                SET europe_favourites_count = europe_favourites_count - 1,
+                    favourites_count = favourites_count - 1
+                WHERE c.id = OLD.comic_book_id;
+            ELSIF user_continent = 'Asia' THEN
+                UPDATE comic_book AS c
+                SET asia_favourites_count = asia_favourites_count - 1,
+                    favourites_count = favourites_count - 1
+                WHERE c.id = OLD.comic_book_id;
+            ELSIF user_continent = 'Africa' THEN
+                UPDATE comic_book AS c
+                SET africa_favourites_count = africa_favourites_count - 1,
+                    favourites_count = favourites_count - 1
+                WHERE c.id = OLD.comic_book_id;
+            ELSIF user_continent = 'Oceania' THEN
+                UPDATE comic_book AS c
+                SET oceania_favourites_count = oceania_favourites_count - 1,
+                    favourites_count = favourites_count - 1
+                WHERE c.id = OLD.comic_book_id;
+            ELSIF user_continent = 'Antarctica' THEN
+                UPDATE comic_book AS c
+                SET antarctica_favourites_count = antarctica_favourites_count - 1,
+                    favourites_count = favourites_count - 1
+                WHERE c.id = OLD.comic_book_id;
+            END IF;
+        END;
+    END IF;
+    RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
 -- Create a trigger to execute the function after insert or delete on comic_book_favourites_list table
 CREATE TRIGGER update_comic_favourites_trigger
-	AFTER INSERT OR DELETE
-ON comic_book_favourites_list
-FOR EACH ROW
+    AFTER INSERT OR DELETE
+    ON comic_book_favourites_list
+    FOR EACH ROW
 EXECUTE FUNCTION update_comic_favourites_count();
 
 -- Create a function to update user.comics_finished column
 CREATE OR REPLACE FUNCTION update_comics_finished_count()
-RETURNS TRIGGER AS $$
+    RETURNS TRIGGER AS $$
 BEGIN
     -- Update comics_finished count for the affected user
     SET SEARCH_PATH = longbox_schema;
-	IF TG_OP = 'INSERT' THEN
+    IF TG_OP = 'INSERT' THEN
         -- Increment comics_finished count
         UPDATE "user" u
         SET comics_finished = (
@@ -234,8 +234,8 @@ $$ LANGUAGE plpgsql;
 -- Create a trigger to execute the function after insert or delete on comic_book_finished_list table
 CREATE TRIGGER update_comics_finished_trigger
     AFTER INSERT OR DELETE
-ON comic_book_finished_list
-FOR EACH ROW
+    ON comic_book_finished_list
+    FOR EACH ROW
 EXECUTE FUNCTION update_comics_finished_count();
 
 -- Create a function to update user.comics_reading column
@@ -280,12 +280,12 @@ EXECUTE FUNCTION update_comics_reading_count();
 INSERT INTO longbox_schema."user"(
     user_name, first_name, last_name, dob, email, password, country, continent, join_date, comics_reading, comics_finished, about_me, preferred_genre)
 VALUES
-    ('Always_Scheming', 'John', 'Smith', '1990-12-1', 'email@domain.com', 'Always_Scheming', 'Canada', 'Antarctica', '2024-02-21', 10, 7, 'Imaginations ally and inks confidante, I craft worlds within the panels, inviting you to escape reality through the lens of my storytelling pen.', 'Action, Manga, Fantasy'),
-    ('Always_Throwing', 'Neo', 'Anderson', '3829-02-01', 'address@provider.ca', 'Always_Throwing', 'Indonesia', 'South_America', '2024-02-14 12:28:42', 12, 6,'An animated soul exploring both pixels and plot twists, I am your guide in the comic cosmos, steering you through adventures that leap off the screen.', 'Action, Comedy, Anthology, Fantasy'),
+    ('Always_Scheming', 'John', 'Smith', '1990-12-1', 'email@domain.com', 'Always_Scheming', 'Canada', 'Antarctica', '2024-02-21', 0, 0, 'Imaginations ally and inks confidante, I craft worlds within the panels, inviting you to escape reality through the lens of my storytelling pen.', 'Action, Manga, Fantasy'),
+    ('Always_Throwing', 'Neo', 'Anderson', '3829-02-01', 'address@provider.ca', 'Always_Throwing', 'Indonesia', 'South_America', '2024-02-14 12:28:42', 0, 0,'An animated soul exploring both pixels and plot twists, I am your guide in the comic cosmos, steering you through adventures that leap off the screen.', 'Action, Comedy, Anthology, Fantasy'),
     ('Phoenix', 'Stan', 'Lee', '3900-05-31', '123fake@nowhere.org', 'Phoenix', 'United Kingdom', 'Europe', '2024-02-14 12:42:43', 0, 0, 'Code-wielding superhero by day, rhythm-following vigilante by night, I bridge the gap between tech and tunes on this epic quest through the digital comic realm.', 'Science Fiction, Manga, Superhero'),
     ('ahan', 'Ahan', 'Bhargava', '2003-02-10', 'ahan@email.com', 'Password!1', 'India', 'Africa', '2024-02-15 15:09:10', 0, 0, 'A pixel pioneer on the quest for knowledge, I dive into the virtual inkwell, emerging with stories that captivate and characters that resonate.', ''),
     ('naha', 'Ahan', 'Bhargava', '2003-02-10', 'naha@email.com', 'naha', 'India', 'Asia', '2024-02-15 15:09:10', 0, 0, 'Juggling dumbbells and donuts in equal measure, I bring the perfect balance of action and humor to the comic book universe, one swipe at a time.', 'Thriller'),
-    ('123', 'Quick', 'Access', '2003-02-10', '123@email.com', '123', 'India', 'North_America', '2024-02-15 15:09:10', 14, 14, 'Roaming the digital landscapes with a camera lens for justice, I capture the essence of heroes and villains alike, freezing epic moments in the frames of your favourite comic book app.', 'Action, Science Fiction, Anthology, Fantasy, Superhero'),
+    ('123', 'Quick', 'Access', '2003-02-10', '123@email.com', '123', 'India', 'North_America', '2024-02-15 15:09:10', 0, 0, 'Roaming the digital landscapes with a camera lens for justice, I capture the essence of heroes and villains alike, freezing epic moments in the frames of your favourite comic book app.', 'Action, Science Fiction, Anthology, Fantasy, Superhero'),
     ('ComicExplorer', 'Alice', 'Wong', '1985-07-15', 'alice@example.com', 'ExploringComics', 'United States', 'North America', '2024-03-10', 0, 0, 'Lost in the maze of panels, I wander through the realms of imagination, seeking treasures of art and story to share with fellow travelers.', 'Adventure, Fantasy, Science Fiction'),
     ('InkMaster', 'Emily', 'Johnson', '1992-04-28', 'emily@email.com', 'InkMeister', 'United Kingdom', 'Europe', '2024-03-05', 0, 0, 'With every stroke of the pen, I weave tales that dance on the canvas of your mind, inviting you to explore the depths of imagination.', 'Fantasy, Adventure, Anthology'),
     ('PixelPilot', 'David', 'Lee', '1988-11-03', 'david@domain.com', 'PixelPilot123', 'Australia', 'Australia', '2024-03-18', 0, 0, 'Navigating the digital cosmos, I guide you through pixels and code, unlocking doors to worlds where heroes rise and villains fall.', 'Science Fiction, Superhero, Thriller'),
@@ -481,118 +481,118 @@ VALUES
 
     ('Captain Victory and the Galactic Rangers', 'Jack Kirby', 'Jack Kirby',
      'Science Fiction, Superhero',
-     'Empty', 13, 'Pacific Comics', 1981, '2024-02-25'), 
+     'Empty', 13, 'Pacific Comics', 1981, '2024-02-25'),
 
     ('Vampire Doll', 'Erika Kari', 'Erika Kari',
      'Vampire, Comedy, Manga',
      'Empty', 32, 'TokyoPop', 2006, '2024-03-24'),
 
-	
+
     ('Full Metal Panic!', 'Shouji Gatou', 'Retsu Tateo',
      'Science Fiction, Military, School Life, Comedy, Manga',
      'Empty', 13, 'ADV', 2004, '2024-03-24'),
 
-	
+
     ('American Flagg!', 'Howard Chaykin', 'Howard Chaykin',
      'Science Fiction, Political, Action, Satire',
      'Empty', 50, 'First Comics', 1983, '2024-03-24'),
 
-	
+
     ('Gunsmith Cats', 'Kenichi Sonada', 'Kenichi Sonada',
      'Gunslinger, Girls With Guns, Action, Comedy, Manga',
      'Empty', 32, 'Dark Horse', 1998, '2024-03-24'),
 
-	
+
     ('Bastard!! Heavy Metal Dark Fantasy', 'Kazushi Hagiwara', 'Kazushi Hagiwara',
      'Dark Fantasy, Fantasy, Action, Manga',
      'Empty', 26, 'Viz', 1999, '2024-03-24'),
 
-	
+
     ('Robotech The Macross Saga', 'Carl Macek', 'Neil Vokes',
      'Science Fiction, Mecha, Space Opera',
      'Empty', 52, 'Comico', 1982, '2024-03-24'),
 
-	
+
     ('Slayers', 'Hajime Kanzaka', 'Rui Araizumi',
      'Fantasy, Adventure, Comedy, Satire, Manga',
      'Empty', 5, 'CPM', 1995, '2024-03-24'),
 
-	
+
     ('Marmalade Bot', 'Wataru Yoshizumi', 'Wataru Yoshizumi',
      'Slice of Life, Manga, Drama',
      'Empty', 5, 'TokyoPop', 2003, '2024-03-24'),
 
-	
+
     ('Daragon Knights', 'Mineko Ohkami', 'Mineko Ohkami',
      'Fantasy, Drama, Manga',
      'Empty', 6, 'TokyoPop', 2002, '2024-03-24'),
 
-	
+
     ('Cyber 7 (Vol 1)', 'Shuho Itashi', 'Shuho Itashi',
      'Fantasy, Manga, Science Fiction',
      'Empty', 7, 'Eclipse', 1988, '2024-03-24'),
 
-	
+
     ('Cyber 7 (Vol 2)', 'Shuho Itashi', 'Shuho Itashi',
      'Fantasy, Manga, Science Fiction',
      'Empty', 6, 'Eclipse', 1989, '2024-03-24'),
 
-	
+
     ('Record of Lodoss War The Lady Pharis', 'Ryo Mizuno', 'Akihiro Yamada',
      'Fantasy, Adventure, Manga',
      'Empty', 8, 'CPM', 1999, '2024-03-24'),
 
-	
+
     ('Record of Lodoss War The Grey Witch', 'Ryo Mizuno', 'Akihiro Yamada',
      'Fantasy, Adventure, Manga',
      'Empty', 7, 'CPM', 1999, '2024-03-24'),
 
-	
+
     ('Record of Lodoess War Deeedlits Tale', 'Ryo Mizuno', 'Akihiro Yamada',
      'Fantasy, Adventure, Manga',
      'Empty', 8, 'CPM', 1999, '2024-03-24'),
 
-	
+
     ('DNAgents', 'Mark Evanier', 'Mark Evanier',
      'Science Fiction, Superhero',
      'Empty', 34, 'Eclipse', 1983, '2024-03-24'),
 
-	
+
     ('Poison Elves', 'Drew Hayes', 'Drew Hayes',
      'Science Fiction, Drama, Violent',
      'Empty', 34, 'Sirius', 1995, '2024-03-24'),
 
-	
+
     ('The Spirit', 'Will Eisner', 'Will Eisner',
      'Superhero, Comedy',
      'Empty', 32, 'Kitchen Sink', 1981, '2024-03-24'),
 
-	
+
     ('Black Kiss', 'Howard Chaykin', 'Howard Chaykin',
      'Drama',
      'Empty', 19, 'Vortex', 1998, '2024-03-24'),
 
-	
+
     ('Total War', 'Wally Wood', 'Wally Wood',
      'Science Fiction, Military, War',
      'Empty', 8, 'Gold Key', 1965, '2024-03-24'),
 
-	
+
     ('Troll Lords', 'Scott Beaderstadt', 'Paul Fricke',
      'Science Fiction, Comedy',
      'Empty', 19, 'Tru Studios', 1995, '2024-03-24'),
 
-	
+
     ('Spy Boy', 'Peter David', 'Pop Mhan',
      'Science Fiction, Adventure, Comedy',
      'Empty', 13, 'Dark Horse', 2006, '2024-03-24'),
 
-	
+
     ('Crimson Skies', 'Microsoft', 'Howard Chaykin',
      'Action, ADventure',
      'Empty', 1, 'Top Cow', 2004, '2024-03-24'),
 
-	
+
     ('Initial D', 'Shuichi Shigeno', 'Shuichi Shigeno',
      'Racing, Drama, Manga',
      'Empty', 105, 'Kodansha', 1995, '2024-03-24'),
@@ -702,41 +702,184 @@ VALUES
     (2, 54, '2024-03-26 17:18:08.921'),
     (2, 38, '2024-03-26 17:18:11.64'),
     (2, 30, '2024-03-26 17:18:26.478'),
-    (2, 41, '2024-03-26 17:18:29.969');
+    (2, 41, '2024-03-26 17:18:29.969'),
+    (7, 6, '2024-03-26 14:00:00'),
+    (15, 22, '2024-03-26 15:30:00'),
+    (30, 43, '2024-03-26 16:45:00'),
+    (42, 8, '2024-03-26 17:15:00'),
+    (20, 14, '2024-03-26 18:00:00'),
+    (3, 32, '2024-03-26 19:20:00'),
+    (12, 55, '2024-03-26 20:10:00'),
+    (25, 11, '2024-03-26 21:00:00'),
+    (36, 2, '2024-03-26 22:30:00'),
+    (48, 49, '2024-03-26 23:45:00'),
+    (14, 7, '2024-03-27 18:00:00'),
+    (26, 34, '2024-03-27 19:15:00'),
+    (38, 52, '2024-03-27 20:30:00'),
+    (5, 16, '2024-03-27 21:45:00'),
+    (11, 25, '2024-03-27 22:30:00'),
+    (23, 37, '2024-03-27 23:20:00'),
+    (36, 6, '2024-03-28 00:45:00'),
+    (48, 20, '2024-03-28 01:55:00'),
+    (3, 31, '2024-03-28 02:10:00'),
+    (19, 58, '2024-03-28 03:25:00'),
+    (11, 16, '2024-03-29 18:00:00'),
+    (23, 30, '2024-03-29 19:15:00'),
+    (36, 46, '2024-03-29 20:30:00'),
+    (8, 8, '2024-03-29 21:45:00'),
+    (16, 25, '2024-03-29 22:30:00'),
+    (29, 39, '2024-03-29 23:20:00'),
+    (41, 2, '2024-03-30 00:45:00'),
+    (4, 18, '2024-03-30 01:55:00'),
+    (18, 53, '2024-03-30 02:10:00'),
+    (31, 6, '2024-03-30 03:25:00'),
+    (14, 28, '2024-03-30 08:00:00'),
+    (26, 36, '2024-03-30 09:15:00'),
+    (39, 51, '2024-03-30 10:30:00'),
+    (7, 10, '2024-03-30 11:45:00'),
+    (17, 22, '2024-03-30 12:30:00'),
+    (30, 39, '2024-03-30 13:20:00'),
+    (42, 5, '2024-03-30 14:45:00'),
+    (5, 21, '2024-03-30 15:55:00'),
+    (12, 17, '2024-03-31 08:00:00'),
+    (24, 31, '2024-03-31 09:15:00'),
+    (37, 48, '2024-03-31 10:30:00'),
+    (6, 8, '2024-03-31 11:45:00'),
+    (15, 23, '2024-03-31 12:30:00'),
+    (28, 37, '2024-03-31 13:20:00'),
+    (7, 20, '2024-03-31 15:55:00'),
+    (19, 54, '2024-03-31 16:10:00'),
+    (32, 5, '2024-03-31 17:25:00'),
+    (8, 16, '2024-04-01 08:00:00'),
+    (21, 29, '2024-04-01 09:15:00'),
+    (34, 45, '2024-04-01 10:30:00'),
+    (19, 57, '2024-04-01 16:10:00'),
+    (32, 7, '2024-04-01 17:25:00'),
+    (14, 27, '2024-04-01 08:00:00'),
+    (7, 9, '2024-04-01 11:45:00'),
+    (17, 21, '2024-04-01 12:30:00'),
+    (30, 38, '2024-04-01 13:20:00'),
+    (42, 4, '2024-04-01 14:45:00'),
+    (5, 20, '2024-04-01 15:55:00'),
+    (19, 56, '2024-04-01 16:10:00'),
+    (32, 6, '2024-04-01 17:25:00'),
+    (10, 18, '2024-04-01 08:00:00'),
+    (22, 29, '2024-04-01 09:15:00'),
+    (35, 47, '2024-04-01 10:30:00'),
+    (8, 12, '2024-04-01 11:45:00'),
+    (17, 26, '2024-04-01 12:30:00'),
+    (28, 38, '2024-04-01 13:20:00'),
+    (40, 4, '2024-04-01 14:45:00'),
+    (6, 21, '2024-04-01 15:55:00'),
+    (19, 50, '2024-04-01 16:10:00'),
+    (32, 9, '2024-04-01 17:25:00'),
+    (9, 15, '2024-04-01 08:00:00'),
+    (21, 28, '2024-04-01 09:15:00'),
+    (34, 47, '2024-04-01 10:30:00'),
+    (7, 11, '2024-04-01 11:45:00'),
+    (17, 25, '2024-04-01 12:30:00'),
+    (42, 3, '2024-04-01 14:45:00'),
+    (5, 19, '2024-04-01 15:55:00');
 
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 1, '2024-03-26 17:13:24.579');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 5, '2024-03-26 17:13:28.52');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 19, '2024-03-26 17:13:35.468');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 22, '2024-03-26 17:13:38.689');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 23, '2024-03-26 17:14:45.435');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 26, '2024-03-26 17:14:48.763');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 29, '2024-03-26 17:14:51.905');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 33, '2024-03-26 17:14:55.173');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 39, '2024-03-26 17:14:59.323');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 51, '2024-03-26 17:15:05.969');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 46, '2024-03-26 17:15:12.047');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 56, '2024-03-26 17:15:18.01');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 58, '2024-03-26 17:15:21.185');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (6, 60, '2024-03-26 17:15:24.839');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 2, '2024-03-26 17:16:00.871');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 14, '2024-03-26 17:16:04.187');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 35, '2024-03-26 17:16:26.749');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 42, '2024-03-26 17:16:30.393');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 56, '2024-03-26 17:16:43.758');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 58, '2024-03-26 17:16:48.941');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 38, '2024-03-26 17:16:56.238');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 18, '2024-03-26 17:17:01.362');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 7, '2024-03-26 17:17:05.644');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (1, 43, '2024-03-26 17:17:09.952');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 2, '2024-03-26 17:17:28.782');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 17, '2024-03-26 17:17:35.286');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 20, '2024-03-26 17:17:44.219');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 21, '2024-03-26 17:17:47.497');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 35, '2024-03-26 17:17:50.767');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 42, '2024-03-26 17:17:53.46');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 48, '2024-03-26 17:17:57.782');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 51, '2024-03-26 17:18:05.068');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 46, '2024-03-26 17:18:14.894');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 19, '2024-03-26 17:18:18.818');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 8, '2024-03-26 17:18:22.522');
-INSERT INTO longbox_schema.comic_book_reading_list VALUES (2, 41, '2024-03-26 17:18:29.634');
+INSERT INTO longbox_schema."comic_book_reading_list"(
+    user_id, comic_book_id, date_started)
+VALUES
+    (6, 1, '2024-03-26 17:13:24.579'),
+    (6, 5, '2024-03-26 17:13:28.52'),
+    (6, 19, '2024-03-26 17:13:35.468'),
+    (6, 22, '2024-03-26 17:13:38.689'),
+    (6, 23, '2024-03-26 17:14:45.435'),
+    (6, 26, '2024-03-26 17:14:48.763'),
+    (6, 29, '2024-03-26 17:14:51.905'),
+    (6, 33, '2024-03-26 17:14:55.173'),
+    (6, 39, '2024-03-26 17:14:59.323'),
+    (6, 51, '2024-03-26 17:15:05.969'),
+    (6, 46, '2024-03-26 17:15:12.047'),
+    (6, 56, '2024-03-26 17:15:18.01'),
+    (6, 58, '2024-03-26 17:15:21.185'),
+    (6, 60, '2024-03-26 17:15:24.839'),
+    (1, 2, '2024-03-26 17:16:00.871'),
+    (1, 14, '2024-03-26 17:16:04.187'),
+    (1, 35, '2024-03-26 17:16:26.749'),
+    (1, 42, '2024-03-26 17:16:30.393'),
+    (1, 56, '2024-03-26 17:16:43.758'),
+    (1, 58, '2024-03-26 17:16:48.941'),
+    (1, 38, '2024-03-26 17:16:56.238'),
+    (1, 18, '2024-03-26 17:17:01.362'),
+    (1, 7, '2024-03-26 17:17:05.644'),
+    (1, 43, '2024-03-26 17:17:09.952'),
+    (2, 2, '2024-03-26 17:17:28.782'),
+    (2, 17, '2024-03-26 17:17:35.286'),
+    (2, 20, '2024-03-26 17:17:44.219'),
+    (2, 21, '2024-03-26 17:17:47.497'),
+    (2, 35, '2024-03-26 17:17:50.767'),
+    (2, 42, '2024-03-26 17:17:53.46'),
+    (2, 48, '2024-03-26 17:17:57.782'),
+    (2, 51, '2024-03-26 17:18:05.068'),
+    (2, 46, '2024-03-26 17:18:14.894'),
+    (2, 19, '2024-03-26 17:18:18.818'),
+    (2, 8, '2024-03-26 17:18:22.522'),
+    (2, 41, '2024-03-26 17:18:29.634'),
+    (9, 15, '2024-03-28 08:00:00'),
+    (21, 28, '2024-03-28 09:15:00'),
+    (34, 45, '2024-03-28 10:30:00'),
+    (7, 11, '2024-03-28 11:45:00'),
+    (16, 24, '2024-03-28 12:30:00'),
+    (29, 40, '2024-03-28 13:20:00'),
+    (41, 3, '2024-03-28 14:45:00'),
+    (4, 19, '2024-03-28 15:55:00'),
+    (18, 54, '2024-03-28 16:10:00'),
+    (31, 7, '2024-03-28 17:25:00'),
+    (24, 32, '2024-03-28 19:15:00'),
+    (37, 49, '2024-03-28 20:30:00'),
+    (6, 10, '2024-03-28 21:45:00'),
+    (27, 36, '2024-03-28 23:20:00'),
+    (39, 5, '2024-03-29 00:45:00'),
+    (8, 22, '2024-03-29 01:55:00'),
+    (20, 57, '2024-03-29 02:10:00'),
+    (13, 27, '2024-03-29 08:00:00'),
+    (25, 35, '2024-03-29 09:15:00'),
+    (38, 50, '2024-03-29 10:30:00'),
+    (7, 9, '2024-03-29 11:45:00'),
+    (17, 21, '2024-03-29 12:30:00'),
+    (30, 38, '2024-03-29 13:20:00'),
+    (42, 4, '2024-03-29 14:45:00'),
+    (5, 20, '2024-03-29 15:55:00'),
+    (19, 56, '2024-03-29 16:10:00'),
+    (32, 6, '2024-03-29 17:25:00'),
+    (13, 26, '2024-03-30 18:00:00'),
+    (25, 34, '2024-03-30 19:15:00'),
+    (38, 49, '2024-03-30 20:30:00'),
+    (6, 9, '2024-03-30 21:45:00'),
+    (15, 24, '2024-03-30 22:30:00'),
+    (28, 38, '2024-03-30 23:20:00'),
+    (40, 3, '2024-03-31 00:45:00'),
+    (8, 19, '2024-03-31 01:55:00'),
+    (20, 55, '2024-03-31 02:10:00'),
+    (33, 8, '2024-03-31 03:25:00'),
+    (12, 17, '2024-03-31 08:00:00'),
+    (24, 31, '2024-03-31 09:15:00'),
+    (37, 48, '2024-03-31 10:30:00'),
+    (6, 8, '2024-03-31 11:45:00'),
+    (15, 23, '2024-03-31 12:30:00'),
+    (28, 37, '2024-03-31 13:20:00'),
+    (40, 4, '2024-03-31 14:45:00'),
+    (7, 20, '2024-03-31 15:55:00'),
+    (19, 54, '2024-03-31 16:10:00'),
+    (32, 5, '2024-03-31 17:25:00'),
+    (8, 16, '2024-04-01 08:00:00'),
+    (21, 29, '2024-04-01 09:15:00'),
+    (19, 57, '2024-04-01 16:10:00'),
+    (32, 7, '2024-04-01 17:25:00'),
+    (14, 27, '2024-04-01 08:00:00'),
+    (10, 18, '2024-04-01 08:00:00'),
+    (22, 29, '2024-04-01 09:15:00'),
+    (35, 47, '2024-04-01 10:30:00'),
+    (8, 12, '2024-04-01 11:45:00'),
+    (17, 26, '2024-04-01 12:30:00'),
+    (6, 21, '2024-04-01 15:55:00'),
+    (19, 50, '2024-04-01 16:10:00'),
+    (32, 9, '2024-04-01 17:25:00'),
+    (17, 25, '2024-04-01 12:30:00'),
+    (42, 3, '2024-04-01 14:45:00'),
+    (5, 19, '2024-04-01 15:55:00');
