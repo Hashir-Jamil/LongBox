@@ -27,7 +27,7 @@ public class StarRatingDaoImpl implements StarRatingDao {
         try {
             session = sessionFactory.openSession();
             starRating = session.createQuery(
-                            "SELECT s FROM StarRating s WHERE s.comicBook.id = :comicID",
+                            "SELECT s FROM StarRating s WHERE s.comicBook.id = :comicID AND s.user.id = :userID",
                             StarRating.class)
             		.setParameter("userID", userId)
                     .setParameter("comicID", comicId)
