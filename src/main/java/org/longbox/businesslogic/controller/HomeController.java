@@ -107,6 +107,7 @@ public class HomeController implements ActionListener {
         
         if (e.getSource() == this.homeFrame.getSocialButton()) {
         	this.homeFrame.getCardLayout().show(this.homeFrame.getActivityPanel(), this.homeFrame.getSOCIAL_PANEL());
+            this.socialController.reloadTable(new UserService(new UserDaoImpl(HibernateUtils.getSessionFactory())).getAllUsers());
         }
        
     }

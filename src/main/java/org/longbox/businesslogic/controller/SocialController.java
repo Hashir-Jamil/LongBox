@@ -64,7 +64,7 @@ public class SocialController implements ActionListener, MouseListener {
         }
     }
 
-    private void reloadTable(List<UserDto> userDtoList){
+    public void reloadTable(List<UserDto> userDtoList){
         this.socialPanel.getPanel().remove(this.socialPanel.getScrollPane());
 
         this.socialPanel.setAllUsersList(userDtoList);
