@@ -237,12 +237,12 @@
 ## Saturday, March 16th, 2024
 
 	Oscar: Started working on star rating feature.
-    	Eric: Refactroed ComicBookSearchResults logic and functionality into its respcitive controller class. Refactored trending functionality to its respective controller class as well. Comic favourites count now increments through postgres function. Renamed instances of 'comic collection...' to 'comic repo...'.
+    Eric: Refactroed ComicBookSearchResults logic and functionality into its respcitive controller class. Refactored trending functionality to its respective controller class as well. Comic favourites count now increments through postgres function. Renamed instances of 'comic collection...' to 'comic repo...'.
 	
 ## Sunday, March 17th, 2024
 
 	Oscar: Almost finished with star rating feature.
-    	Eric: Refactored 'National Favoruties' to 'Continetnental/Regional Favourites'. Comicbooks now have a favourites count for every continent and users now have a continent field. Regional favourites logic is seperate fom all time favourites
+    Eric: Refactored 'National Favoruties' to 'Continetnental/Regional Favourites'. Comicbooks now have a favourites count for every continent and users now have a continent field. Regional favourites logic is seperate fom all time favourites
 	
 ## Monday, March 18th, 2024
 
