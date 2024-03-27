@@ -32,7 +32,7 @@ class CommentDaoImplTest {
 	void test_getCommentsByComic_2() {
 		List<CommentDto> actualList = commentDaoImpl.getCommentsByComic(14L);
 		int actual = actualList.size();
-		assertEquals(1, actual);
+		assertEquals(3, actual);
 	}
 
 	@Test
@@ -56,21 +56,21 @@ class CommentDaoImplTest {
 	void test_getCommentByUser_1(){
 		List<CommentDto> actualList = commentDaoImpl.getCommentsByUser(1L);
 		int actual = actualList.size();
-		assertEquals(9, actual);
+		assertEquals(10, actual);
 	}
 
 	@Test
 	void test_getCommentByUser_2(){
 		List<CommentDto> actualList = commentDaoImpl.getCommentsByUser(2L);
 		int actual = actualList.size();
-		assertEquals(8, actual);
+		assertEquals(9, actual);
 	}
 
 	@Test
 	void test_getCommentByUser_3(){
 		List<CommentDto> actualList = commentDaoImpl.getCommentsByUser(5L);
 		int actual = actualList.size();
-		assertEquals(2, actual);
+		assertEquals(4, actual);
 	}
 
 }
