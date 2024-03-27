@@ -673,7 +673,91 @@ VALUES
     ('Just caught up with comic #13, and it left me with so many questions. Cant wait for the next chapter!',
      '2024-02-23', 13, 4, 'ahan'),
     ('The character development in comic #21 is exceptional. Ahan approves!',
-     '2024-02-20', 21, 4, 'ahan');
+     '2024-02-20', 21, 4, 'ahan'),
+    ('This comic has such a whimsical charm to it! Each page feels like a journey through a fairy tale.',
+     '2024-03-14', 43, 43, 'WhimsyWordsmith'),
+    ('This comic is a masterpiece! The storyline is gripping and the artwork is stunning.',
+     '2024-03-15', 25, 10, 'LaughingGal'),
+    ('I love the way this comic combines humor with thrilling action! It''s a rollercoaster ride from start to finish.',
+     '2024-03-18', 16, 22, 'EtherealEnchanter'),
+    ('The characters in this comic are so relatable, I feel like I know them personally!',
+     '2024-03-10', 53, 24, 'WhimsicalWanderer'),
+    ('The world-building in this comic is phenomenal. It feels like stepping into a whole new universe!',
+     '2024-03-20', 11, 3, 'Phoenix'),
+    ('Im blown away by the creativity in this comic! Each panel is like a work of art.',
+     '2024-03-16', 34, 43, 'WhimsyWordsmith'),
+    ('The action scenes in this comic are intense! I can''t wait to see what happens next.',
+     '2024-03-22', 29, 26, 'CyberNinja'),
+    ('This comic has me on the edge of my seat with its suspenseful plot twists!',
+     '2024-03-25', 6, 5, 'naha'),
+    ('Im loving the humor in this comic! It never fails to make me laugh out loud.',
+     '2024-03-19', 18, 33, 'ComedicChronicler'),
+    ('The art style in this comic is breathtaking! It adds so much depth to the storytelling.',
+     '2024-03-24', 42, 48, 'PixelPioneer1'),
+    ('This comic is a thrilling ride from start to finish! The characters are compelling and the action is non-stop.',
+     '2024-03-21', 4, 50, 'ComicCrusader'),
+    ('The art style of this comic is truly unique! It adds so much depth to the story.',
+     '2024-03-15', 22, 11, 'MysticScribe'),
+    ('I can''t get enough of the humor in this comic! It brightens my day every time I read it.',
+     '2024-03-16', 12, 36, 'InkNinja'),
+    ('This comic is a masterpiece! The storytelling is so captivating and emotionally resonant.',
+     '2024-03-17', 38, 26, 'CyberNinja'),
+    ('The fantasy world in this comic is breathtaking! It''s like stepping into a dream.',
+     '2024-03-18', 13, 1, 'Always_Scheming'),
+    ('I admire the creativity of this comic! It''s unlike anything I''ve ever read before.',
+     '2024-03-19', 25, 2, 'Always_Throwing'),
+    ('The characters in this comic feel like old friends! I can''t wait to see what adventures they go on next.',
+     '2024-03-20', 38, 9, 'PixelPilot'),
+    ('This comic is a rollercoaster of emotions! It keeps me on the edge of my seat with every twist and turn.',
+     '2024-03-21', 11, 34, 'FantasyNavigator'),
+    ('I''m fascinated by the technology in this comic! It feels so ahead of its time.',
+     '2024-03-22', 36, 16, 'SpaceScribbler'),
+    ('The action sequences in this comic are so thrilling! It''s like watching an epic movie.',
+     '2024-03-23', 14, 29, 'InkSorcerer'),
+    ('I''m captivated by the world-building in this comic! It feels so rich and immersive.',
+     '2024-03-24', 41, 41, 'MangaMaestro'),
+    ('The artwork in this comic is stunning! Each panel feels like a work of art.',
+     '2024-03-25', 19, 31, 'MangaMaster'),
+    ('I''m hooked on the storyline of this comic! It''s full of unexpected twists and turns.',
+     '2024-03-26', 5, 27, 'LaughingLass'),
+    ('This comic never fails to make me laugh! The humor is top-notch.',
+     '2024-03-13', 16, 39, 'ArcaneScribe'),
+    ('The character development in this comic is superb! Each character feels so real and relatable.',
+     '2024-03-15', 32, 30, 'PixelPirate'),
+    ('I''m blown away by the world-building in this comic! It''s so intricate and well thought out.',
+     '2024-04-24', 20, 13, 'EternalWanderer'),
+    ('This comic is a true epic! The scale of the story is massive and awe-inspiring.',
+     '2024-02-29', 45, 25, 'EpicExplorer'),
+    ('I''m captivated by the characters in this comic! Each one has such a distinct personality.',
+     '2024-03-01', 10, 38, 'AstroAdventurer'),
+    ('The action scenes in this comic are adrenaline-pumping! It''s like being in the middle of a blockbuster movie.',
+     '2024-03-02', 27, 20, 'InfiniteImaginator'),
+    ('I''m intrigued by the mystery in this comic! It keeps me guessing with every page.',
+     '2024-03-03', 55, 33, 'ComedicChronicler'),
+    ('This comic is a work of art! The attention to detail is incredible.',
+     '2024-03-04', 8, 12, 'GalacticHero'),
+    ('This comic has such a unique art style! It really stands out from the crowd.',
+     '2024-03-05', 14, 21, 'GalacticGuardian1'),
+    ('The characters in this comic are so well-written! Each one feels fleshed out and three-dimensional.',
+     '2024-03-06', 28, 14, 'TechnoTales'),
+    ('I love the dialogue in this comic! It''s witty and clever.',
+     '2024-03-07', 36, 10, 'LaughingGal'),
+    ('The action scenes in this comic are intense! It keeps me on the edge of my seat.',
+     '2024-03-08', 19, 22, 'EtherealEnchanter'),
+    ('This comic is a masterpiece! It''s beautifully crafted in every aspect.',
+     '2024-03-09', 35, 8, 'InkMaster'),
+    ('I''m addicted to this comic! I can''t get enough of the story.',
+     '2024-03-10', 9, 19, 'MysticDreamer'),
+    ('The world-building in this comic is phenomenal! It feels so immersive.',
+     '2024-03-11', 2, 32, 'CyberScribe'),
+    ('I''m amazed by the attention to detail in this comic! Every little thing is accounted for.',
+     '2024-03-12', 41, 17, 'LaughingLeopard'),
+    ('This comic is a rollercoaster of emotions! It takes me on a journey with every issue.',
+     '2024-03-13', 11, 42, 'TechnoTeller'),
+    ('I''m blown away by the artwork in this comic! It''s like nothing I''ve ever seen before.',
+     '2024-03-14', 6, 5, 'naha');
+
+-- Adding data into finished list
 
 INSERT INTO longbox_schema."comic_book_finished_list"(
     user_id, comic_book_id, date_finished)
@@ -781,6 +865,8 @@ VALUES
     (42, 3, '2024-04-01 14:45:00'),
     (5, 19, '2024-04-01 15:55:00');
 
+-- Adding data into reading list
+
 INSERT INTO longbox_schema."comic_book_reading_list"(
     user_id, comic_book_id, date_started)
 VALUES
@@ -883,6 +969,8 @@ VALUES
     (17, 25, '2024-04-01 12:30:00'),
     (42, 3, '2024-04-01 14:45:00'),
     (5, 19, '2024-04-01 15:55:00');
+
+-- Adding data into favourites list
 
 INSERT INTO longbox_schema."comic_book_favourites_list"(
     user_id, comic_book_id, date_added_user_list)
