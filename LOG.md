@@ -270,6 +270,7 @@
     Ahan: Completed my user story for ITR3, full functioning of social panel with a filter feature to filter based on the number of comics reading/ finished and more/ less. Added tests for a new method used. Added more enteries in the script for users.
 
 ## Sunday, March 24th, 2024
+    
     Ali: Completed my user story for ITR3, now a user can view another user profile from comments by double clicking
 
 ## Tuesday, March 26th, 2024
