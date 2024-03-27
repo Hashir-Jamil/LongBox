@@ -17,33 +17,6 @@ public class StarRatingDto {
     private UserDto user;
     private ComicBookDto comicBook;
 
-    public StarRatingDto(int rating, UserDto user, ComicBookDto comicBook) {
-    	this.rating = rating;
-    	this.comicBookId = comicBook.getId();
-    	this.userId = user.getId();
-    	this.user = user;
-    	this.comicBook = comicBook;
-    }
-
-    public StarRatingDto(long userId, long comicBookId, int rating) {
-    	this.userId = userId;
-    	this.comicBookId = comicBookId;
-    	this.rating = rating;
-    }
-
-	public StarRatingDto(int rating, String comicBook) {
-	    this.rating = rating;
-	    this.user = new UserDto();
-	    this.comicBook = new ComicBookDto();
-	}
-	
-	public StarRatingDto(StarRating s) {
-	    this.id = s.getId();
-	    this.rating = s.getRating();
-	    this.userId = s.getUserId();
-	    this.comicBookId = s.getComicBookId();
-	}
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(comicBookId, id, rating, userId);
