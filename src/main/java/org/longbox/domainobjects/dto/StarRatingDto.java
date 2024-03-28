@@ -10,16 +10,13 @@ import lombok.Setter;
 @NoArgsConstructor
 
 public class StarRatingDto {
-	private long id;
 	private long userId;
     private long comicBookId;
     private int rating;
-    private UserDto user;
-    private ComicBookDto comicBook;
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(comicBookId, id, rating, userId);
+		return Objects.hash(comicBookId, rating, userId);
 	}
 
 	@Override
@@ -31,15 +28,14 @@ public class StarRatingDto {
 		if (getClass() != obj.getClass())
 			return false;
 		StarRatingDto other = (StarRatingDto) obj;
-		return comicBookId == other.comicBookId && id == other.id && Objects.equals(rating, other.rating)
+		return comicBookId == other.comicBookId && Objects.equals(rating, other.rating)
 				&& userId == other.userId;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "StarRatingDTO [id=" + id + ", userId=" + userId + ", comicBookId=" + comicBookId + ", rating=" + rating
-				+ ", user=" + user + ", comicBook=" + comicBook
+		return "StarRatingDTO [userId=" + userId + ", comicBookId=" + comicBookId + ", rating=" + rating
 				+ "]";
 	}
 }
