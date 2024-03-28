@@ -29,11 +29,7 @@ public class StarRatingDaoImpl implements StarRatingDao {
         try {
             session = sessionFactory.openSession();
             starRating = session.createQuery(
-<<<<<<< HEAD
                             "SELECT s FROM StarRating s WHERE s.user.id = :userID AND s.comicBook.id = :comicID",
-=======
-                            "SELECT s FROM StarRating s WHERE s.comicBook.id = :comicID AND s.user.id = :userID",
->>>>>>> branch 'main' of https://github.com/Hashir-Jamil/LongBox.git
                             StarRating.class)
             		.setParameter("userID", userId)
                     .setParameter("comicID", comicId)
