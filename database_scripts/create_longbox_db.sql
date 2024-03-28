@@ -64,22 +64,11 @@ CREATE TABLE IF NOT EXISTS "comments"
     "user_name"     text
 );
 
-<<<<<<< HEAD
 CREATE TABLE IF NOT EXISTS "star_ratings" (
-=======
-CREATE TABLE IF NOT EXISTS "star_ratings"
-(
-    "id"            bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
->>>>>>> branch 'main' of https://github.com/Hashir-Jamil/LongBox.git
     "comic_book_id" bigint,
-<<<<<<< HEAD
     "user_id" bigint,
     "rating" integer,
     PRIMARY KEY ("user_id","comic_book_id")
-=======
-    "user_id"       bigint,
-    "rating"        integer
->>>>>>> branch 'main' of https://github.com/Hashir-Jamil/LongBox.git
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book_finished_list"
