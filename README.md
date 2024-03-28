@@ -58,7 +58,7 @@ If using Eclipse, they can all be run as follows:
 ## Launching in Eclipse IDE
 
 To launch the project:
->Run **Main.java** in *src/main/java*.
+> Run **Main.java** in *src/main/java*.
 
 ### Build System
 
@@ -70,45 +70,61 @@ To launch the project:
 
 This is the first page that the user of the app sees.
 
-![Login](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f301d4e4-9725-477c-82cd-8dc03ea25d7d)
+![Login](https://github.com/Hashir-Jamil/LongBox/assets/90640849/0700181a-0304-40b7-b7c1-f56aba1771cc)
 
 ### Registration
 
-New users can sign up and use our app.
+New users can sign up and use our app. Upon sign up users can select preferred genres, using which user will be recommended comics.
 
-![Sign Up](https://github.com/Hashir-Jamil/LongBox/assets/90640849/29155eea-7b16-47bc-97b3-60d623c3d12a)
+![Signup](https://github.com/Hashir-Jamil/LongBox/assets/90640849/87863f9a-1d5b-4def-8150-137dc81150e1)
 
 ### Home
 
-This is the first page that the user lands on after logging in the system. The current user's username is displayed near the logout button.
-The default view is Comic Repository page where the user can view all the comic books in the app's collection.
+This is the first page that the user lands on after logging in the system. The current user's username is displayed near the logout button. using the top bar, user can navigate and access all the features of the system.
+
+#### Recommendations
+
+Upon login users land on a page of recommendations that are tailored to for them. The entries in this list can be opened to explore more about them.
+
+![Recommendations](https://github.com/Hashir-Jamil/LongBox/assets/90640849/14b2dda8-87a4-483e-9bf8-c77fb4550122)
+
+### Comic Repository and Advanced Search
+
+Users can view all the comic books in the app's collection. Users can use the advanced search and search the comics based on Title, Artist, Author, Genre, Publisher and Year Published. The search results are viewed in a different window.
 
 ![Comic Repo Page](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f939fdd5-1ed5-4527-8234-1fcff95d23ab)
 
-### Advanced Search
-
-Users can use the advanced search and search the comics based on Title, Artist, Author, Genre, Publisher and Year Published. The search results are viewed in a different window.
-
 ![Search Results](https://github.com/Hashir-Jamil/LongBox/assets/90640849/a2aaeb1a-05c1-422f-b358-5b685564afe7)
 
-### View Detailed information and Add Comments
+### View Detailed Information
 
-After selecting a comic book, users can view detailed information about the comic book. In this window user also has an option to add a new comment, view existing comments in order of newest to oldest, 
-favourite and unfavourite a book, add and remove a book from a reading and finished list. Comics added to reading and finished list can be viewed in the profile page.
+After selecting a comic book, users can view detailed information about the comic book. 
 
-![Comic Info](https://github.com/Hashir-Jamil/LongBox/assets/90640849/4b78f565-6018-4b12-aadb-3af7b6e3723e)
+#### Add and View Comments
+
+In this window user also has an option to add a new comment, view existing comments in order of newest to oldest. 
+
+#### Reading & Finished Lists
+
+Users can add and remove books from their personal reading and finished lists of comic books. Add and remove is accomplished when viewing a comic book in its individual page. The lists can be viewed in the profile view and from here the comic books can be selected again to edit their list membership.
+
+#### Comic Ratings
+
+Users can also add ratings to comic books and view them.
+
+![ComicInfo](https://github.com/Hashir-Jamil/LongBox/assets/90640849/d9a5ae3b-cce9-41f1-af62-b211ce1c0d2e)
 
 ### Add Comic
 
 Using this page, a user can add a comic book to the system. A user can favourite a comic while adding to the system.
 
-![Add Comic](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f9afc51d-567c-424d-92df-bd0f889a1208)
+![AddComic](https://github.com/Hashir-Jamil/LongBox/assets/90640849/106b4c1c-a978-4875-8e90-fd1f64395721)
 
 ### Favourite a comic
 
 All the comics favourited are visible in this page, a user can remove a comic from favourites.
 
-![Favourites Page](https://github.com/Hashir-Jamil/LongBox/assets/90640849/4953cd07-9ed9-41ae-bac3-83f0dd2ed367)
+![Favorites](https://github.com/Hashir-Jamil/LongBox/assets/90640849/24d8854e-481c-4413-8fdd-0fae82ae0310)
 
 Confirmation to remove from favourites:
 
@@ -116,34 +132,25 @@ Confirmation to remove from favourites:
 
 ### View Profile
 
-Users can view their details on the profile page, including comics read and finished. Users also have an option to edit their about me.
-This page will show all user profile information except for the password.
+Users can view their details on the profile page, including comics read and finished. Users also have an option to edit their about me. Users can view the reading and finished comics as a list here.
 
-![Profile Page](https://github.com/Hashir-Jamil/LongBox/assets/90640849/52dfa3ec-768f-443d-82fa-fdac6d95a62f)
-
-### Reading & Finished Lists
-
-Users can add and remove books from their personal reading and finished lists of comic books. Add and remove is accomplished when viewing a comic book in its individual page. The lists can be viewed in the profile view and from here the comic books can be selected again to edit their list membership.
-
-![Editing Lists](https://github.com/Hashir-Jamil/LongBox/assets/77168895/07c4fc74-c3f4-4d67-98d8-732a8036e7af)
-
-![Viewing Lists](https://github.com/Hashir-Jamil/LongBox/assets/77168895/f7d02b3f-8d3e-4340-b6c5-ee6f36be5b49)
-
-### Recommendations
-
-Upon login users land on a page of recommendations that are tailored to for them. The entries in this list can be opened to explore more about them.
-
-![Recommendations](https://github.com/Hashir-Jamil/LongBox/assets/77168895/6e7aefda-cefb-4668-9aae-e80d0c90942d)
+![Profile](https://github.com/Hashir-Jamil/LongBox/assets/90640849/e8440220-4570-4d47-830d-df3cd4606996)
 
 ### Trending
 
-### About Me
-
-### Star Ratings
+![Trending](https://github.com/Hashir-Jamil/LongBox/assets/90640849/036dad8a-5d8a-4c5e-b444-546359456106)
 
 ### Leaderboards
 
+The learderboards page allows the user to see all the users that use the system. There is also a filter option to filter the results by number of comics read and finished, more or less than a number.
+
+![Social](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f7036190-ccff-4188-b1ae-d4f923a75571)
+
 ### User Lookup
+
+Using the app, a user can view information about another user such including the comments done by them on comics, their reading and finished list and preferred genres. Users can either double click on a user in the social panel or double click on the comment by a user in the Comic Information page.
+
+![OtherUser](https://github.com/Hashir-Jamil/LongBox/assets/90640849/108ce09a-19e9-4158-b7d1-8366c26413ab)
 
 ### Logout
 
