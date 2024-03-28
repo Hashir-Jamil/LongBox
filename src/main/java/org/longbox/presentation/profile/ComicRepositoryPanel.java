@@ -113,7 +113,7 @@ public class ComicRepositoryPanel extends JPanel {
 		panel.add(refreshButton);
 
 		addToFavouritesButton = new JButton("Add to Favourites");
-		addToFavouritesButton.setBounds(930, 62, 129, 23);
+		addToFavouritesButton.setBounds(904, 62, 155, 23);
 		addToFavouritesButton.setEnabled(false); // Initially inactive
 		panel.add(addToFavouritesButton);
 	}
