@@ -100,15 +100,10 @@ public class StarRatingDaoImpl implements StarRatingDao {
 		    	starRating.setComicBook(comicBook);
 		    	
 		    	session.persist(starRating);
-//		    	Query query = session.createQuery("INSERT INTO StarRating (user.id, comicBook.id, rating) VALUES (:userID, :comicID, :rating)", StarRating.class);
-//		    	query.setParameter("rating",  rating);
-//		    	query.setParameter("comicID",  starRatingDto.getComicBookId());
-//		    	query.setParameter("userID", starRatingDto.getUserId());
-//		    	query.executeUpdate();
 		    	transaction.commit();
 		    }
 		    else {
-		    	Query query = session.createQuery("UPDATE StarRating s SET rating = :rating WHERE s.user.id = :userID AND s.comicBook.id = :comicID", StarRating.class);
+		    	Query query = session.createQuery("UPDATE StarRating s SET rating = :rating WHERE s.user.id = :userID AND s.comicBook.id = :comicID");
 			  
 			    query.setParameter("userID", starRatingDto.getUserId());
 			    query.setParameter("comicID", starRatingDto.getComicBookId());
