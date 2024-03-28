@@ -92,7 +92,7 @@ Upon login users land on a page of recommendations that are tailored to for them
 
 Users can view all the comic books in the app's collection. Users can use the advanced search and search the comics based on Title, Artist, Author, Genre, Publisher and Year Published. The search results are viewed in a different window.
 
-![Comic Repo Page](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f939fdd5-1ed5-4527-8234-1fcff95d23ab)
+![ComicRepo](https://github.com/Hashir-Jamil/LongBox/assets/90640849/efdecfea-cea3-4036-ac66-c9132801ef3d)
 
 ![Search Results](https://github.com/Hashir-Jamil/LongBox/assets/90640849/a2aaeb1a-05c1-422f-b358-5b685564afe7)
 
@@ -124,7 +124,7 @@ Using this page, a user can add a comic book to the system. A user can favourite
 
 All the comics favourited are visible in this page, a user can remove a comic from favourites.
 
-![Favorites](https://github.com/Hashir-Jamil/LongBox/assets/90640849/24d8854e-481c-4413-8fdd-0fae82ae0310)
+![Favourites](https://github.com/Hashir-Jamil/LongBox/assets/90640849/9b5ef000-27e3-477f-96f3-74228a7b8e68)
 
 Confirmation to remove from favourites:
 
