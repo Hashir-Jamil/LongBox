@@ -138,6 +138,8 @@ Users can view their details on the profile page, including comics read and fini
 
 ### Trending
 
+User can view the trending comics of the app, they can also filter it by the Continent.
+
 ![Trending](https://github.com/Hashir-Jamil/LongBox/assets/90640849/036dad8a-5d8a-4c5e-b444-546359456106)
 
 ### Leaderboards
