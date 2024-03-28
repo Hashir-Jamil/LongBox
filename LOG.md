@@ -237,12 +237,12 @@
 ## Saturday, March 16th, 2024
 
 	Oscar: Started working on star rating feature.
-    	Eric: Refactroed ComicBookSearchResults logic and functionality into its respcitive controller class. Refactored trending functionality to its respective controller class as well. Comic favourites count now increments through postgres function. Renamed instances of 'comic collection...' to 'comic repo...'.
+    Eric: Refactroed ComicBookSearchResults logic and functionality into its respcitive controller class. Refactored trending functionality to its respective controller class as well. Comic favourites count now increments through postgres function. Renamed instances of 'comic collection...' to 'comic repo...'.
 	
 ## Sunday, March 17th, 2024
 
 	Oscar: Almost finished with star rating feature.
-    	Eric: Refactored 'National Favoruties' to 'Continetnental/Regional Favourites'. Comicbooks now have a favourites count for every continent and users now have a continent field. Regional favourites logic is seperate fom all time favourites
+    Eric: Refactored 'National Favoruties' to 'Continetnental/Regional Favourites'. Comicbooks now have a favourites count for every continent and users now have a continent field. Regional favourites logic is seperate fom all time favourites
 	
 ## Monday, March 18th, 2024
 
@@ -268,5 +268,16 @@
     
     Hashir: Worked on refactoring tasks and addressed bugs
     Ahan: Completed my user story for ITR3, full functioning of social panel with a filter feature to filter based on the number of comics reading/ finished and more/ less. Added tests for a new method used. Added more enteries in the script for users.
+
 ## Sunday, March 24th, 2024
+
     Ali: Completed my user story for ITR3, now a user can view another user profile from comments by double clicking
+
+## Tuesday, March 26th, 2024
+
+    Hashir: worked on documentation like readme, planning doc, refactoring doc, diagrams and worked on bugs/problems/issues
+    Ahan: Updated README.md by adding instructions to run script via command line. Added auto refresh for social panel, and added more enteries for favorites, reading and finished list in db script.
+
+## Thursday, March 28th, 2024
+
+    Ahan: Updated README.md by adding the latest screenshots as well as adding new features and their description.
