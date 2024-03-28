@@ -62,11 +62,11 @@ public class ComicBookInfoPanel extends JPanel {
 	private JButton removeFromFinishedButton;
 	private JButton removeFromToReadingButton;
 	private JTextArea commentBox;
+	private JComboBox ratingsDropdown;
 	private DefaultListModel<CommentDto> commentListModel;
 	private CommentDaoImpl commentDaoImpl;
 	private StarRatingDaoImpl starRatingDaoImpl;
 	private List<CommentDto> commentsOnCurrentComic;
-	private List<StarRatingDto> avgRatingTotal;
 	private UserSession userSession;
 	private JList<CommentDto> commentList;
 	private ComicBookDaoImpl comicBookDaoImpl;
@@ -83,6 +83,7 @@ public class ComicBookInfoPanel extends JPanel {
 
 		commentDaoImpl = new CommentDaoImpl(HibernateUtils.getSessionFactory());
 		commentService = new CommentService(commentDaoImpl);
+		starRatingDaoImpl = new StarRatingDaoImpl(HibernateUtils.getSessionFactory());
 		starRatingService = new StarRatingService(starRatingDaoImpl);
 
 		this.commentsOnCurrentComic = commentService.getCommentsByComic(this.comicBookDTO.getId());
@@ -212,9 +213,10 @@ public class ComicBookInfoPanel extends JPanel {
 		userRating.setBounds(182, 590, 94, 16);
 		panel.add(userRating);
 		
-		inputRating = new JTextField("");
-		inputRating.setBounds(182, 620, 94, 16);
-		panel.add(inputRating);
+		ratingsDropdown = new JComboBox();
+		ratingsDropdown.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		ratingsDropdown.setBounds(182, 620, 94, 16);
+		panel.add(ratingsDropdown);
 		
 		commentsTitle = new JLabel("Comments");
 		commentsTitle.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
@@ -286,8 +288,8 @@ public class ComicBookInfoPanel extends JPanel {
 		readingButtonStates();
 		setFields();
 		displayComments();
-		//displayAvgRating();
-		//displayUserRating();
+		displayAvgRating();
+		displayUserRating();
 	}
 
 	private void setFields() {
@@ -303,19 +305,11 @@ public class ComicBookInfoPanel extends JPanel {
 	}
 	
 	public void displayAvgRating() {
-		avgRatingTotal = starRatingService.getStarRatingsByComic(comicBookDTO.getId());
-		int counter = 0;
-		
-		for (StarRatingDto s : avgRatingTotal) {
-			counter += s.getRating();
-		}
-
-		avgRating.setText("" + (double) counter/avgRatingTotal.size());
+		avgRating.setText(starRatingService.getAvgStarRatingsByComic(comicBookDTO.getId()));
 	}
 
 	public void displayUserRating() {
-		int i = starRatingService.getStarRatingByID(userSession.getUser().getId(), comicBookDTO.getId()).getRating();
-		userRating.setText("" + i);
+		userRating.setText(starRatingService.getStarRatingByID(userSession.getUser().getId(), comicBookDTO.getId()));
 	}
 	
 	public void displayComments(){
@@ -335,7 +329,6 @@ public class ComicBookInfoPanel extends JPanel {
 		comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 		ComicBook comicBook = comicBookDaoImpl.getComicBookById(comicId);
 		ComicBookDto comicBookDto = ComicBookMapper.toDto(comicBook);
-		//ComicBookDto comicBookDTO = new ComicBookDto(comicBook);
 		System.out.println("the comic in favourites is " + comicBookFavouritesListDaoImpl.getAllFavouritesComicBooks().contains(comicBookDTO));
 		return comicBookFavouritesListDaoImpl.getAllFavouritesComicBooks().contains(comicBookDTO);
 	}
