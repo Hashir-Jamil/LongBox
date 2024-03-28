@@ -59,12 +59,12 @@ public class TrendingPanel extends JPanel {
 		
 		allTimeFavouritesLabel = new JLabel("All Time Favourites:");
 		allTimeFavouritesLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		allTimeFavouritesLabel.setBounds(10, 106, 117, 22);
+		allTimeFavouritesLabel.setBounds(10, 106, 143, 22);
 		panel.add(allTimeFavouritesLabel);
 		
 		regionalFavourites = new JLabel("Regional Favourites: ");
 		regionalFavourites.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		regionalFavourites.setBounds(10, 450, 127, 22);
+		regionalFavourites.setBounds(10, 450, 153, 22);
 		panel.add(regionalFavourites);
 			
 		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
@@ -89,7 +89,7 @@ public class TrendingPanel extends JPanel {
 		panel.add(regionalFavouritesScrollPane);
 		
 		regionBox = new JComboBox<String>();
-		regionBox.setBounds(130, 452, 117, 22);
+		regionBox.setBounds(164, 452, 182, 22);
 		regionBox.addItem("North America");
 		regionBox.addItem("South America");
 		regionBox.addItem("Europe");
