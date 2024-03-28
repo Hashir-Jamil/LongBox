@@ -277,3 +277,7 @@
 
     Hashir: worked on documentation like readme, planning doc, refactoring doc, diagrams and worked on bugs/problems/issues
     Ahan: Updated README.md by adding instructions to run script via command line. Added auto refresh for social panel, and added more enteries for favorites, reading and finished list in db script.
+
+## Thursday, March 28th, 2024
+
+    Ahan: Updated README.md by adding the latest screenshots as well as adding new features and their description.
