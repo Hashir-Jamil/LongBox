@@ -16,7 +16,6 @@ public class StarRatingMapper {
 
     public static StarRatingDto toDto(StarRating entity) {
     	StarRatingDto dto = new StarRatingDto();
-        dto.setId(entity.getId());
         dto.setUserId(entity.getUserId());
         dto.setComicBookId(entity.getComicBookId());
         dto.setRating(entity.getRating());
@@ -26,11 +25,9 @@ public class StarRatingMapper {
     public static StarRatingDto toDtoWithComicBook(StarRating entity) {
     	ComicBookDto comicBookDto = comicBookService.getComicBookById(entity.getComicBookId());
     	StarRatingDto dto = new StarRatingDto();
-        dto.setId(entity.getId());
         dto.setUserId(entity.getUserId());
         dto.setComicBookId(entity.getComicBookId());
         dto.setRating(entity.getRating());
-        dto.setComicBook(comicBookDto);
         return dto;
     }
 
@@ -48,7 +45,6 @@ public class StarRatingMapper {
 
     public static StarRating toEntity(StarRatingDto dto) {
     	StarRating entity = new StarRating();
-        entity.setId(dto.getId());
         entity.setRating(dto.getRating());
         return entity;
     }
