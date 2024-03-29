@@ -28,7 +28,7 @@ public class ComicBookSearchResultsController implements MouseListener {
 		int row = this.comicBookSearchResultsFrame.getComicBookTable().rowAtPoint(e.getPoint());
 		int col = this.comicBookSearchResultsFrame.getComicBookTable().columnAtPoint(e.getPoint());
 		if (col == 0) {
-			ComicBookDto comicBook = ComicBookSearchUtils.searchComicBook(this.comicBookSearchResultsFrame.getComicBookDaoImpl().getAllComicBooks(), this.comicBookSearchResultsFrame.getComicBookTable().getValueAt(row, col).toString());
+			ComicBookDto comicBook = ComicBookSearchUtils.searchComicBook(this.comicBookSearchResultsFrame.getAllComicBooks(), this.comicBookSearchResultsFrame.getComicBookTable().getValueAt(row, col).toString());
 			System.out.println("Clicked on: " + this.comicBookSearchResultsFrame.getComicBookTable().getValueAt(row, col).toString());
 			org.longbox.businesslogic.utils.ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
 			this.comicBookSearchResultsFrame.dispose();

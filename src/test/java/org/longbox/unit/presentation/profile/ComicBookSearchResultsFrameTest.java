@@ -29,7 +29,7 @@ class ComicBookSearchResultsFrameTest {
 
     @Test
     public void testComicBookDaoImpl() {
-        assertNotNull(frame.getComicBookDaoImpl());
+        assertNotNull(frame.getAllComicBooks());
     }
 
     @Test

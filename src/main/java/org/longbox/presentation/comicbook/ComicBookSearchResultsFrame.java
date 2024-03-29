@@ -9,6 +9,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import org.longbox.businesslogic.UserSession;
+import org.longbox.businesslogic.service.ComicBookService;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
@@ -22,11 +23,13 @@ public class ComicBookSearchResultsFrame extends JFrame {
 	private static final String DEFAULT_FONT = "Calibri";
 	private JPanel contentPane;
 	private JTable comicBookTable;
-	private ComicBookDaoImpl comicBookDaoImpl;
+//	private ComicBookDaoImpl comicBookDaoImpl;
 	private ComicBookTableModel comicBookTableModel;
 	private UserSession userSession;
 	private JLabel lblNewLabel;
 	private JScrollPane scrollPane;
+	private ComicBookService comicBookService = new ComicBookService(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
+
 
 	public ComicBookSearchResultsFrame(List<ComicBookDto> displayResults, String target, String searchBy, UserSession user) {
 		this.userSession = user;
@@ -51,7 +54,7 @@ public class ComicBookSearchResultsFrame extends JFrame {
 		
 		comicBookTable = new JTable();
 		
-		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
+		//comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 
 		comicBookTableModel = new ComicBookTableModel(displayResults);
 
@@ -64,8 +67,8 @@ public class ComicBookSearchResultsFrame extends JFrame {
 		return this.userSession;
 	}
 	
-	public ComicBookDaoImpl getComicBookDaoImpl() {
-		return this.comicBookDaoImpl;
+	public List<ComicBookDto> getAllComicBooks() {
+		return this.comicBookService.getAllComicBook();
 	}
 	
 	public JTable getComicBookTable() {
