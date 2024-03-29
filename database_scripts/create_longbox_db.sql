@@ -754,6 +754,206 @@ VALUES ('Zot!', 'Scott McCloud', 'Scott McCloud',
        ('Initial D', 'Shuichi Shigeno', 'Shuichi Shigeno',
         'Racing, Drama, Manga',
         'Empty', 105, 'Kodansha', 1995, '2024-03-24'),
+    
+
+       ('Dominion Tank Police', 'Masamune SHirow', 'Masamune Shirow',
+        'Action, Post Apocalyptic, Police, Manga',
+        'Empty', 6, 'Eclipse', 1989, '2024-03-29'),
+
+
+       ('Black Magic', 'Masamune SHirow', 'Masamune SHirow',
+        'Action, Post Apocalyptic, Police, Manga',
+        'Empty', 4, 'Eclipse', 1989, '2024-03-29'),
+
+
+       ('Venus Wars (Vol 1)', 'Yoshikazu Yasuhiko', 'Yoshikazu Yasuhiko',
+        'War, Science Fiction, Manga',
+        'Empty', 14, 'Dark Horse', 1995, '2024-03-29'),
+
+
+       ('Venus Wars (Vol 2)', 'Yoshikazu Yasuhiko', 'Yoshikazu Yasuhiko',
+        'War, Science Fiction, Manga',
+        'Empty', 15, 'Dark Horse', 1998, '2024-03-29'),
+
+
+       ('Slayers Super Explosive Demon Story', 'Hajime Kanzaka', 'Rui Araizumi',
+        'Action, Adventure, Fantasy, Comedy, Satire',
+        'Empty', 6, 'CPM', 1999, '2024-03-29'),   
+    
+
+       ('Concrete (1987)', 'Paul Chadwick', 'Paul Chadwick',
+        'Slice of Life, Fantasy',
+        'Empty', 10, 'Dark Horse', 1987, '2024-03-29'),
+
+
+       ('Concrete A New Life', 'Paul Chadwick', 'Paul Chadwick',
+        'Slice of Life, Fantasy',
+        'Empty', 1, 'Dark Horse', 1989, '2024-03-29'),
+
+
+       ('Concrete Celebrates Earth Day', 'Paul Chadwick', 'Paul Chadwick',
+        'Slice of Life, Fantasy',
+        'Empty', 1, 'Dark Horse', 1990, '2024-03-29'),
+
+
+       ('Concrete Color Special', 'Paul Chadwick', 'Paul Chadwick',
+        'Slice of Life, Fantasy',
+        'Empty', 1, 'Dark Horse', 1989, '2024-03-29'),
+
+
+       ('Concrete Electrica', 'Paul Chadwick', 'Paul Chadwick',
+        'Slice of Life, Fantasy',
+        'Empty', 2, 'Dark Horse', 1993, '2024-03-29'),
+    
+
+       ('Concrete Fragile Creature', 'Paul Chadwick', 'Paul Chadwick',
+        'Slice of Life, Fantasy',
+        'Empty', 4, 'Dark Horse', 1991, '2024-03-29'),
+
+
+       ('Concrete Think Like A Mountain', 'Paul Chadwick', 'Paul Chadwick',
+        'Slice of Life, Fantasy',
+        'Empty', 6, 'Dark Horse', 1996, '2024-03-29'),
+
+
+       ('Concrete Human Dilemma', 'Paul Chadwick', 'Paul Chadwick',
+        'Slice of Life, Fantasy',
+        'Empty', 6, 'Dark Horse', 2004, '2024-03-29'),
+
+
+       ('The Mask', 'John Arcudi', 'Doug Mahnke',
+        'Action, Comedy, Satire',
+        'Empty', 5, 'Dark Horse', 1991, '2024-03-29'),
+
+
+       ('The Mask Returns', 'John Arcudi', 'Doug Mahnke',
+        'Action, Comedy, Satire',
+        'Empty', 4, 'Dark Horse', 1992, '2024-03-29'),    
+    
+
+       ('The Mask Strikes Back', 'Evan Dorkin', 'Peter Gross',
+        'Action, Comedy, Satire',
+        'Empty', 5, 'Dark Horse', 1995, '2024-03-29'),
+
+
+       ('The Mask The Hunt for Green October', 'John Arcudi', 'Doug Mahnke',
+        'Action, Comedy, Satire',
+        'Empty', 4, 'Dark Horse', 1995, '2024-03-29'),
+
+
+       ('The Mask Southern Discomfort', 'Rich Hedden', 'Goran Delic',
+        'Action, Comedy, Satire',
+        'Empty', 4, 'Dark Horse', 1996, '2024-03-29'),
+
+
+       ('The Mask Toys in the Attic', 'Bob Fingerman', 'Sibin',
+        'Action, Comedy, Satire',
+        'Empty', 4, 'Dark Horse', 1998, '2024-03-29'),
+    
+
+       ('The Mask I Pledge Allegiance to the Mask', 'Christopher Cantwell', 'Patric Reynolds',
+        'Action, Comedy, Satire',
+        'Empty', 4, 'Dark Horse', 2019, '2024-03-29'),
+
+    
+       ('American Splendor (Vol 1)', 'Harvey Pekar', 'Robert Crumb',
+        'Slice of Life, Comedy',
+        'Empty', 16, 'Self Published', 1976, '2024-03-29'),
+
+
+       ('American Splendor (Vol 2)', 'Harvey Pekar', 'Robert Crumb',
+        'Slice of Life, Comedy',
+        'Empty', 15, 'Dark Horse', 1993, '2024-03-29'),
+
+
+       ('American Splendor (Vol 3)', 'Harvey Pekar', 'Robert Crumb',
+        'Slice of Life, Comedy',
+        'Empty', 8, 'Vertigo', 2006, '2024-03-29'),
+
+
+       ('Cerebus', 'Dave Sim', 'Dave Sim',
+        'Action, Satire',
+        'Empty', 25, 'Aardvark-Vanaheim', 1977, '2024-03-29'),
+
+
+       ('Cerebus High Society', 'Dave Sim', 'Gerhard',
+        'Action, Philisophical',
+        'Empty', 26, 'Aardvark-Vanaheim', 1981, '2024-03-29'),
+    
+
+       ('Cerebus Church and State', 'Dave Sim', 'Gerhard',
+        'Action, Philisophical',
+        'Empty', 59, 'Aardvark-Vanaheim', 1983, '2024-03-29'),
+
+
+       ('Cerebus Jakas Story', 'Dave Sim', 'Gerhard',
+        'Action, Philisophical',
+        'Empty', 27, 'Aardvark-Vanaheim', 1990, '2024-03-29'),
+
+
+       ('Cerebus Melmoth', 'Dave Sim', 'Gerhard',
+        'Action, Philisophical',
+        'Empty', 11, 'Aardvark-Vanaheim', 1991, '2024-03-29'),
+
+
+       ('Cerebus Mothers and Daughters', 'Dave Sim', 'Gerhard',
+        'Action, Philisophical',
+        'Empty', 50, 'Aardvark-Vanaheim', 1992, '2024-03-29'),
+
+
+       ('Cerebus Guys', 'Dave Sim', 'Gerhard',
+        'Action, Philisophical',
+        'Empty', 19, 'Aardvark-Vanaheim', 1997, '2024-03-29'),
+
+
+       ('Cerebus Ricks Story', 'Dave Sim', 'Gerhard',
+        'Action, Philisophical',
+        'Empty', 11, 'Aardvark-Vanaheim', 1998, '2024-03-29'),
+
+
+       ('Cerebus Going Home', 'Dave Sim', 'Gerhard',
+        'Action, Philisophical',
+        'Empty', 33, 'Aardvark-Vanaheim', 1998, '2024-03-29'),
+
+
+       ('Cerebus Latter Days', 'Dave Sim', 'Gerhard',
+        'Action, Philisophical',
+        'Empty', 35, 'Aardvark-Vanaheim', 2000, '2024-03-29'),
+
+
+       ('Lone Wolf and Cub', 'Kazuo Koike', 'Kazuo Koike',
+        'Adventure, Samurai, Epic, Manga',
+        'Empty', 28, 'First Comices', 1987, '2024-03-29'),
+
+
+       ('Lady Snowblood', 'Kazuo Koike', 'Kazuo Koike',
+        'Adventure, Violent, Manga',
+        'Empty', 4, 'Dark Horse', 1972, '2024-03-29'),
+
+
+       ('Holiday', 'Aurora Vaughan', 'Aurora Vaughan',
+        'Acion, War, Drama, Psychological',
+        'Empty', 108, 'Dark Horse', 2026, '2024-03-29'),
+
+
+       ('Orc Stain', 'James Stokoe', 'James Stokoe',
+        'Action, Comedy',
+        'Empty', 9, 'Image', 2010, '2024-03-29'),
+
+
+       ('Ghost of Kiev', 'Matsuda Djuko', 'Matsuda Djuko',
+        'Action, War',
+        'Empty', 1, 'TokyoPop', 2023, '2024-03-29'),
+
+
+       ('The Witches House', 'Fummy', 'Yuna Kagesaki',
+        'Horror, Tragedy, Manga',
+        'Empty', 2, 'Yen Press', 2016, '2024-03-29'),
+
+
+       ('Corto Maltese', 'Hugo Pratt', 'Hugo Pratt',
+        'Adventure',
+        'Empty', 32, 'Ivaldi Editore', 1967, '2024-03-29'),
 
 
        ('Groo the Wanderer', 'Sergio Aragones', 'Sergio Aragones',
