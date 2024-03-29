@@ -6,7 +6,6 @@ import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.service.ComicBookService;
 import org.longbox.config.HibernateUtils;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
-import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
 import org.longbox.presentation.tablemodels.ComicBookTableModel;
 
 import java.awt.BorderLayout;
@@ -41,6 +40,7 @@ public class ComicRepositoryPanel extends JPanel {
 	private String currentItem;
 	private JTable comicBookTable;
 	private JTextField textField;
+	private JLabel searchRepoLabel;
 	private JComboBox<String> typeSelection;
 	private ComicBookTableModel comicBookTableModel;
 	private TableRowSorter<TableModel> sorter;
@@ -73,6 +73,14 @@ public class ComicRepositoryPanel extends JPanel {
 
 		add(panel, BorderLayout.CENTER);
 		
+		addPaneAndTable();
+		addLabelsButtons();
+		
+		header = comicBookTable.getTableHeader();
+		header.setReorderingAllowed(false);
+	}
+	
+	private void addPaneAndTable() {
 		comicBookTableModel = new ComicBookTableModel(comicBookService.getAllComicBook());
 
 		comicBookTable = new JTable(comicBookTableModel);
@@ -84,8 +92,11 @@ public class ComicRepositoryPanel extends JPanel {
 		scrollPane.setViewportBorder(null);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(10, 110, 1144, 683);
+		
 		panel.add(scrollPane);
-			
+	}
+	
+	private void addLabelsButtons() {
 		typeSelection = new JComboBox<String>();
 		typeSelection.setBounds(307, 62, 160, 22);
 		
@@ -103,9 +114,9 @@ public class ComicRepositoryPanel extends JPanel {
 		panel.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Search Repo:");
-		lblNewLabel.setBounds(10, 66, 120, 13);
-		panel.add(lblNewLabel);
+		searchRepoLabel = new JLabel("Search Repo:");
+		searchRepoLabel.setBounds(10, 66, 120, 13);
+		panel.add(searchRepoLabel);
 		
 		refreshButton = new JButton("Refresh");
 		refreshButton.setForeground(Color.BLACK);
@@ -116,8 +127,5 @@ public class ComicRepositoryPanel extends JPanel {
 		addToFavouritesButton.setBounds(904, 62, 155, 23);
 		addToFavouritesButton.setEnabled(false); // Initially inactive
 		panel.add(addToFavouritesButton);
-		
-		header = comicBookTable.getTableHeader();
-		header.setReorderingAllowed(false);
 	}
 }
