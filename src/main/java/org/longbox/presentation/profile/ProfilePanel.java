@@ -97,39 +97,39 @@ public class ProfilePanel extends JPanel {
 		panel.add(midSeparator);
 		
 		usernameLabel = new JLabel(USERNAME_TEXT);
-		usernameLabel.setBounds(47, 113, 118, 16);
+		usernameLabel.setBounds(47, 281, 118, 16);
 		panel.add(usernameLabel);
 		
 		firstNameLabel = new JLabel(FIRST_NAME_TEXT);
-		firstNameLabel.setBounds(47, 141, 118, 16);
+		firstNameLabel.setBounds(47, 309, 118, 16);
 		panel.add(firstNameLabel);
 		
 		lastNameLabel = new JLabel(LAST_NAME_TEXT);
-		lastNameLabel.setBounds(47, 169, 118, 16);
+		lastNameLabel.setBounds(47, 338, 118, 16);
 		panel.add(lastNameLabel);
 		
 		dobLabel = new JLabel(DATE_OF_BIRTH_TEXT);
-		dobLabel.setBounds(47, 197, 118, 16);
+		dobLabel.setBounds(47, 366, 118, 16);
 		panel.add(dobLabel);
 		
 		emailLabel = new JLabel(EMAIL_TEXT);
-		emailLabel.setBounds(47, 225, 118, 16);
+		emailLabel.setBounds(47, 394, 118, 16);
 		panel.add(emailLabel);
 		
 		countryLabel = new JLabel(COUNTRY_TEXT);
-		countryLabel.setBounds(47, 253, 118, 16);
+		countryLabel.setBounds(47, 422, 118, 16);
 		panel.add(countryLabel);
 		
 		joinDateLabel = new JLabel(JOINED_ON_TEXT);
-		joinDateLabel.setBounds(47, 281, 118, 16);
+		joinDateLabel.setBounds(47, 450, 118, 16);
 		panel.add(joinDateLabel);
 		
 		readingLabel = new JLabel(COMICS_READING_TEXT);
-		readingLabel.setBounds(47, 309, 118, 16);
+		readingLabel.setBounds(47, 478, 118, 16);
 		panel.add(readingLabel);
 		
 		finishedLabel = new JLabel(COMICS_FINISHED_TEXT);
-		finishedLabel.setBounds(47, 337, 118, 16);
+		finishedLabel.setBounds(47, 506, 118, 16);
 		panel.add(finishedLabel);
 		
 		aboutMeLabel = new JLabel(ABOUT_ME_TEXT);
@@ -137,39 +137,39 @@ public class ProfilePanel extends JPanel {
 		panel.add(aboutMeLabel);
 		
 		userName = new JLabel(EMPTY);
-		userName.setBounds(182, 113, 306, 16);
+		userName.setBounds(182, 281, 306, 16);
 		panel.add(userName);
 		
 		firstName = new JLabel(EMPTY);
-		firstName.setBounds(182, 141, 306, 16);
+		firstName.setBounds(182, 309, 306, 16);
 		panel.add(firstName);
 		
 		lastName = new JLabel(EMPTY);
-		lastName.setBounds(182, 169, 306, 16);
+		lastName.setBounds(182, 338, 306, 16);
 		panel.add(lastName);
 		
 		dateOfBirth = new JLabel(EMPTY);
-		dateOfBirth.setBounds(182, 197, 306, 16);
+		dateOfBirth.setBounds(182, 366, 306, 16);
 		panel.add(dateOfBirth);
 		
 		email = new JLabel(EMPTY);
-		email.setBounds(182, 225, 306, 16);
+		email.setBounds(182, 394, 306, 16);
 		panel.add(email);
 		
 		country = new JLabel(EMPTY);
-		country.setBounds(182, 253, 306, 16);
+		country.setBounds(182, 422, 306, 16);
 		panel.add(country);
 		
 		joinDate = new JLabel(EMPTY);
-		joinDate.setBounds(182, 281, 306, 16);
+		joinDate.setBounds(182, 450, 306, 16);
 		panel.add(joinDate);
 		
 		comicsReading = new JLabel(EMPTY);
-		comicsReading.setBounds(182, 309, 306, 16);
+		comicsReading.setBounds(182, 478, 306, 16);
 		panel.add(comicsReading);
 		
 		comicsFinished = new JLabel(EMPTY);
-		comicsFinished.setBounds(182, 337, 306, 16);
+		comicsFinished.setBounds(182, 506, 306, 16);
 		panel.add(comicsFinished);
 
 		currentlyReading = new JLabel(COMICS_CURRENTLY_READING_TEXT);
