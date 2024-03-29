@@ -134,7 +134,7 @@ Confirmation to remove from favourites:
 
 Users can view their details on the profile page, including comics read and finished. Users also have an option to edit their about me. Users can view the reading and finished comics as a list here.
 
-![Profile](https://github.com/Hashir-Jamil/LongBox/assets/90640849/e8440220-4570-4d47-830d-df3cd4606996)
+![Profile](https://github.com/Hashir-Jamil/LongBox/assets/90640849/96117d37-c17a-4bda-8c4b-866d7e9d70bb)
 
 ### Trending
 
