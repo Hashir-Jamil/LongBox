@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.longbox.presentation.tablemodels.ComicBookTableModel;
 
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.event.MouseAdapter;
@@ -42,6 +43,7 @@ public class FavouritesPanel extends JPanel {
 	private UserSession userSession;
 	private JButton refreshButton;
 	private JLabel lblNewLabel;
+	private JTableHeader header;
 
 	public FavouritesPanel() {
 		initComicCollectionPage();
@@ -141,6 +143,8 @@ public class FavouritesPanel extends JPanel {
 				}
 			}
 		});
+		header = comicBookTable.getTableHeader();
+		header.setReorderingAllowed(false);
 	}
 
 	public void reloadData() {
