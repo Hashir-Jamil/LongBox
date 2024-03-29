@@ -118,7 +118,7 @@ Users can also add ratings to comic books and view them.
 
 Using this page, a user can add a comic book to the system. A user can favourite a comic while adding to the system.
 
-![AddComic](https://github.com/Hashir-Jamil/LongBox/assets/90640849/106b4c1c-a978-4875-8e90-fd1f64395721)
+![AddComic](https://github.com/Hashir-Jamil/LongBox/assets/90640849/90a7b633-e767-484b-b882-72ff6a383b3c)
 
 ### Favourite a comic
 
