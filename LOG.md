@@ -281,3 +281,8 @@
 ## Thursday, March 28th, 2024
 
     Ahan: Updated README.md by adding the latest screenshots as well as adding new features and their description.
+
+## Friday, March 29th, 2024 
+
+    Hashir: updated documentation and slides for D2 submission.
+    Group Meeting (Hashir, Ahan, Eric, Oscar): Worked on slides and post mortem analysis.
