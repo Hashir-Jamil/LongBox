@@ -11,6 +11,7 @@ import org.longbox.presentation.comicbook.ComicBookSearchResultsFrame;
 public class ComicBookSearchResultsController implements MouseListener {
 	
 	private ComicBookSearchResultsFrame comicBookSearchResultsFrame;
+	private final String columnName = "Series Title";
 	private UserSession userSession;
 
 	public ComicBookSearchResultsController(ComicBookSearchResultsFrame comicBookSearchResultsFrame) {
@@ -25,9 +26,11 @@ public class ComicBookSearchResultsController implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		int headerCol = this.comicBookSearchResultsFrame.getHeader().columnAtPoint(e.getPoint());
+		String selection = this.comicBookSearchResultsFrame.getComicBookTable().getColumnName(headerCol).toString();
 		int row = this.comicBookSearchResultsFrame.getComicBookTable().rowAtPoint(e.getPoint());
 		int col = this.comicBookSearchResultsFrame.getComicBookTable().columnAtPoint(e.getPoint());
-		if (col == 0) {
+		if (selection.equals(columnName) && e.getClickCount() == 2) {
 			ComicBookDto comicBook = ComicBookSearchUtils.searchComicBook(this.comicBookSearchResultsFrame.getAllComicBooks(), this.comicBookSearchResultsFrame.getComicBookTable().getValueAt(row, col).toString());
 			System.out.println("Clicked on: " + this.comicBookSearchResultsFrame.getComicBookTable().getValueAt(row, col).toString());
 			org.longbox.businesslogic.utils.ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);

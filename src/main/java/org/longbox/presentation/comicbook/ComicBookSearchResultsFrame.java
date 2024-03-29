@@ -7,6 +7,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.JTableHeader;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.service.ComicBookService;
@@ -27,6 +28,7 @@ public class ComicBookSearchResultsFrame extends JFrame {
 	private UserSession userSession;
 	private JLabel lblNewLabel;
 	private JScrollPane scrollPane;
+	private JTableHeader header;
 	private ComicBookService comicBookService = new ComicBookService(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 
 
@@ -58,6 +60,9 @@ public class ComicBookSearchResultsFrame extends JFrame {
 		comicBookTable = new JTable(comicBookTableModel);
 		
 		scrollPane.setViewportView(comicBookTable);
+		
+		header = comicBookTable.getTableHeader();
+		header.setReorderingAllowed(false);
 	}
 	
 	public UserSession getUserSession() {
@@ -74,5 +79,9 @@ public class ComicBookSearchResultsFrame extends JFrame {
 	
 	public String getTitle() {
 		return this.lblNewLabel.getText();
+	}
+
+	public JTableHeader getHeader() {
+		return this.header;
 	}
 }
