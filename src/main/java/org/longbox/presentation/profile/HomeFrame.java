@@ -80,7 +80,7 @@ public class HomeFrame extends JFrame {
         favouritesPanel = new FavouritesPanel();
         comicRepoPanel = new ComicRepositoryPanel();
         addComicToRepoPanel = new AddComicToRepoPanel();
-        trendingComicsPanel = new TrendingPanel();
+        trendingComicsPanel = new TrendingPanel(this.userSession);
         recommendationsPanel = new RecommendationsPanel(this.userSession);
         socialPanel = new SocialPanel();
         

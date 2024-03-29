@@ -1,5 +1,6 @@
 package org.longbox.presentation.profile;
 
+import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.service.ComicBookService;
 import org.longbox.config.HibernateUtils;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
@@ -15,6 +16,7 @@ import javax.swing.JSeparator;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.table.JTableHeader;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
 
@@ -34,9 +36,12 @@ public class TrendingPanel extends JPanel {
 	private JScrollPane allTimeFavouritesScrollPane;
 	private JScrollPane regionalFavouritesScrollPane;
 	private JComboBox<String> regionBox;
+	private JTableHeader header;
+	private UserSession userSession;
 	private ComicBookService comicBookService = new ComicBookService(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 
-	public TrendingPanel() {
+	public TrendingPanel(UserSession user) {
+		this.userSession = user;
 		initTrendingPanel();
 	}
 	
@@ -97,5 +102,7 @@ public class TrendingPanel extends JPanel {
 		regionBox.addItem("Oceania");
 		regionBox.addItem("Antarctica");
 		panel.add(regionBox);
+		
+		header = allTimeFavouritesTable.getTableHeader();
 	}
 }
