@@ -1,15 +1,10 @@
 package org.longbox.unit.presentation.profile;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
 
 import java.util.Date;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.service.ComicBookService;
 import org.longbox.config.HibernateUtils;
