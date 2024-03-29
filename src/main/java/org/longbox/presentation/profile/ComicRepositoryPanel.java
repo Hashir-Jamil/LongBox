@@ -43,12 +43,9 @@ public class ComicRepositoryPanel extends JPanel {
 	private JComboBox<String> typeSelection;
 	private ComicBookTableModel comicBookTableModel;
 	private TableRowSorter<TableModel> sorter;
-//	private ComicBookDaoImpl comicBookDaoImpl;
 	private UserSession userSession;
 	private JButton addToFavouritesButton;
-	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
 	private ComicBookService comicBookService = new ComicBookService(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
-
 
 	public ComicRepositoryPanel() {
 		initComicCollectionPage();
@@ -74,8 +71,6 @@ public class ComicRepositoryPanel extends JPanel {
 
 		add(panel, BorderLayout.CENTER);
 		
-		//comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
-
 		comicBookTableModel = new ComicBookTableModel(comicBookService.getAllComicBook());
 
 		comicBookTable = new JTable(comicBookTableModel);
