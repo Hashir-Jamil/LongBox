@@ -23,7 +23,6 @@ public class ComicBookSearchResultsFrame extends JFrame {
 	private static final String DEFAULT_FONT = "Calibri";
 	private JPanel contentPane;
 	private JTable comicBookTable;
-//	private ComicBookDaoImpl comicBookDaoImpl;
 	private ComicBookTableModel comicBookTableModel;
 	private UserSession userSession;
 	private JLabel lblNewLabel;
@@ -54,8 +53,6 @@ public class ComicBookSearchResultsFrame extends JFrame {
 		
 		comicBookTable = new JTable();
 		
-		//comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
-
 		comicBookTableModel = new ComicBookTableModel(displayResults);
 
 		comicBookTable = new JTable(comicBookTableModel);
