@@ -41,6 +41,16 @@ tasks.named<Test>("test") {
 
 tasks.jacocoTestReport {
     dependsOn(tasks.named<Test>("test")) // tests are required to run before generating the report
+
+    classDirectories.setFrom(files(classDirectories.files.map {
+        fileTree(it) {
+            setExcludes(listOf(
+                    "**/controller/*",
+                    "**/presentation/*"
+            ))
+        }
+    }))
+
     reports {
         xml.required = true
         csv.required = true

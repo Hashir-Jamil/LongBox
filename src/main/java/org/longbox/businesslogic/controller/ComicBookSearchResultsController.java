@@ -28,7 +28,7 @@ public class ComicBookSearchResultsController implements MouseListener {
 		int row = this.comicBookSearchResultsFrame.getComicBookTable().rowAtPoint(e.getPoint());
 		int col = this.comicBookSearchResultsFrame.getComicBookTable().columnAtPoint(e.getPoint());
 		if (col == 0) {
-			ComicBookDto comicBook = ComicBookSearchUtils.searchComicBook(this.comicBookSearchResultsFrame.getComicBookDaoImpl().getAllComicBooks(), this.comicBookSearchResultsFrame.getComicBookTable().getValueAt(row, col).toString());
+			ComicBookDto comicBook = ComicBookSearchUtils.searchComicBook(this.comicBookSearchResultsFrame.getAllComicBooks(), this.comicBookSearchResultsFrame.getComicBookTable().getValueAt(row, col).toString());
 			System.out.println("Clicked on: " + this.comicBookSearchResultsFrame.getComicBookTable().getValueAt(row, col).toString());
 			org.longbox.businesslogic.utils.ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
 			this.comicBookSearchResultsFrame.dispose();
@@ -37,26 +37,21 @@ public class ComicBookSearchResultsController implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		// No need to implement
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		// No need to implement
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		// No need to implement
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		// No need to implement
 	}
-
 }

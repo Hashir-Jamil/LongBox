@@ -3,6 +3,7 @@ package org.longbox.presentation.profile;
 import lombok.Getter;
 import lombok.Setter;
 import org.longbox.businesslogic.UserSession;
+import org.longbox.businesslogic.service.ComicBookService;
 import org.longbox.config.HibernateUtils;
 import org.longbox.persistence.dao.ComicBookDaoImpl;
 import org.longbox.persistence.dao.ComicBookFavouritesListDaoImpl;
@@ -20,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.JButton;
@@ -42,10 +44,10 @@ public class ComicRepositoryPanel extends JPanel {
 	private JComboBox<String> typeSelection;
 	private ComicBookTableModel comicBookTableModel;
 	private TableRowSorter<TableModel> sorter;
-	private ComicBookDaoImpl comicBookDaoImpl;
 	private UserSession userSession;
 	private JButton addToFavouritesButton;
-	private ComicBookFavouritesListDaoImpl comicBookFavouritesListDaoImpl = new ComicBookFavouritesListDaoImpl(HibernateUtils.getSessionFactory());
+	private JTableHeader header;
+	private ComicBookService comicBookService = new ComicBookService(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 
 	public ComicRepositoryPanel() {
 		initComicCollectionPage();
@@ -71,9 +73,7 @@ public class ComicRepositoryPanel extends JPanel {
 
 		add(panel, BorderLayout.CENTER);
 		
-		comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
-
-		comicBookTableModel = new ComicBookTableModel(comicBookDaoImpl.getAllComicBooks());
+		comicBookTableModel = new ComicBookTableModel(comicBookService.getAllComicBook());
 
 		comicBookTable = new JTable(comicBookTableModel);
 		sorter = new TableRowSorter<TableModel>(comicBookTable.getModel());
@@ -116,5 +116,8 @@ public class ComicRepositoryPanel extends JPanel {
 		addToFavouritesButton.setBounds(904, 62, 155, 23);
 		addToFavouritesButton.setEnabled(false); // Initially inactive
 		panel.add(addToFavouritesButton);
+		
+		header = comicBookTable.getTableHeader();
+		header.setReorderingAllowed(false);
 	}
 }

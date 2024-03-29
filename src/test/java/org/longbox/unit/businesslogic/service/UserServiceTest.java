@@ -2,6 +2,7 @@ package org.longbox.unit.businesslogic.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
@@ -61,4 +62,11 @@ public class UserServiceTest {
             userService.getUserByEmail("@@@@");
         });
     }
+
+    @Test
+    void startSession(){
+        UserSession userSession = UserSession.getInstance(u1);
+        assertEquals(userSession, userService.startSession(u1));
+    }
+
 }
