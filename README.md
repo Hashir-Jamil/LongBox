@@ -112,7 +112,7 @@ Users can add and remove books from their personal reading and finished lists of
 
 Users can also add ratings to comic books and view them.
 
-![ComicInfo](https://github.com/Hashir-Jamil/LongBox/assets/90640849/d9a5ae3b-cce9-41f1-af62-b211ce1c0d2e)
+![ComicInfo](https://github.com/Hashir-Jamil/LongBox/assets/90640849/6d5cd30a-612d-4c1e-91c6-21f533f8fb7a)
 
 ### Add Comic
 
