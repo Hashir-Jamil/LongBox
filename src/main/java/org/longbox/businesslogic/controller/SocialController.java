@@ -19,6 +19,8 @@ public class SocialController implements ActionListener, MouseListener {
     private SocialPanel socialPanel;
     private UserDao userDao;
     private UserService userService;
+    private final String columnName = "User Name";
+    
     public SocialController(SocialPanel socialPanel){
         this.socialPanel = socialPanel;
 
@@ -55,9 +57,11 @@ public class SocialController implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+    	int headerCol = this.socialPanel.getHeader().columnAtPoint(e.getPoint());
+		String selection = this.socialPanel.getAllUsersTable().getColumnName(headerCol).toString();
         int row = this.socialPanel.getAllUsersTable().rowAtPoint(e.getPoint());
         int col = this.socialPanel.getAllUsersTable().columnAtPoint(e.getPoint());
-        if (col == 0 && e.getClickCount() == 2) {
+        if ((selection.equals(columnName) && e.getClickCount() == 2)) {
             System.out.println("\n mouse clicked \n");
             UserDto userDto = UserSearchUtils.getSearchedUser(this.socialPanel.getAllUsersList(), this.socialPanel.getAllUsersTable().getValueAt(row, col).toString());
             new OtherUserProfileFrame(userDto);

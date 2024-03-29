@@ -8,6 +8,7 @@ import lombok.*;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.table.JTableHeader;
 
 import org.longbox.businesslogic.service.UserService;
 import org.longbox.config.HibernateUtils;
@@ -43,6 +44,7 @@ public class SocialPanel extends JPanel {
 	private JButton filterButton;
 	private JComboBox numberComboBox, more_less_thanComboBox, choiceComboBox;
 	private JButton resetButton;
+	private JTableHeader header;
 	
 	public SocialPanel() {
 		userService = new UserService(new UserDaoImpl(HibernateUtils.getSessionFactory()));
@@ -60,6 +62,7 @@ public class SocialPanel extends JPanel {
 		panel.setLayout(null);
 		
 		addLabels();
+		addExtras();
 	}
 	
 	private void addLabels() {
@@ -102,6 +105,11 @@ public class SocialPanel extends JPanel {
 		choiceComboBox.setModel(new DefaultComboBoxModel(new String[] {"Reading", "Finished"}));
 		choiceComboBox.setBounds(705, 91, 112, 27);
 		panel.add(choiceComboBox);
+	}
+	
+	private void addExtras() {
+		header = allUsersTable.getTableHeader();
+		header.setReorderingAllowed(false);
 	}
 	
 	public int getNumberSelected() {
