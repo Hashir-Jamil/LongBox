@@ -1,5 +1,6 @@
 package org.longbox.businesslogic.service;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import org.longbox.domainobjects.dto.StarRatingDto;
 import org.longbox.domainobjects.entity.StarRating;
@@ -19,14 +20,18 @@ public class StarRatingService {
 		}
 		
 		else {
-			int runningSum = 0;
+			DecimalFormat df = new DecimalFormat("#.#");
+	        df.setRoundingMode(java.math.RoundingMode.HALF_UP);
+
+			float runningSum = 0;
 			List<StarRatingDto> ratings = starRatingDao.getStarRatingsByComic(comicId);
 			
 			for (StarRatingDto rating : ratings) {
 				runningSum += rating.getRating();
 			}
 			
-			return Integer.toString(runningSum/ratings.size());
+			String roundedNumber = df.format(runningSum/ratings.size());
+			return roundedNumber;
 		}
 	}
 
