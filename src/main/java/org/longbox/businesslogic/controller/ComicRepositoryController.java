@@ -29,10 +29,8 @@ import org.longbox.presentation.profile.FavouritesPanel;
 public class ComicRepositoryController implements ActionListener, MouseListener {
 	
 	private ComicRepositoryPanel comicRepositoryPanel;
-	// private ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 	private ComicBookService comicBookService = new ComicBookService(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 	private UserSession userSession;
-    private UserService userService;
 	
 	public ComicRepositoryController(ComicRepositoryPanel comicRepositoryPanel) {
 		this.comicRepositoryPanel = comicRepositoryPanel;
@@ -65,12 +63,9 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 		if(e.getSource() == this.comicRepositoryPanel.getAddToFavouritesButton()) {
 			int selectedRow = this.comicRepositoryPanel.getComicBookTable().getSelectedRow();
 			if (selectedRow != -1) {
-//				long comicId = this.comicRepositoryPanel.getComicBookTableModel().getComicIdAtRow(selectedRow);
-				
 				int row = this.comicRepositoryPanel.getComicBookTable().getSelectedRow();
 				int col = this.comicRepositoryPanel.getComicBookTable().getSelectedColumn();
 				String name = this.comicRepositoryPanel.getComicBookTable().getValueAt(row, col).toString();
-//				long comicId = comicBookDaoImpl.getComicBookBySeriesTitle(name).getId();
 				long comicId = comicBookService.getComicBookBySeriesName(name).getId();
 				
 				System.out.println("HERE WE HAVE THE NAME: " + name);
