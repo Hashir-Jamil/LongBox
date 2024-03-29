@@ -21,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.JButton;
@@ -45,6 +46,7 @@ public class ComicRepositoryPanel extends JPanel {
 	private TableRowSorter<TableModel> sorter;
 	private UserSession userSession;
 	private JButton addToFavouritesButton;
+	private JTableHeader header;
 	private ComicBookService comicBookService = new ComicBookService(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 
 	public ComicRepositoryPanel() {
@@ -114,5 +116,8 @@ public class ComicRepositoryPanel extends JPanel {
 		addToFavouritesButton.setBounds(904, 62, 155, 23);
 		addToFavouritesButton.setEnabled(false); // Initially inactive
 		panel.add(addToFavouritesButton);
+		
+		header = comicBookTable.getTableHeader();
+		header.setReorderingAllowed(false);
 	}
 }

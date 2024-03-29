@@ -36,6 +36,7 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 	private ComicBookService comicBookService = new ComicBookService(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 	private ComicRepositoryPanel comicRepositoryPanel;
 	private UserSession userSession;
+	private final String columnName = "Series Title";
 	
 	public ComicRepositoryController(ComicRepositoryPanel comicRepositoryPanel) {
 		this.comicRepositoryPanel = comicRepositoryPanel;
@@ -48,6 +49,7 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 		this.comicRepositoryPanel.getComicBookTable().addMouseListener(this);
 		this.comicRepositoryPanel.getTextField().addActionListener(this);
 		this.comicRepositoryPanel.getAddToFavouritesButton().addActionListener(this);
+		this.comicRepositoryPanel.getHeader().addMouseListener(this);
 	}
 
 	@Override
@@ -89,13 +91,15 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		int headerCol = this.comicRepositoryPanel.getHeader().columnAtPoint(e.getPoint());
+		String selection = this.comicRepositoryPanel.getComicBookTable().getColumnName(headerCol).toString();
 		int selectedRow = this.comicRepositoryPanel.getComicBookTable().getSelectedRow();
 		if (selectedRow != -1) {
 			this.comicRepositoryPanel.getAddToFavouritesButton().setEnabled(true);
 		}
 		int row = this.comicRepositoryPanel.getComicBookTable().rowAtPoint(e.getPoint());
 		int col = this.comicRepositoryPanel.getComicBookTable().columnAtPoint(e.getPoint());
-		if (col == 0 && e.getClickCount() == 2) {
+		if (selection.equals(columnName) && e.getClickCount() == 2) {
 			ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookService.getAllComicBook(), this.comicRepositoryPanel.getComicBookTable().getValueAt(row, col).toString());
 			ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
 		}
@@ -103,7 +107,6 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 	
 	private boolean isComicInFavourites(long comicId) {
 		ComicBookDto comicBookDTO = comicBookService.getComicBookById(comicId);
-		//return this.comicRepositoryPanel.getComicBookFavouritesListDaoImpl().getAllFavouritesComicBooks().contains(comicBookDTO);
 		return userComicBookCollectionService.getAllFavouritesComicBooks().contains(comicBookDTO);
 	}
 
@@ -131,6 +134,7 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 		this.comicRepositoryPanel.getPanel().add(this.comicRepositoryPanel.getScrollPane());
 		
 		this.comicRepositoryPanel.getComicBookTable().addMouseListener(this);
+		this.comicRepositoryPanel.getHeader().setReorderingAllowed(false);
 	}
 	
 	@Override
