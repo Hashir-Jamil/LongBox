@@ -14,6 +14,7 @@ import javax.swing.table.TableRowSorter;
 
 import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
+import org.longbox.businesslogic.service.ComicBookService;
 import org.longbox.businesslogic.service.UserService;
 import org.longbox.businesslogic.utils.ComicBookSearchUtils;
 import org.longbox.config.HibernateUtils;
@@ -28,7 +29,8 @@ import org.longbox.presentation.profile.FavouritesPanel;
 public class ComicRepositoryController implements ActionListener, MouseListener {
 	
 	private ComicRepositoryPanel comicRepositoryPanel;
-	private ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
+	// private ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
+	private ComicBookService comicBookService = new ComicBookService(new ComicBookDaoImpl(HibernateUtils.getSessionFactory()));
 	private UserSession userSession;
     private UserService userService;
 	
@@ -68,7 +70,8 @@ public class ComicRepositoryController implements ActionListener, MouseListener 
 				int row = this.comicRepositoryPanel.getComicBookTable().getSelectedRow();
 				int col = this.comicRepositoryPanel.getComicBookTable().getSelectedColumn();
 				String name = this.comicRepositoryPanel.getComicBookTable().getValueAt(row, col).toString();
-				long comicId = comicBookDaoImpl.getComicBookBySeriesTitle(name).getId();
+//				long comicId = comicBookDaoImpl.getComicBookBySeriesTitle(name).getId();
+				long comicId = comicBookService.getComicBookBySeriesName(name).getId();
 				
 				System.out.println("HERE WE HAVE THE NAME: " + name);
 				// Check if the comic book is already in favourites list
