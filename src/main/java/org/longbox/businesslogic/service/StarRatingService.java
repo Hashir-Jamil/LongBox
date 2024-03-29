@@ -13,15 +13,33 @@ public class StarRatingService {
 		this.starRatingDao = starRatingDao;
 	}
 
-	public List<StarRatingDto> getStarRatingsByComic(Long comicId) {
-		return starRatingDao.getStarRatingsByComic(comicId);
+	public String getAvgStarRatingsByComic(Long comicId) {
+		if (starRatingDao.getStarRatingsByComic(comicId).isEmpty()) {
+			return "0";
+		}
+		
+		else {
+			int runningSum = 0;
+			List<StarRatingDto> ratings = starRatingDao.getStarRatingsByComic(comicId);
+			
+			for (StarRatingDto rating : ratings) {
+				runningSum += rating.getRating();
+			}
+			
+			return Integer.toString(runningSum/ratings.size());
+		}
 	}
 
 	public void saveStarRating(StarRatingDto starRatingDto) {
 		starRatingDao.saveStarRating(starRatingDto);
 	}
 	
-	public StarRating getStarRatingByID(long userId, Long comicId) {
-		return starRatingDao.getStarRatingById(userId, comicId);
+	public String getStarRatingByID(long userId, Long comicId) {
+		if (starRatingDao.getStarRatingById(userId, comicId) != null) {
+			return Integer.toString(starRatingDao.getStarRatingById(userId, comicId).getRating());
+		}
+		else {
+			return "Not rated";
+		}
 	}
 }

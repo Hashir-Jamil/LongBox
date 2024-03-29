@@ -64,12 +64,11 @@ CREATE TABLE IF NOT EXISTS "comments"
     "user_name"     text
 );
 
-CREATE TABLE IF NOT EXISTS "star_ratings"
-(
-    "id"            bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+CREATE TABLE IF NOT EXISTS "star_ratings" (
     "comic_book_id" bigint,
-    "user_id"       bigint,
-    "rating"        integer
+    "user_id" bigint,
+    "rating" integer,
+    PRIMARY KEY ("user_id","comic_book_id")
 );
 
 CREATE TABLE IF NOT EXISTS "comic_book_finished_list"

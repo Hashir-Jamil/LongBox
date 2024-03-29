@@ -2,9 +2,10 @@ package org.longbox.businesslogic.controller;
 
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.service.CommentService;
+import org.longbox.businesslogic.service.StarRatingService;
 import org.longbox.businesslogic.service.UserService;
 import org.longbox.config.HibernateUtils;
-
+import org.longbox.domainobjects.dto.StarRatingDto;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.*;
 import org.longbox.presentation.comicbook.ComicBookInfoPanel;
@@ -19,6 +20,8 @@ public class ComicBookInfoController implements ActionListener, MouseListener {
     private ComicBookInfoPanel comicBookInfoPanel;
     private CommentDaoImpl commentDaoImpl = new CommentDaoImpl(HibernateUtils.getSessionFactory());
     private CommentService commentService = new CommentService(commentDaoImpl);
+    private StarRatingDao starRatingDao = new StarRatingDaoImpl(HibernateUtils.getSessionFactory());
+    private StarRatingService starRatingService = new StarRatingService(starRatingDao);
     private UserService userService = new UserService(new UserDaoImpl(HibernateUtils.getSessionFactory()));
     public ComicBookInfoController(ComicBookInfoPanel comicBookInfoPanel){
         this.comicBookInfoPanel = comicBookInfoPanel;
@@ -36,6 +39,8 @@ public class ComicBookInfoController implements ActionListener, MouseListener {
         this.comicBookInfoPanel.getRemoveFromToReadingButton().addActionListener(this);
         this.comicBookInfoPanel.getRemoveFromFinishedButton().addActionListener(this);
         this.comicBookInfoPanel.getCommentList().addMouseListener(this);
+        
+        this.comicBookInfoPanel.getRatingsDropdown().addActionListener(this);
     }
 
     @Override
@@ -104,6 +109,12 @@ public class ComicBookInfoController implements ActionListener, MouseListener {
             this.comicBookInfoPanel.getRemoveFromToReadingButton().setEnabled(false);
             this.comicBookInfoPanel.readingButtonStates();
         }
+        else if (e.getSource() == this.comicBookInfoPanel.getRatingsDropdown()) {
+        	saveRating((String) this.comicBookInfoPanel.getRatingsDropdown().getSelectedItem());
+        	//update avgRating and userRating
+        	this.comicBookInfoPanel.displayAvgRating();
+        	this.comicBookInfoPanel.displayUserRating();
+        }
     }
 
     @Override
@@ -119,6 +130,18 @@ public class ComicBookInfoController implements ActionListener, MouseListener {
         }
     }
 
+    private void saveRating(String rating) {
+    	StarRatingDto starRatingDto = new StarRatingDto();
+    	starRatingDto.setRating(Integer.parseInt(rating));
+    	starRatingDto.setUserId(this.comicBookInfoPanel.getUserSession().getUser().getId());
+    	starRatingDto.setComicBookId(this.comicBookInfoPanel.getComicBookDTO().getId());
+    	starRatingService.saveStarRating(starRatingDto);
+  
+    	System.out.println(rating);
+    	System.out.println(starRatingDto);
+    	System.out.println("test");
+    }
+    
     @Override
     public void mousePressed(MouseEvent e) {
 
