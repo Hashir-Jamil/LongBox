@@ -156,7 +156,7 @@ public class ComicBookInfoPanel extends JPanel {
 		panel.add(DateAddedLabel);
 		
 		JLabel avgRatingLabel = new JLabel("Average Rating: ");
-		avgRatingLabel.setBounds(53, 560, 94, 16);
+		avgRatingLabel.setBounds(53, 560, 115, 16);
 		panel.add(avgRatingLabel);
 		
 		JLabel userRatingLabel = new JLabel("Your Rating: ");
@@ -215,7 +215,7 @@ public class ComicBookInfoPanel extends JPanel {
 		
 		ratingsDropdown = new JComboBox();
 		ratingsDropdown.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		ratingsDropdown.setBounds(182, 620, 94, 16);
+		ratingsDropdown.setBounds(182, 615, 94, 29);
 		panel.add(ratingsDropdown);
 		
 		commentsTitle = new JLabel("Comments");
