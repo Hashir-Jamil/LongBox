@@ -139,7 +139,7 @@ public class AddComicToRepoPanel extends JPanel {
 		JLabel numberOfIssuesLabel = new JLabel(NUMBER_OF_ISSUES);
 		numberOfIssuesLabel.setForeground(Color.BLACK);
 		numberOfIssuesLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
-		numberOfIssuesLabel.setBounds(111, 436, 250, 20);
+		numberOfIssuesLabel.setBounds(111, 436, 289, 20);
 		panel.add(numberOfIssuesLabel);
 
 		//Field 6 Number of Issues Text Box
@@ -165,7 +165,7 @@ public class AddComicToRepoPanel extends JPanel {
 		JLabel yearPublishedLabel = new JLabel(YEAR_PUBLISHED);
 		yearPublishedLabel.setForeground(Color.BLACK);
 		yearPublishedLabel.setFont(new Font(DEFAULT_FONT, Font.PLAIN, 16));
-		yearPublishedLabel.setBounds(111, 536, 250, 20);
+		yearPublishedLabel.setBounds(111, 536, 289, 20);
 		panel.add(yearPublishedLabel);
 
 		//Field 8 Year Published Input Box

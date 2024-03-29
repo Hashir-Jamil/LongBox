@@ -6,7 +6,7 @@ Your digital solution for archiving and preserving comic books. Developed by pas
 
 This project uses a 3-layer software architecture. The system is built around the Java Swing framework and behaves as a model view controller application in conformance to the oracle documentation for Swing applications. A sketch of it is:
 
-![SystemDiagram](design_documents/diagrams/architecture_diagram_dark_mode.png)
+![SystemDiagram](design_documents/diagrams/architectural-diagram-v2_dark.png)
 
 ### Documentation
 
@@ -112,13 +112,13 @@ Users can add and remove books from their personal reading and finished lists of
 
 Users can also add ratings to comic books and view them.
 
-![ComicInfo](https://github.com/Hashir-Jamil/LongBox/assets/90640849/d9a5ae3b-cce9-41f1-af62-b211ce1c0d2e)
+![ComicInfo](https://github.com/Hashir-Jamil/LongBox/assets/90640849/6d5cd30a-612d-4c1e-91c6-21f533f8fb7a)
 
 ### Add Comic
 
 Using this page, a user can add a comic book to the system. A user can favourite a comic while adding to the system.
 
-![AddComic](https://github.com/Hashir-Jamil/LongBox/assets/90640849/106b4c1c-a978-4875-8e90-fd1f64395721)
+![AddComic](https://github.com/Hashir-Jamil/LongBox/assets/90640849/90a7b633-e767-484b-b882-72ff6a383b3c)
 
 ### Favourite a comic
 
