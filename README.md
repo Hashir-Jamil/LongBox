@@ -59,7 +59,7 @@ To view the coverage of the tests navigate to the [JaCoCo coverage report](build
 If using Eclipse, they can all be run as follows: 
 > right click on src/test/java > RunAs > JUnit Test.
 
-# Customer Tests
+### Customer Tests
 
 The video for customer tests can be found here [Customer Meeting 2](https://drive.google.com/file/d/1g3pXuG65CFF6YOEGFZLhamm2C680KwBv/view?usp=share_link).
 
