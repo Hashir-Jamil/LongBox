@@ -14,6 +14,7 @@ There are three major documentation types for this project.
 1. Several design & planning documents. These have several iterations/revisions and can be found in the [planning directory](design_documents/planning)
 2. A [code review document](design_documents/code_review/EECS2311-Z-Team3-TakeHomeAssignment.pdf) that provides peer review done by the team on each other's user stories/features. It provides problem reports, code smells and end-2-end tests for the project.
 3. A [refactoring document](design_documents/code_review/Refactoring_Document.pdf) that highlights major design changes in response to code review and problem reports above.
+4. [All system diagrams](design_documents/diagrams).
 
 ## Getting Started
 
