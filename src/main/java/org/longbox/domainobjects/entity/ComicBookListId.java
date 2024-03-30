@@ -12,6 +12,7 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class ComicBookListId implements Serializable {
     @Column(name = "user_id")
     private Long userId;

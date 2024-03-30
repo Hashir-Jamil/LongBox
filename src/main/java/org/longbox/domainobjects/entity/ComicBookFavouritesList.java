@@ -1,18 +1,17 @@
 package org.longbox.domainobjects.entity;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.Objects;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode
 @Table(name = "comic_book_favourites_list")
 public class ComicBookFavouritesList {
     @EmbeddedId
@@ -33,6 +32,25 @@ public class ComicBookFavouritesList {
     @Column(name = "date_added_user_list")
     private Date dateAdded;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ComicBookFavouritesList that = (ComicBookFavouritesList) o;
+        return Objects.equals(getId(), that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "ComicBookFavouritesList{" +
+                "id=" + id +
+                '}';
+    }
     public ComicBookFavouritesList(User u, ComicBook cb) {
         this.user = u;
         this.comicBook = cb;

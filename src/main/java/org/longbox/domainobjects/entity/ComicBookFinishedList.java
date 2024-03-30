@@ -1,19 +1,17 @@
 package org.longbox.domainobjects.entity;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "comic_book_finished_list")
 @Getter
 @Setter
-@EqualsAndHashCode
 @NoArgsConstructor
+@ToString
 public class ComicBookFinishedList {
     @EmbeddedId
     private ComicBookListId id = new ComicBookListId();
@@ -35,17 +33,31 @@ public class ComicBookFinishedList {
     @Column(name = "date_finished")
     private Date dateAdded;
 
-    public ComicBookFinishedList(User user, ComicBook comicBook) {
-            this.user = user;
-            this.comicBook = comicBook;
-            this.id.setUserId(user.getId());
-            this.id.setComicBookId(comicBook.getId());
-            this.dateAdded = new Date();
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ComicBookFinishedList that = (ComicBookFinishedList) o;
+        return Objects.equals(getId(), that.getId());
     }
 
-    public ComicBookFinishedList(Long userId, Long comicBookId) {
-        this.id.setUserId(userId);
-        this.id.setComicBookId(comicBookId);
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "ComicBookFinishedList{" +
+                "id=" + id +
+                '}';
+    }
+
+    public ComicBookFinishedList(User user, ComicBook comicBook) {
+        this.user = user;
+        this.comicBook = comicBook;
+        this.id.setUserId(user.getId());
+        this.id.setComicBookId(comicBook.getId());
         this.dateAdded = new Date();
     }
 }
