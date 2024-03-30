@@ -9,8 +9,8 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 public class ComicBookListItemDto {
-    private Long comicBookId;
-    private Long userId;
+    private long comicBookId;
+    private long userId;
     private Date dateAdded;
 
     public ComicBookListItemDto(Long userId, Long comicBookId) {

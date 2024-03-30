@@ -71,7 +71,8 @@ public class ComicBookReadingListStubDb implements ComicBookReadingListDao, Json
 
     @Override
     public void serializeStubData() {
-        String json = new Gson().toJson(records);
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+        String json = gson.toJson(records);
         try (PrintStream out = new PrintStream(new FileOutputStream(ABSOLUTE_FILE_PATH))) {
             out.print(json);
         } catch (FileNotFoundException fe) {

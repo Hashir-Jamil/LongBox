@@ -22,7 +22,7 @@ public class ComicBookListItemFinishedDtoTest {
         c.setUserId(1L);
         c.setComicBookId(1L);
         c.setDateAdded(new Date());
-        String expected = "ComicBookListItemFinishedDto(super=ComicBookListItemDto{comicBookId=1, userId=1})";
+        String expected = "ComicBookListItemFinishedDto{comicBookId=1, userId=1}";
         assertEquals(expected, c.toString());
     }
 }
