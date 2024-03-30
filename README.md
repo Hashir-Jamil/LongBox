@@ -12,6 +12,7 @@ This project uses a 3-layer software architecture. The system is built around th
 
 There are three major documentation types for this project.
 1. Several design & planning documents. These have several iterations/revisions and can be found in the [planning directory](design_documents/planning)
+   * A Post-Mortem analysis of the project can be found at the end of the [ITR3_Updated_Plan](design_documents/planning/ITR3_Updated_Plan.pdf) document.
 2. A [code review document](design_documents/code_review/EECS2311-Z-Team3-TakeHomeAssignment.pdf) that provides peer review done by the team on each other's user stories/features. It provides problem reports, code smells and end-2-end tests for the project.
 3. A [refactoring document](design_documents/code_review/Refactoring_Document.pdf) that highlights major design changes in response to code review and problem reports above.
 4. [All system diagrams](design_documents/diagrams).
@@ -46,7 +47,9 @@ To run the application run the command:
 
 ### Testing
 
-The project uses JUnit and gradle integration for unit testing and integration testing of system code. E2E testing is described in the [Code Review Document](design_documents/code_review/EECS2311-Z-Team3-TakeHomeAssignment.pdf) and organized by feature within the document. 
+The project uses JUnit and gradle integration for unit testing and integration testing of system code. 
+Unit and integration tests are in [test](src/test).
+E2E testing is described in the [Code Review Document](design_documents/code_review/EECS2311-Z-Team3-TakeHomeAssignment.pdf) and organized by feature within the document. 
 
 To execute the full JUnit test suite run the command:
 > gradle test
@@ -58,7 +61,7 @@ If using Eclipse, they can all be run as follows:
 
 #### Customer Tests
 
-The video for customer tests can be found [here](https://drive.google.com/file/d/1g3pXuG65CFF6YOEGFZLhamm2C680KwBv/view?usp=share_link).
+The video for customer tests can be found here [Customer Meeting 2](https://drive.google.com/file/d/1g3pXuG65CFF6YOEGFZLhamm2C680KwBv/view?usp=share_link).
 
 ## Launching in Eclipse IDE
 
