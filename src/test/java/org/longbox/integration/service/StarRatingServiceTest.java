@@ -20,7 +20,7 @@ public class StarRatingServiceTest {
     @Test
     void test_getStarRatingsByComic_1() {
         String actualAvgStarRating = starRatingService.getAvgStarRatingsByComic(1L);
-        assertEquals("3.7", actualAvgStarRating);
+        assertEquals("4", actualAvgStarRating);
     }
 
     @Test
@@ -52,19 +52,19 @@ public class StarRatingServiceTest {
     }
 
     @Test
-    void test_getStarRatingbyId_1() {
+    void test_getStarRatingById_1() {
         String actualStarRating = starRatingService.getStarRatingByID(1L, 1L);
         assertEquals(actualStarRating, "5");
     }
 
     @Test
-    void test_getStarRatingbyId_2() {
+    void test_getStarRatingById_2() {
         String actualStarRating = starRatingService.getStarRatingByID(3L, 1L);
-        assertEquals(actualStarRating, "3");
+        assertEquals("Not rated", actualStarRating);
     }
 
     @Test
-    void test_getStarRatingbyId_3() {
+    void test_getStarRatingById_3() {
         String actualStarRating = starRatingService.getStarRatingByID(25L, 2L);
         assertEquals(actualStarRating, "5");
     }

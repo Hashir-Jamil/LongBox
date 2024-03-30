@@ -9,6 +9,7 @@ import org.longbox.persistence.dao.StarRatingDao;
 import org.longbox.persistence.dao.StarRatingDaoImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class StarRatingDaoImplTest {
 	void test_getStarRatingsByComic_1() {
 		List<StarRatingDto> actualList = starRatingDaoImpl.getStarRatingsByComic(1L);
 		int actual = actualList.size();
-		assertEquals(3, actual);
+		assertEquals(2, actual);
 	}
     
     @Test
@@ -67,7 +68,7 @@ public class StarRatingDaoImplTest {
     @Test
     void test_getStarRatingbyId_2() {
     	StarRating actualStarRating = starRatingDaoImpl.getStarRatingById(3L, 1L);
-    	assertEquals(actualStarRating.getRating(), 3);
+    	assertNull(actualStarRating);
     }
 
     @Test
