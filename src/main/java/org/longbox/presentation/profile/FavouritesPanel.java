@@ -98,7 +98,7 @@ public class FavouritesPanel extends JPanel {
 
 		scrollPane = new JScrollPane(comicBookTable);
 		scrollPane.setViewportBorder(null);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(10, 110, 1144, 683);
 		panel.add(scrollPane);
