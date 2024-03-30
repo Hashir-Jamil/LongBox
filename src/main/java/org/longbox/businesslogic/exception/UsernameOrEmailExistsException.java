@@ -5,7 +5,4 @@ public class UsernameOrEmailExistsException extends Exception{
         super();
     }
 
-    public UsernameOrEmailExistsException(String msg){
-        super(msg);
-    }
 }

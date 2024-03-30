@@ -6,8 +6,4 @@ public class EmailDoesNotExistException extends Exception {
         super();
     }
 
-    public EmailDoesNotExistException(String msg){
-        super(msg);
-    }
-
 }
