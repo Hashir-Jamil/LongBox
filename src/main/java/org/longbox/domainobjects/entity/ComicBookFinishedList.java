@@ -11,7 +11,6 @@ import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 public class ComicBookFinishedList {
     @EmbeddedId
     private ComicBookListId id = new ComicBookListId();
