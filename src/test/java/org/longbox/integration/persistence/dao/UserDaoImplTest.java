@@ -17,6 +17,7 @@ import org.longbox.domainobjects.entity.User;
 
 
 import java.util.Date;
+import java.util.List;
 
 class UserDaoImplTest {
 	private SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
@@ -184,4 +185,35 @@ class UserDaoImplTest {
 				expectedAboutMe = "bye";
 				assertEquals(expectedAboutMe, actualAboutMe);
 	}
+
+	@Test
+	void test_getAllUsers(){
+		List<UserDto> actual = userDaoImpl.getAllUsers();
+		assertTrue(actual.size() >= 50);
+	}
+
+	@Test
+	void test_getUsersMoreThan_1(){
+		List<UserDto> actual = userDaoImpl.getUsersMoreThan("comicsReading", 1000);
+		assertTrue(actual.isEmpty());
+	}
+
+	@Test
+	void test_getUsersMoreThan_2(){
+		List<UserDto> actual = userDaoImpl.getUsersMoreThan("comicsReading", 15);
+		assertEquals(1, actual.size());
+	}
+
+	@Test
+	void test_getUsersLessThan_1(){
+		List<UserDto> actual = userDaoImpl.getUsersLessThan("comicsFinished", 0);
+		assertTrue(actual.isEmpty());
+	}
+
+	@Test
+	void test_getUsersLessThan_2(){
+		List<UserDto> actual = userDaoImpl.getUsersLessThan("comicsFinished", 2);
+		assertEquals(27, actual.size());
+	}
+
 }
