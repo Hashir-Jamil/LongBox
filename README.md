@@ -46,7 +46,9 @@ To run the application run the command:
 
 ### Testing
 
-The project uses JUnit and gradle integration for unit testing and integration testing of system code. E2E testing is described in the [Code Review Document](design_documents/code_review/EECS2311-Z-Team3-TakeHomeAssignment.pdf) and organized by feature within the document. 
+The project uses JUnit and gradle integration for unit testing and integration testing of system code. 
+Unit and integration tests are in [test](src/test).
+E2E testing is described in the [Code Review Document](design_documents/code_review/EECS2311-Z-Team3-TakeHomeAssignment.pdf) and organized by feature within the document. 
 
 To execute the full JUnit test suite run the command:
 > gradle test
