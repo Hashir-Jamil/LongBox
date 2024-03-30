@@ -301,4 +301,5 @@
 ## Saturday, March 30th, 2024
 
     Hashir: Updated documentation, touched up presentation, improved some flawed test cases, increased test coverage in domain objects.
+    Eric: Hotfix for issue of improper comic book page navigation on recommendations panel when table columns are moved
 
