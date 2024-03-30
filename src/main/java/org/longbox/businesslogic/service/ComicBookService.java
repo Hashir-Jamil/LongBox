@@ -30,10 +30,6 @@ public class ComicBookService {
         //return comicBookDao.saveComicBook(new ComicBook(comicBookDto));
     }
 
-    public boolean deleteComicBook(ComicBookDto comicBookDto) {
-        return false;
-    }
-
     public List<ComicBookDto> getAllComicBook() {
         return comicBookDao.getAllComicBooks();
     }

@@ -17,7 +17,6 @@ import org.longbox.domainobjects.entity.User;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class UserService {
 
 	private UserDao userDao;
@@ -28,17 +27,7 @@ public class UserService {
 	}
 
 	public UserSession startSession(UserDto userDto) {
-		//TO-DO: Login logic for starting user session
 		return UserSession.getInstance(userDto);
-	}
-
-	public UserDto getLoggedInUser() {
-		return currentUserLoggedIn.getUser();
-	}
-
-	public void endSession() {
-		currentUserLoggedIn.clearUserSession();
-		UserSession.setActiveUser(null);
 	}
 
 	public UserDto getUserById(Long userId) throws UserIDDoesNotExistException {

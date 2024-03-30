@@ -119,5 +119,4 @@ public class User {
 		this.setComicsFinished(0);
 		this.setJoinDate(new Date());
 	}
-
 }

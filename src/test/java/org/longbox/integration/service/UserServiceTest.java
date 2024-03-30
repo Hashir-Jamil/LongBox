@@ -6,6 +6,7 @@ import org.longbox.businesslogic.UserSession;
 import org.longbox.businesslogic.exception.EmailDoesNotExistException;
 import org.longbox.businesslogic.exception.UserIDDoesNotExistException;
 import org.longbox.businesslogic.exception.UserNameDoesNotExistException;
+import org.longbox.businesslogic.exception.UsernameOrEmailExistsException;
 import org.longbox.businesslogic.service.UserService;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.UserDto;
@@ -65,8 +66,37 @@ public class UserServiceTest {
     }
 
     @Test
-    void startSession(){
+    void startSession() {
         UserSession userSession = UserSession.getInstance(u1);
         assertEquals(userSession, userService.startSession(u1));
+    }
+
+    @Test
+    void saveUserTest() {
+        UserDto u2 = new UserDto();
+        u2.setUserName("Always_Throwing");
+        u2.setFirstName("Neo");
+        u2.setLastName("Anderson");
+        u2.setDob(new Date(1929,1,1));
+        u2.setEmail("address@provider.ca");
+        u2.setPassword("Always_Throwing");
+        u2.setCountry("Indonesia");
+        u2.setDefaults();
+        assertThrows(UsernameOrEmailExistsException.class, () -> userService.saveUser(u2));
+    }
+
+    @Test
+    void getAllUsersTest() {
+        userService.getAllUsers();
+        assertFalse(userService.getAllUsers().isEmpty());
+    }
+
+    @Test
+    void testGetterSetter() {
+        UserService service2 = new UserService();
+        service2.getCurrentUserLoggedIn();
+        service2.getUserDao();
+        service2.setCurrentUserLoggedIn(UserSession.getInstance(u1));
+        service2.setUserDao(new UserDaoImpl(HibernateUtils.getSessionFactory()));
     }
 }

@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.businesslogic.utils.GenreUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
-import org.longbox.domainobjects.entity.ComicBook;
-
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
