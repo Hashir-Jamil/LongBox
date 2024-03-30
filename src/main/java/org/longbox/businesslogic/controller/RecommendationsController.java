@@ -14,6 +14,7 @@ public class RecommendationsController implements MouseListener {
 	
 	private ComicBookDaoImpl comicBookDaoImpl = new ComicBookDaoImpl(HibernateUtils.getSessionFactory());
 	private RecommendationsPanel recommentationsPanel;
+	private final String columnName = "Series Title";
 	private UserSession userSession;
 
 	public RecommendationsController(RecommendationsPanel recommentationsPanel) {
@@ -28,13 +29,14 @@ public class RecommendationsController implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		int headerCol = this.recommentationsPanel.getHeader().columnAtPoint(e.getPoint());
+		String selection = this.recommentationsPanel.getRecommendationsTable().getColumnName(headerCol).toString();
 		int row = this.recommentationsPanel.getRecommendationsTable().rowAtPoint(e.getPoint());
 		int col = this.recommentationsPanel.getRecommendationsTable().columnAtPoint(e.getPoint());
-		if (col == 0 && e.getClickCount() == 2) {
+		if (selection.equals(columnName) && e.getClickCount() == 2) {
 			ComicBookDto comicBook = org.longbox.businesslogic.utils.ComicBookSearchUtils.searchComicBook(comicBookDaoImpl.getAllComicBooks(), this.recommentationsPanel.getRecommendationsTable().getValueAt(row, col).toString());
 			ComicBookSearchUtils.loadComicBookPage(comicBook, userSession);
 		}
-		System.out.println("Worked");
 	}
 
 	@Override

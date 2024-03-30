@@ -9,6 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.table.JTableHeader;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +29,7 @@ public class RecommendationsPanel extends JPanel {
 	private JTable recommendationsTable;
 	private JScrollPane recommendationsTableScrollPane;
 	private UserSession userSession;
+	private JTableHeader header;
 	
 	public RecommendationsPanel(UserSession currentUser) {
 		initTrendingPanel(currentUser);
@@ -63,5 +65,7 @@ public class RecommendationsPanel extends JPanel {
 			recommendationsTableScrollPane = new JScrollPane(recommendationsTable);
 			recommendationsTableScrollPane.setBounds(10, 139, 1144, 653);
 			panel.add(recommendationsTableScrollPane);
+			
+			header = recommendationsTable.getTableHeader();
 	}
 }
