@@ -4,12 +4,12 @@ import lombok.*;
 
 @Getter
 @Setter
-@ToString
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+@NoArgsConstructor
 public class ComicBookListItemReadingDto extends ComicBookListItemDto {
 
     public ComicBookListItemReadingDto(Long userId, Long comicBookId) {
         super(userId, comicBookId);
     }
-
 }

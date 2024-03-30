@@ -138,29 +138,4 @@ public class ComicBookSearchUtils {
 		ComicBookSearchResultsController resultsController = new ComicBookSearchResultsController(resultsPage);
 		resultsPage.setVisible(true);
 	}
-
-    public static String generateComicBookHTML(ComicBookDto comicBook) {
-        String htmlContent = String.format(
-                "<html><body><div align='center'><h1>Series Title: %s</h1><br" +
-                        "<h2>Author Name: %s</h2><br" +
-                        "<h2>Artist Name: %s</h2><br" +
-                        "<h2>Genres: %s</h2><br" +
-                        "<h2>Description: %s</h2><br" +
-                        "<h2>Number of Issues %d</h2><br" +
-                        "<h2>Year Published %d</h2><br" +
-                        "<h2>Publisher: %s</h2><br" +
-                        "<h2>Date Added To LongBox: %s</h2><br" +
-                        "</div></body></html><br",
-                comicBook.getSeriesTitle(),
-                comicBook.getAuthor(),
-                comicBook.getArtist(),
-				GenreUtils.genreListToString(comicBook.getGenres()),
-                comicBook.getDescription(),
-                comicBook.getNumberOfIssues(),
-                comicBook.getYearPublished(),
-                comicBook.getPublisher(),
-                comicBook.getDateAdded().toString()
-        );
-        return htmlContent;
-    }
 }

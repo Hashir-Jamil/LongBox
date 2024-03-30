@@ -5,7 +5,8 @@ import lombok.*;
 @Getter
 @Setter
 @EqualsAndHashCode(callSuper = true)
-@ToString
+@ToString(callSuper = true)
+@NoArgsConstructor
 public class ComicBookListItemFavouriteDto extends ComicBookListItemDto {
 
     public ComicBookListItemFavouriteDto(Long userId, Long comicBookId) {

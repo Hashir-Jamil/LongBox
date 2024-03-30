@@ -1,6 +1,7 @@
 package org.longbox.unit.domainobjects.entity;
 
 import org.junit.jupiter.api.Test;
+import org.longbox.domainobjects.dto.ComicBookListItemDto;
 import org.longbox.domainobjects.entity.ComicBook;
 import org.longbox.domainobjects.entity.ComicBookFavouritesList;
 import org.longbox.domainobjects.entity.ComicBookListId;
@@ -42,7 +43,7 @@ public class ComicBookFavouritesListTest {
         ComicBookFavouritesList c = new ComicBookFavouritesList();
         c.setUser(new User());
         c.setComicBook(new ComicBook());
-        c.setId(new ComicBookListId(1L, 1L));
+        c.setId(new ComicBookListId(1L,1L));
         c.setDateAdded(new Date());
         String expected = "ComicBookFavouritesList{id=ComicBookListId(userId=1, comicBookId=1)}";
         assertEquals(expected, c.toString());

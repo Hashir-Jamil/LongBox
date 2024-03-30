@@ -121,4 +121,50 @@ public class UserSessionTest {
         assertNull(userSession.getUser());
         assertNull(UserSession.getActiveUser());
     }
+
+    @Test
+    public void testToString() {
+        // Prepare test data
+        Long id = 1L;
+        String userName = "user1";
+        String firstName = "John";
+        String lastName = "Doe";
+        Date dob = new Date();
+        String email = "john.doe@example.com";
+        String password = "password";
+        String country = "USA";
+        String continent = "North America";
+        Date joinDate = new Date();
+        int comicsReading = 5;
+        int comicsFinished = 10;
+        String aboutMe = "About me";
+
+        // Create UserDto object
+        UserDto userDto = new UserDto();
+        userDto.setId(id);
+        userDto.setUserName(userName);
+        userDto.setFirstName(firstName);
+        userDto.setLastName(lastName);
+        userDto.setDob(dob);
+        userDto.setEmail(email);
+        userDto.setPassword(password);
+        userDto.setCountry(country);
+        userDto.setContinent(continent);
+        userDto.setJoinDate(joinDate);
+        userDto.setComicsReading(comicsReading);
+        userDto.setComicsFinished(comicsFinished);
+        userDto.setAboutMe(aboutMe);
+
+        UserSession.setActiveUser(null);
+        UserSession user = UserSession.getInstance(userDto);
+
+        // Generate toString representation
+        String expectedToString = "UserDto(id=1, userName=user1, firstName=John, lastName=Doe, " +
+                "dob=" + dob + ", email=john.doe@example.com, password=password, country=USA, " +
+                "continent=North America, joinDate=" + joinDate + ", comicsReading=5, comicsFinished=10, " +
+                "aboutMe=About me" + ", preferredGenre=null)";
+
+        // Verify toString representation
+        assertEquals(expectedToString, user.toString());
+    }
 }

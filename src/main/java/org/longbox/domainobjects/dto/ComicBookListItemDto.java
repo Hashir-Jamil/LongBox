@@ -1,15 +1,13 @@
 package org.longbox.domainobjects.dto;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Date;
+import java.util.Objects;
+
 @Getter
 @Setter
-@EqualsAndHashCode
-@ToString
+@NoArgsConstructor
 public class ComicBookListItemDto {
     private Long comicBookId;
     private Long userId;
@@ -21,4 +19,24 @@ public class ComicBookListItemDto {
         this.dateAdded = new Date();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ComicBookListItemDto that = (ComicBookListItemDto) o;
+        return Objects.equals(getComicBookId(), that.getComicBookId()) && Objects.equals(getUserId(), that.getUserId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getComicBookId(), getUserId());
+    }
+
+    @Override
+    public String toString() {
+        return "ComicBookListItemDto{" +
+                "comicBookId=" + comicBookId +
+                ", userId=" + userId +
+                '}';
+    }
 }
