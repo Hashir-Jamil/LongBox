@@ -60,7 +60,7 @@ If using Eclipse, they can all be run as follows:
 
 #### Customer Tests
 
-The video for customer tests can be found [here](https://drive.google.com/file/d/1g3pXuG65CFF6YOEGFZLhamm2C680KwBv/view?usp=share_link).
+The video for customer tests can be found here [Customer Meeting 2](https://drive.google.com/file/d/1g3pXuG65CFF6YOEGFZLhamm2C680KwBv/view?usp=share_link).
 
 ## Launching in Eclipse IDE
 
