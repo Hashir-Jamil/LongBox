@@ -59,7 +59,7 @@ To view the coverage of the tests navigate to the [JaCoCo coverage report](build
 If using Eclipse, they can all be run as follows: 
 > right click on src/test/java > RunAs > JUnit Test.
 
-#### Customer Tests
+# Customer Tests
 
 The video for customer tests can be found here [Customer Meeting 2](https://drive.google.com/file/d/1g3pXuG65CFF6YOEGFZLhamm2C680KwBv/view?usp=share_link).
 
@@ -78,13 +78,13 @@ To launch the project:
 
 This is the first page that the user of the app sees.
 
-![Login](https://github.com/Hashir-Jamil/LongBox/assets/90640849/0700181a-0304-40b7-b7c1-f56aba1771cc)
+![Login](design_documents/screenshots/Login.png)
 
 ## Registration
 
 New users can sign up and use our app. Upon sign up users can select preferred genres, using which user will be recommended comics.
 
-![Signup](https://github.com/Hashir-Jamil/LongBox/assets/90640849/87863f9a-1d5b-4def-8150-137dc81150e1)
+![Signup](design_documents/screenshots/Signup.png)
 
 ## Home
 
@@ -94,15 +94,15 @@ This is the first page that the user lands on after logging in the system. The c
 
 Upon login users land on a page of recommendations that are tailored to for them. The entries in this list can be opened to explore more about them.
 
-![Recommendations](https://github.com/Hashir-Jamil/LongBox/assets/90640849/14b2dda8-87a4-483e-9bf8-c77fb4550122)
+![Recommendations](design_documents/screenshots/Recommendations.png)
 
 ## Comic Repository and Advanced Search
 
 Users can view all the comic books in the app's collection. Users can use the advanced search and search the comics based on Title, Artist, Author, Genre, Publisher and Year Published. The search results are viewed in a different window.
 
-![ComicRepo](https://github.com/Hashir-Jamil/LongBox/assets/90640849/efdecfea-cea3-4036-ac66-c9132801ef3d)
+![ComicRepo](design_documents/screenshots/ComicRepo.png)
 
-![Search Results](https://github.com/Hashir-Jamil/LongBox/assets/90640849/a2aaeb1a-05c1-422f-b358-5b685564afe7)
+![Search Results](design_documents/screenshots/Search Results.png)
 
 ## View Detailed Information
 
@@ -120,53 +120,53 @@ Users can add and remove books from their personal reading and finished lists of
 
 Users can also add ratings to comic books and view them.
 
-![ComicInfo](https://github.com/Hashir-Jamil/LongBox/assets/90640849/6d5cd30a-612d-4c1e-91c6-21f533f8fb7a)
+![ComicInfo](design_documents/screenshots/ComicInfo.png)
 
 ## Add Comic
 
 Using this page, a user can add a comic book to the system. A user can favourite a comic while adding to the system.
 
-![AddComic](https://github.com/Hashir-Jamil/LongBox/assets/90640849/90a7b633-e767-484b-b882-72ff6a383b3c)
+![AddComic](design_documents/screenshots/AddComic.png)
 
 ## Favourite a comic
 
-All the comics favourited are visible in this page, a user can remove a comic from favourites.
+All the comics added to favourites are visible in this page, a user can remove a comic from favourites.
 
-![Favourites](https://github.com/Hashir-Jamil/LongBox/assets/90640849/9b5ef000-27e3-477f-96f3-74228a7b8e68)
+![Favourites](design_documents/screenshots/Favourites.png)
 
 Confirmation to remove from favourites:
 
-![Unfavourite](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f0523c0a-70de-45d1-b8af-58c217cf10a8)
+![Unfavourite](design_documents/screenshots/Unfavorite.png)
 
 ## View Profile
 
 Users can view their details on the profile page. Users have the option to edit their about me. Users can view the reading and finished comics as a list here.
 
-![Profile](https://github.com/Hashir-Jamil/LongBox/assets/90640849/96117d37-c17a-4bda-8c4b-866d7e9d70bb)
+![Profile](design_documents/screenshots/Profile.png)
 
 ## Trending
 
 User can view the trending comics of the app, they can also filter it by the Continent.
 
-![Trending](https://github.com/Hashir-Jamil/LongBox/assets/90640849/df13e8fc-2b1a-4994-a314-046454e271ce)
+![Trending](design_documents/screenshots/Trending.png)
 
 ## Leaderboards
 
 The Social page allows the user to see all the users that use the system. There is also a filter option to filter the results by number of comics read and finished, more or less than a number.
 
-![Social](https://github.com/Hashir-Jamil/LongBox/assets/90640849/fc6de025-7f45-4b6f-983a-2c338c61b91e)
+![Social](design_documents/screenshots/Social.png)
 
 ## User Lookup
 
 Using the app, a user can view information about another user such including the comments done by them on comics, their reading and finished list and preferred genres. Users can either double click on a user in the social panel or double click on the comment by a user in the Comic Information page.
 
-![OtherUser](https://github.com/Hashir-Jamil/LongBox/assets/90640849/108ce09a-19e9-4158-b7d1-8366c26413ab)
+![OtherUser](design_documents/screenshots/OtherUser.png)
 
 ## Logout
 
 After using the system, the user can log out and will be redirected to the login page.
 
-![Logout](https://github.com/Hashir-Jamil/LongBox/assets/90640849/7bb2e520-4505-487d-8f5c-9fbaade7d7f6)
+![Logout](design_documents/screenshots/Logout.png)
 
 ## Authors
     Hashir Jamil
