@@ -256,6 +256,7 @@
     Hashir: Added unit tests in business logic and domain object classes and improved data access object integration tests. Added service layer integration tests. Finished recommendations user story. Refactored comic book tables on user profile view page. Hotfixed mapping of genres for users preferred genres between entity and dto. Created empty test classes for tests perceived to be insufficient. These tests will be done by everyone as they span across everyone's features.
     Ahan: Refactoring: removed all instances of UserDto and User constructors throughout the code, used Java Beans in its place.
     Eric: Schema handles regional favourite for users and comic books with proper incrementation, users now get automatically assigned a continent based on the country they select to sign up with during registatation
+	 Oscar: Created database table for star ratings.
 
 ## Wednesday, March 20th, 2024
 
@@ -263,11 +264,13 @@
     Group Meeting (All Members): Met with professor and discussed documentation for submission, bug reports, issue tracking,
     Ahan: Refactoring: removed all instances of CommentDto and Comment constructors throughout the code, used Java Beans in its place. Also made a frame for other user that views its comments. Added a social panel that currently displays all the users registerd.
     Eric: Most, if not all, countries are mapped to their proper continent. Added test cases for favouriting, trending, and advanced search
+    Oscar: Continued working on fixes for star rating system.
     
 ## Thursday, March 21st, 2024
     
     Hashir: Worked on refactoring tasks and addressed bugs
     Ahan: Completed my user story for ITR3, full functioning of social panel with a filter feature to filter based on the number of comics reading/ finished and more/ less. Added tests for a new method used. Added more enteries in the script for users.
+    Oscar: Continued working on fixes for star rating system.
 
 ## Sunday, March 24th, 2024
 
@@ -277,12 +280,15 @@
 
     Hashir: worked on documentation like readme, planning doc, refactoring doc, diagrams and worked on bugs/problems/issues
     Ahan: Updated README.md by adding instructions to run script via command line. Added auto refresh for social panel, and added more enteries for favorites, reading and finished list in db script.
+    Oscar: Addressed bug for "about me" feature and organized star rating buttons.
 
 ## Thursday, March 28th, 2024
 
     Ahan: Updated README.md by adding the latest screenshots as well as adding new features and their description.
+    Oscar: Completed fixing star rating system.
 
 ## Friday, March 29th, 2024 
 
     Hashir: updated documentation and slides for D2 submission.
     Group Meeting (Hashir, Ahan, Eric, Oscar): Worked on slides and post mortem analysis.
+    Oscar: Wrote test cases for star rating system and populated database with star rating entries.
