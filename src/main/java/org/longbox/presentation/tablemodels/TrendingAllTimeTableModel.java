@@ -33,10 +33,6 @@ public class TrendingAllTimeTableModel extends DefaultTableModel {
 			comicBookList.set(i, temp);		
 		}
 		
-		for (ComicBookDto c : comicBookList) {
-			System.out.println(c.getFavouritesCount() + " " + c);
-		}
-		
 		this.comicBookList = comicBookList;
 
         for (String columnName : columnNames) {
