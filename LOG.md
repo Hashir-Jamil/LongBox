@@ -275,17 +275,20 @@
 ## Sunday, March 24th, 2024
 
     Ali: Completed my user story for ITR3, now a user can view another user profile from comments by double clicking
+    Eric: Added more comics
 
 ## Tuesday, March 26th, 2024
 
     Hashir: worked on documentation like readme, planning doc, refactoring doc, diagrams and worked on bugs/problems/issues
     Ahan: Updated README.md by adding instructions to run script via command line. Added auto refresh for social panel, and added more enteries for favorites, reading and finished list in db script.
     Oscar: Addressed bug for "about me" feature and organized star rating buttons.
+    Eric: Added recommendations controller, can now navigate to comic book info pages from recommendations panel and other code clean-ups
 
 ## Thursday, March 28th, 2024
 
     Ahan: Updated README.md by adding the latest screenshots as well as adding new features and their description.
     Oscar: Completed fixing star rating system.
+    Eric: ComicRepositoryContoller and Panel now uses service calls
 
 ## Friday, March 29th, 2024 
 
@@ -293,8 +296,10 @@
     Group Meeting (Hashir, Ahan, Eric, Oscar): Worked on slides and post mortem analysis.
     Oscar: Wrote test cases for star rating system and populated database with star rating entries.
     Ahan: Did documentation and add more test cases.
+    Eric: Added more comics, hotfix issues of improper navigation on trending, comic repo, search results, and favourites when columns are moved around. Divided initCOmicCollection into sperate functions
 
 ## Saturday, March 30th, 2024
 
     Hashir: Updated documentation, touched up presentation, improved some flawed test cases, increased test coverage in domain objects.
+    Eric: Hotfix for issue of improper comic book page navigation on recommendations panel when table columns are moved
 
