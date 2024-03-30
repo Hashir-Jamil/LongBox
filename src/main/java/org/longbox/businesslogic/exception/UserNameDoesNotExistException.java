@@ -5,7 +5,4 @@ public class UserNameDoesNotExistException extends Exception{
         super();
     }
 
-    public UserNameDoesNotExistException(String msg){
-        super(msg);
-    }
 }
