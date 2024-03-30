@@ -293,3 +293,8 @@
     Group Meeting (Hashir, Ahan, Eric, Oscar): Worked on slides and post mortem analysis.
     Oscar: Wrote test cases for star rating system and populated database with star rating entries.
     Ahan: Did documentation and add more test cases.
+
+## Saturday, March 30th, 2024
+
+    Hashir: Updated documentation, touched up presentation, improved some flawed test cases, increased test coverage in domain objects.
+
