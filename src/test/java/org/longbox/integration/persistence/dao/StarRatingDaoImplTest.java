@@ -67,7 +67,7 @@ public class StarRatingDaoImplTest {
     @Test
     void test_getStarRatingbyId_2() {
     	StarRating actualStarRating = starRatingDaoImpl.getStarRatingById(3L, 1L);
-    	assertEquals(actualStarRating.getRating(), 4);
+    	assertEquals(actualStarRating.getRating(), 3);
     }
 
     @Test

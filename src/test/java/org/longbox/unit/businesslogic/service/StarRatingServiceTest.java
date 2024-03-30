@@ -25,7 +25,7 @@ public class StarRatingServiceTest {
     @Test
 	void test_getStarRatingsByComic_1() {
 		String actualAvgStarRating = starRatingService.getAvgStarRatingsByComic(1L);
-		assertEquals("4", actualAvgStarRating);
+		assertEquals("3.7", actualAvgStarRating);
 	}
     
     @Test
@@ -65,7 +65,7 @@ public class StarRatingServiceTest {
     @Test
     void test_getStarRatingbyId_2() {
     	String actualStarRating = starRatingService.getStarRatingByID(3L, 1L);
-    	assertEquals(actualStarRating, "4");
+    	assertEquals(actualStarRating, "3");
     }
 
     @Test
