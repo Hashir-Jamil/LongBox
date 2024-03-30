@@ -35,7 +35,7 @@ public class ComicBookFrame extends JFrame {
 
 		setTitle(FRAME_TITLE);
 	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	    setBounds(100, 100, 1200, 900);
+	    setBounds(100, 100, 1164, 850);
 	    comicBookPane = new JPanel();
 	    comicBookPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
