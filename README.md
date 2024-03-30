@@ -158,7 +158,7 @@ The Social page allows the user to see all the users that use the system. There 
 
 ## User Lookup
 
-Using the app, a user can view information about another user such including the comments done by them on comics, their reading and finished list and preferred genres. Users can either double click on a user in the social panel or double click on the comment by a user in the Comic Information page.
+Using the app, a user can view information about another user such including the comments done by them on comics, their reading and finished list and preferred genres. Users can either double click on a user in the social panel or double click on the comment by a user in the Comic Information page, to navigate to this page.
 
 ![OtherUser](design_documents/screenshots/OtherUser.png)
 
