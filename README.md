@@ -65,31 +65,31 @@ To launch the project:
 
 [Gradle](https://kotlinlang.org/docs/gradle.html) - Dependency Management
 
-## Features
+# Features
 
-### Login
+## Login
 
 This is the first page that the user of the app sees.
 
 ![Login](https://github.com/Hashir-Jamil/LongBox/assets/90640849/0700181a-0304-40b7-b7c1-f56aba1771cc)
 
-### Registration
+## Registration
 
 New users can sign up and use our app. Upon sign up users can select preferred genres, using which user will be recommended comics.
 
 ![Signup](https://github.com/Hashir-Jamil/LongBox/assets/90640849/87863f9a-1d5b-4def-8150-137dc81150e1)
 
-### Home
+## Home
 
 This is the first page that the user lands on after logging in the system. The current user's username is displayed near the logout button. using the top bar, user can navigate and access all the features of the system.
 
-#### Recommendations
+### Recommendations
 
 Upon login users land on a page of recommendations that are tailored to for them. The entries in this list can be opened to explore more about them.
 
 ![Recommendations](https://github.com/Hashir-Jamil/LongBox/assets/90640849/14b2dda8-87a4-483e-9bf8-c77fb4550122)
 
-### Comic Repository and Advanced Search
+## Comic Repository and Advanced Search
 
 Users can view all the comic books in the app's collection. Users can use the advanced search and search the comics based on Title, Artist, Author, Genre, Publisher and Year Published. The search results are viewed in a different window.
 
@@ -97,31 +97,31 @@ Users can view all the comic books in the app's collection. Users can use the ad
 
 ![Search Results](https://github.com/Hashir-Jamil/LongBox/assets/90640849/a2aaeb1a-05c1-422f-b358-5b685564afe7)
 
-### View Detailed Information
+## View Detailed Information
 
 After selecting a comic book, users can view detailed information about the comic book. 
 
-#### Add and View Comments
+### Add and View Comments
 
 In this window user also has an option to add a new comment, view existing comments in order of newest to oldest. 
 
-#### Reading & Finished Lists
+### Reading & Finished Lists
 
 Users can add and remove books from their personal reading and finished lists of comic books. Add and remove is accomplished when viewing a comic book in its individual page. The lists can be viewed in the profile view and from here the comic books can be selected again to edit their list membership.
 
-#### Comic Ratings
+### Comic Ratings
 
 Users can also add ratings to comic books and view them.
 
 ![ComicInfo](https://github.com/Hashir-Jamil/LongBox/assets/90640849/6d5cd30a-612d-4c1e-91c6-21f533f8fb7a)
 
-### Add Comic
+## Add Comic
 
 Using this page, a user can add a comic book to the system. A user can favourite a comic while adding to the system.
 
 ![AddComic](https://github.com/Hashir-Jamil/LongBox/assets/90640849/90a7b633-e767-484b-b882-72ff6a383b3c)
 
-### Favourite a comic
+## Favourite a comic
 
 All the comics favourited are visible in this page, a user can remove a comic from favourites.
 
@@ -131,31 +131,31 @@ Confirmation to remove from favourites:
 
 ![Unfavourite](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f0523c0a-70de-45d1-b8af-58c217cf10a8)
 
-### View Profile
+## View Profile
 
-Users can view their details on the profile page, including comics read and finished. Users also have an option to edit their about me. Users can view the reading and finished comics as a list here.
+Users can view their details on the profile page. Users have the option to edit their about me. Users can view the reading and finished comics as a list here.
 
 ![Profile](https://github.com/Hashir-Jamil/LongBox/assets/90640849/96117d37-c17a-4bda-8c4b-866d7e9d70bb)
 
-### Trending
+## Trending
 
 User can view the trending comics of the app, they can also filter it by the Continent.
 
-![Trending](https://github.com/Hashir-Jamil/LongBox/assets/90640849/036dad8a-5d8a-4c5e-b444-546359456106)
+![Trending](https://github.com/Hashir-Jamil/LongBox/assets/90640849/df13e8fc-2b1a-4994-a314-046454e271ce)
 
-### Leaderboards
+## Leaderboards
 
-The learderboards page allows the user to see all the users that use the system. There is also a filter option to filter the results by number of comics read and finished, more or less than a number.
+The Social page allows the user to see all the users that use the system. There is also a filter option to filter the results by number of comics read and finished, more or less than a number.
 
-![Social](https://github.com/Hashir-Jamil/LongBox/assets/90640849/f7036190-ccff-4188-b1ae-d4f923a75571)
+![Social](https://github.com/Hashir-Jamil/LongBox/assets/90640849/fc6de025-7f45-4b6f-983a-2c338c61b91e)
 
-### User Lookup
+## User Lookup
 
 Using the app, a user can view information about another user such including the comments done by them on comics, their reading and finished list and preferred genres. Users can either double click on a user in the social panel or double click on the comment by a user in the Comic Information page.
 
 ![OtherUser](https://github.com/Hashir-Jamil/LongBox/assets/90640849/108ce09a-19e9-4158-b7d1-8366c26413ab)
 
-### Logout
+## Logout
 
 After using the system, the user can log out and will be redirected to the login page.
 
