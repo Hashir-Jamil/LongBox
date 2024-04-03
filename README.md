@@ -102,7 +102,7 @@ Users can view all the comic books in the app's collection. Users can use the ad
 
 ![ComicRepo](design_documents/screenshots/ComicRepo.png)
 
-![Search Results](design_documents/screenshots/Search Results.png)
+![Search Results](design_documents/screenshots/SearchResults.png)
 
 ## View Detailed Information
 
